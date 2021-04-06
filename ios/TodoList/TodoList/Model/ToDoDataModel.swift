@@ -6,3 +6,14 @@
 //
 
 import Foundation
+
+struct ToDoItem: Codable {
+    let userId: Int
+    let id: Int
+    let title: String
+    let completed: Bool
+    
+    func getTitleString() -> String {
+        return "\(userId), \(id), \(title), \(completed)"
+    }
+}
