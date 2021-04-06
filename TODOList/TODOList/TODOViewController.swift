@@ -8,6 +8,12 @@
 import UIKit
 
 class TODOViewController: UIViewController {
+    
+    enum Segues {
+        static let willTODO = "WillTODO"
+        static let doingTODO = "DoingTODO"
+        static let completeTODO = "CompleteTODO"
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
