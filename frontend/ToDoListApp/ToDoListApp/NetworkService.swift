@@ -15,13 +15,13 @@ class NetworkService {
     }
     
     private let session : URLSessionProtocol
-    private let urlString = String()
+    private let urlString = ""
     
     init(session : URLSessionProtocol = URLSession.shared) {
         self.session = session
     }
     
-    private func decode<T:Codable> (form : T, data: Data?) -> Result<T,NetworkError> {
+    private func decode<T:Codable> (form : T.Type, data: Data?) -> Result<T,NetworkError> {
         guard let data = data else {
             return .failure(.nilData)
         }
@@ -33,7 +33,7 @@ class NetworkService {
         return .success(returnData)
     }
     
-    func getToDoData<T:Codable> (needs dataSet : T,closure : @escaping (Result<T,NetworkError>) -> Void) {
+    func getToDoData<T:Codable> (needs dataSet : T.Type,closure : @escaping (Result<T,NetworkError>) -> Void) {
         guard let url = URL.init(string: self.urlString) else {
             return
         }
@@ -61,7 +61,7 @@ class NetworkService {
         
         session.dataTask(with: request, completionHandler: {(data,response,error) in
             
-            let result = self.decode(form : input, data: data)
+            let result = self.decode(form : T.self, data: data)
             
             closure(result)
         }).resume()

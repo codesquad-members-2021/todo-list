@@ -16,9 +16,41 @@ class NetworkServiceTests: XCTestCase {
         sut = .init(session: MockURLSession())
     }
     
-    func test_getToDoData {
-        let expectation = XCTestExpectation()
-        let response = try? JSONDecoder().decode(testCellData.self, from: testDatas)
+    func test_getToDoData() {
+//        let expectation = XCTestExpectation()
+        let response = try? JSONDecoder().decode(testCellData.self, from: testDatas.CellData.dummyCellData)
+        
+        sut.getToDoData(needs: testCellData.self, closure: { result in
+            switch result {
+            case .success(let data) :
+                XCTAssertEqual(data.title, response?.title)
+                XCTAssertEqual(data.body, response?.body)
+                XCTAssertEqual(data.isApp, response?.isApp)
+                XCTAssertEqual(data.date, response?.date)
+            case .failure(_):
+                XCTFail()
+            }
+//            expectation.fulfill()
+        })
+        
+//        wait(for: [expectation], timeout: 2.0)
+    }
+    
+    func test_getToDoDate_Failure() {
+        sut = .init(session: MockURLSession(makeRequestFail: true))
+//        let expectation = XCTestExpectation()
+        
+        sut.getToDoData(needs: testCellData.self, closure: { result in
+            switch result {
+            case .success :
+                XCTFail()
+            case .failure(let error):
+                XCTAssertEqual(error.localizedDescription, NetworkService.NetworkError.nilData.localizedDescription)
+            }
+//            expectation.fulfill()
+        })
+        
+//        wait(for: [expectation], timeout: 2.0)
     }
     
 
