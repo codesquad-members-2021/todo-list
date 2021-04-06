@@ -1,19 +1,20 @@
-//
-//  ViewController.swift
-//  TodoList
-//
-//  Created by 김지선 on 2021/04/06.
-//
-
 import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var addCardButton: UIButton!
+    @IBOutlet weak var todoListView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
-
-
+    
+    private func setUpTaskbutton() {
+        addCardButton.addTarget(todoListView, action: #selector(addCardButtonTouched), for: .touchUpInside)
+    }
+    
+    @objc func addCardButtonTouched() {
+        // 저는 V 할때까지만 할래요 ㅋㅋㅋㅋㅋ
+    }
 }
 
