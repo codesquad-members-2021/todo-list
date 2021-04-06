@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 function InputSample() {
   const [inputs, setInputs] = useState({
@@ -17,6 +17,7 @@ function InputSample() {
       [name]: value, // name 키를 가진 값을 value 로 설정
     });
   };
+  const nameInput = useRef();
 
   const onReset = () => {
     setInputs({
@@ -24,11 +25,18 @@ function InputSample() {
       nickname: "",
       num: "",
     });
+    nameInput.current.focus();
   };
 
   return (
     <div>
-      <input name="name" placeholder="이름" onChange={onChange} value={name} />
+      <input
+        name="name"
+        placeholder="이름"
+        onChange={onChange}
+        value={name}
+        ref={nameInput}
+      />
       <input
         name="nickname"
         placeholder="닉네임"
