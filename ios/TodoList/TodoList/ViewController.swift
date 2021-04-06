@@ -9,9 +9,12 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    let url = "https://jsonplaceholder.typicode.com/todos/1"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        DataManager.getData(urlString: url) { (string) in
+        }
     }
 
 }
-
