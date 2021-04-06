@@ -15,6 +15,7 @@
 		FA41FF10261C4FD5004ECD45 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA41FF0E261C4FD5004ECD45 /* LaunchScreen.storyboard */; };
 		FA41FF1B261C4FD5004ECD45 /* Todo_ListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA41FF1A261C4FD5004ECD45 /* Todo_ListTests.swift */; };
 		FA41FF26261C4FD5004ECD45 /* Todo_ListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA41FF25261C4FD5004ECD45 /* Todo_ListUITests.swift */; };
+		FA986E26261C8C04004CC3CB /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = FA986E1E261C886C004CC3CB /* NotoSansKR-Regular.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		FA41FF21261C4FD5004ECD45 /* Todo_ListUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Todo_ListUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA41FF25261C4FD5004ECD45 /* Todo_ListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo_ListUITests.swift; sourceTree = "<group>"; };
 		FA41FF27261C4FD5004ECD45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA986E1E261C886C004CC3CB /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 		FA41FF02261C4FD2004ECD45 /* Todo_List */ = {
 			isa = PBXGroup;
 			children = (
+				FA986E1D261C8853004CC3CB /* Fonts */,
 				FA41FF44261C55C5004ECD45 /* Controller */,
 				FA41FF43261C55C1004ECD45 /* View */,
 				FA41FF42261C55B9004ECD45 /* Model */,
@@ -150,6 +153,14 @@
 				FA41FF07261C4FD2004ECD45 /* ViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		FA986E1D261C8853004CC3CB /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				FA986E1E261C886C004CC3CB /* NotoSansKR-Regular.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,6 +268,7 @@
 			files = (
 				FA41FF10261C4FD5004ECD45 /* LaunchScreen.storyboard in Resources */,
 				FA41FF0D261C4FD5004ECD45 /* Assets.xcassets in Resources */,
+				FA986E26261C8C04004CC3CB /* NotoSansKR-Regular.otf in Resources */,
 				FA41FF0B261C4FD2004ECD45 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -461,7 +473,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B3PWYBKFUK;
+				DEVELOPMENT_TEAM = XRSWD487Z4;
 				INFOPLIST_FILE = Todo_List/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -480,7 +492,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B3PWYBKFUK;
+				DEVELOPMENT_TEAM = XRSWD487Z4;
 				INFOPLIST_FILE = Todo_List/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
