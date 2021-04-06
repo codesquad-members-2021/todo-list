@@ -12,6 +12,8 @@ class NetworkService {
     enum NetworkError : Error {
         case invalidData
         case nilData
+        case nilResponse
+        case badResponse
     }
     
     private let session : URLSessionProtocol
@@ -33,7 +35,7 @@ class NetworkService {
         return .success(returnData)
     }
     
-    func getToDoData<T:Codable> (needs dataSet : T,closure : @escaping (Result<T,NetworkError>) -> Void) {
+    func getToDoData<T:Codable> (needs dataSet : T.Type,closure : @escaping (Result<T,NetworkError>) -> Void) {
         guard let url = URL.init(string: self.urlString) else {
             return
         }
@@ -47,7 +49,7 @@ class NetworkService {
         }).resume()
     }
     
-    func postToDoData<T:Codable> (input : T, post type : String, closure : @escaping (Result<T,NetworkError>) -> Void) {
+    func postToDoData<T:Codable> (input : T, post type : String, closure : @escaping (Result<Int,NetworkError>) -> Void) {
         
         let optionalURL = URL.init(string: urlString + type)
         guard let url = optionalURL else {
@@ -61,9 +63,21 @@ class NetworkService {
         
         session.dataTask(with: request, completionHandler: {(data,response,error) in
             
-            let result = self.decode(form : T.self, data: data)
-            
+            let result = self.checkStatus(with: response)
             closure(result)
         }).resume()
+    }
+    
+    private func checkStatus(with response : URLResponse?) -> Result<Int,NetworkError> {
+        
+        guard let response = response as? HTTPURLResponse else {
+            return .failure(.nilResponse)
+        }
+        
+        if response.statusCode != 200 {
+            return .failure(.badResponse)
+        }
+        
+        return .success(response.statusCode)
     }
 }
