@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8288BCD3261C964000883E0E /* HistoryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8288BCD2261C964000883E0E /* HistoryButton.swift */; };
+		82964F41261C4F02004E67F1 /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82964F40261C4F02004E67F1 /* TitleLabel.swift */; };
+		82964F46261C52A9004E67F1 /* TopSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82964F45261C52A9004E67F1 /* TopSectionView.swift */; };
 		B0BC8AC9261C433E00B8122D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BC8AC8261C433E00B8122D /* AppDelegate.swift */; };
 		B0BC8ACB261C433E00B8122D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BC8ACA261C433E00B8122D /* SceneDelegate.swift */; };
 		B0BC8ACD261C433E00B8122D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BC8ACC261C433E00B8122D /* ViewController.swift */; };
@@ -38,6 +41,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8288BCD2261C964000883E0E /* HistoryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryButton.swift; sourceTree = "<group>"; };
+		82964F40261C4F02004E67F1 /* TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
+		82964F45261C52A9004E67F1 /* TopSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopSectionView.swift; sourceTree = "<group>"; };
 		B0BC8AC5261C433E00B8122D /* ToDoListApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoListApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0BC8AC8261C433E00B8122D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B0BC8ACA261C433E00B8122D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -269,6 +275,8 @@
 			files = (
 				B0BC8B0C261C924E00B8122D /* NetworkService.swift in Sources */,
 				B0BC8ACD261C433E00B8122D /* ViewController.swift in Sources */,
+				82964F41261C4F02004E67F1 /* TitleLabel.swift in Sources */,
+				82964F46261C52A9004E67F1 /* TopSectionView.swift in Sources */,
 				B0BC8AC9261C433E00B8122D /* AppDelegate.swift in Sources */,
 				B0BC8B01261C8BDC00B8122D /* MockNetworkService.swift in Sources */,
 				B0BC8ACB261C433E00B8122D /* SceneDelegate.swift in Sources */,
@@ -458,7 +466,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Dahun-Lee.ToDoListApp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -477,7 +485,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Dahun-Lee.ToDoListApp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
