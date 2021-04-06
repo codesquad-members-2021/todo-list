@@ -14,7 +14,12 @@ class NetworkService {
         case nilData
     }
     
+    private let session : URLSessionProtocol
     private let urlString = String()
+    
+    init(session : URLSessionProtocol = URLSession.shared) {
+        self.session = session
+    }
     
     private func decode<T:Codable> (form : T, data: Data?) -> Result<T,NetworkError> {
         guard let data = data else {
@@ -34,7 +39,7 @@ class NetworkService {
         }
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-        URLSession.shared.dataTask(with: request, completionHandler: {(data,response,error) in
+        session.dataTask(with: request, completionHandler: {(data,response,error) in
             
             let result = self.decode(form : dataSet, data: data)
             
@@ -54,34 +59,11 @@ class NetworkService {
         request.httpMethod = "POST"
         request.httpBody = sendData
         
-        URLSession.shared.dataTask(with: request, completionHandler: {(data,response,error) in
+        session.dataTask(with: request, completionHandler: {(data,response,error) in
             
             let result = self.decode(form : input, data: data)
             
             closure(result)
         }).resume()
     }
-}
-
-class testCellData : Codable {
-    var title : String
-    var body : String
-    var isApp : Bool
-    var date : Date
-}
-
-class testHistory : Codable {
-    var author : String = ""
-    var date : Date
-    var title : String = ""
-    var action : String//historyAction
-    var from : String?
-    var to : String?
-    
-//    enum historyAction : String {
-//        case add = "add"
-//        case remove = "remove"
-//        case update = "update"
-//        case move = "move"
-//    }
 }
