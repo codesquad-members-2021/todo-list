@@ -15,7 +15,7 @@ class NetworkService {
     }
     
     private let session : URLSessionProtocol
-    private let urlString = ""
+    private let urlString = "" // 추후 API 배포 후 변경 예정
     
     init(session : URLSessionProtocol = URLSession.shared) {
         self.session = session
@@ -33,7 +33,7 @@ class NetworkService {
         return .success(returnData)
     }
     
-    func getToDoData<T:Codable> (needs dataSet : T.Type,closure : @escaping (Result<T,NetworkError>) -> Void) {
+    func getToDoData<T:Codable> (needs dataSet : T,closure : @escaping (Result<T,NetworkError>) -> Void) {
         guard let url = URL.init(string: self.urlString) else {
             return
         }
@@ -41,7 +41,7 @@ class NetworkService {
         request.httpMethod = "GET"
         session.dataTask(with: request, completionHandler: {(data,response,error) in
             
-            let result = self.decode(form : dataSet, data: data)
+            let result = self.decode(form : T.self, data: data)
             
             closure(result)
         }).resume()

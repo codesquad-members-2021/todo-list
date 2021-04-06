@@ -83,19 +83,3 @@ class testCellData : Codable {
     var isApp : Bool
     var date : String
 }
-
-class testHistory : Codable {
-    var author : String = ""
-    var date : String
-    var title : String = ""
-    var action : String//historyAction
-    var from : String?
-    var to : String?
-    
-//    enum historyAction : String {
-//        case add = "add"
-//        case remove = "remove"
-//        case update = "update"
-//        case move = "move"
-//    }
-}
