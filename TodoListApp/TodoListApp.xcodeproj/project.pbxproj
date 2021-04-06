@@ -15,6 +15,7 @@
 		E4207A16261C57240054BCB0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4207A14261C57240054BCB0 /* LaunchScreen.storyboard */; };
 		E4207A21261C57240054BCB0 /* TodoListAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4207A20261C57240054BCB0 /* TodoListAppTests.swift */; };
 		E4207A2C261C57240054BCB0 /* TodoListAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4207A2B261C57240054BCB0 /* TodoListAppUITests.swift */; };
+		E4207A69261C788A0054BCB0 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4207A68261C788A0054BCB0 /* Card.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		E4207A27261C57240054BCB0 /* TodoListAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodoListAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4207A2B261C57240054BCB0 /* TodoListAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListAppUITests.swift; sourceTree = "<group>"; };
 		E4207A2D261C57240054BCB0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E4207A68261C788A0054BCB0 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				E4207A09261C57210054BCB0 /* AppDelegate.swift */,
 				E4207A0B261C57210054BCB0 /* SceneDelegate.swift */,
 				E4207A0D261C57210054BCB0 /* ViewController.swift */,
+				E4207A68261C788A0054BCB0 /* Card.swift */,
 				E4207A0F261C57210054BCB0 /* Main.storyboard */,
 				E4207A12261C57240054BCB0 /* Assets.xcassets */,
 				E4207A14261C57240054BCB0 /* LaunchScreen.storyboard */,
@@ -261,6 +264,7 @@
 				E4207A0E261C57210054BCB0 /* ViewController.swift in Sources */,
 				E4207A0A261C57210054BCB0 /* AppDelegate.swift in Sources */,
 				E4207A0C261C57210054BCB0 /* SceneDelegate.swift in Sources */,
+				E4207A69261C788A0054BCB0 /* Card.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
