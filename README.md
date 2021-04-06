@@ -11,8 +11,8 @@
 
 |                 💻 `Back-End`                 |                     📱IOS                     |
 | :------------------------------------------: | :------------------------------------------: |
-|  **[새리]**(https://github.com/min27604)👩🏻‍💻  | **[엘리]**(https://github.com/ellyheetov)👩🏻‍💻 |
-| **[프레디]**(https://github.com/Dae-Hwa) 🧑🏻‍💻 | **[잭슨]**(https://github.com/JacksonPK) 🧑🏻‍💻 |
+|  [새리](https://github.com/min27604) 👩🏻‍💻  | [엘리](https://github.com/ellyheetov) 👩🏻‍💻 |
+| [프레디](https://github.com/Dae-Hwa) 🧑🏻‍💻 | [잭슨](https://github.com/JacksonPK) 🧑🏻‍💻 |
 
 
 
