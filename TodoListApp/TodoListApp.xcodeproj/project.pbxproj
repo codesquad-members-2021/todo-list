@@ -16,6 +16,8 @@
 		E4207A21261C57240054BCB0 /* TodoListAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4207A20261C57240054BCB0 /* TodoListAppTests.swift */; };
 		E4207A2C261C57240054BCB0 /* TodoListAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4207A2B261C57240054BCB0 /* TodoListAppUITests.swift */; };
 		E4207A69261C788A0054BCB0 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4207A68261C788A0054BCB0 /* Card.swift */; };
+		E4207A80261C7AAA0054BCB0 /* Cards.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4207A7F261C7AAA0054BCB0 /* Cards.swift */; };
+		E4207A85261C7ABA0054BCB0 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4207A84261C7ABA0054BCB0 /* List.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		E4207A2B261C57240054BCB0 /* TodoListAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListAppUITests.swift; sourceTree = "<group>"; };
 		E4207A2D261C57240054BCB0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E4207A68261C788A0054BCB0 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		E4207A7F261C7AAA0054BCB0 /* Cards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cards.swift; sourceTree = "<group>"; };
+		E4207A84261C7ABA0054BCB0 /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +109,8 @@
 				E4207A0B261C57210054BCB0 /* SceneDelegate.swift */,
 				E4207A0D261C57210054BCB0 /* ViewController.swift */,
 				E4207A68261C788A0054BCB0 /* Card.swift */,
+				E4207A7F261C7AAA0054BCB0 /* Cards.swift */,
+				E4207A84261C7ABA0054BCB0 /* List.swift */,
 				E4207A0F261C57210054BCB0 /* Main.storyboard */,
 				E4207A12261C57240054BCB0 /* Assets.xcassets */,
 				E4207A14261C57240054BCB0 /* LaunchScreen.storyboard */,
@@ -261,10 +267,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4207A80261C7AAA0054BCB0 /* Cards.swift in Sources */,
 				E4207A0E261C57210054BCB0 /* ViewController.swift in Sources */,
 				E4207A0A261C57210054BCB0 /* AppDelegate.swift in Sources */,
 				E4207A0C261C57210054BCB0 /* SceneDelegate.swift in Sources */,
 				E4207A69261C788A0054BCB0 /* Card.swift in Sources */,
+				E4207A85261C7ABA0054BCB0 /* List.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
