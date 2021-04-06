@@ -21,6 +21,7 @@
 		E4207A8A261C7AF50054BCB0 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4207A89261C7AF50054BCB0 /* Activity.swift */; };
 		E4207A8F261C7B380054BCB0 /* ActivityFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4207A8E261C7B380054BCB0 /* ActivityFeed.swift */; };
 		E4207A94261C7B740054BCB0 /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4207A93261C7B740054BCB0 /* JSONParser.swift */; };
+		E4207A99261C7C0C0054BCB0 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4207A98261C7C0C0054BCB0 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		E4207A89261C7AF50054BCB0 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		E4207A8E261C7B380054BCB0 /* ActivityFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityFeed.swift; sourceTree = "<group>"; };
 		E4207A93261C7B740054BCB0 /* JSONParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParser.swift; sourceTree = "<group>"; };
+		E4207A98261C7C0C0054BCB0 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 				E4207A89261C7AF50054BCB0 /* Activity.swift */,
 				E4207A8E261C7B380054BCB0 /* ActivityFeed.swift */,
 				E4207A93261C7B740054BCB0 /* JSONParser.swift */,
+				E4207A98261C7C0C0054BCB0 /* NetworkManager.swift */,
 				E4207A0F261C57210054BCB0 /* Main.storyboard */,
 				E4207A12261C57240054BCB0 /* Assets.xcassets */,
 				E4207A14261C57240054BCB0 /* LaunchScreen.storyboard */,
@@ -278,6 +281,7 @@
 			files = (
 				E4207A80261C7AAA0054BCB0 /* Cards.swift in Sources */,
 				E4207A0E261C57210054BCB0 /* ViewController.swift in Sources */,
+				E4207A99261C7C0C0054BCB0 /* NetworkManager.swift in Sources */,
 				E4207A94261C7B740054BCB0 /* JSONParser.swift in Sources */,
 				E4207A8A261C7AF50054BCB0 /* Activity.swift in Sources */,
 				E4207A0A261C57210054BCB0 /* AppDelegate.swift in Sources */,
