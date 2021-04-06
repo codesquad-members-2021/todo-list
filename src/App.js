@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 
 // pages에서 불러오도록
