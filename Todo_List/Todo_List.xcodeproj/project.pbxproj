@@ -15,6 +15,13 @@
 		D4BFB810261C448900D68297 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4BFB80E261C448900D68297 /* LaunchScreen.storyboard */; };
 		D4BFB81B261C448900D68297 /* Todo_ListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BFB81A261C448900D68297 /* Todo_ListTests.swift */; };
 		D4BFB826261C448900D68297 /* Todo_ListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BFB825261C448900D68297 /* Todo_ListUITests.swift */; };
+		D4BFB83A261C470700D68297 /* TodoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BFB839261C470700D68297 /* TodoTableViewController.swift */; };
+		D4BFB83F261C472B00D68297 /* DoingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BFB83E261C472B00D68297 /* DoingTableViewController.swift */; };
+		D4BFB844261C474200D68297 /* DoneTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BFB843261C474200D68297 /* DoneTableViewController.swift */; };
+		D4BFB849261C4B8500D68297 /* TodoTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BFB848261C4B8500D68297 /* TodoTableViewDelegate.swift */; };
+		D4BFB84E261C4C8C00D68297 /* TodoTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BFB84D261C4C8C00D68297 /* TodoTableViewDataSource.swift */; };
+		D4BFB85D261C4D4A00D68297 /* TodoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BFB85B261C4D4A00D68297 /* TodoTableViewCell.swift */; };
+		D4BFB85E261C4D4A00D68297 /* TodoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4BFB85C261C4D4A00D68297 /* TodoTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +56,13 @@
 		D4BFB821261C448900D68297 /* Todo_ListUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Todo_ListUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4BFB825261C448900D68297 /* Todo_ListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo_ListUITests.swift; sourceTree = "<group>"; };
 		D4BFB827261C448900D68297 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D4BFB839261C470700D68297 /* TodoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewController.swift; sourceTree = "<group>"; };
+		D4BFB83E261C472B00D68297 /* DoingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoingTableViewController.swift; sourceTree = "<group>"; };
+		D4BFB843261C474200D68297 /* DoneTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneTableViewController.swift; sourceTree = "<group>"; };
+		D4BFB848261C4B8500D68297 /* TodoTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewDelegate.swift; sourceTree = "<group>"; };
+		D4BFB84D261C4C8C00D68297 /* TodoTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewDataSource.swift; sourceTree = "<group>"; };
+		D4BFB85B261C4D4A00D68297 /* TodoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewCell.swift; sourceTree = "<group>"; };
+		D4BFB85C261C4D4A00D68297 /* TodoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodoTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +117,13 @@
 				D4BFB805261C448700D68297 /* SceneDelegate.swift */,
 				D4BFB807261C448700D68297 /* ViewController.swift */,
 				D4BFB809261C448700D68297 /* Main.storyboard */,
+				D4BFB839261C470700D68297 /* TodoTableViewController.swift */,
+				D4BFB83E261C472B00D68297 /* DoingTableViewController.swift */,
+				D4BFB848261C4B8500D68297 /* TodoTableViewDelegate.swift */,
+				D4BFB85B261C4D4A00D68297 /* TodoTableViewCell.swift */,
+				D4BFB85C261C4D4A00D68297 /* TodoTableViewCell.xib */,
+				D4BFB84D261C4C8C00D68297 /* TodoTableViewDataSource.swift */,
+				D4BFB843261C474200D68297 /* DoneTableViewController.swift */,
 				D4BFB80C261C448900D68297 /* Assets.xcassets */,
 				D4BFB80E261C448900D68297 /* LaunchScreen.storyboard */,
 				D4BFB811261C448900D68297 /* Info.plist */,
@@ -234,6 +255,7 @@
 				D4BFB810261C448900D68297 /* LaunchScreen.storyboard in Resources */,
 				D4BFB80D261C448900D68297 /* Assets.xcassets in Resources */,
 				D4BFB80B261C448700D68297 /* Main.storyboard in Resources */,
+				D4BFB85E261C4D4A00D68297 /* TodoTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,8 +281,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4BFB808261C448700D68297 /* ViewController.swift in Sources */,
+				D4BFB83A261C470700D68297 /* TodoTableViewController.swift in Sources */,
+				D4BFB83F261C472B00D68297 /* DoingTableViewController.swift in Sources */,
+				D4BFB85D261C4D4A00D68297 /* TodoTableViewCell.swift in Sources */,
 				D4BFB804261C448700D68297 /* AppDelegate.swift in Sources */,
+				D4BFB84E261C4C8C00D68297 /* TodoTableViewDataSource.swift in Sources */,
 				D4BFB806261C448700D68297 /* SceneDelegate.swift in Sources */,
+				D4BFB849261C4B8500D68297 /* TodoTableViewDelegate.swift in Sources */,
+				D4BFB844261C474200D68297 /* DoneTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
