@@ -1,10 +1,11 @@
-import React from 'react';
-import Hello from './Hello';
+import React from "react";
+import Hello from "./Hello";
 
 function App() {
   return (
     <div>
-      <Hello />
+      <Hello name="react" color="red" isSpecial />
+      <Hello color="pink" />
     </div>
   );
 }
