@@ -1,0 +1,16 @@
+h1 {
+  margin: 0;
+}
+
+.Header {
+  display: flex;
+  place-items: center;
+  justify-content: space-between;
+  &__title {
+    margin: 13px 20px;
+  }
+  &__button-image {
+    width: 40px;
+    margin-right: 15px;
+  }
+}

@@ -1,0 +1,43 @@
+.Container {
+  display: flex;
+  width: 900px;
+  height: 500px;
+  border: 3px solid black;
+  background-color: #d9ffea;
+  border-radius: 10px;
+}
+
+.todo-wrap {
+  width: 300px;
+  font-size: 18px;
+  font-weight: 700;
+  &__title {
+    &__text {
+      display: inline-block;
+      width: 103px;
+      margin-right: 10px;
+      text-align: end;
+    }
+    &__count {
+      background: #f20553;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 1px solid #000;
+      font-size: 14px;
+      border-radius: 50%;
+      text-align: center;
+      color: #fff;
+      padding: 3px 3px 2px 2px;
+    }
+
+    &__add-button {
+      width: 25px;
+      transform: translate3d(85px, 10px, 10px);
+    }
+    &__cancel-button {
+      width: 14px;
+      transform: translate3d(90px, 0px, 10px);
+    }
+  }
+}
