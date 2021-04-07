@@ -15,7 +15,7 @@ import javax.sql.DataSource;
 @Configuration
 @EnableJdbcRepositories
 public class SimpleJdbcConfig extends AbstractJdbcConfiguration {
-
+    //@Todo  https://github.com/stunstunstun/awesome-spring-boot
     @Bean
     public NamedParameterJdbcTemplate namedParameterJdbcTemplate(DataSource dataSource) {
         return new NamedParameterJdbcTemplate(dataSource);

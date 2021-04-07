@@ -1,7 +1,17 @@
 package team10.todolist.repository;
 
 import org.springframework.data.repository.CrudRepository;
-import team10.todolist.domain.Board;
+import team10.todolist.domain.Card;
 
-public interface BoardRepository extends CrudRepository<Board,Long> {
+import javax.sql.DataSource;
+import java.util.List;
+import java.util.Optional;
+
+public interface BoardRepository extends CrudRepository<Card,Long> {
+
+
+    Card save(Card card);
+    Optional<Card> findById(Long id);
+    Optional<Card> findByName(String name);
+    List<Card> findAll();
 }

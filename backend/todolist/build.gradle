@@ -25,10 +25,13 @@ dependencies {
 
 
 	// Database
-	//runtimeOnly 'mysql:mysql-connector-java'
+	runtimeOnly 'mysql:mysql-connector-java'
 	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jdbc', version: '2.3.10.BUILD-SNAPSHOT'
-	compile group: 'org.springframework.data', name: 'spring-data-jdbc', version: '1.1.5.RELEASE'
-	compile group: 'com.h2database', name: 'h2', version: '1.4.197'
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	implementation group: 'org.springframework.data', name: 'spring-data-jdbc', version: '1.1.5.RELEASE'
+	runtime 'com.h2database:h2'
+	//implementation group: 'com.h2database', name: 'h2', version: '1.4.197'
+	testCompile('org.springframework.boot:spring-boot-starter-test')
 
 
 	//test

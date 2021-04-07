@@ -4,7 +4,7 @@ import org.springframework.data.annotation.Id;
 
 import java.time.LocalDateTime;
 
-public class Board {
+public class Card {
 
 
     @Id
@@ -20,7 +20,7 @@ public class Board {
 
     @Override
     public String toString() {
-        return "Board{" +
+        return "Card{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", contents='" + contents + '\'' +
