@@ -29,4 +29,10 @@ public class TaskController {
     public void create(@RequestBody Task task) {
         logger.debug(task.toString());
     }
+
+    @PutMapping("/tasks/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void update(@PathVariable Long id, @RequestBody Task updatedTask) {
+        logger.debug(id + updatedTask.toString());
+    }
 }
