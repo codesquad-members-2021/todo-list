@@ -48,7 +48,27 @@ column
 
 ```
 
-GET /api/cards
+`GET /api/columns`
+```json
+{
+    "columns" : [
+        {
+            "id" : 1,
+            "name" : "해야할 일"
+        },{
+            "id" : 2,
+            "name" : "하고 있는 일"
+        },{
+            "id" : 3,
+            "name" : "완료한 일"
+        }
+    ]
+}
+
+```
+
+
+`GET /api/cards`
 ```json
 {
     "cards" : [
@@ -75,34 +95,47 @@ GET /api/cards
         }
     ]
 }
+
 ```
 
-log, action
+`GET /api/activities`
 ```json
 {
-    "log" : {
-        "action" : "등록",
-        "actionUser" : {
-            "id" : 1,
-            ...
-        },
-        "card" : {
-            "id" : 2,
-            "title" : "제목",
-            "body" : "내용",
-            "author" : {
-
-            },
-            "column" : {
-                "id" : 1,
-                "name" : "해야할 일",
-            },
-        },
-        "prevColumn" : {
-                "id" : 2,
-                "name" : "해야할 일",
-        },
-        "actionTime" : time,
-    }
+    "activities" : [
+        {
+            "id":4,
+            "actionUserId":1,
+            "action":"삭제",
+            "title":"GitHub 공부",
+            "fromColumn":null,
+            "toColumn":null,
+            "actionTime":"2021-04-07T14:10:25.038"
+        },{
+            "id":3,
+            "actionUserId":1,
+            "action":"변경",
+            "title":"GitHub 공부",
+            "fromColumn":null,
+            "toColumn":null,
+            "actionTime":"2021-04-07T14:10:25.038"
+        },{
+            "id":2,
+            "actionUserId":1,
+            "action":"이동",
+            "title":"git 공부",
+            "fromColumn":"해야할 일",
+            "toColumn":"하고있는 일",
+            "actionTime":"2021-04-07T14:10:25.038"
+        },{
+            "id":1,
+            "actionUserId":1,
+            "action":"등록",
+            "title":"git 공부",
+            "fromColumn":null,
+            "toColumn":"해야할 일",
+            "actionTime":"2021-04-07T14:10:25.038"
+        }
+    ]
 }
+
 ```
