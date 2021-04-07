@@ -4,8 +4,14 @@ import com.codesquad.todolist.domain.Card;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+import java.util.Optional;
+
 @Repository
 public interface CardRepository extends CrudRepository<Card, Long> {
 
-    Card save(Card card);
+    List<Card> findAll();
+
+    Optional<Card> findById(Long id);
+
 }

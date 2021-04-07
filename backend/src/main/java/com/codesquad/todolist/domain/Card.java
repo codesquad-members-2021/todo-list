@@ -5,28 +5,30 @@ import org.springframework.data.annotation.Id;
 import java.time.LocalDateTime;
 
 public class Card {
-
     @Id
     private Long id;
 
     private String title;
     private String content;
-    private Status status;
+    private String status;
     private LocalDateTime createdTime;
-    private boolean deleted;
 
-    private Card() { }
+    protected Card() {
+    }
 
     public Card(String title, String content) {
         this.title = title;
         this.content = content;
-        this.status = Status.TODO;
+        this.status = Status.TODO.name();
         this.createdTime = LocalDateTime.now();
-        this.deleted = false;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public enum Status {
-        TODO, DOING, DONE;
+        TODO, DOING, DONE
     }
 
     @Override
@@ -36,9 +38,10 @@ public class Card {
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
                 ", status=" + status +
-                ", createdTime=" + createdTime +
-                ", deleted=" + deleted +
+//                ", createdTime=" + createdTime +
                 '}';
     }
+
+
 }
 

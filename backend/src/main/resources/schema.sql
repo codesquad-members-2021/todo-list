@@ -1,8 +1,9 @@
+drop table if exists card;
+
 create table card (
-    id int identity primary key,
-    title varchar,
-    content varchar(500),
-    status varchar,
-    created_time timestamp,
-    boolean deleted
-)
+        id bigint auto_increment primary key,
+        title varchar(50),
+        content varchar(500),
+        status varchar(50),
+        created_time timestamp
+);
