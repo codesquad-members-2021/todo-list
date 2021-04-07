@@ -10,11 +10,7 @@ const StyledLabel= styled.label`
   font-size: 14px;
   color: #fff;
   border-radius: 50%;
-
-
-
 `;
-
 
 const Label = ({ children, ...props }) => <StyledLabel {...props}>{children}</StyledLabel>;
 

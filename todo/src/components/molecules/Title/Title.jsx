@@ -1,19 +1,18 @@
 import React from "react";
-import Span from "../atoms/Span";
-import SmallButton from "../atoms/Buttons/SmallButton";
-import Image from "../atoms/Image";
+import Span from "../../atoms/Span/Span";
+import SmallButton from "../../atoms/Buttons/SmallButton";
+import Image from "../../atoms/Image/Image";
 import styled from "styled-components"
-import hamburgerBtn from "../../images/hamburgerButtonIcon.png"
+import hamburgerBtn from "../../../images/hamburgerButtonIcon.png";
 
 const Div = styled.div`
   display: flex;
+  padding: 15px;
   justify-content: space-between;
-  padding:15px;
+  place-items: center;
 `;
 
-
 const Title = () => {
-
   const clickHandler = () => {
     console.log("success");
   }
@@ -23,15 +22,12 @@ const Title = () => {
 
   return (
     <Div>
-      <Span>To do List</Span>
+      <Span fontSize="45px" fontWeight="700">To do List</Span>
       <SmallButton onClick={clickHandler} >
-        <Image src={hamburgerBtn} width="20px" />
+        <Image src={hamburgerBtn} imgWidth="30px" />
       </SmallButton>
     </Div>
   );
 };
-
-
-
 
 export default Title;

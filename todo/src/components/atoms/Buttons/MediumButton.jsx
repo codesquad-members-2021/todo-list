@@ -9,5 +9,4 @@ const Button = ({ children, ...props }) => (
   <MediumButton {...props}>{children}</MediumButton>
 );
 
-
 export default Button;

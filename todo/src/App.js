@@ -1,5 +1,5 @@
 import './App.scss';
-import Title from "./components/molecules/Title"
+import Title from "./components/molecules/Title/Title"
 function App() {
   return (
     <div className="App">
