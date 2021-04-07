@@ -1,9 +1,8 @@
 package com.codeSquad.cocokyu.domain;
 
 import com.codeSquad.cocokyu.domain.card.Card;
-import com.codeSquad.cocokyu.domain.card.Status;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -16,8 +15,15 @@ public class CardController {
     }
 
     @GetMapping("/todos")
-    public CardList hello() {
+    public CardList sortedList() {
         return cardService.sortedList();
+    }
+
+    @PostMapping("/todos")
+    public String create(Card card){
+        cardService.write(card);
+        //TODO : Response 객체 생성
+        return "success";
     }
 
 }

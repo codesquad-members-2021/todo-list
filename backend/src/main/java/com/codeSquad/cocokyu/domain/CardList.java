@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CardList {
-    private List<Card> todos = new ArrayList<>();
-    private List<Card> doings = new ArrayList<>();
-    private List<Card> dones = new ArrayList<>();
+    private List<Card> todo = new ArrayList<>();
+    private List<Card> doing = new ArrayList<>();
+    private List<Card> done = new ArrayList<>();
 
     public CardList(Iterable<Card> cards) {
         divide(cards);
@@ -23,26 +23,26 @@ public class CardList {
     private void sort(Card card) {
         switch (card.getStatus()) {
             case TODO:
-                todos.add(card);
+                todo.add(card);
                 break;
             case DOING:
-                doings.add(card);
+                doing.add(card);
                 break;
             case DONE:
-                dones.add(card);
+                done.add(card);
                 break;
         }
     }
 
-    public List<Card> getTodos() {
-        return todos;
+    public List<Card> getTodo() {
+        return todo;
     }
 
-    public List<Card> getDoings() {
-        return doings;
+    public List<Card> getDoing() {
+        return doing;
     }
 
-    public List<Card> getDones() {
-        return dones;
+    public List<Card> getDone() {
+        return done;
     }
 }
