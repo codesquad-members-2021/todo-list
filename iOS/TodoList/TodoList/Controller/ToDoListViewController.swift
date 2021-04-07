@@ -1,6 +1,6 @@
 import UIKit
 
-class ViewController: UIViewController {
+class ToDoListViewController: UIViewController {
 
     @IBOutlet weak var addCardButton: UIButton!
     @IBOutlet weak var todoListView: UITableView!

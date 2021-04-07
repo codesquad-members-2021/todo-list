@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="ipad10_9rounded" orientation="landscape" layout="fullscreen" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -13,7 +12,7 @@
             <objects>
                 <viewController id="jL6-zm-LNz" customClass="SignUpMainViewController" customModule="TodoList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LJq-ih-Gab" customClass="Sign">
-                        <rect key="frame" x="0.0" y="0.0" width="1180" height="820"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="NV3-T3-GX1"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -23,12 +22,12 @@
             </objects>
             <point key="canvasLocation" x="-32" y="-217"/>
         </scene>
-        <!--View Controller-->
+        <!--To Do List View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="MainViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="TodoList" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainViewController" id="BYZ-38-t0r" customClass="ToDoListViewController" customModule="TodoList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="1180" height="820"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6pa-Mz-HTp">
@@ -55,10 +54,10 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="VDw-vN-KYF">
-                                <rect key="frame" x="68" y="129" width="818" height="621"/>
+                                <rect key="frame" x="68" y="129" width="238" height="422"/>
                                 <subviews>
-                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vWa-Ve-uYR">
-                                        <rect key="frame" x="0.0" y="0.0" width="258" height="621"/>
+                                    <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vWa-Ve-uYR">
+                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="422"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="258" id="uCc-hg-3Cj"/>
                                         </constraints>
@@ -66,8 +65,8 @@
                                             <segue destination="7Fx-iB-rue" kind="embed" id="2KI-lc-MyA"/>
                                         </connections>
                                     </containerView>
-                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aJQ-Q1-6Yz">
-                                        <rect key="frame" x="280" y="0.0" width="258" height="621"/>
+                                    <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aJQ-Q1-6Yz">
+                                        <rect key="frame" x="22" y="0.0" width="0.0" height="422"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="258" id="p0Y-fV-uZB"/>
                                         </constraints>
@@ -75,8 +74,8 @@
                                             <segue destination="7Fx-iB-rue" kind="embed" id="pEb-sX-x5K"/>
                                         </connections>
                                     </containerView>
-                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RO5-vF-SSy">
-                                        <rect key="frame" x="560" y="0.0" width="258" height="621"/>
+                                    <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RO5-vF-SSy">
+                                        <rect key="frame" x="44" y="0.0" width="194" height="422"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="258" id="VaF-S2-md6"/>
                                         </constraints>
@@ -235,7 +234,7 @@
             <objects>
                 <viewController storyboardIdentifier="NewTaskViewController" id="ldB-31-dOI" customClass="NewTaskViewController" customModule="TodoList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="84a-sI-9yK">
-                        <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1180" height="820"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m9H-K3-avN">

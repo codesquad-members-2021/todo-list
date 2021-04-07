@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		71520A33261C54AF00BE3264 /* TaskCountLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71520A32261C54AF00BE3264 /* TaskCountLabel.swift */; };
 		717FD58F261D7F9B00E79C77 /* NewTaskTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717FD58E261D7F9B00E79C77 /* NewTaskTextField.swift */; };
-		717FD594261D802100E79C77 /* NewTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717FD593261D802100E79C77 /* NewTextFieldDelegate.swift */; };
 		717FD59C261D8A1100E79C77 /* NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717FD59B261D8A1100E79C77 /* NotificationName.swift */; };
 		7199F444261D453100D21319 /* SignUpMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7199F443261D453100D21319 /* SignUpMainViewController.swift */; };
 		7199F44D261D456100D21319 /* EachInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7199F44C261D456100D21319 /* EachInfoView.swift */; };
@@ -24,7 +23,7 @@
 		7199F491261D46AD00D21319 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7199F490261D46AD00D21319 /* Regex.swift */; };
 		762F649A261C2F6B001B879B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762F6499261C2F6B001B879B /* AppDelegate.swift */; };
 		762F649C261C2F6B001B879B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762F649B261C2F6B001B879B /* SceneDelegate.swift */; };
-		762F649E261C2F6B001B879B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762F649D261C2F6B001B879B /* ViewController.swift */; };
+		762F649E261C2F6B001B879B /* ToDoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762F649D261C2F6B001B879B /* ToDoListViewController.swift */; };
 		762F64A1261C2F6B001B879B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 762F649F261C2F6B001B879B /* Main.storyboard */; };
 		762F64A3261C2F6D001B879B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 762F64A2261C2F6D001B879B /* Assets.xcassets */; };
 		762F64A6261C2F6D001B879B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 762F64A4261C2F6D001B879B /* LaunchScreen.storyboard */; };
@@ -55,7 +54,6 @@
 /* Begin PBXFileReference section */
 		71520A32261C54AF00BE3264 /* TaskCountLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCountLabel.swift; sourceTree = "<group>"; };
 		717FD58E261D7F9B00E79C77 /* NewTaskTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskTextField.swift; sourceTree = "<group>"; };
-		717FD593261D802100E79C77 /* NewTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTextFieldDelegate.swift; sourceTree = "<group>"; };
 		717FD59B261D8A1100E79C77 /* NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationName.swift; sourceTree = "<group>"; };
 		7199F443261D453100D21319 /* SignUpMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpMainViewController.swift; sourceTree = "<group>"; };
 		7199F44C261D456100D21319 /* EachInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EachInfoView.swift; sourceTree = "<group>"; };
@@ -71,7 +69,7 @@
 		762F6496261C2F6B001B879B /* TodoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		762F6499261C2F6B001B879B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		762F649B261C2F6B001B879B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		762F649D261C2F6B001B879B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		762F649D261C2F6B001B879B /* ToDoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListViewController.swift; sourceTree = "<group>"; };
 		762F64A0261C2F6B001B879B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		762F64A2261C2F6D001B879B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		762F64A5261C2F6D001B879B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -128,11 +126,10 @@
 		7199F442261D451500D21319 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				762F649D261C2F6B001B879B /* ViewController.swift */,
+				762F649D261C2F6B001B879B /* ToDoListViewController.swift */,
 				7199F443261D453100D21319 /* SignUpMainViewController.swift */,
 				762F64E7261D52A5001B879B /* TaskViewController.swift */,
 				762F64EC261D7A05001B879B /* NewTaskViewController.swift */,
-				717FD593261D802100E79C77 /* NewTextFieldDelegate.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -372,12 +369,11 @@
 				717FD58F261D7F9B00E79C77 /* NewTaskTextField.swift in Sources */,
 				7199F473261D460F00D21319 /* DateFormatManager.swift in Sources */,
 				71520A33261C54AF00BE3264 /* TaskCountLabel.swift in Sources */,
-				762F649E261C2F6B001B879B /* ViewController.swift in Sources */,
+				762F649E261C2F6B001B879B /* ToDoListViewController.swift in Sources */,
 				762F649A261C2F6B001B879B /* AppDelegate.swift in Sources */,
 				762F64E8261D52A5001B879B /* TaskViewController.swift in Sources */,
 				7199F44D261D456100D21319 /* EachInfoView.swift in Sources */,
 				7199F45A261D459A00D21319 /* CustomButton.swift in Sources */,
-				717FD594261D802100E79C77 /* NewTextFieldDelegate.swift in Sources */,
 				762F64ED261D7A05001B879B /* NewTaskViewController.swift in Sources */,
 				7199F462261D45BA00D21319 /* MainTitleLabel.swift in Sources */,
 				7199F46B261D45FC00D21319 /* RegexValidManager.swift in Sources */,

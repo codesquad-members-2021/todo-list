@@ -19,15 +19,14 @@ class TaskViewController: UIViewController {
         TaskView.delegate = self
     }
     
-    @IBAction func addTaskButton(_ sender: Any) {
-    }
-    
+
     private func setUpNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(getTextInfo), name: .addTextFieldText, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(addTaskCount), name: .addTextFieldText, object: nil)
     }
 }
 
+//MARK: -@objc Action
 extension TaskViewController {
     
     @objc private func getTextInfo(_ notification: Notification) {
@@ -41,6 +40,7 @@ extension TaskViewController {
     }
 }
 
+//MARK: @TableViewCell
 extension TaskViewController: UITableViewDataSource, UITableViewDelegate  {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return taskCount
@@ -53,4 +53,11 @@ extension TaskViewController: UITableViewDataSource, UITableViewDelegate  {
         return cell
     }
 
+}
+
+//MARK: @IBAction
+
+extension TaskViewController {
+    @IBAction func addTaskButton(_ sender: Any) {
+    }
 }
