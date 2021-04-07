@@ -8,11 +8,10 @@
 import Foundation
 
 class JSONParser {
-    
-    static func parseData(data: Data) -> ToDoItem? {
+    static func parseData(data: Data) -> ToDoList? {
         let decoder = JSONDecoder()
         do {
-            let result = try decoder.decode(ToDoItem.self, from: data)
+            let result = try decoder.decode(ToDoList.self, from: data)
             return result
         } catch {
             print(error.localizedDescription)
