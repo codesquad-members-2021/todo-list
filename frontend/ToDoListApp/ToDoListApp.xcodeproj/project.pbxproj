@@ -15,6 +15,9 @@
 		B0BC8AD5261C434100B8122D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0BC8AD3261C434100B8122D /* LaunchScreen.storyboard */; };
 		B0BC8AE0261C434100B8122D /* ToDoListAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BC8ADF261C434100B8122D /* ToDoListAppTests.swift */; };
 		B0BC8AEB261C434100B8122D /* ToDoListAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BC8AEA261C434100B8122D /* ToDoListAppUITests.swift */; };
+		B0BC8B01261C8BDC00B8122D /* MockNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BC8B00261C8BDC00B8122D /* MockNetworkService.swift */; };
+		B0BC8B0C261C924E00B8122D /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BC8AFB261C4F3200B8122D /* NetworkService.swift */; };
+		B0BC8B14261C926A00B8122D /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BC8B13261C926A00B8122D /* NetworkServiceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		B0BC8AE6261C434100B8122D /* ToDoListAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoListAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0BC8AEA261C434100B8122D /* ToDoListAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListAppUITests.swift; sourceTree = "<group>"; };
 		B0BC8AEC261C434100B8122D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B0BC8AFB261C4F3200B8122D /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		B0BC8B00261C8BDC00B8122D /* MockNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkService.swift; sourceTree = "<group>"; };
+		B0BC8B13261C926A00B8122D /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +112,8 @@
 				B0BC8AD1261C434100B8122D /* Assets.xcassets */,
 				B0BC8AD3261C434100B8122D /* LaunchScreen.storyboard */,
 				B0BC8AD6261C434100B8122D /* Info.plist */,
+				B0BC8AFB261C4F3200B8122D /* NetworkService.swift */,
+				B0BC8B00261C8BDC00B8122D /* MockNetworkService.swift */,
 			);
 			path = ToDoListApp;
 			sourceTree = "<group>";
@@ -115,6 +123,7 @@
 			children = (
 				B0BC8ADF261C434100B8122D /* ToDoListAppTests.swift */,
 				B0BC8AE1261C434100B8122D /* Info.plist */,
+				B0BC8B13261C926A00B8122D /* NetworkServiceTests.swift */,
 			);
 			path = ToDoListAppTests;
 			sourceTree = "<group>";
@@ -258,8 +267,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0BC8B0C261C924E00B8122D /* NetworkService.swift in Sources */,
 				B0BC8ACD261C433E00B8122D /* ViewController.swift in Sources */,
 				B0BC8AC9261C433E00B8122D /* AppDelegate.swift in Sources */,
+				B0BC8B01261C8BDC00B8122D /* MockNetworkService.swift in Sources */,
 				B0BC8ACB261C433E00B8122D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -268,6 +279,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0BC8B14261C926A00B8122D /* NetworkServiceTests.swift in Sources */,
 				B0BC8AE0261C434100B8122D /* ToDoListAppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
