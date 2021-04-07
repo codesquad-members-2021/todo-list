@@ -7,6 +7,6 @@
 
 import Foundation
 
-class Timeline {
-    var feeds: []
-}
+//class Timeline {
+//    var feeds: []
+//}
