@@ -46,10 +46,10 @@ const Wrapper = styled.div`
     }
 `;
 
-const ButtonAccent = ({ title }) => {
+const ButtonAccent = ({ title, clickHandler }) => {
     return (
         <Wrapper>
-            <div className="button">
+            <div onClick={clickHandler} className="button">
                 <div className="button--title">{title}</div>
             </div>
         </Wrapper>

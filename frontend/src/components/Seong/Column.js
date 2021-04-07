@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Card from './Card'
 import ButtonDelete from './ButtonDelete'
@@ -94,24 +94,32 @@ const ColumnWrapper = styled.div`
 `;
 
 const Column = ({ title, list }) => {
-    const CardList = list.map((v,i)=><li key={i}><Card {...v} /></li>)
-
-    CardList.unshift(<li key={3}><CardInput /></li>)
+    const [cardList, setCardList] = useState(list.map((v,i)=><li key={i}><Card {...v} /></li>))
+    const [isInProgress, setProgress]= useState(false);
+    const plusEvent = () => {
+        if(isInProgress) return
+        setCardList([<li key={cardList.length}><CardInput list={list} clickHandler={reRender} /></li>, ...cardList])
+        setProgress(true)
+    }
+    const reRender = () => {
+        setCardList(list.map((v,i)=><li key={i}><Card {...v} /></li>))
+        setProgress(false)
+    }
     return (
         <ColumnWrapper>
             <div className="column">
                 <span className="column__text">
                     <span className="column__text--title">{title}</span>
-                    <span className="column__text--count">{list.length}</span>
+                    <span className="column__text--count">{cardList.length}</span>
                 </span>
-                <div className="column__plus-button">
+                <div onClick={plusEvent} className="column__plus-button">
                     <ButtonPlus />
                 </div>
                 <div className="column__delete-button">
                     <ButtonDelete />
                 </div>
             </div>
-            <ul>{CardList}</ul>
+            <ul>{cardList}</ul>
         </ColumnWrapper>
     );
 };

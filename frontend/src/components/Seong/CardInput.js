@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import ButtonAccent from './ButtonAccent';
 import ButtonNomal from './ButtonNomal';
@@ -154,7 +154,13 @@ const Wrapper = styled.div`
     }
 `;
 
-const CardInput = () => {
+const CardInput = ({list, clickHandler}) => {
+    const [title, setTitle] = useState()
+    const [body, setBody] = useState()
+    const addCard = () =>{
+        list.push({title, body, author: "web"})
+        clickHandler()
+    }
     return (
         <Wrapper>
             <div className="card-input">
@@ -162,15 +168,17 @@ const CardInput = () => {
                     <input
                         className="card-input__text--title"
                         placeholder="제목을 입력하세요"
+                        onChange={({target})=>setTitle(target.value)}
                     ></input>
                     <input
                         className="card-input__text--body"
                         placeholder="내용을 입력하세요"
+                        onChange={({target})=>setBody(target.value)}
                     ></input>
                 </div>
                 <div className="card-input__button">
                     <ButtonNomal title="취소" />
-                    <ButtonAccent title="등록" />
+                    <ButtonAccent clickHandler={addCard} title="등록" />
                 </div>
             </div>
         </Wrapper>
