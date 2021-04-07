@@ -1,0 +1,19 @@
+.App {
+  height: 500px;
+  min-width: 500px;
+  background: rgb(238, 238, 238);
+  display: flex;
+  flex-direction: column;
+  padding: 20px 40px;
+  margin: 10px 10px;
+}
+
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
