@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		AE1D84FC261C59BD009D633A /* TodoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1D84FB261C59BD009D633A /* TodoCard.swift */; };
 		AE43FD55261D934700CBD630 /* AddLineSpacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE43FD54261D934700CBD630 /* AddLineSpacing.swift */; };
+		AE43FD5A261DA83F00CBD630 /* TodoCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE43FD59261DA83F00CBD630 /* TodoCards.swift */; };
 		D4BFB804261C448700D68297 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BFB803261C448700D68297 /* AppDelegate.swift */; };
 		D4BFB806261C448700D68297 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BFB805261C448700D68297 /* SceneDelegate.swift */; };
 		D4BFB808261C448700D68297 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BFB807261C448700D68297 /* ViewController.swift */; };
@@ -44,6 +45,7 @@
 /* Begin PBXFileReference section */
 		AE1D84FB261C59BD009D633A /* TodoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCard.swift; sourceTree = "<group>"; };
 		AE43FD54261D934700CBD630 /* AddLineSpacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLineSpacing.swift; sourceTree = "<group>"; };
+		AE43FD59261DA83F00CBD630 /* TodoCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCards.swift; sourceTree = "<group>"; };
 		D4BFB800261C448700D68297 /* Todo_List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Todo_List.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4BFB803261C448700D68297 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D4BFB805261C448700D68297 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				D4BFB85B261C4D4A00D68297 /* TodoCell.swift */,
 				D4BFB85C261C4D4A00D68297 /* TodoCell.xib */,
 				AE1D84FB261C59BD009D633A /* TodoCard.swift */,
+				AE43FD59261DA83F00CBD630 /* TodoCards.swift */,
 				AE43FD54261D934700CBD630 /* AddLineSpacing.swift */,
 				D4BFB80C261C448900D68297 /* Assets.xcassets */,
 				D4BFB80E261C448900D68297 /* LaunchScreen.storyboard */,
@@ -283,6 +286,7 @@
 				D4BFB808261C448700D68297 /* ViewController.swift in Sources */,
 				AE43FD55261D934700CBD630 /* AddLineSpacing.swift in Sources */,
 				AE1D84FC261C59BD009D633A /* TodoCard.swift in Sources */,
+				AE43FD5A261DA83F00CBD630 /* TodoCards.swift in Sources */,
 				D4BFB83A261C470700D68297 /* TodoTableViewController.swift in Sources */,
 				D4BFB85D261C4D4A00D68297 /* TodoCell.swift in Sources */,
 				D4BFB804261C448700D68297 /* AppDelegate.swift in Sources */,
