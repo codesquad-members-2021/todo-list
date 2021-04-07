@@ -9,14 +9,15 @@ class TaskViewController: UIViewController {
     private var contentText: String?
     private var taskCount = 0
 
-    @IBOutlet weak var TaskView: UITableView!
+    @IBOutlet weak var taskTableView: UITableView!
     @IBOutlet weak var TaskCountLabel: TaskCountLabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNotification()
-        TaskView.delegate = self
-        TaskView.delegate = self
+        taskTableView.delegate = self
+        taskTableView.delegate = self
+        taskTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
     }
     
 
@@ -30,13 +31,14 @@ class TaskViewController: UIViewController {
 extension TaskViewController {
     
     @objc private func getTextInfo(_ notification: Notification) {
-        titleText = notification.userInfo?["title"] as! String
-        contentText = notification.userInfo?["content"] as! String
+        titleText = notification.userInfo?["title"] as? String
+        contentText = notification.userInfo?["content"] as? String
     }
     
     @objc private func addTaskCount() {
         taskCount += 1
         TaskCountLabel.text = String(taskCount)
+        taskTableView.insertRows(at: [IndexPath(row: taskCount-1, section: 0)], with: .automatic)
     }
 }
 
@@ -52,7 +54,6 @@ extension TaskViewController: UITableViewDataSource, UITableViewDelegate  {
         cell.contentTextLabel.text = contentText
         return cell
     }
-
 }
 
 //MARK: @IBAction
