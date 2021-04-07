@@ -10,6 +10,9 @@ import UIKit
 class TodoTableViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var columnNameLabel: UILabel!
+    @IBOutlet weak var cardNumLabel: UILabel!
+    
     private lazy var tableViewDelegate = TodoDelegate()
     private var todoDataSource = TodoDataSource()
     
@@ -26,5 +29,6 @@ class TodoTableViewController: UIViewController {
         
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = UITableView.automaticDimension
+        cardNumLabel.text = "\(tableView.numberOfRows(inSection: 0))"
     }
 }
