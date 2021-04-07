@@ -53,27 +53,27 @@ GET /api/cards
 {
     "cards" : [
         {
-            "id" : 1,
-            "title" : "제목",
-            "body" : "내용",
-            "author" : {
-
-            },
-            "column" : {
-                "id" : 1,
-                "name" : "해야할 일",
-            },
-        },
-        {
-            "id" : 2,
-            "title" : "제목",
-            "body" : "내용",
-            "author" : {
-            
-            },
-            "column" : "",
+            "id":1,
+            "title":"GitHub 공부하기",
+            "body":"add, commmit, push",
+            "columnId":1
+        },{
+            "id":2,
+            "title":"블로그에 포스팅할 것",
+            "body":"GitHub 공부내용 모던 자바스크립트 1장 공부내용",
+            "columnId":1
+        },{
+            "id":3,
+            "title":"모던 자바스크립트 예제 실습",
+            "body":"1장 예제 내용 실습 후, 커밋까지",
+            "columnId":2
+        },{
+            "id":4,
+            "title":"HTML/CSS 공부하기",
+            "body":"input 태크 실습+노션에 유형 정리",
+            "columnId":2
         }
-    ],
+    ]
 }
 ```
 
