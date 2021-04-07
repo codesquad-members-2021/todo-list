@@ -14,23 +14,23 @@
   * boolean todo
   * boolean doing
   * boolean done
-
-
+  
 
 * API URL
 
-  * add: POST
-    "/cards"
+  * crate
+    * POST "/cards"
 
-  * remove: DELETE
-    "/cards"
+  * read
+    * GET "/cards"
 
-  * move: PUT
+  * move
+    * PUT "/cards/{id}/todo"
+    * PUT "/cards/{id}/doing"
+    * PUT "/cards/{id}/done"
 
-    "/cards/{{id}}/status"
+  * update
+    * PUT "/cards/{id}" 
 
-  * edit: PUT
-    "/cards/{{id}}"
-
-  * view: GET
-    "/cards"
+  * delete
+    * DELETE "/cards/{id}"
