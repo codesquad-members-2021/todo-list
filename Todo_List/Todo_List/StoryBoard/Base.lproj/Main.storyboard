@@ -97,6 +97,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CHa-P4-jaE" userLabel="CountOfTodo">
+                                <rect key="frame" x="160.5" y="53" width="8" height="20.5"/>
+                                <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qfs-AN-4Cb" userLabel="add_Todo_Btn">
                                 <rect key="frame" x="302.5" y="57" width="14" height="14"/>
                                 <constraints>
@@ -119,6 +125,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hjw-ey-HwV" userLabel="CountOfDoing">
+                                <rect key="frame" x="462.5" y="53" width="8" height="20.5"/>
+                                <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zim-Ew-rEV" userLabel="add_Doing_Btn">
                                 <rect key="frame" x="604.5" y="57" width="13.5" height="14"/>
                                 <constraints>
@@ -127,12 +139,23 @@
                                 </constraints>
                                 <state key="normal" image="add"/>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mSe-ay-sak" userLabel="doingTableView">
+                                <rect key="frame" x="361" y="104" width="258" height="630"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="완료한 일" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="695-OR-Z68" userLabel="doneLabel">
                                 <rect key="frame" x="643.5" y="51" width="71.5" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="jEM-Cq-P9R"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3qR-j6-bPz" userLabel="CountOfDone">
+                                <rect key="frame" x="723" y="53" width="25" height="20.5"/>
+                                <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -150,31 +173,38 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="sectionIndexBackgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                             </tableView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mSe-ay-sak" userLabel="doingTableView">
-                                <rect key="frame" x="361" y="104" width="258" height="630"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vSa-RL-Q9v"/>
                         <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="CHa-P4-jaE" firstAttribute="leading" secondItem="Xl7-Lj-UMH" secondAttribute="trailing" constant="8" id="1xN-mV-3Ev"/>
                             <constraint firstItem="Qfs-AN-4Cb" firstAttribute="top" secondItem="SoK-b3-ORE" secondAttribute="topMargin" constant="57" id="6Xj-oS-LZ7"/>
                             <constraint firstItem="Qfs-AN-4Cb" firstAttribute="leading" secondItem="Xl7-Lj-UMH" secondAttribute="trailing" constant="150" id="8zf-5H-Kc1"/>
+                            <constraint firstItem="Hjw-ey-HwV" firstAttribute="leading" secondItem="GQ2-eh-Mgs" secondAttribute="trailing" constant="8" id="D15-9t-Hvf"/>
+                            <constraint firstItem="Hjw-ey-HwV" firstAttribute="top" secondItem="vSa-RL-Q9v" secondAttribute="top" constant="53" id="Dms-lP-Ajz"/>
                             <constraint firstItem="GQ2-eh-Mgs" firstAttribute="leading" secondItem="Qfs-AN-4Cb" secondAttribute="trailing" constant="45" id="I18-3y-hZf"/>
                             <constraint firstItem="Oru-by-zdX" firstAttribute="leading" secondItem="695-OR-Z68" secondAttribute="trailing" constant="150" id="KwB-b5-0ra"/>
                             <constraint firstItem="zim-Ew-rEV" firstAttribute="top" secondItem="SoK-b3-ORE" secondAttribute="topMargin" constant="57" id="N7i-D7-Svn"/>
+                            <constraint firstItem="Qfs-AN-4Cb" firstAttribute="leading" relation="lessThanOrEqual" secondItem="CHa-P4-jaE" secondAttribute="trailing" constant="134" id="PFn-2d-Eja"/>
                             <constraint firstItem="Oru-by-zdX" firstAttribute="top" secondItem="SoK-b3-ORE" secondAttribute="topMargin" constant="57" id="Pne-w0-wzC"/>
                             <constraint firstItem="Xl7-Lj-UMH" firstAttribute="leading" secondItem="SoK-b3-ORE" secondAttribute="leadingMargin" constant="56" id="SR3-vj-9dg"/>
+                            <constraint firstItem="3qR-j6-bPz" firstAttribute="top" secondItem="vSa-RL-Q9v" secondAttribute="top" constant="53" id="TjK-Gl-ctf"/>
                             <constraint firstItem="zim-Ew-rEV" firstAttribute="leading" secondItem="GQ2-eh-Mgs" secondAttribute="trailing" constant="150" id="YH7-o3-TaA"/>
                             <constraint firstItem="GQ2-eh-Mgs" firstAttribute="top" secondItem="SoK-b3-ORE" secondAttribute="topMargin" constant="51" id="aCh-V6-XUN"/>
+                            <constraint firstItem="CHa-P4-jaE" firstAttribute="top" secondItem="vSa-RL-Q9v" secondAttribute="top" constant="53" id="g8j-cw-qCA"/>
+                            <constraint firstItem="3qR-j6-bPz" firstAttribute="leading" secondItem="695-OR-Z68" secondAttribute="trailing" constant="8" id="gn8-vQ-vw3"/>
                             <constraint firstItem="695-OR-Z68" firstAttribute="top" secondItem="SoK-b3-ORE" secondAttribute="topMargin" constant="51" id="imp-qg-QAM"/>
+                            <constraint firstItem="Oru-by-zdX" firstAttribute="leading" relation="lessThanOrEqual" secondItem="3qR-j6-bPz" secondAttribute="trailing" constant="117" id="kdJ-y0-Qal"/>
                             <constraint firstItem="Xl7-Lj-UMH" firstAttribute="top" secondItem="SoK-b3-ORE" secondAttribute="topMargin" constant="51" id="nXK-yw-vvc"/>
                             <constraint firstItem="695-OR-Z68" firstAttribute="leading" secondItem="GQ2-eh-Mgs" secondAttribute="trailing" constant="189" id="s3c-tW-3Vm"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Xl7-Lj-UMH" secondAttribute="trailing" constant="20" symbolic="YES" id="vcR-0o-JgN"/>
+                            <constraint firstItem="zim-Ew-rEV" firstAttribute="leading" relation="lessThanOrEqual" secondItem="Hjw-ey-HwV" secondAttribute="trailing" constant="134" id="z24-2B-kgf"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="countOfDoing" destination="Hjw-ey-HwV" id="nkW-K4-0q6"/>
+                        <outlet property="countOfDone" destination="3qR-j6-bPz" id="Ykr-K6-g4v"/>
+                        <outlet property="countOfTodo" destination="CHa-P4-jaE" id="FEs-pk-HJs"/>
                         <outlet property="doing" destination="mSe-ay-sak" id="UeP-Qx-V1B"/>
                         <outlet property="done" destination="Nrg-u7-rCB" id="9vB-c8-UCh"/>
                         <outlet property="todo" destination="Za1-ZW-bdI" id="oB9-YN-j36"/>
@@ -182,7 +212,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xiJ-A6-MnR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-41.457286432160807" y="385.61151079136692"/>
+            <point key="canvasLocation" x="-41.457286432160807" y="476.97841726618708"/>
         </scene>
     </scenes>
     <resources>
