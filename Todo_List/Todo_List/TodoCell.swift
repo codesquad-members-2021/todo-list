@@ -1,5 +1,5 @@
 //
-//  TodoTableViewCell.swift
+//  TodoCell.swift
 //  Todo_List
 //
 //  Created by 심영민 on 2021/04/06.
@@ -16,7 +16,7 @@ class TodoCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        self.translatesAutoresizingMaskIntoConstraints = false
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
