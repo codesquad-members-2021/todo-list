@@ -27,8 +27,6 @@ class TodoTableViewController: UIViewController {
         tableView.delegate = tableViewDelegate
         tableView.register(UINib(nibName: TodoCell.identifier, bundle: nil), forCellReuseIdentifier: TodoCell.identifier)
         
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = UITableView.automaticDimension
         cardNumLabel.text = "\(tableView.numberOfRows(inSection: 0))"
     }
 }
