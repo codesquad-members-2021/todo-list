@@ -23,9 +23,7 @@ public class ApiCardController {
 
     @GetMapping("/api/card/{cardId}")
     public Card card(@PathVariable("cardId") Long id){
-        Card card = new Card("Github 공부하기", "커밋, 푸쉬에 대해 공부하자");
-        logger.info("card : {}", card);
-        return cardRepository.save(card);
+        return cardRepository.save();
     }
 
 }
