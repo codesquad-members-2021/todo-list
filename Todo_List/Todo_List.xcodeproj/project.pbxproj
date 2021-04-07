@@ -78,6 +78,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA2CBEFB261D5B06001B8A21 /* StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				FA41FF09261C4FD2004ECD45 /* Main.storyboard */,
+			);
+			path = StoryBoard;
+			sourceTree = "<group>";
+		};
 		FA41FEF7261C4FD2004ECD45 = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +109,7 @@
 		FA41FF02261C4FD2004ECD45 /* Todo_List */ = {
 			isa = PBXGroup;
 			children = (
+				FA2CBEFB261D5B06001B8A21 /* StoryBoard */,
 				FA986E1D261C8853004CC3CB /* Fonts */,
 				FA41FF44261C55C5004ECD45 /* Controller */,
 				FA41FF43261C55C1004ECD45 /* View */,
@@ -142,7 +151,6 @@
 		FA41FF43261C55C1004ECD45 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				FA41FF09261C4FD2004ECD45 /* Main.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
