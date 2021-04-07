@@ -25,8 +25,82 @@ public class Card {
     @JsonProperty
     private LocalDateTime createDate;
 
-    private boolean toDo;
+    private boolean todo;
     private boolean doing;
     private boolean done;
 
+    public void update(Card card) {
+        this.title = card.title;
+        this.contents = card.contents;
+    }
+
+    public void changeStateTodo() {
+        this.todo = true;
+        this.doing = false;
+        this.done = false;
+    }
+
+    public void changeStateDoing() {
+        this.todo = false;
+        this.doing = true;
+        this.done = false;
+    }
+
+    public void changeStateDone() {
+        this.todo = false;
+        this.doing = false;
+        this.done = true;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getContents() {
+        return contents;
+    }
+
+    public void setContents(String contents) {
+        this.contents = contents;
+    }
+
+    public LocalDateTime getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(LocalDateTime createDate) {
+        this.createDate = createDate;
+    }
+
+    public boolean isTodo() {
+        return todo;
+    }
+
+    public void setTodo(boolean todo) {
+        this.todo = todo;
+    }
+
+    public boolean isDoing() {
+        return doing;
+    }
+
+    public void setDoing(boolean doing) {
+        this.doing = doing;
+    }
+
+    public boolean isDone() {
+        return done;
+    }
+
+    public void setDone(boolean done) {
+        this.done = done;
+    }
 }
