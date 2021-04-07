@@ -15,6 +15,15 @@ public class Card {
     private LocalDateTime createdTime;
     private boolean deleted;
 
+    private Card() { }
+
+    public Card(String title, String content) {
+        this.title = title;
+        this.content = content;
+        this.status = Status.TODO;
+        this.createdTime = LocalDateTime.now();
+        this.deleted = false;
+    }
 
     public enum Status {
         TODO, DOING, DONE;
