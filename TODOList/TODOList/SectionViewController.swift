@@ -33,17 +33,25 @@ class SectionViewController: UIViewController {
     @IBOutlet weak var sectionTitle: UILabel!
     @IBOutlet weak var TODOCount: UILabel!
     @IBOutlet weak var addButton: UIButton!
-    var mode: Mode?
+    private var sectionMode: Mode?
     
-    var handler: ((State) -> ())? {
-        didSet {
-            self.TODOTableView.reloadData()
-        }
-    }
+    let viewModel = WillTODOViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        TODOTableViewDataSource.bind(to: viewModel.value)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.value.value = ["HoHo", "He"]
+//        TODOTableView.reloadData()
+        
+    }
+    
+    func setSectionMode(mode: Mode) {
+        self.sectionMode = mode
     }
 }
 
