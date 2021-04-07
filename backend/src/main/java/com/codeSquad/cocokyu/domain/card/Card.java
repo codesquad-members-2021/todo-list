@@ -1,4 +1,4 @@
-package com.codeSquad.cocokyu.domain;
+package com.codeSquad.cocokyu.domain.card;
 
 import org.springframework.data.annotation.Id;
 
@@ -10,15 +10,14 @@ public class Card {
 
     private String title;
     private String contents;
-    private String status;
     private LocalDateTime createDateTime;
+    private Status status;
 
-    public Card(String title, String contents, String status) {
+    public Card(String title, String contents, Status status) {
         this.title = title;
         this.contents = contents;
         this.status = status;
-
-        createDateTime = LocalDateTime.now();
+        this.createDateTime = LocalDateTime.now();
     }
 
     public Long getId() {
@@ -33,7 +32,7 @@ public class Card {
         return contents;
     }
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
