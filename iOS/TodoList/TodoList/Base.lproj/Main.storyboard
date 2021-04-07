@@ -161,10 +161,10 @@
             </objects>
             <point key="canvasLocation" x="636.61016949152543" y="483.29268292682923"/>
         </scene>
-        <!--View Controller-->
+        <!--New Task View Controller-->
         <scene sceneID="6mn-a2-9Yo">
             <objects>
-                <viewController id="ldB-31-dOI" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewTaskViewController" id="ldB-31-dOI" customClass="NewTaskViewController" customModule="TodoList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="84a-sI-9yK">
                         <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -180,6 +180,9 @@
                                             <constraint firstAttribute="height" constant="40" id="cNQ-6q-Ydk"/>
                                         </constraints>
                                         <state key="normal" title="취소"/>
+                                        <connections>
+                                            <action selector="CancelButton:" destination="ldB-31-dOI" eventType="touchUpInside" id="xJT-u8-51K"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="새로운 카드 추가" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFa-Tl-h3j">
                                         <rect key="frame" x="16" y="8" width="156" height="29"/>
@@ -206,6 +209,9 @@
                                         </constraints>
                                         <color key="tintColor" red="1" green="0.99677230409999995" blue="0.96441227169999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <state key="normal" title="등록"/>
+                                        <connections>
+                                            <action selector="RegisterNewTaskActionButton:" destination="ldB-31-dOI" eventType="touchUpInside" id="NW5-XT-sM1"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -242,6 +248,11 @@
                         </constraints>
                     </view>
                     <size key="freeformSize" width="1180" height="820"/>
+                    <connections>
+                        <outlet property="CancelButton" destination="Zjj-ZZ-i0f" id="iCJ-Og-kdv"/>
+                        <outlet property="NewTaskView" destination="m9H-K3-avN" id="oi9-sy-1P2"/>
+                        <outlet property="RegisterNewTaskButton" destination="7hG-tD-ZCr" id="PLg-KD-2R3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c4x-g8-ZP0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

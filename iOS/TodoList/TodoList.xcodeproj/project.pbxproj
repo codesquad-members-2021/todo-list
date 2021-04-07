@@ -28,6 +28,7 @@
 		762F64B1261C2F6D001B879B /* TodoListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762F64B0261C2F6D001B879B /* TodoListTests.swift */; };
 		762F64BC261C2F6D001B879B /* TodoListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762F64BB261C2F6D001B879B /* TodoListUITests.swift */; };
 		762F64E8261D52A5001B879B /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762F64E7261D52A5001B879B /* TaskViewController.swift */; };
+		762F64ED261D7A05001B879B /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762F64EC261D7A05001B879B /* NewTaskViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		762F64BB261C2F6D001B879B /* TodoListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListUITests.swift; sourceTree = "<group>"; };
 		762F64BD261C2F6D001B879B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		762F64E7261D52A5001B879B /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
+		762F64EC261D7A05001B879B /* NewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 				762F649D261C2F6B001B879B /* ViewController.swift */,
 				7199F443261D453100D21319 /* SignUpMainViewController.swift */,
 				762F64E7261D52A5001B879B /* TaskViewController.swift */,
+				762F64EC261D7A05001B879B /* NewTaskViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -361,6 +364,7 @@
 				762F64E8261D52A5001B879B /* TaskViewController.swift in Sources */,
 				7199F44D261D456100D21319 /* EachInfoView.swift in Sources */,
 				7199F45A261D459A00D21319 /* CustomButton.swift in Sources */,
+				762F64ED261D7A05001B879B /* NewTaskViewController.swift in Sources */,
 				7199F462261D45BA00D21319 /* MainTitleLabel.swift in Sources */,
 				7199F46B261D45FC00D21319 /* RegexValidManager.swift in Sources */,
 				7199F481261D464D00D21319 /* MainLabelContents.swift in Sources */,
