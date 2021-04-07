@@ -3,13 +3,19 @@ import styled from 'styled-components';
 // import { ViewState } from './const.js';
 
 function TodoCardPresentational(props) {
+  // TODO: '{author} by web'
+
   return (
     <Card>
-      <Title type="textfield" placeholder="제목을 입력하세요" />
-      <Content onChange={props.onChangeContent} maxlength="500" placeholder="내용을 입력하세요" />
+      <Title onChange={props.onChangeTitle} placeholder="제목을 입력하세요" value={props.state.title}></Title>
+      <Content onChange={props.onChangeContent} maxlength="500" placeholder="내용을 입력하세요" value={props.state.content}></Content>
       <div>
         <CancelBtn onClick={props.onClickCancelBtn}>취소</CancelBtn>
-        <ConfirmBtn onClick={props.onClickConfirmBtn}>확인</ConfirmBtn>
+        <ConfirmBtn
+          onClick={props.onClickConfirmBtn}
+          disabled={props.state.title.length > 0 && props.state.content.length > 0 ? false : true}>
+            확인
+        </ConfirmBtn>
       </div>
     </Card>
   );
@@ -29,7 +35,17 @@ const Card = styled.div`
   box-shadow: 0px 1px 30px rgba(224, 224, 224, 0.3);
   border-radius: 6px;
 
-  // TODO: &.select, &.delete, &.drag
+  &.select {
+    
+  }
+
+  &.delete {
+    // TODO
+  }
+
+  &.drag {
+    // TODO
+  }
 `;
 
 const Title = styled.input`
@@ -66,22 +82,36 @@ const Content = styled.textarea`
 
 const CancelBtn = styled.button`
   float: left;
-  display: inline-block;
   padding: 10px;
   width: 134px;
   height: 40px;
   background: #E0E0E0;
+  color: white;
+  font-weight: 800;
   border: none;
   border-radius: 6px;
+
+  &:hover {
+    background: #828282;
+  }
 `;
 
 const ConfirmBtn = styled.button`
   float: right;
-  display: inline-block;
   padding: 10px;
   width: 134px;
   height: 40px;
   background: #0075DE;
+  color: white;
+  font-weight: 800;
   border: none;
   border-radius: 6px;
+
+  &:hover {
+    background: #00529B;
+  }
+
+  &:disabled {
+    background: #86C6FF;
+  }
 `;

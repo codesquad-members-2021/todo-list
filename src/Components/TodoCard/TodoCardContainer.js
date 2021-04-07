@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ViewState } from './const.js';
 import TodoCardPresentational from './TodoCardPresentational.js';
 
@@ -12,26 +12,39 @@ function TodoCardContainer(props) {
     author: '',
   });
 
+  useEffect(() => {
+    // TODO
+    console.log('call useEffect')
+  }, [state]);
+
+  const onChangeTitle = ({ target }) => {
+    setState({ ...state, title: target.value });
+  }
+
   const onChangeContent = ({ target }) => {
     if (target.clientHeight < target.scrollHeight)
       target.style.height = `${target.scrollHeight + 4}px`;
+    
+    setState({ ...state, content: target.value });
   }
 
   const onClickCancelBtn = ({ target }) => {
-    // TODO
+    // TODO: setViewState
     console.log('click cancelBtn');
   }
 
   const onClickConfirmBtn = ({ target }) => {
-    // TODO
+    // TODO: setViewState
     console.log('click confirmBtn');
   }
 
   return (
     <TodoCardPresentational
+      onChangeTitle={onChangeTitle}
       onChangeContent={onChangeContent}
       onClickCancelBtn={onClickCancelBtn}
       onClickConfirmBtn={onClickConfirmBtn}
+      state={state}
       viewState={viewState}/>
   )
 }
