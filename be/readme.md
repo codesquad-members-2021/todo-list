@@ -4,7 +4,7 @@
 
 
 
-## API Document
+# API Document
 
 ## 1. USER
 
@@ -53,7 +53,7 @@
 
 * ```json
   {
-  	columnList : [
+  	"columnList" : [
           {
               "id" : 1,
               "columnTitle" : "TODO",
@@ -106,7 +106,7 @@
 
 * ```json
   {
-      task : {
+      "task" : {
        	"id" : 1,
           "taskTitle" : "모던 자바스크립트 예제 실습",
           "taskContent" : "1장 예제 내용 실습 후 커밋까지",
@@ -196,12 +196,16 @@
 
 * ```json
   {
-      logList : [
+      "logList" : [
           {
               "id" : 1,
               "action" : "'move' '자바스크립트 예제 실습 수정됨!' 'TODO' 'IN_PROGRESS'",
               "author" : {
-              	/*...*/
+                  "id" : 1,
+                  "userId" : "Raccoon",
+                  "password" : "1q2w3e4r",
+                  "name" : "라쿠운",
+                  "profileImage" : "http://어딘가에_있는_라쿤_이미지.jpeg"
   	        },
           	"createdDateTime" : "2021-03-21 13:24:00"
           }
