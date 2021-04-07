@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		821C242B261DA4D6001F4D50 /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821C242A261DA4D6001F4D50 /* Badge.swift */; };
 		8282B060261D28930032D82C /* CellIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8282B05F261D28930032D82C /* CellIdentifiers.swift */; };
 		828737C9261D7AB600CC5372 /* ColumnTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828737C8261D7AB600CC5372 /* ColumnTitleView.swift */; };
 		828737CE261D7B1700CC5372 /* ColumnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828737CD261D7B1700CC5372 /* ColumnViewController.swift */; };
+		828737D6261D940400CC5372 /* ColumnTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828737D5261D940400CC5372 /* ColumnTitle.swift */; };
 		8288BCF0261CAE7200883E0E /* Column.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8288BCEF261CAE7200883E0E /* Column.swift */; };
 		8288BCF5261CAF3500883E0E /* ColumnDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8288BCF4261CAF3500883E0E /* ColumnDataSource.swift */; };
 		8288BD00261CB24E00883E0E /* ColumnDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8288BCFF261CB24E00883E0E /* ColumnDelegate.swift */; };
@@ -48,9 +50,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		821C242A261DA4D6001F4D50 /* Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Badge.swift; sourceTree = "<group>"; };
 		8282B05F261D28930032D82C /* CellIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellIdentifiers.swift; sourceTree = "<group>"; };
 		828737C8261D7AB600CC5372 /* ColumnTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnTitleView.swift; sourceTree = "<group>"; };
 		828737CD261D7B1700CC5372 /* ColumnViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnViewController.swift; sourceTree = "<group>"; };
+		828737D5261D940400CC5372 /* ColumnTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnTitle.swift; sourceTree = "<group>"; };
 		8288BCEF261CAE7200883E0E /* Column.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Column.swift; sourceTree = "<group>"; };
 		8288BCF4261CAF3500883E0E /* ColumnDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnDataSource.swift; sourceTree = "<group>"; };
 		8288BCFF261CB24E00883E0E /* ColumnDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnDelegate.swift; sourceTree = "<group>"; };
@@ -115,6 +119,8 @@
 				82E026D0261D3BA800651B9C /* DataManager.swift */,
 				828737C8261D7AB600CC5372 /* ColumnTitleView.swift */,
 				828737CD261D7B1700CC5372 /* ColumnViewController.swift */,
+				828737D5261D940400CC5372 /* ColumnTitle.swift */,
+				821C242A261DA4D6001F4D50 /* Badge.swift */,
 			);
 			path = ColumnSection;
 			sourceTree = "<group>";
@@ -311,6 +317,7 @@
 				8288BCF5261CAF3500883E0E /* ColumnDataSource.swift in Sources */,
 				8288BD05261CB2B200883E0E /* ColumnCell.swift in Sources */,
 				8288BCF0261CAE7200883E0E /* Column.swift in Sources */,
+				828737D6261D940400CC5372 /* ColumnTitle.swift in Sources */,
 				82E026C9261D37A100651B9C /* ColumnDatas.swift in Sources */,
 				B0BC8AC9261C433E00B8122D /* AppDelegate.swift in Sources */,
 				B0BC8B01261C8BDC00B8122D /* MockNetworkService.swift in Sources */,
