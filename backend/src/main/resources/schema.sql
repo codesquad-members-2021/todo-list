@@ -18,7 +18,7 @@ CREATE TABLE card (
     CONSTRAINT COL FOREIGN KEY(column_id) REFERENCES column(id)
 );
 
-CREATE TABLE log (
+CREATE TABLE activity (
     id int AUTO_INCREMENT PRIMARY KEY,
     action_user int,
     action char (10),

@@ -22,7 +22,7 @@ public class CardController {
     }
 
     @GetMapping
-    public ResponseEntity<Map<String, List<Card>>> card() {
+    public ResponseEntity<Map<String, List<Card>>> cards() {
         Map<String, List<Card>> cardsResponse = new HashMap<>();
         cardsResponse.put("cards", cardService.cards());
         return ResponseEntity.ok(cardsResponse);
