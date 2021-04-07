@@ -9,8 +9,8 @@ import Foundation
 
 class TodoCard {
     
-    private var title: String
-    private var content: String
+    private(set) var title: String
+    private(set) var content: String
     
     init(title: String, content: String) {
         self.title = title
@@ -18,11 +18,10 @@ class TodoCard {
     }
     
     convenience init() {
-        let title = ""
-        let content = ""
+        let title = "title"
+        let content = "content"
         self.init(title: title, content: content)
     }
-    
     
 }
 
