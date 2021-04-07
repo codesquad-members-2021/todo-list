@@ -16,6 +16,7 @@ class NewTaskViewController: UIViewController {
     
     @IBAction func RegisterNewTaskActionButton(_ sender: Any) {
         NotificationCenter.default.post(name: .addTextFieldText, object: nil, userInfo: ["title": titleTextField.text ?? "", "content": contentTextField.text ?? ""])
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func cancelButtonTouched(_ sender: Any) {

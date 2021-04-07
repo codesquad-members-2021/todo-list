@@ -13,6 +13,7 @@ class TaskCountLabel: UILabel {
     }
     
     private func configrueLabel() {
+        backgroundColor = UIColor.systemGray4
         translatesAutoresizingMaskIntoConstraints = false
         widthAnchor.constraint(equalToConstant: 26).isActive = true
         heightAnchor.constraint(equalToConstant: 26).isActive = true
