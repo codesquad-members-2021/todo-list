@@ -28,5 +28,17 @@ public class Card {
     public enum Status {
         TODO, DOING, DONE;
     }
+
+    @Override
+    public String toString() {
+        return "Card{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", status=" + status +
+                ", createdTime=" + createdTime +
+                ", deleted=" + deleted +
+                '}';
+    }
 }
 
