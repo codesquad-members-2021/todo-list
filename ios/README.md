@@ -15,13 +15,14 @@
 #### Display
 none
 
-### 2. (branch feature_todo_table) ToDo 아이템을 표시하는 테이블 뷰 UI와 로직 구성
+### 2. (branch feature_todo_table) ToDoCards 로직 생성
 #### Major features
-- [x] To be added 
-
+- [x] ToDoCardProtocol 구현
+- [x] ToDo 상태에 따른 카드 객체 클래스 생성
 
 #### Study keywords
-- 
+- 데이터 구조 (Array)
+
 #### Display
 
 

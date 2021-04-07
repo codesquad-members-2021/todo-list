@@ -16,7 +16,7 @@ class TodoListTests: XCTestCase {
     }
     
     func test_JSONParser() {
-        let urlString = "https://jsonplaceholder.typicode.com/todos/1"
+        let urlString = "https://jsonplaceholder.typicode.com/todos"
         if let url = URL(string: urlString) {
             URLSession.shared.dataTask(with: url) { (data, response, error) in
                 if let data = data {
@@ -27,7 +27,7 @@ class TodoListTests: XCTestCase {
     }
     
     func test_DataManager() {
-        let urlString = "https://jsonplaceholder.typicode.com/todos/1"
+        let urlString = "https://jsonplaceholder.typicode.com/todos"
         XCTAssertNotNil(DataManager.getData(urlString: urlString, completion: { (data) in
             
         }))
