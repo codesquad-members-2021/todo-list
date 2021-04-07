@@ -154,13 +154,31 @@ const Wrapper = styled.div`
     }
 `;
 
-const CardInput = ({list, clickHandler}) => {
-    const [title, setTitle] = useState()
-    const [body, setBody] = useState()
-    const addCard = () =>{
-        list.push({title, body, author: "web"})
-        clickHandler()
-    }
+const CardInput = ({ list, clickHandler }) => {
+    const [title, setTitle] = useState('');
+    const [body, setBody] = useState('');
+    const [isAble, setAbility] = useState(false);
+    const addCard = () => {
+        if (!isAble) return;
+        list.push({ title, body, author: 'web' });
+        clickHandler();
+    };
+    const changeTitle = ({ target }) => {
+        setTitle(() => {
+            body.length * target.value.length
+                ? setAbility(true)
+                : setAbility(false);
+            return target.value;
+        });
+    };
+    const changebody = ({ target }) => {
+        setBody(() => {
+            title.length * target.value.length
+                ? setAbility(true)
+                : setAbility(false);
+            return target.value;
+        });
+    };
     return (
         <Wrapper>
             <div className="card-input">
@@ -168,17 +186,21 @@ const CardInput = ({list, clickHandler}) => {
                     <input
                         className="card-input__text--title"
                         placeholder="제목을 입력하세요"
-                        onChange={({target})=>setTitle(target.value)}
+                        onChange={changeTitle}
                     ></input>
                     <input
                         className="card-input__text--body"
                         placeholder="내용을 입력하세요"
-                        onChange={({target})=>setBody(target.value)}
+                        onChange={changebody}
                     ></input>
                 </div>
                 <div className="card-input__button">
                     <ButtonNomal title="취소" />
-                    <ButtonAccent clickHandler={addCard} title="등록" />
+                    <ButtonAccent
+                        clickHandler={addCard}
+                        isAble={isAble}
+                        title="등록"
+                    />
                 </div>
             </div>
         </Wrapper>
