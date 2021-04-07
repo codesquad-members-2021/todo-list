@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { MainWrapper } from './components/common/StyledMain';
+import HeaderContainer from './containers/header/HeaderContainer';
 import Column from './components/Seong/Column';
 
 const list = [
@@ -14,6 +16,15 @@ const list = [
     },
 ];
 
-const App = () => <Column title="Column title" list={list} />;
+const App = () => {
+    useEffect(() => (document.body.style = 'background: #F5F5F7;'), []);
+
+    return (
+        <MainWrapper>
+            <HeaderContainer />
+            <Column title="Column title" list={list} />
+        </MainWrapper>
+    );
+};
 
 export default App;
