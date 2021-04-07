@@ -4,6 +4,7 @@ import NavigationBar from "./navigationBar";
 
 function HeaderPresentational() {
   const [mode, setMode] = useState(false);
+  const [play, setPlay] = useState("end");
 
   return (
     <div>
@@ -11,12 +12,15 @@ function HeaderPresentational() {
         <div>Todo-List</div>
         <Header_button
           type="button"
-          value="MENU"
+          value={mode ? "EXIT" : "MENU"}
           onClick={() => {
             mode ? setMode(false) : setMode(true);
+            setPlay("start");
           }}
         />
-        {mode && <NavigationBar mode={mode} setMode={setMode}></NavigationBar>}
+        {play === "start" ? (
+          <NavigationBar mode={mode} setMode={setMode}></NavigationBar>
+        ) : null}
       </Header>
     </div>
   );
