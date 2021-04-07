@@ -24,13 +24,13 @@ class MockURLSessionDataTask: URLSessionDataTask {
 
 class MockURLSession: URLSessionProtocol {
     
-    var makeRequestFail = false
+    private var makeRequestFail = false
     
     init(makeRequestFail : Bool = false) {
         self.makeRequestFail = makeRequestFail
     }
     
-    var sessionDataTask: MockURLSessionDataTask?
+    private var sessionDataTask: MockURLSessionDataTask?
     
     func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
         
