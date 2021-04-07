@@ -7,27 +7,20 @@
 
 import Foundation
 
-//struct ToDoItems: Codable {
-//    let toBeDone: [ToDoItem]
-//    let onProgress: [ToDoItem]
-//    let completed: [ToDoItem]
-//}
+struct ToDoList: Codable {
+    let todo: [ToDoItem]
+    let doing: [ToDoItem]
+    let done: [ToDoItem]
+    
+    func getTodoListString() -> String {
+        return "\(todo), \(doing), \(done)"
+    }
+}
 
 struct ToDoItem: Codable {
-    let userId: Int
-    let id: Int
+    let id: String
     let title: String
-    let completed: Bool
-    
-    // 테이블
-    // 타이틀| 콘텐츠| 어서 | Status(String)
-//    struct ToDoItem: Codable {
-//        let title: String
-//        let contents: String
-//        let author: String
-//        let completed: Bool
-    
-    func getTitleString() -> String {
-        return "\(userId), \(id), \(title), \(completed)"
-    }
+    let contents: String
+    let create_date_time: String
+    let status: String
 }
