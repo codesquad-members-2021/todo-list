@@ -1,23 +1,42 @@
-import React from 'react'
-import styled from 'styled-components';
+import React, { useState } from "react";
+import styled from "styled-components";
+import NavigationBar from "./navigationBar";
 
 function HeaderPresentational() {
+  const [mode, setMode] = useState(false);
+
   return (
-    <>
-      <CustomSection>
-        나는 프레젠
-      </CustomSection>
-      <CustomSection>
-        나는 프레젠
-      </CustomSection>
-    </>
-  )
+    <div>
+      <Header>
+        <div>Todo-List</div>
+        <Header_button
+          type="button"
+          value="MENU"
+          onClick={() => {
+            mode ? setMode(false) : setMode(true);
+          }}
+        />
+        {mode && <NavigationBar mode={mode} setMode={setMode}></NavigationBar>}
+      </Header>
+    </div>
+  );
 }
 
-const CustomSection = styled.section`
-  background-color: yellow;
+const Header = styled.section`
+  display: flex;
+  position: relative;
+  padding: 5% 10%;
+  box-sizing: border-box;
   width: 100%;
-  height: 1000px;
-`
+  justify-content: space-between;
+`;
 
-export default HeaderPresentational
+const Header_button = styled.input`
+  background-color: white;
+  outline: none;
+  border: none;
+  &:active {
+    transform: translateY(2px);
+  }
+`;
+export default HeaderPresentational;

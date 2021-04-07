@@ -1,14 +1,12 @@
-import React from 'react'
-import HeaderPresentational from './HeaderPresentational';
-// import 
+import React from "react";
+import HeaderPresentational from "./HeaderPresentational";
 
 function HeaderContainer() {
   return (
     <div>
-      헤더 컨테이너
       <HeaderPresentational> </HeaderPresentational>
     </div>
-  )
+  );
 }
 
-export default HeaderContainer
+export default HeaderContainer;
