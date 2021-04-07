@@ -39,4 +39,9 @@ class TodoListUITests: XCTestCase {
             }
         }
     }
+    
+//    func testAddNewTask(){
+//        let expect = "놀기"
+//        XCTAssertEqual(expect, <#T##expression2: Equatable##Equatable#>)
+//    }
 }

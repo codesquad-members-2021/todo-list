@@ -181,7 +181,7 @@
                                         </constraints>
                                         <state key="normal" title="취소"/>
                                         <connections>
-                                            <action selector="CancelButton:" destination="ldB-31-dOI" eventType="touchUpInside" id="xJT-u8-51K"/>
+                                            <action selector="cancelButtonTouched:" destination="ldB-31-dOI" eventType="touchUpInside" id="1mk-GO-QTK"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="새로운 카드 추가" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFa-Tl-h3j">
@@ -249,9 +249,11 @@
                     </view>
                     <size key="freeformSize" width="1180" height="820"/>
                     <connections>
-                        <outlet property="CancelButton" destination="Zjj-ZZ-i0f" id="iCJ-Og-kdv"/>
+                        <outlet property="CancelButton" destination="Zjj-ZZ-i0f" id="0Rm-ND-aO4"/>
                         <outlet property="NewTaskView" destination="m9H-K3-avN" id="oi9-sy-1P2"/>
                         <outlet property="RegisterNewTaskButton" destination="7hG-tD-ZCr" id="PLg-KD-2R3"/>
+                        <outlet property="contentTextField" destination="Lyo-wG-py2" id="2kY-vB-881"/>
+                        <outlet property="titleTextField" destination="t8E-l0-enY" id="jUL-xU-kwg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c4x-g8-ZP0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
