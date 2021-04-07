@@ -7,7 +7,12 @@
 
 import UIKit
 
-class TodoTableViewCell: UITableViewCell {
+class TodoCell: UITableViewCell {
+    
+    static let identifier = "TodoCell"
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var contentLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
