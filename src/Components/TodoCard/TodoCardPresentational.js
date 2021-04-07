@@ -1,42 +1,18 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
-import { State } from './const.js';
-
-// 1. comment syntax in styled-components
-// 2. 
+// import { ViewState } from './const.js';
 
 function TodoCardPresentational(props) {
-  const renderNormal = () => {
-    return (
-      <Card>
-        <Title type="textfield" placeholder="제목을 입력하세요" />
-        <Content type="textarea" placeholder="내용을 입력하세요" />
-        <div>
-          <CancelBtn>취소</CancelBtn>
-          <ConfirmBtn>확인</ConfirmBtn>
-        </div>
-      </Card>
-    );
-  }
-
-  const renderSelect = () => {
-    // TODO
-  }
-
-  const renderDelete = () => {
-    // TODO
-  }
-
-  const renderDrag = () => {
-    // TODO
-  }
-  
-  if (props.state === State.NORMAL) {
-    return renderNormal();
-  } else {
-    // TODO, FIXME
-    throw Error('not reached!');
-  }
+  return (
+    <Card>
+      <Title type="textfield" placeholder="제목을 입력하세요" />
+      <Content onChange={props.onChangeContent} maxlength="500" placeholder="내용을 입력하세요" />
+      <div>
+        <CancelBtn onClick={props.onClickCancelBtn}>취소</CancelBtn>
+        <ConfirmBtn onClick={props.onClickConfirmBtn}>확인</ConfirmBtn>
+      </div>
+    </Card>
+  );
 }
 
 export default TodoCardPresentational;
@@ -46,12 +22,14 @@ const Card = styled.div`
   flex-direction: column;
   padding: 16px;
   width: 310px;
-  height: 139px;
+  height: auto;
   background: #FFFFFF;
   border: 1px solid #0075DE;
   box-sizing: border-box;
   box-shadow: 0px 1px 30px rgba(224, 224, 224, 0.3);
   border-radius: 6px;
+
+  // TODO: &.select, &.delete, &.drag
 `;
 
 const Title = styled.input`
@@ -65,11 +43,14 @@ const Title = styled.input`
   line-height: 23px;
   color: #010101;
   margin-bottom: 8px;
+  border: none;
+  outline: none;
 `;
 
-const Content = styled.input`
+const Content = styled.textarea`
   width: 100%;
-  height: 20px;
+	height: 26px;
+  resize: none;
   box-sizing: border-box;
   font-family: Noto Sans KR;
   font-style: normal;
@@ -78,7 +59,10 @@ const Content = styled.input`
   line-height: 20px;
   color: #010101;
   margin: 8px 0px;
+  border: none;
+  outline: none;
 `;
+
 
 const CancelBtn = styled.button`
   float: left;
@@ -87,8 +71,8 @@ const CancelBtn = styled.button`
   width: 134px;
   height: 40px;
   background: #E0E0E0;
+  border: none;
   border-radius: 6px;
-  // margin: 0px 8px;
 `;
 
 const ConfirmBtn = styled.button`
@@ -98,6 +82,6 @@ const ConfirmBtn = styled.button`
   width: 134px;
   height: 40px;
   background: #0075DE;
+  border: none;
   border-radius: 6px;
-  // margin: 0px 8px;
 `;
