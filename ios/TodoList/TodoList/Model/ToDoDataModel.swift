@@ -19,6 +19,14 @@ struct ToDoItem: Codable {
     let title: String
     let completed: Bool
     
+    // 테이블
+    // 타이틀| 콘텐츠| 어서 | Status(String)
+//    struct ToDoItem: Codable {
+//        let title: String
+//        let contents: String
+//        let author: String
+//        let completed: Bool
+    
     func getTitleString() -> String {
         return "\(userId), \(id), \(title), \(completed)"
     }
