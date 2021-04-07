@@ -18,6 +18,19 @@ const Wrapper = styled.div`
 
         background: #e0e0e0;
         border-radius: 6px;
+
+        /* Gray 3 */
+
+        color: #828282;
+    }
+    .button:hover {
+        /* Gray 3 */
+
+        background: #828282;
+
+        /* White */
+
+        color: #ffffff;
     }
     .button--title {
         position: absolute;
@@ -32,10 +45,6 @@ const Wrapper = styled.div`
         font-size: 14px;
         line-height: 20px;
         text-align: center;
-
-        /* Gray 3 */
-
-        color: #828282;
 
         /* Inside Auto Layout */
 

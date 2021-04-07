@@ -18,6 +18,34 @@ const Wrapper = styled.div`
 
         background: #0075de;
         border-radius: 6px;
+
+        /* White */
+
+        color: #ffffff;
+    }
+    .button:hover {
+        /* Dark Blue */
+
+        background: #00529b;
+    }
+    .button-disabled {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        /* padding: 10px; */
+
+        position: absolute;
+        width: 134px;
+        height: 40px;
+        left: 142px;
+        top: 0px;
+
+        /* Light Blue */
+
+        background: #86c6ff;
+        border-radius: 6px;
+
+        color: rgba(255, 255, 255, 0.4);
     }
     .button--title {
         position: absolute;
@@ -33,10 +61,6 @@ const Wrapper = styled.div`
         line-height: 20px;
         text-align: center;
 
-        /* White */
-
-        color: #ffffff;
-
         /* Inside Auto Layout */
 
         flex: none;
@@ -46,10 +70,13 @@ const Wrapper = styled.div`
     }
 `;
 
-const ButtonAccent = ({ title, clickHandler }) => {
+const ButtonAccent = ({ title, clickHandler, isAble }) => {
     return (
         <Wrapper>
-            <div onClick={clickHandler} className="button">
+            <div
+                onClick={clickHandler}
+                className={isAble ? 'button' : 'button-disabled'}
+            >
                 <div className="button--title">{title}</div>
             </div>
         </Wrapper>
