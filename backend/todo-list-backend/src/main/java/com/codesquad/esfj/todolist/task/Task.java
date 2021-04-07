@@ -29,4 +29,14 @@ public class Task {
     public String getWriter() {
         return writer;
     }
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", writer='" + writer + '\'' +
+                '}';
+    }
 }

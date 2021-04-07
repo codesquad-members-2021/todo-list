@@ -1,13 +1,16 @@
 package com.codesquad.esfj.todolist.task;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
 @RestController
 public class TaskController {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @GetMapping("/tasks")
     public List<Task> readAll() {
@@ -19,5 +22,11 @@ public class TaskController {
     @GetMapping("/tasks/{id}")
     public Task readOne(@PathVariable Long id) {
         return new Task(id, "title", "content", "writer");
+    }
+
+    @PostMapping("/tasks")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void create(@RequestBody Task task) {
+        logger.debug(task.toString());
     }
 }
