@@ -1,5 +1,6 @@
-package com.codeSquad.cocokyu;
+package com.codeSquad.cocokyu.domain;
 
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jdbc.repository.config.AbstractJdbcConfiguration;
