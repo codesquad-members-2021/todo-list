@@ -8,8 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class HomeController {
 
     @GetMapping
-    public String index(Model model) {
-        model.addAttribute("data", "world");
-        return "index";
+    public String index() {
+        return "redirect:/cards";
     }
 }
