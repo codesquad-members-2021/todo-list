@@ -23,7 +23,7 @@ public class Card {
     private String contents;
 
     @JsonProperty
-    private LocalDateTime createDate;
+    private LocalDateTime createDate = LocalDateTime.now();
 
     private boolean todo;
     private boolean doing;
@@ -102,5 +102,18 @@ public class Card {
 
     public void setDone(boolean done) {
         this.done = done;
+    }
+
+    @Override
+    public String toString() {
+        return "Card{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", contents='" + contents + '\'' +
+                ", createDate=" + createDate +
+                ", todo=" + todo +
+                ", doing=" + doing +
+                ", done=" + done +
+                '}';
     }
 }
