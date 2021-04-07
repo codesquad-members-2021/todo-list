@@ -13,11 +13,21 @@
 		22560CE4261C310F00E2B80D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22560CE2261C310F00E2B80D /* Main.storyboard */; };
 		22560CE6261C311400E2B80D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22560CE5261C311400E2B80D /* Assets.xcassets */; };
 		22560CE9261C311400E2B80D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22560CE7261C311400E2B80D /* LaunchScreen.storyboard */; };
+<<<<<<< HEAD
 		22560CF9261C557200E2B80D /* SectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22560CF8261C557200E2B80D /* SectionViewController.swift */; };
 		22560CFE261C58D800E2B80D /* SectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22560CFD261C58D800E2B80D /* SectionCell.swift */; };
 		22A41EED261C91B200248CAF /* TODOTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A41EEC261C91B200248CAF /* TODOTableViewDataSource.swift */; };
 		22AE4A7A261D847B0081AA19 /* WillTODOViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AE4A79261D847B0081AA19 /* WillTODOViewModel.swift */; };
 		22AE4A82261D97CF0081AA19 /* Obserable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AE4A81261D97CF0081AA19 /* Obserable.swift */; };
+=======
+		B353207B261D487C00EA788D /* ToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B353207A261D487C00EA788D /* ToDo.swift */; };
+		B353207E261D489900EA788D /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = B353207D261D489900EA788D /* Card.swift */; };
+		B3532081261D549600EA788D /* Doing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3532080261D549600EA788D /* Doing.swift */; };
+		B3532085261D559100EA788D /* Done.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3532084261D559100EA788D /* Done.swift */; };
+		B3532088261D55B100EA788D /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3532087261D55B100EA788D /* Timeline.swift */; };
+		B353208C261D55C900EA788D /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = B353208B261D55C900EA788D /* Feed.swift */; };
+		B3F4ACC3261C3AD700D04B00 /* ToDoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F4ACC2261C3AD700D04B00 /* ToDoList.swift */; };
+>>>>>>> 041b689 (Create Domain)
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +44,13 @@
 		22A41EEC261C91B200248CAF /* TODOTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TODOTableViewDataSource.swift; sourceTree = "<group>"; };
 		22AE4A79261D847B0081AA19 /* WillTODOViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WillTODOViewModel.swift; sourceTree = "<group>"; };
 		22AE4A81261D97CF0081AA19 /* Obserable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Obserable.swift; sourceTree = "<group>"; };
+		B353207A261D487C00EA788D /* ToDo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDo.swift; sourceTree = "<group>"; };
+		B353207D261D489900EA788D /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		B3532080261D549600EA788D /* Doing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Doing.swift; sourceTree = "<group>"; };
+		B3532084261D559100EA788D /* Done.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Done.swift; sourceTree = "<group>"; };
+		B3532087261D55B100EA788D /* Timeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timeline.swift; sourceTree = "<group>"; };
+		B353208B261D55C900EA788D /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
+		B3F4ACC2261C3AD700D04B00 /* ToDoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,11 +92,26 @@
 				22AE4A81261D97CF0081AA19 /* Obserable.swift */,
 				22560CFD261C58D800E2B80D /* SectionCell.swift */,
 				22560CE2261C310F00E2B80D /* Main.storyboard */,
+				B3F4ACC1261C3ABB00D04B00 /* Domain */,
 				22560CE5261C311400E2B80D /* Assets.xcassets */,
 				22560CE7261C311400E2B80D /* LaunchScreen.storyboard */,
 				22560CEA261C311400E2B80D /* Info.plist */,
 			);
 			path = TODOList;
+			sourceTree = "<group>";
+		};
+		B3F4ACC1261C3ABB00D04B00 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				B3F4ACC2261C3AD700D04B00 /* ToDoList.swift */,
+				B353207A261D487C00EA788D /* ToDo.swift */,
+				B3532080261D549600EA788D /* Doing.swift */,
+				B3532084261D559100EA788D /* Done.swift */,
+				B353207D261D489900EA788D /* Card.swift */,
+				B3532087261D55B100EA788D /* Timeline.swift */,
+				B353208B261D55C900EA788D /* Feed.swift */,
+			);
+			path = Domain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,12 +186,20 @@
 			files = (
 				22560CE1261C310F00E2B80D /* TODOViewController.swift in Sources */,
 				22AE4A82261D97CF0081AA19 /* Obserable.swift in Sources */,
+				22560CE1261C310F00E2B80D /* ViewController.swift in Sources */,
+				B353208C261D55C900EA788D /* Feed.swift in Sources */,
+				B353207E261D489900EA788D /* Card.swift in Sources */,
+				B353207B261D487C00EA788D /* ToDo.swift in Sources */,
+				B3532085261D559100EA788D /* Done.swift in Sources */,
+				B3532081261D549600EA788D /* Doing.swift in Sources */,
 				22560CDD261C310F00E2B80D /* AppDelegate.swift in Sources */,
 				22A41EED261C91B200248CAF /* TODOTableViewDataSource.swift in Sources */,
 				22560CF9261C557200E2B80D /* SectionViewController.swift in Sources */,
 				22560CFE261C58D800E2B80D /* SectionCell.swift in Sources */,
 				22560CDF261C310F00E2B80D /* SceneDelegate.swift in Sources */,
 				22AE4A7A261D847B0081AA19 /* WillTODOViewModel.swift in Sources */,
+				B3532088261D55B100EA788D /* Timeline.swift in Sources */,
+				B3F4ACC3261C3AD700D04B00 /* ToDoList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,6 +347,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B3PWYBKFUK;
 				INFOPLIST_FILE = TODOList/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -325,6 +366,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B3PWYBKFUK;
 				INFOPLIST_FILE = TODOList/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
