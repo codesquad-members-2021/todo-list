@@ -11,6 +11,8 @@
 		CE5ED8B4261DA13D00789822 /* ToDoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5ED8B3261DA13D00789822 /* ToDoController.swift */; };
 		CE5ED8B7261DA14F00789822 /* InProgressController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5ED8B6261DA14F00789822 /* InProgressController.swift */; };
 		CE5ED8BB261DA17E00789822 /* DoneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5ED8BA261DA17E00789822 /* DoneController.swift */; };
+		CE5ED8CC261E003900789822 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5ED8CA261E003900789822 /* CardCell.swift */; };
+		CE5ED8CD261E003900789822 /* CardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE5ED8CB261E003900789822 /* CardCell.xib */; };
 		FFC61936261D4ED20033D622 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC61935261D4ED20033D622 /* AppDelegate.swift */; };
 		FFC61938261D4ED20033D622 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC61937261D4ED20033D622 /* SceneDelegate.swift */; };
 		FFC6193A261D4ED20033D622 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC61939261D4ED20033D622 /* ViewController.swift */; };
@@ -24,6 +26,8 @@
 		CE5ED8B3261DA13D00789822 /* ToDoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoController.swift; sourceTree = "<group>"; };
 		CE5ED8B6261DA14F00789822 /* InProgressController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InProgressController.swift; sourceTree = "<group>"; };
 		CE5ED8BA261DA17E00789822 /* DoneController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneController.swift; sourceTree = "<group>"; };
+		CE5ED8CA261E003900789822 /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
+		CE5ED8CB261E003900789822 /* CardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardCell.xib; sourceTree = "<group>"; };
 		FFC61932261D4ED20033D622 /* ToDoListApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoListApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFC61935261D4ED20033D622 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FFC61937261D4ED20033D622 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +79,8 @@
 				CE5ED8B3261DA13D00789822 /* ToDoController.swift */,
 				CE5ED8B6261DA14F00789822 /* InProgressController.swift */,
 				CE5ED8BA261DA17E00789822 /* DoneController.swift */,
+				CE5ED8CA261E003900789822 /* CardCell.swift */,
+				CE5ED8CB261E003900789822 /* CardCell.xib */,
 			);
 			path = ToDoListApp;
 			sourceTree = "<group>";
@@ -139,6 +145,7 @@
 				FFC61942261D4ED60033D622 /* LaunchScreen.storyboard in Resources */,
 				FFC6193F261D4ED60033D622 /* Assets.xcassets in Resources */,
 				FFC6193D261D4ED20033D622 /* Main.storyboard in Resources */,
+				CE5ED8CD261E003900789822 /* CardCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,6 +159,7 @@
 				CE5ED8A9261D8B9800789822 /* BadgeView.swift in Sources */,
 				FFC6193A261D4ED20033D622 /* ViewController.swift in Sources */,
 				CE5ED8B7261DA14F00789822 /* InProgressController.swift in Sources */,
+				CE5ED8CC261E003900789822 /* CardCell.swift in Sources */,
 				FFC61936261D4ED20033D622 /* AppDelegate.swift in Sources */,
 				CE5ED8B4261DA13D00789822 /* ToDoController.swift in Sources */,
 				CE5ED8BB261DA17E00789822 /* DoneController.swift in Sources */,
