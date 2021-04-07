@@ -109,18 +109,9 @@
 		8282B068261D2C180032D82C /* ColumnSection */ = {
 			isa = PBXGroup;
 			children = (
-				8288BCEF261CAE7200883E0E /* Column.swift */,
-				8282B05F261D28930032D82C /* CellIdentifiers.swift */,
-				8288BD04261CB2B200883E0E /* ColumnCell.swift */,
-				82E026C3261D367300651B9C /* CellData.swift */,
-				8288BCF4261CAF3500883E0E /* ColumnDataSource.swift */,
-				8288BCFF261CB24E00883E0E /* ColumnDelegate.swift */,
-				82E026C8261D37A100651B9C /* ColumnDatas.swift */,
-				82E026D0261D3BA800651B9C /* DataManager.swift */,
-				828737C8261D7AB600CC5372 /* ColumnTitleView.swift */,
-				828737CD261D7B1700CC5372 /* ColumnViewController.swift */,
-				828737D5261D940400CC5372 /* ColumnTitle.swift */,
-				821C242A261DA4D6001F4D50 /* Badge.swift */,
+				B0BC8B32261DBAC200B8122D /* Model */,
+				B0BC8B31261DBA9F00B8122D /* Controllers */,
+				B0BC8B30261DBA4D00B8122D /* View */,
 			);
 			path = ColumnSection;
 			sourceTree = "<group>";
@@ -179,6 +170,39 @@
 				B0BC8AEC261C434100B8122D /* Info.plist */,
 			);
 			path = ToDoListAppUITests;
+			sourceTree = "<group>";
+		};
+		B0BC8B30261DBA4D00B8122D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8288BCEF261CAE7200883E0E /* Column.swift */,
+				8288BD04261CB2B200883E0E /* ColumnCell.swift */,
+				828737C8261D7AB600CC5372 /* ColumnTitleView.swift */,
+				828737D5261D940400CC5372 /* ColumnTitle.swift */,
+				821C242A261DA4D6001F4D50 /* Badge.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B0BC8B31261DBA9F00B8122D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8288BCF4261CAF3500883E0E /* ColumnDataSource.swift */,
+				8288BCFF261CB24E00883E0E /* ColumnDelegate.swift */,
+				828737CD261D7B1700CC5372 /* ColumnViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		B0BC8B32261DBAC200B8122D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8282B05F261D28930032D82C /* CellIdentifiers.swift */,
+				82E026C3261D367300651B9C /* CellData.swift */,
+				82E026C8261D37A100651B9C /* ColumnDatas.swift */,
+				82E026D0261D3BA800651B9C /* DataManager.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
