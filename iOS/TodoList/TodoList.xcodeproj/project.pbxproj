@@ -7,8 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		71520A2E261C45F300BE3264 /* TaskTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71520A2D261C45F300BE3264 /* TaskTitleView.swift */; };
 		71520A33261C54AF00BE3264 /* TaskCountLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71520A32261C54AF00BE3264 /* TaskCountLabel.swift */; };
+		7199F444261D453100D21319 /* SignUpMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7199F443261D453100D21319 /* SignUpMainViewController.swift */; };
+		7199F44D261D456100D21319 /* EachInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7199F44C261D456100D21319 /* EachInfoView.swift */; };
+		7199F455261D457B00D21319 /* MainInfoStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7199F454261D457B00D21319 /* MainInfoStackView.swift */; };
+		7199F45A261D459A00D21319 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7199F459261D459A00D21319 /* CustomButton.swift */; };
+		7199F462261D45BA00D21319 /* MainTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7199F461261D45BA00D21319 /* MainTitleLabel.swift */; };
+		7199F46B261D45FC00D21319 /* RegexValidManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7199F46A261D45FC00D21319 /* RegexValidManager.swift */; };
+		7199F473261D460F00D21319 /* DateFormatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7199F472261D460F00D21319 /* DateFormatManager.swift */; };
+		7199F479261D463400D21319 /* InfoCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7199F478261D463400D21319 /* InfoCheck.swift */; };
+		7199F481261D464D00D21319 /* MainLabelContents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7199F480261D464D00D21319 /* MainLabelContents.swift */; };
+		7199F488261D468D00D21319 /* NetworkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7199F487261D468D00D21319 /* NetworkHandler.swift */; };
+		7199F491261D46AD00D21319 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7199F490261D46AD00D21319 /* Regex.swift */; };
 		762F649A261C2F6B001B879B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762F6499261C2F6B001B879B /* AppDelegate.swift */; };
 		762F649C261C2F6B001B879B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762F649B261C2F6B001B879B /* SceneDelegate.swift */; };
 		762F649E261C2F6B001B879B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762F649D261C2F6B001B879B /* ViewController.swift */; };
@@ -37,8 +47,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		71520A2D261C45F300BE3264 /* TaskTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTitleView.swift; sourceTree = "<group>"; };
 		71520A32261C54AF00BE3264 /* TaskCountLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCountLabel.swift; sourceTree = "<group>"; };
+		7199F443261D453100D21319 /* SignUpMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpMainViewController.swift; sourceTree = "<group>"; };
+		7199F44C261D456100D21319 /* EachInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EachInfoView.swift; sourceTree = "<group>"; };
+		7199F454261D457B00D21319 /* MainInfoStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInfoStackView.swift; sourceTree = "<group>"; };
+		7199F459261D459A00D21319 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		7199F461261D45BA00D21319 /* MainTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTitleLabel.swift; sourceTree = "<group>"; };
+		7199F46A261D45FC00D21319 /* RegexValidManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegexValidManager.swift; sourceTree = "<group>"; };
+		7199F472261D460F00D21319 /* DateFormatManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatManager.swift; sourceTree = "<group>"; };
+		7199F478261D463400D21319 /* InfoCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCheck.swift; sourceTree = "<group>"; };
+		7199F480261D464D00D21319 /* MainLabelContents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainLabelContents.swift; sourceTree = "<group>"; };
+		7199F487261D468D00D21319 /* NetworkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHandler.swift; sourceTree = "<group>"; };
+		7199F490261D46AD00D21319 /* Regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
 		762F6496261C2F6B001B879B /* TodoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		762F6499261C2F6B001B879B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		762F649B261C2F6B001B879B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -83,10 +103,64 @@
 		71520A29261C45CB00BE3264 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				71520A2D261C45F300BE3264 /* TaskTitleView.swift */,
 				71520A32261C54AF00BE3264 /* TaskCountLabel.swift */,
+				7199F459261D459A00D21319 /* CustomButton.swift */,
+				7199F461261D45BA00D21319 /* MainTitleLabel.swift */,
+				7199F44B261D454800D21319 /* SignUpView */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		7199F442261D451500D21319 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				762F649D261C2F6B001B879B /* ViewController.swift */,
+				7199F443261D453100D21319 /* SignUpMainViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7199F44B261D454800D21319 /* SignUpView */ = {
+			isa = PBXGroup;
+			children = (
+				7199F44C261D456100D21319 /* EachInfoView.swift */,
+				7199F454261D457B00D21319 /* MainInfoStackView.swift */,
+			);
+			path = SignUpView;
+			sourceTree = "<group>";
+		};
+		7199F469261D45EC00D21319 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7199F46A261D45FC00D21319 /* RegexValidManager.swift */,
+				7199F472261D460F00D21319 /* DateFormatManager.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7199F477261D462000D21319 /* enum */ = {
+			isa = PBXGroup;
+			children = (
+				7199F478261D463400D21319 /* InfoCheck.swift */,
+				7199F480261D464D00D21319 /* MainLabelContents.swift */,
+			);
+			path = enum;
+			sourceTree = "<group>";
+		};
+		7199F486261D467600D21319 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				7199F487261D468D00D21319 /* NetworkHandler.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		7199F48F261D469F00D21319 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				7199F490261D46AD00D21319 /* Regex.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		762F648D261C2F6B001B879B = {
@@ -112,10 +186,14 @@
 		762F6498261C2F6B001B879B /* TodoList */ = {
 			isa = PBXGroup;
 			children = (
+				7199F48F261D469F00D21319 /* Extension */,
+				7199F486261D467600D21319 /* Network */,
+				7199F477261D462000D21319 /* enum */,
+				7199F469261D45EC00D21319 /* Model */,
+				7199F442261D451500D21319 /* Controller */,
 				71520A29261C45CB00BE3264 /* View */,
 				762F6499261C2F6B001B879B /* AppDelegate.swift */,
 				762F649B261C2F6B001B879B /* SceneDelegate.swift */,
-				762F649D261C2F6B001B879B /* ViewController.swift */,
 				762F649F261C2F6B001B879B /* Main.storyboard */,
 				762F64A2261C2F6D001B879B /* Assets.xcassets */,
 				762F64A4261C2F6D001B879B /* LaunchScreen.storyboard */,
@@ -272,11 +350,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7199F479261D463400D21319 /* InfoCheck.swift in Sources */,
+				7199F473261D460F00D21319 /* DateFormatManager.swift in Sources */,
 				71520A33261C54AF00BE3264 /* TaskCountLabel.swift in Sources */,
 				762F649E261C2F6B001B879B /* ViewController.swift in Sources */,
 				762F649A261C2F6B001B879B /* AppDelegate.swift in Sources */,
-				71520A2E261C45F300BE3264 /* TaskTitleView.swift in Sources */,
+				7199F44D261D456100D21319 /* EachInfoView.swift in Sources */,
+				7199F45A261D459A00D21319 /* CustomButton.swift in Sources */,
+				7199F462261D45BA00D21319 /* MainTitleLabel.swift in Sources */,
+				7199F46B261D45FC00D21319 /* RegexValidManager.swift in Sources */,
+				7199F481261D464D00D21319 /* MainLabelContents.swift in Sources */,
 				762F649C261C2F6B001B879B /* SceneDelegate.swift in Sources */,
+				7199F491261D46AD00D21319 /* Regex.swift in Sources */,
+				7199F455261D457B00D21319 /* MainInfoStackView.swift in Sources */,
+				7199F444261D453100D21319 /* SignUpMainViewController.swift in Sources */,
+				7199F488261D468D00D21319 /* NetworkHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

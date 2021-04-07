@@ -14,6 +14,6 @@ class TaskCountLabel: UILabel {
     
     private func configrueLabel() {
         layer.masksToBounds = true
-        layer.cornerRadius = 0.5 * bounds.size.width
+        layer.cornerRadius = 10
     }
 }
