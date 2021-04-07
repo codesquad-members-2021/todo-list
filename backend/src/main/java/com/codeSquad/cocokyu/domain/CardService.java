@@ -13,6 +13,10 @@ public class CardService {
         this.cardRepository = cardRepository;
     }
 
+    public void write(Card card){
+        cardRepository.save(card);
+    }
+
     public CardList sortedList() {
         Iterable<Card> cards = findAll();
         CardList cardList = new CardList(cards);
@@ -22,6 +26,5 @@ public class CardService {
     private Iterable<Card> findAll() {
         return cardRepository.findAll();
     }
-
 
 }
