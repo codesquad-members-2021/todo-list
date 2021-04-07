@@ -7,6 +7,12 @@
 
 import Foundation
 
+//struct ToDoItems: Codable {
+//    let toBeDone: [ToDoItem]
+//    let onProgress: [ToDoItem]
+//    let completed: [ToDoItem]
+//}
+
 struct ToDoItem: Codable {
     let userId: Int
     let id: Int
