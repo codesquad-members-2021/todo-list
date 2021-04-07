@@ -52,31 +52,65 @@
 ##### JSON 포맷
 
 * ```json
-  {
-  	"columnList" : [
-          {
-              "id" : 1,
-              "columnTitle" : "TODO",
-              "taskList" : [
-                  {
-                      "id" : 1,
-                      "taskTitle" : "모던 자바스크립트 예제 실습",
-                      "taskContent" : "1장 예제 내용 실습 후 커밋까지",
-                      "createdDateTime" : "2021-03-21 13:24:00",
-                      "updatedDateTime" : null   
+  [
+      {
+          "id": 1,
+          "columnTitle": "TODO",
+          "taskList": [
+              {
+                  "id": 1,
+                  "taskTitle": "task1",
+                  "taskContent": "taskContent1",
+                  "author": {
+                      "id": 1,
+                      "name": "라쿠운",
+                      "userId": "Racoon",
+                      "password": "1234",
+                      "profileImage": ""
                   },
-                  {
-                      "id" : 2,
-                      "taskTitle" : "라쿤은 총을 들고 있나요?",
-                      "taskContent" : "어벤져스에 나와요 ㅎ",
-                      "createdDateTime" : "2021-03-21 15:24:00",
-                      "updatedDateTime" : null   
-                  }
-              ]
-          }
-      ]
-  }
+                  "createdDateTime": "2021-04-07T17:51:05.398",
+                  "updatedDateTime": null
+              },
+              {
+                  "id": 2,
+                  "taskTitle": "task2",
+                  "taskContent": "taskContent2",
+                  "author": {
+                      "id": 1,
+                      "name": "라쿠운",
+                      "userId": "Racoon",
+                      "password": "1234",
+                      "profileImage": ""
+                  },
+                  "createdDateTime": "2021-04-07T17:51:05.399",
+                  "updatedDateTime": null
+              }
+          ]
+      },
+      {
+          "id": 2,
+          "columnTitle": "IN_PROGRESS",
+          "taskList": [
+              {
+                  "id": 3,
+                  "taskTitle": "task3",
+                  "taskContent": "taskContent3",
+                  "author": {
+                      "id": 1,
+                      "name": "라쿠운",
+                      "userId": "Racoon",
+                      "password": "1234",
+                      "profileImage": ""
+                  },
+                  "createdDateTime": "2021-04-07T17:51:05.399",
+                  "updatedDateTime": null
+              }
+          ]
+      }
+  ]
   ```
+
+* 중복된 author은 제거할지 말지 고민중입니다
 
 
 
@@ -106,12 +140,17 @@
 
 * ```json
   {
-      "task" : {
-       	"id" : 1,
-          "taskTitle" : "모던 자바스크립트 예제 실습",
-          "taskContent" : "1장 예제 내용 실습 후 커밋까지",
-          "createdDateTime" : "2021-03-21 13:24:00",
-          "updatedDateTime" : null   
+      "id" : 1,
+      "taskTitle" : "모던 자바스크립트 예제 실습",
+      "taskContent" : "1장 예제 내용 실습 후 커밋까지",
+      "createdDateTime" : "2021-03-21 13:24:00",
+      "updatedDateTime" : null,
+      "author" : {
+          "id" : 1,
+          "userId" : "Raccoon",
+          "password" : "1234",
+          "name" : "라쿠운",
+          "profileImage" : "http://어딘가에_있는_라쿤_이미지.jpeg"
       }
   }
   ```
@@ -189,27 +228,25 @@
 ##### 설명
 
 * 로그 목록을 불러오는 API입니다
-* 로그를 최신순으로 5개만 응답합니다
+* 로그를 최신순으로 5개만 응답합니다
 * 로그인된 사용자만 이용할 수 있는 API입니다.
 
 ##### JSON 포맷
 
 * ```json
-  {
-      "logList" : [
-          {
+  [
+      {
+          "id" : 1,
+          "action" : "'move' '자바스크립트 예제 실습 수정됨!' 'TODO' 'IN_PROGRESS'",
+          "author" : {
               "id" : 1,
-              "action" : "'move' '자바스크립트 예제 실습 수정됨!' 'TODO' 'IN_PROGRESS'",
-              "author" : {
-                  "id" : 1,
-                  "userId" : "Raccoon",
-                  "password" : "1234",
-                  "name" : "라쿠운",
-                  "profileImage" : "http://어딘가에_있는_라쿤_이미지.jpeg"
-  	        },
-          	"createdDateTime" : "2021-03-21 13:24:00"
-          }
-      ]
-  }
+              "userId" : "Raccoon",
+              "password" : "1234",
+              "name" : "라쿠운",
+              "profileImage" : "http://어딘가에_있는_라쿤_이미지.jpeg"
+          },
+          "createdDateTime" : "2021-03-21 13:24:00"
+      }
+  ]
   ```
 
