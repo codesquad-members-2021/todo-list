@@ -13,7 +13,11 @@ class TaskCountLabel: UILabel {
     }
     
     private func configrueLabel() {
+        translatesAutoresizingMaskIntoConstraints = false
+        widthAnchor.constraint(equalToConstant: 26).isActive = true
+        heightAnchor.constraint(equalToConstant: 26).isActive = true
+        textAlignment = .center
         layer.masksToBounds = true
-        layer.cornerRadius = 10
+        layer.cornerRadius = layer.bounds.size.width/2
     }
 }
