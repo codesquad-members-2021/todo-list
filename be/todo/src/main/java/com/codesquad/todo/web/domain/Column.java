@@ -3,8 +3,8 @@ package com.codesquad.todo.web.domain;
 import java.util.List;
 
 public class Column {
-    private final long id;
-    private final String columnTitle;
+    private long id;
+    private String columnTitle;
     private List<Task> taskList;
 
     public Column(long id, String columnTitle) {

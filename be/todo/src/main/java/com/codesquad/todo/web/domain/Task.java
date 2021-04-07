@@ -3,20 +3,22 @@ package com.codesquad.todo.web.domain;
 import java.time.LocalDateTime;
 
 public class Task {
-    private final long id;
-    private final String taskTitle;
-    private final String taskContent;
-    private final User author;
-    private final Column column;
-    private final LocalDateTime createdDateTime;
+    private long id;
+    private String taskTitle;
+    private String taskContent;
+    private User author;
+    private Column column;
+    private LocalDateTime createdDateTime;
+    private LocalDateTime updatedDateTime;
 
-    public Task(long id, String taskTitle, String taskContent, User author, Column column, LocalDateTime createdDateTime) {
+    public Task(long id, String taskTitle, String taskContent, User author, Column column) {
         this.id = id;
         this.taskTitle = taskTitle;
         this.taskContent = taskContent;
         this.author = author;
         this.column = column;
-        this.createdDateTime = createdDateTime;
+        this.createdDateTime = LocalDateTime.now();
+        this.updatedDateTime = null;
     }
 
     public long getId() {
@@ -41,5 +43,9 @@ public class Task {
 
     public LocalDateTime getCreatedDateTime() {
         return createdDateTime;
+    }
+
+    public LocalDateTime getUpdatedDateTime() {
+        return updatedDateTime;
     }
 }
