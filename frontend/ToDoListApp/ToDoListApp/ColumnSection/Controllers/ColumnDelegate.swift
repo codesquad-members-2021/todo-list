@@ -9,6 +9,6 @@ import UIKit
 
 class ColumnDelegate : NSObject, UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return CGFloat(30)
+        return CGFloat(10)
     }
 }

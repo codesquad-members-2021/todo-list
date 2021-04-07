@@ -8,11 +8,9 @@
 import UIKit
 
 class ColumnDataSource : NSObject, UITableViewDataSource {
-    private let columnIdentifier : String
     private let datas : DataManager
     
-    init(columnidentifier : String, datamanager : DataManager) {
-        self.columnIdentifier = columnidentifier
+    init(datamanager : DataManager) {
         self.datas = datamanager
     }
     
@@ -21,11 +19,12 @@ class ColumnDataSource : NSObject, UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3 //temp will datas.count
+        return 3
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell : ColumnCell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.column1.rawValue) as? ColumnCell else {return UITableViewCell()}
+        guard let cell : ColumnCell = tableView.dequeueReusableCell(withIdentifier: "ColumnCell", for: indexPath) as? ColumnCell else {return UITableViewCell()}
+        
         return cell
     }
 }
