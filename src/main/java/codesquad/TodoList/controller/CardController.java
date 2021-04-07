@@ -21,15 +21,20 @@ public class CardController {
 
     // CREATE
     @PostMapping
-    public void newCard(@RequestParam("card") Card card) {
+    public String newCard(Card card) {
+        // 우선은 Todo에서만 새 Card 생성 가능
+        card.changeStateTodo();
         cardRepository.save(card);
+        return "redirect:/cards";
     }
+
     // READ
     @GetMapping
     @ResponseBody
     public List<Card> showCards() {
-         return cardRepository.findAllByTodoTrueOrDoingTrueOrDoneTrue();
+        return cardRepository.findAllByTodoTrueOrDoingTrueOrDoneTrue();
     }
+
     // MOVE
     @PutMapping("/{id}/status")
     public void moveCards() {
