@@ -80,10 +80,10 @@
             </objects>
             <point key="canvasLocation" x="-41.206030150753769" y="-278.41726618705036"/>
         </scene>
-        <!--View Controller-->
+        <!--Task View Controller-->
         <scene sceneID="YuX-gd-ucm">
             <objects>
-                <viewController id="DbM-z4-eRI" sceneMemberID="viewController">
+                <viewController id="DbM-z4-eRI" customClass="TaskViewController" customModule="Todo_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SoK-b3-ORE">
                         <rect key="frame" x="0.0" y="0.0" width="1043" height="734"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -156,6 +156,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="vSa-RL-Q9v"/>
                         <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Qfs-AN-4Cb" firstAttribute="top" secondItem="SoK-b3-ORE" secondAttribute="topMargin" constant="57" id="6Xj-oS-LZ7"/>
@@ -173,6 +174,11 @@
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Xl7-Lj-UMH" secondAttribute="trailing" constant="20" symbolic="YES" id="vcR-0o-JgN"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="doing" destination="mSe-ay-sak" id="UeP-Qx-V1B"/>
+                        <outlet property="done" destination="Nrg-u7-rCB" id="9vB-c8-UCh"/>
+                        <outlet property="todo" destination="Za1-ZW-bdI" id="oB9-YN-j36"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xiJ-A6-MnR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
