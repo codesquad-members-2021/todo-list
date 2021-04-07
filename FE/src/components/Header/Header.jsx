@@ -1,7 +1,7 @@
 import React from 'react';
 import './Header.css';
-import Menu from './../atoms/Menu';
-// import Menu from 'src/atoms/Menu';
+import Menu from 'atoms/Menu';
+
 
 const Header = () => {
     return (
