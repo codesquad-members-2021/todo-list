@@ -1,5 +1,7 @@
 package com.codesquad.todo.web.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.time.LocalDateTime;
 
 public class Task {
@@ -7,6 +9,7 @@ public class Task {
     private String taskTitle;
     private String taskContent;
     private User author;
+    @JsonIgnore
     private Column column;
     private LocalDateTime createdDateTime;
     private LocalDateTime updatedDateTime;
