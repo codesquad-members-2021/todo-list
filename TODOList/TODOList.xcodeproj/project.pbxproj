@@ -13,21 +13,21 @@
 		22560CE4261C310F00E2B80D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22560CE2261C310F00E2B80D /* Main.storyboard */; };
 		22560CE6261C311400E2B80D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22560CE5261C311400E2B80D /* Assets.xcassets */; };
 		22560CE9261C311400E2B80D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22560CE7261C311400E2B80D /* LaunchScreen.storyboard */; };
-<<<<<<< HEAD
 		22560CF9261C557200E2B80D /* SectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22560CF8261C557200E2B80D /* SectionViewController.swift */; };
 		22560CFE261C58D800E2B80D /* SectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22560CFD261C58D800E2B80D /* SectionCell.swift */; };
 		22A41EED261C91B200248CAF /* TODOTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A41EEC261C91B200248CAF /* TODOTableViewDataSource.swift */; };
 		22AE4A7A261D847B0081AA19 /* WillTODOViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AE4A79261D847B0081AA19 /* WillTODOViewModel.swift */; };
 		22AE4A82261D97CF0081AA19 /* Obserable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AE4A81261D97CF0081AA19 /* Obserable.swift */; };
-=======
 		B353207B261D487C00EA788D /* ToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B353207A261D487C00EA788D /* ToDo.swift */; };
 		B353207E261D489900EA788D /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = B353207D261D489900EA788D /* Card.swift */; };
 		B3532081261D549600EA788D /* Doing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3532080261D549600EA788D /* Doing.swift */; };
 		B3532085261D559100EA788D /* Done.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3532084261D559100EA788D /* Done.swift */; };
 		B3532088261D55B100EA788D /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3532087261D55B100EA788D /* Timeline.swift */; };
 		B353208C261D55C900EA788D /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = B353208B261D55C900EA788D /* Feed.swift */; };
+		B35B4427261D73D500FD5E83 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35B4426261D73D500FD5E83 /* Networking.swift */; };
+		B35B442A261D78DA00FD5E83 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35B4429261D78DA00FD5E83 /* DataManager.swift */; };
+		B35B4435261D969C00FD5E83 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35B4434261D969C00FD5E83 /* SessionManager.swift */; };
 		B3F4ACC3261C3AD700D04B00 /* ToDoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F4ACC2261C3AD700D04B00 /* ToDoList.swift */; };
->>>>>>> 041b689 (Create Domain)
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +50,9 @@
 		B3532084261D559100EA788D /* Done.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Done.swift; sourceTree = "<group>"; };
 		B3532087261D55B100EA788D /* Timeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timeline.swift; sourceTree = "<group>"; };
 		B353208B261D55C900EA788D /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
+		B35B4426261D73D500FD5E83 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		B35B4429261D78DA00FD5E83 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		B35B4434261D969C00FD5E83 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		B3F4ACC2261C3AD700D04B00 /* ToDoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -92,12 +95,23 @@
 				22AE4A81261D97CF0081AA19 /* Obserable.swift */,
 				22560CFD261C58D800E2B80D /* SectionCell.swift */,
 				22560CE2261C310F00E2B80D /* Main.storyboard */,
+				B35B4425261D73B700FD5E83 /* Data */,
 				B3F4ACC1261C3ABB00D04B00 /* Domain */,
 				22560CE5261C311400E2B80D /* Assets.xcassets */,
 				22560CE7261C311400E2B80D /* LaunchScreen.storyboard */,
 				22560CEA261C311400E2B80D /* Info.plist */,
 			);
 			path = TODOList;
+			sourceTree = "<group>";
+		};
+		B35B4425261D73B700FD5E83 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				B35B4426261D73D500FD5E83 /* Networking.swift */,
+				B35B4434261D969C00FD5E83 /* SessionManager.swift */,
+				B35B4429261D78DA00FD5E83 /* DataManager.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		B3F4ACC1261C3ABB00D04B00 /* Domain */ = {
@@ -187,6 +201,8 @@
 				22560CE1261C310F00E2B80D /* TODOViewController.swift in Sources */,
 				22AE4A82261D97CF0081AA19 /* Obserable.swift in Sources */,
 				22560CE1261C310F00E2B80D /* ViewController.swift in Sources */,
+				B35B4427261D73D500FD5E83 /* Networking.swift in Sources */,
+				B35B442A261D78DA00FD5E83 /* DataManager.swift in Sources */,
 				B353208C261D55C900EA788D /* Feed.swift in Sources */,
 				B353207E261D489900EA788D /* Card.swift in Sources */,
 				B353207B261D487C00EA788D /* ToDo.swift in Sources */,
@@ -200,6 +216,7 @@
 				22AE4A7A261D847B0081AA19 /* WillTODOViewModel.swift in Sources */,
 				B3532088261D55B100EA788D /* Timeline.swift in Sources */,
 				B3F4ACC3261C3AD700D04B00 /* ToDoList.swift in Sources */,
+				B35B4435261D969C00FD5E83 /* SessionManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
