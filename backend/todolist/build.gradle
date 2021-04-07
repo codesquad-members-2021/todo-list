@@ -25,10 +25,21 @@ dependencies {
 
 
 	// Database
-	runtimeOnly 'mysql:mysql-connector-java'
+	//runtimeOnly 'mysql:mysql-connector-java'
 	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jdbc', version: '2.3.10.BUILD-SNAPSHOT'
+	compile group: 'org.springframework.data', name: 'spring-data-jdbc', version: '1.1.5.RELEASE'
+	compile group: 'com.h2database', name: 'h2', version: '1.4.197'
 
 
+	//test
+	testCompile 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+	testCompile("org.assertj:assertj-core:3.11.1")
+
+	//log
+	// https://mvnrepository.com/artifact/ch.qos.logback/logback-core
+	compile group: 'ch.qos.logback', name: 'logback-core', version: '1.2.3'
+	// https://mvnrepository.com/artifact/ch.qos.logback/logback-classic
+	compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
 }
 
 test {
