@@ -6,20 +6,32 @@
 //
 
 import UIKit
+import Combine
 
 class TODOTableViewDataSource: NSObject {
-    var subject: [String]
-    var body: [String]
-    var handler: (State) -> ()
+    var changeClosure: (() -> ())?
+    private var subject: [String]
+    private var body: [String]
+    private var author: [String]
     
     override init() {
         self.subject = [String]()
         self.body = [String]()
-        self.handler = { _ in }
-        super.init()
-        self.handler = { state in
-            self.subject = state.subject
-            self.body = state.body
+        self.author = [String]()
+    }
+    
+    @objc func valueChanged() {
+        changeClosure?()
+    }
+    
+    func bind(to observable: TextObservable<[String]>) {
+        //MARK: Add observer 위치
+        changeClosure = { [weak self] in
+            observable.changeValue(to: self?.subject ?? [String]())
+        }
+        
+        observable.changeClosure = { [weak self] value in
+            self?.subject = value ?? [String]()
         }
     }
 }

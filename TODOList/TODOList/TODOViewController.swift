@@ -23,18 +23,19 @@ class TODOViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Segues.willTODO {
             guard let viewController = segue.destination as? SectionViewController else { return }
-            viewController.mode = .willTODO
+            viewController.setSectionMode(mode: .willTODO)
         } else if segue.identifier == Segues.doingTODO {
             guard let viewController = segue.destination as? SectionViewController else { return }
-            viewController.mode = .doingTODO
+            viewController.setSectionMode(mode: .doingTODO)
         } else if segue.identifier == Segues.completeTODO {
             guard let viewController = segue.destination as? SectionViewController else { return }
-            viewController.mode = .completeTODO
+            viewController.setSectionMode(mode: .completeTODO)
         }
     }
 }

@@ -16,6 +16,8 @@
 		22560CF9261C557200E2B80D /* SectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22560CF8261C557200E2B80D /* SectionViewController.swift */; };
 		22560CFE261C58D800E2B80D /* SectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22560CFD261C58D800E2B80D /* SectionCell.swift */; };
 		22A41EED261C91B200248CAF /* TODOTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A41EEC261C91B200248CAF /* TODOTableViewDataSource.swift */; };
+		22AE4A7A261D847B0081AA19 /* WillTODOViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AE4A79261D847B0081AA19 /* WillTODOViewModel.swift */; };
+		22AE4A82261D97CF0081AA19 /* Obserable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AE4A81261D97CF0081AA19 /* Obserable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		22560CF8261C557200E2B80D /* SectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionViewController.swift; sourceTree = "<group>"; };
 		22560CFD261C58D800E2B80D /* SectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionCell.swift; sourceTree = "<group>"; };
 		22A41EEC261C91B200248CAF /* TODOTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TODOTableViewDataSource.swift; sourceTree = "<group>"; };
+		22AE4A79261D847B0081AA19 /* WillTODOViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WillTODOViewModel.swift; sourceTree = "<group>"; };
+		22AE4A81261D97CF0081AA19 /* Obserable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Obserable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +71,8 @@
 				22560CE0261C310F00E2B80D /* TODOViewController.swift */,
 				22560CF8261C557200E2B80D /* SectionViewController.swift */,
 				22A41EEC261C91B200248CAF /* TODOTableViewDataSource.swift */,
+				22AE4A79261D847B0081AA19 /* WillTODOViewModel.swift */,
+				22AE4A81261D97CF0081AA19 /* Obserable.swift */,
 				22560CFD261C58D800E2B80D /* SectionCell.swift */,
 				22560CE2261C310F00E2B80D /* Main.storyboard */,
 				22560CE5261C311400E2B80D /* Assets.xcassets */,
@@ -147,11 +153,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				22560CE1261C310F00E2B80D /* TODOViewController.swift in Sources */,
+				22AE4A82261D97CF0081AA19 /* Obserable.swift in Sources */,
 				22560CDD261C310F00E2B80D /* AppDelegate.swift in Sources */,
 				22A41EED261C91B200248CAF /* TODOTableViewDataSource.swift in Sources */,
 				22560CF9261C557200E2B80D /* SectionViewController.swift in Sources */,
 				22560CFE261C58D800E2B80D /* SectionCell.swift in Sources */,
 				22560CDF261C310F00E2B80D /* SceneDelegate.swift in Sources */,
+				22AE4A7A261D847B0081AA19 /* WillTODOViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
