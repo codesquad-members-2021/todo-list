@@ -16,12 +16,27 @@ public class Card {
         this.status = status;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getContents() {
+        return contents;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
     @Override
     public String toString() {
         return "Card{" +
                 "title='" + title + '\'' +
                 ", contents='" + contents + '\'' +
-//                ", author=" + author +
                 ", status='" + status + '\'' +
                 '}';
     }
