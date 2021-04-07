@@ -1,17 +1,17 @@
 CREATE TABLE column (
-  id int PRIMARY KEY,
+  id int AUTO_INCREMENT PRIMARY KEY,
   name varchar (50) NOT NULL
 );
 
 CREATE TABLE user (
-  id int PRIMARY KEY,
+  id int AUTO_INCREMENT PRIMARY KEY,
   userid VARCHAR (45) NOT NULL UNIQUE,
   password varchar (45) NOT NULL,
   name varchar (45) NOT NULL
 );
 
 CREATE TABLE card (
-    id int PRIMARY KEY,
+    id int AUTO_INCREMENT PRIMARY KEY,
     title varchar (50),
     body varchar (500),
     column_id int,
@@ -21,7 +21,7 @@ CREATE TABLE card (
 );
 
 CREATE TABLE log (
-    id int PRIMARY KEY,
+    id int AUTO_INCREMENT PRIMARY KEY,
     action_user int,
     action char (10),
     title varchar (50),

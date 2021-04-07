@@ -14,7 +14,7 @@ public class CardController {
 
     @GetMapping
     public List<Card> card() {
-        return Arrays.asList(new Card(), new Card());
+        return null;
     }
 
 }
