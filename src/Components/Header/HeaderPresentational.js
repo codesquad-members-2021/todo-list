@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import NavigationBar from "./navigationBar";
 
 function HeaderPresentational() {
   const [mode, setMode] = useState(false);
@@ -10,23 +11,13 @@ function HeaderPresentational() {
         <div>Todo-List</div>
         <Header_button
           type="button"
-          value="◀"
+          value="MENU"
           onClick={() => {
-            mode === false ? setMode(true) : setMode(false);
+            mode ? setMode(false) : setMode(true);
           }}
         />
+        {mode && <NavigationBar mode={mode} setMode={setMode}></NavigationBar>}
       </Header>
-      {!mode ? null : (
-        <NAVIGATION>
-          <CLOSE
-            onClick={() => {
-              mode ? setMode(false) : setMode(true);
-            }}
-          >
-            ❌
-          </CLOSE>
-        </NAVIGATION>
-      )}
     </div>
   );
 }
@@ -34,7 +25,7 @@ function HeaderPresentational() {
 const Header = styled.section`
   display: flex;
   position: relative;
-  padding: 50px 100px;
+  padding: 5% 10%;
   box-sizing: border-box;
   width: 100%;
   justify-content: space-between;
@@ -48,22 +39,4 @@ const Header_button = styled.input`
     transform: translateY(2px);
   }
 `;
-const NAVIGATION = styled.div`
-  position: absolute;
-  top: 50px;
-  right: 100px;
-  width: 20%;
-  height: 100px;
-  background-color: white;
-`;
-const CLOSE = styled.button`
-  background-color: transparent;
-  float: right;
-  outline: none;
-  border: none;
-  &:active {
-    transform: translateY(2px);
-  }
-`;
-
 export default HeaderPresentational;
