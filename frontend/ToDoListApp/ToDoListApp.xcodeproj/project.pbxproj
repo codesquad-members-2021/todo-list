@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		8282B060261D28930032D82C /* CellIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8282B05F261D28930032D82C /* CellIdentifiers.swift */; };
+		828737C9261D7AB600CC5372 /* ColumnTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828737C8261D7AB600CC5372 /* ColumnTitleView.swift */; };
+		828737CE261D7B1700CC5372 /* ColumnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828737CD261D7B1700CC5372 /* ColumnViewController.swift */; };
 		8288BCD3261C964000883E0E /* HistoryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8288BCD2261C964000883E0E /* HistoryButton.swift */; };
 		8288BCF0261CAE7200883E0E /* Column.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8288BCEF261CAE7200883E0E /* Column.swift */; };
 		8288BCF5261CAF3500883E0E /* ColumnDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8288BCF4261CAF3500883E0E /* ColumnDataSource.swift */; };
@@ -50,6 +52,8 @@
 
 /* Begin PBXFileReference section */
 		8282B05F261D28930032D82C /* CellIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellIdentifiers.swift; sourceTree = "<group>"; };
+		828737C8261D7AB600CC5372 /* ColumnTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnTitleView.swift; sourceTree = "<group>"; };
+		828737CD261D7B1700CC5372 /* ColumnViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnViewController.swift; sourceTree = "<group>"; };
 		8288BCD2261C964000883E0E /* HistoryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryButton.swift; sourceTree = "<group>"; };
 		8288BCEF261CAE7200883E0E /* Column.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Column.swift; sourceTree = "<group>"; };
 		8288BCF4261CAF3500883E0E /* ColumnDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnDataSource.swift; sourceTree = "<group>"; };
@@ -125,6 +129,8 @@
 				8288BCFF261CB24E00883E0E /* ColumnDelegate.swift */,
 				82E026C8261D37A100651B9C /* ColumnDatas.swift */,
 				82E026D0261D3BA800651B9C /* DataManager.swift */,
+				828737C8261D7AB600CC5372 /* ColumnTitleView.swift */,
+				828737CD261D7B1700CC5372 /* ColumnViewController.swift */,
 			);
 			path = ColumnSection;
 			sourceTree = "<group>";

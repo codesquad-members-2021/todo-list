@@ -16,7 +16,7 @@ class ColumnCell : UITableViewCell {
         title = UILabel()
         body = UILabel()
         caption = UILabel()
-        super.init(style: .default, reuseIdentifier: reuseIdentifier)
+        super.init(style: .value1, reuseIdentifier: reuseIdentifier)
     }
     
     required init?(coder: NSCoder) {
@@ -24,6 +24,14 @@ class ColumnCell : UITableViewCell {
         body = UILabel()
         caption = UILabel()
         super.init(coder: coder)
+    }
+    
+    func update(title: String){
+        self.title.text = title
+    }
+    
+    func update(body: String){
+        
     }
 }
 
