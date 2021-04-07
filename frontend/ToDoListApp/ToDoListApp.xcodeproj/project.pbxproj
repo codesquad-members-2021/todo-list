@@ -7,9 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8282B060261D28930032D82C /* CellIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8282B05F261D28930032D82C /* CellIdentifiers.swift */; };
 		8288BCD3261C964000883E0E /* HistoryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8288BCD2261C964000883E0E /* HistoryButton.swift */; };
+		8288BCF0261CAE7200883E0E /* Column.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8288BCEF261CAE7200883E0E /* Column.swift */; };
+		8288BCF5261CAF3500883E0E /* ColumnDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8288BCF4261CAF3500883E0E /* ColumnDataSource.swift */; };
+		8288BD00261CB24E00883E0E /* ColumnDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8288BCFF261CB24E00883E0E /* ColumnDelegate.swift */; };
+		8288BD05261CB2B200883E0E /* ColumnCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8288BD04261CB2B200883E0E /* ColumnCell.swift */; };
 		82964F41261C4F02004E67F1 /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82964F40261C4F02004E67F1 /* TitleLabel.swift */; };
 		82964F46261C52A9004E67F1 /* TopSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82964F45261C52A9004E67F1 /* TopSectionView.swift */; };
+		82E026C4261D367300651B9C /* CellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E026C3261D367300651B9C /* CellData.swift */; };
+		82E026C9261D37A100651B9C /* ColumnDatas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E026C8261D37A100651B9C /* ColumnDatas.swift */; };
+		82E026D1261D3BA800651B9C /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E026D0261D3BA800651B9C /* DataManager.swift */; };
 		B0BC8AC9261C433E00B8122D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BC8AC8261C433E00B8122D /* AppDelegate.swift */; };
 		B0BC8ACB261C433E00B8122D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BC8ACA261C433E00B8122D /* SceneDelegate.swift */; };
 		B0BC8ACD261C433E00B8122D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BC8ACC261C433E00B8122D /* ViewController.swift */; };
@@ -41,9 +49,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8282B05F261D28930032D82C /* CellIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellIdentifiers.swift; sourceTree = "<group>"; };
 		8288BCD2261C964000883E0E /* HistoryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryButton.swift; sourceTree = "<group>"; };
+		8288BCEF261CAE7200883E0E /* Column.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Column.swift; sourceTree = "<group>"; };
+		8288BCF4261CAF3500883E0E /* ColumnDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnDataSource.swift; sourceTree = "<group>"; };
+		8288BCFF261CB24E00883E0E /* ColumnDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnDelegate.swift; sourceTree = "<group>"; };
+		8288BD04261CB2B200883E0E /* ColumnCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnCell.swift; sourceTree = "<group>"; };
 		82964F40261C4F02004E67F1 /* TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
 		82964F45261C52A9004E67F1 /* TopSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopSectionView.swift; sourceTree = "<group>"; };
+		82E026C3261D367300651B9C /* CellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellData.swift; sourceTree = "<group>"; };
+		82E026C8261D37A100651B9C /* ColumnDatas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnDatas.swift; sourceTree = "<group>"; };
+		82E026D0261D3BA800651B9C /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		B0BC8AC5261C433E00B8122D /* ToDoListApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoListApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0BC8AC8261C433E00B8122D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B0BC8ACA261C433E00B8122D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +104,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8282B067261D2C050032D82C /* TopSection */ = {
+			isa = PBXGroup;
+			children = (
+				8288BCD2261C964000883E0E /* HistoryButton.swift */,
+				82964F45261C52A9004E67F1 /* TopSectionView.swift */,
+				82964F40261C4F02004E67F1 /* TitleLabel.swift */,
+			);
+			path = TopSection;
+			sourceTree = "<group>";
+		};
+		8282B068261D2C180032D82C /* ColumnSection */ = {
+			isa = PBXGroup;
+			children = (
+				8288BCEF261CAE7200883E0E /* Column.swift */,
+				8282B05F261D28930032D82C /* CellIdentifiers.swift */,
+				8288BD04261CB2B200883E0E /* ColumnCell.swift */,
+				82E026C3261D367300651B9C /* CellData.swift */,
+				8288BCF4261CAF3500883E0E /* ColumnDataSource.swift */,
+				8288BCFF261CB24E00883E0E /* ColumnDelegate.swift */,
+				82E026C8261D37A100651B9C /* ColumnDatas.swift */,
+				82E026D0261D3BA800651B9C /* DataManager.swift */,
+			);
+			path = ColumnSection;
+			sourceTree = "<group>";
+		};
 		B0BC8ABC261C433E00B8122D = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +152,8 @@
 		B0BC8AC7261C433E00B8122D /* ToDoListApp */ = {
 			isa = PBXGroup;
 			children = (
+				8282B068261D2C180032D82C /* ColumnSection */,
+				8282B067261D2C050032D82C /* TopSection */,
 				B0BC8AC8261C433E00B8122D /* AppDelegate.swift */,
 				B0BC8ACA261C433E00B8122D /* SceneDelegate.swift */,
 				B0BC8ACC261C433E00B8122D /* ViewController.swift */,
@@ -275,11 +318,17 @@
 			files = (
 				B0BC8B0C261C924E00B8122D /* NetworkService.swift in Sources */,
 				B0BC8ACD261C433E00B8122D /* ViewController.swift in Sources */,
+				82E026D1261D3BA800651B9C /* DataManager.swift in Sources */,
+				8288BCF5261CAF3500883E0E /* ColumnDataSource.swift in Sources */,
+				8288BD05261CB2B200883E0E /* ColumnCell.swift in Sources */,
 				82964F41261C4F02004E67F1 /* TitleLabel.swift in Sources */,
+				8288BCF0261CAE7200883E0E /* Column.swift in Sources */,
 				82964F46261C52A9004E67F1 /* TopSectionView.swift in Sources */,
+				82E026C9261D37A100651B9C /* ColumnDatas.swift in Sources */,
 				B0BC8AC9261C433E00B8122D /* AppDelegate.swift in Sources */,
 				B0BC8B01261C8BDC00B8122D /* MockNetworkService.swift in Sources */,
 				B0BC8ACB261C433E00B8122D /* SceneDelegate.swift in Sources */,
+				82E026C4261D367300651B9C /* CellData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
