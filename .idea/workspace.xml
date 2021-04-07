@@ -5,16 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="af93a8a2-2eed-469e-a744-7ac329506fe2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/Card.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/CardRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/todo-list/src/main/resources/data.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/CardController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/todo-list/src/main/resources/schema.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/ApplicationConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/ApplicationConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/Card.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/TodoListApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/TodoListApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/config/ApplicationConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/ApplicationConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/todo-list/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/todo-list/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/todo-list/src/main/resources/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/backend/todo-list/src/main/resources/data.sql" afterDir="false" />
+    </list>
+    <list id="e789658e-71ba-41fc-810c-115e6323bee0" name="Changes by yunhyeji" comment="">
+      <change beforePath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/Card.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +54,14 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/Card.java">
+      <ranges>
+        <range start1="18" end1="18" start2="18" end2="34" changelist="e789658e-71ba-41fc-810c-115e6323bee0" />
+        <range start1="23" end1="24" start2="39" end2="39" changelist="af93a8a2-2eed-469e-a744-7ac329506fe2" />
+      </ranges>
+    </file>
+  </component>
   <component name="ProjectId" id="1qoZS7VqS2TcEUdf5pH0pvtyiJp" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -79,15 +88,13 @@
     <property name="settings.editor.selected.configurable" value="preferences.editor" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -110,7 +117,8 @@
       <updated>1617747900146</updated>
       <workItem from="1617747901451" duration="354000" />
       <workItem from="1617748279403" duration="4858000" />
-      <workItem from="1617754187733" duration="6395000" />
+      <workItem from="1617754187733" duration="7966000" />
+      <workItem from="1617775402711" duration="3280000" />
     </task>
     <servers />
   </component>
