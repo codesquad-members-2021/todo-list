@@ -10,13 +10,24 @@ public class Card {
     private String body;
 
     private Long columnId;
-    private Long authorId;
 
-    public Card(String title, String body, Long columnId, Long authorId) {
+    Card(Long id, String title, String body, Long columnId) {
+        this.id = id;
         this.title = title;
         this.body = body;
         this.columnId = columnId;
-        this.authorId = authorId;
+    }
+
+    public static Card create(String title, String body, Long columnId) {
+        return new Card(null, title, body, columnId);
+    }
+
+    public static Card create(Long id, String title, String body, Long columnId) {
+        return new Card(id, title, body, columnId);
+    }
+
+    public Long getId() {
+        return id;
     }
 
     @Override
@@ -26,7 +37,12 @@ public class Card {
                 ", title='" + title + '\'' +
                 ", body='" + body + '\'' +
                 ", columnId=" + columnId +
-                ", authorId=" + authorId +
                 '}';
+    }
+
+    public void update(Card updateCardInfo) {
+        this.title = updateCardInfo.title;
+        this.body = updateCardInfo.body;
+        this.columnId = updateCardInfo.columnId;
     }
 }

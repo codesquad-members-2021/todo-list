@@ -15,9 +15,7 @@ CREATE TABLE card (
     title varchar (50),
     body varchar (500),
     column_id int,
-    author_id int,
-    CONSTRAINT COL FOREIGN KEY(column_id) REFERENCES column(id),
-    CONSTRAINT AUTHOR FOREIGN KEY(author_id) REFERENCES user(id)
+    CONSTRAINT COL FOREIGN KEY(column_id) REFERENCES column(id)
 );
 
 CREATE TABLE log (
