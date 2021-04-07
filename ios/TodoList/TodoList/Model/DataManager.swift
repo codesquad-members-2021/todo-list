@@ -15,7 +15,7 @@ class DataManager {
                 if let data = data {
                     let result = JSONParser.parseData(data: data)!
                     print(result)
-                    completion(result.getTitleString())
+                    completion(result.getTodoListString())
                 }
             }.resume()
         }
