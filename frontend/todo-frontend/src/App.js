@@ -1,7 +1,8 @@
-import "./App.css";
+import './App.css';
+import TodoTemplate from './component/TodoTemplate.js';
 
 function App() {
-  return <div>HELLO</div>;
+  return <TodoTemplate />;
 }
 
 export default App;
