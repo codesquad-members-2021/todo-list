@@ -30,6 +30,18 @@ public class Card {
         return id;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public String getBody() {
+        return body;
+    }
+
+    public Long getColumnId() {
+        return columnId;
+    }
+
     @Override
     public String toString() {
         return "Card{" +
