@@ -9,15 +9,12 @@ import Foundation
 
 class ToDoUseCase: ToDoUseCasePort {
     private var toDo: ToDoManageable
-//    private var toDoService: ToDoServicePort
-//    private var toDoRepogitory:
     
     init(toDo: ToDoManageable) {
         self.toDo = toDo
     }
     
     func add(toDo: ToDoManageable) {
-//        toDoService.add(toDo: toDo)
     }
     
     func edit(toDo: ToDoManageable) {
