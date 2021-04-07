@@ -203,7 +203,7 @@
               "author" : {
                   "id" : 1,
                   "userId" : "Raccoon",
-                  "password" : "1q2w3e4r",
+                  "password" : "1234",
                   "name" : "라쿠운",
                   "profileImage" : "http://어딘가에_있는_라쿤_이미지.jpeg"
   	        },
