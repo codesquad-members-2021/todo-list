@@ -8,13 +8,6 @@
 import UIKit
 
 class TODOViewController: UIViewController {
-    var state: State = {
-        var state = State()
-        state.subject = ["Hello", "World!", "HoHO"]
-        state.body = ["안녕하세요", "반갑습니다", "호호"]
-        return state
-    }()
-    
     enum Segues {
         static let willTODO = "WillTODO"
         static let doingTODO = "DoingTODO"

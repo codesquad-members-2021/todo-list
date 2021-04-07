@@ -7,27 +7,13 @@
 
 import UIKit
 
-protocol CellInfoDelegate {
-    func sendData()
-}
-
-class State {
-    var subject: [String]
-    var body: [String]
-    
-    init() {
-        self.subject = [String]()
-        self.body = [String]()
-    }
-}
-
-enum Mode {
-    case willTODO
-    case doingTODO
-    case completeTODO
-}
-
 class SectionViewController: UIViewController {
+    enum Mode {
+        case willTODO
+        case doingTODO
+        case completeTODO
+    }
+
     @IBOutlet weak var TODOTableView: UITableView!
     @IBOutlet var TODOTableViewDataSource: TODOTableViewDataSource!
     @IBOutlet weak var sectionTitle: UILabel!
@@ -39,7 +25,6 @@ class SectionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         TODOTableViewDataSource.bind(to: viewModel.value)
     }
     
