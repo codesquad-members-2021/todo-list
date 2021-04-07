@@ -14,15 +14,19 @@ public class Card {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonProperty
-    Long id;
+    private Long id;
 
     @JsonProperty
-    String title;
+    private String title;
 
     @JsonProperty
-    String contents;
+    private String contents;
 
     @JsonProperty
-    LocalDateTime createDate;
+    private LocalDateTime createDate;
+
+    private boolean toDo;
+    private boolean doing;
+    private boolean done;
 
 }
