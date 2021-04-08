@@ -90,7 +90,7 @@ https://www.notion.so/BeTasy-To-do-List-825c3a20680f4739b9b10dc76d39821e
 
 <img width="215" alt="스크린샷 2021-04-08 오후 11 44 31" src="https://user-images.githubusercontent.com/56783350/114047091-60cd2080-98c4-11eb-89bb-8b7d946885ee.png">
 
-### Atfer
+### After
 <img width="471" alt="스크린샷 2021-04-08 오후 11 40 36" src="https://user-images.githubusercontent.com/56783350/114046471-d389cc00-98c3-11eb-924f-e1910c1f3ac4.png">
 
 
