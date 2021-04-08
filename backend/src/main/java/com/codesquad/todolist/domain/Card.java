@@ -11,11 +11,11 @@ public class Card {
 
     private String title;
     private String contents;
-    private Status status;
+    private String status;
     private Long columnId;
     private LocalDateTime createdTime;
 
-    public Card(String title, String contents, Status status, Long columnId) {
+    public Card(String title, String contents, String status, Long columnId) {
         this.title = title;
         this.contents = contents;
         this.status = status;
@@ -35,7 +35,7 @@ public class Card {
         return contents;
     }
 
-    public Status getStatus() {
+    public String getStatus() {
         return status;
     }
 
