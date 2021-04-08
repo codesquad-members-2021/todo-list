@@ -2,6 +2,7 @@ import './app.css';
 import Button from './components/button/button';
 import Icon from './components/icon/icon';
 import TaskCardCount from './components/taskCardCount/taskCardCount';
+import ColumnHeader from './components/columnHeader/columnHeader';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Button type="submit" name="등록" />
       <Button type="edit" name="수정" />
       <TaskCardCount />
+      <ColumnHeader />
     </div>
   );
 }
