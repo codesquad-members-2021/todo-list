@@ -1,9 +1,10 @@
-import React, { useState, useCallback } from "react";
+import React, { useState } from "react";
 import TodoItem from "./TodoItem";
 import TodoListForm from "./TodoListForm";
 
-const TodoList = ({ data: { id, title, todoCards } }) => {
+const TodoList = ({ data: { id, title, todoCards }, deleteTodoColumn }) => {
   const [todos, setTodos] = useState(todoCards);
+  const [formSelected, setFormSelected] = useState(false);
 
   const addTodoItem = (todoCard) => {
     setTodos((todos) => [...todos, todoCard]);
@@ -16,13 +17,26 @@ const TodoList = ({ data: { id, title, todoCards } }) => {
   const todoCardList = todos.map((card) => (
     <TodoItem todoCard={card} deleteTodoItem={deleteTodoItem} />
   ));
+
+  const toggleForm = () => {
+    //
+    setFormSelected((formSelected) => !formSelected);
+  };
+
   return (
     <div>
       <div>
-        {title} {todos.length}개
+        <span>{title}</span>
+        <span>{todos.length}개</span>
+        <button onClick={toggleForm}>➕</button>
+        <button onClick={() => deleteTodoColumn(id)}>❌</button>
       </div>
 
-      <TodoListForm addTodoItem={addTodoItem} />
+      {formSelected ? (
+        <TodoListForm addTodoItem={addTodoItem} toggleForm={toggleForm} />
+      ) : (
+        <></>
+      )}
       <div>{todoCardList}</div>
     </div>
   );

@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 
-const TodoListForm = ({ addTodoItem }) => {
+const TodoListForm = ({ addTodoItem, toggleForm }) => {
   const onSubmitForm = (e) => {
     e.preventDefault();
     const newTodo = {
@@ -12,6 +12,10 @@ const TodoListForm = ({ addTodoItem }) => {
     inputTitleRef.current.value = "";
     inputContentRef.current.value = "";
     //id??? id를어찌할까 ? id=`column{위에서받아온거}card2`
+  };
+  const foldForm = (e) => {
+    e.preventDefault();
+    toggleForm();
   };
 
   const inputTitleRef = useRef(); //inputTitleRef.current.value
@@ -26,7 +30,7 @@ const TodoListForm = ({ addTodoItem }) => {
         ref={inputContentRef}
       />
       <button type="submit">등록</button>
-      <button>취소</button>
+      <button onClick={foldForm}>취소</button>
     </form>
   );
 };
