@@ -40,6 +40,7 @@
                                     <constraint firstAttribute="trailing" secondItem="ww5-my-TLS" secondAttribute="trailing" constant="52" id="F5C-4p-EhS"/>
                                     <constraint firstItem="iPg-HR-DQK" firstAttribute="leading" secondItem="a7V-fu-JWU" secondAttribute="leading" constant="48" id="pxh-en-OEF"/>
                                     <constraint firstItem="ww5-my-TLS" firstAttribute="centerY" secondItem="a7V-fu-JWU" secondAttribute="centerY" id="rGe-Uf-634"/>
+                                    <constraint firstItem="ww5-my-TLS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iPg-HR-DQK" secondAttribute="trailing" id="srd-WE-OEA"/>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="zdt-VD-UNK">
@@ -78,7 +79,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="backgroundGray"/>
                         <constraints>
-                            <constraint firstItem="a7V-fu-JWU" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="2A0-9T-vOt"/>
+                            <constraint firstItem="a7V-fu-JWU" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="2A0-9T-vOt"/>
                             <constraint firstItem="zdt-VD-UNK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="48" id="Q7f-FZ-76K"/>
                             <constraint firstItem="a7V-fu-JWU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Uxs-KY-lxl"/>
                             <constraint firstItem="zdt-VD-UNK" firstAttribute="top" secondItem="a7V-fu-JWU" secondAttribute="bottom" constant="50" id="jlo-Iu-cDf"/>
