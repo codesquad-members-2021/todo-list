@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/items")
+@RequestMapping("/api/cards")
 public class ApiCardController {
 
     @PostMapping
@@ -36,5 +36,15 @@ public class ApiCardController {
         return new Card(cardId, "woody", "title1",
                 "content1", LocalDateTime.now(), true,
                 1, 0);
+    }
+
+    @PutMapping("/{cardId}")
+    public void update(@PathVariable int cardId, Card cardToUpdate) {
+
+    }
+
+    @DeleteMapping("/{cardId}")
+    public void delete(@PathVariable int cardId) {
+
     }
 }
