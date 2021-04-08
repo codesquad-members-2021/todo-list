@@ -9,21 +9,30 @@ import UIKit
 
 class ToDoController: UIViewController {
 
+    @IBOutlet weak var todoTableView: UITableView!
+    
+    private var todoDataSource = ToDoTableViewDataSource()
+    private var todoDelegate = ToDoTableViewDelegate()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        configureDelegate()
+        configureCell()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func configureDelegate() {
+        todoTableView.delegate = todoDelegate
+        todoTableView.dataSource = todoDataSource
     }
-    */
+    
+    func configureCell() {
+        let nibName = UINib(nibName: "CardCell", bundle: nil)
+        todoTableView.register(nibName, forCellReuseIdentifier: "cardCell")
+        todoTableView.rowHeight = UITableView.automaticDimension
+        todoTableView.estimatedRowHeight = 108
+        todoTableView.separatorStyle = .none
+    }
 
 }
+
