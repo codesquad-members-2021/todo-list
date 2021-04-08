@@ -154,15 +154,17 @@ const Wrapper = styled.div`
     }
 `;
 
-const CardInput = ({ list, clickHandler }) => {
-    const [title, setTitle] = useState('');
-    const [body, setBody] = useState('');
-    const [isAble, setAbility] = useState(false);
+const CardInput = ({ list, index, clickHandler, isModify, originCard }) => {
+    const [title, setTitle] = useState(isModify ? originCard.title : '');
+    const [body, setBody] = useState(isModify ? originCard.body : '');
+    const [isAble, setAbility] = useState(isModify ? true : false);
+
     const addCard = () => {
         if (!isAble) return;
-        list.push({ title, body, author: 'web' });
+        list.splice(index, isModify ? 1 : 0, { title, body, author: 'web' });
         clickHandler();
     };
+    const deleteCard = () => clickHandler();
     const changeTitle = ({ target }) => {
         setTitle(() => {
             body.length * target.value.length
@@ -187,19 +189,21 @@ const CardInput = ({ list, clickHandler }) => {
                         className="card-input__text--title"
                         placeholder="제목을 입력하세요"
                         onChange={changeTitle}
+                        value={title}
                     ></input>
                     <input
                         className="card-input__text--body"
                         placeholder="내용을 입력하세요"
                         onChange={changebody}
+                        value={body}
                     ></input>
                 </div>
                 <div className="card-input__button">
-                    <ButtonNomal title="취소" />
+                    <ButtonNomal clickHandler={deleteCard} title="취소" />
                     <ButtonAccent
                         clickHandler={addCard}
                         isAble={isAble}
-                        title="등록"
+                        title={isModify ? '수정' : '등록'}
                     />
                 </div>
             </div>

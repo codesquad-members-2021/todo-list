@@ -5,12 +5,12 @@ import Column from './components/Seong/Column';
 
 const list = [
     {
-        title: '1',
+        title: '대충제목',
         body: '대충내용',
         author: 'web',
     },
     {
-        title: '2',
+        title: '제목',
         body: '대충ㅇㅇㅇㅇㅇㅇㅇㅇㅇ내용',
         author: 'web',
     },
