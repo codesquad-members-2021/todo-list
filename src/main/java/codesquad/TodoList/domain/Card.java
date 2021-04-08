@@ -1,5 +1,6 @@
 package codesquad.TodoList.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.Entity;
@@ -23,7 +24,8 @@ public class Card {
     private String contents;
 
     @JsonProperty
-    private LocalDateTime createDate = LocalDateTime.now();
+    //@JsonFormat()
+    private LocalDateTime dateTime = LocalDateTime.now();
 
     private boolean todo;
     private boolean doing;
@@ -72,12 +74,12 @@ public class Card {
         this.contents = contents;
     }
 
-    public LocalDateTime getCreateDate() {
-        return createDate;
+    public LocalDateTime getDateTime() {
+        return dateTime;
     }
 
-    public void setCreateDate(LocalDateTime createDate) {
-        this.createDate = createDate;
+    public void setDateTime(LocalDateTime createDate) {
+        this.dateTime = createDate;
     }
 
     public boolean isTodo() {
@@ -110,7 +112,7 @@ public class Card {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", contents='" + contents + '\'' +
-                ", createDate=" + createDate +
+                ", dateTime=" + dateTime +
                 ", todo=" + todo +
                 ", doing=" + doing +
                 ", done=" + done +
