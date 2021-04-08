@@ -1,40 +1,40 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const IconButton = styled.button`
-  color: #bdbdbd;
-  border: none;
-  background-color: transparent;
-`;
-
-function AddButton() {
+const AddButton = () => {
   return (
     <IconButton>
       <i className="fas fa-plus"></i>
     </IconButton>
   );
-}
-function DeleteButton() {
+};
+const DeleteButton = () => {
   return (
     <IconButton>
       <i className="fas fa-times"></i>
     </IconButton>
   );
-}
-function UserActionButton() {
+};
+const UserActionButton = () => {
   return (
     <IconButton>
       <i className="fas fa-bars"></i>
     </IconButton>
   );
-}
+};
 
-function Icon({ type }) {
+const Icon = ({ type }) => {
   return {
     add: <AddButton />,
     delete: <DeleteButton />,
     userAction: <UserActionButton />,
   }[type];
-}
+};
 
 export default Icon;
+
+const IconButton = styled.button`
+  color: #bdbdbd;
+  border: none;
+  background-color: transparent;
+`;
