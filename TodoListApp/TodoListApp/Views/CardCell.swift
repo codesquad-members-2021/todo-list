@@ -8,6 +8,7 @@
 import UIKit
 
 class CardCell: UITableViewCell {
+    @IBOutlet weak var cardBackgroundView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
@@ -15,8 +16,8 @@ class CardCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.contentView.layer.masksToBounds = true
-        self.contentView.layer.cornerRadius = 6.0
+        cardBackgroundView.layer.masksToBounds = true
+        cardBackgroundView.layer.cornerRadius = 6.0
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
