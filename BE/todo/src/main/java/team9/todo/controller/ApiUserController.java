@@ -22,8 +22,7 @@ public class ApiUserController {
 
     @GetMapping("/create")
     public User create() {
-        User user = new User();
-        user.setName("Hoyoung Jung");
+        User user = new User("honux", "honux");
         User savedUser = userRepository.save(user);
         logger.debug("saved: {}", savedUser);
         User u1 = userRepository.findById(1L).get();

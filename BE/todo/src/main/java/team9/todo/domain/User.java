@@ -1,16 +1,16 @@
 package team9.todo.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.annotation.Id;
-
-import java.time.LocalDate;
 
 public class User {
     @Id
     private Long id;
 
-    private String email;
-    private String name;
-    private LocalDate createdDate;
+    private String userId;
+
+    @JsonIgnore
+    private String password;
 
     public Long getId() {
         return id;
@@ -20,37 +20,33 @@ public class User {
         this.id = id;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
-    public String getName() {
-        return name;
+    public String getPassword() {
+        return password;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public LocalDate getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(LocalDate createdDate) {
-        this.createdDate = createdDate;
+    public User(String userId, String password) {
+        this.userId = userId;
+        this.password = password;
     }
 
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", email='" + email + '\'' +
-                ", name='" + name + '\'' +
-                ", createdDate=" + createdDate +
+                ", userId='" + userId + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
 }
