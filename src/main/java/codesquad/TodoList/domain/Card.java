@@ -54,6 +54,12 @@ public class Card {
         this.done = true;
     }
 
+    public void delete() {
+        this.todo = false;
+        this.doing = false;
+        this.done = false;
+    }
+
     public Long getId() {
         return id;
     }
@@ -86,24 +92,12 @@ public class Card {
         return todo;
     }
 
-    public void setTodo(boolean todo) {
-        this.todo = todo;
-    }
-
     public boolean isDoing() {
         return doing;
     }
 
-    public void setDoing(boolean doing) {
-        this.doing = doing;
-    }
-
     public boolean isDone() {
         return done;
-    }
-
-    public void setDone(boolean done) {
-        this.done = done;
     }
 
     @Override
