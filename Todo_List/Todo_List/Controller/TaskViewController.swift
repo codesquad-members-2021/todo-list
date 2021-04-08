@@ -17,6 +17,7 @@ class TaskViewController: UIViewController {
     @IBOutlet weak var countOfDoing: UILabel!
     @IBOutlet weak var countOfDone: UILabel!
     
+    var tasks = [TaskVO]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +38,15 @@ class TaskViewController: UIViewController {
         doing.register(nibName, forCellReuseIdentifier: "TaskCell")
         done.register(nibName, forCellReuseIdentifier: "TaskCell")
         
+        tasks.append(TaskVO())
+        
     }
+    @IBAction func todoPlus(_ sender: UIButton) {
+        let new = TaskVO()
+        tasks.append(new)
+        todo.reloadData()
+    }
+    
 }
 
 extension TaskViewController : UITableViewDelegate, UITableViewDataSource {
@@ -49,8 +58,9 @@ extension TaskViewController : UITableViewDelegate, UITableViewDataSource {
         switch tableView {
         
         case todo:
-            countOfTodo.text = String(3)
-            return 3
+            let count = tasks.count
+            countOfTodo.text = String(count)
+            return count
         case doing:
             countOfDoing.text = String(4)
             return 4

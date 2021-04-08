@@ -109,6 +109,9 @@
                                     <constraint firstAttribute="width" constant="13.789999999999999" id="sfF-43-zbG"/>
                                 </constraints>
                                 <state key="normal" image="add"/>
+                                <connections>
+                                    <action selector="todoPlus:" destination="DbM-z4-eRI" eventType="touchUpInside" id="Ufq-ty-SA7"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Za1-ZW-bdI" userLabel="todoTableView">
                                 <rect key="frame" x="76" y="104" width="258" height="630"/>
