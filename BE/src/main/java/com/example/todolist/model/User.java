@@ -1,4 +1,4 @@
-package com.example.todolist;
+package com.example.todolist.model;
 
 import org.springframework.data.annotation.Id;
 
