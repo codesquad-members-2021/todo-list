@@ -62,9 +62,11 @@ public class CardController {
 
     // UPDATE
     @PutMapping("/{id}")
-    public void editCards(Card oldCard, Card newCard) {
-        oldCard.update(newCard);
+    public void editCards(Card card, Card newCard) {
+        card.update(newCard);
+        cardRepository.save(card);
     }
+
     // DELETE
     @DeleteMapping("/{id}")
     public void deleteCards(Card card) {
