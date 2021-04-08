@@ -4,11 +4,13 @@ import com.example.todolist.domain.Card;
 import com.example.todolist.domain.User;
 import com.example.todolist.repository.CardRepository;
 import com.example.todolist.repository.UserRepository;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
+
 
 @RestController
 public class CardController {
@@ -21,19 +23,13 @@ public class CardController {
         this.userRepository = userRepository;
     }
 
-    @PostMapping("/create")
-    public Card create(String title, String contents, HttpSession session) {
-        Long userId = 1L;
-        User user = userRepository.findById(userId).orElseThrow(RuntimeException::new);
-        System.out.println(user);
-        session.setAttribute("sessionUser", user);
-        Card card = new Card(user, title, contents, "to-do");
+    @PostMapping
+    public ResponseEntity<Card> create(@RequestBody HashMap<String, String> cardInfo, HttpSession session) {
+        User user = (User) session.getAttribute("sessionUser");
+        System.out.println("in create:" + user.toString());
+        Card card = new Card(user, cardInfo.get("title"), cardInfo.get("content"), cardInfo.get("status"));
         cardRepository.save(card);
-        return card;
+        return new ResponseEntity<>(card, HttpStatus.OK);
     }
 
-    @GetMapping("/test")
-    public void show(Card card) {
-
-    }
 }

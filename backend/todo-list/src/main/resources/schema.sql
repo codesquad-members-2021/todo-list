@@ -1,20 +1,19 @@
 DROP TABLE IF EXISTS user;
-CREATE TABLE user (
-                      id INT auto_increment,
-                      name VARCHAR(30),
-                      password VARCHAR(30),
-                      primary key(id)
+CREATE TABLE user
+(
+    user_id  int auto_increment primary key,
+    name     varchar(30),
+    password varchar(30)
 );
 
-
-DROP TABLE IF EXISTS card;
-CREATE TABLE card (
-                    id INT auto_increment,
-                    title VARCHAR(30),
-                    contents VARCHAR(30),
-                    status VARCHAR(30),
-                    primary key(id),
-                    user int references user(id)
-                  );
+CREATE TABLE IF NOT EXISTS card
+(
+    id       int auto_increment primary key,
+    title    varchar(30),
+    contents varchar(30),
+    status   varchar(30),
+    user_id int,
+    foreign key (user_id) references user (user_id)
+);
 
 
