@@ -4,9 +4,9 @@ import Icon from './components/icon/icon';
 function App() {
   return (
     <div className="App">
-      <Icon type="plus" />
-      <Icon type="times" />
-      <Icon type="bar" />
+      <Icon type="add" />
+      <Icon type="delete" />
+      <Icon type="userAction" />
     </div>
   );
 }

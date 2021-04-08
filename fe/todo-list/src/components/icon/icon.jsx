@@ -1,20 +1,39 @@
 import React from 'react';
+import styled from 'styled-components';
 
-function PlusButton() {
-  return <i className="fas fa-plus"></i>;
+const IconButton = styled.button`
+  color: #bdbdbd;
+  border: none;
+  background-color: transparent;
+`;
+
+function AddButton() {
+  return (
+    <IconButton>
+      <i className="fas fa-plus"></i>
+    </IconButton>
+  );
 }
-function TimesButton() {
-  return <i className="fas fa-times"></i>;
+function DeleteButton() {
+  return (
+    <IconButton>
+      <i className="fas fa-times"></i>
+    </IconButton>
+  );
 }
-function BarButton() {
-  return <i className="fas fa-bars"></i>;
+function UserActionButton() {
+  return (
+    <IconButton>
+      <i className="fas fa-bars"></i>
+    </IconButton>
+  );
 }
 
 function Icon({ type }) {
   return {
-    plus: <PlusButton />,
-    times: <TimesButton />,
-    bar: <BarButton />,
+    add: <AddButton />,
+    delete: <DeleteButton />,
+    userAction: <UserActionButton />,
   }[type];
 }
 
