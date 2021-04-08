@@ -3,17 +3,43 @@ import UIKit
 
 class TaskViewController: UIViewController {
     
-    var status: Int?
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var taskCountLabel: UILabel!
+    
+    var status: Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupTitleLabel()
+        setupSubViews()
     }
     
+
+}
+
+//MARK: -@Action
+
+extension TaskViewController {
+    @IBAction func addTaskCardButtonTouched(_ sender: Any) {
+        print(status!) //ButtonTest
+    }
+}
+
+//MARK: -Setting && Configure
+extension TaskViewController {
+
+    private func setupSubViews() {
+        setupTitleLabel()
+        configureTaskCountLabel()
+    }
     
     private func setupTitleLabel() {
         guard let status = status else { return }
         let titles = TitleList.ofStatus
         titleLabel.text = titles[status]
+    }
+    
+    private func configureTaskCountLabel() {
+        taskCountLabel.layer.masksToBounds = true
+        taskCountLabel.layer.cornerRadius = taskCountLabel.layer.bounds.size.width/2
     }
 }
