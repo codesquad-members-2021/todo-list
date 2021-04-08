@@ -28,12 +28,13 @@ class MainCell: UICollectionViewCell {
 
 extension MainCell: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return board?.items.count ?? 0
+        return board?.cards.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CardCell.identifier, for: indexPath) as? CardCell else { return UITableViewCell() }
-        cell.titleLabel?.text = board?.items[indexPath.row]
+        cell.title = board?.cards[indexPath.row].getTitle()
+        cell.contents = board?.cards[indexPath.row].getContents()
         return cell
     }
 }
