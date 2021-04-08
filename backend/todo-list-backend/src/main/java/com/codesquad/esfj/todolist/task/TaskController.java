@@ -35,4 +35,10 @@ public class TaskController {
     public void update(@PathVariable Long id, @RequestBody Task updatedTask) {
         logger.debug(id + updatedTask.toString());
     }
+
+    @DeleteMapping("/tasks/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable Long id) {
+        logger.debug(id + " Successfully deleted");
+    }
 }

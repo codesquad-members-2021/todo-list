@@ -6,6 +6,7 @@ public class Task {
     private String title;
     private String content;
     private String writer;
+    private boolean deleted;
 
     public Task(Long id, String title, String content, String writer) {
         this.id = id;
@@ -28,6 +29,10 @@ public class Task {
 
     public String getWriter() {
         return writer;
+    }
+
+    public void delete() {
+        deleted = true;
     }
 
     @Override
