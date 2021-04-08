@@ -7,9 +7,10 @@
 
 import UIKit
 
-class DoneViewController: UIViewController {
+class DoneViewController: UIViewController, ListViewControllerProtocol {
     @IBOutlet weak var headerView: ListHeaderView!
     @IBOutlet weak var cardTableView: UITableView!
+    private var cards: [Card] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,17 +22,29 @@ class DoneViewController: UIViewController {
         cardTableView.dataSource = self
         cardTableView.register(CardCell.nib(), forCellReuseIdentifier: CardCell.identifier)
     }
+    
+    func filterCards(of category: String, from allCards: [Card]) {
+        cards = allCards.filter { card in
+            card.category == category
+        }
+    }
+    
+    func refreshTableView() {
+        cardTableView.reloadData()
+    }
 }
 
 extension DoneViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        return cards.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell  = tableView.dequeueReusableCell(withIdentifier: CardCell.identifier, for: indexPath) as! CardCell
-        cell.titleLabel.text = "GitHub 공부하기"
-        cell.descriptionLabel.text = "add, commit, push"
+        DispatchQueue.main.async {
+            cell.titleLabel.text = self.cards[indexPath.row].title
+            cell.descriptionLabel.text = self.cards[indexPath.row].description
+        }
         return cell
     }
 }
