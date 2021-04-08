@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import ButtonDelete from './ButtonDelete'
-import CardInput from './CardInput'
 
 const CardWrapper = styled.div`
     .card {
@@ -140,9 +139,7 @@ const Card = ({ title, body, author, index, list, clickHandler, dbClickHandler }
         list.splice(index, 1)
         clickHandler()
     }
-    const dbClickEvent = () => {
-        dbClickHandler(index)
-    }
+    const dbClickEvent = () => dbClickHandler(index, {title, body})
     
     return (
         <CardWrapper>

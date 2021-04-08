@@ -154,10 +154,11 @@ const Wrapper = styled.div`
     }
 `;
 
-const CardInput = ({ list, index, clickHandler, isModify }) => {
-    const [title, setTitle] = useState('');
-    const [body, setBody] = useState('');
+const CardInput = ({ list, index, clickHandler, isModify, originCard }) => {
+    const [title, setTitle] = useState(isModify ? originCard.title : '');
+    const [body, setBody] = useState(isModify ? originCard.body : '');
     const [isAble, setAbility] = useState(false);
+
     const addCard = () => {
         if (!isAble) return;
         list.splice(index, isModify ? 1 : 0, { title, body, author: 'web' });
@@ -188,11 +189,13 @@ const CardInput = ({ list, index, clickHandler, isModify }) => {
                         className="card-input__text--title"
                         placeholder="제목을 입력하세요"
                         onChange={changeTitle}
+                        value={title}
                     ></input>
                     <input
                         className="card-input__text--body"
                         placeholder="내용을 입력하세요"
                         onChange={changebody}
+                        value={body}
                     ></input>
                 </div>
                 <div className="card-input__button">

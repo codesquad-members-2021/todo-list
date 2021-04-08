@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Card from './Card';
 import ButtonDelete from './ButtonDelete';
@@ -109,13 +109,14 @@ const Column = ({ title, list }) => {
         setCardList(list.map(renderCard));
         setProgress(false);
     };
-    const editEvent = (index) => {
+    const editEvent = (index, card) => {
         setCardList((cardList) => {
+            console.log(card)
             cardList.splice(
                 index,
                 1,
                 <li key={index}>
-                    <CardInput list={list} index={index} isModify={true} clickHandler={reRender} />
+                    <CardInput list={list} index={index} isModify={true} clickHandler={reRender} originCard={card} />
                 </li>
             );
             return cardList
@@ -136,6 +137,7 @@ const Column = ({ title, list }) => {
         ]);
         setProgress(true);
     };
+    
 
 
     return (
