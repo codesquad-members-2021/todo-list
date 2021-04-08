@@ -1,0 +1,62 @@
+{
+  "/src/test/java/codesquad/TodoList": {
+    "api": "/src/test/java/codesquad/TodoList",
+    "requestParams": "",
+    "update": ""
+  },
+  "/src/main/resources/templates": {
+    "api": "/src/main/resources/templates",
+    "requestParams": "",
+    "update": ""
+  },
+  "/src/main/java/codesquad/TodoList/repository": {
+    "api": "/src/main/java/codesquad/TodoList/repository",
+    "requestParams": "",
+    "update": ""
+  },
+  "/src/main/java/codesquad/TodoList/domain": {
+    "api": "/src/main/java/codesquad/TodoList/domain",
+    "requestParams": "",
+    "update": ""
+  },
+  "/src/main/java/codesquad/TodoList/controller": {
+    "api": "/src/main/java/codesquad/TodoList/controller",
+    "requestParams": "",
+    "update": ""
+  },
+  "/gradle/wrapper": {
+    "api": "/gradle/wrapper",
+    "requestParams": "",
+    "update": ""
+  },
+  "/build/tmp/compileJava": {
+    "api": "/build/tmp/compileJava",
+    "requestParams": "",
+    "update": ""
+  },
+  "/build/resources/main/templates": {
+    "api": "/build/resources/main/templates",
+    "requestParams": "",
+    "update": ""
+  },
+  "/build/generated/sources/headers/java/main": {
+    "api": "/build/generated/sources/headers/java/main",
+    "requestParams": "",
+    "update": ""
+  },
+  "/build/generated/sources/annotationProcessor/java/main": {
+    "api": "/build/generated/sources/annotationProcessor/java/main",
+    "requestParams": "",
+    "update": ""
+  },
+  "/build/classes/java/main/codesquad/TodoList/domain": {
+    "api": "/build/classes/java/main/codesquad/TodoList/domain",
+    "requestParams": "",
+    "update": ""
+  },
+  "/build/classes/java/main/codesquad/TodoList/controller": {
+    "api": "/build/classes/java/main/codesquad/TodoList/controller",
+    "requestParams": "",
+    "update": ""
+  }
+}
