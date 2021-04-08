@@ -1,8 +1,8 @@
 //
 //  CardNetworkManager.swift
-//  ToDoList
+//  ToDoListApp
 //
-//  Created by 오킹 on 2021/04/08.
+//  Created by zombietux on 2021/04/08.
 //
 
 import Foundation
@@ -11,7 +11,7 @@ import Combine
 protocol CardNetworkManagerProtocol: class {
     var networkManager: HttpMethodProtocol { get }
 
-    func getCards() -> AnyPublisher<[Card], Error>
+    func getCards() -> AnyPublisher<[ToDo], Error>
 }
 
 class CardNetworkManager: CardNetworkManagerProtocol {
@@ -26,9 +26,10 @@ class CardNetworkManager: CardNetworkManagerProtocol {
         self.init(networkManager: networkManager)
     }
     
-    func getCards() -> AnyPublisher<[Card], Error> {
+    func getCards() -> AnyPublisher<[ToDo], Error> {
         let endpoint = Endpoint.cards
 
-        return networkManager.get(type: [Card].self, url: endpoint.url)
+        return networkManager.get(type: [ToDo].self, url: endpoint.url)
     }
 }
+

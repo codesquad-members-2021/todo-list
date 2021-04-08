@@ -1,8 +1,8 @@
 //
-//  Service.swift
-//  ToDoList
+//  Endpoint.swift
+//  ToDoListApp
 //
-//  Created by 오킹 on 2021/04/07.
+//  Created by zombietux on 2021/04/08.
 //
 
 import Foundation
@@ -85,3 +85,4 @@ enum State: String {
         return rawValue
     }
 }
+

@@ -7,28 +7,19 @@
 
 import Foundation
 
-class ToDo: ToDoManageable {
-    enum Status {
-        case toDo
-        case doing
-        case done
-    }
-    
+class ToDo: ToDoManageable, Decodable {
     private var title: String
     private var contents: String
-    private var status: Status
     
-    init(title: String, contents: String, status: Status) {
+    init(title: String, contents: String) {
         self.title = title
         self.contents = contents
-        self.status = status
     }
     
     convenience init() {
         let title = ""
         let contents = ""
-        let status = Status.toDo
-        self.init(title: title, contents: contents, status: status)
+        self.init(title: title, contents: contents)
     }
     
     func add(toDo: ToDo) {
