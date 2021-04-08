@@ -24,4 +24,5 @@ enum Path: String {
     case lists = "/board/lists"
     case todo = "/board/todo"
     case doing = "/board/progress"
+    case done = "/board/done"
 }

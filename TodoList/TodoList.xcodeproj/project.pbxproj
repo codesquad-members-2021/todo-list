@@ -26,6 +26,9 @@
 		D0F41D28261EA9B50024D7B1 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F41D27261EA9B50024D7B1 /* Task.swift */; };
 		D0F41D2D261ED5C80024D7B1 /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F41D2C261ED5C80024D7B1 /* Decoder.swift */; };
 		D0F41D35261ED86E0024D7B1 /* DoingUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F41D34261ED86E0024D7B1 /* DoingUseCase.swift */; };
+		D0F41D41261EEAFC0024D7B1 /* DoDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F41D40261EEAFC0024D7B1 /* DoDataSource.swift */; };
+		D0F41D46261EEB8C0024D7B1 /* DoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F41D45261EEB8C0024D7B1 /* DoDelegate.swift */; };
+		D0F41D4B261EEC360024D7B1 /* DoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F41D4A261EEC360024D7B1 /* DoTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +74,9 @@
 		D0F41D27261EA9B50024D7B1 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		D0F41D2C261ED5C80024D7B1 /* Decoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decoder.swift; sourceTree = "<group>"; };
 		D0F41D34261ED86E0024D7B1 /* DoingUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoingUseCase.swift; sourceTree = "<group>"; };
+		D0F41D40261EEAFC0024D7B1 /* DoDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoDataSource.swift; sourceTree = "<group>"; };
+		D0F41D45261EEB8C0024D7B1 /* DoDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoDelegate.swift; sourceTree = "<group>"; };
+		D0F41D4A261EEC360024D7B1 /* DoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,7 +130,7 @@
 				BF7EB269261C3CBF003EB682 /* AppDelegate.swift */,
 				BF7EB26B261C3CBF003EB682 /* SceneDelegate.swift */,
 				BF7EB26D261C3CBF003EB682 /* ViewController.swift */,
-				BF7EB29F261C418B003EB682 /* DoViewController.swift */,
+				D0F41D3C261EEA580024D7B1 /* Do */,
 				BF7EB2A4261C4199003EB682 /* DoneViewController.swift */,
 				BFBF30ED261D50CB000BDDE3 /* Doing */,
 				BF7EB26F261C3CBF003EB682 /* Main.storyboard */,
@@ -175,6 +181,17 @@
 				D0F41D27261EA9B50024D7B1 /* Task.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		D0F41D3C261EEA580024D7B1 /* Do */ = {
+			isa = PBXGroup;
+			children = (
+				BF7EB29F261C418B003EB682 /* DoViewController.swift */,
+				D0F41D4A261EEC360024D7B1 /* DoTableViewCell.swift */,
+				D0F41D45261EEB8C0024D7B1 /* DoDelegate.swift */,
+				D0F41D40261EEAFC0024D7B1 /* DoDataSource.swift */,
+			);
+			path = Do;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -316,7 +333,10 @@
 				D0F41D12261E9FE70024D7B1 /* URLSessionManager.swift in Sources */,
 				BF7EB2AF261C4E5C003EB682 /* DoingTableViewCell.swift in Sources */,
 				BFBF30E4261D4E65000BDDE3 /* DoingDataSource.swift in Sources */,
+				D0F41D46261EEB8C0024D7B1 /* DoDelegate.swift in Sources */,
+				D0F41D4B261EEC360024D7B1 /* DoTableViewCell.swift in Sources */,
 				D0F41D35261ED86E0024D7B1 /* DoingUseCase.swift in Sources */,
+				D0F41D41261EEAFC0024D7B1 /* DoDataSource.swift in Sources */,
 				D0F41D28261EA9B50024D7B1 /* Task.swift in Sources */,
 				BF7EB26A261C3CBF003EB682 /* AppDelegate.swift in Sources */,
 				BF7EB26C261C3CBF003EB682 /* SceneDelegate.swift in Sources */,
