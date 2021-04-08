@@ -5,7 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -106,9 +105,9 @@
                                     <constraint firstAttribute="height" constant="26" id="6A7-zN-PRg"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gVf-YE-k3e">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gVf-YE-k3e">
                                 <rect key="frame" x="0.0" y="42" width="258" height="630"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="4or-Yj-f7m"/>
@@ -123,6 +122,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cardTableView" destination="gVf-YE-k3e" id="fo3-wc-cHA"/>
                         <outlet property="headerView" destination="Epo-gG-IXs" id="hYj-Vu-9dw"/>
                     </connections>
                 </viewController>
@@ -144,9 +144,9 @@
                                     <constraint firstAttribute="height" constant="26" id="eY4-r9-XTN"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="et5-he-cOG">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="et5-he-cOG">
                                 <rect key="frame" x="0.0" y="42" width="258" height="630"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="RFm-Je-Kl0"/>
@@ -161,6 +161,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cardTableView" destination="et5-he-cOG" id="m0i-da-fnW"/>
                         <outlet property="headerView" destination="ViQ-tK-Hun" id="zGI-eq-MGd"/>
                     </connections>
                 </viewController>
@@ -182,9 +183,9 @@
                                     <constraint firstAttribute="height" constant="26" id="3zO-xo-J0t"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ma6-Cx-WNC">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ma6-Cx-WNC">
                                 <rect key="frame" x="0.0" y="42" width="258" height="630"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="7jh-Jm-bQQ"/>
@@ -199,6 +200,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cardTableView" destination="ma6-Cx-WNC" id="nHk-eD-4i0"/>
                         <outlet property="headerView" destination="39q-Hz-MVb" id="usm-if-aeA"/>
                     </connections>
                 </viewController>
@@ -212,8 +214,5 @@
         <namedColor name="backgroundGray">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>
