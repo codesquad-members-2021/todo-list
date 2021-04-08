@@ -15,15 +15,26 @@ public class User {
     private String name;
     private String password;
 
+    private String token;
+
     @MappedCollection(idColumn = "user_id", keyColumn = "user_id")
     private List<Card> cards = new LinkedList<>();
 
     public User() {
     }
 
-    public User(String name, String password) {
+    public User(String name, String password, String token) {
         this.name = name;
         this.password = password;
+        this.token = token;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
     public String getName() {
@@ -37,6 +48,8 @@ public class User {
     public List<Card> getCards() {
         return cards;
     }
+
+
 
     public Long getUserId() {
         return userId;
