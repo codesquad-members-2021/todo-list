@@ -1,11 +1,8 @@
 package codesquad.TodoList.domain;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -13,21 +10,20 @@ public class Card {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonProperty
     private Long id;
 
-    @JsonProperty
+    @Column(length = 500)
     private String title;
 
-    @JsonProperty
     private String contents;
 
-    @JsonProperty
-    private LocalDateTime createDate = LocalDateTime.now();
+    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss", timezone = "Asia/Seoul")
+    private LocalDateTime dateTime = LocalDateTime.now();
 
     private boolean todo;
     private boolean doing;
     private boolean done;
+    private boolean deleted;
 
     public void update(Card card) {
         this.title = card.title;
@@ -52,6 +48,10 @@ public class Card {
         this.done = true;
     }
 
+    public void delete() {
+        this.deleted = true;
+    }
+
     public Long getId() {
         return id;
     }
@@ -72,36 +72,28 @@ public class Card {
         this.contents = contents;
     }
 
-    public LocalDateTime getCreateDate() {
-        return createDate;
+    public LocalDateTime getDateTime() {
+        return dateTime;
     }
 
-    public void setCreateDate(LocalDateTime createDate) {
-        this.createDate = createDate;
+    public void setDateTime(LocalDateTime createDate) {
+        this.dateTime = createDate;
     }
 
     public boolean isTodo() {
         return todo;
     }
 
-    public void setTodo(boolean todo) {
-        this.todo = todo;
-    }
-
     public boolean isDoing() {
         return doing;
-    }
-
-    public void setDoing(boolean doing) {
-        this.doing = doing;
     }
 
     public boolean isDone() {
         return done;
     }
 
-    public void setDone(boolean done) {
-        this.done = done;
+    public boolean isDeleted() {
+        return deleted;
     }
 
     @Override
@@ -110,7 +102,7 @@ public class Card {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", contents='" + contents + '\'' +
-                ", createDate=" + createDate +
+                ", dateTime=" + dateTime +
                 ", todo=" + todo +
                 ", doing=" + doing +
                 ", done=" + done +

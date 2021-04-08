@@ -1,10 +1,10 @@
 package codesquad.TodoList.repository;
 
 import codesquad.TodoList.domain.Card;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface CardRepository extends JpaRepository<Card, Long> {
-    List<Card> findAllByTodoTrueOrDoingTrueOrDoneTrue();
+public interface CardRepository extends CrudRepository<Card, Long> {
+    List<Card> findAllByDeletedFalse();
 }
