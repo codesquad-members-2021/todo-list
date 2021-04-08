@@ -45,4 +45,9 @@ public class Card {
         this.contents = updateCard.contents;
         this.status = updateCard.status;
     }
+
+    public void changeStatus(Status status){
+        this.status = status;
+    }
+
 }
