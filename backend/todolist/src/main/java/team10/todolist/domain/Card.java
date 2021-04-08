@@ -17,6 +17,8 @@ public class Card {
     LocalDateTime dateTime;//@Todo 마지막 수정시간이 필요할까?
     int isDeleted;
 
+
+
     @Override
     public String toString() {
         return "Card{" +

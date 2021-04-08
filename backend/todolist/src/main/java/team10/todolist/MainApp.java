@@ -7,7 +7,7 @@ import team10.todolist.repository.CardRepository;
 
 public class MainApp {
     public static void main(String[] args) {
-        ApplicationContext ctx = new AnnotationConfigApplicationContext(SimpleJdbcConfig.class);
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(SpringConfig.class);
         CardRepository repo = (CardRepository) ctx.getBean("cardRepository");
         Card board = new Card();
         board.author = "Hoyoung Jung";
