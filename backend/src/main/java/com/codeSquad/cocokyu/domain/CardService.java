@@ -27,4 +27,9 @@ public class CardService {
         return cardRepository.findAll();
     }
 
+    public void modify(Long id, Card updateCard) {
+        Card card = cardRepository.findById(id).orElseThrow(NullPointerException::new);
+        card.modify(updateCard);
+        cardRepository.save(card);
+;    }
 }

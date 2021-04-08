@@ -40,4 +40,9 @@ public class Card {
         return createDateTime;
     }
 
+    public void modify(Card updateCard) {
+        this.title = updateCard.title;
+        this.contents = updateCard.contents;
+        this.status = updateCard.status;
+    }
 }

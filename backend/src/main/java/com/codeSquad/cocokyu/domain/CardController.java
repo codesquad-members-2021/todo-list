@@ -1,9 +1,7 @@
 package com.codeSquad.cocokyu.domain;
 
 import com.codeSquad.cocokyu.domain.card.Card;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class CardController {
@@ -20,9 +18,15 @@ public class CardController {
     }
 
     @PostMapping("/todos")
-    public String create(Card card){
+    public String create(Card card) {
         cardService.write(card);
         //TODO : Response 객체 생성
+        return "success";
+    }
+
+    @PutMapping("/todos/{id}")
+    public String update(@PathVariable Long id, Card updateCard) {
+        cardService.modify(id, updateCard);
         return "success";
     }
 
