@@ -9,6 +9,7 @@ import UIKit
 
 class TaskCell: UITableViewCell {
 
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.translatesAutoresizingMaskIntoConstraints = false
@@ -20,5 +21,7 @@ class TaskCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    
     
 }
