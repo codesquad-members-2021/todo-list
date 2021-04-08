@@ -13,7 +13,8 @@ USE `todolist` ;
 -- -----------------------------------------------------
 -- Table `todolist`.`User`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS todolist.User (
+DROP TABLE IF EXISTS todolist.user;
+CREATE TABLE IF NOT EXISTS todolist.user (
     `id` INT AUTO_INCREMENT,
     `user_id` VARCHAR(64) NOT NULL,
     `password` VARCHAR(64) NOT NULL,
@@ -25,7 +26,8 @@ CREATE TABLE IF NOT EXISTS todolist.User (
 -- -----------------------------------------------------
 -- Table `todolist`.`Work`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `todolist`.`Work` (
+DROP TABLE IF EXISTS `todolist`.`work`;
+CREATE TABLE IF NOT EXISTS `todolist`.`work` (
     `id` INT AUTO_INCREMENT,
     `title` VARCHAR(255) NOT NULL,
     `description` VARCHAR(255) NOT NULL,
@@ -33,26 +35,27 @@ CREATE TABLE IF NOT EXISTS `todolist`.`Work` (
     `status` INT NOT NULL,
     `author` INT NOT NULL,
     PRIMARY KEY (`id`),
-    INDEX `fk_Work_User_idx` (`author` ASC) VISIBLE,
-    CONSTRAINT `fk_Work_User`
+    INDEX `fk_work_user_idx` (`author` ASC) VISIBLE,
+    CONSTRAINT `fk_work_user`
     FOREIGN KEY (`author`)
-    REFERENCES `todolist`.`User` (`id`)
+    REFERENCES `todolist`.`user` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
     ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `todolist`.`timeline`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `todolist`.`timeline`;
 CREATE TABLE IF NOT EXISTS `todolist`.`timeline` (
     `id` INT AUTO_INCREMENT,
     `description` VARCHAR(255) NOT NULL,
     `created_time` DATETIME NOT NULL,
     `author` INT NOT NULL,
     PRIMARY KEY (`id`),
-    INDEX `fk_timeline_User1_idx` (`author` ASC) VISIBLE,
-    CONSTRAINT `fk_timeline_User1`
+    INDEX `fk_timeline_user_idx` (`author` ASC) VISIBLE,
+    CONSTRAINT `fk_timeline_user`
     FOREIGN KEY (`author`)
-    REFERENCES `todolist`.`User` (`id`)
+    REFERENCES `todolist`.`user` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
     ENGINE = InnoDB;
