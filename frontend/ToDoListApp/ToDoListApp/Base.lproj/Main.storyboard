@@ -35,24 +35,14 @@
                                     <segue destination="WzU-G7-HtN" kind="embed" id="lGY-JM-QZn"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gQD-Hy-Y3H">
-                                <rect key="frame" x="343" y="123" width="256" height="678"/>
-                                <connections>
-                                    <segue destination="WzU-G7-HtN" kind="embed" id="bAm-GE-Qcr"/>
-                                </connections>
-                            </containerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                         <constraints>
-                            <constraint firstItem="gQD-Hy-Y3H" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="343" id="Eoz-lf-PG6"/>
-                            <constraint firstItem="gQD-Hy-Y3H" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="123" id="GSG-50-qfS"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="FBL-Gv-Vg2" secondAttribute="bottom" constant="13" id="MB7-al-A4v"/>
                             <constraint firstItem="FBL-Gv-Vg2" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.214405" id="OlE-Fe-6th"/>
                             <constraint firstItem="PAD-nf-ISD" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="w4x-kY-HNp" secondAttribute="trailing" constant="8" symbolic="YES" id="OxI-OF-UNz"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="gQD-Hy-Y3H" secondAttribute="bottom" constant="13" id="ZaB-lJ-oq6"/>
                             <constraint firstItem="FBL-Gv-Vg2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="123" id="bRf-DT-P04"/>
-                            <constraint firstItem="gQD-Hy-Y3H" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.214405" id="eNC-Mb-wKl"/>
                             <constraint firstItem="PAD-nf-ISD" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="24" id="gft-OD-Mpi"/>
                             <constraint firstItem="w4x-kY-HNp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="48" id="hQ6-Mn-85Q"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="PAD-nf-ISD" secondAttribute="trailing" constant="24" id="jt8-gb-if0"/>
@@ -60,6 +50,9 @@
                             <constraint firstItem="FBL-Gv-Vg2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="48" id="uqV-Yg-OAZ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="toDoColumn" destination="FBL-Gv-Vg2" id="lMf-1P-Gat"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -169,7 +162,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="columnTableView" destination="l8C-Oy-zyb" id="MgK-YK-PID"/>
                         <outlet property="columnTitle" destination="APe-Sa-hgT" id="Mtk-Fi-1Ck"/>
                     </connections>
                 </viewController>
@@ -178,9 +170,6 @@
             <point key="canvasLocation" x="593.96984924623121" y="-129.49640287769785"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="lGY-JM-QZn"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
         <image name="plus" catalog="system" width="128" height="113"/>

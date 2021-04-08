@@ -177,6 +177,7 @@
 				8288BCF4261CAF3500883E0E /* ColumnDataSource.swift */,
 				8288BCFF261CB24E00883E0E /* ColumnDelegate.swift */,
 				828737CD261D7B1700CC5372 /* ColumnViewController.swift */,
+				B0BC8B41261DE28000B8122D /* ColumnView.storyboard */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -295,6 +296,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0BC8AD5261C434100B8122D /* LaunchScreen.storyboard in Resources */,
+				B0BC8B42261DE28000B8122D /* ColumnView.storyboard in Resources */,
 				B0BC8AD2261C434100B8122D /* Assets.xcassets in Resources */,
 				B0BC8AD0261C433E00B8122D /* Main.storyboard in Resources */,
 			);
