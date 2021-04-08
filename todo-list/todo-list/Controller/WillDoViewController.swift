@@ -8,14 +8,23 @@
 import UIKit
 
 class WillDoViewController: UIViewController {
-
+    
     @IBOutlet weak var willDoTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         willDoTableView.dataSource = self
         willDoTableView.delegate = self
         let nibName = UINib(nibName: "ToDoTableViewCell", bundle: .none)
         willDoTableView.register(nibName, forCellReuseIdentifier: "tableCell")
+    }
+    
+    
+    @IBAction func addButtonTouched(_ sender: Any) {
+        let addToDoVC = AddToDoViewController(nibName: "AddToDoViewController", bundle: .none)
+        addToDoVC.modalPresentationStyle = .formSheet
+        addToDoVC.preferredContentSize = CGSize(width: 400, height: 175)
+        self.present(addToDoVC, animated: true, completion: nil)
     }
 }
 
