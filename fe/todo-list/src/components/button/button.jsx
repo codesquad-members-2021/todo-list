@@ -38,6 +38,13 @@ const NormalButton = styled.button`
   border-radius: 6px;
   border: none;
   font-size: 14px;
+  cursor: pointer;
+  outline: none;
+
+  &:hover {
+    color: #ffffff;
+    background-color: #828282;
+  }
 `;
 
 const AccentButton = styled.button`
@@ -51,4 +58,10 @@ const AccentButton = styled.button`
   border: none;
   font-weight: bold;
   font-size: 14px;
+  cursor: pointer;
+  outline: none;
+
+  &:hover {
+    background: #00529b;
+  }
 `;
