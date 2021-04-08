@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		71520A33261C54AF00BE3264 /* TaskCountLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71520A32261C54AF00BE3264 /* TaskCountLabel.swift */; };
+		717EE79A261EC69D002037ED /* TaskCardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717EE799261EC69D002037ED /* TaskCardManager.swift */; };
 		717FD58F261D7F9B00E79C77 /* NewTaskTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717FD58E261D7F9B00E79C77 /* NewTaskTextField.swift */; };
 		717FD59C261D8A1100E79C77 /* NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717FD59B261D8A1100E79C77 /* NotificationName.swift */; };
 		719996D7261EA002004FB8FA /* TitleLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719996D6261EA002004FB8FA /* TitleLabelView.swift */; };
@@ -60,6 +61,7 @@
 
 /* Begin PBXFileReference section */
 		71520A32261C54AF00BE3264 /* TaskCountLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCountLabel.swift; sourceTree = "<group>"; };
+		717EE799261EC69D002037ED /* TaskCardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCardManager.swift; sourceTree = "<group>"; };
 		717FD58E261D7F9B00E79C77 /* NewTaskTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskTextField.swift; sourceTree = "<group>"; };
 		717FD59B261D8A1100E79C77 /* NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationName.swift; sourceTree = "<group>"; };
 		719996D6261EA002004FB8FA /* TitleLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabelView.swift; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 			isa = PBXGroup;
 			children = (
 				767BBED5261E858C00345102 /* TaskCard.swift */,
+				717EE799261EC69D002037ED /* TaskCardManager.swift */,
 			);
 			path = TaskCard;
 			sourceTree = "<group>";
@@ -422,6 +425,7 @@
 				762F649E261C2F6B001B879B /* MainViewController.swift in Sources */,
 				762F649A261C2F6B001B879B /* AppDelegate.swift in Sources */,
 				762F64E8261D52A5001B879B /* ToDoViewController.swift in Sources */,
+				717EE79A261EC69D002037ED /* TaskCardManager.swift in Sources */,
 				7199F44D261D456100D21319 /* EachInfoView.swift in Sources */,
 				7199F45A261D459A00D21319 /* CustomButton.swift in Sources */,
 				762F64ED261D7A05001B879B /* NewTaskViewController.swift in Sources */,

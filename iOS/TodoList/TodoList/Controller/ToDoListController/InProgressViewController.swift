@@ -42,7 +42,7 @@ extension InProgressViewController {
     
     @objc private func moveToViewController() {
         let addCardViewController = storyboard!.instantiateViewController(identifier: "NewTaskViewController")
-        //addCardViewController.modalPresentationStyle = .fullScreen
+        NotificationCenter.default.post(name: .progressCardChanged, object: self, userInfo: ["status":TaskStatus.inProgress])
         present(addCardViewController, animated: true, completion: nil)
     }
 }
@@ -81,8 +81,8 @@ extension InProgressViewController {
     }
     
     private func setUpNotification() {
-        NotificationCenter.default.addObserver(self, selector: #selector(getTextInfo), name: .addTextFieldText, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(addTaskCount), name: .addTextFieldText, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(getTextInfo), name: .addProgressTaskCard, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(addTaskCount), name: .addProgressTaskCard, object: nil)
     }
     
     private func setupTitleLabelView() {

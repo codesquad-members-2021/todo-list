@@ -4,7 +4,7 @@
 import UIKit
 
 class DoneViewController: UIViewController {
-    //바꿔보기 - -
+    
     private var titleView = TitleLabelView()
     private var taskTableView = UITableView()
     
@@ -42,7 +42,7 @@ extension DoneViewController {
     
     @objc private func moveToViewController() {
         let addCardViewController = storyboard!.instantiateViewController(identifier: "NewTaskViewController")
-        //addCardViewController.modalPresentationStyle = .fullScreen
+        NotificationCenter.default.post(name: .doneCardChanged, object: self, userInfo: ["status":TaskStatus.done])
         present(addCardViewController, animated: true, completion: nil)
     }
 }
@@ -81,8 +81,8 @@ extension DoneViewController {
     }
     
     private func setUpNotification() {
-        NotificationCenter.default.addObserver(self, selector: #selector(getTextInfo), name: .addTextFieldText, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(addTaskCount), name: .addTextFieldText, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(getTextInfo), name: .addDoneTaskCard, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(addTaskCount), name: .addDoneTaskCard, object: nil)
     }
     
     private func setupTitleLabelView() {

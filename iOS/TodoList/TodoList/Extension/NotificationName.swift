@@ -1,5 +1,8 @@
 import Foundation
 
 extension Notification.Name {
-    static let addTextFieldText = Notification.Name("addTextFieldText")
+    static let addTaskCard = Notification.Name("addToDoTaskCard")
+    static let toDoCardChanged = Notification.Name("cardChanged")
+    static let progressCardChanged = Notification.Name("progressCardChanged")
+    static let doneCardChanged = Notification.Name("doneCardChanged")
 }

@@ -42,7 +42,7 @@ extension ToDoViewController {
     
     @objc private func moveToViewController() {
         let addCardViewController = storyboard!.instantiateViewController(identifier: "NewTaskViewController")
-        //addCardViewController.modalPresentationStyle = .fullScreen
+        NotificationCenter.default.post(name: .toDoCardChanged, object: self, userInfo: ["status":TaskStatus.toDo])
         present(addCardViewController, animated: true, completion: nil)
     }
 }
@@ -81,8 +81,8 @@ extension ToDoViewController {
     }
     
     private func setUpNotification() {
-        NotificationCenter.default.addObserver(self, selector: #selector(getTextInfo), name: .addTextFieldText, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(addTaskCount), name: .addTextFieldText, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(getTextInfo), name: .addToDoTaskCard, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(addTaskCount), name: .addToDoTaskCard, object: nil)
     }
     
     private func setupTitleLabelView() {
