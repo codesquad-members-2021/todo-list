@@ -25,6 +25,5 @@ class TextObservable<ObservedType> {
     
     func changeValue(to value: ObservedType) {
         _value = value
-        print("change value", value)
     }
 }
