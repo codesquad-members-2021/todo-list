@@ -39,47 +39,80 @@ class TaskViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+    }
+    
 }
 
 extension TaskViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        1 //각 섹션에는 한개의 row만 존재한다.
+//
+//        switch tableView {
+//        case todo:
+//            return 3
+//        case doing:
+//            return 4
+//        case done:
+//            return 1
+//        default:
+//            return 0
+//        }
         
+    }
+    /*섹션의 수를 늘리는 프로토콜*/
+    func numberOfSections(in tableView: UITableView) -> Int {
         switch tableView {
+        
         case todo:
+            countOfTodo.text = String(3)
             return 3
         case doing:
+            countOfDoing.text = String(4)
             return 4
         case done:
+            countOfDone.text = String(1)
             return 1
         default:
             return 0
         }
-        
     }
-
+    
+    /*섹션의 헤더섹션 배경색을 바꾸는 법.*/
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        (view as! UITableViewHeaderFooterView).contentView.backgroundColor = #colorLiteral(red: 0.968627451, green: 0.968627451, blue: 0.9607843137, alpha: 1)
+    }
+    
+    /*섹션의 헤더섹션 사이즈를 늘리는 방법.*/
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 20
+    }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCell") as! TaskCell
         
-        
-        cell.layer.borderWidth = 1
-        cell.layer.cornerRadius = 8
+                
+        cell.layer.cornerRadius = 2
         cell.clipsToBounds = true
         
-        
         //indexPath.row + 1 (이유 = 0 부터 시작하므로)
-        switch tableView {
-        case todo:
-            countOfTodo.text = String(indexPath.row + 1)
-        case doing:
-            countOfDoing.text = String(indexPath.row + 1)
-        case done:
-            countOfDone.text = String(indexPath.row + 1)            
-        default: break
-            
-        }                
+//        switch tableView {
+//        case todo:
+//            countOfTodo.text = String(indexPath.row + 1)
+//        case doing:
+//            countOfDoing.text = String(indexPath.row + 1)
+//        case done:
+//            countOfDone.text = String(indexPath.row + 1)
+//        default: break
+//
+//        }
         
         return cell
         
     }
+    
+    
+    
 }
