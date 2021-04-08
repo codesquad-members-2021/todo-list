@@ -37,28 +37,11 @@ class SectionViewController: UIViewController, PassableData {
     private var status = Status(subject: ["Hello", "World", "HaHaHa"])
     private var doingStatus = Status(subject: ["이거", "되면", "대박"])
     
-    var changeClosure: (() -> ())?
-    
-    @objc func valueChanged() {
-        changeClosure?()
-    }
-    
     @IBAction func tapAddButton(_ sender: UIButton) {
         let addView = self.storyboard?.instantiateViewController(withIdentifier: "AddView") as! AddTODOViewController
         addView.modalPresentationStyle = .overCurrentContext
         addView.setSectionMode(mode: .completeTODO)
         present(addView, animated: false, completion: nil)
-    }
-    
-    func bind(to observable: TextObservable<Status>) {
-        //MARK: Add observer 위치 -> 사실 필요없음 ViewModel 쪽에서 옵저빙 해야함
-        changeClosure = { [weak self] in
-            observable.changeValue(to: self?.status ?? Status(subject: []))
-        }
-        
-        observable.changeClosure = { [weak self] value in
-            self?.status = value ?? Status(subject: [])
-        }
     }
     
     override func viewDidLoad() {

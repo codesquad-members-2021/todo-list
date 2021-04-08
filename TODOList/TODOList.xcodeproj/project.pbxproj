@@ -16,6 +16,9 @@
 		22560CE9261C311400E2B80D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22560CE7261C311400E2B80D /* LaunchScreen.storyboard */; };
 		22560CF9261C557200E2B80D /* SectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22560CF8261C557200E2B80D /* SectionViewController.swift */; };
 		22560CFE261C58D800E2B80D /* SectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22560CFD261C58D800E2B80D /* SectionCell.swift */; };
+		22657153261F1FB000E455FA /* ImportViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22657152261F1FB000E455FA /* ImportViewModel.swift */; };
+		22657157261F237000E455FA /* ObservingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22657156261F237000E455FA /* ObservingTextField.swift */; };
+		2265715A261F2F5500E455FA /* SubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22657159261F2F5500E455FA /* SubmitButton.swift */; };
 		22A41EED261C91B200248CAF /* TODOTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A41EEC261C91B200248CAF /* TODOTableViewDataSource.swift */; };
 		22AE4A7A261D847B0081AA19 /* ExportViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AE4A79261D847B0081AA19 /* ExportViewModel.swift */; };
 		22AE4A82261D97CF0081AA19 /* Obserable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AE4A81261D97CF0081AA19 /* Obserable.swift */; };
@@ -43,6 +46,9 @@
 		22560CEA261C311400E2B80D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22560CF8261C557200E2B80D /* SectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionViewController.swift; sourceTree = "<group>"; };
 		22560CFD261C58D800E2B80D /* SectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionCell.swift; sourceTree = "<group>"; };
+		22657152261F1FB000E455FA /* ImportViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportViewModel.swift; sourceTree = "<group>"; };
+		22657156261F237000E455FA /* ObservingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservingTextField.swift; sourceTree = "<group>"; };
+		22657159261F2F5500E455FA /* SubmitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitButton.swift; sourceTree = "<group>"; };
 		22A41EEC261C91B200248CAF /* TODOTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TODOTableViewDataSource.swift; sourceTree = "<group>"; };
 		22AE4A79261D847B0081AA19 /* ExportViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportViewModel.swift; sourceTree = "<group>"; };
 		22AE4A81261D97CF0081AA19 /* Obserable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Obserable.swift; sourceTree = "<group>"; };
@@ -94,9 +100,12 @@
 				22560CF8261C557200E2B80D /* SectionViewController.swift */,
 				22A41EEC261C91B200248CAF /* TODOTableViewDataSource.swift */,
 				22139782261EA4840091C577 /* AddTODOViewController.swift */,
+				22657152261F1FB000E455FA /* ImportViewModel.swift */,
 				22AE4A79261D847B0081AA19 /* ExportViewModel.swift */,
 				22AE4A81261D97CF0081AA19 /* Obserable.swift */,
 				22560CFD261C58D800E2B80D /* SectionCell.swift */,
+				22657156261F237000E455FA /* ObservingTextField.swift */,
+				22657159261F2F5500E455FA /* SubmitButton.swift */,
 				22560CE2261C310F00E2B80D /* Main.storyboard */,
 				B35B4425261D73B700FD5E83 /* Data */,
 				B3F4ACC1261C3ABB00D04B00 /* Domain */,
@@ -203,6 +212,7 @@
 			files = (
 				22560CE1261C310F00E2B80D /* TODOViewController.swift in Sources */,
 				22AE4A82261D97CF0081AA19 /* Obserable.swift in Sources */,
+				22657153261F1FB000E455FA /* ImportViewModel.swift in Sources */,
 				22560CE1261C310F00E2B80D /* TODOViewController.swift in Sources */,
 				B35B4427261D73D500FD5E83 /* Networking.swift in Sources */,
 				B35B442A261D78DA00FD5E83 /* DataManager.swift in Sources */,
@@ -217,10 +227,12 @@
 				22560CF9261C557200E2B80D /* SectionViewController.swift in Sources */,
 				22560CFE261C58D800E2B80D /* SectionCell.swift in Sources */,
 				22560CDF261C310F00E2B80D /* SceneDelegate.swift in Sources */,
+				2265715A261F2F5500E455FA /* SubmitButton.swift in Sources */,
 				22AE4A7A261D847B0081AA19 /* ExportViewModel.swift in Sources */,
 				B3532088261D55B100EA788D /* Timeline.swift in Sources */,
 				B3F4ACC3261C3AD700D04B00 /* ToDoList.swift in Sources */,
 				B35B4435261D969C00FD5E83 /* SessionManager.swift in Sources */,
+				22657157261F237000E455FA /* ObservingTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

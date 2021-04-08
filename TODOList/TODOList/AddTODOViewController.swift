@@ -9,17 +9,25 @@ import UIKit
 
 class AddTODOViewController: UIViewController, UITextFieldDelegate {
     private var sectionMode: Mode?
-    @IBOutlet weak var subjectField: UITextField!
-    @IBOutlet weak var bodyField: UITextField!
-    @IBOutlet weak var writeButton: UIButton!
+    @IBOutlet weak var subjectField: ObservingTextField!
+    @IBOutlet weak var bodyField: ObservingTextField!
+    @IBOutlet weak var writeButton: SubmitButton!
     @IBOutlet weak var cardView: UIView!
     var centerConstraint: NSLayoutConstraint!
     var topConstraint: NSLayoutConstraint!
     
+    var importViewModel: ImportViewModel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.setDisabledButtonStyle()
+        self.importViewModel = ImportViewModel(subject: TextObservable(value: ""),
+                                               body: TextObservable(value: ""))
+        
+        self.subjectField.bind(to: importViewModel.subject)
+        self.bodyField.bind(to: importViewModel.body)
+        
+        self.addButtonCheckingTargets()
         
         self.subjectField.becomeFirstResponder()
     }
@@ -33,9 +41,9 @@ class AddTODOViewController: UIViewController, UITextFieldDelegate {
         dismiss(animated: false, completion: nil)
     }
     
-    private func setDisabledButtonStyle() {
-        let disabledColor = UIColor(displayP3Red: 134/255, green: 198/255, blue: 255/255, alpha: 1)
-        self.writeButton.setBackgroundColor(disabledColor, for: .disabled)
+    @IBAction func touchSubmitButton(_ sender: UIButton) {
+        self.importViewModel.trigger()
+        dismiss(animated: false, completion: nil)
     }
     
     @objc func checkWriteButton() {
@@ -48,18 +56,5 @@ class AddTODOViewController: UIViewController, UITextFieldDelegate {
     
     func setSectionMode(mode: Mode) {
         self.sectionMode = mode
-    }
-}
-
-extension UIButton {
-    func setBackgroundColor(_ color: UIColor, for state: UIControl.State) {
-        UIGraphicsBeginImageContext(CGSize(width: 1, height: 1))
-        guard let context = UIGraphicsGetCurrentContext() else { return }
-        context.setFillColor(color.cgColor)
-        context.fill(CGRect(x: 0, y: 0, width: 1, height: 1))
-        let backgroundImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        self.setBackgroundImage(backgroundImage, for: state)
     }
 }
