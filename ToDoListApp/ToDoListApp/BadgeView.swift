@@ -9,6 +9,6 @@ class BadgeView : UIView {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        self.layer.cornerRadius = 0.5 * self.bounds.size.width
+        self.layer.cornerRadius = 15
     }
 }

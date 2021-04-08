@@ -10,6 +10,7 @@ import UIKit
 class ToDoController: UIViewController {
 
     @IBOutlet weak var todoTableView: UITableView!
+    @IBOutlet weak var badge: BadgeView!
     
     private var todoDataSource = ToDoTableViewDataSource()
     private var todoDelegate = ToDoTableViewDelegate()
@@ -32,6 +33,8 @@ class ToDoController: UIViewController {
         todoTableView.rowHeight = UITableView.automaticDimension
         todoTableView.estimatedRowHeight = 108
         todoTableView.separatorStyle = .none
+        
+//        badge.label.text = ""
     }
 
 }
