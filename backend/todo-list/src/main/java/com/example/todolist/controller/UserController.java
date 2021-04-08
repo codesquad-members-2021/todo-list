@@ -6,13 +6,16 @@ import com.example.todolist.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 
 @RestController
+@RequestMapping("/users")
 public class UserController {
     private final UserRepository userRepository;
     private final JwtUtil jwtUtil;
@@ -23,17 +26,25 @@ public class UserController {
         this.jwtUtil = jwtUtil;
     }
 
-    @GetMapping
-    public void setFixedUser(HttpSession session) {
-        Long userId = 2L;
-        User user = userRepository.findById(userId).orElseThrow(RuntimeException::new);
-        session.setAttribute("sessionUser", user);
-    }
-
-    @GetMapping("/token")
+    @PostMapping
     public ResponseEntity<User> create(@RequestBody HashMap<String, String> newUserInfo) {
         User newUser = new User(newUserInfo.get("name"), newUserInfo.get("password"), jwtUtil.createToken());
         userRepository.save(newUser);
         return new ResponseEntity(newUser, HttpStatus.OK);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity login(@RequestBody HashMap<String, String> userInfo, HttpServletResponse response) {
+        String userId = userInfo.get("user_id");
+        User user= userRepository.findById(Long.parseLong(userId)).orElseThrow(RuntimeException::new);
+        if (!user.getPassword().equals(userInfo.get("password"))) {
+            throw new RuntimeException();
+        }
+        String jwtToken = user.getToken();
+        Cookie cookie = new Cookie("jwtToken", jwtToken);
+        cookie.setPath("/");
+        response.addCookie(cookie);
+//        response.addCookie(new Cookie("userId", user.getUserId()+""));
+        return new ResponseEntity(user.getToken(), HttpStatus.OK);
     }
 }
