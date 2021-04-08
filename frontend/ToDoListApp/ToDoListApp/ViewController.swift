@@ -22,9 +22,9 @@ class ViewController: UIViewController {
     private func setViewControllerInContainerView(){ //이름 맘에 안들면 수정!!
 
         var columnTitles : [String] = ["해야할 일", "하고 있는 일", "완료한 일"]
+        let columnViewStoryboard = UIStoryboard.init(name: "ColumnView", bundle: nil)
         columnTitles.reverse()
         for containerView in containerViewCollection {
-            let columnViewStoryboard = UIStoryboard.init(name: "ColumnView", bundle: nil)
             let columnVC = columnViewStoryboard.instantiateViewController(identifier: "ColumnView") as ColumnViewController
             self.addChild(columnVC)
             containerView.addSubview(columnVC.view)
