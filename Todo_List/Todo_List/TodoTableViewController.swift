@@ -12,33 +12,32 @@ class TodoTableViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var columnNameLabel: UILabel!
     @IBOutlet weak var cardNumLabel: UILabel!
-    @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var addCardButton: UIButton!
     
     private lazy var tableViewDelegate = TodoDelegate()
     private var todoDataSource = TodoDataSource()
     
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setting()
-    }
-    
-    private func setting() {
-        tableView.dataSource = todoDataSource
+    func setting() {
         tableView.delegate = tableViewDelegate
         tableView.register(UINib(nibName: TodoCell.identifier, bundle: nil), forCellReuseIdentifier: TodoCell.identifier)
         
+    }
+    
+    func getData(with todoCards: TodoCardsManageable) {
+        self.todoDataSource = TodoDataSource(todoCards: todoCards)
+        tableView.dataSource = self.todoDataSource
+    }
+    
+    func setHeader(columnName: String) {
+        columnNameLabel.text = columnName
         cardNumLabel.text = "\(tableView.numberOfRows(inSection: 0))"
     }
     
-    @IBAction func addButtonTouched(_ sender: UIButton) {
-        let modalview = ModalViewController(nibName: "ModalViewController", bundle: nil)
-        showPopup(modalview)
-        self.present(modalview, animated: true, completion: nil)
-    }
-    
-    private func showPopup(_ controller: UIViewController) {
-        controller.modalPresentationStyle = .custom
-        controller.preferredContentSize = CGSize(width: 200, height: 200)
+    @IBAction func addCardButtonTouched(_ sender: UIButton) {
+        let modalView = ModalViewController(nibName: "ModalViewController", bundle: nil)
+        modalView.modalPresentationStyle = .custom
+        self.present(modalView, animated: true, completion: nil)
+        
     }
 }
