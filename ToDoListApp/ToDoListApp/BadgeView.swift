@@ -4,7 +4,6 @@ import UIKit
 
 class BadgeView : UIView {
 
-    
     @IBOutlet weak var label: UILabel!
     
     required init?(coder: NSCoder) {
