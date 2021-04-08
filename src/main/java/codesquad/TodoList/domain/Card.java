@@ -24,7 +24,7 @@ public class Card {
     private String contents;
 
     @JsonProperty
-    //@JsonFormat()
+    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss", timezone = "Asia/Seoul")
     private LocalDateTime dateTime = LocalDateTime.now();
 
     private boolean todo;
