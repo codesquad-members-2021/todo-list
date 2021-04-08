@@ -113,23 +113,45 @@
 		71520A29261C45CB00BE3264 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				717FD58E261D7F9B00E79C77 /* NewTaskTextField.swift */,
-				71520A32261C54AF00BE3264 /* TaskCountLabel.swift */,
-				7199F459261D459A00D21319 /* CustomButton.swift */,
-				7199F461261D45BA00D21319 /* MainTitleLabel.swift */,
-				762F64F5261D9168001B879B /* TaskTableViewCell.swift */,
+				719996CB261E7883004FB8FA /* ToDoListView */,
 				7199F44B261D454800D21319 /* SignUpView */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		7199F442261D451500D21319 /* Controller */ = {
+		719996CB261E7883004FB8FA /* ToDoListView */ = {
+			isa = PBXGroup;
+			children = (
+				717FD58E261D7F9B00E79C77 /* NewTaskTextField.swift */,
+				71520A32261C54AF00BE3264 /* TaskCountLabel.swift */,
+				762F64F5261D9168001B879B /* TaskTableViewCell.swift */,
+			);
+			path = ToDoListView;
+			sourceTree = "<group>";
+		};
+		719996CC261E78A6004FB8FA /* SignUpController */ = {
+			isa = PBXGroup;
+			children = (
+				7199F443261D453100D21319 /* SignUpMainViewController.swift */,
+			);
+			path = SignUpController;
+			sourceTree = "<group>";
+		};
+		719996CD261E78B8004FB8FA /* ToDoListController */ = {
 			isa = PBXGroup;
 			children = (
 				762F649D261C2F6B001B879B /* ToDoListViewController.swift */,
-				7199F443261D453100D21319 /* SignUpMainViewController.swift */,
 				762F64E7261D52A5001B879B /* TaskViewController.swift */,
 				762F64EC261D7A05001B879B /* NewTaskViewController.swift */,
+			);
+			path = ToDoListController;
+			sourceTree = "<group>";
+		};
+		7199F442261D451500D21319 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				719996CD261E78B8004FB8FA /* ToDoListController */,
+				719996CC261E78A6004FB8FA /* SignUpController */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -137,6 +159,8 @@
 		7199F44B261D454800D21319 /* SignUpView */ = {
 			isa = PBXGroup;
 			children = (
+				7199F459261D459A00D21319 /* CustomButton.swift */,
+				7199F461261D45BA00D21319 /* MainTitleLabel.swift */,
 				7199F44C261D456100D21319 /* EachInfoView.swift */,
 				7199F454261D457B00D21319 /* MainInfoStackView.swift */,
 			);

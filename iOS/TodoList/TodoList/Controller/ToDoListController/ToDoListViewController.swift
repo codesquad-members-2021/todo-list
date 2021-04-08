@@ -7,6 +7,7 @@ class ToDoListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor.systemGray6
     }
     
     private func setUpTaskbutton() {

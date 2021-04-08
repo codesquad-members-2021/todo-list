@@ -14,6 +14,7 @@ class TaskViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor.systemGray6
         setUpNotification()
         taskTableView.delegate = self
         taskTableView.delegate = self
