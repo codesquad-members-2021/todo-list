@@ -76,11 +76,9 @@
 			children = (
 				933A1E79261C387B0017FFBD /* AppDelegate.swift */,
 				933A1E7B261C387B0017FFBD /* SceneDelegate.swift */,
-				9386C064261EE8F4008645D9 /* Service */,
-				933A1E91261C39C90017FFBD /* Models */,
-				9348A4AA261D7647002B63C6 /* Controllers */,
-				9348A49E261D6F07002B63C6 /* Views */,
-				9386C05B261DA37A008645D9 /* ViewModel */,
+				9386C064261EE8F4008645D9 /* Data */,
+				933A1E91261C39C90017FFBD /* Domain */,
+				9348A4AA261D7647002B63C6 /* Presentation */,
 				933A1E7F261C387B0017FFBD /* Main.storyboard */,
 				933A1E82261C387D0017FFBD /* Assets.xcassets */,
 				933A1E84261C387D0017FFBD /* LaunchScreen.storyboard */,
@@ -89,14 +87,14 @@
 			path = ToDoListApp;
 			sourceTree = "<group>";
 		};
-		933A1E91261C39C90017FFBD /* Models */ = {
+		933A1E91261C39C90017FFBD /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				933A1E8E261C39C50017FFBD /* Card.swift */,
+				9386C073261EFA0C008645D9 /* Entity */,
 				933A1E93261C3E000017FFBD /* CardUseCasePort.swift */,
 				933A1E96261C485B0017FFBD /* CardUseCase.swift */,
 			);
-			path = Models;
+			path = Domain;
 			sourceTree = "<group>";
 		};
 		9348A49E261D6F07002B63C6 /* Views */ = {
@@ -108,12 +106,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		9348A4AA261D7647002B63C6 /* Controllers */ = {
+		9348A4AA261D7647002B63C6 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				9348A4AD261D817D002B63C6 /* MainViewController.swift */,
+				9386C077261EFA53008645D9 /* UI */,
+				9386C05B261DA37A008645D9 /* ViewModel */,
+				9348A49E261D6F07002B63C6 /* Views */,
 			);
-			path = Controllers;
+			path = Presentation;
 			sourceTree = "<group>";
 		};
 		9386C05B261DA37A008645D9 /* ViewModel */ = {
@@ -124,14 +124,38 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		9386C064261EE8F4008645D9 /* Service */ = {
+		9386C064261EE8F4008645D9 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				9386C07A261EFA69008645D9 /* Network */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		9386C073261EFA0C008645D9 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				933A1E8E261C39C50017FFBD /* Card.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		9386C077261EFA53008645D9 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				9348A4AD261D817D002B63C6 /* MainViewController.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		9386C07A261EFA69008645D9 /* Network */ = {
 			isa = PBXGroup;
 			children = (
 				9386C061261EE8E3008645D9 /* Endpoint.swift */,
 				9386C066261EE907008645D9 /* CardNetworkManager.swift */,
 				9386C069261EE91F008645D9 /* NetworkManager.swift */,
 			);
-			path = Service;
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
