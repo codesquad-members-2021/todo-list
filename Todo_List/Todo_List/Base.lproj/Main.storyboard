@@ -99,6 +99,9 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="tintColor" systemColor="systemGray3Color"/>
                                         <state key="normal" image="plus" catalog="system"/>
+                                        <connections>
+                                            <action selector="addCardButtonTouched:" destination="b4B-3n-9hz" eventType="touchUpInside" id="j3Y-Gf-VWC"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -143,6 +146,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addCardButton" destination="n2J-V6-8hs" id="W0d-yS-Oda"/>
                         <outlet property="cardNumLabel" destination="2ic-fr-pAD" id="7yC-tP-xcK"/>
                         <outlet property="columnNameLabel" destination="5Nk-G8-w1N" id="mJL-vD-ITm"/>
                         <outlet property="tableView" destination="xXc-qc-hc1" id="8qd-GV-Fp6"/>

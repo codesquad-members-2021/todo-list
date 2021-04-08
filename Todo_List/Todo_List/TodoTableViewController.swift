@@ -12,6 +12,7 @@ class TodoTableViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var columnNameLabel: UILabel!
     @IBOutlet weak var cardNumLabel: UILabel!
+    @IBOutlet weak var addCardButton: UIButton!
     
     private lazy var tableViewDelegate = TodoDelegate()
     private var todoDataSource = TodoDataSource()
@@ -32,4 +33,12 @@ class TodoTableViewController: UIViewController {
         columnNameLabel.text = columnName
         cardNumLabel.text = "\(tableView.numberOfRows(inSection: 0))"
     }
+    
+    @IBAction func addCardButtonTouched(_ sender: UIButton) {
+        let modalView = ModalViewController(nibName: "ModalViewController", bundle: nil)
+        modalView.modalPresentationStyle = .custom
+        self.present(modalView, animated: true, completion: nil)
+        
+    }
+    
 }
