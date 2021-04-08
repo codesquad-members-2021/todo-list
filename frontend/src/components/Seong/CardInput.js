@@ -157,7 +157,7 @@ const Wrapper = styled.div`
 const CardInput = ({ list, index, clickHandler, isModify, originCard }) => {
     const [title, setTitle] = useState(isModify ? originCard.title : '');
     const [body, setBody] = useState(isModify ? originCard.body : '');
-    const [isAble, setAbility] = useState(false);
+    const [isAble, setAbility] = useState(isModify ? true : false);
 
     const addCard = () => {
         if (!isAble) return;
@@ -172,7 +172,7 @@ const CardInput = ({ list, index, clickHandler, isModify, originCard }) => {
                 : setAbility(false);
             return target.value;
         });
-    }; 
+    };
     const changebody = ({ target }) => {
         setBody(() => {
             title.length * target.value.length
@@ -203,7 +203,7 @@ const CardInput = ({ list, index, clickHandler, isModify, originCard }) => {
                     <ButtonAccent
                         clickHandler={addCard}
                         isAble={isAble}
-                        title={isModify ? "수정" : "등록"}
+                        title={isModify ? '수정' : '등록'}
                     />
                 </div>
             </div>

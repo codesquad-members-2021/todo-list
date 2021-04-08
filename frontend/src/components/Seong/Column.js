@@ -94,40 +94,23 @@ const ColumnWrapper = styled.div`
 `;
 
 const Column = ({ title, list }) => {
+    const [isInProgress, setProgress] = useState(false);
+    //prettier-ignore
     const renderCard = (v, i) => {
         v.index = i;
         v.list = list;
         v.clickHandler = reRender;
         v.dbClickHandler = editEvent;
-        return (
-            <li key={i}>
-                <Card {...v} />
-            </li>
-        );
+        return (<li key={i}><Card {...v} /></li>);
     };
+
     const reRender = () => {
         setCardList(list.map(renderCard));
         setProgress(false);
     };
-    const editEvent = (index, card) => {
-        setCardList((cardList) => {
-            console.log(card)
-            cardList.splice(
-                index,
-                1,
-                <li key={index}>
-                    <CardInput list={list} index={index} isModify={true} clickHandler={reRender} originCard={card} />
-                </li>
-            );
-            return cardList
-        });
-        setCardList((cardList)=>[...cardList])
-    };
-
-    const [cardList, setCardList] = useState(list.map(renderCard));
-    const [isInProgress, setProgress] = useState(false);
 
     const plusEvent = () => {
+        console.log(cardList)
         if (isInProgress) return;
         setCardList([
             <li key="input">
@@ -137,8 +120,29 @@ const Column = ({ title, list }) => {
         ]);
         setProgress(true);
     };
-    
 
+    const editEvent = (index, card) => {
+        if (isInProgress) return;
+        setCardList((cardList) => {
+            cardList.splice(
+                index,
+                1,
+                <li key={index}>
+                    <CardInput
+                        list={list}
+                        index={index}
+                        isModify={true}
+                        clickHandler={reRender}
+                        originCard={card}
+                    />
+                </li>,
+            );
+            return [...cardList];
+        });
+        setProgress(true);
+    };
+
+    const [cardList, setCardList] = useState(list.map(renderCard));
 
     return (
         <ColumnWrapper>
