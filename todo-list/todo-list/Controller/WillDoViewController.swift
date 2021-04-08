@@ -13,6 +13,10 @@ class WillDoViewController: UIViewController {
     @IBOutlet weak var badgeLabel: UILabel!
     
     private var cellCount = 0
+    private var data = [["title","1줄짜리입력"],
+                        ["title","2줄짜리입력\n2줄짜리입력"],
+                        ["title","3줄짜리입력\n3줄짜리입력\n3줄짜리입력"],
+                        ["title","4줄짜리입력\n4줄짜리입력\n4줄짜리입력\n4줄짜리입력"]]
     
     @IBOutlet weak var willDoTableView: UITableView!
     
@@ -59,8 +63,10 @@ extension WillDoViewController: UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath)
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath) as! ToDoTableViewCell
+        let index = indexPath.row % 4
+        cell.titleLabel.text = data[index][0]
+        cell.contentLabel.text = data[index][1]
         return cell
     }
 }
