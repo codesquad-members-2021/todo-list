@@ -7,9 +7,9 @@
 
 import UIKit
 
-class ToDoCell: UITableViewCell {
+class CardCell: UITableViewCell {
     
-    static let identifier = "ToDoCell"
+    static let identifier = "CardCell"
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var contentsLabel: UILabel!

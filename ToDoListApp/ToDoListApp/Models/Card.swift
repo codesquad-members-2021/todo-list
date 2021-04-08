@@ -1,5 +1,5 @@
 //
-//  ToDo.swift
+//  Card.swift
 //  ToDoListApp
 //
 //  Created by zombietux on 2021/04/06.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ToDo: ToDoManageable, Decodable {
+class Card: CardManageable, Decodable {
     private var title: String
     private var contents: String
     
@@ -22,18 +22,18 @@ class ToDo: ToDoManageable, Decodable {
         self.init(title: title, contents: contents)
     }
     
-    func add(toDo: ToDo) {
+    func add() {
     }
     
-    func edit(toDo: ToDo) {
+    func edit() {
         
     }
     
-    func delete(toDo: ToDo) {
+    func delete() {
         
     }
     
-    func goToDone(toDo: ToDo) {
+    func goToDone() {
         
     }
 }

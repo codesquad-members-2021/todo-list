@@ -11,7 +11,7 @@ import Combine
 protocol CardNetworkManagerProtocol: class {
     var networkManager: HttpMethodProtocol { get }
 
-    func getCards() -> AnyPublisher<[ToDo], Error>
+    func getCards() -> AnyPublisher<[Card], Error>
 }
 
 class CardNetworkManager: CardNetworkManagerProtocol {
@@ -26,10 +26,10 @@ class CardNetworkManager: CardNetworkManagerProtocol {
         self.init(networkManager: networkManager)
     }
     
-    func getCards() -> AnyPublisher<[ToDo], Error> {
+    func getCards() -> AnyPublisher<[Card], Error> {
         let endpoint = Endpoint.cards
 
-        return networkManager.get(type: [ToDo].self, url: endpoint.url)
+        return networkManager.get(type: [Card].self, url: endpoint.url)
     }
 }
 

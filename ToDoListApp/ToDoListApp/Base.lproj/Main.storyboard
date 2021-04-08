@@ -58,7 +58,7 @@
                                                     <rect key="frame" x="0.0" y="58" width="270" height="442"/>
                                                     <color key="backgroundColor" systemColor="systemGray6Color"/>
                                                     <prototypes>
-                                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="gray" indentationWidth="10" reuseIdentifier="ToDoCell" rowHeight="121" id="vdg-r0-Jyz" customClass="ToDoCell" customModule="ToDoListApp" customModuleProvider="target">
+                                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="gray" indentationWidth="10" reuseIdentifier="CardCell" rowHeight="121" id="vdg-r0-Jyz" customClass="CardCell" customModule="ToDoListApp" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="28" width="270" height="121"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vdg-r0-Jyz" id="UBr-5Q-PN8">

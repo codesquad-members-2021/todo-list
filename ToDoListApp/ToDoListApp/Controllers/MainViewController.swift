@@ -11,14 +11,14 @@ class MainViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
-    private var toDoViewModel: ToDoViewModel!
+    private var cardViewModel: CardViewModel!
     private var boards: [Board]! // ViewModel로 옮길 필요가 있음
     
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.dataSource = self
-        self.toDoViewModel = ToDoViewModel()
-        self.boards = toDoViewModel.get()
+        self.cardViewModel = CardViewModel()
+        self.boards = cardViewModel.get()
     }
 }
 

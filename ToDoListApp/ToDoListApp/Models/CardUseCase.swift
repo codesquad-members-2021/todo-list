@@ -7,11 +7,11 @@
 
 import Foundation
 
-class ToDoUseCase: ToDoUseCasePort {
-    private var toDo: ToDoManageable
+class CardUseCase: CardUseCasePort {
+    private var card: CardManageable
     
-    init(toDo: ToDoManageable) {
-        self.toDo = toDo
+    init(card: CardManageable) {
+        self.card = card
     }
     
     func get() -> [Board] {
@@ -24,19 +24,19 @@ class ToDoUseCase: ToDoUseCasePort {
         return boards
     }
     
-    func add(toDo: ToDoManageable) {
+    func add() {
 
     }
     
-    func edit(toDo: ToDoManageable) {
+    func edit() {
         
     }
     
-    func delete(toDo: ToDoManageable) {
+    func delete() {
         
     }
     
-    func goToDone(toDo: ToDoManageable) {
+    func goToDone() {
         
     }
 }
