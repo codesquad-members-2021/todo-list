@@ -8,12 +8,25 @@
 import Foundation
 
 class JSONParser {
-    static func parseJSON(_ todoData: Data) -> [Card]? {
+    static func parse(_ todoData: Data) -> [Card]? {
         let decoder = JSONDecoder()
         do {
             let decodedData = try decoder.decode([TodoData].self, from: todoData)
-            let cards = decodedData.map { (todoData) in
-                Card(title: todoData.title, description: todoData.contents)
+            let cards = decodedData.map { (todoData) -> Card in
+                let title = todoData.title
+                let desc = todoData.contents
+                var category = ""
+                switch (todoData.todo, todoData.doing, todoData.done) {
+                case (true, false, false):
+                    category = "todo"
+                case (false, true, false):
+                    category = "doing"
+                case (false, false, true):
+                    category = "done"
+                default:
+                    category = "error"
+                }
+                return Card(title: title, description: desc, category: category)
             }
             return cards
         } catch {

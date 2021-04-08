@@ -17,7 +17,7 @@ class NetworkManager {
                 return
             }
             guard let data = data else { return }
-            guard let cards = JSONParser.parseJSON(data) else { return }
+            guard let cards = JSONParser.parse(data) else { return }
             handler(cards)
         }
         task.resume()

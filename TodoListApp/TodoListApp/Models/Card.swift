@@ -8,14 +8,16 @@
 import Foundation
 
 class Card {
-    private var title: String
-    private var description: String
-    private let createdAt: Date
+    var title: String
+    var description: String
+    let createdAt: Date
+    let category: String
     
-    init(title: String, description: String) {
+    init(title: String, description: String, category: String) {
         self.title = title
         self.description = description
         self.createdAt = Date()
+        self.category = category
     }
     
     func replaceTitle(with newTitle: String) {
