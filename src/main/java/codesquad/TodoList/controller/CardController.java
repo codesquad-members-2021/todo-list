@@ -21,11 +21,10 @@ public class CardController {
 
     // CREATE
     @PostMapping
-    public String newCard(Card card) {
+    public void newCard(Card card) {
         // 우선은 Todo에서만 새 Card 생성 가능
         card.changeStateTodo();
         cardRepository.save(card);
-        return "redirect:/cards";
     }
 
     // READ
@@ -59,14 +58,16 @@ public class CardController {
 
     // UPDATE
     @PutMapping("/{id}")
-    public void editCards(Card card, Card newCard) {
+    public void editCards(@PathVariable Long id, Card newCard) {
+        Card card = cardRepository.findById(id).orElseThrow();
         card.update(newCard);
         cardRepository.save(card);
     }
 
     // DELETE
     @DeleteMapping("/{id}")
-    public void deleteCards(Card card) {
+    public void deleteCards(@PathVariable Long id) {
+        Card card = cardRepository.findById(id).orElseThrow();
         cardRepository.delete(card);
     }
 }
