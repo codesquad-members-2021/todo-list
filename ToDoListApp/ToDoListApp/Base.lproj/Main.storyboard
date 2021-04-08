@@ -154,10 +154,6 @@
                                         <constraint firstAttribute="bottom" secondItem="jRb-sa-y5M" secondAttribute="bottom" id="hEB-wl-EKK"/>
                                     </constraints>
                                 </view>
-                                <connections>
-                                    <outlet property="dataSource" destination="ft8-96-gLb" id="o2v-cz-bP2"/>
-                                    <outlet property="delegate" destination="ft8-96-gLb" id="RKf-Wc-fof"/>
-                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="yVb-XX-JXl"/>
