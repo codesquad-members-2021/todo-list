@@ -2,7 +2,7 @@ import React from "react";
 import Span from "../../atoms/Span/Span";
 import SmallButton from "../../atoms/Buttons/SmallButton";
 import Image from "../../atoms/Image/Image";
-import styled from "styled-components"
+import styled from "styled-components";
 import hamburgerBtn from "../../../images/hamburgerButtonIcon.png";
 
 const Div = styled.div`

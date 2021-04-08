@@ -1,7 +1,7 @@
 import React from "react";
-import styled from "styled-components"
+import styled from "styled-components";
 
-const StyledLabel= styled.label`
+const StyledLabel = styled.label`
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -12,6 +12,8 @@ const StyledLabel= styled.label`
   border-radius: 50%;
 `;
 
-const Label = ({ children, ...props }) => <StyledLabel {...props}>{children}</StyledLabel>;
+const Label = ({ children, ...props }) => (
+  <StyledLabel {...props}>{children}</StyledLabel>
+);
 
 export default Label;

@@ -2,7 +2,7 @@ import React from "react";
 import Span from "../atoms/Span";
 import SmallButton from "../../atoms/Buttons/SmallButton";
 import MediumButton from "../../atoms/Buttons/MediumButton";
-import Label from "../atoms/Label"
+import Label from "../atoms/Label";
 import Input from "../atoms/Input";
 
 
