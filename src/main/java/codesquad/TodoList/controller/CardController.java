@@ -1,7 +1,7 @@
 package codesquad.TodoList.controller;
 
 import codesquad.TodoList.domain.Card;
-import codesquad.TodoList.repository.CardRepository;
+import codesquad.TodoList.service.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -12,62 +12,51 @@ import java.util.List;
 @RequestMapping("/cards")
 public class CardController {
 
-    private CardRepository cardRepository;
+    private CardService cardService;
 
     @Autowired
-    public CardController(CardRepository cardRepository) {
-        this.cardRepository = cardRepository;
+    public CardController(CardService cardService) {
+        this.cardService = cardService;
     }
 
     // CREATE
     @PostMapping
     public void newCard(Card card) {
-        // 우선은 Todo에서만 새 Card 생성 가능
-        card.changeStateTodo();
-        cardRepository.save(card);
+        cardService.createTodo(card);
     }
 
     // READ
     @GetMapping
     @ResponseBody
     public List<Card> showCards() {
-        return cardRepository.findAllByTodoTrueOrDoingTrueOrDoneTrue();
+        return cardService.read();
     }
 
     // MOVE
     @PutMapping("/{id}/todo")
     public void moveCardsTodo(@PathVariable Long id) {
-        Card card = cardRepository.findById(id).orElseThrow();
-        card.changeStateTodo();
-        cardRepository.save(card);
+        cardService.changeStateTodo(id);
     }
 
     @PutMapping("/{id}/doing")
     public void moveCardsDoing(@PathVariable Long id) {
-        Card card = cardRepository.findById(id).orElseThrow();
-        card.changeStateDoing();
-        cardRepository.save(card);
+        cardService.changeStateDoing(id);
     }
 
     @PutMapping("/{id}/done")
     public void moveCardsDone(@PathVariable Long id) {
-        Card card = cardRepository.findById(id).orElseThrow();
-        card.changeStateTodo();
-        cardRepository.save(card);
+        cardService.changeStateDone(id);
     }
 
     // UPDATE
     @PutMapping("/{id}")
     public void editCards(@PathVariable Long id, Card newCard) {
-        Card card = cardRepository.findById(id).orElseThrow();
-        card.update(newCard);
-        cardRepository.save(card);
+        cardService.edit(id, newCard);
     }
 
     // DELETE
     @DeleteMapping("/{id}")
     public void deleteCards(@PathVariable Long id) {
-        Card card = cardRepository.findById(id).orElseThrow();
-        cardRepository.delete(card);
+        cardService.delete(id);
     }
 }
