@@ -17,16 +17,19 @@ class TodoTableViewController: UIViewController {
     private var todoDataSource = TodoDataSource()
     
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setting()
-    }
-    
-    private func setting() {
-        tableView.dataSource = todoDataSource
+    func setting() {
         tableView.delegate = tableViewDelegate
         tableView.register(UINib(nibName: TodoCell.identifier, bundle: nil), forCellReuseIdentifier: TodoCell.identifier)
         
+    }
+    
+    func getData(with todoCards: TodoCardsManageable) {
+        self.todoDataSource = TodoDataSource(todoCards: todoCards)
+        tableView.dataSource = self.todoDataSource
+    }
+    
+    func setHeader(columnName: String) {
+        columnNameLabel.text = columnName
         cardNumLabel.text = "\(tableView.numberOfRows(inSection: 0))"
     }
 }
