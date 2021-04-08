@@ -66,10 +66,12 @@ enum testDatas {
         Data (
             """
             {
-                "title": "dummyTitle",
-                "body" : "dummyBody",
+                "cardId": 0,
+                "title" : "dummyTitle",
+                "content" : "dummyTitle",
                 "isApp": true,
-                "date" : "2021-04-06"
+                "createdTime" : "2021-04-06 23:12:12",
+                "position" : 1024
             }
             """.utf8
         

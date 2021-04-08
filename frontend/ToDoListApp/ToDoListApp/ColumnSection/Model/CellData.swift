@@ -8,7 +8,10 @@
 import Foundation
 
 class CellData : Codable {
-    private var title : String
-    private var body : String
-    private var caption : String
+    var cardId : Int
+    var title : String
+    var content: String
+    var isApp : Bool
+    var createdTime : String
+    var position: Int
 }

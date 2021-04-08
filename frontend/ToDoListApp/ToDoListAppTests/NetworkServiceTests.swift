@@ -17,15 +17,17 @@ class NetworkServiceTests: XCTestCase {
     }
     
     func test_getToDoData() {
-        let response = try? JSONDecoder().decode(testCellData.self, from: testDatas.CellData.dummyCellData)
+        let response = try? JSONDecoder().decode(CellData.self, from: testDatas.CellData.dummyCellData)
         
-        sut.getToDoData(needs: testCellData.self, closure: { result in
+        sut.getToDoData(needs: CellData.self, closure: { result in
             switch result {
             case .success(let data) :
-                XCTAssertEqual(data.title, response?.title)
-                XCTAssertEqual(data.body, response?.body)
+                XCTAssertEqual(data.cardId, response?.cardId)
+                XCTAssertEqual(data.content, response?.content)
+                XCTAssertEqual(data.createdTime, response?.createdTime)
                 XCTAssertEqual(data.isApp, response?.isApp)
-                XCTAssertEqual(data.date, response?.date)
+                XCTAssertEqual(data.position, response?.position)
+                XCTAssertEqual(data.title, response?.title)
             case .failure(_):
                 XCTFail()
             }
@@ -35,7 +37,7 @@ class NetworkServiceTests: XCTestCase {
     func test_getToDoDate_Failure() {
         sut = .init(session: MockURLSession(makeRequestFail: true))
         
-        sut.getToDoData(needs: testCellData.self, closure: { result in
+        sut.getToDoData(needs: CellData.self, closure: { result in
             switch result {
             case .success :
                 XCTFail()
@@ -46,7 +48,7 @@ class NetworkServiceTests: XCTestCase {
     }
     
     func test_postToDoData() {
-        let response = try? JSONDecoder().decode(testCellData.self, from: testDatas.CellData.dummyCellData)
+        let response = try? JSONDecoder().decode(CellData.self, from: testDatas.CellData.dummyCellData)
         
         sut.postToDoData(input: testDatas.CellData.dummyCellData, post: "", closure: { response in
             switch response {
