@@ -42,4 +42,10 @@ public class TaskController {
     public void delete(@PathVariable Long id) {
         logger.debug(id + " Successfully deleted");
     }
+
+    @PatchMapping("/tasks/{id}/{previousId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void move(@PathVariable Long id, @PathVariable Long previousId) {
+        logger.debug(id + " Successfully moved to " + previousId);
+    }
 }
