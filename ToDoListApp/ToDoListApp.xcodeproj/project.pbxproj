@@ -20,6 +20,13 @@
 		FFC6193D261D4ED20033D622 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFC6193B261D4ED20033D622 /* Main.storyboard */; };
 		FFC6193F261D4ED60033D622 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFC6193E261D4ED60033D622 /* Assets.xcassets */; };
 		FFC61942261D4ED60033D622 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFC61940261D4ED60033D622 /* LaunchScreen.storyboard */; };
+		FFC6197A261EEB1A0033D622 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC61977261EEB1A0033D622 /* Card.swift */; };
+		FFC6197B261EEB1A0033D622 /* CardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC61978261EEB1A0033D622 /* CardManager.swift */; };
+		FFC6197C261EEB1A0033D622 /* States.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC61979261EEB1A0033D622 /* States.swift */; };
+		FFC61991261EEF040033D622 /* InProgressTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC61990261EEF040033D622 /* InProgressTableViewDelegate.swift */; };
+		FFC61994261EEF110033D622 /* InProgressTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC61993261EEF110033D622 /* InProgressTableViewDataSource.swift */; };
+		FFC61998261EEF2C0033D622 /* DoneTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC61997261EEF2C0033D622 /* DoneTableViewDelegate.swift */; };
+		FFC6199B261EEF360033D622 /* DoneTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC6199A261EEF360033D622 /* DoneTableViewDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +45,13 @@
 		FFC6193E261D4ED60033D622 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FFC61941261D4ED60033D622 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FFC61943261D4ED60033D622 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FFC61977261EEB1A0033D622 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		FFC61978261EEB1A0033D622 /* CardManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardManager.swift; sourceTree = "<group>"; };
+		FFC61979261EEB1A0033D622 /* States.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = States.swift; sourceTree = "<group>"; };
+		FFC61990261EEF040033D622 /* InProgressTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InProgressTableViewDelegate.swift; path = ../../../../../InProgressTableViewDelegate.swift; sourceTree = "<group>"; };
+		FFC61993261EEF110033D622 /* InProgressTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InProgressTableViewDataSource.swift; path = ../../../../../InProgressTableViewDataSource.swift; sourceTree = "<group>"; };
+		FFC61997261EEF2C0033D622 /* DoneTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DoneTableViewDelegate.swift; path = ../../../../../DoneTableViewDelegate.swift; sourceTree = "<group>"; };
+		FFC6199A261EEF360033D622 /* DoneTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DoneTableViewDataSource.swift; path = ../../../../../DoneTableViewDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,20 +86,51 @@
 			children = (
 				FFC61935261D4ED20033D622 /* AppDelegate.swift */,
 				FFC61937261D4ED20033D622 /* SceneDelegate.swift */,
-				FFC61939261D4ED20033D622 /* ViewController.swift */,
 				FFC6193B261D4ED20033D622 /* Main.storyboard */,
-				CE9A2B29261EDA3B0097A940 /* CardViewController.swift */,
-				CE9A2B2C261EDB6C0097A940 /* CardTableView.swift */,
-				CE9A2B1C261E9A600097A940 /* ToDoTableViewDataSource.swift */,
-				CE9A2B1F261E9AFE0097A940 /* ToDoTableViewDelegate.swift */,
-				CE5ED8A8261D8B9800789822 /* BadgeView.swift */,
 				FFC6193E261D4ED60033D622 /* Assets.xcassets */,
 				FFC61940261D4ED60033D622 /* LaunchScreen.storyboard */,
 				FFC61943261D4ED60033D622 /* Info.plist */,
+				FFC61980261EEB620033D622 /* Controller */,
+				FFC6197F261EEB570033D622 /* View */,
+				FFC6197E261EEB4D0033D622 /* Model */,
+			);
+			path = ToDoListApp;
+			sourceTree = "<group>";
+		};
+		FFC6197E261EEB4D0033D622 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FFC61977261EEB1A0033D622 /* Card.swift */,
+				FFC61978261EEB1A0033D622 /* CardManager.swift */,
+				FFC61979261EEB1A0033D622 /* States.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FFC6197F261EEB570033D622 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CE9A2B2C261EDB6C0097A940 /* CardTableView.swift */,
+				CE5ED8A8261D8B9800789822 /* BadgeView.swift */,
 				CE5ED8CA261E003900789822 /* CardCell.swift */,
 				CE5ED8CB261E003900789822 /* CardCell.xib */,
 			);
-			path = ToDoListApp;
+			path = View;
+			sourceTree = "<group>";
+		};
+		FFC61980261EEB620033D622 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FFC61939261D4ED20033D622 /* ViewController.swift */,
+				CE9A2B29261EDA3B0097A940 /* CardViewController.swift */,
+				CE9A2B1C261E9A600097A940 /* ToDoTableViewDataSource.swift */,
+				CE9A2B1F261E9AFE0097A940 /* ToDoTableViewDelegate.swift */,
+				FFC61990261EEF040033D622 /* InProgressTableViewDelegate.swift */,
+				FFC61993261EEF110033D622 /* InProgressTableViewDataSource.swift */,
+				FFC61997261EEF2C0033D622 /* DoneTableViewDelegate.swift */,
+				FFC6199A261EEF360033D622 /* DoneTableViewDataSource.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -162,11 +207,18 @@
 				CE9A2B20261E9AFE0097A940 /* ToDoTableViewDelegate.swift in Sources */,
 				CE5ED8A9261D8B9800789822 /* BadgeView.swift in Sources */,
 				FFC6193A261D4ED20033D622 /* ViewController.swift in Sources */,
+				FFC6197C261EEB1A0033D622 /* States.swift in Sources */,
 				CE9A2B1D261E9A600097A940 /* ToDoTableViewDataSource.swift in Sources */,
+				FFC61998261EEF2C0033D622 /* DoneTableViewDelegate.swift in Sources */,
 				CE5ED8CC261E003900789822 /* CardCell.swift in Sources */,
+				FFC61994261EEF110033D622 /* InProgressTableViewDataSource.swift in Sources */,
 				FFC61936261D4ED20033D622 /* AppDelegate.swift in Sources */,
 				CE9A2B2D261EDB6C0097A940 /* CardTableView.swift in Sources */,
+				FFC6197A261EEB1A0033D622 /* Card.swift in Sources */,
+				FFC6197B261EEB1A0033D622 /* CardManager.swift in Sources */,
+				FFC6199B261EEF360033D622 /* DoneTableViewDataSource.swift in Sources */,
 				CE9A2B2A261EDA3B0097A940 /* CardViewController.swift in Sources */,
+				FFC61991261EEF040033D622 /* InProgressTableViewDelegate.swift in Sources */,
 				FFC61938261D4ED20033D622 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
