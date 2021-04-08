@@ -19,6 +19,7 @@ class TaskCell: UITableViewCell {
         
         self.layer.cornerRadius = 2
         self.clipsToBounds = true
+
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -24,6 +24,8 @@ class TaskViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        todo.rowHeight = UITableView.automaticDimension
+        todo.estimatedRowHeight = 108
         todo.delegate = self
         todo.dataSource = self
         
@@ -45,17 +47,17 @@ class TaskViewController: UIViewController {
     }
     @IBAction func todoPlus(_ sender: UIButton) {
         let new = TaskVO()
-        todoTasks.append(new)
+        todoTasks.insert(new, at: 0)
         todo.reloadData()
     }
     @IBAction func doingPlus(_ sender: UIButton) {
         let new = TaskVO()
-        doingTasks.append(new)
+        doingTasks.insert(new, at: 0)
         doing.reloadData()
     }
     @IBAction func donePlus(_ sender: UIButton) {
         let new = TaskVO()
-        doneTasks.append(new)
+        doneTasks.insert(new, at: 0)
         done.reloadData()
     }
     

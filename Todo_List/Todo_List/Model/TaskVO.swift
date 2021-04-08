@@ -21,6 +21,8 @@ class TaskVO {
         self.writer = writer
     }
     convenience init(){
-        self.init(title : "iOS", content: "implements plus button", writer : "elly")
+        self.init(title : "iOS",
+                  content: "implements plus button with jackson in codesquad. test code for content line. Am I right?",
+                  writer : "elly")
     }
 }
