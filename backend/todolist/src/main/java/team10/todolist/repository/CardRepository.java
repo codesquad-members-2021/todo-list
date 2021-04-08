@@ -7,7 +7,7 @@ import javax.sql.DataSource;
 import java.util.List;
 import java.util.Optional;
 
-public interface BoardRepository extends CrudRepository<Card,Long> {
+public interface CardRepository extends CrudRepository<Card,Long> {
 
 
     Card save(Card card);

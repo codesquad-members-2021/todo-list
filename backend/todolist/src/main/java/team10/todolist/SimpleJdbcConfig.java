@@ -1,5 +1,6 @@
 package team10.todolist;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jdbc.repository.config.AbstractJdbcConfiguration;
@@ -15,6 +16,10 @@ import javax.sql.DataSource;
 @Configuration
 @EnableJdbcRepositories
 public class SimpleJdbcConfig extends AbstractJdbcConfiguration {
+
+    @Autowired
+    DataSource dataSource;
+
     //@Todo  https://github.com/stunstunstun/awesome-spring-boot
     @Bean
     public NamedParameterJdbcTemplate namedParameterJdbcTemplate(DataSource dataSource) {
@@ -23,16 +28,17 @@ public class SimpleJdbcConfig extends AbstractJdbcConfiguration {
 
     @Bean
     public PlatformTransactionManager transactionManager() {
-        return new DataSourceTransactionManager(dataSource());
+        return new DataSourceTransactionManager(dataSource);
     }
 
+    /*
     @Bean
     public DataSource dataSource() {
         return new EmbeddedDatabaseBuilder()
                 .generateUniqueName(true)
-                .setType(EmbeddedDatabaseType.H2)//@Todo h2 고치기 >> 마이돌고래로
+                .setType(MYSQL)//@Todo h2 고치기 >> 마이돌고래로
                 .addScript("user-schema.sql")
                 .addScript("user-data.sql")
                 .build();
-    }
+    }*/
 }

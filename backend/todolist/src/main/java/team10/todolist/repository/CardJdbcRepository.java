@@ -6,11 +6,11 @@ import javax.sql.DataSource;
 import java.util.List;
 import java.util.Optional;
 
-public class BoardJdbcRepository implements BoardRepository{
+public class CardJdbcRepository implements CardRepository {
 
     private final DataSource dataSource;
 
-    public BoardJdbcRepository(DataSource dataSource) {
+    public CardJdbcRepository(DataSource dataSource) {
         this.dataSource = dataSource;
     }
 

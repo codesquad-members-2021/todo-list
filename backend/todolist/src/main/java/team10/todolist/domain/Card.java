@@ -10,7 +10,6 @@ public class Card {
     @Id
     Long id;
 
-
     String title;
     String contents;
     String category;
