@@ -19,7 +19,7 @@ public class CardService {
     }
 
     public CardList sortedList() {
-        Iterable<Card> cards = findAll();
+        Iterable<Card> cards = cardRepository.findByCardToNotDeleted();
         CardList cardList = new CardList(cards);
         return cardList;
     }
