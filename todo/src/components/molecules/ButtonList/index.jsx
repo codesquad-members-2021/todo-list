@@ -1,31 +1,22 @@
 import React from "react";
-import Span from "../atoms/Span";
+import Span from "../../atoms/Span";
+import Image from "../../atoms/Image";
 import SmallButton from "../../atoms/SmallButton";
 import MediumButton from "../../atoms/MediumButton";
-import Label from "../atoms/Label";
-import Input from "../atoms/Input";
+import PlusButtonImg from "../../../images/plusButton.svg"
+import CloseButtonImg from "../../../images/closeButton.svg"
 
-
-
-const Title = () => {
-
-  const clickHandler = () => {
-    console.log("success");
-  }
-  const changeHandler = () => {
-    console.log("change");
-  }
-
-  return (
-    <div>
-      <Span>To do List</Span>
-      <SmallButton onClick={clickHandler}>햄버거</SmallButton>
-      <MediumButton onClick={clickHandler}>햄버거</MediumButton>
-      <Input onChange={changeHandler} placeholder="입력하세요" />
-      <Label>0</Label>
-    </div>
-  );
+const ButtonList = ({ isIcon }) => {
+  const plusButton = <SmallButton><Image src={PlusButtonImg} imgWidth="23px" /></SmallButton>;
+  const closeButton = <SmallButton><Image src={CloseButtonImg} imgWidth="20px" /></SmallButton>;
+  const cancelButtons = <MediumButton BtnColor="#fff" textColor="#3c4243">취소</MediumButton>
+  const enrollButtons = <MediumButton BtnColor="#62afb7" textColor="white">등록</MediumButton>
+  const currentButton = isIcon ? <>{plusButton}{closeButton}</> : <>{cancelButtons}{enrollButtons}</>;
+    return (
+      <Span>
+        {currentButton}
+        </Span>
+    );
 };
 
-
-export default Title;
+export default ButtonList;
