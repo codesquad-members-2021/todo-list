@@ -23,11 +23,26 @@
             </objects>
             <point key="canvasLocation" x="-32" y="-217"/>
         </scene>
+        <!--Task View Controller-->
+        <scene sceneID="3Jv-1P-ghJ">
+            <objects>
+                <viewController id="Ylc-Gw-fr2" customClass="TaskViewController" customModule="TodoList" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ayg-CS-pkG">
+                        <rect key="frame" x="0.0" y="0.0" width="258" height="1167"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="JU3-rR-npw"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7U5-aw-FeT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="83" y="439"/>
+        </scene>
         <!--To Do List View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="MainViewController" id="BYZ-38-t0r" customClass="ToDoListViewController" customModule="TodoList" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -54,7 +69,7 @@
                                     <constraint firstAttribute="height" constant="72" id="mnp-SL-fIB"/>
                                 </constraints>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="VDw-vN-KYF">
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="VDw-vN-KYF">
                                 <rect key="frame" x="68" y="129" width="662" height="1167"/>
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vWa-Ve-uYR">
@@ -64,7 +79,7 @@
                                             <constraint firstAttribute="width" constant="258" id="uCc-hg-3Cj"/>
                                         </constraints>
                                         <connections>
-                                            <segue destination="7Fx-iB-rue" kind="embed" id="2KI-lc-MyA"/>
+                                            <segue destination="Ylc-Gw-fr2" kind="embed" id="DEU-FE-7dF"/>
                                         </connections>
                                     </containerView>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aJQ-Q1-6Yz">
@@ -74,17 +89,17 @@
                                             <constraint firstAttribute="width" constant="258" id="p0Y-fV-uZB"/>
                                         </constraints>
                                         <connections>
-                                            <segue destination="7Fx-iB-rue" kind="embed" id="pEb-sX-x5K"/>
+                                            <segue destination="ktk-wk-GB3" kind="embed" id="dni-iU-e3b"/>
                                         </connections>
                                     </containerView>
-                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RO5-vF-SSy">
+                                    <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RO5-vF-SSy">
                                         <rect key="frame" x="560" y="0.0" width="102" height="1167"/>
                                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="258" id="VaF-S2-md6"/>
                                         </constraints>
                                         <connections>
-                                            <segue destination="7Fx-iB-rue" kind="embed" id="LN5-jZ-tYP"/>
+                                            <segue destination="oWQ-F4-wC5" kind="embed" id="IiC-Cn-KI5"/>
                                         </connections>
                                     </containerView>
                                 </subviews>
@@ -114,11 +129,11 @@
             <objects>
                 <viewController id="7Fx-iB-rue" customClass="TaskViewController" customModule="TodoList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Lks-ap-3l9">
-                        <rect key="frame" x="0.0" y="0.0" width="258" height="1167"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qwb-KJ-DeI">
-                                <rect key="frame" x="9" y="600" width="240" height="547"/>
+                                <rect key="frame" x="9" y="779" width="1006" height="547"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="C99-pd-ktI"/>
@@ -126,17 +141,17 @@
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TaskCell" rowHeight="177" id="K6q-Nt-zFw" customClass="TaskTableViewCell" customModule="TodoList" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="240" height="177"/>
+                                        <rect key="frame" x="0.0" y="28" width="1006" height="177"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="K6q-Nt-zFw" id="63J-fG-Mrg">
-                                            <rect key="frame" x="0.0" y="0.0" width="240" height="177"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1006" height="177"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Bqt-AU-mcl">
-                                                    <rect key="frame" x="10" y="10" width="220" height="157"/>
+                                                    <rect key="frame" x="10" y="10" width="986" height="157"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xkp-nA-Ajc">
-                                                            <rect key="frame" x="0.0" y="0.0" width="220" height="23"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="986" height="23"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="226" id="Hsk-Lt-Oi4"/>
                                                                 <constraint firstAttribute="height" constant="23" id="vnf-sd-HOK"/>
@@ -146,7 +161,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HTF-yW-irP">
-                                                            <rect key="frame" x="0.0" y="31" width="220" height="101"/>
+                                                            <rect key="frame" x="0.0" y="31" width="986" height="101"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="226" id="w5h-Qf-SJR"/>
                                                                 <constraint firstAttribute="height" constant="40" id="zC2-vm-DJL"/>
@@ -156,7 +171,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Authored by iOS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OAF-RW-EJp">
-                                                            <rect key="frame" x="0.0" y="140" width="220" height="17"/>
+                                                            <rect key="frame" x="0.0" y="140" width="986" height="17"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="226" id="UfO-AO-Nd3"/>
                                                                 <constraint firstAttribute="height" constant="17" id="w3z-T4-i2b"/>
@@ -185,27 +200,17 @@
                                                 <constraint firstAttribute="trailing" secondItem="Bqt-AU-mcl" secondAttribute="trailing" constant="10" id="lFl-69-ATd"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="contentTextLabel" destination="HTF-yW-irP" id="xUd-FQ-0Uu"/>
-                                            <outlet property="titleTextLabel" destination="Xkp-nA-Ajc" id="My1-d4-fRF"/>
-                                            <outlet property="userInfoLabel" destination="OAF-RW-EJp" id="P2U-Xo-zeV"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="7Fx-iB-rue" id="YxY-Qo-YFG"/>
-                                    <outlet property="delegate" destination="7Fx-iB-rue" id="IlU-oo-TR1"/>
-                                    <outlet property="prefetchDataSource" destination="7Fx-iB-rue" id="xEE-sH-IOd"/>
-                                </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DJG-Zw-k8Z">
-                                <rect key="frame" x="16" y="20" width="41.5" height="567"/>
+                                <rect key="frame" x="16" y="20" width="41.5" height="746"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="trG-AM-lZQ">
-                                <rect key="frame" x="220.5" y="20" width="21.5" height="568"/>
+                                <rect key="frame" x="986.5" y="20" width="21.5" height="747"/>
                                 <color key="tintColor" systemColor="systemGray4Color"/>
                                 <state key="normal" image="plus" catalog="system"/>
                                 <connections>
@@ -214,7 +219,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LfK-r3-cPJ" customClass="TaskCountLabel" customModule="TodoList" customModuleProvider="target">
-                                <rect key="frame" x="65.5" y="20" width="10.5" height="567"/>
+                                <rect key="frame" x="65.5" y="20" width="10.5" height="746"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -239,12 +244,11 @@
                     </view>
                     <connections>
                         <outlet property="TaskCountLabel" destination="LfK-r3-cPJ" id="fyo-Xh-olE"/>
-                        <outlet property="taskTableView" destination="qwb-KJ-DeI" id="QyF-N1-qym"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XEw-lW-JdB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="636.328125" y="482.94289897510976"/>
+            <point key="canvasLocation" x="338" y="1092"/>
         </scene>
         <!--New Task View Controller-->
         <scene sceneID="6mn-a2-9Yo">
@@ -345,10 +349,37 @@
             </objects>
             <point key="canvasLocation" x="1883" y="490"/>
         </scene>
+        <!--Task View Controller-->
+        <scene sceneID="gaN-1f-emY">
+            <objects>
+                <viewController id="oWQ-F4-wC5" customClass="TaskViewController" customModule="TodoList" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AAe-KX-4Bl">
+                        <rect key="frame" x="0.0" y="0.0" width="102" height="1167"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="xvC-I4-bjq"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1hJ-Rq-hP5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="565" y="453"/>
+        </scene>
+        <!--Task View Controller-->
+        <scene sceneID="kUL-K0-5I8">
+            <objects>
+                <viewController id="ktk-wk-GB3" customClass="TaskViewController" customModule="TodoList" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Lg6-Ks-Lg7" customClass="TaskCountLabel" customModule="TodoList" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="258" height="1167"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Nyi-5F-bk8"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SXy-bL-tnJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="311" y="439"/>
+        </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="2KI-lc-MyA"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
         <image name="plus" catalog="system" width="128" height="113"/>

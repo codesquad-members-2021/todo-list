@@ -9,14 +9,13 @@ class TaskViewController: UIViewController {
     private var contentText: String?
     private var taskCount = 0
 
-    @IBOutlet weak var taskTableView: UITableView!
-    @IBOutlet weak var TaskCountLabel: TaskCountLabel!
+    var taskTableView: UITableView!
+    var TaskCountLabel: TaskCountLabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.systemGray6
         setUpNotification()
-        taskTableView.delegate = self
         taskTableView.delegate = self
         taskTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
     }

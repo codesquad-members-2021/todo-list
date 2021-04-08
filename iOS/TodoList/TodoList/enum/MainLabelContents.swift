@@ -27,3 +27,9 @@ enum ButtonTitle {
     static let next = "다음"
     static let back = "이전"
 }
+
+enum TaskStatus {
+    static let toDo = 0
+    static let inProgress = 1
+    static let done = 2
+}
