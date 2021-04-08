@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import ButtonDelete from './ButtonDelete'
+import CardInput from './CardInput'
 
 const CardWrapper = styled.div`
     .card {
@@ -134,16 +135,24 @@ const CardWrapper = styled.div`
     }
 `;
 
-const Card = ({ title, body, author }) => {
+const Card = ({ title, body, author, index, list, clickHandler, dbClickHandler }) => {
+    const deleteEvent = () => {
+        list.splice(index, 1)
+        clickHandler()
+    }
+    const dbClickEvent = () => {
+        dbClickHandler(index)
+    }
+    
     return (
         <CardWrapper>
-            <div className="card">
+            <div className="card" onDoubleClick={dbClickEvent}>
                 <div className="card__text">
                     <div className="card__text--title">{title}</div>
                     <div className="card__text--body">{body}</div>
                     <div className="card__text--author">author by {author}</div>
                 </div>
-                <div className="card__delete-button"><ButtonDelete /></div>
+                <div onClick={deleteEvent} className="card__delete-button"><ButtonDelete /></div>
             </div>
         </CardWrapper>
     );

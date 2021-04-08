@@ -154,15 +154,16 @@ const Wrapper = styled.div`
     }
 `;
 
-const CardInput = ({ list, clickHandler }) => {
+const CardInput = ({ list, index, clickHandler, isModify }) => {
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('');
     const [isAble, setAbility] = useState(false);
     const addCard = () => {
         if (!isAble) return;
-        list.push({ title, body, author: 'web' });
+        list.splice(index, isModify ? 1 : 0, { title, body, author: 'web' });
         clickHandler();
     };
+    const deleteCard = () => clickHandler();
     const changeTitle = ({ target }) => {
         setTitle(() => {
             body.length * target.value.length
@@ -170,7 +171,7 @@ const CardInput = ({ list, clickHandler }) => {
                 : setAbility(false);
             return target.value;
         });
-    };
+    }; 
     const changebody = ({ target }) => {
         setBody(() => {
             title.length * target.value.length
@@ -195,11 +196,11 @@ const CardInput = ({ list, clickHandler }) => {
                     ></input>
                 </div>
                 <div className="card-input__button">
-                    <ButtonNomal title="취소" />
+                    <ButtonNomal clickHandler={deleteCard} title="취소" />
                     <ButtonAccent
                         clickHandler={addCard}
                         isAble={isAble}
-                        title="등록"
+                        title={isModify ? "수정" : "등록"}
                     />
                 </div>
             </div>

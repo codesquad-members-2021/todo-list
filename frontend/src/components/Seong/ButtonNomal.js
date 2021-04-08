@@ -55,10 +55,10 @@ const Wrapper = styled.div`
     }
 `;
 
-const ButtonNomal = ({ title }) => {
+const ButtonNomal = ({ title, clickHandler }) => {
     return (
         <Wrapper>
-            <div className="button">
+            <div onClick={clickHandler} className="button">
                 <div className="button--title">{title}</div>
             </div>
         </Wrapper>

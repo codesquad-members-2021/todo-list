@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import Card from './Card'
-import ButtonDelete from './ButtonDelete'
-import ButtonPlus from './ButtonPlus'
-import CardInput from './CardInput'
+import Card from './Card';
+import ButtonDelete from './ButtonDelete';
+import ButtonPlus from './ButtonPlus';
+import CardInput from './CardInput';
 
 const ColumnWrapper = styled.div`
     .column {
@@ -94,23 +94,58 @@ const ColumnWrapper = styled.div`
 `;
 
 const Column = ({ title, list }) => {
-    const [cardList, setCardList] = useState(list.map((v,i)=><li key={i}><Card {...v} /></li>))
-    const [isInProgress, setProgress]= useState(false);
-    const plusEvent = () => {
-        if(isInProgress) return
-        setCardList([<li key={cardList.length}><CardInput list={list} clickHandler={reRender} /></li>, ...cardList])
-        setProgress(true)
-    }
+    const renderCard = (v, i) => {
+        v.index = i;
+        v.list = list;
+        v.clickHandler = reRender;
+        v.dbClickHandler = editEvent;
+        return (
+            <li key={i}>
+                <Card {...v} />
+            </li>
+        );
+    };
     const reRender = () => {
-        setCardList(list.map((v,i)=><li key={i}><Card {...v} /></li>))
-        setProgress(false)
-    }
+        setCardList(list.map(renderCard));
+        setProgress(false);
+    };
+    const editEvent = (index) => {
+        setCardList((cardList) => {
+            cardList.splice(
+                index,
+                1,
+                <li key={index}>
+                    <CardInput list={list} index={index} isModify={true} clickHandler={reRender} />
+                </li>
+            );
+            return cardList
+        });
+        setCardList((cardList)=>[...cardList])
+    };
+
+    const [cardList, setCardList] = useState(list.map(renderCard));
+    const [isInProgress, setProgress] = useState(false);
+
+    const plusEvent = () => {
+        if (isInProgress) return;
+        setCardList([
+            <li key="input">
+                <CardInput list={list} index={0} clickHandler={reRender} />
+            </li>,
+            ...cardList,
+        ]);
+        setProgress(true);
+    };
+
+
     return (
         <ColumnWrapper>
             <div className="column">
                 <span className="column__text">
                     <span className="column__text--title">{title}</span>
-                    <span className="column__text--count">{cardList.length}</span>
+                    <span className="column__text--count">
+                        {cardList.length}
+                    </span>
                 </span>
                 <div onClick={plusEvent} className="column__plus-button">
                     <ButtonPlus />
