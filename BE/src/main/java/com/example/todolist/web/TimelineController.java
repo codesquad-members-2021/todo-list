@@ -1,9 +1,8 @@
 package com.example.todolist.web;
 
+import com.example.todolist.domain.timeline.Timeline;
+import com.example.todolist.domain.timeline.TimelineRepository;
 import com.example.todolist.domain.user.User;
-import com.example.todolist.domain.work.Work;
-import com.example.todolist.domain.work.WorkRepository;
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,21 +11,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-public class WorkController {
+public class TimelineController {
 
-    public final WorkRepository workRepository;
+    public final TimelineRepository timelineRepository;
 
-    public WorkController(WorkRepository workRepository) {
-        this.workRepository = workRepository;
+    public TimelineController(TimelineRepository timelineRepository) {
+        this.timelineRepository = timelineRepository;
     }
 
-    @GetMapping("/works")
-    public List<Work> showWorks(HttpSession session) {
+    @GetMapping("/timelines")
+    public List<Timeline> showTimeline(HttpSession session) {
         User user = (User) session.getAttribute("sessionUser");
         if (user == null || user.getId() != 1) {
             return new ArrayList<>();
         }
-        return workRepository.findAllByAuthor(1L);
+        return timelineRepository.findAllByAuthor(1L);
     }
 
 }
