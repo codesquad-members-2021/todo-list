@@ -13,6 +13,10 @@ class ToDoListViewController: UIViewController {
         super.viewDidLoad()
     }
 
-
+    @IBAction func sideMenuButtonTouched(_ sender: Any) {
+        let sideMenuVC = SideMenuViewController(nibName: "SideMenuViewController", bundle: .none)
+        self.present(sideMenuVC, animated: true, completion: nil)
+    }
+    
 }
 

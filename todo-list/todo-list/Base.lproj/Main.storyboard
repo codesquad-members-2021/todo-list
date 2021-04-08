@@ -61,6 +61,9 @@
                                 <state key="normal">
                                     <imageReference key="image" image="line.horizontal.3" catalog="system" symbolScale="default"/>
                                 </state>
+                                <connections>
+                                    <action selector="sideMenuButtonTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3yB-rU-FQI"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="qIz-il-ybU"/>

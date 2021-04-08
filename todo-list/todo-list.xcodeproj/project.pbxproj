@@ -22,6 +22,10 @@
 		BDD9DB65261D97B300718566 /* ToDoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDD9DB63261D97B300718566 /* ToDoTableViewCell.xib */; };
 		E47346D6261EA2240055DD0A /* AddToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47346D4261EA2240055DD0A /* AddToDoViewController.swift */; };
 		E47346D7261EA2240055DD0A /* AddToDoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E47346D5261EA2240055DD0A /* AddToDoViewController.xib */; };
+		E47346E8261ED8DD0055DD0A /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47346E6261ED8DD0055DD0A /* SideMenuViewController.swift */; };
+		E47346E9261ED8DD0055DD0A /* SideMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E47346E7261ED8DD0055DD0A /* SideMenuViewController.xib */; };
+		E47346F1261EE5700055DD0A /* SideMenuTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47346F0261EE5700055DD0A /* SideMenuTransitionDelegate.swift */; };
+		E47346FC261F2F9C0055DD0A /* SlideAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47346FB261F2F9C0055DD0A /* SlideAnimation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +67,10 @@
 		BDD9DB63261D97B300718566 /* ToDoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ToDoTableViewCell.xib; sourceTree = "<group>"; };
 		E47346D4261EA2240055DD0A /* AddToDoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToDoViewController.swift; sourceTree = "<group>"; };
 		E47346D5261EA2240055DD0A /* AddToDoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddToDoViewController.xib; sourceTree = "<group>"; };
+		E47346E6261ED8DD0055DD0A /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
+		E47346E7261ED8DD0055DD0A /* SideMenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuViewController.xib; sourceTree = "<group>"; };
+		E47346F0261EE5700055DD0A /* SideMenuTransitionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTransitionDelegate.swift; sourceTree = "<group>"; };
+		E47346FB261F2F9C0055DD0A /* SlideAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideAnimation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +133,10 @@
 				BD62EA2E261C8F2A00E44D80 /* Info.plist */,
 				E47346D4261EA2240055DD0A /* AddToDoViewController.swift */,
 				E47346D5261EA2240055DD0A /* AddToDoViewController.xib */,
+				E47346E6261ED8DD0055DD0A /* SideMenuViewController.swift */,
+				E47346E7261ED8DD0055DD0A /* SideMenuViewController.xib */,
+				E47346F0261EE5700055DD0A /* SideMenuTransitionDelegate.swift */,
+				E47346FB261F2F9C0055DD0A /* SlideAnimation.swift */,
 			);
 			path = "todo-list";
 			sourceTree = "<group>";
@@ -262,6 +274,7 @@
 			files = (
 				E47346D7261EA2240055DD0A /* AddToDoViewController.xib in Resources */,
 				BD62EA2D261C8F2A00E44D80 /* LaunchScreen.storyboard in Resources */,
+				E47346E9261ED8DD0055DD0A /* SideMenuViewController.xib in Resources */,
 				BD62EA2A261C8F2A00E44D80 /* Assets.xcassets in Resources */,
 				BD62EA28261C8F2900E44D80 /* Main.storyboard in Resources */,
 				BDD9DB65261D97B300718566 /* ToDoTableViewCell.xib in Resources */,
@@ -289,13 +302,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E47346F1261EE5700055DD0A /* SideMenuTransitionDelegate.swift in Sources */,
 				BDD9DB64261D97B300718566 /* ToDoTableViewCell.swift in Sources */,
 				BD62EA25261C8F2900E44D80 /* ToDoListViewController.swift in Sources */,
 				BD62EA21261C8F2900E44D80 /* AppDelegate.swift in Sources */,
+				E47346FC261F2F9C0055DD0A /* SlideAnimation.swift in Sources */,
 				BD62EA23261C8F2900E44D80 /* SceneDelegate.swift in Sources */,
 				E47346D6261EA2240055DD0A /* AddToDoViewController.swift in Sources */,
 				BDD9DB52261D7A1800718566 /* DoingViewController.swift in Sources */,
 				BDD9DB57261D7A2200718566 /* DoneViewController.swift in Sources */,
+				E47346E8261ED8DD0055DD0A /* SideMenuViewController.swift in Sources */,
 				BDD9DB4D261D7A0E00718566 /* WillDoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
