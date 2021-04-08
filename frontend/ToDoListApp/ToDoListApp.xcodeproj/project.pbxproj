@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8288BCF5261CAF3500883E0E /* ColumnDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8288BCF4261CAF3500883E0E /* ColumnDataSource.swift */; };
+		82E026C4261D367300651B9C /* CellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E026C3261D367300651B9C /* CellData.swift */; };
+		82E026C9261D37A100651B9C /* ColumnDatas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E026C8261D37A100651B9C /* ColumnDatas.swift */; };
+		82E026D1261D3BA800651B9C /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E026D0261D3BA800651B9C /* DataManager.swift */; };
 		B0BC8AC9261C433E00B8122D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BC8AC8261C433E00B8122D /* AppDelegate.swift */; };
 		B0BC8ACB261C433E00B8122D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BC8ACA261C433E00B8122D /* SceneDelegate.swift */; };
 		B0BC8ACD261C433E00B8122D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BC8ACC261C433E00B8122D /* ViewController.swift */; };
@@ -18,6 +22,11 @@
 		B0BC8B01261C8BDC00B8122D /* MockNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BC8B00261C8BDC00B8122D /* MockNetworkService.swift */; };
 		B0BC8B0C261C924E00B8122D /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BC8AFB261C4F3200B8122D /* NetworkService.swift */; };
 		B0BC8B14261C926A00B8122D /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BC8B13261C926A00B8122D /* NetworkServiceTests.swift */; };
+		B0BC8B6B261EF00C00B8122D /* ColumnView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0BC8B6A261EF00C00B8122D /* ColumnView.storyboard */; };
+		B0BC8B70261EF03100B8122D /* ColumnCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BC8B6F261EF03100B8122D /* ColumnCell.swift */; };
+		B0BC8B75261EF05500B8122D /* ColumnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BC8B74261EF05500B8122D /* ColumnViewController.swift */; };
+		B0BC8B7A261EF08E00B8122D /* ColumnDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BC8B79261EF08E00B8122D /* ColumnDelegate.swift */; };
+		B0BC8B7F261EF0F300B8122D /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BC8B7E261EF0F300B8122D /* Badge.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +47,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8288BCF4261CAF3500883E0E /* ColumnDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnDataSource.swift; sourceTree = "<group>"; };
+		82E026C3261D367300651B9C /* CellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellData.swift; sourceTree = "<group>"; };
+		82E026C8261D37A100651B9C /* ColumnDatas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnDatas.swift; sourceTree = "<group>"; };
+		82E026D0261D3BA800651B9C /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		B0BC8AC5261C433E00B8122D /* ToDoListApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoListApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0BC8AC8261C433E00B8122D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B0BC8ACA261C433E00B8122D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +68,11 @@
 		B0BC8AFB261C4F3200B8122D /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		B0BC8B00261C8BDC00B8122D /* MockNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkService.swift; sourceTree = "<group>"; };
 		B0BC8B13261C926A00B8122D /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
+		B0BC8B6A261EF00C00B8122D /* ColumnView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ColumnView.storyboard; sourceTree = "<group>"; };
+		B0BC8B6F261EF03100B8122D /* ColumnCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColumnCell.swift; sourceTree = "<group>"; };
+		B0BC8B74261EF05500B8122D /* ColumnViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColumnViewController.swift; sourceTree = "<group>"; };
+		B0BC8B79261EF08E00B8122D /* ColumnDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColumnDelegate.swift; sourceTree = "<group>"; };
+		B0BC8B7E261EF0F300B8122D /* Badge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Badge.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +100,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8282B068261D2C180032D82C /* ColumnSection */ = {
+			isa = PBXGroup;
+			children = (
+				B0BC8B32261DBAC200B8122D /* Model */,
+				B0BC8B31261DBA9F00B8122D /* Controllers */,
+				B0BC8B30261DBA4D00B8122D /* View */,
+			);
+			path = ColumnSection;
+			sourceTree = "<group>";
+		};
 		B0BC8ABC261C433E00B8122D = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +133,7 @@
 		B0BC8AC7261C433E00B8122D /* ToDoListApp */ = {
 			isa = PBXGroup;
 			children = (
+				8282B068261D2C180032D82C /* ColumnSection */,
 				B0BC8AC8261C433E00B8122D /* AppDelegate.swift */,
 				B0BC8ACA261C433E00B8122D /* SceneDelegate.swift */,
 				B0BC8ACC261C433E00B8122D /* ViewController.swift */,
@@ -135,6 +164,36 @@
 				B0BC8AEC261C434100B8122D /* Info.plist */,
 			);
 			path = ToDoListAppUITests;
+			sourceTree = "<group>";
+		};
+		B0BC8B30261DBA4D00B8122D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B0BC8B7E261EF0F300B8122D /* Badge.swift */,
+				B0BC8B6F261EF03100B8122D /* ColumnCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B0BC8B31261DBA9F00B8122D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B0BC8B79261EF08E00B8122D /* ColumnDelegate.swift */,
+				B0BC8B74261EF05500B8122D /* ColumnViewController.swift */,
+				B0BC8B6A261EF00C00B8122D /* ColumnView.storyboard */,
+				8288BCF4261CAF3500883E0E /* ColumnDataSource.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		B0BC8B32261DBAC200B8122D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				82E026C3261D367300651B9C /* CellData.swift */,
+				82E026C8261D37A100651B9C /* ColumnDatas.swift */,
+				82E026D0261D3BA800651B9C /* DataManager.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,6 +300,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0BC8AD5261C434100B8122D /* LaunchScreen.storyboard in Resources */,
+				B0BC8B6B261EF00C00B8122D /* ColumnView.storyboard in Resources */,
 				B0BC8AD2261C434100B8122D /* Assets.xcassets in Resources */,
 				B0BC8AD0261C433E00B8122D /* Main.storyboard in Resources */,
 			);
@@ -269,9 +329,17 @@
 			files = (
 				B0BC8B0C261C924E00B8122D /* NetworkService.swift in Sources */,
 				B0BC8ACD261C433E00B8122D /* ViewController.swift in Sources */,
+				82E026D1261D3BA800651B9C /* DataManager.swift in Sources */,
+				B0BC8B70261EF03100B8122D /* ColumnCell.swift in Sources */,
+				8288BCF5261CAF3500883E0E /* ColumnDataSource.swift in Sources */,
+				82E026C9261D37A100651B9C /* ColumnDatas.swift in Sources */,
+				B0BC8B75261EF05500B8122D /* ColumnViewController.swift in Sources */,
 				B0BC8AC9261C433E00B8122D /* AppDelegate.swift in Sources */,
+				B0BC8B7A261EF08E00B8122D /* ColumnDelegate.swift in Sources */,
 				B0BC8B01261C8BDC00B8122D /* MockNetworkService.swift in Sources */,
 				B0BC8ACB261C433E00B8122D /* SceneDelegate.swift in Sources */,
+				B0BC8B7F261EF0F300B8122D /* Badge.swift in Sources */,
+				82E026C4261D367300651B9C /* CellData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,7 +526,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Dahun-Lee.ToDoListApp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -477,7 +545,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Dahun-Lee.ToDoListApp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
