@@ -64,7 +64,5 @@ public class TaskController {
         originalNextTask.moveAfter(taskToMove.getPreviousId());
         taskToMove.moveAfter(newNextTask.getPreviousId());
         newNextTask.moveAfter(taskToMove.getId());
-
-        logger.debug(id + " Successfully moved to " + targetId);
     }
 }
