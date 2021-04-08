@@ -1,12 +1,14 @@
 package com.codesquad.esfj.todolist.task;
 
 public class Task {
+    public static final long TOP_PREVIOUS_ID = -1L;
 
     private Long id;
     private String title;
     private String content;
     private String writer;
     private boolean deleted;
+    private Long previousId = TOP_PREVIOUS_ID;
 
     public Task(Long id, String title, String content, String writer) {
         this.id = id;
@@ -35,6 +37,14 @@ public class Task {
         return writer;
     }
 
+    public Long getPreviousId() {
+        return previousId;
+    }
+
+    public void moveAfter(Long previousId) {
+        this.previousId = previousId;
+    }
+
     public boolean isDeleted() {
         return deleted;
     }
@@ -49,6 +59,10 @@ public class Task {
     public Task delete() {
         deleted = true;
         return this;
+    }
+
+    public boolean isTop() {
+        return (id.equals(TOP_PREVIOUS_ID));
     }
 
     @Override

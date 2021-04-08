@@ -31,7 +31,13 @@ public class TaskController {
     @PostMapping("/tasks")
     @ResponseStatus(HttpStatus.CREATED)
     public Long create(@RequestBody Task task) {
-        return taskRepository.save(task).getId();
+        Task topTask = taskRepository.findOneByPreviousId(Task.TOP_PREVIOUS_ID);
+        long id = taskRepository.save(task).getId();
+
+        topTask.moveAfter(id);
+        taskRepository.save(topTask);
+
+        return id;
     }
 
     @PutMapping("/tasks/{id}")
@@ -48,9 +54,17 @@ public class TaskController {
         taskRepository.save(task);
     }
 
-    @PatchMapping("/tasks/{id}/{previousId}")
+    @PatchMapping("/tasks/{id}/{targetId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void move(@PathVariable Long id, @PathVariable Long previousId) {
-        logger.debug(id + " Successfully moved to " + previousId);
+    public void move(@PathVariable Long id, @PathVariable Long targetId) {
+        Task taskToMove = taskRepository.findOne(id);
+        Task originalNextTask = taskRepository.findOneByPreviousId(id);
+        Task newNextTask = taskRepository.findOneByPreviousId(targetId);
+
+        originalNextTask.moveAfter(taskToMove.getPreviousId());
+        taskToMove.moveAfter(newNextTask.getPreviousId());
+        newNextTask.moveAfter(taskToMove.getId());
+
+        logger.debug(id + " Successfully moved to " + targetId);
     }
 }

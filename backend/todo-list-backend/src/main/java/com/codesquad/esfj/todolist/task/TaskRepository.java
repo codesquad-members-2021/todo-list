@@ -2,7 +2,6 @@ package com.codesquad.esfj.todolist.task;
 
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -11,8 +10,11 @@ import java.util.stream.Collectors;
 @Component
 public class TaskRepository {
     private Map<Long, Task> tasks = new ConcurrentHashMap<Long, Task>() {{
-        put(1L, new Task(1L, "title1", "content1", "writer1"));
-        put(2L, new Task(2L, "title2", "content2", "writer2"));
+        Task task = new Task(1L, "title1", "content1", "writer1");
+        Task task2 = new Task(2L, "title2", "content2", "writer2");
+        task.moveAfter(2L);
+        put(1L, task);
+        put(2L, task2);
     }};
 
     public List<Task> findAllByNotDeleted() {
@@ -23,6 +25,13 @@ public class TaskRepository {
 
     public Task findOne(long id) {
         return tasks.get(id);
+    }
+
+    public Task findOneByPreviousId(long previousId) {
+        return tasks.values().stream()
+                .filter(task -> task.getPreviousId().equals(previousId))
+                .findAny()
+                .orElseThrow(IllegalStateException::new);
     }
 
     public Task save(Task newTask) {
