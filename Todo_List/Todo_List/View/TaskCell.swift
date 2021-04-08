@@ -9,6 +9,9 @@ import UIKit
 
 class TaskCell: UITableViewCell {
     
+    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var content: UILabel!
+    @IBOutlet weak var writer: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -16,6 +19,7 @@ class TaskCell: UITableViewCell {
         
         self.layer.cornerRadius = 2
         self.clipsToBounds = true
+
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

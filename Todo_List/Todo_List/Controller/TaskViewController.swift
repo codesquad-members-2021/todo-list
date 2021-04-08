@@ -17,10 +17,15 @@ class TaskViewController: UIViewController {
     @IBOutlet weak var countOfDoing: UILabel!
     @IBOutlet weak var countOfDone: UILabel!
     
+    var todoTasks = [TaskVO]()
+    var doingTasks = [TaskVO]()
+    var doneTasks = [TaskVO]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        todo.rowHeight = UITableView.automaticDimension
+        todo.estimatedRowHeight = 108
         todo.delegate = self
         todo.dataSource = self
         
@@ -37,7 +42,25 @@ class TaskViewController: UIViewController {
         doing.register(nibName, forCellReuseIdentifier: "TaskCell")
         done.register(nibName, forCellReuseIdentifier: "TaskCell")
         
+        todoTasks.append(TaskVO())
+        
     }
+    @IBAction func todoPlus(_ sender: UIButton) {
+        let new = TaskVO()
+        todoTasks.insert(new, at: 0)
+        todo.reloadData()
+    }
+    @IBAction func doingPlus(_ sender: UIButton) {
+        let new = TaskVO()
+        doingTasks.insert(new, at: 0)
+        doing.reloadData()
+    }
+    @IBAction func donePlus(_ sender: UIButton) {
+        let new = TaskVO()
+        doneTasks.insert(new, at: 0)
+        done.reloadData()
+    }
+    
 }
 
 extension TaskViewController : UITableViewDelegate, UITableViewDataSource {
@@ -46,20 +69,21 @@ extension TaskViewController : UITableViewDelegate, UITableViewDataSource {
     }
     /*섹션의 수를 늘리는 프로토콜*/
     func numberOfSections(in tableView: UITableView) -> Int {
+        var count = 0
         switch tableView {
-        
         case todo:
-            countOfTodo.text = String(3)
-            return 3
+            count = todoTasks.count
+            countOfTodo.text = String(count)
         case doing:
-            countOfDoing.text = String(4)
-            return 4
+            count = doingTasks.count
+            countOfDoing.text = String(count)
         case done:
-            countOfDone.text = String(1)
-            return 1
+            count = doneTasks.count
+            countOfDone.text = String(count)
         default:
-            return 0
+            break
         }
+        return count
     }
     
     /*섹션의 헤더섹션 배경색을 바꾸는 법.*/
@@ -75,7 +99,39 @@ extension TaskViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCell") as! TaskCell
+        
+        var task : TaskVO
+        switch tableView {
+        case todo:
+            task = todoTasks[indexPath.section]
+        case doing:
+            task = doingTasks[indexPath.section]
+        case done:
+            task = doneTasks[indexPath.section]
+        default:
+            return cell
+        }
+        cell.title.text = task.title
+        cell.content.text = task.content
+        cell.writer.text = task.writer
+        
         return cell
         
+    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+     
+        switch tableView {
+        case todo:
+            todoTasks.remove(at: indexPath.section)
+            todo.deleteSections([indexPath.section], with: .fade)
+        case doing:
+            doingTasks.remove(at: indexPath.section)
+            doing.deleteSections([indexPath.section], with: .fade)
+        case done:
+            doneTasks.remove(at: indexPath.section)
+            done.deleteSections([indexPath.section], with: .fade)
+        default:
+            return
+        }
     }
 }

@@ -23,41 +23,44 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cK7-Th-nNe">
-                        <rect key="frame" x="16" y="16" width="226" height="23"/>
+                        <rect key="frame" x="16" y="16" width="226" height="25"/>
                         <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="content" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F9O-MC-jWR">
-                        <rect key="frame" x="16" y="47" width="226" height="20"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="content" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F9O-MC-jWR">
+                        <rect key="frame" x="16" y="49" width="226" height="25"/>
                         <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="writer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GbU-dc-zNW">
-                        <rect key="frame" x="16" y="75" width="226" height="17"/>
+                        <rect key="frame" x="16" y="82" width="226" height="25"/>
                         <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="17"/>
                         <color key="textColor" systemColor="systemGray4Color"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="F9O-MC-jWR" secondAttribute="trailing" constant="16" id="2Lf-K4-0qo"/>
-                    <constraint firstAttribute="bottom" secondItem="cK7-Th-nNe" secondAttribute="bottom" constant="69" id="SBU-ID-ISR"/>
-                    <constraint firstAttribute="trailing" secondItem="GbU-dc-zNW" secondAttribute="trailing" constant="16" id="U9r-2v-XYs"/>
-                    <constraint firstAttribute="bottom" secondItem="GbU-dc-zNW" secondAttribute="bottom" constant="16" id="cUF-T1-6HV"/>
-                    <constraint firstItem="GbU-dc-zNW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="75" id="csZ-Qd-zPx"/>
-                    <constraint firstItem="cK7-Th-nNe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="ctr-um-tYh"/>
-                    <constraint firstItem="F9O-MC-jWR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="47" id="hDc-7l-Nms"/>
-                    <constraint firstItem="F9O-MC-jWR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="hVp-bG-ap1"/>
-                    <constraint firstAttribute="trailing" secondItem="cK7-Th-nNe" secondAttribute="trailing" constant="16" id="l0Z-Gq-Izp"/>
-                    <constraint firstItem="cK7-Th-nNe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="uaB-oo-6Zg"/>
-                    <constraint firstItem="GbU-dc-zNW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="xI8-cz-0yV"/>
-                    <constraint firstAttribute="bottom" secondItem="F9O-MC-jWR" secondAttribute="bottom" constant="41" id="ydL-5w-HJE"/>
+                    <constraint firstItem="GbU-dc-zNW" firstAttribute="top" secondItem="F9O-MC-jWR" secondAttribute="bottom" constant="8" id="3Rc-T2-FNR"/>
+                    <constraint firstAttribute="trailing" secondItem="cK7-Th-nNe" secondAttribute="trailing" constant="16" id="4lW-uq-J69"/>
+                    <constraint firstItem="F9O-MC-jWR" firstAttribute="top" secondItem="cK7-Th-nNe" secondAttribute="bottom" constant="8" id="BKq-Ke-pGq"/>
+                    <constraint firstItem="GbU-dc-zNW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Bbh-QK-LVy"/>
+                    <constraint firstAttribute="bottom" secondItem="GbU-dc-zNW" secondAttribute="bottom" constant="1" id="Ecz-CI-nM5"/>
+                    <constraint firstItem="F9O-MC-jWR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="ITY-yg-4mb"/>
+                    <constraint firstAttribute="trailing" secondItem="F9O-MC-jWR" secondAttribute="trailing" constant="16" id="d4P-0g-oEU"/>
+                    <constraint firstItem="cK7-Th-nNe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="pxd-2l-aRp"/>
+                    <constraint firstAttribute="trailing" secondItem="GbU-dc-zNW" secondAttribute="trailing" constant="16" id="r06-um-wM1"/>
+                    <constraint firstItem="cK7-Th-nNe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="wMb-B4-bkh"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+            <connections>
+                <outlet property="content" destination="F9O-MC-jWR" id="grJ-DL-iGr"/>
+                <outlet property="title" destination="cK7-Th-nNe" id="wtv-m4-0zm"/>
+                <outlet property="writer" destination="GbU-dc-zNW" id="KkK-ys-0Mu"/>
+            </connections>
             <point key="canvasLocation" x="137.68115942028987" y="145.98214285714286"/>
         </tableViewCell>
     </objects>
