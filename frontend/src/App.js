@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { MainWrapper } from './components/common/StyledMain';
+import HeaderContainer from './containers/header/HeaderContainer';
 import Column from './components/Seong/Column';
 
 const list = [
@@ -14,20 +16,14 @@ const list = [
     },
 ];
 
-const list2 = [
-    {
-        title: '라노짱짱',
-        body: '라쿤잘생김',
-        author: 'web',
-    },
-]
-
 const App = () => {
+    useEffect(() => (document.body.style = 'background: #F5F5F7;'), []);
+
     return (
-        <div>
+        <MainWrapper>
+            <HeaderContainer />
             <Column title="Column title" list={list} />
-            <Column title="Column 잘되니?" list={list2} />
-        </div>
+        </MainWrapper>
     );
 };
 
