@@ -29,7 +29,7 @@ class TodoCards: TodoCardsManageable {
                     * 모던 스위프트 공부 내용 1장
                     - JK 의 앵프라맹스
                     """
-        let cardA = TodoCard(title: titleEX, content: contentEX)
+        let cardA = TodoCard(title: titleEX, content: contentEX, date: "")
         let cardB = TodoCard()
         let cards = [cardA, cardB]
         
