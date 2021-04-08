@@ -17,9 +17,9 @@ class TaskViewController: UIViewController {
     @IBOutlet weak var countOfDoing: UILabel!
     @IBOutlet weak var countOfDone: UILabel!
     
-    var todoVOs = [TaskVO]()
-    var dogingVOs = [TaskVO]()
-    var doneVOs = [TaskVO]()
+    var todoTasks = [TaskVO]()
+    var doingTasks = [TaskVO]()
+    var doneTasks = [TaskVO]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,13 +40,23 @@ class TaskViewController: UIViewController {
         doing.register(nibName, forCellReuseIdentifier: "TaskCell")
         done.register(nibName, forCellReuseIdentifier: "TaskCell")
         
-        todoVOs.append(TaskVO())
+        todoTasks.append(TaskVO())
         
     }
     @IBAction func todoPlus(_ sender: UIButton) {
         let new = TaskVO()
-        todoVOs.append(new)
+        todoTasks.append(new)
         todo.reloadData()
+    }
+    @IBAction func doingPlus(_ sender: UIButton) {
+        let new = TaskVO()
+        doingTasks.append(new)
+        doing.reloadData()
+    }
+    @IBAction func donePlus(_ sender: UIButton) {
+        let new = TaskVO()
+        doneTasks.append(new)
+        done.reloadData()
     }
     
 }
@@ -60,13 +70,13 @@ extension TaskViewController : UITableViewDelegate, UITableViewDataSource {
         var count = 0
         switch tableView {
         case todo:
-            count = todoVOs.count
+            count = todoTasks.count
             countOfTodo.text = String(count)
         case doing:
-            count = dogingVOs.count
+            count = doingTasks.count
             countOfDoing.text = String(count)
         case done:
-            count = doneVOs.count
+            count = doneTasks.count
             countOfDone.text = String(count)
         default:
             break
@@ -88,7 +98,17 @@ extension TaskViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCell") as! TaskCell
         
-        let task = todoVOs[indexPath.section]
+        var task : TaskVO
+        switch tableView {
+        case todo:
+            task = todoTasks[indexPath.section]
+        case doing:
+            task = doingTasks[indexPath.section]
+        case done:
+            task = doneTasks[indexPath.section]
+        default:
+            return cell
+        }
         cell.title.text = task.title
         cell.content.text = task.content
         cell.writer.text = task.writer
@@ -97,9 +117,19 @@ extension TaskViewController : UITableViewDelegate, UITableViewDataSource {
         
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            todoVOs.remove(at: indexPath.section)            
+     
+        switch tableView {
+        case todo:
+            todoTasks.remove(at: indexPath.section)
             todo.deleteSections([indexPath.section], with: .fade)
+        case doing:
+            doingTasks.remove(at: indexPath.section)
+            doing.deleteSections([indexPath.section], with: .fade)
+        case done:
+            doneTasks.remove(at: indexPath.section)
+            done.deleteSections([indexPath.section], with: .fade)
+        default:
+            return
         }
     }
 }
