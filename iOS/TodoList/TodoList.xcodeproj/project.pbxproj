@@ -10,6 +10,9 @@
 		71520A33261C54AF00BE3264 /* TaskCountLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71520A32261C54AF00BE3264 /* TaskCountLabel.swift */; };
 		717FD58F261D7F9B00E79C77 /* NewTaskTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717FD58E261D7F9B00E79C77 /* NewTaskTextField.swift */; };
 		717FD59C261D8A1100E79C77 /* NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717FD59B261D8A1100E79C77 /* NotificationName.swift */; };
+		719996D7261EA002004FB8FA /* TitleLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719996D6261EA002004FB8FA /* TitleLabelView.swift */; };
+		719996E2261EAC76004FB8FA /* InProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719996E1261EAC76004FB8FA /* InProgressViewController.swift */; };
+		719996E7261EACB7004FB8FA /* DoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719996E6261EACB7004FB8FA /* DoneViewController.swift */; };
 		7199F444261D453100D21319 /* SignUpMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7199F443261D453100D21319 /* SignUpMainViewController.swift */; };
 		7199F44D261D456100D21319 /* EachInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7199F44C261D456100D21319 /* EachInfoView.swift */; };
 		7199F455261D457B00D21319 /* MainInfoStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7199F454261D457B00D21319 /* MainInfoStackView.swift */; };
@@ -23,13 +26,13 @@
 		7199F491261D46AD00D21319 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7199F490261D46AD00D21319 /* Regex.swift */; };
 		762F649A261C2F6B001B879B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762F6499261C2F6B001B879B /* AppDelegate.swift */; };
 		762F649C261C2F6B001B879B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762F649B261C2F6B001B879B /* SceneDelegate.swift */; };
-		762F649E261C2F6B001B879B /* ToDoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762F649D261C2F6B001B879B /* ToDoListViewController.swift */; };
+		762F649E261C2F6B001B879B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762F649D261C2F6B001B879B /* MainViewController.swift */; };
 		762F64A1261C2F6B001B879B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 762F649F261C2F6B001B879B /* Main.storyboard */; };
 		762F64A3261C2F6D001B879B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 762F64A2261C2F6D001B879B /* Assets.xcassets */; };
 		762F64A6261C2F6D001B879B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 762F64A4261C2F6D001B879B /* LaunchScreen.storyboard */; };
 		762F64B1261C2F6D001B879B /* TodoListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762F64B0261C2F6D001B879B /* TodoListTests.swift */; };
 		762F64BC261C2F6D001B879B /* TodoListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762F64BB261C2F6D001B879B /* TodoListUITests.swift */; };
-		762F64E8261D52A5001B879B /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762F64E7261D52A5001B879B /* TaskViewController.swift */; };
+		762F64E8261D52A5001B879B /* ToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762F64E7261D52A5001B879B /* ToDoViewController.swift */; };
 		762F64ED261D7A05001B879B /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762F64EC261D7A05001B879B /* NewTaskViewController.swift */; };
 		762F64F6261D9168001B879B /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762F64F5261D9168001B879B /* TaskTableViewCell.swift */; };
 		767BBED6261E858C00345102 /* TaskCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767BBED5261E858C00345102 /* TaskCard.swift */; };
@@ -59,6 +62,9 @@
 		71520A32261C54AF00BE3264 /* TaskCountLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCountLabel.swift; sourceTree = "<group>"; };
 		717FD58E261D7F9B00E79C77 /* NewTaskTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskTextField.swift; sourceTree = "<group>"; };
 		717FD59B261D8A1100E79C77 /* NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationName.swift; sourceTree = "<group>"; };
+		719996D6261EA002004FB8FA /* TitleLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabelView.swift; sourceTree = "<group>"; };
+		719996E1261EAC76004FB8FA /* InProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InProgressViewController.swift; sourceTree = "<group>"; };
+		719996E6261EACB7004FB8FA /* DoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneViewController.swift; sourceTree = "<group>"; };
 		7199F443261D453100D21319 /* SignUpMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpMainViewController.swift; sourceTree = "<group>"; };
 		7199F44C261D456100D21319 /* EachInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EachInfoView.swift; sourceTree = "<group>"; };
 		7199F454261D457B00D21319 /* MainInfoStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInfoStackView.swift; sourceTree = "<group>"; };
@@ -73,7 +79,7 @@
 		762F6496261C2F6B001B879B /* TodoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		762F6499261C2F6B001B879B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		762F649B261C2F6B001B879B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		762F649D261C2F6B001B879B /* ToDoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListViewController.swift; sourceTree = "<group>"; };
+		762F649D261C2F6B001B879B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		762F64A0261C2F6B001B879B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		762F64A2261C2F6D001B879B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		762F64A5261C2F6D001B879B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -84,7 +90,7 @@
 		762F64B7261C2F6D001B879B /* TodoListUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodoListUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		762F64BB261C2F6D001B879B /* TodoListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListUITests.swift; sourceTree = "<group>"; };
 		762F64BD261C2F6D001B879B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		762F64E7261D52A5001B879B /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
+		762F64E7261D52A5001B879B /* ToDoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoViewController.swift; sourceTree = "<group>"; };
 		762F64EC261D7A05001B879B /* NewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskViewController.swift; sourceTree = "<group>"; };
 		762F64F5261D9168001B879B /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		767BBED5261E858C00345102 /* TaskCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCard.swift; sourceTree = "<group>"; };
@@ -131,6 +137,7 @@
 				717FD58E261D7F9B00E79C77 /* NewTaskTextField.swift */,
 				71520A32261C54AF00BE3264 /* TaskCountLabel.swift */,
 				762F64F5261D9168001B879B /* TaskTableViewCell.swift */,
+				719996D6261EA002004FB8FA /* TitleLabelView.swift */,
 			);
 			path = ToDoListView;
 			sourceTree = "<group>";
@@ -146,8 +153,10 @@
 		719996CD261E78B8004FB8FA /* ToDoListController */ = {
 			isa = PBXGroup;
 			children = (
-				762F649D261C2F6B001B879B /* ToDoListViewController.swift */,
-				762F64E7261D52A5001B879B /* TaskViewController.swift */,
+				762F649D261C2F6B001B879B /* MainViewController.swift */,
+				762F64E7261D52A5001B879B /* ToDoViewController.swift */,
+				719996E1261EAC76004FB8FA /* InProgressViewController.swift */,
+				719996E6261EACB7004FB8FA /* DoneViewController.swift */,
 				762F64EC261D7A05001B879B /* NewTaskViewController.swift */,
 			);
 			path = ToDoListController;
@@ -410,20 +419,23 @@
 				717FD58F261D7F9B00E79C77 /* NewTaskTextField.swift in Sources */,
 				7199F473261D460F00D21319 /* DateFormatManager.swift in Sources */,
 				71520A33261C54AF00BE3264 /* TaskCountLabel.swift in Sources */,
-				762F649E261C2F6B001B879B /* ToDoListViewController.swift in Sources */,
+				762F649E261C2F6B001B879B /* MainViewController.swift in Sources */,
 				762F649A261C2F6B001B879B /* AppDelegate.swift in Sources */,
-				762F64E8261D52A5001B879B /* TaskViewController.swift in Sources */,
+				762F64E8261D52A5001B879B /* ToDoViewController.swift in Sources */,
 				7199F44D261D456100D21319 /* EachInfoView.swift in Sources */,
 				7199F45A261D459A00D21319 /* CustomButton.swift in Sources */,
 				762F64ED261D7A05001B879B /* NewTaskViewController.swift in Sources */,
+				719996E7261EACB7004FB8FA /* DoneViewController.swift in Sources */,
 				7199F462261D45BA00D21319 /* MainTitleLabel.swift in Sources */,
 				7199F46B261D45FC00D21319 /* RegexValidManager.swift in Sources */,
 				717FD59C261D8A1100E79C77 /* NotificationName.swift in Sources */,
 				762F64F6261D9168001B879B /* TaskTableViewCell.swift in Sources */,
 				7199F481261D464D00D21319 /* MainLabelContents.swift in Sources */,
+				719996D7261EA002004FB8FA /* TitleLabelView.swift in Sources */,
 				762F649C261C2F6B001B879B /* SceneDelegate.swift in Sources */,
 				7199F491261D46AD00D21319 /* Regex.swift in Sources */,
 				7199F455261D457B00D21319 /* MainInfoStackView.swift in Sources */,
+				719996E2261EAC76004FB8FA /* InProgressViewController.swift in Sources */,
 				7199F444261D453100D21319 /* SignUpMainViewController.swift in Sources */,
 				7199F488261D468D00D21319 /* NetworkHandler.swift in Sources */,
 				767BBEE0261E87E300345102 /* Category.swift in Sources */,
