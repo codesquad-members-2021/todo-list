@@ -8,17 +8,19 @@
 import UIKit
 
 class TaskCell: UITableViewCell {
-
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.translatesAutoresizingMaskIntoConstraints = false
-        // Initialization code
+        
+        self.layer.cornerRadius = 2
+        self.clipsToBounds = true
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     

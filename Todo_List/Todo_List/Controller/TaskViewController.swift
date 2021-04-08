@@ -38,28 +38,11 @@ class TaskViewController: UIViewController {
         done.register(nibName, forCellReuseIdentifier: "TaskCell")
         
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
-    }
-    
 }
 
 extension TaskViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         1 //각 섹션에는 한개의 row만 존재한다.
-//
-//        switch tableView {
-//        case todo:
-//            return 3
-//        case doing:
-//            return 4
-//        case done:
-//            return 1
-//        default:
-//            return 0
-//        }
-        
     }
     /*섹션의 수를 늘리는 프로토콜*/
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -92,27 +75,7 @@ extension TaskViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCell") as! TaskCell
-        
-                
-        cell.layer.cornerRadius = 2
-        cell.clipsToBounds = true
-        
-        //indexPath.row + 1 (이유 = 0 부터 시작하므로)
-//        switch tableView {
-//        case todo:
-//            countOfTodo.text = String(indexPath.row + 1)
-//        case doing:
-//            countOfDoing.text = String(indexPath.row + 1)
-//        case done:
-//            countOfDone.text = String(indexPath.row + 1)
-//        default: break
-//
-//        }
-        
         return cell
         
     }
-    
-    
-    
 }
