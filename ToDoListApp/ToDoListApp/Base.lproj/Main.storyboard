@@ -115,7 +115,6 @@
                                                             </tableViewCellContentView>
                                                             <color key="backgroundColor" systemColor="systemGray6Color"/>
                                                             <connections>
-                                                                <outlet property="authorLabel" destination="FUP-cA-YF4" id="gDa-Pm-BRw"/>
                                                                 <outlet property="contentsLabel" destination="MTM-eD-vmu" id="t39-KT-PGb"/>
                                                                 <outlet property="titleLabel" destination="CHs-nC-bnr" id="5h5-JS-5iJ"/>
                                                             </connections>

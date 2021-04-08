@@ -13,7 +13,6 @@ class CardCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var contentsLabel: UILabel!
-    @IBOutlet weak var authorLabel: UILabel!
     
     var title: String? {
         didSet {
@@ -26,13 +25,7 @@ class CardCell: UITableViewCell {
             contentsLabel.text = contents
         }
     }
-    
-    var author: String? {
-        didSet {
-            authorLabel.text = "author by \(author ?? "")"
-        }
-    }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }
