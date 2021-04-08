@@ -41,8 +41,8 @@ public class Task {
         return previousId;
     }
 
-    public void moveAfter(Long previousId) {
-        this.previousId = previousId;
+    public void moveAfter(Long targetId) {
+       previousId = targetId;
     }
 
     public boolean isDeleted() {
