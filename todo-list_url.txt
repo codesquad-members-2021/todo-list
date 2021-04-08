@@ -1,0 +1,30 @@
+card : 
+       -view: [get {
+	 url: /cards
+	}]
+       - create: [post {
+	   url : /cards/{columnId}
+	   data : { 
+		"id": 1,
+		"tilte": "titleSample",
+		"contents": "contentsSample",
+		"status": "TODO",
+		"createdTime": "2021-04-08 14:12", 
+		"columnId": 1
+		}
+	}]
+       - update: [put {
+	   url: /cards/{id}	
+	}]	
+       - delete: [delete {
+	   url: /cards/{id}
+	}]
+       - move: [put {
+	   url: /cards/{id}/move/{columnId}
+	}]
+
+history:
+        -view: [get{
+	   url: /historys
+	}]
+	
