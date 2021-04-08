@@ -61,10 +61,6 @@ public class Task {
         return this;
     }
 
-    public boolean isTop() {
-        return (id.equals(TOP_PREVIOUS_ID));
-    }
-
     @Override
     public String toString() {
         return "Task{" +
