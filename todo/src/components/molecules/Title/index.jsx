@@ -12,7 +12,7 @@ const Div = styled.div`
   place-items: center;
 `;
 
-const Title = ({children, ...props}) => {
+const Title = ({ children, ...props }) => {
   // const clickHandler = () => {
   //   console.log("success");
   // }
@@ -23,14 +23,15 @@ const Title = ({children, ...props}) => {
   return (
     <Div>
       <div>
-        <Span fontSize="45px" fontWeight="700">To do List</Span>
+        <Span _fontSize="45px" _fontWeight="700">
+          To do List
+        </Span>
       </div>
 
       <div>
         <SmallButton>
           <Image src={hamburgerBtn} imgWidth="30px" />
         </SmallButton>
-
       </div>
     </Div>
   );
