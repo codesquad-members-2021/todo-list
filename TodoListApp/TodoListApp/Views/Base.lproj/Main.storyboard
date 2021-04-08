@@ -52,7 +52,7 @@
                                             <constraint firstAttribute="width" constant="258" id="gCN-NN-aGw"/>
                                         </constraints>
                                         <connections>
-                                            <segue destination="NY3-3x-QFv" kind="embed" id="UZC-So-fFW"/>
+                                            <segue destination="NY3-3x-QFv" kind="embed" identifier="goToTodo" id="UZC-So-fFW"/>
                                         </connections>
                                     </containerView>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V4G-ju-dRd">
@@ -61,7 +61,7 @@
                                             <constraint firstAttribute="width" constant="258" id="LRD-Lf-1DA"/>
                                         </constraints>
                                         <connections>
-                                            <segue destination="CjH-x2-Qgo" kind="embed" id="PHH-au-vZj"/>
+                                            <segue destination="CjH-x2-Qgo" kind="embed" identifier="goToDoing" id="PHH-au-vZj"/>
                                         </connections>
                                     </containerView>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="14m-Ig-ThD">
@@ -70,7 +70,7 @@
                                             <constraint firstAttribute="width" constant="258" id="WiP-4b-u0V"/>
                                         </constraints>
                                         <connections>
-                                            <segue destination="p8J-Qm-vgn" kind="embed" id="vOl-Si-NEi"/>
+                                            <segue destination="p8J-Qm-vgn" kind="embed" identifier="goToDone" id="vOl-Si-NEi"/>
                                         </connections>
                                     </containerView>
                                 </subviews>
