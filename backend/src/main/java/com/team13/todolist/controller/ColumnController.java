@@ -15,16 +15,4 @@ import java.util.Map;
 @RequestMapping("/api/columns")
 public class ColumnController {
 
-    @GetMapping
-    public ResponseEntity<Map<String, List<Column>>> columns() {
-        Map<String, List<Column>> columnsResponseBody = new HashMap<>();
-        columnsResponseBody.put("columns",
-                Arrays.asList(
-                        new Column(1L, "해야할 일"),
-                        new Column(2L, "하고 있는 일"),
-                        new Column(3L, "완료한 일")
-                ));
-        return ResponseEntity.ok(columnsResponseBody);
-    }
-
 }
