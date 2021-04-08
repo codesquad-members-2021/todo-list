@@ -25,7 +25,7 @@ const HistoryItem = () => (
   <WrapDiv>
 
     <ImgDiv>
-      <Image imgWidth="40px" src={userIcon} />
+      <Image _width="40px" src={userIcon} />
     </ImgDiv>
 
     <TextDiv>
@@ -36,7 +36,7 @@ const HistoryItem = () => (
         <Span>해야할 일에 HTML/CSS 공부하기를 등록하였습니다</Span>
       </div>
       <div>
-        <Span fontColor="#777777">1분 전</Span>
+        <Span _fontColor="#777777">1분 전</Span>
       </div>
     </TextDiv>
 

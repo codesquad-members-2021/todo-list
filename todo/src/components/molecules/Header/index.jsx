@@ -19,9 +19,9 @@ const Header = () => {
 
   return (
     <Div>
-      <Span fontSize="45px" fontWeight="700">To do List</Span>
+      <Span _fontSize="45px" _fontWeight="700">To do List</Span>
       <SmallButton onClick={clickHandler}>
-        <Image src={hamburgerBtn} imgWidth="30px" />
+        <Image src={hamburgerBtn} _width="30px" />
       </SmallButton>
     </Div>
   );

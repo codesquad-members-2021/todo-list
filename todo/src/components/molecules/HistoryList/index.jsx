@@ -6,11 +6,11 @@ import closeButton from '../../../images/closeButton.svg';
 
 const WrapDiv = styled.div`
   position: absolute;
-  right: -475px;
   width: 450px;
   height: 100%;
   padding: 15px;
   background: #fff;
+  right: -475px;
 `;
 
 const ButtonDiv = styled.div`
@@ -22,7 +22,7 @@ const HistoryList = ({ children, ...props }) => {
     <WrapDiv>
       <ButtonDiv>
         <SmallButton>
-          <Image imgWidth="20px" src={closeButton} />
+          <Image _width="20px" src={closeButton} />
         </SmallButton>
       </ButtonDiv>
       <div>

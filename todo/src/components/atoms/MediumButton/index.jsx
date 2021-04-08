@@ -8,8 +8,8 @@ const MediumButton = styled.button`
     /* border: none; */
     border: solid 0.15rem black;
     border-radius: 6px;
-    background-color:${props => props.BtnColor};
-    color:${props => props.textColor};
+    background:${props => props._background};
+    color:${props => props._color};
     cursor: pointer;
     margin: 3px;
 

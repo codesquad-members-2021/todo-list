@@ -22,12 +22,12 @@ const LeftDiv = styled.div`
 const TodoTitle = ({ children, ...props }) => (
   <WrapDiv>
     <LeftDiv>
-      <Span fontSize="20px" fontWeight="700">{children}</Span>
+      <Span _fontSize="20px" _fontWeight="700">{children}</Span>
       <Label></Label>
     </LeftDiv>
     <div>
       <SmallButton>
-        <Image src={hamburgerBtn} imgWidth="30px" />
+        <Image src={hamburgerBtn} _width="30px" />
       </SmallButton>
     </div>
   </WrapDiv>
