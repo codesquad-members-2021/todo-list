@@ -43,7 +43,9 @@ public class CardService {
     }
 
     public void delete(Long id) {
-        getCardById(id).delete();
+        Card card = getCardById(id);
+        card.delete();
+        cardRepository.save(card);
     }
 
     public Card getCardById(Long id) {
