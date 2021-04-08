@@ -88,4 +88,11 @@ extension TaskViewController : UITableViewDelegate, UITableViewDataSource {
         return cell
         
     }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            tasks.remove(at: indexPath.section)            
+            todo.deleteSections([indexPath.section], with: .fade)
+            
+        }
+    }
 }

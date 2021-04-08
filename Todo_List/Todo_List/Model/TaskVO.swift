@@ -21,7 +21,6 @@ class TaskVO {
         self.writer = writer
     }
     convenience init(){
-        
         self.init(title : "iOS", content: "implements plus button", writer : "elly")
     }
 }
