@@ -24,8 +24,14 @@ class ToDo: ToDoManageable {
         self.status = status
     }
     
+    convenience init() {
+        let title = ""
+        let contents = ""
+        let status = Status.toDo
+        self.init(title: title, contents: contents, status: status)
+    }
+    
     func add(toDo: ToDo) {
-        
     }
     
     func edit(toDo: ToDo) {
@@ -38,5 +44,16 @@ class ToDo: ToDoManageable {
     
     func goToDone(toDo: ToDo) {
         
+    }
+}
+
+class Board: Codable {
+    
+    var title: String
+    var items: [String]
+    
+    init(title: String, items: [String]) {
+        self.title = title
+        self.items = items
     }
 }

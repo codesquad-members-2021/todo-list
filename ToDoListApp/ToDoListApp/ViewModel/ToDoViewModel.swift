@@ -14,7 +14,12 @@ class ToDoViewModel {
         self.toDoUseCase = toDoUseCase
     }
     
-    func setSectionTitle(_ title: String) {
-        self.toDoUseCase.setSectionTitle(title)
+    convenience init() {
+        let toDoUseCase = ToDoUseCase(toDo: ToDo())
+        self.init(toDoUseCase: toDoUseCase)
     }
+    
+    func get() -> [Board] {
+        return toDoUseCase.get()
+    }  
 }

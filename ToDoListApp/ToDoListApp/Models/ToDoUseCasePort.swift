@@ -19,4 +19,5 @@ protocol ToDoUseCasePort {
     func edit(toDo: ToDoManageable)
     func delete(toDo: ToDoManageable)
     func goToDone(toDo: ToDoManageable)
+    func get() -> [Board]
 }
