@@ -14,39 +14,53 @@ function TodoCardContainer(props) {
 
   useEffect(() => {
     // TODO
-    console.log('call useEffect')
+    console.log('call useEffect');
   }, [state]);
+
+  const onDoubleClick = ({ target }) => {
+    console.log(target);
+    setViewState(ViewState.EDIT);
+    // target.focus();
+  };
 
   const onChangeTitle = ({ target }) => {
     setState({ ...state, title: target.value });
-  }
+  };
 
   const onChangeContent = ({ target }) => {
     if (target.clientHeight < target.scrollHeight)
       target.style.height = `${target.scrollHeight + 4}px`;
-    
+
     setState({ ...state, content: target.value });
-  }
+  };
 
   const onClickCancelBtn = ({ target }) => {
-    // TODO: setViewState
-    console.log('click cancelBtn');
-  }
+    // TODO: delete logic
+    setViewState(ViewState.NORMAL);
+  };
 
   const onClickConfirmBtn = ({ target }) => {
-    // TODO: setViewState
+    // TODO: network logic
     console.log('click confirmBtn');
-  }
+  };
+
+  const onClickDeleteBtn = ({ target }) => {
+    // TODO
+    console.log('click deleteBtn');
+  };
 
   return (
     <TodoCardPresentational
+      onDoubleClick={onDoubleClick}
       onChangeTitle={onChangeTitle}
       onChangeContent={onChangeContent}
       onClickCancelBtn={onClickCancelBtn}
       onClickConfirmBtn={onClickConfirmBtn}
+      onClickDeleteBtn={onClickDeleteBtn}
       state={state}
-      viewState={viewState}/>
-  )
+      viewState={viewState}
+    />
+  );
 }
 
 export default TodoCardContainer;

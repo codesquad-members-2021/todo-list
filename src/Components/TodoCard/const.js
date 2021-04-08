@@ -1,8 +1,9 @@
 const ViewState = {
   NORMAL: 'normal',
-  SELECT: 'select',
   DELETE: 'delete',
-  DRAG: 'drag',
+  DRAG_FLOAT: 'drag-float',
+  DRAG_ORIGIN: 'drag-origin',
+  EDIT: 'edit',
 }
 
 export { ViewState };
