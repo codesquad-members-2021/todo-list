@@ -26,8 +26,9 @@ public class TaskController {
 
     @PostMapping("/tasks")
     @ResponseStatus(HttpStatus.CREATED)
-    public void create(@RequestBody Task task) {
+    public Long create(@RequestBody Task task) {
         logger.debug(task.toString());
+        return 1L;
     }
 
     @PutMapping("/tasks/{id}")
