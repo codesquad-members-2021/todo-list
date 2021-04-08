@@ -13,14 +13,14 @@ class ColumnViewController : UIViewController {
     
     private let columnDataSource = ColumnDataSource(datamanager: ColumnDatas())//원하시면 변수명 변경하셔도 됩니당
     private let columnDelegate = ColumnDelegate() //일단은 뷰컨 - 뷰 일대일 대응 방식으로 코드 구성해놓을게요
-    
-    var temptitle = String()
+    func set(title: String){
+        guard let tempTitle = columnTitle else {return}
+        tempTitle.text = title
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        columnTitle.text = temptitle
         guard columnTableView != nil else {return}
-        
         columnTableView.delegate = columnDelegate
         columnTableView.dataSource = columnDataSource
         columnTableView.reloadData()
