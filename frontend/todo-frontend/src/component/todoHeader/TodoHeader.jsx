@@ -1,5 +1,7 @@
-import React from 'react';
+import React from "react";
 
-const TodoHeader = (props) => {};
+const TodoHeader = (props) => {
+  return <></>;
+};
 
 export default TodoHeader;
