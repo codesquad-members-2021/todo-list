@@ -36,28 +36,25 @@ public class CardController {
     }
 
     // MOVE
-    @GetMapping("/{id}/todo")
-    public String moveCardsTodo(@PathVariable Long id) {
+    @PutMapping("/{id}/todo")
+    public void moveCardsTodo(@PathVariable Long id) {
         Card card = cardRepository.findById(id).orElseThrow();
         card.changeStateTodo();
         cardRepository.save(card);
-        return "redirect:/cards";
     }
 
-    @GetMapping("/{id}/doing")
-    public String moveCardsDoing(@PathVariable Long id) {
+    @PutMapping("/{id}/doing")
+    public void moveCardsDoing(@PathVariable Long id) {
         Card card = cardRepository.findById(id).orElseThrow();
         card.changeStateDoing();
         cardRepository.save(card);
-        return "redirect:/cards";
     }
 
-    @GetMapping("/{id}/done")
-    public String moveCardsDone(@PathVariable Long id) {
+    @PutMapping("/{id}/done")
+    public void moveCardsDone(@PathVariable Long id) {
         Card card = cardRepository.findById(id).orElseThrow();
         card.changeStateTodo();
         cardRepository.save(card);
-        return "redirect:/cards";
     }
 
     // UPDATE
