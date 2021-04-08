@@ -1,5 +1,6 @@
 package codesquad.TodoList.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.Entity;
@@ -22,7 +23,7 @@ public class Card {
     @JsonProperty
     private String contents;
 
-    @JsonProperty
+    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss", timezone = "Asia/Seoul")
     private LocalDateTime createDate = LocalDateTime.now();
 
     private boolean todo;
