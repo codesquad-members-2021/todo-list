@@ -7,11 +7,10 @@
 
 import Foundation
 
-class WillTODOViewModel {
+class ExportViewModel {
     var value: TextObservable<[String]>
     
     init() {
-        //TEST
         self.value = TextObservable(value: ["안녕하세요"])
     }
 }

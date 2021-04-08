@@ -11,4 +11,7 @@ class SectionCell: UITableViewCell {
     static let identifier = "SectionCell"
     
     @IBOutlet weak var subject: UILabel!
+    @IBOutlet weak var body: UILabel!
+    @IBOutlet weak var author: UILabel!
+    
 }
