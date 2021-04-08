@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="ipad10_9rounded" orientation="landscape" layout="fullscreen" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -122,6 +122,7 @@
                                 </cells>
                             </collectionView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="z5a-Gh-0PK"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="0cA-yQ-Py9" secondAttribute="bottom" id="5z4-5M-H5H"/>
@@ -136,7 +137,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="whe-DX-I8M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-93" y="826"/>
+            <point key="canvasLocation" x="-66" y="826"/>
         </scene>
         <!--Doing View Controller-->
         <scene sceneID="m7b-XR-u1f">
@@ -234,6 +235,7 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="8PA-Tn-hLT"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="YO2-MT-nzV" firstAttribute="top" secondItem="m7L-GI-cnG" secondAttribute="top" id="KnI-F9-eLO"/>
@@ -243,12 +245,12 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="DoingTableView" destination="YO2-MT-nzV" id="HNP-yj-cdS"/>
+                        <outlet property="doingTableView" destination="YO2-MT-nzV" id="HNP-yj-cdS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9C2-be-LtK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="74.745762711864415" y="836.70731707317066"/>
+            <point key="canvasLocation" x="109" y="826"/>
         </scene>
         <!--Done View Controller-->
         <scene sceneID="l4a-BM-oW6">
@@ -257,12 +259,13 @@
                     <view key="view" contentMode="scaleToFill" id="p9M-za-1Z3">
                         <rect key="frame" x="0.0" y="0.0" width="270" height="679"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="UTW-JW-KRF"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qUz-3v-G11" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="248" y="849"/>
+            <point key="canvasLocation" x="291" y="826"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="zkg-iw-JKO">

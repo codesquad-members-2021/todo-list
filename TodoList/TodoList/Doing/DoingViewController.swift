@@ -8,9 +8,8 @@
 import UIKit
 
 class DoingViewController: UIViewController {
-
     
-    @IBOutlet weak var DoingTableView: UITableView!
+    @IBOutlet weak var doingTableView: UITableView!
     
     private let doingDataSource = DoingDataSource()
     private let doingDelegate = DoingDelegate()
@@ -18,12 +17,18 @@ class DoingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .clear
-        DoingTableView.dataSource = doingDataSource
-        DoingTableView.delegate = doingDelegate
+        doingTableView.dataSource = doingDataSource
+        doingTableView.delegate = doingDelegate
         
-        DoingTableView.estimatedRowHeight = 108
-        DoingTableView.rowHeight = UITableView.automaticDimension
+        doingTableView.estimatedRowHeight = 108
+        doingTableView.rowHeight = UITableView.automaticDimension
         
+        DoingUseCase().loadDoingTask { tasks in
+            self.doingDataSource.tasks = tasks
+            DispatchQueue.main.async { [weak self] in
+                self?.doingTableView.reloadData()
+            }
+        }
     }
 }
 

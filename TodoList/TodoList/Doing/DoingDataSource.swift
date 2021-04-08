@@ -9,11 +9,8 @@ import Foundation
 import UIKit
 
 class DoingDataSource : NSObject {
-
-    let todoTitle = ["Git공부하기", "IOS 공부하기", "HTML/CSS 공부하기"]
-    let content = ["add, delete", "UILabel, UIButton", "p tag, body tag"]
     let author = "author by IOS"
-    
+    var tasks: [Task] = []
 }
 
 extension DoingDataSource : UITableViewDataSource {
@@ -23,7 +20,7 @@ extension DoingDataSource : UITableViewDataSource {
     }
    
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return tasks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -31,8 +28,8 @@ extension DoingDataSource : UITableViewDataSource {
             return UITableViewCell()
         }
         
-        cell.title.text = todoTitle[indexPath.section]
-        cell.content.text = content[indexPath.section]
+        cell.title.text = tasks[indexPath.section].title
+        cell.content.text = tasks[indexPath.section].contents
         cell.author.text = author
    
         return cell
