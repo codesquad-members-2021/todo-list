@@ -37,6 +37,7 @@ const NormalButton = styled.button`
   color: #828282;
   border-radius: 6px;
   border: none;
+  font-size: 14px;
 `;
 
 const AccentButton = styled.button`
@@ -48,4 +49,6 @@ const AccentButton = styled.button`
   color: #fff;
   border-radius: 6px;
   border: none;
+  font-weight: bold;
+  font-size: 14px;
 `;
