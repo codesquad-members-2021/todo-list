@@ -24,6 +24,9 @@
 		E4207A99261C7C0C0054BCB0 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4207A98261C7C0C0054BCB0 /* NetworkManager.swift */; };
 		E4207AEF261DB4F50054BCB0 /* ListHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4207AEE261DB4F50054BCB0 /* ListHeaderView.xib */; };
 		E4207AFC261DB55A0054BCB0 /* ListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4207AFB261DB55A0054BCB0 /* ListHeaderView.swift */; };
+		E4207B0A261E9F5E0054BCB0 /* TodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4207B09261E9F5E0054BCB0 /* TodoViewController.swift */; };
+		E4207B0F261EA07E0054BCB0 /* DoingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4207B0E261EA07E0054BCB0 /* DoingViewController.swift */; };
+		E4207B14261EA0850054BCB0 /* DoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4207B13261EA0850054BCB0 /* DoneViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +70,9 @@
 		E4207A98261C7C0C0054BCB0 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		E4207AEE261DB4F50054BCB0 /* ListHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListHeaderView.xib; sourceTree = "<group>"; };
 		E4207AFB261DB55A0054BCB0 /* ListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListHeaderView.swift; sourceTree = "<group>"; };
+		E4207B09261E9F5E0054BCB0 /* TodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoViewController.swift; sourceTree = "<group>"; };
+		E4207B0E261EA07E0054BCB0 /* DoingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoingViewController.swift; sourceTree = "<group>"; };
+		E4207B13261EA0850054BCB0 /* DoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +171,9 @@
 			isa = PBXGroup;
 			children = (
 				E4207A0D261C57210054BCB0 /* BoardViewController.swift */,
+				E4207B09261E9F5E0054BCB0 /* TodoViewController.swift */,
+				E4207B0E261EA07E0054BCB0 /* DoingViewController.swift */,
+				E4207B13261EA0850054BCB0 /* DoneViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -310,10 +319,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4207B14261EA0850054BCB0 /* DoneViewController.swift in Sources */,
 				E4207A80261C7AAA0054BCB0 /* Cards.swift in Sources */,
 				E4207A0E261C57210054BCB0 /* BoardViewController.swift in Sources */,
 				E4207A99261C7C0C0054BCB0 /* NetworkManager.swift in Sources */,
 				E4207A94261C7B740054BCB0 /* JSONParser.swift in Sources */,
+				E4207B0A261E9F5E0054BCB0 /* TodoViewController.swift in Sources */,
 				E4207A8A261C7AF50054BCB0 /* Activity.swift in Sources */,
 				E4207A0A261C57210054BCB0 /* AppDelegate.swift in Sources */,
 				E4207A0C261C57210054BCB0 /* SceneDelegate.swift in Sources */,
@@ -321,6 +332,7 @@
 				E4207A8F261C7B380054BCB0 /* ActivityFeed.swift in Sources */,
 				E4207A85261C7ABA0054BCB0 /* List.swift in Sources */,
 				E4207AFC261DB55A0054BCB0 /* ListHeaderView.swift in Sources */,
+				E4207B0F261EA07E0054BCB0 /* DoingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

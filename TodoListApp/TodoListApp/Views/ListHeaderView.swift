@@ -41,5 +41,6 @@ class ListHeaderView: UIView {
         badgeButton.widthAnchor.constraint(greaterThanOrEqualTo: badgeButton.heightAnchor).isActive = true
         badgeButton.isEnabled = false
         badgeButton.setTitleColor(.black, for: .disabled)
+        badgeButton.contentEdgeInsets = UIEdgeInsets(top: 0.0, left: 6.0, bottom: 0.0, right: 6.0)
     }
 }
