@@ -30,4 +30,10 @@ public class CardController {
         return "success";
     }
 
+    @DeleteMapping("/todos/{id}")
+    public String delete(@PathVariable Long id){
+        cardService.delete(id);
+        return "success";
+    }
+
 }

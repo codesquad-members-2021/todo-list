@@ -10,5 +10,4 @@ public class CocoKyuApplication {
 		SpringApplication.run(CocoKyuApplication.class, args);
 	}
 
-
 }

@@ -1,6 +1,7 @@
 package com.codeSquad.cocokyu.domain;
 
 import com.codeSquad.cocokyu.domain.card.Card;
+import com.codeSquad.cocokyu.domain.card.Status;
 import org.springframework.stereotype.Service;
 
 
@@ -28,8 +29,18 @@ public class CardService {
     }
 
     public void modify(Long id, Card updateCard) {
-        Card card = cardRepository.findById(id).orElseThrow(NullPointerException::new);
+        Card card = findById(id);
         card.modify(updateCard);
         cardRepository.save(card);
 ;    }
+
+    public void delete(Long id) {
+        Card card = findById(id);
+        card.changeStatus(Status.DELETED);
+        cardRepository.save(card);
+    }
+
+    private Card findById(Long id){
+        return cardRepository.findById(id).orElseThrow(NullPointerException::new);
+    }
 }
