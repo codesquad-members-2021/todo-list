@@ -24,10 +24,10 @@ public class CardJdbcRepository implements CardRepository {
         return Optional.empty();
     }
 
-    @Override
-    public Optional<Card> findByName(String name) {
-        return Optional.empty();
-    }
+    //@Override
+    //public Optional<Card> findByName(String name) {
+    //    return Optional.empty();
+    //}
 
     @Override
     public List<Card> findAll() {

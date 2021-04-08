@@ -12,6 +12,6 @@ public interface CardRepository extends CrudRepository<Card,Long> {
 
     Card save(Card card);
     Optional<Card> findById(Long id);
-    Optional<Card> findByName(String name);
+    //Optional<Card> findByName(String name);
     List<Card> findAll();
 }
