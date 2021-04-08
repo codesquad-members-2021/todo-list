@@ -61,29 +61,15 @@
                   "id": 1,
                   "taskTitle": "task1",
                   "taskContent": "taskContent1",
-                  "author": {
-                      "id": 1,
-                      "name": "라쿠운",
-                      "userId": "Racoon",
-                      "password": "1234",
-                      "profileImage": ""
-                  },
-                  "createdDateTime": "2021-04-07T17:51:05.398",
-                  "updatedDateTime": null
+                  "authorName": "라쿠운",
+                  "createdDateTime": "2021-04-08T16:17:10.538"
               },
               {
                   "id": 2,
                   "taskTitle": "task2",
                   "taskContent": "taskContent2",
-                  "author": {
-                      "id": 1,
-                      "name": "라쿠운",
-                      "userId": "Racoon",
-                      "password": "1234",
-                      "profileImage": ""
-                  },
-                  "createdDateTime": "2021-04-07T17:51:05.399",
-                  "updatedDateTime": null
+                  "authorName": "라쿠운",
+                  "createdDateTime": "2021-04-08T16:17:10.538"
               }
           ]
       },
@@ -95,24 +81,16 @@
                   "id": 3,
                   "taskTitle": "task3",
                   "taskContent": "taskContent3",
-                  "author": {
-                      "id": 1,
-                      "name": "라쿠운",
-                      "userId": "Racoon",
-                      "password": "1234",
-                      "profileImage": ""
-                  },
-                  "createdDateTime": "2021-04-07T17:51:05.399",
-                  "updatedDateTime": null
+                  "authorName": "라쿠운",
+                  "createdDateTime": "2021-04-08T16:17:10.541"
               }
           ]
       }
   ]
   ```
-
-* 중복된 author은 제거할지 말지 고민중입니다
-
-
+  
+  
+  
 
 ## 3. Task
 
@@ -155,7 +133,7 @@
   }
   ```
 
-
+* 수정 예정입니다.
 
 #### 3-2. 태스크 변경
 
@@ -236,16 +214,16 @@
 * ```json
   [
       {
-          "id" : 1,
-          "action" : "'move' '자바스크립트 예제 실습 수정됨!' 'TODO' 'IN_PROGRESS'",
-          "author" : {
-              "id" : 1,
-              "userId" : "Raccoon",
-              "password" : "1234",
-              "name" : "라쿠운",
-              "profileImage" : "http://어딘가에_있는_라쿤_이미지.jpeg"
-          },
-          "createdDateTime" : "2021-03-21 13:24:00"
+          "id": 1,
+          "action": "'move' '1 자바스크립트 예제 실습 수정됨!' 'TODO' 'IN_PROGRESS'",
+          "authorName": "라쿠운",
+          "createdDateTime": "2021-04-08T16:18:24.96"
+      },
+      {
+          "id": 2,
+          "action": "'move' '2 자바스크립트 예제 실습 수정됨!' 'TODO' 'IN_PROGRESS'",
+          "authorName": "라쿠운",
+          "createdDateTime": "2021-04-08T16:18:24.96"
       }
   ]
   ```
