@@ -33,7 +33,7 @@ public class CardService {
     }
 
     public List<Card> read() {
-        return cardRepository.findAllByTodoTrueOrDoingTrueOrDoneTrue();
+        return cardRepository.findAllByDeletedFalse();
     }
 
     public void edit(Long id, Card newCard) {

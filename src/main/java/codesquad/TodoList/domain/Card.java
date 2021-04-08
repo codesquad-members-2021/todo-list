@@ -1,12 +1,8 @@
 package codesquad.TodoList.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -14,22 +10,20 @@ public class Card {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonProperty
     private Long id;
 
-    @JsonProperty
+    @Column(length = 500)
     private String title;
 
-    @JsonProperty
     private String contents;
 
-    @JsonProperty
     @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss", timezone = "Asia/Seoul")
     private LocalDateTime dateTime = LocalDateTime.now();
 
     private boolean todo;
     private boolean doing;
     private boolean done;
+    private boolean deleted;
 
     public void update(Card card) {
         this.title = card.title;
@@ -55,9 +49,7 @@ public class Card {
     }
 
     public void delete() {
-        this.todo = false;
-        this.doing = false;
-        this.done = false;
+        this.deleted = true;
     }
 
     public Long getId() {
@@ -98,6 +90,10 @@ public class Card {
 
     public boolean isDone() {
         return done;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
     }
 
     @Override
