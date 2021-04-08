@@ -46,8 +46,18 @@ class TaskViewController: UIViewController {
         
     }
     @IBAction func todoPlus(_ sender: UIButton) {
-        let new = TaskVO()
-        todoTasks.insert(new, at: 0)
+    
+        let storyboard = UIStoryboard(name: "PopUp", bundle: nil)
+        let viewcontroller = storyboard.instantiateViewController(identifier: "AddPopUp") as! AddPopUpViewController
+        
+        viewcontroller.definesPresentationContext = true
+        viewcontroller.modalPresentationStyle = .formSheet
+        viewcontroller.preferredContentSize = CGSize(width: 400, height: 175)
+        self.present(viewcontroller, animated: true)
+        
+        viewcontroller.setHandler { [weak self] new in
+            self?.todoTasks.insert(new, at: 0)
+        }
         todo.reloadData()
     }
     @IBAction func doingPlus(_ sender: UIButton) {
