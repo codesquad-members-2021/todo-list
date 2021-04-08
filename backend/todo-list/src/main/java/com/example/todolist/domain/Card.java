@@ -28,6 +28,11 @@ public class Card {
         this.postTime = LocalDateTime.now();
     }
 
+    public void update(String title, String contents) {
+        this.title = title;
+        this.contents = contents;
+    }
+
     public LocalDateTime getPostTime() {
         return postTime;
     }

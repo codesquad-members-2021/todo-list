@@ -31,4 +31,27 @@ public class CardController {
         cardRepository.save(card);
         return new ResponseEntity<>(card, HttpStatus.OK);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity update(@PathVariable Long id, @RequestBody HashMap<String, String> newCardInfo, HttpSession session) {
+        Card card = cardRepository.findById(id).orElseThrow(RuntimeException::new);
+        User user = (User) session.getAttribute("sessionUser");
+        if (!card.getUserId().equals(user.getUserId())) {
+            throw new RuntimeException("수정 권한이 없습니다.");
+        }
+        card.update(newCardInfo.get("title"), newCardInfo.get("contents"));
+        cardRepository.save(card);
+        return new ResponseEntity(card, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity delete (@PathVariable Long id, HttpSession session){
+        Card card = cardRepository.findById(id).orElseThrow(RuntimeException::new);
+        User user = (User) session.getAttribute("sessionUser");
+        if (!card.getUserId().equals(user.getUserId())) {
+            throw new RuntimeException("삭제 권한이 없습니다.");
+        }
+        cardRepository.delete(card);
+        return new ResponseEntity(card , HttpStatus.OK);
+    }
 }
