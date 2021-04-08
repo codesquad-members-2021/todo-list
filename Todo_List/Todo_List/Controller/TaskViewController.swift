@@ -17,7 +17,9 @@ class TaskViewController: UIViewController {
     @IBOutlet weak var countOfDoing: UILabel!
     @IBOutlet weak var countOfDone: UILabel!
     
-    var tasks = [TaskVO]()
+    var todoVOs = [TaskVO]()
+    var dogingVOs = [TaskVO]()
+    var doneVOs = [TaskVO]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,12 +40,12 @@ class TaskViewController: UIViewController {
         doing.register(nibName, forCellReuseIdentifier: "TaskCell")
         done.register(nibName, forCellReuseIdentifier: "TaskCell")
         
-        tasks.append(TaskVO())
+        todoVOs.append(TaskVO())
         
     }
     @IBAction func todoPlus(_ sender: UIButton) {
         let new = TaskVO()
-        tasks.append(new)
+        todoVOs.append(new)
         todo.reloadData()
     }
     
@@ -55,21 +57,21 @@ extension TaskViewController : UITableViewDelegate, UITableViewDataSource {
     }
     /*섹션의 수를 늘리는 프로토콜*/
     func numberOfSections(in tableView: UITableView) -> Int {
+        var count = 0
         switch tableView {
-        
         case todo:
-            let count = tasks.count
+            count = todoVOs.count
             countOfTodo.text = String(count)
-            return count
         case doing:
-            countOfDoing.text = String(4)
-            return 4
+            count = dogingVOs.count
+            countOfDoing.text = String(count)
         case done:
-            countOfDone.text = String(1)
-            return 1
+            count = doneVOs.count
+            countOfDone.text = String(count)
         default:
-            return 0
+            break
         }
+        return count
     }
     
     /*섹션의 헤더섹션 배경색을 바꾸는 법.*/
@@ -85,14 +87,19 @@ extension TaskViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCell") as! TaskCell
+        
+        let task = todoVOs[indexPath.section]
+        cell.title.text = task.title
+        cell.content.text = task.content
+        cell.writer.text = task.writer
+        
         return cell
         
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            tasks.remove(at: indexPath.section)            
+            todoVOs.remove(at: indexPath.section)            
             todo.deleteSections([indexPath.section], with: .fade)
-            
         }
     }
 }

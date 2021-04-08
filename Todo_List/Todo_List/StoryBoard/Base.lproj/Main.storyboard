@@ -213,7 +213,7 @@
                         <outlet property="countOfTodo" destination="CHa-P4-jaE" id="FEs-pk-HJs"/>
                         <outlet property="doing" destination="mSe-ay-sak" id="UeP-Qx-V1B"/>
                         <outlet property="done" destination="Nrg-u7-rCB" id="9vB-c8-UCh"/>
-                        <outlet property="todo" destination="Za1-ZW-bdI" id="oB9-YN-j36"/>
+                        <outlet property="todo" destination="Za1-ZW-bdI" id="Rza-RR-1hA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xiJ-A6-MnR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

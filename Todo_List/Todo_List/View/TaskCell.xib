@@ -58,6 +58,11 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+            <connections>
+                <outlet property="content" destination="F9O-MC-jWR" id="grJ-DL-iGr"/>
+                <outlet property="title" destination="cK7-Th-nNe" id="wtv-m4-0zm"/>
+                <outlet property="writer" destination="GbU-dc-zNW" id="KkK-ys-0Mu"/>
+            </connections>
             <point key="canvasLocation" x="137.68115942028987" y="145.98214285714286"/>
         </tableViewCell>
     </objects>
