@@ -12,35 +12,40 @@ public class TaskController {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
+    private TaskRepository taskRepository;
+
+    public TaskController(TaskRepository taskRepository) {
+        this.taskRepository = taskRepository;
+    }
+
     @GetMapping("/tasks")
     public List<Task> readAll() {
-        return Arrays.asList(new Task(1L, "title1", "content1", "writer1"),
-                new Task(2L, "title2", "content2", "writer2"),
-                new Task(3L, "title3", "content3", "writer3"));
+        return taskRepository.findAllByNotDeleted();
     }
 
     @GetMapping("/tasks/{id}")
     public Task readOne(@PathVariable Long id) {
-        return new Task(id, "title", "content", "writer");
+        return taskRepository.findOne(id);
     }
 
     @PostMapping("/tasks")
     @ResponseStatus(HttpStatus.CREATED)
     public Long create(@RequestBody Task task) {
-        logger.debug(task.toString());
-        return 1L;
+        return taskRepository.save(task).getId();
     }
 
     @PutMapping("/tasks/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void update(@PathVariable Long id, @RequestBody Task updatedTask) {
-        logger.debug(id + updatedTask.toString());
+        Task task = taskRepository.findOne(id).update(updatedTask);
+        taskRepository.save(task);
     }
 
     @DeleteMapping("/tasks/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id) {
-        logger.debug(id + " Successfully deleted");
+        Task task = taskRepository.findOne(id).delete();
+        taskRepository.save(task);
     }
 
     @PatchMapping("/tasks/{id}/{previousId}")

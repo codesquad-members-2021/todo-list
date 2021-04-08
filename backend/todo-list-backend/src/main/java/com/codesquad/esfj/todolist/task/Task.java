@@ -19,6 +19,10 @@ public class Task {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -31,8 +35,20 @@ public class Task {
         return writer;
     }
 
-    public void delete() {
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public Task update(Task updatedTask) {
+        this.title = updatedTask.title;
+        this.content = updatedTask.content;
+        this.writer = updatedTask.writer;
+        return this;
+    }
+
+    public Task delete() {
         deleted = true;
+        return this;
     }
 
     @Override
