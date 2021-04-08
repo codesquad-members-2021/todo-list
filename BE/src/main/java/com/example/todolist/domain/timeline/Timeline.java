@@ -15,9 +15,7 @@ public class Timeline {
 
     private Long author;
 
-    public Timeline() {
-
-    }
+    public Timeline() {}
 
     public Timeline(String description, Long author) {
         this.description = description;

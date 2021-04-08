@@ -1,11 +1,7 @@
 package com.example.todolist.web;
 
-import com.example.todolist.domain.timeline.Timeline;
-import com.example.todolist.domain.timeline.TimelineRepository;
 import com.example.todolist.domain.user.UserRepository;
 import com.example.todolist.domain.user.User;
-import com.example.todolist.domain.work.Work;
-import com.example.todolist.domain.work.WorkRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;

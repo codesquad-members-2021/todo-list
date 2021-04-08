@@ -5,6 +5,7 @@ import org.springframework.data.annotation.Id;
 import java.time.LocalDateTime;
 
 public class Work {
+
     @Id
     private Long id;
 
@@ -18,9 +19,7 @@ public class Work {
 
     private Long author;
 
-    public Work() {
-
-    }
+    public Work() {}
 
     public Work(String title, String description, int status, Long author) {
         this.title = title;
