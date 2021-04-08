@@ -1,6 +1,9 @@
 package com.example.todolist.domain;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
+
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class Card {
@@ -11,6 +14,7 @@ public class Card {
     private String title;
     private String contents;
     private String status;
+    private LocalDateTime postTime;
 
     public Card() {
 
@@ -21,6 +25,11 @@ public class Card {
         this.title = title;
         this.contents = contents;
         this.status = status;
+        this.postTime = LocalDateTime.now();
+    }
+
+    public LocalDateTime getPostTime() {
+        return postTime;
     }
 
     public Long getUserId() {
