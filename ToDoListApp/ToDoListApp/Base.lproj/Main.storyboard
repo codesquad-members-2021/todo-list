@@ -65,6 +65,50 @@
             </objects>
             <point key="canvasLocation" x="-291.4572864321608" y="119.42446043165468"/>
         </scene>
+        <!--Modal View Controller-->
+        <scene sceneID="lIF-S3-Zef">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F4K-ph-iZS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="modalViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="DqU-d2-HbO" customClass="ModalViewController" customModule="ToDoListApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="b4j-Bp-LV0">
+                        <rect key="frame" x="0.0" y="0.0" width="1194" height="834"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KTc-dr-Vxv">
+                                <rect key="frame" x="397" y="329.5" width="400" height="175"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="새로운 카드 추가" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wWw-Py-Pzm">
+                                        <rect key="frame" x="16" y="16" width="368" height="19.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="wWw-Py-Pzm" firstAttribute="leading" secondItem="KTc-dr-Vxv" secondAttribute="leading" constant="16" id="Ob0-uZ-QqU"/>
+                                    <constraint firstItem="wWw-Py-Pzm" firstAttribute="top" secondItem="KTc-dr-Vxv" secondAttribute="top" constant="16" id="WJB-Dp-TlQ"/>
+                                    <constraint firstAttribute="height" constant="175" id="YmE-e2-lA2"/>
+                                    <constraint firstAttribute="trailing" secondItem="wWw-Py-Pzm" secondAttribute="trailing" constant="16" id="bZC-Js-tuL"/>
+                                    <constraint firstAttribute="width" constant="400" id="gVU-9X-gmO"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="fWv-OT-qxb"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="KTc-dr-Vxv" firstAttribute="centerX" secondItem="b4j-Bp-LV0" secondAttribute="centerX" id="Ehp-h7-jic"/>
+                            <constraint firstItem="KTc-dr-Vxv" firstAttribute="centerY" secondItem="b4j-Bp-LV0" secondAttribute="centerY" id="VrO-0G-H8m"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backgroundView" destination="KTc-dr-Vxv" id="blc-RA-4Po"/>
+                        <outlet property="titleLabel" destination="wWw-Py-Pzm" id="cSM-ee-xvi"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="-343" y="939"/>
+        </scene>
         <!--Card View Controller-->
         <scene sceneID="Lnk-xv-bWK">
             <objects>
@@ -110,6 +154,9 @@
                                         <rect key="frame" x="228" y="0.0" width="18" height="30"/>
                                         <color key="tintColor" systemColor="systemGray4Color"/>
                                         <state key="normal" image="plus" catalog="system"/>
+                                        <connections>
+                                            <action selector="addCardButtonPressed:" destination="EVs-s3-gWZ" eventType="touchUpInside" id="uHM-Eh-XEO"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
@@ -251,6 +298,7 @@
                                 </constraints>
                             </tableView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="GNJ-Ry-3fz"/>
                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                         <constraints>
                             <constraint firstItem="a6h-Dz-YDK" firstAttribute="leading" secondItem="Krp-DR-hPk" secondAttribute="leading" id="6sb-to-lfr"/>
@@ -283,6 +331,9 @@
     <resources>
         <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemGray4Color">
             <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

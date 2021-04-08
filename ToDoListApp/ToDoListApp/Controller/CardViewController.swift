@@ -46,4 +46,12 @@ class CardViewController: UIViewController {
         doneTableView.dataSource = doneDataSource
     }
 
+    @IBAction func addCardButtonPressed(_ sender: UIButton) {
+        guard let modalViewController = self.storyboard?.instantiateViewController(identifier: "modalViewController") as? ModalViewController
+        else {
+            return
+        }
+        self.present(modalViewController, animated: true, completion: nil)
+    }
+    
 }
