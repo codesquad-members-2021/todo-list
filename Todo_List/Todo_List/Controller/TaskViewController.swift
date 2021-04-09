@@ -17,9 +17,7 @@ class TaskViewController: UIViewController {
     @IBOutlet weak var countOfDoing: UILabel!
     @IBOutlet weak var countOfDone: UILabel!
     
-    var todoTasks = [TaskVO]()
-    var doingTasks = [TaskVO]()
-    var doneTasks = [TaskVO]()
+    var taskManager = TaskVOManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,22 +40,29 @@ class TaskViewController: UIViewController {
         doing.register(nibName, forCellReuseIdentifier: "TaskCell")
         done.register(nibName, forCellReuseIdentifier: "TaskCell")
         
-        todoTasks.append(TaskVO())
-        
+        taskManager.apepnd(with: TaskVO(), type: .todo)
     }
     @IBAction func todoPlus(_ sender: UIButton) {
-        let new = TaskVO()
-        todoTasks.insert(new, at: 0)
-        todo.reloadData()
+    
+        let storyboard = UIStoryboard(name: "Modal", bundle: nil)
+        let viewcontroller = storyboard.instantiateViewController(identifier: "Modal") as! ModalViewController
+        
+        viewcontroller.definesPresentationContext = true
+        viewcontroller.modalPresentationStyle = .formSheet
+        self.present(viewcontroller, animated: true)
+        
+        viewcontroller.setHandler { [weak self] task in
+            self?.taskManager.apepnd(with: task, type: .todo)
+            self?.todo.reloadData()
+        }
+        
     }
     @IBAction func doingPlus(_ sender: UIButton) {
-        let new = TaskVO()
-        doingTasks.insert(new, at: 0)
+        taskManager.apepnd(with: TaskVO(), type: .doing)
         doing.reloadData()
     }
     @IBAction func donePlus(_ sender: UIButton) {
-        let new = TaskVO()
-        doneTasks.insert(new, at: 0)
+        taskManager.apepnd(with: TaskVO(), type: .done)
         done.reloadData()
     }
     
@@ -72,13 +77,13 @@ extension TaskViewController : UITableViewDelegate, UITableViewDataSource {
         var count = 0
         switch tableView {
         case todo:
-            count = todoTasks.count
+            count = taskManager.todoList.count
             countOfTodo.text = String(count)
         case doing:
-            count = doingTasks.count
+            count = taskManager.doingList.count
             countOfDoing.text = String(count)
         case done:
-            count = doneTasks.count
+            count = taskManager.doneList.count
             countOfDone.text = String(count)
         default:
             break
@@ -103,11 +108,11 @@ extension TaskViewController : UITableViewDelegate, UITableViewDataSource {
         var task : TaskVO
         switch tableView {
         case todo:
-            task = todoTasks[indexPath.section]
+            task = taskManager.todoList[indexPath.section]
         case doing:
-            task = doingTasks[indexPath.section]
+            task = taskManager.doingList[indexPath.section]
         case done:
-            task = doneTasks[indexPath.section]
+            task = taskManager.doneList[indexPath.section]
         default:
             return cell
         }
@@ -122,13 +127,13 @@ extension TaskViewController : UITableViewDelegate, UITableViewDataSource {
      
         switch tableView {
         case todo:
-            todoTasks.remove(at: indexPath.section)
+            taskManager.remove(at: indexPath.section, type: .todo)
             todo.deleteSections([indexPath.section], with: .fade)
         case doing:
-            doingTasks.remove(at: indexPath.section)
+            taskManager.remove(at: indexPath.section, type: .doing)
             doing.deleteSections([indexPath.section], with: .fade)
         case done:
-            doneTasks.remove(at: indexPath.section)
+            taskManager.remove(at: indexPath.section, type: .done)
             done.deleteSections([indexPath.section], with: .fade)
         default:
             return
