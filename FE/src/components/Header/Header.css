@@ -1,0 +1,6 @@
+.Header {
+    font-size: 24px;
+    font-weight: 400;
+    display: flex;
+    justify-content: space-between;
+}
