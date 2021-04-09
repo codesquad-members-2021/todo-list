@@ -42,4 +42,13 @@ public class Card {
     public String getMedia() {
         return media;
     }
+
+    public void update(HashMap<String, String> cardInfo) {
+        this.title = cardInfo.get("title");
+        this.contents = cardInfo.get("contents");
+    }
+
+    public void move(HashMap<String, String> cardInfo) {
+        this.column_id = Integer.parseInt(cardInfo.get("column_id"));
+    }
 }
