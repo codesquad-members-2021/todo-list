@@ -23,6 +23,7 @@
   - Styled Components를 활용해서 스타일 작업을 진행 중입니다.
 
 ## 컴포넌트의 역할
+- MainPage : 엔트리포인트가 되며, 투두 컴포넌트들로부터 dispatch되는 액션을 핸들링합니다.
 - TodoCard : 투두카드를 렌더하고 추가 수정 삭제하는 기능을 구현합니다.
 - TodoColumn : 투두카드를 컬럼단위로 정렬할 수 있도록 기능을 구현합니다.
 - TodoColumnContainer : 투두카드의 드래그앤 드랍을 구현합니다.
