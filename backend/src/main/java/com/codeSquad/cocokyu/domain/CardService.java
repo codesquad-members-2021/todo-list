@@ -1,8 +1,11 @@
 package com.codeSquad.cocokyu.domain;
 
-import com.codeSquad.cocokyu.domain.card.Card;
-import com.codeSquad.cocokyu.domain.card.Status;
+import com.codeSquad.cocokyu.domain.model.Card;
+import com.codeSquad.cocokyu.domain.model.Log;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 
 @Service
@@ -14,7 +17,8 @@ public class CardService {
         this.cardRepository = cardRepository;
     }
 
-    public void write(Card card){
+    @Transactional
+    public void write(Card card) {
         cardRepository.save(card);
     }
 
@@ -24,23 +28,32 @@ public class CardService {
         return cardList;
     }
 
+    public LogList getList() {
+        List<Log> logs = cardRepository.findAllLog();
+        LogList logList = new LogList(logs);
+        return logList;
+    }
+
     private Iterable<Card> findAll() {
         return cardRepository.findAll();
     }
 
+    @Transactional
     public void modify(Long id, Card updateCard) {
         Card card = findById(id);
         card.modify(updateCard);
         cardRepository.save(card);
-;    }
+    }
 
+    @Transactional
     public void delete(Long id) {
         Card card = findById(id);
-        card.changeStatus(Status.DELETED);
+        card.delete();
         cardRepository.save(card);
     }
 
-    private Card findById(Long id){
+    private Card findById(Long id) {
         return cardRepository.findById(id).orElseThrow(NullPointerException::new);
     }
+
 }
