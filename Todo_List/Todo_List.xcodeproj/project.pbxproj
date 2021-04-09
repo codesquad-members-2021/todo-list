@@ -10,6 +10,7 @@
 		107249D5261DBEEF005B3DD8 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107249D3261DBEEF005B3DD8 /* TaskCell.swift */; };
 		107249D6261DBEEF005B3DD8 /* TaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 107249D4261DBEEF005B3DD8 /* TaskCell.xib */; };
 		107249DB261DC182005B3DD8 /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107249DA261DC182005B3DD8 /* TaskViewController.swift */; };
+		10AA054D261FE73C00CAD7D0 /* TaskVOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AA054C261FE73C00CAD7D0 /* TaskVOManager.swift */; };
 		10C1B3FB261EDE9F00B6BD9E /* TaskVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C1B3FA261EDE9F00B6BD9E /* TaskVO.swift */; };
 		10C1B409261EFE6900B6BD9E /* AddPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C1B408261EFE6900B6BD9E /* AddPopUpViewController.swift */; };
 		10C1B40E261EFEA600B6BD9E /* PopUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10C1B40D261EFEA600B6BD9E /* PopUp.storyboard */; };
@@ -45,6 +46,7 @@
 		107249D3261DBEEF005B3DD8 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		107249D4261DBEEF005B3DD8 /* TaskCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskCell.xib; sourceTree = "<group>"; };
 		107249DA261DC182005B3DD8 /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
+		10AA054C261FE73C00CAD7D0 /* TaskVOManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskVOManager.swift; sourceTree = "<group>"; };
 		10C1B3FA261EDE9F00B6BD9E /* TaskVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskVO.swift; sourceTree = "<group>"; };
 		10C1B408261EFE6900B6BD9E /* AddPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPopUpViewController.swift; sourceTree = "<group>"; };
 		10C1B40D261EFEA600B6BD9E /* PopUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PopUp.storyboard; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				10C1B3FA261EDE9F00B6BD9E /* TaskVO.swift */,
+				10AA054C261FE73C00CAD7D0 /* TaskVOManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 			files = (
 				107249D5261DBEEF005B3DD8 /* TaskCell.swift in Sources */,
 				FA41FF08261C4FD2004ECD45 /* ViewController.swift in Sources */,
+				10AA054D261FE73C00CAD7D0 /* TaskVOManager.swift in Sources */,
 				107249DB261DC182005B3DD8 /* TaskViewController.swift in Sources */,
 				10C1B3FB261EDE9F00B6BD9E /* TaskVO.swift in Sources */,
 				FA41FF04261C4FD2004ECD45 /* AppDelegate.swift in Sources */,
