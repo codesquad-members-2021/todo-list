@@ -6,8 +6,8 @@
 
 - [BE][🧑‍💻  Cooper](https://github.com/pbg0205/) - Cooper야, 개발이 하고 싶어?
 - [BE][🧑‍💻  MJ](https://github.com/MJbae) - 쌀이야? 개발이야? 선택해.
-- [iOS][👩‍💻  Lollo](https://github.com/eeeesong) - 
-- [iOS][🧑‍💻  Aiden](https://github.com/Sonjh1306) -
+- [iOS][👩‍💻  Lollo](https://github.com/eeeesong) - 개발이 개발개발
+- [iOS][🧑‍💻  Aiden](https://github.com/Sonjh1306) - 소발 닭발 개발 발발발
 
 
 
@@ -95,4 +95,6 @@
   - [3.mysql(in docker) - localhost 연결](https://github.com/MJbae/todo-list/tree/Backend/feature-DB-connect)
 
 - [iOS 현황](https://github.com/MJbae/todo-list/projects/2)
+  - [1.UI구현](https://github.com/MJbae/todo-list/wiki/%5BiOS%5D-UI-구현)
+  - [2.Network구현](https://github.com/MJbae/todo-list/wiki/%5BiOS%5D-Network-구현)
 
