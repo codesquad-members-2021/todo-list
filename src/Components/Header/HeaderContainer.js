@@ -39,7 +39,7 @@ const slowView = keyframes`
 const Container = styled.div`
   display: flex;
   font-size: 20px;
-  padding: 5% 10%;
+  padding: 5% 0;
   box-sizing: border-box;
   width: 100%;
   justify-content: space-between;
