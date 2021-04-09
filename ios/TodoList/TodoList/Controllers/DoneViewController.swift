@@ -35,6 +35,7 @@ class DoneViewController: UIViewController {
 
 extension DoneViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(cards.count)
         return cards.count
     }
     
