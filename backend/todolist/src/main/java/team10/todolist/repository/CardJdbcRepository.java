@@ -6,11 +6,11 @@ import javax.sql.DataSource;
 import java.util.List;
 import java.util.Optional;
 
-public class BoardJdbcRepository implements BoardRepository{
+public class CardJdbcRepository implements CardRepository {
 
     private final DataSource dataSource;
 
-    public BoardJdbcRepository(DataSource dataSource) {
+    public CardJdbcRepository(DataSource dataSource) {
         this.dataSource = dataSource;
     }
 
@@ -24,10 +24,10 @@ public class BoardJdbcRepository implements BoardRepository{
         return Optional.empty();
     }
 
-    @Override
-    public Optional<Card> findByName(String name) {
-        return Optional.empty();
-    }
+    //@Override
+    //public Optional<Card> findByName(String name) {
+    //    return Optional.empty();
+    //}
 
     @Override
     public List<Card> findAll() {
