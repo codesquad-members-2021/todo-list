@@ -4,7 +4,9 @@ import UIKit
 class TaskViewController: UIViewController {
 
     var id: Int?
-    
+    private var taskCount = 0
+    private var titleText: String?
+    private var contentText: String?
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var taskCountLabel: UILabel!
@@ -13,6 +15,7 @@ class TaskViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSubViews()
+        addNotificationObserver()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -22,8 +25,6 @@ class TaskViewController: UIViewController {
             }
         }
     }
-    
-
 }
 
 extension TaskViewController {
@@ -49,5 +50,32 @@ extension TaskViewController {
     //Register Xib
     private func registerTaskCell() {
         taskTableView.register(UINib(nibName: "TaskCell", bundle: nil), forCellReuseIdentifier: "TaskCell")
+    }
+}
+
+extension TaskViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return taskCount
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCell", for: indexPath) as? TaskCell
+        cell?.titleTextLabel.text = titleText
+        cell?.contextTextLabel.text = contentText
+        
+        return cell!
+    }
+    
+    private func addNotificationObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(insertTask(_:)), name: .addTask, object: nil)
+    }
+    
+    @objc func insertTask(_ notification: Notification) {
+        taskCount += 1
+        titleText = notification.userInfo?["title"] as? String
+        contentText = notification.userInfo?["content"] as? String
+        print(notification.userInfo?["id"])
+        
+        taskTableView.insertRows(at: [IndexPath(row: taskCount-1, section: 0)], with: .automatic)
     }
 }

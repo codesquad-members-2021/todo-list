@@ -9,7 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TaskCell" rowHeight="137" id="KGk-i7-Jjw" customClass="TaskCell" customModule="TodoApp" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TaskCell" rowHeight="137" id="KGk-i7-Jjw" customClass="TaskCell" customModule="TodoApp" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="328" height="137"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -59,6 +59,17 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                    <integer key="value" value="10"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="contextTextLabel" destination="l1n-Jw-yia" id="lfO-Mz-amL"/>
+                <outlet property="iOSLabel" destination="mTq-Vb-qtO" id="oNp-mU-bT5"/>
+                <outlet property="titleTextLabel" destination="WQ5-Ok-RWo" id="8zn-Ow-7u9"/>
+            </connections>
             <point key="canvasLocation" x="56.521739130434788" y="155.69196428571428"/>
         </tableViewCell>
     </objects>

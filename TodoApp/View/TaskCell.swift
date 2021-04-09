@@ -3,15 +3,15 @@ import UIKit
 
 class TaskCell: UITableViewCell {
 
+    @IBOutlet weak var iOSLabel: UILabel!
+    @IBOutlet weak var titleTextLabel: UILabel!
+    @IBOutlet weak var contextTextLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
 }

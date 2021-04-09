@@ -175,6 +175,10 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="AcX-O8-Mzo" id="TXr-7E-gK9"/>
+                                    <outlet property="delegate" destination="AcX-O8-Mzo" id="9tf-y1-huX"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="qt6-QE-s7B"/>
