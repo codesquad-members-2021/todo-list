@@ -2,9 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const Div = styled.div`
-  display: inline-block;
-  margin: 10px;
-  outline: black solid;
+  margin: 5px;
 `;
 
 const TodoList = ({ children, ...props }) => {

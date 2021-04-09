@@ -1,11 +1,12 @@
-import './App.scss';
-import Header from './components/molecules/Header';
-import TodoTitle from './components/molecules/TodoTitle';
-import HistoryItem from './components/molecules/HistoryItem';
-import HistoryList from './components/molecules/HistoryList';
-import ButtonList from './components/molecules/ButtonList';
-import TodoListItem from './components/molecules/TodoListItem';
-import TodoList from './components/molecules/TodoListItem';
+import "./App.scss";
+import Header from "./components/molecules/Header";
+import TodoTitle from "./components/molecules/TodoTitle";
+import HistoryItem from "./components/molecules/HistoryItem";
+import HistoryList from "./components/molecules/HistoryList";
+import ButtonList from "./components/molecules/ButtonList";
+import TodoListItem from "./components/molecules/TodoListItem";
+import TodoList from "./components/molecules/TodoList";
+import TodoListWrap from "./components/molecules/TodoListWrap";
 
 function App() {
   return (
@@ -20,21 +21,20 @@ function App() {
       </div>
       <ButtonList isIcon={false} />
       <ButtonList isIcon />
-
-      <TodoList>
-        <TodoListItem />
-        <TodoListItem />
-      </TodoList>
-      <TodoList>
-        <TodoListItem />
-        <TodoListItem />
-      </TodoList>
-      <TodoList>
-        <TodoListItem />
-        <TodoListItem />
-        <TodoListItem />
-        <TodoListItem />
-      </TodoList>
+      <TodoListWrap>
+        <TodoList>
+          <TodoListItem />
+          <TodoListItem />
+        </TodoList>
+        <TodoList>
+          <TodoListItem />
+          <TodoListItem />
+          <TodoListItem />
+        </TodoList>
+        <TodoList>
+          <TodoListItem />
+        </TodoList>
+      </TodoListWrap>
     </div>
   );
 }

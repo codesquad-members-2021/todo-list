@@ -10,6 +10,8 @@ const StyledLabel = styled.label`
   font-size: 14px;
   color: #fff;
   border-radius: 50%;
+  padding: 5px 0 0px 6px;
+  margin: 0px 7px;
 `;
 
 const Label = ({ children, ...props }) => (
