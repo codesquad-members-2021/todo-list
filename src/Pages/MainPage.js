@@ -1,13 +1,27 @@
 import React from 'react'
+import TodoColumnContainer from '../Components/TodoColumn/TodoColumnContainer.js';
 
-// 여기서 컴포넌트 렌더
+const MOCK_DATA = [
+  {
+    columnId: 'Neiscolumn1',
+    title: 'Todo Column1',
+  },
+  {
+    columnId: 'Neiscolumn2',
+    title: 'Todo Column2',
+  },
+  {
+    columnId: 'Neiscolumn3',
+    title: 'Todo Column3',
+  }
+];
 
 function MainPage() {
   return (
-    <div>
-      
-    </div>
+    <> 
+      {MOCK_DATA.map(data => <TodoColumnContainer key={data.columnId} state={data} />)}
+    </>
   )
 }
 
-export default MainPage
+export default MainPage;
