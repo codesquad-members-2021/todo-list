@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TaskCell: UITableViewCell {
+class CardCell: UITableViewCell {
     
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var content: UILabel!

@@ -24,7 +24,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="1194" height="72"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TO-DO LIST" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vEx-dQ-rMg">
-                                        <rect key="frame" x="48" y="13" width="171" height="46"/>
+                                        <rect key="frame" x="48" y="13" width="246" height="46"/>
                                         <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="32"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -51,7 +51,7 @@
                                     <constraint firstAttribute="trailing" secondItem="qPw-Sk-0l0" secondAttribute="trailing" constant="52" id="ad0-9m-taG"/>
                                     <constraint firstItem="vEx-dQ-rMg" firstAttribute="leading" secondItem="TjA-52-l88" secondAttribute="leading" constant="48" id="kwl-EF-kt0"/>
                                     <constraint firstAttribute="bottom" secondItem="qPw-Sk-0l0" secondAttribute="bottom" constant="30" id="tMh-wB-G52"/>
-                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="vEx-dQ-rMg" secondAttribute="trailing" constant="975" id="zUZ-j7-HeZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="vEx-dQ-rMg" secondAttribute="trailing" constant="900" id="zUZ-j7-HeZ"/>
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="apF-eE-5It">
@@ -79,16 +79,16 @@
             </objects>
             <point key="canvasLocation" x="-41.206030150753769" y="-278.41726618705036"/>
         </scene>
-        <!--Task View Controller-->
+        <!--Card View Controller-->
         <scene sceneID="YuX-gd-ucm">
             <objects>
-                <viewController id="DbM-z4-eRI" customClass="TaskViewController" customModule="Todo_List" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="DbM-z4-eRI" customClass="CardViewController" customModule="Todo_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SoK-b3-ORE">
                         <rect key="frame" x="0.0" y="0.0" width="1043" height="734"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="해야 할 일" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xl7-Lj-UMH" userLabel="todoLabel">
-                                <rect key="frame" x="76" y="51" width="76.5" height="26"/>
+                                <rect key="frame" x="76" y="51" width="72.5" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="21y-BQ-Vil"/>
                                 </constraints>
@@ -97,13 +97,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CHa-P4-jaE" userLabel="CountOfTodo">
-                                <rect key="frame" x="160.5" y="53" width="8" height="20.5"/>
+                                <rect key="frame" x="156.5" y="53" width="8" height="16.5"/>
                                 <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qfs-AN-4Cb" userLabel="add_Todo_Btn">
-                                <rect key="frame" x="302.5" y="57" width="14" height="14"/>
+                                <rect key="frame" x="298.5" y="57" width="14" height="14"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="13.789999999999999" id="l8i-pq-P07"/>
                                     <constraint firstAttribute="width" constant="13.789999999999999" id="sfF-43-zbG"/>
@@ -121,7 +121,7 @@
                                 <color key="sectionIndexBackgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="하고 있는 일" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GQ2-eh-Mgs" userLabel="doingLabel">
-                                <rect key="frame" x="361.5" y="51" width="93" height="26"/>
+                                <rect key="frame" x="357.5" y="51" width="88" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="TCA-aN-8cg"/>
                                 </constraints>
@@ -130,13 +130,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hjw-ey-HwV" userLabel="CountOfDoing">
-                                <rect key="frame" x="462.5" y="53" width="8" height="20.5"/>
+                                <rect key="frame" x="453.5" y="53" width="8" height="16.5"/>
                                 <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zim-Ew-rEV" userLabel="add_Doing_Btn">
-                                <rect key="frame" x="604.5" y="57" width="13.5" height="14"/>
+                                <rect key="frame" x="595.5" y="57" width="13.5" height="14"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="13.789999999999999" id="Ej7-0a-PaS"/>
                                     <constraint firstAttribute="height" constant="13.789999999999999" id="cph-C6-osf"/>
@@ -153,7 +153,7 @@
                                 <color key="separatorColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="완료한 일" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="695-OR-Z68" userLabel="doneLabel">
-                                <rect key="frame" x="643.5" y="51" width="71.5" height="26"/>
+                                <rect key="frame" x="634.5" y="51" width="67.5" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="jEM-Cq-P9R"/>
                                 </constraints>
@@ -162,13 +162,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3qR-j6-bPz" userLabel="CountOfDone">
-                                <rect key="frame" x="723" y="53" width="25" height="20.5"/>
+                                <rect key="frame" x="710" y="53" width="25" height="16.5"/>
                                 <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oru-by-zdX" userLabel="add_Done_Btn">
-                                <rect key="frame" x="865" y="57" width="13.5" height="14"/>
+                                <rect key="frame" x="852" y="57" width="13.5" height="14"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="13.789999999999999" id="NBV-Nf-Oov"/>
                                     <constraint firstAttribute="width" constant="13.789999999999999" id="vln-4A-Q4h"/>
