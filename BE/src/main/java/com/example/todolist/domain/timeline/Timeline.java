@@ -5,11 +5,17 @@ import org.springframework.data.annotation.Id;
 import java.time.LocalDateTime;
 
 public class Timeline {
+
     @Id
     private Long id;
+
     private String description;
+
     private LocalDateTime createdTime;
+
     private Long author;
+
+    public Timeline() {}
 
     public Timeline(String description, Long author) {
         this.description = description;
@@ -42,4 +48,5 @@ public class Timeline {
                 ", author=" + author +
                 '}';
     }
+
 }

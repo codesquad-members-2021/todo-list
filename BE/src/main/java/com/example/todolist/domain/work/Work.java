@@ -5,16 +5,21 @@ import org.springframework.data.annotation.Id;
 import java.time.LocalDateTime;
 
 public class Work {
+
     @Id
     private Long id;
 
     private String title;
+
     private String description;
+
     private LocalDateTime createdTime;
+
     private int status;
 
     private Long author;
 
+    public Work() {}
 
     public Work(String title, String description, int status, Long author) {
         this.title = title;
@@ -23,7 +28,6 @@ public class Work {
         this.status = status;
         this.author = author;
     }
-
 
     public Long getId() {
         return id;
@@ -60,4 +64,5 @@ public class Work {
                 ", author=" + author +
                 '}';
     }
+
 }

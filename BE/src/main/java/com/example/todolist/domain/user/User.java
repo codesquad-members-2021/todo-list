@@ -2,20 +2,20 @@ package com.example.todolist.domain.user;
 
 import org.springframework.data.annotation.Id;
 
-import java.time.LocalDate;
-
-
 public class User {
 
     @Id
     private Long id;
 
     private String userId;
+
     private String password;
+
     private String name;
+
     private String email;
 
-    public User() { }
+    public User() {}
 
     public User(String userId, String password, String name, String email) {
         this.userId = userId;
@@ -54,4 +54,5 @@ public class User {
                 ", email='" + email + '\'' +
                 '}';
     }
+
 }
