@@ -6,7 +6,7 @@
 
 # API Document
 
-## 1. USER
+## 1. User
 
 #### 1-1. 로그인
 
@@ -33,7 +33,7 @@
 
 
 
-## 2. COLUMN
+## 2. Column
 
 #### 2-1. 컬럼 목록 조회
 
@@ -45,7 +45,7 @@
 
 ##### 설명
 
-* 사용자가 소유한 TODO-LIST의 모든 컬럼을 응답합니다
+* 사용자가 소유한 TodoList의 모든 컬럼을 응답합니다
 * 로그인된 사용자만 이용할 수 있는 API이다.
 * 따라서, URL이나 Request Body에 유저의 아이디를 넣을 필요가 없습니다.
 
@@ -61,29 +61,15 @@
                   "id": 1,
                   "taskTitle": "task1",
                   "taskContent": "taskContent1",
-                  "author": {
-                      "id": 1,
-                      "name": "라쿠운",
-                      "userId": "Racoon",
-                      "password": "1234",
-                      "profileImage": ""
-                  },
-                  "createdDateTime": "2021-04-07T17:51:05.398",
-                  "updatedDateTime": null
+                  "authorName": "라쿠운",
+                  "createdDateTime": "2021-04-08T16:17:10.538"
               },
               {
                   "id": 2,
                   "taskTitle": "task2",
                   "taskContent": "taskContent2",
-                  "author": {
-                      "id": 1,
-                      "name": "라쿠운",
-                      "userId": "Racoon",
-                      "password": "1234",
-                      "profileImage": ""
-                  },
-                  "createdDateTime": "2021-04-07T17:51:05.399",
-                  "updatedDateTime": null
+                  "authorName": "라쿠운",
+                  "createdDateTime": "2021-04-08T16:17:10.538"
               }
           ]
       },
@@ -95,26 +81,18 @@
                   "id": 3,
                   "taskTitle": "task3",
                   "taskContent": "taskContent3",
-                  "author": {
-                      "id": 1,
-                      "name": "라쿠운",
-                      "userId": "Racoon",
-                      "password": "1234",
-                      "profileImage": ""
-                  },
-                  "createdDateTime": "2021-04-07T17:51:05.399",
-                  "updatedDateTime": null
+                  "authorName": "라쿠운",
+                  "createdDateTime": "2021-04-08T16:17:10.541"
               }
           ]
       }
   ]
   ```
+  
+  
+  
 
-* 중복된 author은 제거할지 말지 고민중입니다
-
-
-
-## 3. TASK
+## 3. Task
 
 #### 3-1. 태스크 생성
 
@@ -155,7 +133,7 @@
   }
   ```
 
-
+* 수정 예정입니다.
 
 #### 3-2. 태스크 변경
 
@@ -211,7 +189,7 @@
 
 
 
-## 4. LOG
+## 4. TodoLog
 
 #### 4-1. 로그 조회
 
@@ -236,16 +214,16 @@
 * ```json
   [
       {
-          "id" : 1,
-          "action" : "'move' '자바스크립트 예제 실습 수정됨!' 'TODO' 'IN_PROGRESS'",
-          "author" : {
-              "id" : 1,
-              "userId" : "Raccoon",
-              "password" : "1234",
-              "name" : "라쿠운",
-              "profileImage" : "http://어딘가에_있는_라쿤_이미지.jpeg"
-          },
-          "createdDateTime" : "2021-03-21 13:24:00"
+          "id": 1,
+          "action": "'move' '1 자바스크립트 예제 실습 수정됨!' 'TODO' 'IN_PROGRESS'",
+          "authorName": "라쿠운",
+          "createdDateTime": "2021-04-08T16:18:24.96"
+      },
+      {
+          "id": 2,
+          "action": "'move' '2 자바스크립트 예제 실습 수정됨!' 'TODO' 'IN_PROGRESS'",
+          "authorName": "라쿠운",
+          "createdDateTime": "2021-04-08T16:18:24.96"
       }
   ]
   ```
