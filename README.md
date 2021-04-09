@@ -16,10 +16,10 @@ https://web.postman.co/collections/15264844-16e2e7a3-08ab-9569-8bb3-0c7544beb883
 
 ## Backend, iOS 회의록
 
-(2020.04.06) 화요일: 데이터 구조 협의, Git 전략 수립
-(2020.04.07) 수요일: 진행 사항 공유, Backend -> iOS 샘플 데이터 전달
-(2020.04.08) 목요일: 진행 사항 공유, To Do List activity log 데이터 모델 협의
-(2020.04.09) 금요일: 진행 사항 공유
+1. (2020.04.06) 화요일: 데이터 구조 협의, Git 전략 수립
+2. (2020.04.07) 수요일: 진행 사항 공유, Backend -> iOS 샘플 데이터 전달
+3. (2020.04.08) 목요일: 진행 사항 공유, To Do List activity log 데이터 모델 협의
+4. (2020.04.09) 금요일: 진행 사항 공유
 
 ## Backend Features 개발 타임라인
 
@@ -37,11 +37,11 @@ https://github.com/ChoiGiSung/todo-list/tree/backend/backend
 
 ## *[Cri, JEJE]* iOS Features 개발 타임라인
 1. (branch feature_data_model) ToDo 아이템 데이터 모델 구현 Tue Apr 6 17:36:27 2021 +0900
-    협업(기획서 분석해서 일 단위 나누기, 짝 프로그래밍으로 진행)
+협업(기획서 분석해서 일 단위 나누기, 짝 프로그래밍으로 진행)
 2. (branch feature_card_model) ToDoCards 로직 생성 Wed Apr 7 15:16:44 2021 +0900
-   	협업(짝 프로그래밍으로 진행)
+협업(짝 프로그래밍으로 진행)
 3. (branch feature_card_colums_UI) Cards displaying UI 구성
-    협업(기본 UI 구성과 Drag and drop 기능을 나눠서 분업 진행)
+협업(기본 UI 구성과 Drag and drop 기능을 나눠서 분업 진행)
 
 #### To be accomplished in iOS project
 - Drag and drop behavior
