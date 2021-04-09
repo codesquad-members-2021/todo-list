@@ -1,45 +1,44 @@
+//
+//  TaskViewController.swift
+//  TodoApp
+//
 //  Created by 김지선 on 2021/04/08.
+//
+
 import UIKit
 
 class TaskViewController: UIViewController {
+
+    var id: Int?
+    
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var taskCountLabel: UILabel!
-    
-    var status: Int?
-    
+    @IBOutlet weak var taskTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupSubViews()
-    }
-    
-
-}
-
-//MARK: -@Action
-
-extension TaskViewController {
-    @IBAction func addTaskCardButtonTouched(_ sender: Any) {
-        print(status!) //ButtonTest
-    }
-}
-
-//MARK: -Setting && Configure
-extension TaskViewController {
-
-    private func setupSubViews() {
         setupTitleLabel()
-        configureTaskCountLabel()
+        setupTaskCountLable()
     }
     
+    // Custom
     private func setupTitleLabel() {
-        guard let status = status else { return }
-        let titles = TitleList.ofStatus
-        titleLabel.text = titles[status]
+        guard let id = id else { return }
+        let titles: [Int: String] = [
+            StatusValue.toDo: StatusInfo.toDo,
+            StatusValue.inProgress: StatusInfo.inProgress,
+            StatusValue.done:StatusInfo.done]
+        
+        titleLabel.text = titles[id]
     }
     
-    private func configureTaskCountLabel() {
+    private func setupTaskCountLable() {
+        taskCountLabel.layer.cornerRadius = taskCountLabel.layer.frame.width / 2
         taskCountLabel.layer.masksToBounds = true
-        taskCountLabel.layer.cornerRadius = taskCountLabel.layer.bounds.size.width/2
+    }
+    
+    //Register Xib
+    private func registerTaskCell() {
+        taskTableView.register(UINib(nibName: "TaskCell", bundle: nil), forCellReuseIdentifier: "TaskCell")
     }
 }
