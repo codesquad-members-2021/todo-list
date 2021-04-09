@@ -2,6 +2,14 @@
 
 # [Team-12] todo-list
 
+### 팀원 구성
+* FE
+  * Autumn
+  * Raccoon
+* BE
+  * NAS
+  * Jung
+
 
 
 ### 용어 정리
