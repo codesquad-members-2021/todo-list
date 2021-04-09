@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import ButtonAccent from './ButtonAccent';
-import ButtonNomal from './ButtonNomal';
+import ButtonAccent from './partial/ButtonAccent';
+import ButtonNomal from './partial/ButtonNomal';
 
 const Wrapper = styled.div`
     .card-input {

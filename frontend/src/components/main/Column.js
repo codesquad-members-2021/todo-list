@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import Card from './Card';
-import ButtonDelete from './ButtonDelete';
-import ButtonPlus from './ButtonPlus';
-import CardInput from './CardInput';
+import ButtonDelete from './partial/ButtonDelete';
+import ButtonPlus from './partial/ButtonPlus';
 
 const ColumnWrapper = styled.div`
     .column {
@@ -31,8 +29,8 @@ const ColumnWrapper = styled.div`
     }
     .column__text--title {
         position: absolute;
-        width: 114px;
-        height: 26px;
+        /* width: 114px; */
+        /* height: 26px; */
         left: 0px;
         top: 0px;
 
@@ -45,6 +43,9 @@ const ColumnWrapper = styled.div`
 
         display: flex;
         align-items: center;
+
+        white-space: nowrap;
+        overflow-x: scroll;
     }
     .column__text--count {
         display: flex;
@@ -93,57 +94,7 @@ const ColumnWrapper = styled.div`
     }
 `;
 
-const Column = ({ title, list }) => {
-    const [isInProgress, setProgress] = useState(false);
-    //prettier-ignore
-    const renderCard = (v, i) => {
-        v.index = i;
-        v.list = list;
-        v.clickHandler = reRender;
-        v.dbClickHandler = editEvent;
-        return (<li key={i}><Card {...v} /></li>);
-    };
-
-    const reRender = () => {
-        setCardList(list.map(renderCard));
-        setProgress(false);
-    };
-
-    const plusEvent = () => {
-        console.log(cardList)
-        if (isInProgress) return;
-        setCardList([
-            <li key="input">
-                <CardInput list={list} index={0} clickHandler={reRender} />
-            </li>,
-            ...cardList,
-        ]);
-        setProgress(true);
-    };
-
-    const editEvent = (index, card) => {
-        if (isInProgress) return;
-        setCardList((cardList) => {
-            cardList.splice(
-                index,
-                1,
-                <li key={index}>
-                    <CardInput
-                        list={list}
-                        index={index}
-                        isModify={true}
-                        clickHandler={reRender}
-                        originCard={card}
-                    />
-                </li>,
-            );
-            return [...cardList];
-        });
-        setProgress(true);
-    };
-
-    const [cardList, setCardList] = useState(list.map(renderCard));
-
+const Column = ({ title, cardList, plusEvent }) => {
     return (
         <ColumnWrapper>
             <div className="column">
