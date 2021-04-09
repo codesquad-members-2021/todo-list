@@ -8,13 +8,25 @@
 import Foundation
 
 struct Task: Codable {
-    let id: Int
+    var id: Int?
     let title: String
     let contents: String
     let category: TaskState
-    let dateTime: Date
-    let order: Int
-    let deleted: Bool
+    var dateTime: Date?
+    var order: Int?
+    var deleted: Bool?
+    
+    init(title: String, contents: String, category: TaskState) {
+        self.title = title
+        self.contents = contents
+        self.category = category
+    }
+    
+    func encode() -> Data? {
+        let data = try? JSONEncoder().encode(self)
+        print(data)
+        return data
+    }
 }
 
 enum TaskState: String, Codable {
