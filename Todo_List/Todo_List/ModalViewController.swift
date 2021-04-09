@@ -34,9 +34,8 @@ class ModalViewController: UIViewController {
         textView.text = text
         textView.textColor = textColor
         
-        textView.translatesAutoresizingMaskIntoConstraints = true
+        textView.translatesAutoresizingMaskIntoConstraints = false
         textView.sizeToFit()
-        textView.isScrollEnabled = false
     }
     
 }
