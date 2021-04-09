@@ -1,38 +1,84 @@
-
 package team9.todo.domain;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.data.annotation.Id;
 
 public class Card {
     @Id
-    private int id;
+    private Long id;
 
-    @JsonProperty
-    private int owner;
+    private long user;
 
-    @JsonProperty
     private String title;
 
-    @JsonProperty
     private String content;
 
-    @JsonProperty
     private double priority;
 
-    @JsonProperty
-    private int column;
+    private String columnType;
 
-    @JsonProperty
-    private int deleted;
+    private boolean deleted;
 
-
-    public Card(int owner, String title, String content, double priority, int column, int deleted) {
-        this.owner = owner;
+    public Card(long user, String title, String content, double priority, String columnType) {
+        this.user = user;
         this.title = title;
         this.content = content;
         this.priority = priority;
-        this.column = column;
+        this.columnType = columnType;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public long getUser() {
+        return user;
+    }
+
+    public void setUser(long user) {
+        this.user = user;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public double getPriority() {
+        return priority;
+    }
+
+    public void setPriority(double priority) {
+        this.priority = priority;
+    }
+
+    public String getColumnType() {
+        return columnType;
+    }
+
+    public void setColumnType(String columnType) {
+        this.columnType = columnType;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
         this.deleted = deleted;
     }
 }
