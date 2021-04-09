@@ -2,30 +2,38 @@ import React, {useState} from 'react';
 import {ColumnHeader, ColumnContainer} from './columnStyle'
 import {ColumnTitle, ColumnIcon} from '../atoms/ColumnHeader'
 import Card from '../atoms/Card'
+import Form from './Form'
 
 
 const Column = ({data:{columns}, changeColumns}) => {
     const [initialColumns, setColumn] = useState(columns);
-
+    // 현재 true값 false값으로 변경해주어야함
+    const [isClicked, setIsClicked] = useState(true);
     // const toggleCard = () => {
 
     // }
-
     const columnLists = initialColumns.map(({id, title, cards}) => (
-        <div key={id}>
+        <li key={id}>
+        <header>
         <span>{title}</span>
         <span>{cards.length}개</span>
-        <div>{cards[0].title, cards[0].content}</div>
-        <button><i className="fas fa-plus"></i></button>
+        <button onclick><i className="fas fa-plus"></i></button>
         <button><i className="fas fa-times"></i></button>
-        </div>
+        </header>
 
-// <Card change={change} />
+        <div>
+        <Form isClicked={isClicked}/>
+        <div>{cards[0].title}</div>
+        <div>{cards[0].content}</div>
+        {/* <Card cardData /> */}
+        </div>
+        </li>
 ))
 
     return (
         <ColumnContainer>
         {columnLists}
+
         </ColumnContainer>
     )
 }
