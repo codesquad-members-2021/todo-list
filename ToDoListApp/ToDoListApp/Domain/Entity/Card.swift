@@ -9,30 +9,24 @@ import Foundation
 
 class Card: CardManageable, Decodable {
     
-    private var id: String
+    private var id: Int
     private var title: String
     private var contents: String
-    private var status: String
-    private var createdTime: String
-    private var columndId: Int
+    private var columnId: Int
     
-    init(id: String, title: String, contents: String, status: String, createdTime: String, columndId: Int) {
+    init(id: Int, title: String, contents: String, columnId: Int) {
         self.id = id
         self.title = title
         self.contents = contents
-        self.status = status
-        self.createdTime = createdTime
-        self.columndId = columndId
+        self.columnId = columnId
     }
     
     convenience init() {
-        let id = ""
+        let id = 1
         let title = ""
         let contents = ""
-        let status = ""
-        let createdTime = ""
-        let columndId = Int()
-        self.init(id: id, title: title, contents: contents, status: status, createdTime: createdTime, columndId: columndId)
+        let columnId = 1
+        self.init(id: id, title: title, contents: contents, columnId: columnId)
     }
     
     func add() {
