@@ -12,6 +12,8 @@ protocol CardManageable {
     func edit()
     func delete()
     func goToDone()
+    func getTitle() -> String
+    func getContents() -> String
 }
 
 protocol CardUseCasePort {
@@ -19,5 +21,5 @@ protocol CardUseCasePort {
     func edit()
     func delete()
     func goToDone()
-    func get() -> [Board]
+    func get() -> [BoardManageable]
 }

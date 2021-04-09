@@ -12,7 +12,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     private var cardViewModel: CardViewModel!
-    private var boards: [Board]! // ViewModel로 옮길 필요가 있음
+    private var boards: [BoardManageable]! // ViewModel로 옮길 필요가 있음
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +31,7 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainCell.identifier, for: indexPath) as? MainCell else { return UICollectionViewCell() }
 
         cell.setup(with: boards[indexPath.item])
-        cell.titleLabel.text = boards[indexPath.row].title
+        cell.titleLabel.text = boards[indexPath.row].getTitle()
         
         return cell
     }

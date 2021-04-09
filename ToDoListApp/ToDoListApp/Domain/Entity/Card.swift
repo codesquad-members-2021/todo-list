@@ -7,6 +7,32 @@
 
 import Foundation
 
+class Board {
+    private var cards: [CardManageable]
+    
+    init(cards: [CardManageable]) {
+        self.cards = cards
+    }
+    
+    func count() -> Int {
+        return self.cards.count
+    }
+    
+    func forEachCards(handler: (CardManageable) -> ()) {
+        cards.forEach { card in
+            handler(card)
+        }
+    }
+    
+    func getCards() -> [CardManageable] {
+        return self.cards
+    }
+    
+    func appendCard(_ card: CardManageable) {
+        self.cards.append(card)
+    }
+}
+
 class Card: CardManageable, Decodable {
     
     private var id: String
@@ -56,16 +82,5 @@ class Card: CardManageable, Decodable {
     
     func getContents() -> String {
         return self.contents
-    }
-}
-
-class Board: Decodable {
-    
-    var title: String
-    var cards: [Card]
-    
-    init(title: String, cards: [Card]) {
-        self.title = title
-        self.cards = cards
     }
 }

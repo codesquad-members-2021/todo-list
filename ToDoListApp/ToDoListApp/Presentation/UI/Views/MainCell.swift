@@ -13,14 +13,14 @@ class MainCell: UICollectionViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
-    var board: Board?
+    private var board: BoardManageable?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         tableView.dataSource = self
     }
     
-    func setup(with board: Board) {
+    func setup(with board: BoardManageable) {
         self.board = board
         tableView.reloadData()
     }
@@ -28,13 +28,15 @@ class MainCell: UICollectionViewCell {
 
 extension MainCell: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return board?.cards.count ?? 0
+        return board?.count() ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CardCell.identifier, for: indexPath) as? CardCell else { return UITableViewCell() }
-        cell.title = board?.cards[indexPath.row].getTitle()
-        cell.contents = board?.cards[indexPath.row].getContents()
+        
+        cell.title = board?.getBoard().getCards()[indexPath.row].getTitle()
+        cell.contents = board?.getBoard().getCards()[indexPath.row].getContents()
+        
         return cell
     }
 }

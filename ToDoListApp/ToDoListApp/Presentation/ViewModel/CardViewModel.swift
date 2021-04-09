@@ -19,7 +19,7 @@ class CardViewModel {
         self.init(cardUseCase: cardUseCase)
     }
     
-    func get() -> [Board] {
+    func get() -> [BoardManageable] {
         return cardUseCase.get()
     }  
 }
