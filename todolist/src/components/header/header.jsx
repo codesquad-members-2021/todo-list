@@ -1,6 +1,6 @@
-import React from "react";
-import HeaderTitle from "./headerTitle.jsx";
-import ShowLogButton from "./showLogButton.jsx";
+import React from 'react';
+import HeaderTitle from './headerTitle.jsx';
+import ShowLogButton from './showLogButton.jsx';
 
 const Header = () => {
   return (

@@ -1,11 +1,18 @@
-import React from 'react'
+import React from 'react';
+import styled from 'styled-components';
+import { ReactComponent as deleteColumnBtn } from './deleteColumnBtn.svg';
+
+const DeleteColumnBtn = styled(deleteColumnBtn)`
+  width: 13.79px
+  height: 13.79px
+`;
 
 const DeleteColumnButton = () => {
-	return (
-		<div className="delete-column-button-section">
-			<button className="delete-column-button">기획 디자인에서 svg(x)를 가져오세요.</button>
-		</div>
-	)
-}
+  return (
+    <div className="delete-column-button-section">
+      <DeleteColumnBtn className="delete-column-button" />
+    </div>
+  );
+};
 
-export default DeleteColumnButton
+export default DeleteColumnButton;
