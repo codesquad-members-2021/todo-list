@@ -33,7 +33,7 @@ https://web.postman.co/collections/15264844-16e2e7a3-08ab-9569-8bb3-0c7544beb883
 3. 배포
 
 
-## *[Cri, JEJE]* iOS Features 개발 타임라인
+## [*[Cri, JEJE]* iOS Features 개발 타임라인](https://github.com/ChoiGiSung/todo-list/tree/iOS/ios)
 1. (branch feature_data_model) ToDo 아이템 데이터 모델 구현 Tue Apr 6 17:36:27 2021 +0900
 협업(기획서 분석해서 일 단위 나누기, 짝 프로그래밍으로 진행)
 2. (branch feature_card_model) ToDoCards 로직 생성 Wed Apr 7 15:16:44 2021 +0900
