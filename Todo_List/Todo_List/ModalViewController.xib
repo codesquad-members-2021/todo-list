@@ -10,6 +10,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ModalViewController" customModule="Todo_List" customModuleProvider="target">
             <connections>
+                <outlet property="contentTextView" destination="fJ4-Jp-rR5" id="cfb-Ba-Bos"/>
+                <outlet property="modalViewTitleLable" destination="MXs-wP-BRg" id="33B-kJ-jw5"/>
+                <outlet property="titleTextView" destination="yiC-6Z-COA" id="xZi-bk-ksx"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -22,33 +25,91 @@
                     <rect key="frame" x="0.0" y="0.0" width="1194" height="814"/>
                     <color key="backgroundColor" systemColor="systemGray4Color"/>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IhC-Ys-Hqf">
+                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IhC-Ys-Hqf">
                     <rect key="frame" x="447" y="317" width="300" height="200"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="새로운 카드 추가" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MXs-wP-BRg">
-                            <rect key="frame" x="25" y="18" width="112" height="21"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="새로운 카드 추가" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MXs-wP-BRg">
+                            <rect key="frame" x="25" y="18" width="115" height="21"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="제목을 입력하세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C3X-5L-jzF">
-                            <rect key="frame" x="25" y="59" width="229" height="34"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yiC-6Z-COA" userLabel="Title Text View">
+                            <rect key="frame" x="25" y="59" width="250" height="40"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="ygu-KP-0hh"/>
+                                <constraint firstAttribute="width" constant="250" id="yvu-lg-skf"/>
+                            </constraints>
+                            <color key="textColor" systemColor="labelColor"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                        </textView>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fJ4-Jp-rR5" userLabel="Content Text View">
+                            <rect key="frame" x="25" y="104" width="250" height="36"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="3GY-aj-D0R"/>
+                                <constraint firstAttribute="width" constant="250" id="Xf4-Fe-bFi"/>
+                            </constraints>
+                            <color key="textColor" systemColor="labelColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </textField>
-                        <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="내용을 입력하세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RPA-SP-E3K">
-                            <rect key="frame" x="25" y="122" width="229" height="34"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </textField>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                        </textView>
+                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="guV-qD-GRi">
+                            <rect key="frame" x="125" y="156" width="75" height="30"/>
+                            <color key="backgroundColor" systemColor="systemGray3Color"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="75" id="SMw-U8-0FQ"/>
+                                <constraint firstAttribute="height" constant="30" id="cCf-yc-OdZ"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <state key="normal" title="취소">
+                                <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="15"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="36C-iH-p72">
+                            <rect key="frame" x="210" y="156" width="75" height="30"/>
+                            <color key="backgroundColor" systemColor="systemBlueColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="QhY-0Q-GTq"/>
+                                <constraint firstAttribute="width" constant="75" id="hiQ-ps-mFb"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <state key="normal" title="등록">
+                                <color key="titleColor" systemColor="systemGray6Color"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="15"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
+                        <constraint firstItem="yiC-6Z-COA" firstAttribute="top" secondItem="MXs-wP-BRg" secondAttribute="bottom" constant="20" id="2lf-J3-7rc"/>
+                        <constraint firstAttribute="trailing" secondItem="36C-iH-p72" secondAttribute="trailing" constant="15" id="3Gg-md-1ry"/>
                         <constraint firstAttribute="width" constant="300" id="7TI-LN-ZMv"/>
-                        <constraint firstAttribute="height" constant="200" id="ZML-Ch-q0w"/>
+                        <constraint firstAttribute="bottom" secondItem="guV-qD-GRi" secondAttribute="bottom" constant="15" id="Axr-50-Q5y"/>
+                        <constraint firstItem="36C-iH-p72" firstAttribute="leading" secondItem="guV-qD-GRi" secondAttribute="trailing" constant="10" id="HLp-lR-fcf"/>
+                        <constraint firstItem="yiC-6Z-COA" firstAttribute="centerX" secondItem="IhC-Ys-Hqf" secondAttribute="centerX" id="Hd8-F9-k6J"/>
+                        <constraint firstItem="fJ4-Jp-rR5" firstAttribute="top" secondItem="yiC-6Z-COA" secondAttribute="bottom" constant="15" id="Jcn-yz-A9O"/>
+                        <constraint firstItem="36C-iH-p72" firstAttribute="top" secondItem="fJ4-Jp-rR5" secondAttribute="bottom" constant="16" id="L7s-6E-NlW"/>
+                        <constraint firstItem="fJ4-Jp-rR5" firstAttribute="centerX" secondItem="IhC-Ys-Hqf" secondAttribute="centerX" id="QXL-EL-UgM"/>
+                        <constraint firstItem="MXs-wP-BRg" firstAttribute="leading" secondItem="IhC-Ys-Hqf" secondAttribute="leading" constant="25" id="RHU-KB-AKs"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="ZML-Ch-q0w"/>
+                        <constraint firstItem="guV-qD-GRi" firstAttribute="top" secondItem="fJ4-Jp-rR5" secondAttribute="bottom" constant="16" id="jY0-lp-uLb"/>
+                        <constraint firstAttribute="trailing" secondItem="MXs-wP-BRg" secondAttribute="trailing" constant="160" id="lmw-TD-rmt"/>
+                        <constraint firstAttribute="bottom" secondItem="36C-iH-p72" secondAttribute="bottom" constant="15" id="qjo-uR-VdJ"/>
+                        <constraint firstItem="MXs-wP-BRg" firstAttribute="top" secondItem="IhC-Ys-Hqf" secondAttribute="top" constant="18" id="zCj-T1-DoP"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
@@ -76,11 +137,23 @@
         </view>
     </objects>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray3Color">
+            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemGray4Color">
             <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
