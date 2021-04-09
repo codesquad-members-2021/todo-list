@@ -1,5 +1,6 @@
 # todo-list
-그룹프로젝트 #1
+
+[기능 요구사항 정리](https://docs.google.com/spreadsheets/d/1zy6ksZx3HCCSO902DXXou9YLyXpUDjSixnSW6KHOLn0/edit?usp=sharing)
 
 ### 브랜치 전략
 
