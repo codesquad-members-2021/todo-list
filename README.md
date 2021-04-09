@@ -49,6 +49,43 @@
 
 ### API 구조등 
 
+``` Json
+[
+    {"todo": [
+              { 
+                  "title": "오늘의 할일",
+                  "contents": "안녕하세요",
+                  "user": {
+                           "name": "min",
+                           "profileUrl":"https:image-string-dfsd.jpg"
+                  },
+                  "postTime" : "2021-04-09 02:17:38" 
+              },
+              {
+                  "title": "오늘의 할일2",
+                  "contents": "안녕하세요2",
+                  "user": {
+                           "name": "jane",
+                           "profileUrl":"https:image-string-dfsd.jpg"
+                  },
+                  "postTime" : "2021-04-09 02:17:38" 
+              }
+    ]}, 
+    {"doing": [
+              { 
+                  "title": "오늘의 할일3",
+                  "contents": "안녕하세요3",
+                  "user": {
+                           "name": "lia",
+                           "profileUrl":"https:image-string-dfsd.jpg"
+                  },
+                  "postTime" : "2021-04-09 02:17:38" 
+              }
+    ]}, 
+    {"done": [card]}
+]
+```
+
 
 
 프로젝트와 관련된 내용을 정리해주세요
