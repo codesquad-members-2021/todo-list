@@ -44,7 +44,7 @@ https://web.postman.co/collections/15264844-16e2e7a3-08ab-9569-8bb3-0c7544beb883
 협업(기획서 분석해서 일 단위 나누기, 짝 프로그래밍으로 진행)
 2. (branch feature_card_model) ToDoCards 로직 생성 Wed Apr 7 15:16:44 2021 +0900
 협업(짝 프로그래밍으로 진행)
-3. (branch feature_card_colums_UI) Cards displaying UI 구성
+3. (branch feature_card_colums_UI) Cards displaying UI 구성 Fri Apr 9 16:18:32 2021 +0900
 협업(기본 UI 구성과 Drag and drop 기능을 나눠서 분업 진행)
 
 #### To be accomplished in iOS project
