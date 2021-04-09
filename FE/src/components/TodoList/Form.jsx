@@ -1,11 +1,15 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 
 
-const Form = ({isClicked, cardList, addCard ,id, toggleForm}) => {
+const Form = ({isClicked, cards, addCard ,id}) => {
     const addTodo = (e) => {
         e.preventDefault();
     }
 
+  
+    
+    
+    console.log(cards);
     const NewCard = () => (
     <form action="">
     <input type="text" placeholder="제목을 적어주세요"></input>
