@@ -1,27 +1,56 @@
-import React from 'react'
-import TodoColumnContainer from '../Components/TodoColumn/TodoColumnContainer.js';
+import React, {useState} from 'react'
 
-const MOCK_DATA = [
-  {
-    columnId: 'Neiscolumn1',
-    title: 'Todo Column1',
-  },
-  {
-    columnId: 'Neiscolumn2',
-    title: 'Todo Column2',
-  },
-  {
-    columnId: 'Neiscolumn3',
-    title: 'Todo Column3',
+import styled from 'styled-components';
+import HeaderContainer from '../Components/Header/HeaderContainer';
+import TodoColumnListContainer from '../Components/TodoColumnList/TodoColumnListContainer';
+
+// import reducer from '../util/reducer';
+
+// todocard: { title: '', content: '', createDate: null, updateDate: null, author: '', },
+// todoChange: {title:, date:, author:, action:, from:, to: }
+// Date : YYYY-MM-DDTHH:MM;
+
+const MainPage = () => {
+  const [todoHistory, setTodoHistory] = useState([]);
+  
+  const handleChangeTodo = ({type, payload}) => {
+    // 1) 타입(아마도 액션명) 감지
+    // 2) HeaderContainer는 todos를 props로 전달받고 있음.
+    // 3) setTodos로 업데이트
+    
+    // switch(type) {
+    //   case "ADD_CARD":
+    //     const newTodos = {
+    //       ...todoState.todos,
+    //       [payload.columnName]: [...todoState.todos[payload.columnName], payload.value], 
+    //     };
+    //     const newTodoChanges = {
+    //       ...todoState.todoChanges
+
+    //     }
+    //     setTodos({
+    //       ...todoState.todos,
+    //       [todoState.todoChanges]: payload.value
+    //     });
+    // }
   }
-];
-
-function MainPage() {
+  
   return (
-    <> 
-      {MOCK_DATA.map(data => <TodoColumnContainer key={data.columnId} state={data} />)}
-    </>
+    <MainLayout>
+      <HeaderContainer todoHistory={todoHistory} />
+      <TodoColumnListContainer />
+    </MainLayout>
   )
 }
 
-export default MainPage;
+const Responsive = styled.div`
+  margin-left: 80px;
+`
+const MainLayout = styled(Responsive)`
+  width: 100%;
+  
+  display: flex;
+  flex-direction: column;
+`;
+
+export default MainPage
