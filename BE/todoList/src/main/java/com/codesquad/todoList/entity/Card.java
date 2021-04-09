@@ -39,6 +39,7 @@ public class Card {
         this.title = title;
         this.content = content;
         this.author = author;
+        this.updateDateTime = LocalDateTime.now();
     }
 
     public static Card of(String title, String content, String author) {
