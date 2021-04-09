@@ -26,6 +26,7 @@ public class ApiCardController {
     @ResponseStatus(code = HttpStatus.CREATED)
     public Card create(Card card, HttpSession httpSession) {
         logger.debug("card 생성 요청: {}, {}, {}", card.getColumnType(), card.getTitle(), card.getContent());
+        card.setUser(1);
         return cardRepository.save(card);
     }
 

@@ -18,8 +18,7 @@ public class Card {
 
     private boolean deleted;
 
-    public Card(long user, String title, String content, double priority, String columnType) {
-        this.user = user;
+    public Card(String title, String content, double priority, String columnType) {
         this.title = title;
         this.content = content;
         this.priority = priority;
