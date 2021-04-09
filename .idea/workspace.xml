@@ -7,9 +7,16 @@
     <list default="true" id="af93a8a2-2eed-469e-a744-7ac329506fe2" name="Default Changelist" comment="bug: jwt 인증 관련 오류 발생">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/JwtAuthInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/JwtAuthInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/JwtUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/JwtUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/WebConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/controller/CardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/controller/CardController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/domain/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/todo-list/src/main/resources/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/backend/todo-list/src/main/resources/data.sql" afterDir="false" />
     </list>
-    <list id="e789658e-71ba-41fc-810c-115e6323bee0" name="Changes by yunhyeji" comment="" />
+    <list id="e789658e-71ba-41fc-810c-115e6323bee0" name="Changes by yunhyeji" comment="">
+      <change beforePath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/JwtAuthInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/JwtAuthInterceptor.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -48,6 +55,27 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/JwtAuthInterceptor.java">
+      <ranges>
+        <range start1="4" end1="4" start2="4" end2="6" changelist="af93a8a2-2eed-469e-a744-7ac329506fe2" />
+        <range start1="5" end1="6" start2="7" end2="7" changelist="af93a8a2-2eed-469e-a744-7ac329506fe2" />
+        <range start1="8" end1="8" start2="9" end2="10" changelist="af93a8a2-2eed-469e-a744-7ac329506fe2" />
+        <range start1="11" end1="15" start2="13" end2="13" changelist="af93a8a2-2eed-469e-a744-7ac329506fe2" />
+        <range start1="16" end1="17" start2="14" end2="14" changelist="af93a8a2-2eed-469e-a744-7ac329506fe2" />
+        <range start1="18" end1="18" start2="15" end2="17" changelist="e789658e-71ba-41fc-810c-115e6323bee0" />
+        <range start1="21" end1="22" start2="20" end2="21" changelist="af93a8a2-2eed-469e-a744-7ac329506fe2" />
+        <range start1="23" end1="34" start2="22" end2="22" changelist="af93a8a2-2eed-469e-a744-7ac329506fe2" />
+        <range start1="37" end1="37" start2="25" end2="27" changelist="af93a8a2-2eed-469e-a744-7ac329506fe2" />
+        <range start1="38" end1="41" start2="28" end2="30" changelist="af93a8a2-2eed-469e-a744-7ac329506fe2" />
+        <range start1="42" end1="43" start2="31" end2="31" changelist="af93a8a2-2eed-469e-a744-7ac329506fe2" />
+        <range start1="46" end1="49" start2="34" end2="34" changelist="e789658e-71ba-41fc-810c-115e6323bee0" />
+        <range start1="51" end1="58" start2="36" end2="37" changelist="af93a8a2-2eed-469e-a744-7ac329506fe2" />
+        <range start1="59" end1="64" start2="38" end2="39" changelist="af93a8a2-2eed-469e-a744-7ac329506fe2" />
+        <range start1="66" end1="84" start2="41" end2="41" changelist="af93a8a2-2eed-469e-a744-7ac329506fe2" />
+      </ranges>
+    </file>
+  </component>
   <component name="ProjectId" id="1qoZS7VqS2TcEUdf5pH0pvtyiJp" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -74,6 +102,17 @@
     <property name="settings.editor.selected.configurable" value="preferences.editor" />
   </component>
   <component name="RunManager">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TodoListApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="backend.todo-list.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.todolist.TodoListApplication" />
@@ -96,6 +135,7 @@
       <workItem from="1617775402711" duration="8870000" />
       <workItem from="1617881539581" duration="16728000" />
       <workItem from="1617898878065" duration="5178000" />
+      <workItem from="1617965898351" duration="14217000" />
     </task>
     <task id="LOCAL-00001" summary="bug: jwt 인증 관련 오류 발생">
       <created>1617898549211</created>

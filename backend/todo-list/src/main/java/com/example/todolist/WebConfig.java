@@ -1,17 +1,21 @@
 package com.example.todolist;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-@Configuration
+
 @EnableWebMvc
+@Configuration
 public class WebConfig implements WebMvcConfigurer {
-//    @Autowired
-//    private HandlerInterceptor handlerIntercepter;
+
+    @Bean
+    public JwtAuthInterceptor jwtAuthInterceptor() {
+        return new JwtAuthInterceptor();
+    }
 
     private final String[] EXCLUDED_PATH_LIST = {
             "/users/**",
@@ -20,10 +24,8 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new JwtAuthInterceptor())
-                .addPathPatterns("/*")
-                .excludePathPatterns("/users", "/users/login");
-//                .excludePathPatterns(EXCLUDED_PATH_LIST);
-
+        registry.addInterceptor(jwtAuthInterceptor())
+                .addPathPatterns("/**")
+                .excludePathPatterns(EXCLUDED_PATH_LIST);
     }
 }

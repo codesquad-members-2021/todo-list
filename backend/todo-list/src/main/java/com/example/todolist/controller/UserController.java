@@ -43,15 +43,10 @@ public class UserController {
             throw new RuntimeException();
         }
 
-        HttpHeaders responseHeaders = new HttpHeaders();
-//        responseHeaders.add("userId", String.valueOf(userId));
         String jwtToken = user.getToken();
         Cookie cookie = new Cookie("jwtToken", jwtToken);
         cookie.setPath("/");
         response.addCookie(cookie);
-        Cookie userIdCookie = new Cookie("userId", userId+"");
-        cookie.setPath("/");
-        response.addCookie(userIdCookie);
         return new ResponseEntity(jwtToken, HttpStatus.OK);
     }
 }

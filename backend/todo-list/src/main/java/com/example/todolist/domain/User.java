@@ -81,4 +81,15 @@ public class User {
     public int hashCode() {
         return Objects.hash(userId, name, password, token, cards);
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                ", token='" + token + '\'' +
+                ", cards=" + cards +
+                '}';
+    }
 }
