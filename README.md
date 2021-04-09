@@ -40,7 +40,7 @@
 - GET /histories 히스토리 카드 정보들을 받아옵니다.
 
 ## DB 모델
-![](https://user-images.githubusercontent.com/13144573/114139751-63725900-994a-11eb-8dce-ee79a0d06dd6.png)
+![image](https://user-images.githubusercontent.com/13144573/114150663-45f7bc00-9957-11eb-94c8-41718d5bdd05.png)
 - RDBMS : sqlite3 사용 -> MySQL 사용 (M1맥 이슈)
 - 백엔드 프로젝트 : express.js 사용
 
