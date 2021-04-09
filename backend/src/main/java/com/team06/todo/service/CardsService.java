@@ -38,4 +38,8 @@ public class CardsService {
         card.update(cardInfo);
         cardRepository.save(card);
     }
+
+    public void delete(Long id) {
+        cardRepository.deleteById(id);
+    }
 }

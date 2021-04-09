@@ -23,7 +23,7 @@ public class CardsController {
         this.cardsService = cardsService;
     }
 
-    @GetMapping
+    @GetMapping("/show")
     public ResponseEntity<Map<String, List<Card>>> show() {
         Map<String, List<Card>> cardsResponse = new HashMap<>();
         cardsResponse.put("cards", cardsService.show());
@@ -31,7 +31,7 @@ public class CardsController {
         return ResponseEntity.ok(cardsResponse);
     }
 
-    @PostMapping("/")
+    @PostMapping("/create")
     public ResponseEntity<Card> create(@RequestBody HashMap<String, String> cardInfo) {
         Card card = new Card(cardInfo);
         cardsService.save(card);
@@ -53,6 +53,14 @@ public class CardsController {
         cardsService.update(card, cardInfo);
         return ResponseEntity.ok(card);
     }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Card> delete(@PathVariable Long id) {
+        Card card = cardsService.findById(id);
+        cardsService.delete(id);
+        return ResponseEntity.ok(card);
+    }
+
 
 
 
