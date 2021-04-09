@@ -121,22 +121,12 @@
 		BD62EA1F261C8F2900E44D80 /* todo-list */ = {
 			isa = PBXGroup;
 			children = (
+				E4734703261FFAB50055DD0A /* AppCycle */,
 				BDD9DB5E261D972A00718566 /* Controller */,
-				BD62EA20261C8F2900E44D80 /* AppDelegate.swift */,
-				BD62EA22261C8F2900E44D80 /* SceneDelegate.swift */,
-				BD62EA24261C8F2900E44D80 /* ToDoListViewController.swift */,
-				BD62EA26261C8F2900E44D80 /* Main.storyboard */,
-				BDD9DB62261D97B300718566 /* ToDoTableViewCell.swift */,
-				BDD9DB63261D97B300718566 /* ToDoTableViewCell.xib */,
+				E4734700261FF9A40055DD0A /* View */,
+				E4734701261FF9AA0055DD0A /* Model */,
 				BD62EA29261C8F2A00E44D80 /* Assets.xcassets */,
-				BD62EA2B261C8F2A00E44D80 /* LaunchScreen.storyboard */,
 				BD62EA2E261C8F2A00E44D80 /* Info.plist */,
-				E47346D4261EA2240055DD0A /* AddToDoViewController.swift */,
-				E47346D5261EA2240055DD0A /* AddToDoViewController.xib */,
-				E47346E6261ED8DD0055DD0A /* SideMenuViewController.swift */,
-				E47346E7261ED8DD0055DD0A /* SideMenuViewController.xib */,
-				E47346F0261EE5700055DD0A /* SideMenuTransitionDelegate.swift */,
-				E47346FB261F2F9C0055DD0A /* SlideAnimation.swift */,
 			);
 			path = "todo-list";
 			sourceTree = "<group>";
@@ -162,11 +152,53 @@
 		BDD9DB5E261D972A00718566 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E4734702261FFA360055DD0A /* Delegate */,
+				BD62EA24261C8F2900E44D80 /* ToDoListViewController.swift */,
 				BDD9DB4C261D7A0E00718566 /* WillDoViewController.swift */,
 				BDD9DB51261D7A1800718566 /* DoingViewController.swift */,
 				BDD9DB56261D7A2200718566 /* DoneViewController.swift */,
+				E47346D4261EA2240055DD0A /* AddToDoViewController.swift */,
+				E47346E6261ED8DD0055DD0A /* SideMenuViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		E4734700261FF9A40055DD0A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BD62EA26261C8F2900E44D80 /* Main.storyboard */,
+				BDD9DB62261D97B300718566 /* ToDoTableViewCell.swift */,
+				BDD9DB63261D97B300718566 /* ToDoTableViewCell.xib */,
+				E47346D5261EA2240055DD0A /* AddToDoViewController.xib */,
+				E47346E7261ED8DD0055DD0A /* SideMenuViewController.xib */,
+				E47346FB261F2F9C0055DD0A /* SlideAnimation.swift */,
+				BD62EA2B261C8F2A00E44D80 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E4734701261FF9AA0055DD0A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E4734702261FFA360055DD0A /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				E47346F0261EE5700055DD0A /* SideMenuTransitionDelegate.swift */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
+		E4734703261FFAB50055DD0A /* AppCycle */ = {
+			isa = PBXGroup;
+			children = (
+				BD62EA20261C8F2900E44D80 /* AppDelegate.swift */,
+				BD62EA22261C8F2900E44D80 /* SceneDelegate.swift */,
+			);
+			path = AppCycle;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
