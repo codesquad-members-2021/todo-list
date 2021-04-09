@@ -13,5 +13,4 @@ class SectionCell: UITableViewCell {
     @IBOutlet weak var subject: UILabel!
     @IBOutlet weak var body: UILabel!
     @IBOutlet weak var author: UILabel!
-    
 }

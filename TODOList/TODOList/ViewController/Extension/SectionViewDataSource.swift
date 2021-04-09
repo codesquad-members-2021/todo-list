@@ -8,13 +8,12 @@
 import UIKit
 import Combine
 
-class TODOTableViewDataSource: NSObject {
+class SectionViewDataSource: NSObject {
+    weak var dataSource: DataPassable?
     
-    weak var dataSource: PassableData?
 }
 
-
-extension TODOTableViewDataSource: UITableViewDataSource {
+extension SectionViewDataSource: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let data = self.dataSource?.passData() else { return 0 }
         return data.subject.count
@@ -24,6 +23,7 @@ extension TODOTableViewDataSource: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SectionCell.identifier, for: indexPath) as? SectionCell else { return SectionCell() }
         guard let data = self.dataSource?.passData() else { return SectionCell() }
         cell.subject.text = data.subject[indexPath.row]
+        cell.body.text = data.body[indexPath.row]
         return cell
     }
 }

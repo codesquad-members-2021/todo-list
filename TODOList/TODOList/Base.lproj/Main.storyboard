@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="TODOViewController" customModule="TODOList" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="TODOList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="1194" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -105,17 +105,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="해야할 일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GOo-3b-3me">
-                                        <rect key="frame" x="8" y="3" width="71" height="26"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <rect key="frame" x="8" y="3" width="100" height="26"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2pm-vx-0vF">
-                                        <rect key="frame" x="87" y="3" width="26" height="26"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" systemColor="systemGray4Color"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -128,6 +120,14 @@
                                             <action selector="tapAddButton:" destination="xmE-KC-seP" eventType="touchUpInside" id="xEU-az-VXe"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2pm-vx-0vF">
+                                        <rect key="frame" x="105" y="3" width="26" height="26"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" systemColor="systemGray4Color"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                             </view>
@@ -198,22 +198,22 @@
                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                     </view>
                     <connections>
+                        <outlet property="SectionViewDataSource" destination="WJB-cl-lP7" id="qQp-J8-BIn"/>
                         <outlet property="TODOCount" destination="2pm-vx-0vF" id="94s-Fz-ibz"/>
                         <outlet property="TODOTableView" destination="5VT-Hg-llj" id="uT8-h2-XT3"/>
-                        <outlet property="TODOTableViewDataSource" destination="WJB-cl-lP7" id="qQp-J8-BIn"/>
                         <outlet property="addButton" destination="lKw-w3-fDm" id="BB2-QD-nsE"/>
                         <outlet property="sectionTitle" destination="GOo-3b-3me" id="BXL-rU-XEr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j8h-aN-DkO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <customObject id="WJB-cl-lP7" userLabel="TODO TableView DataSource" customClass="TODOTableViewDataSource" customModule="TODOList" customModuleProvider="target"/>
+                <customObject id="WJB-cl-lP7" userLabel="TODO TableView DataSource" customClass="SectionViewDataSource" customModule="TODOList" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="138.69346733668343" y="839.56834532374103"/>
         </scene>
-        <!--AddTODO View Controller-->
+        <!--Add View Controller-->
         <scene sceneID="QnO-D2-3Xm">
             <objects>
-                <viewController storyboardIdentifier="AddView" id="Ypj-LH-wc2" customClass="AddTODOViewController" customModule="TODOList" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddView" id="Ypj-LH-wc2" customClass="AddViewController" customModule="TODOList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fk8-mF-q8L">
                         <rect key="frame" x="0.0" y="0.0" width="1194" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
