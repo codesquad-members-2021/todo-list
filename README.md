@@ -11,7 +11,7 @@ Hong(iOS) :
 
 yeon(BE) : 에러의 늪에서 벗어나게 해주세요ㅠ_ㅠ 
 
-### API 공유
+### API 공유사항 (URL과 테이블 속성, 데이터)
 
 [Wiki 링크](https://github.com/kjk402/todo-list/wiki/API-url,-data-%EC%A0%95%EB%A6%AC)
 
