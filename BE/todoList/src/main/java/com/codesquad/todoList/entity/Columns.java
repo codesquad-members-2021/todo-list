@@ -37,4 +37,8 @@ public class Columns {
         cardList.removeIf(card -> card.getId().equals(cardId));
     }
 
+    public void updateColumn(Columns columns) {
+        this.name = columns.name;
+    }
+
 }
