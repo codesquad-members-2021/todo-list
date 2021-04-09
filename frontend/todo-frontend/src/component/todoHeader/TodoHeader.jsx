@@ -1,7 +1,12 @@
-import React from "react";
+import React from 'react';
 
 const TodoHeader = (props) => {
-  return <></>;
+  return (
+    <div>
+      TODO LIST
+      <button>🍔</button>
+    </div>
+  );
 };
 
 export default TodoHeader;

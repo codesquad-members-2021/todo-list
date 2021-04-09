@@ -10,7 +10,7 @@ const TodoListForm = ({ addTodoItem, toggleForm }) => {
       title: inputTitleRef.current.value,
       content: inputContentRef.current.value,
     };
-    addTodoItem(cardId, newTodo);
+    addTodoItem(newTodo.id, newTodo);
     inputTitleRef.current.value = '';
     inputContentRef.current.value = '';
   };

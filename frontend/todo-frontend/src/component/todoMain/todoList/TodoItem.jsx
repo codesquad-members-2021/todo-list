@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import DeleteBtn from '../../atom/DeleteBtn.jsx';
 
 const TodoItem = ({ todoCard: { id, title, content }, deleteTodoItem, editTodoItem }) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -42,7 +43,7 @@ const TodoItem = ({ todoCard: { id, title, content }, deleteTodoItem, editTodoIt
       <div onDoubleClick={toggleEditForm}>
         <h4>{title}</h4>
         <div>{content}</div>
-        <button onClick={() => deleteTodoItem(id)}>❌</button>
+        <DeleteBtn deleteFn={() => deleteTodoItem(id)} />
       </div>
     );
   }

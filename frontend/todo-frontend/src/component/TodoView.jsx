@@ -38,6 +38,7 @@ const datas = {
 const TodoTemplate = () => {
   return (
     <>
+      <TodoHeader />
       <TodoMain datas={datas} />
     </>
   );

@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import TodoItem from './TodoItem';
 import TodoListForm from './TodoListForm';
 import style from './todoList.module.css';
+import DeleteBtn from '../../atom/DeleteBtn.jsx';
 
 const TodoList = ({ data: { id, title, todoCards }, deleteTodoColumn }) => {
   const [todos, setTodos] = useState(todoCards);
   const [formSelected, setFormSelected] = useState(false);
   //수정완료
   const addTodoItem = (cardId, todoCard) => {
-    setTodos((todos) => ({ ...todos, cardId: todoCard }));
+    setTodos((todos) => ({ ...todos, [cardId]: todoCard }));
   };
 
   //수정완료
@@ -37,7 +38,7 @@ const TodoList = ({ data: { id, title, todoCards }, deleteTodoColumn }) => {
         <span>{title}</span>
         <span>{Object.values(todos).length}개</span>
         <button onClick={toggleForm}>➕</button>
-        <button onClick={() => deleteTodoColumn(id)}>❌</button>
+        <DeleteBtn deleteFn={() => deleteTodoColumn(id)} />
       </div>
 
       {formSelected ? <TodoListForm addTodoItem={addTodoItem} toggleForm={toggleForm} /> : <></>}
