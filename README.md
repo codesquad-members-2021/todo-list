@@ -1,17 +1,36 @@
 # todo-list
 그룹프로젝트 #1
 
-# 브랜치 관리
+## 팀 13 협업 규칙
 
-프론트엔드와 백엔드 PR을 위한 frontend, backend 브랜치를 만듭니다.
+### 이슈
+- 이슈 태그
+  - FE, BE : 대분류
+  - Bug : 수정할 버그
+  - Enhancement : 기능 추가
+  - 의외의 항목들은 필요할 때 자유롭게 추가
+- 생성된 이슈는 [Project](https://github.com/PizzaCola-K/todo-list/projects/1)에서 관리한다
+- 완료된 이슈는 PR에 연결한 후, PR이 완료될 때 같이 닫는다
 
-이후에 frontend와 backend 브랜치에서 기능을 추가할 때 마다 브랜치를 만들고 frontend 또는 backend로 합칩니다.
 
-이후에 PR을 upstream의 team-13으로 전송합니다.
+### 커밋 컨벤션
+- 커밋 태그
+  - feat : 새로운 기능 추가
+  - fix : 버그 수정
+  - docs : 문서의 수정
+  - style : (코드의 수정 없이) 스타일(style)만 변경(들여쓰기 같은 포맷이나 세미콜론을 빼먹은 경우)
+  - refactor : 코드를 리펙토링
+  - test : Test 관련한 코드의 추가, 수정
+  - chore : (코드의 수정 없이) 설정을 변경
 
-배포 브랜치는 main입니다.
+### 브랜치 규칙
+- main : 배포용
+- FE, BE : 코드 리뷰용, PR 브랜치
+- FE-dev : Seong, Rano가 분업한 코드를 합치는 브랜치
+- FE-(author)-(feature) : 각각의 기능 구현 후 FE-dev로 PR
+- BE-(feature) : 각각의 기능 구현 후 BE로 PR
 
-# api 정리 (Work in Process)
+## api 정리 (Work in Process)
 
 ```json
 {
@@ -139,3 +158,11 @@ column
 }
 
 ```
+
+
+### 멤버
+- Backend
+  - K
+- Frontend
+  - Rano
+  - Seong
