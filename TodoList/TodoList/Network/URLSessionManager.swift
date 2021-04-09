@@ -7,10 +7,14 @@
 
 import Foundation
 
-class URLSessionManager {
+struct URLSessionManager {
     
-    static func request(with url: URL, completion: @escaping (Result<Data, Error>) -> Void) {
-        URLSession.shared.dataTask(with: url, completionHandler: { data, res, error in
+    func request(with url: Path, method : HTTPMethod, completion: @escaping (Result<Data, Error>) -> Void) {
+        guard let urlRequest = makeURLRequest(with: url, method: method) else {
+            return
+        }
+        
+        URLSession.shared.dataTask(with: urlRequest, completionHandler: { data, res, error in
             guard let data = data, error == nil else {
                 return
             }
@@ -20,5 +24,13 @@ class URLSessionManager {
             }
             completion(.success(data))
         }).resume()
+    }
+    
+    
+    private func makeURLRequest(with path : Path, method : HTTPMethod) -> URLRequest? {
+        guard let url = EndPoint.url(with: path) else { return nil }
+        var request = URLRequest(url: url)
+        request.httpMethod = method.rawValue
+        return request
     }
 }

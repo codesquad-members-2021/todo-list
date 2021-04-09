@@ -19,6 +19,7 @@
 		BF7EB2A5261C4199003EB682 /* DoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7EB2A4261C4199003EB682 /* DoneViewController.swift */; };
 		BF7EB2AA261C419E003EB682 /* DoingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7EB2A9261C419E003EB682 /* DoingViewController.swift */; };
 		BF7EB2AF261C4E5C003EB682 /* DoingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7EB2AE261C4E5C003EB682 /* DoingTableViewCell.swift */; };
+		BFA75568261FE696008FB904 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA75567261FE696008FB904 /* HTTPMethod.swift */; };
 		BFBF30E4261D4E65000BDDE3 /* DoingDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBF30E3261D4E65000BDDE3 /* DoingDataSource.swift */; };
 		BFBF30E9261D4F01000BDDE3 /* DoingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBF30E8261D4F01000BDDE3 /* DoingDelegate.swift */; };
 		D0F41D0D261E9EC60024D7B1 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F41D0C261E9EC60024D7B1 /* EndPoint.swift */; };
@@ -67,6 +68,7 @@
 		BF7EB2A4261C4199003EB682 /* DoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneViewController.swift; sourceTree = "<group>"; };
 		BF7EB2A9261C419E003EB682 /* DoingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoingViewController.swift; sourceTree = "<group>"; };
 		BF7EB2AE261C4E5C003EB682 /* DoingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoingTableViewCell.swift; sourceTree = "<group>"; };
+		BFA75567261FE696008FB904 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		BFBF30E3261D4E65000BDDE3 /* DoingDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoingDataSource.swift; sourceTree = "<group>"; };
 		BFBF30E8261D4F01000BDDE3 /* DoingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoingDelegate.swift; sourceTree = "<group>"; };
 		D0F41D0C261E9EC60024D7B1 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
@@ -164,8 +166,8 @@
 			isa = PBXGroup;
 			children = (
 				BF7EB2A9261C419E003EB682 /* DoingViewController.swift */,
-				D0F41D34261ED86E0024D7B1 /* DoingUseCase.swift */,
 				BFBF30E3261D4E65000BDDE3 /* DoingDataSource.swift */,
+				D0F41D34261ED86E0024D7B1 /* DoingUseCase.swift */,
 				BFBF30E8261D4F01000BDDE3 /* DoingDelegate.swift */,
 				BF7EB2AE261C4E5C003EB682 /* DoingTableViewCell.swift */,
 			);
@@ -179,6 +181,7 @@
 				D0F41D0C261E9EC60024D7B1 /* EndPoint.swift */,
 				D0F41D11261E9FE70024D7B1 /* URLSessionManager.swift */,
 				D0F41D27261EA9B50024D7B1 /* Task.swift */,
+				BFA75567261FE696008FB904 /* HTTPMethod.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				D0F41D35261ED86E0024D7B1 /* DoingUseCase.swift in Sources */,
 				D0F41D41261EEAFC0024D7B1 /* DoDataSource.swift in Sources */,
 				D0F41D28261EA9B50024D7B1 /* Task.swift in Sources */,
+				BFA75568261FE696008FB904 /* HTTPMethod.swift in Sources */,
 				BF7EB26A261C3CBF003EB682 /* AppDelegate.swift in Sources */,
 				BF7EB26C261C3CBF003EB682 /* SceneDelegate.swift in Sources */,
 				BF7EB2A0261C418B003EB682 /* DoViewController.swift in Sources */,
