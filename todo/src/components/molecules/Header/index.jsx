@@ -15,11 +15,13 @@ const Div = styled.div`
 const Header = () => {
   const clickHandler = () => {
     console.log("success");
-  }
+  };
 
   return (
     <Div>
-      <Span _fontSize="45px" _fontWeight="700">To do List</Span>
+      <Span _fontSize="45px" _fontWeight="700">
+        To do List
+      </Span>
       <SmallButton onClick={clickHandler}>
         <Image src={hamburgerBtn} _width="30px" />
       </SmallButton>
