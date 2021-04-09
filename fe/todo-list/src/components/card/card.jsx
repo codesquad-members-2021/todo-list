@@ -18,12 +18,12 @@ const DefaultTask = () => {
   );
 };
 
-const ActiveTask = () => {
+const ActiveTask = ({ type }) => {
   return (
     <TaskBox>
       <TextArea>
-        <TaskTitle />
-        <TaskContents />
+        <TaskTitle type={type} />
+        <TaskContents type={type} />
       </TextArea>
       <ButtonArea>
         <Button type="cancel" name="취소" />
@@ -33,18 +33,18 @@ const ActiveTask = () => {
   );
 };
 
-const TaskTitle = () => {
+const TaskTitle = ({ type }) => {
   return (
     <TitleBox>
-      <TaskTitleSpan>Title</TaskTitleSpan>
+      <TaskTitleSpan type={type}>Title</TaskTitleSpan>
     </TitleBox>
   );
 };
 
-const TaskContents = () => {
+const TaskContents = ({ type }) => {
   return (
     <ContentsBox>
-      <TaskContentsSpan>Body</TaskContentsSpan>
+      <TaskContentsSpan type={type}>Body</TaskContentsSpan>
     </ContentsBox>
   );
 };
@@ -60,7 +60,8 @@ const Caption = () => {
 const Card = ({ type }) => {
   return {
     default: <DefaultTask />,
-    active: <ActiveTask />,
+    active: <ActiveTask type={type} />,
+    deactivate: <ActiveTask type={type} />,
   }[type];
 };
 
@@ -106,14 +107,14 @@ const TaskTitleSpan = styled.span`
   font-size: 16px;
   font-weight: bold;
   line-height: 23px;
-  color: #010101;
+  color: ${(props) => (props.type === 'deactivate' ? '#828282' : '#010101')};
   margin: 8px 0px;
 `;
 
 const TaskContentsSpan = styled.span`
   font-size: 14px;
   line-height: 20px;
-  color: #010101;
+  color: ${(props) => (props.type === 'deactivate' ? '#828282' : '#010101')};
 `;
 
 const TaskAuthorLabel = styled.span`

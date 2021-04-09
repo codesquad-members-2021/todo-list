@@ -21,8 +21,8 @@ function App() {
       <Card type="active" />
       {/* <Card type="delete" />
       <Card type="drag" />
-      <Card type="place" />
-      <Card type="deactivate" /> */}
+      <Card type="place" /> */}
+      <Card type="deactivate" />
     </div>
   );
 }

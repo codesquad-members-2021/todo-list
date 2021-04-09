@@ -64,4 +64,10 @@ const AccentButton = styled.button`
   &:hover {
     background: #00529b;
   }
+
+  &:disabled {
+    background: #86c6ff;
+    cursor: default;
+    color: rgba(255, 255, 255, 0.4);
+  }
 `;
