@@ -1,4 +1,4 @@
-import './App.css';
+import "./App.css";
 
 // pages에서 불러오도록
 import MainPage from "./Pages/MainPage";
