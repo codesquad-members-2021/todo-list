@@ -33,11 +33,12 @@ extension Endpoint {
 }
 
 extension Endpoint {
-    //GET용
-    static var cards: Self {
-        return Endpoint(path: "/cards")
-    }
 
+    //GET용
+    static func cards(state: State) -> Self {
+            return Endpoint(path: "/cards/\(state)")
+        }
+    
     //POST용
     static func add(state: State) -> Self {
             return Endpoint(path: "/add",
