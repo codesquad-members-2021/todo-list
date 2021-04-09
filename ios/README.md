@@ -25,4 +25,15 @@ none
 
 #### Display
 
+### 3. (branch feature_card_colums_UI) Card 객체를 화면에 뿌려주는 기능 구현 Fri Apr 9 13:00:21 2021 +0900
+#### Major features
+- [x] ToDoCardProtocol 구현
+- [x] ToDo 상태에 따른 카드 객체 클래스 생성
+
+#### Study keywords
+- Container View
+- Table View Data Source
+
+#### Display
+
 
