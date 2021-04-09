@@ -13,7 +13,7 @@
 리액트 앱을 서버에 배포할 때는 아래의 쉘 커맨드를 활용한다.
 
 ```sh
-sh ./frontend/todo-frontend/deploy.sh
+sh ./backend/front-deploy.sh
 ```
 
 ## 브랜치 정책
