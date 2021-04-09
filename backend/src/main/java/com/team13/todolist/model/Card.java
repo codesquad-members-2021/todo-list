@@ -19,10 +19,6 @@ public class Card {
         return new Card(null, title, body);
     }
 
-    public static Card of(Long id, String title, String body) {
-        return new Card(id, title, body);
-    }
-
     public Long getId() {
         return id;
     }
