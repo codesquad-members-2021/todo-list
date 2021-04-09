@@ -1,4 +1,4 @@
-const ViewState = {
+const TodoCardViewState = {
   NORMAL: 'normal',
   DELETE: 'delete',
   DRAG_FLOAT: 'drag-float',
@@ -6,4 +6,4 @@ const ViewState = {
   EDIT: 'edit',
 }
 
-export { ViewState };
+export { TodoCardViewState };

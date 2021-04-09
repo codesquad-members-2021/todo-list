@@ -1,25 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import { ViewState } from './const.js';
+import { TodoCardViewState } from './const.js';
 import TodoCardPresentational from './TodoCardPresentational.js';
 
 function TodoCardContainer(props) {
-  const [viewState, setViewState] = useState(ViewState.NORMAL);
-  const [state, setState] = useState({
-    title: '',
-    content: '',
-    createDate: null,
-    updateDate: null,
-    author: '',
-  });
+  const [viewState, setViewState] = useState(props.viewState);
+  const [state, setState] = useState(props.state);
 
   useEffect(() => {
     // TODO
     console.log('call useEffect');
   }, [state]);
 
-  const onDoubleClick = ({ target }) => {
-    console.log(target);
-    setViewState(ViewState.EDIT);
+  const onDoubleClickCapture = (evt) => {
+    evt.stopPropagation();
+    evt.preventDefault();
+    setViewState(TodoCardViewState.EDIT);
+
+    evt.target.focus();
     // target.focus();
   };
 
@@ -36,7 +33,7 @@ function TodoCardContainer(props) {
 
   const onClickCancelBtn = ({ target }) => {
     // TODO: delete logic
-    setViewState(ViewState.NORMAL);
+    setViewState(TodoCardViewState.NORMAL);
   };
 
   const onClickConfirmBtn = ({ target }) => {
@@ -51,7 +48,7 @@ function TodoCardContainer(props) {
 
   return (
     <TodoCardPresentational
-      onDoubleClick={onDoubleClick}
+      onDoubleClickCapture={onDoubleClickCapture}
       onChangeTitle={onChangeTitle}
       onChangeContent={onChangeContent}
       onClickCancelBtn={onClickCancelBtn}
