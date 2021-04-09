@@ -21,7 +21,7 @@ https://web.postman.co/collections/15264844-16e2e7a3-08ab-9569-8bb3-0c7544beb883
 3. (2020.04.08) 목요일: 진행 사항 공유, To Do List activity log 데이터 모델 협의
 4. (2020.04.09) 금요일: 진행 사항 공유
 
-## Backend Features 개발 타임라인
+## [Backend Features 개발 타임라인](https://github.com/ChoiGiSung/todo-list/tree/backend/backend)
 
 페어프로그래밍으로 진행
 1. DB 설계
@@ -31,8 +31,6 @@ https://web.postman.co/collections/15264844-16e2e7a3-08ab-9569-8bb3-0c7544beb883
   - card 조회, 수정 , 삭제
   - log 조회, 등록
 3. 배포
-
-https://github.com/ChoiGiSung/todo-list/tree/backend/backend
 
 
 ## *[Cri, JEJE]* iOS Features 개발 타임라인
