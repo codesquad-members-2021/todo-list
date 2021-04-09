@@ -31,7 +31,7 @@ export default Button;
 const NormalButton = styled.button`
   align-items: flex-start;
   padding: 10px;
-  width: 134px;
+  width: 125px;
   height: 40px;
   background: #e0e0e0;
   color: #828282;
@@ -63,5 +63,11 @@ const AccentButton = styled.button`
 
   &:hover {
     background: #00529b;
+  }
+
+  &:disabled {
+    background: #86c6ff;
+    cursor: default;
+    color: rgba(255, 255, 255, 0.4);
   }
 `;
