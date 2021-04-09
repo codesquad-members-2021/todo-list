@@ -10,7 +10,7 @@ const ColumnHeader = () => {
     cardsNumber: 2,
   };
   return (
-    <div className="column-header">
+    <div className="column-header-section">
       <ColumnTitle columnTitle={mockData.columnTitle} />
       <CountCards cardsNumber={mockData.cardsNumber} />
       <AddCardButton />
