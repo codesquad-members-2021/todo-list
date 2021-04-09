@@ -3,48 +3,44 @@ package team9.todo.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import team9.todo.domain.Card;
 import team9.todo.domain.User;
-import team9.todo.repository.CardRepository;
 import team9.todo.repository.UserRepository;
+
+import javax.servlet.http.HttpSession;
 
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/api/users")
 public class ApiUserController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     private final UserRepository userRepository;
-    private final CardRepository cardRepository;
 
     @Autowired
-    public ApiUserController(UserRepository userRepository, CardRepository cardRepository) {
+    public ApiUserController(UserRepository userRepository) {
         this.userRepository = userRepository;
-        this.cardRepository = cardRepository;
     }
 
-    @GetMapping("/create")
-    public User create() {
-        User user = new User("honux", "honux");
-        User savedUser = userRepository.save(user);
-        logger.debug("saved: {}", savedUser);
-        User u1 = userRepository.findById(1L).get();
-        logger.debug("user with id=1: {}", u1);
-        return u1;
+    @PostMapping
+    @ResponseStatus(code = HttpStatus.CREATED)
+    public User join(User user) {
+        logger.debug("회원가입 요청: {}", user.getUserId());
+        return userRepository.save(user);
     }
 
-    @GetMapping("/createCard")
-    public Card createCard() {
+    @PostMapping("/login")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    public void login(User user, HttpSession httpSession) {
+        logger.debug("로그인 요청: {}", user.getUserId());
+    }
 
-
-        Card card = new Card(1,"asd","asd",1.0,1,0);
-
-        card = cardRepository.save(card);
-        logger.debug("saved: {}", card);
-        card = cardRepository.findById(1L).get();
-
-        return card;
+    @PostMapping("/logout")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    public void logout(HttpSession httpSession) {
+        logger.debug("로그아웃 요청: ");
     }
 }
