@@ -17,8 +17,7 @@ https://docs.google.com/drawings/d/11xWKa5mHQObgf5LHN3LrGfJxqRkr1t1PocYhY4z5MyY/
 https://docs.google.com/spreadsheets/d/1MzUvdBeznQoMVkkWDAdOwsL0yqBt--NxE9X_mx3LD1s/edit#gid=0
 
 ## API 관리
-
-https://web.postman.co/collections/15264844-16e2e7a3-08ab-9569-8bb3-0c7544beb883?workspace=5bda0218-c677-414c-8a57-8f48ddbebd7a
+https://documenter.getpostman.com/view/15264844/TzCS6RsE  
 
 ## Backend, iOS 회의록
 
