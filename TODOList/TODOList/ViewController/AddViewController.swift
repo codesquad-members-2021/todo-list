@@ -7,29 +7,25 @@
 
 import UIKit
 
-class AddTODOViewController: UIViewController, UITextFieldDelegate {
+class AddViewController: UIViewController, UITextFieldDelegate {
+    @IBOutlet weak private var subjectField: ObservingTextField!
+    @IBOutlet weak private var bodyField: ObservingTextField!
+    @IBOutlet weak private var writeButton: SubmitButton!
+    @IBOutlet weak private var cardView: UIView!
     private var sectionMode: Mode?
-    @IBOutlet weak var subjectField: ObservingTextField!
-    @IBOutlet weak var bodyField: ObservingTextField!
-    @IBOutlet weak var writeButton: SubmitButton!
-    @IBOutlet weak var cardView: UIView!
-    var centerConstraint: NSLayoutConstraint!
-    var topConstraint: NSLayoutConstraint!
-    
-    var importViewModel: ImportViewModel!
+    private var writeViewModel: WriteViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.importViewModel = ImportViewModel(subject: TextObservable(value: ""),
-                                               body: TextObservable(value: ""))
-        
-        self.subjectField.bind(to: importViewModel.subject)
-        self.bodyField.bind(to: importViewModel.body)
-        
+        self.writeViewModel = WriteViewModel()
+        self.bind()
         self.addButtonCheckingTargets()
-        
         self.subjectField.becomeFirstResponder()
+    }
+    
+    private func bind() {
+        self.subjectField.bind(to: writeViewModel.subject)
+        self.bodyField.bind(to: writeViewModel.body)
     }
     
     private func addButtonCheckingTargets() {
@@ -42,7 +38,7 @@ class AddTODOViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func touchSubmitButton(_ sender: UIButton) {
-        self.importViewModel.trigger()
+        self.writeViewModel.trigger()
         dismiss(animated: false, completion: nil)
     }
     

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class TextObservable<ObservedType> {
+class Observable<ObservedType> {
     private var _value: ObservedType?
     var changeClosure: ((ObservedType?) -> ())?
     init(value: ObservedType) {

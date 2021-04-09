@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TODOViewController: UIViewController {
+class MainViewController: UIViewController {
     enum Segues {
         static let willTODO = "WillTODO"
         static let doingTODO = "DoingTODO"
@@ -16,7 +16,6 @@ class TODOViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
