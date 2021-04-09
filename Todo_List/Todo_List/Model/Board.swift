@@ -7,27 +7,27 @@
 
 import Foundation
 
-class TaskVOManager {
-    enum TaskType {
+class Board {
+    enum CardType {
         case todo
         case doing
         case done
     }
-    var todoList = [TaskVO]()
-    var doingList = [TaskVO]()
-    var doneList = [TaskVO]()
+    var todoList = [Card]()
+    var doingList = [Card]()
+    var doneList = [Card]()
     
-    func apepnd(with task : TaskVO, type : TaskVOManager.TaskType) {
+    func apepnd(with card : Card, type : Board.CardType) {
         switch type {
         case .todo:
-            todoList.insert(task, at: 0)
+            todoList.insert(card, at: 0)
         case .doing:
-            doingList.insert(task, at: 0)
+            doingList.insert(card, at: 0)
         case .done:
-            doneList.insert(task, at: 0)
+            doneList.insert(card, at: 0)
         }
     }
-    func remove(at index: Int, type : TaskVOManager.TaskType){
+    func remove(at index: Int, type : Board.CardType){
         switch type {
         case .todo:
             todoList.remove(at: index)

@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct TaskViewConstant {
+struct CardViewConstant {
     static let estimatedRowHeight : CGFloat = 108
     static let heightForHeaderInSection : CGFloat = 16
     static let numberOfRowsInSection : Int = 1

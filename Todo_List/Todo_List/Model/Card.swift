@@ -7,7 +7,7 @@
 
 import Foundation
 
-class TaskVO {
+class Card {
     
     var id : Int?
     var title : String

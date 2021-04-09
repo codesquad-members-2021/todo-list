@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TaskViewController: UIViewController {
+class CardViewController: UIViewController {
     
     @IBOutlet weak var todo: UITableView!
     @IBOutlet weak var doing: UITableView!
@@ -17,7 +17,7 @@ class TaskViewController: UIViewController {
     @IBOutlet weak var countOfDoing: UILabel!
     @IBOutlet weak var countOfDone: UILabel!
     
-    var taskManager = TaskVOManager()
+    var board = Board()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,8 +31,8 @@ class TaskViewController: UIViewController {
         let viewcontroller = createModalViewController()
         self.present(viewcontroller, animated: true)
         
-        viewcontroller.setHandler { [weak self] task in
-            self?.taskManager.apepnd(with: task, type: .todo)
+        viewcontroller.setHandler { [weak self] card in
+            self?.board.apepnd(with: card, type: .todo)
             self?.todo.reloadData()
         }
         
@@ -41,8 +41,8 @@ class TaskViewController: UIViewController {
         let viewcontroller = createModalViewController()
         self.present(viewcontroller, animated: true)
         
-        viewcontroller.setHandler { [weak self] task in
-            self?.taskManager.apepnd(with: task, type: .doing)
+        viewcontroller.setHandler { [weak self] card in
+            self?.board.apepnd(with: card, type: .doing)
             self?.doing.reloadData()
         }
     }
@@ -50,8 +50,8 @@ class TaskViewController: UIViewController {
         let viewcontroller = createModalViewController()
         self.present(viewcontroller, animated: true)
         
-        viewcontroller.setHandler { [weak self] task in
-            self?.taskManager.apepnd(with: task, type: .done)
+        viewcontroller.setHandler { [weak self] card in
+            self?.board.apepnd(with: card, type: .done)
             self?.done.reloadData()
         }
     }
@@ -65,23 +65,23 @@ class TaskViewController: UIViewController {
     }
 }
 // MARK: - Register Nib and Configuration
-extension TaskViewController {
+extension CardViewController {
     func registerNib(){
-        let nibName = UINib(nibName: "TaskCell", bundle: nil)
+        let nibName = UINib(nibName: "CardCell", bundle: nil)
         
         /*각각 register 하여서 각 tableView마다 속성값을 관리할 수 있다.*/
-        todo.register(nibName, forCellReuseIdentifier: "TaskCell")
-        doing.register(nibName, forCellReuseIdentifier: "TaskCell")
-        done.register(nibName, forCellReuseIdentifier: "TaskCell")
+        todo.register(nibName, forCellReuseIdentifier: "CardCell")
+        doing.register(nibName, forCellReuseIdentifier: "CardCell")
+        done.register(nibName, forCellReuseIdentifier: "CardCell")
     }
     func configureTextField(){
         todo.rowHeight = UITableView.automaticDimension
-        todo.estimatedRowHeight = TaskViewConstant.estimatedRowHeight
+        todo.estimatedRowHeight = CardViewConstant.estimatedRowHeight
         
         doing.rowHeight = UITableView.automaticDimension
-        doing.estimatedRowHeight = TaskViewConstant.estimatedRowHeight
+        doing.estimatedRowHeight = CardViewConstant.estimatedRowHeight
         
         done.rowHeight = UITableView.automaticDimension
-        done.estimatedRowHeight = TaskViewConstant.estimatedRowHeight
+        done.estimatedRowHeight = CardViewConstant.estimatedRowHeight
     }
 }

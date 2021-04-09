@@ -79,8 +79,8 @@
                     </view>
                     <size key="freeformSize" width="400" height="175"/>
                     <connections>
-                        <outlet property="taskContent" destination="JUp-gR-r9B" id="rUi-dl-deV"/>
-                        <outlet property="taskTitle" destination="BrR-uC-Dkv" id="Jz0-Hg-upn"/>
+                        <outlet property="cardContent" destination="JUp-gR-r9B" id="rUi-dl-deV"/>
+                        <outlet property="cardTitle" destination="BrR-uC-Dkv" id="Jz0-Hg-upn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0FR-Ru-GIY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

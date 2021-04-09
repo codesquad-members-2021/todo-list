@@ -8,7 +8,7 @@
 import UIKit
 
 // MARK:- delegation set up
-extension TaskViewController {
+extension CardViewController {
     func setUpDelegate(){
         todo.delegate = self
         todo.dataSource = self
@@ -20,22 +20,22 @@ extension TaskViewController {
         done.dataSource = self
     }
 }
-extension TaskViewController : UITableViewDelegate, UITableViewDataSource {
+extension CardViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return TaskViewConstant.numberOfRowsInSection //각 섹션에는 한개의 row만 존재한다.
+        return CardViewConstant.numberOfRowsInSection //각 섹션에는 한개의 row만 존재한다.
     }
     /*섹션의 수를 늘리는 프로토콜*/
     func numberOfSections(in tableView: UITableView) -> Int {
         var count = 0
         switch tableView {
         case todo:
-            count = taskManager.todoList.count
+            count = board.todoList.count
             countOfTodo.text = String(count)
         case doing:
-            count = taskManager.doingList.count
+            count = board.doingList.count
             countOfDoing.text = String(count)
         case done:
-            count = taskManager.doneList.count
+            count = board.doneList.count
             countOfDone.text = String(count)
         default:
             break
@@ -50,27 +50,27 @@ extension TaskViewController : UITableViewDelegate, UITableViewDataSource {
     
     /*섹션의 헤더섹션 사이즈를 늘리는 방법.*/
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return TaskViewConstant.heightForHeaderInSection
+        return CardViewConstant.heightForHeaderInSection
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCell") as! TaskCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CardCell") as! CardCell
         
-        var task : TaskVO
+        var card : Card
         switch tableView {
         case todo:
-            task = taskManager.todoList[indexPath.section]
+            card = board.todoList[indexPath.section]
         case doing:
-            task = taskManager.doingList[indexPath.section]
+            card = board.doingList[indexPath.section]
         case done:
-            task = taskManager.doneList[indexPath.section]
+            card = board.doneList[indexPath.section]
         default:
             return cell
         }
-        cell.title.text = task.title
-        cell.content.text = task.content
-        cell.writer.text = task.writer
+        cell.title.text = card.title
+        cell.content.text = card.content
+        cell.writer.text = card.writer
         
         return cell
         
@@ -79,13 +79,13 @@ extension TaskViewController : UITableViewDelegate, UITableViewDataSource {
      
         switch tableView {
         case todo:
-            taskManager.remove(at: indexPath.section, type: .todo)
+            board.remove(at: indexPath.section, type: .todo)
             todo.deleteSections([indexPath.section], with: .fade)
         case doing:
-            taskManager.remove(at: indexPath.section, type: .doing)
+            board.remove(at: indexPath.section, type: .doing)
             doing.deleteSections([indexPath.section], with: .fade)
         case done:
-            taskManager.remove(at: indexPath.section, type: .done)
+            board.remove(at: indexPath.section, type: .done)
             done.deleteSections([indexPath.section], with: .fade)
         default:
             return

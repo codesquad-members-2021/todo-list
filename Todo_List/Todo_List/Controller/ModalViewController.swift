@@ -10,10 +10,10 @@ import UIKit
 class ModalViewController: UIViewController {
     
     
-    @IBOutlet var taskTitle: UITextField!
-    @IBOutlet weak var taskContent: UITextField!
+    @IBOutlet var cardTitle: UITextField!
+    @IBOutlet weak var cardContent: UITextField!
     
-    var completionHandler : ((TaskVO) -> ())? = nil
+    var completionHandler : ((Card) -> ())? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,14 +26,14 @@ class ModalViewController: UIViewController {
     @IBAction func enroll(_ sender: UIButton) {
         self.presentingViewController?.dismiss(animated: true, completion : nil)
         
-        guard let title = taskTitle.text,
-              let content = taskContent.text
+        guard let title = cardTitle.text,
+              let content = cardContent.text
         else { return }
         
-        let new = TaskVO(title: title, content: content, writer: "elly")
+        let new = Card(title: title, content: content, writer: "elly")
         self.completionHandler?(new)
     }
-    func setHandler(handler : @escaping (TaskVO) -> ()) {
+    func setHandler(handler : @escaping (Card) -> ()) {
         self.completionHandler = handler
     }
     func configure(){
