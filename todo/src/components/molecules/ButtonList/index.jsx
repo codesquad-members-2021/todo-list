@@ -15,7 +15,7 @@ const ButtonList = ({ isIcon }) => {
   const closeButton = (
     <SmallButton>
       <Image src={CloseButtonImg} _width="20px" />
-    </SmallButton>
+</SmallButton>
   );
   const cancelButtons = (
     <MediumButton _background="#fff" _color="#3c4243">

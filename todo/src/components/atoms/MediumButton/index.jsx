@@ -6,7 +6,7 @@ const MediumButton = styled.button`
     height: 30px;
     padding: 5px;
     /* border: none; */
-    border: solid 0.15rem black;
+    border: solid 0.05rem black;
     border-radius: 6px;
     background:${props => props._background};
     color:${props => props._color};
