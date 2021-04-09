@@ -23,8 +23,8 @@
   - Styled Components를 활용해서 스타일 작업을 진행 중입니다.
 
 ## 컴포넌트의 역할
-- TodoCard : 투두카드를 렌더하고 수정하는 기능을 구현합니다.
-- TodoColumn : 투두카드를 추가하거나 삭제하는 기능을 구현합니다.
+- TodoCard : 투두카드를 렌더하고 추가 수정 삭제하는 기능을 구현합니다.
+- TodoColumn : 투두카드를 컬럼단위로 정렬할 수 있도록 기능을 구현합니다.
 - TodoColumnContainer : 투두카드의 드래그앤 드랍을 구현합니다.
 - SideNavigation : 히스토리의 목록을 렌더합니다.
 
