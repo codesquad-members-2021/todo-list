@@ -8,6 +8,10 @@
 - Jenny(wjddnjswjd12 ; 정원정12 영어로)
 - Kyle(hayoung123)
 
+## 배포 링크
+
+https://todolist.pyro-squad.com/
+
 ## 웹 프론트 배포
 
 리액트 앱을 서버에 배포할 때는 아래의 쉘 커맨드를 활용한다.
