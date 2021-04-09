@@ -3,6 +3,7 @@ package com.team06.todo.domain;
 import org.springframework.data.annotation.Id;
 
 import java.util.HashMap;
+import java.util.Objects;
 
 public class Card {
     @Id
@@ -13,7 +14,7 @@ public class Card {
     int column_id;
     String media;
 
-    protected Card() {
+    public Card() {
     }
 
     public Card(HashMap<String, String> cardInfo) {
@@ -50,5 +51,18 @@ public class Card {
 
     public void move(HashMap<String, String> cardInfo) {
         this.column_id = Integer.parseInt(cardInfo.get("column_id"));
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Card)) return false;
+        Card card = (Card) o;
+        return Objects.equals(getId(), card.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId());
     }
 }

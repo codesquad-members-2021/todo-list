@@ -38,8 +38,6 @@ public class CardsController {
         return ResponseEntity.ok(card);
     }
 
-    //ios분들께 뭐 있는지 여쭤보기
-    //id로 카드 찾아서 update, update시 모든 정보 오는 것으로
     @PutMapping("/move/{id}")
     public ResponseEntity<Card> move(@PathVariable Long id, @RequestBody HashMap<String, String> cardInfo) {
         Card card = cardsService.findById(id);
@@ -60,8 +58,4 @@ public class CardsController {
         cardsService.delete(id);
         return ResponseEntity.ok(card);
     }
-
-
-
-
 }
