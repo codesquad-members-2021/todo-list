@@ -57,5 +57,5 @@ class ViewController: UIViewController {
 
 // MARK:- test variable
 
-let doingCards = TodoCards(cards: [TodoCard(title: "doing", content: "~~dd", date: ""), TodoCard(), TodoCard(title: "3rd", content: "something blabla", date: "")])
-let doneCards = TodoCards(cards: [TodoCard(title: "done", content: "아무말을 써보겠음", date: ""), TodoCard(), TodoCard(title: "제목임", content: "본 내용은 다음과 같습니다. \n아무 말", date: ""), TodoCard(title: "아아e", content: "후우..", date: "")])
+let doingCards = TodoCards(cards: [TodoCard(title: "doing", content: "~~dd", postTime: "", user: User()), TodoCard(), TodoCard(title: "3rd", content: "something blabla", postTime: "", user: User())])
+let doneCards = TodoCards(cards: [TodoCard(title: "done", content: "아무말을 써보겠음", postTime: "", user: User()), TodoCard(), TodoCard(title: "제목임", content: "본 내용은 다음과 같습니다. \n아무 말", postTime: "", user: User()), TodoCard(title: "아아e", content: "후우..", postTime: "", user: User())])
