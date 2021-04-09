@@ -39,8 +39,6 @@ feature/클래스명/기능 형태로 브랜치 이름을 짓는다.
 
 Github 저장소에서 프로젝트를 생성하고, 기능별로 issue를 생성하여 관리한다.
 
-### iOS 활동사항
-
 
 ### 백엔드 활동사항
 
@@ -59,3 +57,7 @@ Github 저장소에서 프로젝트를 생성하고, 기능별로 issue를 생�
 
 - 엔티티 속성과 URL을 논의하고 API를 만들어서 iOS에게 제공
 - Spring Data JDBC를 이용하고 MySQL 연동하는 것이 처음이여서 화, 수요일에 각자 프로젝트 진행을 해보고 목요일 부터 페어프로그래밍으로 진행
+
+### iOS 활동사항
+
+[ToDoListApp Architecture](https://github.com/kjk402/todo-list/wiki/%5BiOS%5D-ToDoListApp-Architecture)
