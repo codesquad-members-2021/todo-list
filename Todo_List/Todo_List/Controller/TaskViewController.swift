@@ -49,7 +49,6 @@ class TaskViewController: UIViewController {
         
         viewcontroller.definesPresentationContext = true
         viewcontroller.modalPresentationStyle = .formSheet
-        viewcontroller.preferredContentSize = CGSize(width: 400, height: 175)
         self.present(viewcontroller, animated: true)
         
         viewcontroller.setHandler { [weak self] task in

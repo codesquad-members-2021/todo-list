@@ -17,7 +17,7 @@ class AddPopUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        configure()
     }
     @IBAction func cancel(_ sender: UIButton) {
         self.presentingViewController?.dismiss(animated: true, completion: nil)
@@ -35,5 +35,9 @@ class AddPopUpViewController: UIViewController {
     }
     func setHandler(handler : @escaping (TaskVO) -> ()) {
         self.completionHandler = handler
+    }
+    func configure(){
+        view.backgroundColor = .white
+        self.preferredContentSize = CGSize(width: 400, height: 175)
     }
 }
