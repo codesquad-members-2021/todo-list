@@ -1,4 +1,4 @@
-package com.example.todolist.web.exception;
+package com.example.todolist.exception;
 
 public class EntityNotCreateException extends RuntimeException {
     public EntityNotCreateException() {
