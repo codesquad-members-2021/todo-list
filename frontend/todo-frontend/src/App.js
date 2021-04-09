@@ -1,8 +1,8 @@
-import "./App.css";
-import TodoTemplate from "./component/TodoTemplate.jsx";
+import './App.css';
+import TodoView from './component/TodoView.jsx';
 
 function App() {
-  return <TodoTemplate />;
+  return <TodoView />;
 }
 
 export default App;

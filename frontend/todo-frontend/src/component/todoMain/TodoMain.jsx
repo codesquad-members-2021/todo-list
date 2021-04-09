@@ -1,17 +1,18 @@
-import React, { useState } from "react";
-import TodoList from "./todoList/TodoList";
-import style from "./todoMain.module.css";
+import React, { useState } from 'react';
+import TodoList from './todoList/TodoList';
+import style from './todoMain.module.css';
 
 const TodoMain = ({ datas }) => {
   const [todoColumns, setTodoColumns] = useState(datas.todoData);
 
   const deleteTodoColumn = (id) => {
-    setTodoColumns((todoColumns) =>
-      todoColumns.filter((todoCol) => todoCol.id !== id)
-    );
+    setTodoColumns((todoColumns) => {
+      delete todoColumns[id];
+      return { ...todoColumns };
+    });
   };
 
-  const todoColumneList = todoColumns.map((data) => (
+  const todoColumneList = Object.values(todoColumns).map((data) => (
     <TodoList data={data} deleteTodoColumn={deleteTodoColumn} />
   ));
 

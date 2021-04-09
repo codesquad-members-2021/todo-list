@@ -6,28 +6,28 @@ import style from './todoList.module.css';
 const TodoList = ({ data: { id, title, todoCards }, deleteTodoColumn }) => {
   const [todos, setTodos] = useState(todoCards);
   const [formSelected, setFormSelected] = useState(false);
-
-  const addTodoItem = (todoCard) => {
-    setTodos((todos) => [...todos, todoCard]);
+  //수정완료
+  const addTodoItem = (cardId, todoCard) => {
+    setTodos((todos) => ({ ...todos, cardId: todoCard }));
   };
 
+  //수정완료
   const deleteTodoItem = (id) => {
-    setTodos((todos) => todos.filter((todo) => todo.id !== id));
+    setTodos((todos) => {
+      delete todos[id];
+      return { ...todos };
+    });
   };
+  //수정완료
   const editTodoItem = (id, newTodo) => {
-    setTodos((todos) =>
-      todos.map((todo) => {
-        if (todo.id === id) return newTodo;
-        return todo;
-      })
-    );
+    setTodos((todos) => ({ ...todos, [id]: newTodo }));
   };
-  const todoCardList = todos.map((card) => (
+  //수정완료
+  const todoCardList = Object.values(todos).map((card) => (
     <TodoItem todoCard={card} deleteTodoItem={deleteTodoItem} editTodoItem={editTodoItem} />
   ));
 
   const toggleForm = () => {
-    //
     setFormSelected((formSelected) => !formSelected);
   };
 
@@ -35,7 +35,7 @@ const TodoList = ({ data: { id, title, todoCards }, deleteTodoColumn }) => {
     <div>
       <div>
         <span>{title}</span>
-        <span>{todos.length}개</span>
+        <span>{Object.values(todos).length}개</span>
         <button onClick={toggleForm}>➕</button>
         <button onClick={() => deleteTodoColumn(id)}>❌</button>
       </div>
