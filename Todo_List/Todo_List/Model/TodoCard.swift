@@ -11,19 +11,22 @@ class TodoCard {
     
     private(set) var title: String
     private(set) var content: String
-    private(set) var date: String
+    private(set) var postTime: String
+    private var user: User
     
-    init(title: String, content: String, date: String) {
+    init(title: String, content: String, postTime: String, user: User) {
         self.title = title
         self.content = content
-        self.date = date
+        self.postTime = postTime
+        self.user = user
     }
     
     convenience init() {
         let title = "title"
         let content = "content"
-        let date = "2021.04.08"
-        self.init(title: title, content: content, date: date)
+        let postTime = "2021.04.08"
+        let user = User()
+        self.init(title: title, content: content, postTime: postTime, user: user)
     }
     
 }
