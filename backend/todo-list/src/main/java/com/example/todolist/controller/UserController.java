@@ -4,6 +4,7 @@ import com.example.todolist.JwtUtil;
 import com.example.todolist.domain.User;
 import com.example.todolist.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -35,16 +36,22 @@ public class UserController {
 
     @PostMapping("/login")
     public ResponseEntity login(@RequestBody HashMap<String, String> userInfo, HttpServletResponse response) {
-        String userId = userInfo.get("user_id");
-        User user= userRepository.findById(Long.parseLong(userId)).orElseThrow(RuntimeException::new);
+        Long userId = Long.valueOf(userInfo.get("userId"));
+
+        User user = userRepository.findById(userId).orElseThrow(RuntimeException::new);
         if (!user.getPassword().equals(userInfo.get("password"))) {
             throw new RuntimeException();
         }
+
+        HttpHeaders responseHeaders = new HttpHeaders();
+//        responseHeaders.add("userId", String.valueOf(userId));
         String jwtToken = user.getToken();
         Cookie cookie = new Cookie("jwtToken", jwtToken);
         cookie.setPath("/");
         response.addCookie(cookie);
-//        response.addCookie(new Cookie("userId", user.getUserId()+""));
-        return new ResponseEntity(user.getToken(), HttpStatus.OK);
+        Cookie userIdCookie = new Cookie("userId", userId+"");
+        cookie.setPath("/");
+        response.addCookie(userIdCookie);
+        return new ResponseEntity(jwtToken, HttpStatus.OK);
     }
 }

@@ -43,6 +43,7 @@ public class JwtAuthInterceptor implements HandlerInterceptor {
         String token="";
 //        String userId = "";
         for (Cookie cookie : cookies) {
+            System.out.println(cookie.getName());
             if (cookie.getName().equals("jwtToken")) {
                 token = cookie.getValue();
             }
@@ -50,16 +51,17 @@ public class JwtAuthInterceptor implements HandlerInterceptor {
 //                userId = cookie.getValue();
 //            }
         }
-        System.out.println(token);
         jwt = token;
-//        System.out.println(request.getHeader("userId"));
+        System.out.println(request.getHeader("userId"));
 //        System.out.println(userId);
-//        User user = userRepository.findById(Long.valueOf(userId))
-//                .orElseThrow(IllegalArgumentException::new);
+        User user = userRepository.findById(Long.valueOf(request.getHeader("userId")))
+                .orElseThrow(IllegalArgumentException::new);
 //        System.out.println(user.toString());
-        User user = userRepository.findByToken(token);
-        String givenToken = request.getHeader(HEADER_TOKEN_KEY);
-        verifyToken(givenToken, user.getToken());
+//        User user = userRepository.findByToken(token);
+//        String givenToken = request.getHeader(HEADER_TOKEN_KEY);
+//        System.out.println("given token:" + givenToken);
+        System.out.println("token:"+token);
+        verifyToken(token, user.getToken());
         return true;
     }
 
