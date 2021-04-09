@@ -1,0 +1,14 @@
+.headerContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.showLogButton{
+    background-color: white;
+    border: none;
+}
+
+.showLogButton:focus {
+    outline:none;
+}
