@@ -50,4 +50,10 @@
 
 #### Card와 Log의 1대N 관계 VS  Card와 Log를 완전 분리
 
-- Card 마다 Log 를 가지게 해서 ~~~~~를 하려고 구현하려고 시도해봤으나 알 수 없는 에러로 테이블을 분리하기로 결정.
+- Card와 Log를 분리하지않고 Card 마다 Log 를 가지게하여 구현함. SQLSyntaxError를 다음과같은 어노테이션을 외래키를 명시하여 문제 해결
+```java
+// Logs 클래스
+
+    @MappedCollection(idColumn = "card_id")
+    private Set<Log> logs = new HashSet<>();
+```
