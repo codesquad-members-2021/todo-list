@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		719413B4261FC040002D28AC /* NewTaskCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719413B3261FC040002D28AC /* NewTaskCardViewController.swift */; };
 		719413B9261FC759002D28AC /* TaskCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719413B8261FC759002D28AC /* TaskCard.swift */; };
+		719413BE261FD845002D28AC /* TaskCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719413BD261FD845002D28AC /* TaskCards.swift */; };
+		719413C6261FD8AD002D28AC /* TaskCardsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719413C5261FD8AD002D28AC /* TaskCardsManager.swift */; };
 		71A7479A261F0B1E0094936B /* StatusInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A74799261F0B1E0094936B /* StatusInfo.swift */; };
 		71A747A2261F0C4D0094936B /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A747A1261F0C4D0094936B /* TaskViewController.swift */; };
 		76A0A280261EDA440052BB32 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A0A27F261EDA440052BB32 /* AppDelegate.swift */; };
@@ -43,6 +45,8 @@
 /* Begin PBXFileReference section */
 		719413B3261FC040002D28AC /* NewTaskCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskCardViewController.swift; sourceTree = "<group>"; };
 		719413B8261FC759002D28AC /* TaskCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TaskCard.swift; path = Controller/TaskCard.swift; sourceTree = SOURCE_ROOT; };
+		719413BD261FD845002D28AC /* TaskCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCards.swift; sourceTree = "<group>"; };
+		719413C5261FD8AD002D28AC /* TaskCardsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCardsManager.swift; sourceTree = "<group>"; };
 		71A74799261F0B1E0094936B /* StatusInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusInfo.swift; sourceTree = "<group>"; };
 		71A747A1261F0C4D0094936B /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
 		76A0A27C261EDA440052BB32 /* TodoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,8 +158,10 @@
 			isa = PBXGroup;
 			children = (
 				719413B8261FC759002D28AC /* TaskCard.swift */,
+				719413BD261FD845002D28AC /* TaskCards.swift */,
+				719413C5261FD8AD002D28AC /* TaskCardsManager.swift */,
 			);
-			path = Model;
+			name = Model;
 			sourceTree = "<group>";
 		};
 		76A0A2B6261EDA500052BB32 /* View */ = {
@@ -319,11 +325,13 @@
 			files = (
 				76A0A2CE261EE0D10052BB32 /* TaskCell.swift in Sources */,
 				71A7479A261F0B1E0094936B /* StatusInfo.swift in Sources */,
+				719413BE261FD845002D28AC /* TaskCards.swift in Sources */,
 				76A0A284261EDA440052BB32 /* MainViewController.swift in Sources */,
 				76A0A280261EDA440052BB32 /* AppDelegate.swift in Sources */,
 				76A0A282261EDA440052BB32 /* SceneDelegate.swift in Sources */,
 				71A747A2261F0C4D0094936B /* TaskViewController.swift in Sources */,
 				719413B9261FC759002D28AC /* TaskCard.swift in Sources */,
+				719413C6261FD8AD002D28AC /* TaskCardsManager.swift in Sources */,
 				719413B4261FC040002D28AC /* NewTaskCardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

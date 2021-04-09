@@ -6,4 +6,5 @@ struct TaskCard {
     var status: Int?
     var title: String?
     var contents: String?
+    var author: String?
 }
