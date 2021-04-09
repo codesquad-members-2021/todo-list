@@ -22,7 +22,7 @@ public class CardController {
 
     @GetMapping("/logs")
     public LogList logList() {
-        return cardService.getList();
+        return cardService.logList();
     }
 
     @PostMapping("/todos")

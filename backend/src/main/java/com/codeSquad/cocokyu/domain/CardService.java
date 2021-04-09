@@ -28,7 +28,7 @@ public class CardService {
         return cardList;
     }
 
-    public LogList getList() {
+    public LogList logList() {
         List<Log> logs = cardRepository.findAllLog();
         LogList logList = new LogList(logs);
         return logList;
