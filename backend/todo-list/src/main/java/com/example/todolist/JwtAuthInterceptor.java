@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class JwtAuthInterceptor implements HandlerInterceptor {
+    private static final Logger logger = LoggerFactory.getLogger(JwtAuthInterceptor.class);
+
     @Autowired
     private JwtUtil jwtUtil;
 
@@ -22,22 +24,24 @@ public class JwtAuthInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
         logger.info("interceptor!");
-        System.out.println("interceptor!!!");
-        Cookie[] cookies = request.getCookies();
+        try {
+            Cookie[] cookies = request.getCookies();
 
-        String token = "";
-        for (Cookie cookie : cookies) {
-            if (cookie.getName().equals("jwtToken")) {
-                token = cookie.getValue();
+            String token = "";
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("jwtToken")) {
+                    token = cookie.getValue();
+                }
             }
-            if (cookie.getName().equals("userId")) {
-                userId = cookie.getValue();
-            }
+
+            jwtUtil.verifyToken(token);
+
+            User user = userService.findUserByToken(token);
+            request.setAttribute("user", user);
+        } catch (Exception e) {
+            logger.error("유효한 사용자 정보가 없습니다.");
+            return false;
         }
-
-        jwtUtil.verifyToken(token);
-        User user = userService.findUserByToken(token);
-        request.setAttribute("user", user);
         return true;
     }
 }
