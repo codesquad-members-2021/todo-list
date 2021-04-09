@@ -13,7 +13,9 @@ const TodoListForm = ({ addTodoItem, toggleForm }) => {
     addTodoItem(newTodo.id, newTodo);
     inputTitleRef.current.value = '';
     inputContentRef.current.value = '';
+    toggleForm();
   };
+
   const foldForm = (e) => {
     e.preventDefault();
     toggleForm();
