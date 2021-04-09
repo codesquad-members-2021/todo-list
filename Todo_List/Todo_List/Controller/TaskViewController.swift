@@ -53,8 +53,9 @@ class TaskViewController: UIViewController {
         
         viewcontroller.setHandler { [weak self] task in
             self?.taskManager.apepnd(with: task, type: .todo)
+            self?.todo.reloadData()
         }
-        todo.reloadData()
+        
     }
     @IBAction func doingPlus(_ sender: UIButton) {
         taskManager.apepnd(with: TaskVO(), type: .doing)
