@@ -21,7 +21,7 @@ public class CardController {
 
     // CREATE
     @PostMapping
-    public void newCard(Card card) {
+    public void newCard(@RequestBody Card card) {
         cardService.createTodo(card);
     }
 
@@ -50,7 +50,7 @@ public class CardController {
 
     // UPDATE
     @PutMapping("/{id}")
-    public void editCards(@PathVariable Long id, Card newCard) {
+    public void editCards(@PathVariable Long id, @RequestBody Card newCard) {
         cardService.edit(id, newCard);
     }
 
