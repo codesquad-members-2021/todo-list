@@ -1,6 +1,12 @@
 # todo-list
 todo-list 7팀
 
+### 개발 환경
+https://user-images.githubusercontent.com/59398492/114123129-a7eefc00-992c-11eb-8819-67a13cd0f921.jpg
+https://user-images.githubusercontent.com/59398492/114123155-b76e4500-992c-11eb-9fab-bf298e70b01b.jpg
+https://user-images.githubusercontent.com/59398492/114123158-b89f7200-992c-11eb-9392-e8823d075aa7.png
+https://user-images.githubusercontent.com/59398492/114123162-b9380880-992c-11eb-9446-25729659d477.png
+
 ### 팀원 소개
 
 bat(BE) : 무야호~
