@@ -3,6 +3,7 @@ import Button from './components/button/button';
 import Icon from './components/icon/icon';
 import TaskCardCount from './components/taskCardCount/taskCardCount';
 import ColumnHeader from './components/columnHeader/columnHeader';
+import Card from './components/card/card';
 
 function App() {
   return (
@@ -16,6 +17,12 @@ function App() {
       <Button type="edit" name="수정" />
       <TaskCardCount />
       <ColumnHeader />
+      <Card type="default" />
+      <Card type="default" />
+      <Card type="default" />
+      <Card type="default" />
+      <Card type="default" />
+      <Card type="default" />
     </div>
   );
 }

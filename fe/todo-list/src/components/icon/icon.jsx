@@ -34,7 +34,7 @@ const Icon = ({ type }) => {
 export default Icon;
 
 const IconButton = styled.button`
-  color: ${props => (props.type === 'userAction' ? '#010101' : '#bdbdbd')};
+  color: ${(props) => (props.type === 'userAction' ? '#010101' : '#bdbdbd')};
   border: none;
   background-color: transparent;
   outline: none;
@@ -42,7 +42,7 @@ const IconButton = styled.button`
   font-size: 16px;
 
   &:hover {
-    color: ${props => {
+    color: ${(props) => {
       return { add: '#0075DE', delete: '#FF4343' }[props.type] || '#505050';
     }};
   }
