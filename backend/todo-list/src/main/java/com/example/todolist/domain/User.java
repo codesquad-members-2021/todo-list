@@ -29,28 +29,6 @@ public class User {
         this.token = token;
     }
 
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public List<Card> getCards() {
-        return cards;
-    }
-
-
-
     public Long getUserId() {
         return userId;
     }
@@ -59,16 +37,49 @@ public class User {
         this.userId = userId;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     public void setPassword(String password) {
         this.password = password;
     }
 
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public List<Card> getCards() {
+        return cards;
+    }
+
     public void setCards(List<Card> cards) {
         this.cards = cards;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(userId, user.userId) && Objects.equals(name, user.name) && Objects.equals(password, user.password) && Objects.equals(token, user.token) && Objects.equals(cards, user.cards);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(userId, name, password, token, cards);
     }
 
     @Override
@@ -77,20 +88,8 @@ public class User {
                 "userId=" + userId +
                 ", name='" + name + '\'' +
                 ", password='" + password + '\'' +
+                ", token='" + token + '\'' +
                 ", cards=" + cards +
                 '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return Objects.equals(userId, user.userId) && Objects.equals(name, user.name) && Objects.equals(password, user.password) && Objects.equals(cards, user.cards);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(userId, name, password, cards);
     }
 }
