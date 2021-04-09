@@ -12,6 +12,8 @@ public class User {
     @JsonIgnore
     private String password;
 
+    private boolean deleted;
+
     public Long getId() {
         return id;
     }
@@ -34,6 +36,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
     }
 
     public User(String userId, String password) {
