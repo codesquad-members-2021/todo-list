@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import TodoItem from "./TodoItem";
-import TodoListForm from "./TodoListForm";
-import style from "./todoList.module.css";
+import React, { useState } from 'react';
+import TodoItem from './TodoItem';
+import TodoListForm from './TodoListForm';
+import style from './todoList.module.css';
 
 const TodoList = ({ data: { id, title, todoCards }, deleteTodoColumn }) => {
   const [todos, setTodos] = useState(todoCards);
@@ -14,9 +14,16 @@ const TodoList = ({ data: { id, title, todoCards }, deleteTodoColumn }) => {
   const deleteTodoItem = (id) => {
     setTodos((todos) => todos.filter((todo) => todo.id !== id));
   };
-
+  const editTodoItem = (id, newTodo) => {
+    setTodos((todos) =>
+      todos.map((todo) => {
+        if (todo.id === id) return newTodo;
+        return todo;
+      })
+    );
+  };
   const todoCardList = todos.map((card) => (
-    <TodoItem todoCard={card} deleteTodoItem={deleteTodoItem} />
+    <TodoItem todoCard={card} deleteTodoItem={deleteTodoItem} editTodoItem={editTodoItem} />
   ));
 
   const toggleForm = () => {
@@ -33,11 +40,7 @@ const TodoList = ({ data: { id, title, todoCards }, deleteTodoColumn }) => {
         <button onClick={() => deleteTodoColumn(id)}>❌</button>
       </div>
 
-      {formSelected ? (
-        <TodoListForm addTodoItem={addTodoItem} toggleForm={toggleForm} />
-      ) : (
-        <></>
-      )}
+      {formSelected ? <TodoListForm addTodoItem={addTodoItem} toggleForm={toggleForm} /> : <></>}
       <div>{todoCardList}</div>
     </div>
   );
