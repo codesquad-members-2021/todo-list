@@ -46,7 +46,7 @@ public class ApiCardController {
 
     @DeleteMapping("/{columnId}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable long columnId, Card card, HttpSession httpSession) {
+    public void delete(@PathVariable long columnId, HttpSession httpSession) {
         logger.debug("{}번 카드의 삭제 요청", columnId);
         cardRepository.deleteById(columnId);
     }
