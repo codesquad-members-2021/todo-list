@@ -10,10 +10,10 @@
 - 소원칙 : 설계 변경에는 전원 회의
 
 ## 프론트엔드 프로젝트 구조
-- 추상화된 컴포넌트 구조
+- 추상화된 컴포넌트 구조  
 ![image](https://user-images.githubusercontent.com/74038014/114139733-5eada500-994a-11eb-9706-15f493df186a.png)
 
-- 컴포넌트 디렉토리
+- 컴포넌트 디렉토리  
 ![image](https://user-images.githubusercontent.com/13144573/114145621-953aee00-9951-11eb-80e7-b39d2a1ee37e.png)
 
 - 작업 특이 사항
