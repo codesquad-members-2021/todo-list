@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import MenuButton from './MenuButton';
-import SideLog from './SideLog';
+import HeaderMenuButton from './partial/HeaderMenuButton';
 
 const StyledHeader = styled.div`
     --title-color: #010101;
@@ -23,22 +22,15 @@ const StyledHeader = styled.div`
 
         color: var(--title-color, #000);
     }
-
-    .menu {
-        margin-left: auto;
-    }
 `;
 
-const HeaderTemplate = ({ title, logHide, onClickForLogVisible }) => {
+const Header = ({ title, onClickForLogVisible }) => {
     return (
         <StyledHeader>
             <div className="title">{title}</div>
-            <div className="menu">
-                <MenuButton onClick={onClickForLogVisible} />
-                <SideLog logHide={logHide} onClick={onClickForLogVisible} />
-            </div>
+            <HeaderMenuButton onClick={onClickForLogVisible} />
         </StyledHeader>
     );
 };
 
-export default HeaderTemplate;
+export default Header;

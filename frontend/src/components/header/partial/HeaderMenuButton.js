@@ -1,5 +1,10 @@
 import React from 'react';
-import { TranslateBtn as StyledMenuButton } from "../common/StyledModels";
+import styled from "styled-components";
+import { TranslateBtn } from "../../common/StyledModels";
+
+const StyledMenuButton = styled(TranslateBtn)`
+    margin-left: auto;
+`;
 
 const MenuButton = ({ onClick }) => {
     return (
