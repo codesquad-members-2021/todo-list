@@ -5,6 +5,7 @@ enum StatusInfo {
     static let toDo = "To Do"
     static let inProgress = "In Progress"
     static let done = "Done"
+    static let addTask = "addTask"
 }
 
 enum StatusValue {

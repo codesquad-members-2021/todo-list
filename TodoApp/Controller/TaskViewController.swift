@@ -9,10 +9,19 @@ class TaskViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var taskCountLabel: UILabel!
     @IBOutlet weak var taskTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTitleLabel()
         setupTaskCountLable()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == StatusInfo.addTask {
+            if let newTaskViewController = segue.destination as? NewTaskViewController {
+                newTaskViewController.id = self.id
+            }
+        }
     }
     
     // Custom

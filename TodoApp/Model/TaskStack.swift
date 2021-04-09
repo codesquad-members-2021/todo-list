@@ -1,10 +1,10 @@
 //  Created by 김지선 on 2021/04/09.
 import Foundation
 
-struct TaskStack {
-    private(set) var taskCards = [TaskCard]()
+class TaskStack {
+    private var taskCards = [TaskCard]()
     
-    func insertTask() {
-        
+    func insertTask(_ card: TaskCard) {
+        taskCards.append(card)
     }
 }
