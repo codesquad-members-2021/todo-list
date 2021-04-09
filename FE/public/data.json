@@ -1,26 +1,46 @@
- [
+[
   {
-    "id": 1,
-    "title": "testTitle",
-    "content": "리액트 공부하기",
-    "author": "hiroGoodyQ",
-    "action": null,
-    "column": {
-        "prev": null,
-        "curr": "ToDo"
-     },
-    "time": "2021-02-01"
-  },
-  {
-    "id": 2,
-    "title": "testTitle2",
-    "content": "페어프로그래밍",
-    "author": "hiroGoodyQ",
-    "action": null,
-    "column": {
-        "prev": "null",
-        "curr": "ToDo"
-     },
-    "date": "2021-02-02"
+    "userID": "Q",
+    "columns": [
+      {
+        "id": 1,
+        "title": "해야할 일",
+        "cards": [
+          {
+            "id": 1,
+            "title": "리액트 연습",
+            "content": "리액트를 연습해보자",
+            "author": "hiroGoodyQ",
+            "time": "2021-02-01"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "하고 있는 일",
+        "cards": [
+          {
+            "id": 1,
+            "title": "이거는 진행중",
+            "content": "리액트를 연습해보는중이다",
+            "author": "hiroGoodyQ",
+            "time": "2021-02-01"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "title": "완료한 일",
+        "cards": [
+          {
+            "id": 1,
+            "title": "이거는 끝났다.",
+            "content": "리액트를 연습했다",
+            "author": "hiroGoodyQ",
+            "time": "2021-02-01"
+          }
+        ]
+      }
+    ]
   }
 ]
