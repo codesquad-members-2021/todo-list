@@ -47,9 +47,9 @@ public class CardController {
 //        System.out.println(userId);
 //                User user = userRepository.findById(Long.parseLong(request.getHeader("userId")))
 //                .orElseThrow(IllegalArgumentException::new);
-        String jwt = jwtAuthInterceptor.getJwt();
-        User user = userRepository.findByToken(jwt);
-//        User user = new User("rororo", "1234");
+       // String jwt = jwtAuthInterceptor.getJwt();
+       // User user = userRepository.findByToken(jwt);
+        User user = new User("rororo", "1234","asdasd");
         Card card = new Card(user, cardInfo.get("title"), cardInfo.get("contents"), cardInfo.get("status"));
         cardRepository.save(card);
         return new ResponseEntity<>(card, HttpStatus.OK);
