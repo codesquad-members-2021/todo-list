@@ -2,19 +2,14 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import NavigationBar from "./navigationBar";
 
-function HeaderPresentational() {
-  const [mode, setMode] = useState(false);
-
+function HeaderPresentational({mode, setMode}) {
+  
   return (
     <div>
       <Header>
         <div>Todo-List</div>
-        <Header_button
-          type="button"
-          value="MENU"
-          onClick={() => {
-            mode ? setMode(false) : setMode(true);
-          }}
+        <Header_button type="button" value="MENU"
+          onClick={() => { mode ? setMode(false) : setMode(true); }}
         />
         {mode && <NavigationBar mode={mode} setMode={setMode}></NavigationBar>}
       </Header>

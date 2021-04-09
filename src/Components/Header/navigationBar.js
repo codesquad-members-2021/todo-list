@@ -6,11 +6,7 @@ function NavigationBar({ mode, setMode }) {
     <Bar>
       <BarHeader>
         <UpdateList>Update List</UpdateList>
-        <CLOSE
-          onClick={() => {
-            setMode(!mode);
-          }}
-        >
+        <CLOSE onClick={() => { setMode(!mode); }} >
           나가기
         </CLOSE>
       </BarHeader>
