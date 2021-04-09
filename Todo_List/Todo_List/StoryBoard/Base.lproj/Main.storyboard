@@ -24,7 +24,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="1194" height="72"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TO-DO LIST" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vEx-dQ-rMg">
-                                        <rect key="frame" x="48" y="13" width="171" height="46"/>
+                                        <rect key="frame" x="48" y="13" width="246" height="46"/>
                                         <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="32"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -51,7 +51,7 @@
                                     <constraint firstAttribute="trailing" secondItem="qPw-Sk-0l0" secondAttribute="trailing" constant="52" id="ad0-9m-taG"/>
                                     <constraint firstItem="vEx-dQ-rMg" firstAttribute="leading" secondItem="TjA-52-l88" secondAttribute="leading" constant="48" id="kwl-EF-kt0"/>
                                     <constraint firstAttribute="bottom" secondItem="qPw-Sk-0l0" secondAttribute="bottom" constant="30" id="tMh-wB-G52"/>
-                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="vEx-dQ-rMg" secondAttribute="trailing" constant="975" id="zUZ-j7-HeZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="vEx-dQ-rMg" secondAttribute="trailing" constant="900" id="zUZ-j7-HeZ"/>
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="apF-eE-5It">

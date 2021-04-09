@@ -22,7 +22,7 @@ extension TaskViewController {
 }
 extension TaskViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1 //각 섹션에는 한개의 row만 존재한다.
+        return TaskViewConstant.numberOfRowsInSection //각 섹션에는 한개의 row만 존재한다.
     }
     /*섹션의 수를 늘리는 프로토콜*/
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -50,7 +50,7 @@ extension TaskViewController : UITableViewDelegate, UITableViewDataSource {
     
     /*섹션의 헤더섹션 사이즈를 늘리는 방법.*/
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 20
+        return TaskViewConstant.heightForHeaderInSection
     }
     
     

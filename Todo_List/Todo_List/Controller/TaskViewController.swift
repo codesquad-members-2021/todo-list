@@ -9,8 +9,6 @@ import UIKit
 
 class TaskViewController: UIViewController {
     
-    let estimatedRowHeight : CGFloat = 108
-    
     @IBOutlet weak var todo: UITableView!
     @IBOutlet weak var doing: UITableView!
     @IBOutlet weak var done: UITableView!
@@ -30,11 +28,7 @@ class TaskViewController: UIViewController {
     }
     @IBAction func todoPlus(_ sender: UIButton) {
     
-        let storyboard = UIStoryboard(name: "Modal", bundle: nil)
-        let viewcontroller = storyboard.instantiateViewController(identifier: "Modal") as! ModalViewController
-        
-        viewcontroller.definesPresentationContext = true
-        viewcontroller.modalPresentationStyle = .formSheet
+        let viewcontroller = createModalViewController()
         self.present(viewcontroller, animated: true)
         
         viewcontroller.setHandler { [weak self] task in
@@ -44,12 +38,30 @@ class TaskViewController: UIViewController {
         
     }
     @IBAction func doingPlus(_ sender: UIButton) {
-        taskManager.apepnd(with: TaskVO(), type: .doing)
-        doing.reloadData()
+        let viewcontroller = createModalViewController()
+        self.present(viewcontroller, animated: true)
+        
+        viewcontroller.setHandler { [weak self] task in
+            self?.taskManager.apepnd(with: task, type: .doing)
+            self?.doing.reloadData()
+        }
     }
     @IBAction func donePlus(_ sender: UIButton) {
-        taskManager.apepnd(with: TaskVO(), type: .done)
-        done.reloadData()
+        let viewcontroller = createModalViewController()
+        self.present(viewcontroller, animated: true)
+        
+        viewcontroller.setHandler { [weak self] task in
+            self?.taskManager.apepnd(with: task, type: .done)
+            self?.done.reloadData()
+        }
+    }
+    func createModalViewController() -> ModalViewController{
+        let storyboard = UIStoryboard(name: "Modal", bundle: nil)
+        let viewcontroller = storyboard.instantiateViewController(identifier: "Modal") as! ModalViewController
+        
+        viewcontroller.definesPresentationContext = true
+        viewcontroller.modalPresentationStyle = .formSheet
+        return viewcontroller
     }
 }
 // MARK: - Register Nib and Configuration
@@ -64,12 +76,12 @@ extension TaskViewController {
     }
     func configureTextField(){
         todo.rowHeight = UITableView.automaticDimension
-        todo.estimatedRowHeight = estimatedRowHeight
+        todo.estimatedRowHeight = TaskViewConstant.estimatedRowHeight
         
         doing.rowHeight = UITableView.automaticDimension
-        doing.estimatedRowHeight = estimatedRowHeight
+        doing.estimatedRowHeight = TaskViewConstant.estimatedRowHeight
         
         done.rowHeight = UITableView.automaticDimension
-        done.estimatedRowHeight = estimatedRowHeight
+        done.estimatedRowHeight = TaskViewConstant.estimatedRowHeight
     }
 }
