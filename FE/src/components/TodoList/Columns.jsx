@@ -7,24 +7,28 @@ import Form from './Form'
 
 const Column = ({data:{columns}, changeColumns}) => {
     const [initialColumns, setColumn] = useState(columns);
+    const [cardList, setCardList] = useState(columns.cards)
     // 현재 true값 false값으로 변경해주어야함
     const [isClicked, setIsClicked] = useState(true);
     // const toggleCard = () => {
 
     // }
+
+    const addCard = ({newCard}) => {
+        setCardList([...cardList, newCard])
+    }
+
     const columnLists = initialColumns.map(({id, title, cards}) => (
         <li key={id}>
         <header>
         <span>{title}</span>
         <span>{cards.length}개</span>
-        <button onclick><i className="fas fa-plus"></i></button>
+        <button><i className="fas fa-plus"></i></button>
         <button><i className="fas fa-times"></i></button>
         </header>
 
         <div>
-        <Form isClicked={isClicked}/>
-        <div>{cards[0].title}</div>
-        <div>{cards[0].content}</div>
+        <Form isClicked={isClicked} cardList={cardList} addCard={addCard}/>
         {/* <Card cardData /> */}
         </div>
         </li>
