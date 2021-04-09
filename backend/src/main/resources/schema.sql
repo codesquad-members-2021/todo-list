@@ -6,6 +6,6 @@ CREATE TABLE card
     title    varchar(50),
     contents varchar(500),
     column_id   int,
-    media    varchar(50),
+    created_date_time datetime,
     primary key(id)
 );

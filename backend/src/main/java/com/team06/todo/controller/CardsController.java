@@ -37,7 +37,7 @@ public class CardsController {
         cardsService.save(card);
         return ResponseEntity.ok(card);
     }
-
+     // 수정 : 데이터 전체
     @PutMapping("/move/{id}")
     public ResponseEntity<Card> move(@PathVariable Long id, @RequestBody HashMap<String, String> cardInfo) {
         Card card = cardsService.findById(id);
@@ -56,6 +56,7 @@ public class CardsController {
     public ResponseEntity<Card> delete(@PathVariable Long id) {
         Card card = cardsService.findById(id);
         cardsService.delete(id);
+        ResponseEntity.ok();
         return ResponseEntity.ok(card);
     }
 }

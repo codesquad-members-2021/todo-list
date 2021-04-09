@@ -2,6 +2,7 @@ package com.team06.todo.domain;
 
 import org.springframework.data.annotation.Id;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Objects;
 
@@ -12,7 +13,7 @@ public class Card {
     String title;
     String contents;
     int column_id;
-    String media;
+    LocalDateTime created_date_time;
 
     public Card() {
     }
@@ -21,7 +22,7 @@ public class Card {
         this.title = cardInfo.get("title");
         this.contents = cardInfo.get("contents");
         this.column_id = Integer.parseInt(cardInfo.get("column_id"));
-        this.media = cardInfo.get("media");
+        this.created_date_time = LocalDateTime.now();
     }
 
     public Long getId() {
@@ -40,8 +41,8 @@ public class Card {
         return column_id;
     }
 
-    public String getMedia() {
-        return media;
+    public LocalDateTime getCreated_date_time() {
+        return created_date_time;
     }
 
     public void update(HashMap<String, String> cardInfo) {
