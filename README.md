@@ -47,7 +47,9 @@
 * [BE] https://github.com/janeljs/todo-list/projects/2
 
 
-### API 구조등 
+### API 구조등
+
+* category
 
 ``` Json
 [
@@ -84,6 +86,23 @@
     ]}, 
     {"done": [card]}
 ]
+```
+
+* history (이 부분은 고민을 해보기로~ 아직 결정이 되지 않음.)
+
+``` Json
+[{ 
+          "card" :{              
+                    "title": "오늘의 할일",
+                    "contents": "안녕하세요",
+                    "user": {
+                                "name": "min",
+                                "profileUrl":"https:image-string-dfsd.jpg"
+                             },
+                     "postTime" : "2021-04-09 02:17:38" 
+                   },
+          "status" : "update"
+}]  
 ```
 
 
