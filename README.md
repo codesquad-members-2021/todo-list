@@ -68,3 +68,4 @@ Github 저장소에서 프로젝트를 생성하고, 기능별로 issue를 생�
 - Network 구조 설계
 - URL을 구성하는 EndPoint 구조체 생성
 - Card를 가져오는 GET 요청
+- POST 요청 진행 중
