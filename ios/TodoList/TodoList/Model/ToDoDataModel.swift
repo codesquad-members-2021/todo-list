@@ -21,6 +21,6 @@ struct ToDoItem: Codable {
     let id: String
     let title: String
     let contents: String
-    let create_date_time: String
+    let createDateTime: String
     let status: String
 }

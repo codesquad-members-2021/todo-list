@@ -8,17 +8,14 @@
 import Foundation
 
 class DataManager {
-    
-    static func getData(urlString: String, completion: @escaping (String) -> ()) {
+    static func getData(urlString: String, completeHandler: @escaping (ToDoList?) -> ()) {
         if let url = URL(string: urlString) {
             URLSession.shared.dataTask(with: url) { (data, response, error) in
                 if let data = data {
-                    let result = JSONParser.parseData(data: data)!
-                    print(result)
-                    completion(result.getTodoListString())
+                    let result = JSONParser.parseData(data: data)
+                    completeHandler(result)
                 }
             }.resume()
         }
     }
-    
 }
