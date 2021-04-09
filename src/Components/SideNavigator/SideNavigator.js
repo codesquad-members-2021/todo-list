@@ -1,8 +1,8 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
-import TodoCard from "./TodoCard";
+import TodoCard from "../Header/TodoCard";
 
-function NavigationBar({ mode }) {
+function SideNavigator({ mode, setMode }) {
   const obj = [
     { title: "git", author: "neis", age: 28 },
     { title: "javascript", author: "pampam", age: 29 },
@@ -13,6 +13,13 @@ function NavigationBar({ mode }) {
     <Bar style={{ mode }}>
       <BarHeader>
         <UpdateList>Update List</UpdateList>
+        <Close_btn
+          onClick={function () {
+            setMode(false);
+          }}
+        >
+          EXIT
+        </Close_btn>
       </BarHeader>
       {obj.map((v) => {
         return (
@@ -27,6 +34,12 @@ function NavigationBar({ mode }) {
     </Bar>
   );
 }
+
+const Close_btn = styled.div`
+  margin: 3% 5%;
+  font-size: 20px;
+  cursor: pointer;
+`;
 
 const slideIn = keyframes`
     from{
@@ -52,12 +65,12 @@ const slideOut = keyframes`
 
 const Bar = styled.div`
   position: absolute;
+  z-index: ${(props) => (props.style.mode ? 1 : -1)};
   box-sizing: border-box;
-  top: 60%;
-  right: 10%;
+  top: 0;
+  right: 0;
   width: 20%;
-  height: 350%;
-  z-index: 1;
+  height: 100%;
   border: 1px solid black;
   background-color: white;
 
@@ -77,4 +90,4 @@ const UpdateList = styled.p`
   font-size: 20px;
 `;
 
-export default NavigationBar;
+export default SideNavigator;
