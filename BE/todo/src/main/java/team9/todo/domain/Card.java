@@ -81,4 +81,11 @@ public class Card {
     public void setDeleted(boolean deleted) {
         this.deleted = deleted;
     }
+
+    public void update(Card card) {
+        this.title = card.title;
+        this.content = card.content;
+        this.priority = card.priority;
+        this.columnType = card.columnType;
+    }
 }
