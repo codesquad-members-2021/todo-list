@@ -8,6 +8,7 @@ function NavigationBar({ mode }) {
     { title: "javascript", author: "pampam", age: 29 },
     { title: "node", author: "peng", age: 27 },
   ];
+
   return (
     <Bar style={{ mode }}>
       <BarHeader>
