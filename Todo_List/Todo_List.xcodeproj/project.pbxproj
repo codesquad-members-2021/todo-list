@@ -14,6 +14,9 @@
 		10C1B3FB261EDE9F00B6BD9E /* TaskVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C1B3FA261EDE9F00B6BD9E /* TaskVO.swift */; };
 		10C1B409261EFE6900B6BD9E /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C1B408261EFE6900B6BD9E /* ModalViewController.swift */; };
 		10C1B40E261EFEA600B6BD9E /* Modal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10C1B40D261EFEA600B6BD9E /* Modal.storyboard */; };
+		10E6431826201822002D6FE5 /* TaskViewController+Drag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E6431726201822002D6FE5 /* TaskViewController+Drag.swift */; };
+		10E6431D26201835002D6FE5 /* TaskViewController+Drop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E6431C26201835002D6FE5 /* TaskViewController+Drop.swift */; };
+		10E6432226201842002D6FE5 /* TaskViewController+Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E6432126201842002D6FE5 /* TaskViewController+Data.swift */; };
 		FA41FF04261C4FD2004ECD45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA41FF03261C4FD2004ECD45 /* AppDelegate.swift */; };
 		FA41FF06261C4FD2004ECD45 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA41FF05261C4FD2004ECD45 /* SceneDelegate.swift */; };
 		FA41FF08261C4FD2004ECD45 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA41FF07261C4FD2004ECD45 /* ViewController.swift */; };
@@ -50,6 +53,9 @@
 		10C1B3FA261EDE9F00B6BD9E /* TaskVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskVO.swift; sourceTree = "<group>"; };
 		10C1B408261EFE6900B6BD9E /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		10C1B40D261EFEA600B6BD9E /* Modal.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Modal.storyboard; sourceTree = "<group>"; };
+		10E6431726201822002D6FE5 /* TaskViewController+Drag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskViewController+Drag.swift"; sourceTree = "<group>"; };
+		10E6431C26201835002D6FE5 /* TaskViewController+Drop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskViewController+Drop.swift"; sourceTree = "<group>"; };
+		10E6432126201842002D6FE5 /* TaskViewController+Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskViewController+Data.swift"; sourceTree = "<group>"; };
 		FA41FF00261C4FD2004ECD45 /* Todo_List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Todo_List.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA41FF03261C4FD2004ECD45 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA41FF05261C4FD2004ECD45 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -178,8 +184,11 @@
 			isa = PBXGroup;
 			children = (
 				FA41FF07261C4FD2004ECD45 /* ViewController.swift */,
-				107249DA261DC182005B3DD8 /* TaskViewController.swift */,
 				10C1B408261EFE6900B6BD9E /* ModalViewController.swift */,
+				107249DA261DC182005B3DD8 /* TaskViewController.swift */,
+				10E6431726201822002D6FE5 /* TaskViewController+Drag.swift */,
+				10E6431C26201835002D6FE5 /* TaskViewController+Drop.swift */,
+				10E6432126201842002D6FE5 /* TaskViewController+Data.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -327,8 +336,11 @@
 			files = (
 				107249D5261DBEEF005B3DD8 /* TaskCell.swift in Sources */,
 				FA41FF08261C4FD2004ECD45 /* ViewController.swift in Sources */,
+				10E6431D26201835002D6FE5 /* TaskViewController+Drop.swift in Sources */,
+				10E6431826201822002D6FE5 /* TaskViewController+Drag.swift in Sources */,
 				10AA054D261FE73C00CAD7D0 /* TaskVOManager.swift in Sources */,
 				107249DB261DC182005B3DD8 /* TaskViewController.swift in Sources */,
+				10E6432226201842002D6FE5 /* TaskViewController+Data.swift in Sources */,
 				10C1B3FB261EDE9F00B6BD9E /* TaskVO.swift in Sources */,
 				FA41FF04261C4FD2004ECD45 /* AppDelegate.swift in Sources */,
 				10C1B409261EFE6900B6BD9E /* ModalViewController.swift in Sources */,
