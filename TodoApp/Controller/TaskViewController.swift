@@ -1,10 +1,4 @@
-//
-//  TaskViewController.swift
-//  TodoApp
-//
 //  Created by 김지선 on 2021/04/08.
-//
-
 import UIKit
 
 class TaskViewController: UIViewController {
@@ -24,11 +18,7 @@ class TaskViewController: UIViewController {
     // Custom
     private func setupTitleLabel() {
         guard let id = id else { return }
-        let titles: [Int: String] = [
-            StatusValue.toDo: StatusInfo.toDo,
-            StatusValue.inProgress: StatusInfo.inProgress,
-            StatusValue.done:StatusInfo.done]
-        
+        let titles = TitleList.ofStatus
         titleLabel.text = titles[id]
     }
     
