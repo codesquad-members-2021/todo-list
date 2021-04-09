@@ -1,5 +1,7 @@
 package com.codesquad.esfj.todolist.task;
 
+import org.springframework.util.StringUtils;
+
 public class Task {
     public static final long TOP_PREVIOUS_ID = -1L;
 
@@ -9,12 +11,17 @@ public class Task {
     private String writer;
     private boolean deleted;
     private Long previousId = TOP_PREVIOUS_ID;
+    private String taskType;
 
-    public Task(Long id, String title, String content, String writer) {
+    public Task(Long id, String title, String content, String writer, String taskType) {
         this.id = id;
         this.title = title;
         this.content = content;
         this.writer = writer;
+        if (!StringUtils.hasText(taskType)) {
+            throw new IllegalArgumentException("Task type is null or empty");
+        }
+        this.taskType = taskType;
     }
 
     public Long getId() {
@@ -39,6 +46,10 @@ public class Task {
 
     public Long getPreviousId() {
         return previousId;
+    }
+
+    public String getTaskType() {
+        return taskType;
     }
 
     public void moveAfter(Long targetId) {
@@ -68,6 +79,9 @@ public class Task {
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
                 ", writer='" + writer + '\'' +
+                ", deleted=" + deleted +
+                ", previousId=" + previousId +
+                ", taskType='" + taskType + '\'' +
                 '}';
     }
 }

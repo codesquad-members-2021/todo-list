@@ -10,8 +10,8 @@ import java.util.stream.Collectors;
 @Component
 public class TaskRepository {
     private Map<Long, Task> tasks = new ConcurrentHashMap<Long, Task>() {{
-        Task task = new Task(1L, "title1", "content1", "writer1");
-        Task task2 = new Task(2L, "title2", "content2", "writer2");
+        Task task = new Task(1L, "title1", "content1", "writer1", "todo");
+        Task task2 = new Task(2L, "title2", "content2", "writer2", "todo");
         task.moveAfter(2L);
         put(1L, task);
         put(2L, task2);
