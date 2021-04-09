@@ -5,14 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="af93a8a2-2eed-469e-a744-7ac329506fe2" name="Default Changelist" comment="fix: jwt 인증 관련 에러 해결, 세션 인증 방식을 토큰 인증으로 변경">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/JwtAuthInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/JwtAuthInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/Response.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/ApiResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/controller/CardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/controller/CardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/todo-list/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/backend/todo-list/.gitignore" afterDir="false" />
     </list>
-    <list id="e789658e-71ba-41fc-810c-115e6323bee0" name="Changes by yunhyeji" comment="">
-      <change beforePath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/JwtAuthInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/JwtAuthInterceptor.java" afterDir="false" />
-    </list>
+    <list id="e789658e-71ba-41fc-810c-115e6323bee0" name="Changes by yunhyeji" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,16 +46,6 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/JwtAuthInterceptor.java">
-      <ranges>
-        <range start1="15" end1="15" start2="15" end2="17" changelist="af93a8a2-2eed-469e-a744-7ac329506fe2" />
-        <range start1="24" end1="26" start2="26" end2="28" changelist="e789658e-71ba-41fc-810c-115e6323bee0" />
-        <range start1="27" end1="36" start2="29" end2="35" changelist="af93a8a2-2eed-469e-a744-7ac329506fe2" />
-        <range start1="37" end1="40" start2="36" end2="44" changelist="af93a8a2-2eed-469e-a744-7ac329506fe2" />
-      </ranges>
-    </file>
-  </component>
   <component name="ProjectId" id="1qoZS7VqS2TcEUdf5pH0pvtyiJp" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -87,17 +72,6 @@
     <property name="settings.editor.selected.configurable" value="preferences.editor" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="TodoListApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="backend.todo-list.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.todolist.TodoListApplication" />
@@ -121,6 +95,7 @@
       <workItem from="1617881539581" duration="16728000" />
       <workItem from="1617898878065" duration="5178000" />
       <workItem from="1617965898351" duration="17114000" />
+      <workItem from="1617986554460" duration="30000" />
     </task>
     <task id="LOCAL-00001" summary="bug: jwt 인증 관련 오류 발생">
       <created>1617898549211</created>
