@@ -29,6 +29,23 @@ class DoViewController: UIViewController {
             }
         }
     }
+    
+    func configure() {
+        doTableView.dataSource = dataSource
+        doTableView.delegate = delegate
+        
+        doTableView.estimatedRowHeight = 108
+        doTableView.rowHeight = UITableView.automaticDimension
+    }
+    
+    func setupUseCase() {
+        DoingUseCase().loadDoTask { tasks in
+            self.dataSource.tasks = tasks
+            DispatchQueue.main.async { [weak self] in
+                self?.doTableView.reloadData()
+            }
+        }
+    }
 }
 
 

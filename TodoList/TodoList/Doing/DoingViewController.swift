@@ -17,12 +17,19 @@ class DoingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .clear
+        configure()
+        setupUseCase()
+    }
+    
+    func configure() {
         doingTableView.dataSource = doingDataSource
         doingTableView.delegate = doingDelegate
         
         doingTableView.estimatedRowHeight = 108
         doingTableView.rowHeight = UITableView.automaticDimension
-        
+    }
+    
+    func setupUseCase() {
         DoingUseCase().loadDoingTask { tasks in
             self.doingDataSource.tasks = tasks
             DispatchQueue.main.async { [weak self] in
