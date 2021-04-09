@@ -62,5 +62,13 @@ Github 저장소에서 프로젝트를 생성하고, 기능별로 issue를 생�
 
 [ToDoListApp Architecture](https://github.com/kjk402/todo-list/wiki/%5BiOS%5D-ToDoListApp-Architecture)
 
+**활동 진행 사항**
 - 메인 board UI 개발
 - 제공 받은 API를 사용하여 앱 domain / data layer 설계 및 구현(중)
+- <Network>
+  Network 구조 설계
+  URL을 구성하는 EndPoint 구조체 생성
+  Card를 가져오는 GET 요청
+- 진행중
+  <Network> 
+  POST 요청
