@@ -20,6 +20,7 @@
 		BF7EB2AA261C419E003EB682 /* DoingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7EB2A9261C419E003EB682 /* DoingViewController.swift */; };
 		BF7EB2AF261C4E5C003EB682 /* DoingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7EB2AE261C4E5C003EB682 /* DoingTableViewCell.swift */; };
 		BFA75568261FE696008FB904 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA75567261FE696008FB904 /* HTTPMethod.swift */; };
+		BFA7556D261FEBE2008FB904 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA7556C261FEBE2008FB904 /* AddViewController.swift */; };
 		BFBF30E4261D4E65000BDDE3 /* DoingDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBF30E3261D4E65000BDDE3 /* DoingDataSource.swift */; };
 		BFBF30E9261D4F01000BDDE3 /* DoingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBF30E8261D4F01000BDDE3 /* DoingDelegate.swift */; };
 		D0F41D0D261E9EC60024D7B1 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F41D0C261E9EC60024D7B1 /* EndPoint.swift */; };
@@ -69,6 +70,7 @@
 		BF7EB2A9261C419E003EB682 /* DoingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoingViewController.swift; sourceTree = "<group>"; };
 		BF7EB2AE261C4E5C003EB682 /* DoingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoingTableViewCell.swift; sourceTree = "<group>"; };
 		BFA75567261FE696008FB904 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		BFA7556C261FEBE2008FB904 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		BFBF30E3261D4E65000BDDE3 /* DoingDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoingDataSource.swift; sourceTree = "<group>"; };
 		BFBF30E8261D4F01000BDDE3 /* DoingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoingDelegate.swift; sourceTree = "<group>"; };
 		D0F41D0C261E9EC60024D7B1 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				BF7EB269261C3CBF003EB682 /* AppDelegate.swift */,
 				BF7EB26B261C3CBF003EB682 /* SceneDelegate.swift */,
 				BF7EB26D261C3CBF003EB682 /* ViewController.swift */,
+				BFA7556C261FEBE2008FB904 /* AddViewController.swift */,
 				D0F41D3C261EEA580024D7B1 /* Do */,
 				BF7EB2A4261C4199003EB682 /* DoneViewController.swift */,
 				BFBF30ED261D50CB000BDDE3 /* Doing */,
@@ -335,6 +338,7 @@
 				BF7EB2A5261C4199003EB682 /* DoneViewController.swift in Sources */,
 				D0F41D12261E9FE70024D7B1 /* URLSessionManager.swift in Sources */,
 				BF7EB2AF261C4E5C003EB682 /* DoingTableViewCell.swift in Sources */,
+				BFA7556D261FEBE2008FB904 /* AddViewController.swift in Sources */,
 				BFBF30E4261D4E65000BDDE3 /* DoingDataSource.swift in Sources */,
 				D0F41D46261EEB8C0024D7B1 /* DoDelegate.swift in Sources */,
 				D0F41D4B261EEC360024D7B1 /* DoTableViewCell.swift in Sources */,

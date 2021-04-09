@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="ipad10_9rounded" orientation="landscape" layout="fullscreen" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -100,6 +100,9 @@
                                 </constraints>
                                 <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="plus" catalog="system"/>
+                                <connections>
+                                    <segue destination="3xe-SQ-qI0" kind="presentation" modalPresentationStyle="overFullScreen" id="Au1-tv-r1v"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="완료한 일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xTI-Ih-FwX">
                                 <rect key="frame" x="616" y="123" width="71" height="26"/>
@@ -355,27 +358,85 @@
             </objects>
             <point key="canvasLocation" x="269" y="826"/>
         </scene>
-        <!--View Controller-->
+        <!--Add View Controller-->
         <scene sceneID="zkg-iw-JKO">
             <objects>
-                <viewController modalTransitionStyle="crossDissolve" id="3xe-SQ-qI0" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" id="3xe-SQ-qI0" customClass="AddViewController" customModule="TodoList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kVM-ir-hoW">
                         <rect key="frame" x="0.0" y="0.0" width="1180" height="820"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TKC-9P-2hw">
-                                <rect key="frame" x="141" y="237" width="423" height="225"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TKC-9P-2hw">
+                                <rect key="frame" x="390" y="322.5" width="400" height="175"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="새로운 카드 추가" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KLB-g5-AvY">
+                                        <rect key="frame" x="16" y="16" width="368" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="제목을 입력하세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qu9-QT-TRy">
+                                        <rect key="frame" x="16" y="52.5" width="368" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="내용을 입력하세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wlL-bf-hFn">
+                                        <rect key="frame" x="16" y="94.5" width="368" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="doR-6O-KAP">
+                                        <rect key="frame" x="354" y="129" width="30" height="30"/>
+                                        <state key="normal" title="등록"/>
+                                        <connections>
+                                            <action selector="registerButtonTouched:" destination="3xe-SQ-qI0" eventType="touchUpInside" id="Oce-lC-Mx0"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NN3-nm-eqy">
+                                        <rect key="frame" x="316" y="129" width="30" height="30"/>
+                                        <state key="normal" title="취소"/>
+                                        <connections>
+                                            <action selector="closeButtonTouched:" destination="3xe-SQ-qI0" eventType="touchUpInside" id="VJi-rO-UCV"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="doR-6O-KAP" secondAttribute="bottom" constant="16" id="0oz-yt-eJH"/>
+                                    <constraint firstItem="doR-6O-KAP" firstAttribute="centerY" secondItem="NN3-nm-eqy" secondAttribute="centerY" id="2PJ-Ps-vbF"/>
+                                    <constraint firstItem="KLB-g5-AvY" firstAttribute="top" secondItem="TKC-9P-2hw" secondAttribute="top" constant="16" id="3Da-vI-zae"/>
+                                    <constraint firstItem="wlL-bf-hFn" firstAttribute="trailing" secondItem="Qu9-QT-TRy" secondAttribute="trailing" id="6aE-ZB-pxm"/>
+                                    <constraint firstAttribute="trailing" secondItem="KLB-g5-AvY" secondAttribute="trailing" constant="16" id="QyM-9O-RB7"/>
+                                    <constraint firstItem="wlL-bf-hFn" firstAttribute="leading" secondItem="Qu9-QT-TRy" secondAttribute="leading" id="Vkb-EL-bcM"/>
+                                    <constraint firstAttribute="width" constant="400" id="cin-zm-vB5"/>
+                                    <constraint firstItem="Qu9-QT-TRy" firstAttribute="trailing" secondItem="KLB-g5-AvY" secondAttribute="trailing" id="ee3-Bu-RCz"/>
+                                    <constraint firstAttribute="height" constant="175" id="jQe-M8-tYd"/>
+                                    <constraint firstItem="Qu9-QT-TRy" firstAttribute="leading" secondItem="KLB-g5-AvY" secondAttribute="leading" id="o9N-iZ-RAt"/>
+                                    <constraint firstItem="doR-6O-KAP" firstAttribute="leading" secondItem="NN3-nm-eqy" secondAttribute="trailing" constant="8" id="r77-vp-goT"/>
+                                    <constraint firstItem="doR-6O-KAP" firstAttribute="top" secondItem="wlL-bf-hFn" secondAttribute="bottom" constant="0.5" id="rOx-Eb-Xdq"/>
+                                    <constraint firstItem="KLB-g5-AvY" firstAttribute="leading" secondItem="TKC-9P-2hw" secondAttribute="leading" constant="16" id="trC-ng-GOh"/>
+                                    <constraint firstAttribute="trailing" secondItem="doR-6O-KAP" secondAttribute="trailing" constant="16" id="yt0-1S-Xtg"/>
+                                    <constraint firstItem="Qu9-QT-TRy" firstAttribute="top" secondItem="KLB-g5-AvY" secondAttribute="bottom" constant="16" id="z3n-NI-FN3"/>
+                                    <constraint firstItem="wlL-bf-hFn" firstAttribute="top" secondItem="Qu9-QT-TRy" secondAttribute="bottom" constant="8" id="zTg-aw-3sQ"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="M5L-rl-p2Z"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.1047735151076159" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="TKC-9P-2hw" firstAttribute="centerY" secondItem="kVM-ir-hoW" secondAttribute="centerY" id="Xm6-zv-DCL"/>
+                            <constraint firstItem="TKC-9P-2hw" firstAttribute="centerX" secondItem="kVM-ir-hoW" secondAttribute="centerX" id="mkA-ab-PUj"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="jsE-D0-Di2"/>
+                    <connections>
+                        <outlet property="contentTextField" destination="wlL-bf-hFn" id="NSO-l1-U69"/>
+                        <outlet property="titleTextField" destination="Qu9-QT-TRy" id="14t-FX-ABR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eM2-Te-TYo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="858.81355932203394" y="131.70731707317074"/>
+            <point key="canvasLocation" x="804" y="121"/>
         </scene>
     </scenes>
     <resources>

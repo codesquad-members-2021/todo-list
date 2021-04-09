@@ -13,7 +13,7 @@ class DoingUseCase {
         URLSessionManager().request(with: .doing, method: .get) { result in
             switch result {
             case .success(let data):
-                let tasks = Decoder.decode(from: data)
+                let tasks = Decoder.decode(task: data)
                 completion(tasks ?? [])
             case .failure(let error):
                 print(error.localizedDescription)
@@ -25,7 +25,7 @@ class DoingUseCase {
         URLSessionManager().request(with: .todo, method: .get) { result in
             switch result {
             case .success(let data):
-                let tasks = Decoder.decode(from: data)
+                let tasks = Decoder.decode(task: data)
                 completion(tasks ?? [])
             case .failure(let error):
                 print(error.localizedDescription)
@@ -37,10 +37,25 @@ class DoingUseCase {
         URLSessionManager().request(with: .done, method: .get) { result in
             switch result {
             case .success(let data):
-                let tasks = Decoder.decode(from: data)
+                let tasks = Decoder.decode(task: data)
                 completion(tasks ?? [])
             case .failure(let error):
                 print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func postTask(body : Data, completion : @escaping (Bool) -> Void) {
+        URLSessionManager().requestPost(with: .lists, method: .post, body: body) { result in
+            switch result {
+            case .success(let data):
+                guard let pass = Decoder.decode(result: data), pass == true else {
+                    completion(false)
+                    return
+                }
+                completion(pass)
+            case .failure(_):
+                completion(false)
             }
         }
     }
