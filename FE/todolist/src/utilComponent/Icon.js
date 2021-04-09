@@ -1,17 +1,17 @@
 import styled from 'styled-components'
 
-// grey : #BDBDBD
-// blue : #0075DE
-// red : #FF4343
+// #BDBDBD #0075DE #FF4343
 const IconButton = styled.svg`
+    height: 15px;
+    width: 15px;
     path {
-        fill: ${props => props.type === 'bars' ? 'black' : '#BDBDBD'};
+        fill: ${props => props.type === 'bars' ? '#222' : '#BDBDBD'};
     }
 `
 
-const PlusIcon = ({type}) => {
+const PlusIcon = ({ type }) => {
     return (
-        <IconButton type={type}>
+        <IconButton type={ type }>
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M0.105709 7.53033L0.105709 6.46967H6.46967V0.105713H7.53033V6.46967H13.8943V7.53033H7.53033V13.8943H6.46967V7.53033H0.105709Z" fill="black"/>
             </svg>
@@ -29,9 +29,9 @@ const CloseIcon = ({type}) => {
     )
 }
 
-const BarsIcon = ({type}) => {
+const BarsIcon = ({ type }) => {
     return (
-        <IconButton type={type}>
+        <IconButton type={ type }>
             <svg width="17" height="11" viewBox="0 0 17 11" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M0 1V0H17V1H0ZM17 5V6H0V5H17ZM0 10H17V11H0V10Z" fill="black"/>
             </svg>
