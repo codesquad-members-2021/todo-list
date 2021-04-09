@@ -4,6 +4,8 @@ import UIKit
 class NewTaskCardViewController: UIViewController {
 
     @IBOutlet weak var taskCardView: UIView!
+    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var contentTaskField: UITextField!
     
     
 
@@ -27,6 +29,7 @@ extension NewTaskCardViewController {
     
     @IBAction func registerButtonTouched(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+        //NotificationCenter.default.post(name: <#T##NSNotification.Name#>, object: self, userInfo: <#T##[AnyHashable : Any]?#>)
     }
     
 }

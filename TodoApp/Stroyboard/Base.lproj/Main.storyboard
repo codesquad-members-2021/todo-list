@@ -280,7 +280,9 @@
                     <navigationItem key="navigationItem" id="0im-Zw-na7"/>
                     <size key="freeformSize" width="1180" height="820"/>
                     <connections>
+                        <outlet property="contentTaskField" destination="MeU-kO-WTv" id="Gft-Fb-hnN"/>
                         <outlet property="taskCardView" destination="WH4-kk-39k" id="nUE-Kf-cHe"/>
+                        <outlet property="titleTextField" destination="0mh-RQ-lF0" id="vcO-Iz-bxA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lHk-pl-CXN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
