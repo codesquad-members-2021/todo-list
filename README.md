@@ -1,6 +1,12 @@
 # todo-list
 그룹프로젝트 #1
 
+## 스쿼드 소개
+1. Kyu - Backend
+3. Coco - Backend 
+4. Cri - iOS
+5. Jeje - iOS
+
 ## 브랜치 관리
 
 ![branch_model](https://user-images.githubusercontent.com/59721293/114133022-7b9da480-9959-11eb-91f7-70ba47a585da.png)
