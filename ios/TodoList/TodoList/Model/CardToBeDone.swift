@@ -10,8 +10,8 @@ import Foundation
 class CardToBeDone: ToDoCardProtocol {
     var cards: [ToDoCard]
     
-    init() {
-        self.cards = []
+    init(cards: [ToDoCard]) {
+        self.cards = cards
     }
     
     func insertCard(newCard: ToDoCard, at order: Int) {
