@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {ColumnHeader, ColumnContainer} from './columnStyle'
 import {ColumnTitle, ColumnIcon} from '../atoms/ColumnHeader'
 import Card from '../atoms/Card'
@@ -10,9 +10,16 @@ const Column = ({data:{columns}, changeColumns}) => {
     const [cardList, setCardList] = useState(columns.cards)
     // 현재 true값 false값으로 변경해주어야함
     const [isClicked, setIsClicked] = useState(true);
+    const [currentID, setCurrentID] = useState(null);
     // const toggleCard = () => {
-
     // }
+    const toggleForm = () => setIsClicked(!isClicked)
+
+    // null값인지 값이 들어있는지 확인
+    const handleClick = (clickedID) => {
+        if(currentID !== null) setCurrentID(null);
+        else setCurrentID(clickedID);
+    };
 
     const addCard = ({newCard}) => {
         setCardList([...cardList, newCard])
@@ -23,12 +30,12 @@ const Column = ({data:{columns}, changeColumns}) => {
         <header>
         <span>{title}</span>
         <span>{cards.length}개</span>
-        <button><i className="fas fa-plus"></i></button>
+        <button onClick={() => handleClick(id)}><i className="fas fa-plus"></i></button>
         <button><i className="fas fa-times"></i></button>
         </header>
-
         <div>
-        <Form isClicked={isClicked} cardList={cardList} addCard={addCard}/>
+        
+        {currentID === id ? <Form key={id} cardList={cardList} addCard={addCard}/> : <></>}
         {/* <Card cardData /> */}
         </div>
         </li>
@@ -37,7 +44,6 @@ const Column = ({data:{columns}, changeColumns}) => {
     return (
         <ColumnContainer>
         {columnLists}
-
         </ColumnContainer>
     )
 }
