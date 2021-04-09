@@ -18,11 +18,11 @@ function App() {
       <TaskCardCount />
       <ColumnHeader />
       <Card type="default" />
-      <Card type="default" />
-      <Card type="default" />
-      <Card type="default" />
-      <Card type="default" />
-      <Card type="default" />
+      <Card type="active" />
+      {/* <Card type="delete" />
+      <Card type="drag" />
+      <Card type="place" />
+      <Card type="deactivate" /> */}
     </div>
   );
 }

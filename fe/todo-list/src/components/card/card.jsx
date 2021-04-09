@@ -1,12 +1,34 @@
 import React from 'react';
 import styled from 'styled-components';
+import Button from '../button/button';
 import Icon from '../icon/icon';
 
-const Task = () => {
+const DefaultTask = () => {
   return (
     <TaskBox>
-      <TaskTitle />
-      <TaskContents />
+      <IconPosition>
+        <Icon type="delete" />
+      </IconPosition>
+      <TextArea>
+        <TaskTitle />
+        <TaskContents />
+        <Caption />
+      </TextArea>
+    </TaskBox>
+  );
+};
+
+const ActiveTask = () => {
+  return (
+    <TaskBox>
+      <TextArea>
+        <TaskTitle />
+        <TaskContents />
+      </TextArea>
+      <ButtonArea>
+        <Button type="cancel" name="취소" />
+        <Button type="submit" name="등록" />
+      </ButtonArea>
     </TaskBox>
   );
 };
@@ -15,7 +37,6 @@ const TaskTitle = () => {
   return (
     <TitleBox>
       <TaskTitleSpan>Title</TaskTitleSpan>
-      <Icon type="delete" />
     </TitleBox>
   );
 };
@@ -24,31 +45,49 @@ const TaskContents = () => {
   return (
     <ContentsBox>
       <TaskContentsSpan>Body</TaskContentsSpan>
-      <TaskAuthorLabel>author by web</TaskAuthorLabel>
     </ContentsBox>
+  );
+};
+
+const Caption = () => {
+  return (
+    <>
+      <TaskAuthorLabel>author by web</TaskAuthorLabel>
+    </>
   );
 };
 
 const Card = ({ type }) => {
   return {
-    default: <Task />,
+    default: <DefaultTask />,
+    active: <ActiveTask />,
   }[type];
 };
 
 export default Card;
 
 const TaskBox = styled.div`
-  display: flex;
-  flex-direction: column;
+  position: relative;
   width: 300px;
   background: #ffffff;
   box-shadow: 0px 1px 30px rgba(224, 224, 224, 0.3);
   border-radius: 6px;
-  padding: 16px;
+  padding: 10px 16px;
 
   & + div {
     margin-top: 20px;
   }
+`;
+
+const TextArea = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const ButtonArea = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const TitleBox = styled.div`
@@ -60,6 +99,7 @@ const ContentsBox = styled.div`
   display: flex;
   flex-direction: column;
   text-align: left;
+  margin-bottom: 5px;
 `;
 
 const TaskTitleSpan = styled.span`
@@ -80,4 +120,11 @@ const TaskAuthorLabel = styled.span`
   font-size: 12px;
   line-height: 17px;
   color: #bdbdbd;
+  text-align: left;
+`;
+
+const IconPosition = styled.div`
+  position: absolute;
+  top: 15px;
+  right: 10px;
 `;
