@@ -1,7 +1,5 @@
 ## json-team (팀 21)
 
-### 구성원 - only FE
-
 [Luke](https://github.com/reminderclock)
 
 [Eamon](https://github.com/eamon3481)
