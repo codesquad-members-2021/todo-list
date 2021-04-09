@@ -4,15 +4,10 @@
 
 ## 😁 팀원 소개
 
-Back-End
-
-- [👨🏽‍💻  Cooper](https://github.com/pbg0205/) : Cooper야, 개발이 하고 싶어?
-- [🧑‍💻  MJ](https://github.com/MJbae) : 쌀이야? 개발이야? 선택해.
-
-iOS
-
-- [👩‍💻  Lollo](https://github.com/eeeesong) : 
-- [🧑‍💻  Aiden](https://github.com/Sonjh1306) :
+- [BE][🧑‍💻  Cooper](https://github.com/pbg0205/) - Cooper야, 개발이 하고 싶어?
+- [BE][🧑‍💻  MJ](https://github.com/MJbae) - 쌀이야? 개발이야? 선택해.
+- [iOS][👩‍💻  Lollo](https://github.com/eeeesong) - 
+- [iOS][🧑‍💻  Aiden](https://github.com/Sonjh1306) -
 
 
 
@@ -23,25 +18,29 @@ iOS
 ### 1. Ground 규칙
 
 1. **싸우지 않는다.**
-2. 회의는 **오후 2시(화, 목)**에 진행한다.
-3. 각자 **하루 공부(작업)**에 대해 정리해서 **프로젝트 채널**에 기록한다.
+2. 회의는 **화, 목 오후 2시**에 진행한다.
+3. 각자 **하루 작업**에 대해 정리해서 **프로젝트 채널**에 기록한다.
+
+<br>
 
 ### 2. 브랜치 규칙
 
-1. 모든 브랜치는 team5 브랜치를 통해서 분리한다.
+1. 브랜치 전략은 GitHub Flow의 기준을 따르도록 한다.
 
-2. 브랜치는 기능(feature) 단위로 생성한다.
+2. 모든 브랜치는 team5 브랜치를 통해서 분리한다.
+
+3. 브랜치명은 구체적으로 작성한다.
 
    - Feature 브랜치일 경우, `(클래스명)-feature-기능명`으로 작성.
    - Error 해결 브랜치일 경우,`(클래스명)-error-기능명` 으로 작성.
 
-3. 머지(merge) 시, PR을 통해서 team5 브랜치에 머지(merge)하도록 한다.
+4. 머지(merge) 시, PR을 통해 team5 브랜치에 머지(merge)하도록 한다.
 
-   
+<br>
 
 ### 3. Commit 규칙
 
-1. Form
+1. **Form**
 
 ```
 커밋 타입 : 커밋 제목(대문자로 시작)
@@ -52,9 +51,9 @@ iOS
 
 ```
 
+<br><br>
 
-
-2. Commit Type
+2. **Commit Type**
 
 | 커밋 타입      | 설명                                         |
 | -------------- | -------------------------------------------- |
@@ -66,9 +65,9 @@ iOS
 | ```Test```     | 테스트 코드 작성                             |
 | ```Chore```    | 소스 코드를 건들지 않는 작업(빌드 업무 수정) |
 
- 
+ <br><br>
 
-3. Title
+3. **Title**
 
 - 영어로 작성하도록 한다.
 
@@ -76,9 +75,9 @@ iOS
 
 - 명령형으로 작성한다.
 
+<br>
 
-
-4. Content
+4. **Content**
 
 - 추가 설명이 필요할 경우 작성하도록 한다.
 
