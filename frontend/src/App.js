@@ -1,7 +1,15 @@
 import React, { useEffect } from 'react';
-import { MainWrapper } from './components/common/StyledMain';
+import styled from "styled-components";
 import HeaderContainer from './containers/header/HeaderContainer';
+
 import Column from './components/Seong/Column';
+
+const StyledAppWrapper = styled.div`
+    width: 1440px;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+`;
 
 const list = [
     {
@@ -20,10 +28,10 @@ const App = () => {
     useEffect(() => (document.body.style = 'background: #F5F5F7;'), []);
 
     return (
-        <MainWrapper>
+        <StyledAppWrapper>
             <HeaderContainer />
             <Column title="Column title" list={list} />
-        </MainWrapper>
+        </StyledAppWrapper>
     );
 };
 
