@@ -8,6 +8,14 @@
 - Jenny(wjddnjswjd12 ; 정원정12 영어로)
 - Kyle(hayoung123)
 
+## 웹 프론트 배포
+
+리액트 앱을 서버에 배포할 때는 아래의 쉘 커맨드를 활용한다.
+
+```sh
+sh ./frontend/todo-frontend/deploy.sh
+```
+
 ## 브랜치 정책
 
 작업은 feature 브랜치에서 한 후에, dev 브랜치로 PR 을 보내서 머지한다.
