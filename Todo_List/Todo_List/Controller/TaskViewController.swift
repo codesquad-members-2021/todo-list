@@ -44,8 +44,8 @@ class TaskViewController: UIViewController {
     }
     @IBAction func todoPlus(_ sender: UIButton) {
     
-        let storyboard = UIStoryboard(name: "PopUp", bundle: nil)
-        let viewcontroller = storyboard.instantiateViewController(identifier: "AddPopUp") as! AddPopUpViewController
+        let storyboard = UIStoryboard(name: "Modal", bundle: nil)
+        let viewcontroller = storyboard.instantiateViewController(identifier: "Modal") as! ModalViewController
         
         viewcontroller.definesPresentationContext = true
         viewcontroller.modalPresentationStyle = .formSheet

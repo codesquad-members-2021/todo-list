@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Add Pop Up View Controller-->
+        <!--Modal View Controller-->
         <scene sceneID="ET5-0b-a8h">
             <objects>
-                <viewController storyboardIdentifier="AddPopUp" id="BZz-lY-31O" customClass="AddPopUpViewController" customModule="Todo_List" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Modal" id="BZz-lY-31O" customClass="ModalViewController" customModule="Todo_List" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GuD-PN-s1M">
                         <rect key="frame" x="0.0" y="0.0" width="400" height="175"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -28,7 +28,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="내용을 입력하세요." textAlignment="natural" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="JUp-gR-r9B">
-                                <rect key="frame" x="16" y="84.5" width="368" height="23"/>
+                                <rect key="frame" x="16" y="84.5" width="368" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
