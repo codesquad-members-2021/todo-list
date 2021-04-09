@@ -26,6 +26,8 @@
 		D4BFB84E261C4C8C00D68297 /* TodoDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BFB84D261C4C8C00D68297 /* TodoDataSource.swift */; };
 		D4BFB85D261C4D4A00D68297 /* TodoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BFB85B261C4D4A00D68297 /* TodoCell.swift */; };
 		D4BFB85E261C4D4A00D68297 /* TodoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4BFB85C261C4D4A00D68297 /* TodoCell.xib */; };
+		D4BFB96226201F6300D68297 /* TodoTableViewDropDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BFB96126201F6300D68297 /* TodoTableViewDropDelegate.swift */; };
+		D4BFB9672620222D00D68297 /* TodoTableViewDragDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BFB9662620222D00D68297 /* TodoTableViewDragDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,8 @@
 		D4BFB84D261C4C8C00D68297 /* TodoDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDataSource.swift; sourceTree = "<group>"; };
 		D4BFB85B261C4D4A00D68297 /* TodoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCell.swift; sourceTree = "<group>"; };
 		D4BFB85C261C4D4A00D68297 /* TodoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodoCell.xib; sourceTree = "<group>"; };
+		D4BFB96126201F6300D68297 /* TodoTableViewDropDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewDropDelegate.swift; sourceTree = "<group>"; };
+		D4BFB9662620222D00D68297 /* TodoTableViewDragDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewDragDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +162,8 @@
 			children = (
 				D4BFB839261C470700D68297 /* TodoTableViewController.swift */,
 				D4BFB807261C448700D68297 /* ViewController.swift */,
+				D4BFB96126201F6300D68297 /* TodoTableViewDropDelegate.swift */,
+				D4BFB9662620222D00D68297 /* TodoTableViewDragDelegate.swift */,
 				D4BFB848261C4B8500D68297 /* TodoDelegate.swift */,
 				D4BFB84D261C4C8C00D68297 /* TodoDataSource.swift */,
 			);
@@ -325,11 +331,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4BFB9672620222D00D68297 /* TodoTableViewDragDelegate.swift in Sources */,
 				D4BFB808261C448700D68297 /* ViewController.swift in Sources */,
 				AE43FD55261D934700CBD630 /* AddLineSpacing.swift in Sources */,
 				AE1D84FC261C59BD009D633A /* TodoCard.swift in Sources */,
 				AEA3CBEC261EE97A005E10F2 /* ModalViewController.swift in Sources */,
 				AE43FD5A261DA83F00CBD630 /* TodoCards.swift in Sources */,
+				D4BFB96226201F6300D68297 /* TodoTableViewDropDelegate.swift in Sources */,
 				D4BFB83A261C470700D68297 /* TodoTableViewController.swift in Sources */,
 				D4BFB85D261C4D4A00D68297 /* TodoCell.swift in Sources */,
 				D4BFB804261C448700D68297 /* AppDelegate.swift in Sources */,

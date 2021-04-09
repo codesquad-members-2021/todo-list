@@ -16,10 +16,15 @@ class TodoTableViewController: UIViewController {
     
     private lazy var tableViewDelegate = TodoDelegate()
     private var todoDataSource = TodoDataSource()
+    private var dropDelegate = TodoTableViewDropDelegate()
+    private var dragDelegate = TodoTableViewDragDelegate()
     
     
     func setting() {
         tableView.delegate = tableViewDelegate
+        tableView.dropDelegate = dropDelegate
+        tableView.dragDelegate = dragDelegate
+        tableView.dragInteractionEnabled = true
         tableView.register(UINib(nibName: TodoCell.identifier, bundle: nil), forCellReuseIdentifier: TodoCell.identifier)
         
     }

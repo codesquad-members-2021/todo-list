@@ -33,6 +33,19 @@ class TodoDataSource: NSObject, UITableViewDataSource {
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+
+    // 아래 함수를 구현해줘야 일단 UI에서 cell이 움직인다!
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let cell = self.todoCards.getCard(at: sourceIndexPath)
+        self.todoCards.removeCard(at: sourceIndexPath)
+        self.todoCards.insertCard(item: cell, at: destinationIndexPath)
+        
+    }
+    
 }
 
 
