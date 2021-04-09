@@ -14,7 +14,6 @@ class NewTaskViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        print(id!)
     }
     
     private func setupView() {
@@ -46,11 +45,3 @@ extension NewTaskViewController {
 extension Notification.Name {
     static let addTask = Notification.Name("addTask")
 }
-
-
-/*
- V한테 설명할거
- 1. TaskViewController => NewTaskViewController (Prepare로 id넘김)
- 2. TaskStackManager 생성 및 add Method 구현
- 3. RegisterButtonTouched => Notification
- */

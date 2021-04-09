@@ -12,8 +12,7 @@ class TaskViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupTitleLabel()
-        setupTaskCountLable()
+        setupSubViews()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -22,6 +21,17 @@ class TaskViewController: UIViewController {
                 newTaskViewController.id = self.id
             }
         }
+    }
+    
+
+}
+
+extension TaskViewController {
+    
+    private func setupSubViews() {
+        setupTitleLabel()
+        setupTaskCountLable()
+        registerTaskCell()
     }
     
     // Custom
