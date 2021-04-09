@@ -1,6 +1,5 @@
 package com.team08.todolist.controller;
 
-import com.team08.todolist.model.Card;
 import com.team08.todolist.model.Item;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

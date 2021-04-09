@@ -6,28 +6,28 @@ import java.time.LocalDateTime;
 
 public class Card {
 
-    private int id;
+    private int cardId;
     private String author;
     private String title;
     private String content;
     private LocalDateTime createdDateTime;
     private boolean isApp;
-    private int column;
-    private int prevCardId;
+    private int itemId;
+    private int position;
 
-    public Card(int id, String author, String title, String content, LocalDateTime createdDateTime, boolean isApp, int column, int prevCardId) {
-        this.id = id;
+    public Card(int cardId, String author, String title, String content, LocalDateTime createdDateTime, boolean isApp, int itemId, int position) {
+        this.cardId = cardId;
         this.author = author;
         this.title = title;
         this.content = content;
         this.createdDateTime = createdDateTime;
         this.isApp = isApp;
-        this.column = column;
-        this.prevCardId = prevCardId;
+        this.itemId = itemId;
+        this.position = position;
     }
 
-    public int getId() {
-        return id;
+    public int getCardId() {
+        return cardId;
     }
 
     public String getAuthor() {
@@ -50,11 +50,11 @@ public class Card {
         return isApp;
     }
 
-    public int getColumn() {
-        return column;
+    public int getItemId() {
+        return itemId;
     }
 
-    public int getPrevCardId() {
-        return prevCardId;
+    public int getPosition() {
+        return position;
     }
 }

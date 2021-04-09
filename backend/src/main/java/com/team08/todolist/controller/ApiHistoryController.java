@@ -16,8 +16,8 @@ public class ApiHistoryController {
     @GetMapping
     public List<History> list() {
         List<History> histories = new ArrayList<>();
-        histories.add(new History(1, "August", "title1", 0, null, 1, LocalDateTime.now()));
-        histories.add(new History(2, "roach", "title2", 3, 1, 2, LocalDateTime.now()));
+        histories.add(new History(1, 1, "August", "title1", "add", null, "ToDo", LocalDateTime.now()));
+        histories.add(new History(2, 2, "roach", "title2", "move", "ToDo", "Doing", LocalDateTime.now()));
         return histories;
     }
 }
