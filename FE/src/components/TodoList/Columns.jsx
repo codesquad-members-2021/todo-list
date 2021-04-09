@@ -9,16 +9,18 @@ const Column = ({data:{columns}, changeColumns}) => {
     const [initialColumns, setColumn] = useState(columns);
     const [cardList, setCardList] = useState(columns.cards)
     // 현재 true값 false값으로 변경해주어야함
-    const [isClicked, setIsClicked] = useState(true);
+    // const [isClicked, setIsClicked] = useState(false);
     const [currentID, setCurrentID] = useState(null);
     // const toggleCard = () => {
     // }
-    const toggleForm = () => setIsClicked(!isClicked)
+   
 
     // null값인지 값이 들어있는지 확인
     const handleClick = (clickedID) => {
-        if(currentID !== null) setCurrentID(null);
+        if(currentID !== clickedID) setCurrentID(clickedID);
+        else if(currentID !== null) setCurrentID(null);
         else setCurrentID(clickedID);
+        
     };
 
     const addCard = ({newCard}) => {
@@ -35,8 +37,8 @@ const Column = ({data:{columns}, changeColumns}) => {
         </header>
         <div>
         
-        {currentID === id ? <Form key={id} cardList={cardList} addCard={addCard}/> : <></>}
-        {/* <Card cardData /> */}
+        {currentID === id ? <Form key={id} cards={cards} addCard={addCard}/> : <></>}
+        {console.log(currentID, id)}
         </div>
         </li>
 ))
