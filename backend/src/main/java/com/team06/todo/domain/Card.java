@@ -8,12 +8,12 @@ import java.util.Objects;
 
 public class Card {
     @Id
-    Long id;
+    private Long id;
 
-    String title;
-    String contents;
-    int column_id;
-    LocalDateTime created_date_time;
+    private String title;
+    private String contents;
+    private ColumnType columnType;
+    private LocalDateTime createdDateTime;
 
     public Card() {
     }
@@ -21,8 +21,8 @@ public class Card {
     public Card(HashMap<String, String> cardInfo) {
         this.title = cardInfo.get("title");
         this.contents = cardInfo.get("contents");
-        this.column_id = Integer.parseInt(cardInfo.get("column_id"));
-        this.created_date_time = LocalDateTime.now();
+        this.columnType = ColumnType.valueOf(cardInfo.get("column_type"));
+        this.createdDateTime = LocalDateTime.now();
     }
 
     public Long getId() {
@@ -37,12 +37,12 @@ public class Card {
         return contents;
     }
 
-    public int getColumn_id() {
-        return column_id;
+    public ColumnType getColumnType() {
+        return columnType;
     }
 
-    public LocalDateTime getCreated_date_time() {
-        return created_date_time;
+    public LocalDateTime getCreatedDateTime() {
+        return createdDateTime;
     }
 
     public void update(HashMap<String, String> cardInfo) {
@@ -51,7 +51,7 @@ public class Card {
     }
 
     public void move(HashMap<String, String> cardInfo) {
-        this.column_id = Integer.parseInt(cardInfo.get("column_id"));
+        this.columnType = ColumnType.valueOf(cardInfo.get("column_type"));
     }
 
     @Override
@@ -65,5 +65,16 @@ public class Card {
     @Override
     public int hashCode() {
         return Objects.hash(getId());
+    }
+
+    @Override
+    public String toString() {
+        return "Card{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", contents='" + contents + '\'' +
+                ", columnType=" + columnType +
+                ", createdDateTime=" + createdDateTime +
+                '}';
     }
 }

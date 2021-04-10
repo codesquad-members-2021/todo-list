@@ -33,30 +33,25 @@ public class CardsController {
 
     @PostMapping("/create")
     public ResponseEntity<Card> create(@RequestBody HashMap<String, String> cardInfo) {
-        Card card = new Card(cardInfo);
-        cardsService.save(card);
+        Card card = cardsService.save(cardInfo);
         return ResponseEntity.ok(card);
     }
-     // 수정 : 데이터 전체
+
     @PutMapping("/{id}/move")
     public ResponseEntity<Card> move(@PathVariable Long id, @RequestBody HashMap<String, String> cardInfo) {
-        Card card = cardsService.findById(id);
-        cardsService.move(card, cardInfo);
+        Card card = cardsService.move(id, cardInfo);
         return ResponseEntity.ok(card);
     }
 
     @PutMapping("/{id}/update")
     public ResponseEntity<Card> update(@PathVariable Long id, @RequestBody HashMap<String, String> cardInfo) {
-        Card card = cardsService.findById(id);
-        cardsService.update(card, cardInfo);
+        Card card = cardsService.update(id, cardInfo);
         return ResponseEntity.ok(card);
     }
 
     @DeleteMapping("/{id}/delete")
     public ResponseEntity<Card> delete(@PathVariable Long id) {
-        Card card = cardsService.findById(id);
-        cardsService.delete(id);
-        ResponseEntity.ok();
+        Card card = cardsService.delete(id);
         return ResponseEntity.ok(card);
     }
 }
