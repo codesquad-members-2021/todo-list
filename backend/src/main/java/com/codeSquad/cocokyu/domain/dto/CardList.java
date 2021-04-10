@@ -1,4 +1,4 @@
-package com.codeSquad.cocokyu.domain;
+package com.codeSquad.cocokyu.domain.dto;
 
 import com.codeSquad.cocokyu.domain.model.Card;
 
