@@ -4,6 +4,11 @@ import com.example.todolist.domain.timeline.TimelineRepository;
 import com.example.todolist.domain.user.User;
 import com.example.todolist.domain.work.Work;
 import com.example.todolist.domain.work.WorkRepository;
+import com.example.todolist.exception.EntityRelatedException;
+import com.example.todolist.exception.ErrorMessage;
+import com.example.todolist.exception.IllegalUserAccessException;
+import com.example.todolist.web.dto.RequestCreateWorkDto;
+import com.example.todolist.web.dto.RequestUpdateWorkDto;
 import com.example.todolist.web.dto.ResponseWorkDto;
 import org.springframework.stereotype.Service;
 
@@ -23,8 +28,48 @@ public class WorkService {
 
     public List<ResponseWorkDto> getWorks(User sessionUser) {
         return workRepository.findAllByAuthor(sessionUser.getId()).stream()
+                .filter(Work::isNotDeleted)
                 .map(work -> new ResponseWorkDto(work, sessionUser))
                 .collect(Collectors.toList());
+    }
+
+    public ResponseWorkDto save(RequestCreateWorkDto workDto, User sessionUser) {
+        Work work = workDto.toEntity();
+        work.save(sessionUser);
+        Work saveWork = workRepository.save(work);
+        return new ResponseWorkDto(saveWork, sessionUser);
+    }
+
+    public ResponseWorkDto update(Long id, RequestUpdateWorkDto workDto, User sessionUser) {
+        Work work = verifyWork(id, sessionUser);
+        work.update(workDto.toEntity());
+        workRepository.save(work);
+        return new ResponseWorkDto(work, sessionUser);
+    }
+
+    public void delete(Long id, User sessionUser) {
+        Work work = verifyWork(id, sessionUser);
+        work.delete();
+        workRepository.save(work);
+    }
+
+    public ResponseWorkDto move(Long id, int status, User sessionUser) {
+        Work work = verifyWork(id, sessionUser);
+        if (status != 1 && status != 2 && status != 3) {
+            throw new EntityRelatedException(ErrorMessage.ENTITY_NOT_CHANGE);
+        }
+        work.move(status);
+        workRepository.save(work);
+        return new ResponseWorkDto(work, sessionUser);
+    }
+
+    private Work verifyWork(Long id, User sessionUser) {
+        Work work = workRepository.findById(id).orElseThrow(
+                () -> new EntityRelatedException(ErrorMessage.ENTITY_NOT_FOUND));
+        if (!work.matchAuthor(sessionUser)) {
+            throw new IllegalUserAccessException();
+        }
+        return work;
     }
 
 }
