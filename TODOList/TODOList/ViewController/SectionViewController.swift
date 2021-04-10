@@ -33,6 +33,7 @@ class SectionViewController: UIViewController, DataPassable {
         self.exportViewModel.passingDataHandler = { status in
             self.status = status
             DispatchQueue.main.async {
+                self.TODOCount.text = "\(status.subject.count)"
                 self.TODOTableView.reloadData()
             }
         }
