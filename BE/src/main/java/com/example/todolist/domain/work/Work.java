@@ -34,6 +34,10 @@ public class Work {
         this.description = description;
     }
 
+    public Work(int status) {
+        this.status = status;
+    }
+
     public void save(User sessionUser) {
         this.author = sessionUser.getId();
     }
@@ -47,8 +51,8 @@ public class Work {
         this.status = 0;
     }
 
-    public void move(int status) {
-        this.status = status;
+    public void move(Work work) {
+        this.status = work.status;
     }
 
     public boolean matchAuthor(User sessionUser) {

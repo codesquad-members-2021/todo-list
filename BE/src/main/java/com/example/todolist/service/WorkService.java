@@ -8,6 +8,7 @@ import com.example.todolist.exception.EntityRelatedException;
 import com.example.todolist.exception.ErrorMessage;
 import com.example.todolist.exception.IllegalUserAccessException;
 import com.example.todolist.web.dto.RequestCreateWorkDto;
+import com.example.todolist.web.dto.RequestMoveWorkDto;
 import com.example.todolist.web.dto.RequestUpdateWorkDto;
 import com.example.todolist.web.dto.ResponseWorkDto;
 import org.springframework.stereotype.Service;
@@ -53,12 +54,9 @@ public class WorkService {
         workRepository.save(work);
     }
 
-    public ResponseWorkDto move(Long id, int status, User sessionUser) {
+    public ResponseWorkDto move(Long id, RequestMoveWorkDto workDto, User sessionUser) {
         Work work = verifyWork(id, sessionUser);
-        if (status != 1 && status != 2 && status != 3) {
-            throw new EntityRelatedException(ErrorMessage.ENTITY_NOT_CHANGE);
-        }
-        work.move(status);
+        work.move(workDto.toEntity());
         workRepository.save(work);
         return new ResponseWorkDto(work, sessionUser);
     }
