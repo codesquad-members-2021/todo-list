@@ -38,21 +38,21 @@ public class CardsController {
         return ResponseEntity.ok(card);
     }
      // 수정 : 데이터 전체
-    @PutMapping("/move/{id}")
+    @PutMapping("/{id}/move")
     public ResponseEntity<Card> move(@PathVariable Long id, @RequestBody HashMap<String, String> cardInfo) {
         Card card = cardsService.findById(id);
         cardsService.move(card, cardInfo);
         return ResponseEntity.ok(card);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}/update")
     public ResponseEntity<Card> update(@PathVariable Long id, @RequestBody HashMap<String, String> cardInfo) {
         Card card = cardsService.findById(id);
         cardsService.update(card, cardInfo);
         return ResponseEntity.ok(card);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}/delete")
     public ResponseEntity<Card> delete(@PathVariable Long id) {
         Card card = cardsService.findById(id);
         cardsService.delete(id);
