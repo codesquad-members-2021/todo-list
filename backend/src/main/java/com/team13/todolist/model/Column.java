@@ -55,4 +55,8 @@ public class Column {
         // prevCardId must be checked whether it exist in Column card list
         cards.put(prevCardId, createCardRef(card));
     }
+
+    public void removeCard(Long cardId, Long prevCardId) {
+
+    }
 }

@@ -49,6 +49,16 @@ class ColumnTest {
         assertColumnCardList(4);
     }
 
+    @Test
+    @DisplayName("Column에서 카드를 삭제합니다.")
+    public void removeCard() {
+        Long cardId = 2L;
+        Long prevCardId = 3L;
+        reversedCardList.remove(1);
+        column.removeCard(cardId, prevCardId);
+        assertColumnCardList(2);
+    }
+
     private void initColumn() {
         column = Column.of("해야할 일", new HashMap<>());
         for (int i = reversedCardList.size() - 1; i >= 0; i--) {
