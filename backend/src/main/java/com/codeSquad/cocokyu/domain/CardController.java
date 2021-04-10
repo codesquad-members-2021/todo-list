@@ -1,9 +1,13 @@
 package com.codeSquad.cocokyu.domain;
 
+import com.codeSquad.cocokyu.domain.dto.CardList;
+import com.codeSquad.cocokyu.domain.dto.LogList;
 import com.codeSquad.cocokyu.domain.model.Card;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RestController
 public class CardController {
@@ -26,15 +30,14 @@ public class CardController {
     }
 
     @PostMapping("/todos")
-    public String create(Card card) {
-        logger.info(card.toString());
+    public String create(@Valid Card card) {
         cardService.write(card);
         //TODO : Response 객체 생성
         return "success";
     }
 
     @PutMapping("/todos/{id}")
-    public String update(@PathVariable Long id, Card updateCard) {
+    public String update(@PathVariable Long id, @Valid Card updateCard) {
         cardService.modify(id, updateCard);
         return "success";
     }
