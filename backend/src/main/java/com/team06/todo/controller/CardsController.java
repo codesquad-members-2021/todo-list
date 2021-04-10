@@ -37,7 +37,7 @@ public class CardsController {
         cardsService.save(card);
         return ResponseEntity.ok(card);
     }
-     // 수정 : 데이터 전체
+     // cardInfo의 columnType이 이동할 곳의 type
     @PutMapping("/{id}/move")
     public ResponseEntity<Card> move(@PathVariable Long id, @RequestBody HashMap<String, String> cardInfo) {
         Card card = cardsService.findById(id);

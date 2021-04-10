@@ -1,6 +1,6 @@
 package com.team06.todo.domain;
 
-enum ColumnId {
+public enum ColumnType {
     TODO,
     IN_PROGRESS,
     DONE

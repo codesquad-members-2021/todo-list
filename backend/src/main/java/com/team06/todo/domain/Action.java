@@ -6,16 +6,51 @@ import java.time.LocalDateTime;
 
 public class Action {
     @Id
-    Long id;
+    private Long id;
 
-    ActionType actionType;
-    Card card;
-    LocalDateTime created_date_time;
+    private ActionType actionType;
+    private Long cardId;
+    private LocalDateTime createdDateTime;
 
-    enum ActionType {
+    // move 할 때
+    private ColumnType columnFrom;
+    private ColumnType columnTo;
+
+    public Action() {
+    }
+
+    // add, update, delete
+    public Action(Long cardId, ActionType actionType) {
+        this.cardId = cardId;
+        this.actionType = actionType;
+        this.createdDateTime = LocalDateTime.now();
+    }
+
+    // move
+    public Action(Long cardId, ColumnType columnFrom, ColumnType columnTo, ActionType actionType) {
+        this.cardId= cardId;
+        this.actionType = actionType;
+        this.columnFrom = columnFrom;
+        this.columnTo = columnTo;
+        this.createdDateTime = LocalDateTime.now();
+    }
+
+    public enum ActionType {
         ADD,
         REMOVE,
         UPDATE,
         MOVE
+    }
+
+    @Override
+    public String toString() {
+        return "Action{" +
+                "id=" + id +
+                ", actionType=" + actionType +
+                ", cardId=" + cardId +
+                ", createdDateTime=" + createdDateTime +
+                ", columnFrom=" + columnFrom +
+                ", columnTo=" + columnTo +
+                '}';
     }
 }
