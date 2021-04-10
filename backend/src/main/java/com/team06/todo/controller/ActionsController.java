@@ -21,7 +21,7 @@ public class ActionsController {
         this.actionsService = actionsService;
     }
 
-    @GetMapping("/")
+    @GetMapping("/show")
     public ResponseEntity<Map<String, List<ActionsResponseDto>>> show() {
         Map<String, List<ActionsResponseDto>> actionsResponseDto = new HashMap<>();
         actionsResponseDto.put("actions", actionsService.show());

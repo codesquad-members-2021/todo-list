@@ -66,4 +66,15 @@ public class Card {
     public int hashCode() {
         return Objects.hash(getId());
     }
+
+    @Override
+    public String toString() {
+        return "Card{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", contents='" + contents + '\'' +
+                ", columnType=" + columnType +
+                ", createdDateTime=" + createdDateTime +
+                '}';
+    }
 }

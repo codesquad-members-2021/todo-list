@@ -3,6 +3,7 @@ package com.team06.todo.domain;
 import org.springframework.data.annotation.Id;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 public class Action {
     @Id
@@ -57,6 +58,19 @@ public class Action {
 
     public ColumnType getColumnTo() {
         return columnTo;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Action)) return false;
+        Action action = (Action) o;
+        return Objects.equals(getId(), action.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId());
     }
 
     @Override
