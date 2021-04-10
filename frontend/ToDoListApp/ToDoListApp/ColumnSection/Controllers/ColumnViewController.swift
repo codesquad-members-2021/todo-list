@@ -11,8 +11,8 @@ class ColumnViewController : UIViewController {
     @IBOutlet weak var columnTitle: UILabel!
     @IBOutlet weak var columnTableView: UITableView!
     
-    private let columnDataSource = ColumnDataSource(datamanager: ColumnDatas())//원하시면 변수명 변경하셔도 됩니당
-    private let columnDelegate = ColumnDelegate() //일단은 뷰컨 - 뷰 일대일 대응 방식으로 코드 구성해놓을게요
+    private let columnDataSource = ColumnDataSource(datamanager: ColumnDatas())
+    private let columnDelegate = ColumnDelegate()
     func set(title: String){
         guard let tempTitle = columnTitle else {return}
         tempTitle.text = title
@@ -28,14 +28,19 @@ class ColumnViewController : UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        
     }
     
     override func viewDidLayoutSubviews() {
     }
     
     override func viewLayoutMarginsDidChange() {
-        
+    }
+    
+    @IBAction func addCardButton(_ sender: Any) {
+        guard let tempVC : UIViewController = storyboard?.instantiateViewController(withIdentifier: "newCard") else {return}
+        tempVC.view.isOpaque = false
+        tempVC.preferredContentSize = CGSize(width: 400, height: 175)
+        tempVC.modalPresentationStyle = .formSheet
+        present(tempVC, animated: true, completion: nil)
     }
 }
