@@ -15,7 +15,7 @@ class CardViewModel {
     }
     
     convenience init() {
-        let cardUseCase = CardUseCase(card: Card())
+        let cardUseCase = CardUseCase()
         self.init(cardUseCase: cardUseCase)
     }
     

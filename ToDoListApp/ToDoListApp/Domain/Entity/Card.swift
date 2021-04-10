@@ -14,6 +14,11 @@ class Board {
         self.cards = cards
     }
     
+    convenience init() {
+        let cards = [Card]()
+        self.init(cards: cards)
+    }
+    
     func count() -> Int {
         return self.cards.count
     }
@@ -38,16 +43,12 @@ class Card: CardManageable, Decodable {
     private var id: String
     private var title: String
     private var contents: String
-    private var status: String
-    private var createdTime: String
     private var columndId: Int
     
-    init(id: String, title: String, contents: String, status: String, createdTime: String, columndId: Int) {
+    init(id: String, title: String, contents: String, columndId: Int) {
         self.id = id
         self.title = title
         self.contents = contents
-        self.status = status
-        self.createdTime = createdTime
         self.columndId = columndId
     }
     
@@ -55,10 +56,8 @@ class Card: CardManageable, Decodable {
         let id = ""
         let title = ""
         let contents = ""
-        let status = ""
-        let createdTime = ""
         let columndId = Int()
-        self.init(id: id, title: title, contents: contents, status: status, createdTime: createdTime, columndId: columndId)
+        self.init(id: id, title: title, contents: contents, columndId: columndId)
     }
     
     func add() {

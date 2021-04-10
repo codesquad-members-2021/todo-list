@@ -9,9 +9,15 @@ import Foundation
 
 class Done: BoardManageable {
     private var board: Board
+    private let title = "완료한 일"
     
     init(board: Board) {
         self.board = board
+    }
+    
+    convenience init() {
+        let board = Board()
+        self.init(board: board)
     }
     
     func getBoard() -> Board {
@@ -33,6 +39,6 @@ class Done: BoardManageable {
     }
     
     func getTitle() -> String {
-        return "완료한 일"
+        return self.title
     }
 }
