@@ -2,7 +2,6 @@ package com.codesquad.todo.web.service.dto;
 
 import com.codesquad.todo.web.domain.Task;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
 public class TaskDto {

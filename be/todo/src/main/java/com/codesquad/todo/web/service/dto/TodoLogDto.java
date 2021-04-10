@@ -1,7 +1,6 @@
 package com.codesquad.todo.web.service.dto;
 
 import com.codesquad.todo.web.domain.TodoLog;
-import com.codesquad.todo.web.domain.User;
 
 import java.time.LocalDateTime;
 
