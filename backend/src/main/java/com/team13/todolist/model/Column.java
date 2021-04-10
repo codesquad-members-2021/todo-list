@@ -48,15 +48,19 @@ public class Column {
     }
 
     public void addCard(Long prevCardId, Card card) {
+        // prevCardId must be checked whether it exist in Column card list
         CardRef nextCard = cards.get(prevCardId);
         if (nextCard != null) {
             cards.put(card.getId(), nextCard);
         }
-        // prevCardId must be checked whether it exist in Column card list
         cards.put(prevCardId, createCardRef(card));
     }
 
     public void removeCard(Long cardId, Long prevCardId) {
-
+        // The row (columnId, cardId , prevCardId) must be in COLUMN_CARD DB table
+        CardRef nextCard = cards.remove(cardId);
+        if (nextCard != null) {
+            cards.put(prevCardId, nextCard);
+        }
     }
 }
