@@ -16,7 +16,7 @@ CREATE TABLE action
 (
     id                int AUTO_INCREMENT,
     action_type       varchar(50),
-    card_id           int,
+    card_title        varchar(50),
     created_date_time datetime,
     column_from       varchar(255),
     column_to         varchar(255),

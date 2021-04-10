@@ -9,7 +9,7 @@ public class Action {
     private Long id;
 
     private ActionType actionType;
-    private Long cardId;
+    private String cardTitle;
     private LocalDateTime createdDateTime;
 
     // move 할 때
@@ -19,27 +19,44 @@ public class Action {
     public Action() {
     }
 
-    // add, update, delete
-    public Action(Long cardId, ActionType actionType) {
-        this.cardId = cardId;
-        this.actionType = actionType;
-        this.createdDateTime = LocalDateTime.now();
-    }
-
     // move
-    public Action(Long cardId, ColumnType columnFrom, ColumnType columnTo, ActionType actionType) {
-        this.cardId= cardId;
+    public Action(String cardTitle, ColumnType columnFrom, ColumnType columnTo, ActionType actionType) {
+        this.cardTitle = cardTitle;
         this.actionType = actionType;
         this.columnFrom = columnFrom;
         this.columnTo = columnTo;
         this.createdDateTime = LocalDateTime.now();
     }
 
-    public enum ActionType {
-        ADD,
-        REMOVE,
-        UPDATE,
-        MOVE
+    // add, update, delete
+    public Action(String cardTitle, ActionType actionType) {
+        this.cardTitle = cardTitle;
+        this.actionType = actionType;
+        this.createdDateTime = LocalDateTime.now();
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public ActionType getActionType() {
+        return actionType;
+    }
+
+    public String getCardTitle() {
+        return cardTitle;
+    }
+
+    public LocalDateTime getCreatedDateTime() {
+        return createdDateTime;
+    }
+
+    public ColumnType getColumnFrom() {
+        return columnFrom;
+    }
+
+    public ColumnType getColumnTo() {
+        return columnTo;
     }
 
     @Override
@@ -47,7 +64,7 @@ public class Action {
         return "Action{" +
                 "id=" + id +
                 ", actionType=" + actionType +
-                ", cardId=" + cardId +
+                ", cardTitle=" + cardTitle +
                 ", createdDateTime=" + createdDateTime +
                 ", columnFrom=" + columnFrom +
                 ", columnTo=" + columnTo +
