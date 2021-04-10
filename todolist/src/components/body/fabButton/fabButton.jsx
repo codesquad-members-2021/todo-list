@@ -1,11 +1,18 @@
-import React from 'react'
+import React from 'react';
+import styled from 'styled-components';
+import { ReactComponent as FabBtn } from './fabButton.svg';
+
+const Button = styled(FabBtn)`
+  width: 64px;
+  height: 64px;
+`;
 
 const FabButton = () => {
-	return (
-		<div className="fab-button-section">
-			<button className="fab-button">기획 디자인에서 svg(FAB)을 가져오세요.</button>
-		</div>
-	)
-}
+  return (
+    <div className="fab-button-section">
+      <Button className="fab-button" />
+    </div>
+  );
+};
 
-export default FabButton
+export default FabButton;

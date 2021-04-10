@@ -1,3 +1,6 @@
+import React from 'react';
+import Title from './headerTitle.style';
+
 const HeaderTitle = () => {
 	return (
 		<div className="header-title-section">
@@ -6,4 +9,4 @@ const HeaderTitle = () => {
 	)
 };
 
-export default HeaderTitle
+export default HeaderTitle;
