@@ -1,5 +1,6 @@
 package com.example.todolist.web;
 
+import com.example.todolist.domain.user.User;
 import com.example.todolist.service.UserService;
 import com.example.todolist.web.dto.RequestLoginUserDto;
 import com.example.todolist.web.dto.RequestSignInUserDto;
@@ -33,15 +34,15 @@ public class UserController {
     @PostMapping("/login")
     public ResponseLoginUserDto login(@RequestBody RequestLoginUserDto requestUserDto, HttpSession session) {
         logger.info("로그인 요청");
-        ResponseLoginUserDto responseUserDto = userService.login(requestUserDto);
-        session.setAttribute(USER_SESSION_KEY, responseUserDto);
-        return responseUserDto;
+        User user = userService.login(requestUserDto);
+        session.setAttribute(USER_SESSION_KEY, user);
+        return new ResponseLoginUserDto(user);
     }
 
     @GetMapping("/logout")
     public void logout(HttpSession session) {
         logger.info("로그아웃 요청");
-        session.removeAttribute("sessionUser");
+        session.removeAttribute(USER_SESSION_KEY);
     }
 
 }

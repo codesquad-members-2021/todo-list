@@ -26,11 +26,10 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public ResponseLoginUserDto login(RequestLoginUserDto userDto) {
+    public User login(RequestLoginUserDto userDto) {
         User user = userDto.toEntity();
-        User loginUser = userRepository.findByUserIdAndPassword(user.getUserId(), user.getPassword()).orElseThrow(
+        return userRepository.findByUserIdAndPassword(user.getUserId(), user.getPassword()).orElseThrow(
                 () -> new UserAccountException(ErrorMessage.LOGIN_FAILED));
-        return new ResponseLoginUserDto(loginUser);
     }
 
 }
