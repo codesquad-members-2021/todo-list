@@ -12,7 +12,7 @@ public class Card {
 
     String title;
     String contents;
-    int column_id;
+    ColumnId column_id;
     LocalDateTime created_date_time;
 
     public Card() {
@@ -21,7 +21,7 @@ public class Card {
     public Card(HashMap<String, String> cardInfo) {
         this.title = cardInfo.get("title");
         this.contents = cardInfo.get("contents");
-        this.column_id = Integer.parseInt(cardInfo.get("column_id"));
+        this.column_id = ColumnId.valueOf(cardInfo.get("column_id"));
         this.created_date_time = LocalDateTime.now();
     }
 
@@ -37,7 +37,7 @@ public class Card {
         return contents;
     }
 
-    public int getColumn_id() {
+    public ColumnId getColumn_id() {
         return column_id;
     }
 
@@ -51,7 +51,7 @@ public class Card {
     }
 
     public void move(HashMap<String, String> cardInfo) {
-        this.column_id = Integer.parseInt(cardInfo.get("column_id"));
+        this.column_id = ColumnId.valueOf(cardInfo.get("column_id"));
     }
 
     @Override
