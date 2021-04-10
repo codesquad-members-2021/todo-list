@@ -6,7 +6,7 @@ import HistoryTime from "./historyTime.jsx";
 
 const LogCards = ({ cardData }) => {
   return (
-    <div className="log-cards">
+    <div className="log-cards-section">
       <Emoji emoji={"👉"} />
       <LogCardAuthor user={cardData.user} />
       <WorkHistory

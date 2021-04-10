@@ -1,0 +1,63 @@
+{
+  "defaultUserList": [
+    "Sienna",
+    "Young",
+    "Swing",
+    "Eamon",
+    "Luke",
+    "Adela",
+    "Junami",
+    "DD",
+    "Goody",
+    "Beemo",
+    "Json"
+  ],
+
+  "column": {
+    "data_scheme": {
+      "id": 0,
+      "columnTitle": null,
+      "cardsNumber": 0,
+      "cardTitle": null,
+      "cardContents": null,
+      "user": null
+    },
+    "data_stack": [{ "0": "data", "1": "data" }],
+
+    "initColumn_1": {
+      "id": 1,
+      "columnTitle": "해야할 일",
+      "cardsNumber": 0,
+      "cardTitle": null,
+      "cardContents": null,
+      "user": null
+    },
+    "initColumn_2": {
+      "id": 2,
+      "columnTitle": "하고있는 일",
+      "cardsNumber": 0,
+      "cardTitle": null,
+      "cardContents": null,
+      "user": null
+    },
+    "initColumn_3": {
+      "id": 3,
+      "columnTitle": "완료한 일",
+      "cardsNumber": 0,
+      "cardTitle": null,
+      "cardContents": null,
+      "user": null
+    }
+  },
+
+  "log": {
+    "data_scheme": {
+      "id": 0,
+      "user": null,
+      "columnTitle": null,
+      "cardTitle": null,
+      "action": null
+    },
+    "data_stack": []
+  }
+}
