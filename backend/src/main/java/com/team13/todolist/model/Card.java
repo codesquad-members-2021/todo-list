@@ -19,6 +19,10 @@ public class Card {
         return new Card(null, title, body);
     }
 
+    public Card withId(Long id) {
+        return new Card(id, this.title, this.body);
+    }
+
     public Long getId() {
         return id;
     }
