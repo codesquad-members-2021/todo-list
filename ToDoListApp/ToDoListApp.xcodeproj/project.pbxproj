@@ -26,6 +26,7 @@
 		9386C082261F0717008645D9 /* Doing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9386C081261F0717008645D9 /* Doing.swift */; };
 		9386C086261F0732008645D9 /* Done.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9386C085261F0732008645D9 /* Done.swift */; };
 		9386C089261F33F3008645D9 /* BoardManageable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9386C088261F33F3008645D9 /* BoardManageable.swift */; };
+		9386C08C26216D3D008645D9 /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9386C08B26216D3D008645D9 /* InputViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		9386C081261F0717008645D9 /* Doing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Doing.swift; sourceTree = "<group>"; };
 		9386C085261F0732008645D9 /* Done.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Done.swift; sourceTree = "<group>"; };
 		9386C088261F33F3008645D9 /* BoardManageable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardManageable.swift; sourceTree = "<group>"; };
+		9386C08B26216D3D008645D9 /* InputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				9348A4AD261D817D002B63C6 /* MainViewController.swift */,
+				9386C08B26216D3D008645D9 /* InputViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -252,6 +255,7 @@
 				9348A4B1261D87F5002B63C6 /* CardViewModel.swift in Sources */,
 				9386C07F261F068C008645D9 /* ToDo.swift in Sources */,
 				9386C082261F0717008645D9 /* Doing.swift in Sources */,
+				9386C08C26216D3D008645D9 /* InputViewController.swift in Sources */,
 				933A1E7A261C387B0017FFBD /* AppDelegate.swift in Sources */,
 				9386C089261F33F3008645D9 /* BoardManageable.swift in Sources */,
 				9348A4A2261D71F4002B63C6 /* CardCell.swift in Sources */,
