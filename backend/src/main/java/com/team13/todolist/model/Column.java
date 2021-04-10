@@ -2,7 +2,6 @@ package com.team13.todolist.model;
 
 import org.springframework.data.annotation.Id;
 
-import java.util.List;
 import java.util.Map;
 
 public class Column {
@@ -18,14 +17,14 @@ public class Column {
         this.cards = cards;
     }
 
+    public static Column of(String name, Map<Long, CardRef> cards) {
+        return new Column(null, name, cards);
+    }
+
     private CardRef createCardRef(Card card) {
         CardRef cardRef = new CardRef();
         cardRef.card = card.getId();
         return cardRef;
-    }
-
-    public static Column of(String name, Map<Long, CardRef> cards) {
-        return new Column(null, name, cards);
     }
 
     public Long getId() {
@@ -48,6 +47,12 @@ public class Column {
         }
     }
 
-    public void addCard(Long prevCardId, Card newCard) {
+    public void addCard(Long prevCardId, Card card) {
+        CardRef nextCard = cards.get(prevCardId);
+        if (nextCard != null) {
+            cards.put(card.getId(), nextCard);
+        }
+        // prevCardId must be checked whether it exist in Column card list
+        cards.put(prevCardId, createCardRef(card));
     }
 }

@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 class ColumnTest {
 
@@ -59,7 +60,9 @@ class ColumnTest {
         Long key = 0L;
         CardRef cardRef;
         int index = 0;
-        while ((cardRef = column.getCards().get(key)) != null) {
+        Map<Long, CardRef> cards = column.getCards();
+        softly.assertThat(cards).hasSize(cardSize);
+        while ((cardRef = cards.get(key)) != null) {
             key = reversedCardList.get(index).getId();
             softly.assertThat(cardRef).hasFieldOrPropertyWithValue("card", key);
             index++;
