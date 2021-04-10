@@ -11,6 +11,8 @@ class MainCell: UICollectionViewCell {
     static let identifier = "MainCell"
     
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var boardCountLabel: UILabel!
+    @IBOutlet weak var inputButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
     private var board: BoardManageable?

@@ -32,7 +32,16 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
 
         cell.setup(with: boards[indexPath.item])
         cell.titleLabel.text = boards[indexPath.row].getTitle()
+        cell.boardCountLabel.text = "\(boards[indexPath.row].getBoard().count())"
+        cell.inputButton.tag = indexPath.row
+        cell.inputButton.addTarget(self, action: #selector(presentInputVC(_:)), for: .touchUpInside)
         
         return cell
+    }
+    
+    @objc func presentInputVC(_ sender: UIButton) {
+        guard let inputViewController = self.storyboard?.instantiateViewController(withIdentifier: "InputViewController") as? InputViewController else { return }
+        inputViewController.modalPresentationStyle = .overCurrentContext
+        present(inputViewController, animated: false, completion: nil)
     }
 }

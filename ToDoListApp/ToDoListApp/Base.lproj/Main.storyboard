@@ -193,6 +193,8 @@
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="270" height="500"/>
                                         <connections>
+                                            <outlet property="boardCountLabel" destination="hlB-12-8d6" id="4ft-dz-9jg"/>
+                                            <outlet property="inputButton" destination="ffi-Bb-lhf" id="oUb-hm-AMb"/>
                                             <outlet property="tableView" destination="htf-qi-EUo" id="9a8-rb-bhd"/>
                                             <outlet property="titleLabel" destination="UKz-7P-RD2" id="6Zl-iG-2rO"/>
                                         </connections>
@@ -220,14 +222,18 @@
             </objects>
             <point key="canvasLocation" x="138.69346733668343" y="78.417266187050359"/>
         </scene>
-        <!--View Controller-->
+        <!--Input View Controller-->
         <scene sceneID="29d-1P-E9R">
             <objects>
-                <viewController id="oTC-bs-1V1" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="MvN-a6-WI3">
+                <viewController storyboardIdentifier="InputViewController" modalPresentationStyle="currentContext" id="oTC-bs-1V1" customClass="InputViewController" customModule="ToDoListApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="MvN-a6-WI3">
                         <rect key="frame" x="0.0" y="0.0" width="1194" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RTS-FH-Bq5">
+                                <rect key="frame" x="0.0" y="-37" width="1194" height="871"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bHW-8p-kub">
                                 <rect key="frame" x="372" y="317" width="450" height="200"/>
                                 <subviews>
@@ -270,6 +276,9 @@
                                                         <integer key="value" value="5"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="cancelButtonTapped:" destination="oTC-bs-1V1" eventType="touchUpInside" id="MSZ-Lr-fTI"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="paE-Mj-WFq">
                                                 <rect key="frame" x="118" y="0.0" width="110" height="40"/>
@@ -286,6 +295,9 @@
                                                         <integer key="value" value="5"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="enrollmentButtonTapped:" destination="oTC-bs-1V1" eventType="touchUpInside" id="pGJ-wY-mRL"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -307,7 +319,7 @@
                                         <integer key="value" value="6"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                        <real key="value" value="9.5"/>
+                                        <real key="value" value="0.5"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
                                         <color key="value" systemColor="systemBlueColor"/>
@@ -319,9 +331,18 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="bHW-8p-kub" firstAttribute="centerY" secondItem="MvN-a6-WI3" secondAttribute="centerY" id="6sg-bO-sNj"/>
+                            <constraint firstItem="RTS-FH-Bq5" firstAttribute="top" secondItem="rGK-MJ-jl9" secondAttribute="top" constant="-37" id="90D-6j-9LJ"/>
+                            <constraint firstItem="rGK-MJ-jl9" firstAttribute="trailing" secondItem="RTS-FH-Bq5" secondAttribute="trailing" id="BtP-iq-7Ig"/>
+                            <constraint firstItem="RTS-FH-Bq5" firstAttribute="leading" secondItem="rGK-MJ-jl9" secondAttribute="leading" id="E0Q-eh-pOi"/>
+                            <constraint firstItem="rGK-MJ-jl9" firstAttribute="bottom" secondItem="RTS-FH-Bq5" secondAttribute="bottom" constant="-20" id="Q2e-8G-VA9"/>
                             <constraint firstItem="bHW-8p-kub" firstAttribute="centerX" secondItem="MvN-a6-WI3" secondAttribute="centerX" id="tmr-cX-aRV"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="enrollmentButton" destination="paE-Mj-WFq" id="lAq-lE-unO"/>
+                        <outletCollection property="inputTextFields" destination="D8X-2L-4tN" collectionClass="NSMutableArray" id="1Cv-T9-A5x"/>
+                        <outletCollection property="inputTextFields" destination="9Ew-sW-zZQ" collectionClass="NSMutableArray" id="719-AT-xQv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Fg-qb-Wls" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
