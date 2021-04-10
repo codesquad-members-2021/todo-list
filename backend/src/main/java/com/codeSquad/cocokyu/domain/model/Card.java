@@ -1,18 +1,31 @@
 package com.codeSquad.cocokyu.domain.model;
 
+import com.codeSquad.cocokyu.domain.annotation.ToDoStatusPattern;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Embedded;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 public class Card {
     @Id
     private Long id;
 
+    @NotBlank
+    @NotNull
     private String title;
+
+    @NotBlank
+    @NotNull
     private String contents;
+
     private LocalDateTime createDateTime;
+
+    @ToDoStatusPattern
     private Status status;
 
+    @Embedded.Nullable
     private Logs logs = new Logs();
 
     protected Card() {
@@ -24,6 +37,18 @@ public class Card {
         this.status = status;
         this.createDateTime = LocalDateTime.now();
         logs.createLog(this);
+    }
+
+    public void modify(Card updateCard) {
+        logs.updateLog(this, updateCard);
+        this.title = updateCard.title;
+        this.contents = updateCard.contents;
+        this.status = updateCard.status;
+    }
+
+    public void delete() {
+        logs.deleteLog(this);
+        this.status = Status.DELETED;
     }
 
     public Long getId() {
@@ -46,17 +71,6 @@ public class Card {
         return createDateTime;
     }
 
-    public void modify(Card updateCard) {
-        logs.updateLog(this, updateCard);
-        this.title = updateCard.title;
-        this.contents = updateCard.contents;
-        this.status = updateCard.status;
-    }
-
-    public void delete() {
-        logs.deleteLog(this);
-        this.status = Status.DELETED;
-    }
 
     public enum Status {
         TODO,

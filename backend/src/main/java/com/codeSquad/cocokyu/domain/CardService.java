@@ -1,5 +1,7 @@
 package com.codeSquad.cocokyu.domain;
 
+import com.codeSquad.cocokyu.domain.dto.CardList;
+import com.codeSquad.cocokyu.domain.dto.LogList;
 import com.codeSquad.cocokyu.domain.model.Card;
 import com.codeSquad.cocokyu.domain.model.Log;
 import org.springframework.stereotype.Service;
