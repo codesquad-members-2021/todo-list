@@ -18,14 +18,6 @@ public class Column {
         this.cards = cards;
     }
 
-    public void addCard(Card card) {
-        CardRef lastCard = cards.get(0L);
-        cards.put(0L, createCardRef(card));
-        if (lastCard != null) {
-            cards.put(card.getId(), lastCard);
-        }
-    }
-
     private CardRef createCardRef(Card card) {
         CardRef cardRef = new CardRef();
         cardRef.card = card.getId();
@@ -48,4 +40,14 @@ public class Column {
         return cards;
     }
 
+    public void addCard(Card card) {
+        CardRef lastCard = cards.get(0L);
+        cards.put(0L, createCardRef(card));
+        if (lastCard != null) {
+            cards.put(card.getId(), lastCard);
+        }
+    }
+
+    public void addCard(Long prevCardId, Card newCard) {
+    }
 }
