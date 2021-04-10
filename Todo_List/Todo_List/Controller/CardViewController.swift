@@ -17,43 +17,31 @@ class CardViewController: UIViewController {
     @IBOutlet weak var countOfDoing: UILabel!
     @IBOutlet weak var countOfDone: UILabel!
     
+    @IBOutlet var addButtons : [UIButton]!
+    
     var board = Board()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setUpDelegate()
+        setNotificationCenter()
         registerNib()
         configureTextField()
     }
-    @IBAction func todoPlus(_ sender: UIButton) {
     
-        let viewcontroller = createModalViewController()
-        self.present(viewcontroller, animated: true)
+    @IBAction func didTouchAddButton(_ sender: UIButton) {
+        let viewController = createModalViewController()
+        self.present(viewController, animated: true)
         
-        viewcontroller.setHandler { [weak self] card in
-            self?.board.apepnd(with: card, type: .todo)
-            self?.todo.reloadData()
+        guard let typeIndex = addButtons.firstIndex(of: sender),
+              let cardType = Board.CardType.init(rawValue: typeIndex)
+        else {
+            return
         }
-        
-    }
-    @IBAction func doingPlus(_ sender: UIButton) {
-        let viewcontroller = createModalViewController()
-        self.present(viewcontroller, animated: true)
-        
-        viewcontroller.setHandler { [weak self] card in
-            self?.board.apepnd(with: card, type: .doing)
-            self?.doing.reloadData()
-        }
-    }
-    @IBAction func donePlus(_ sender: UIButton) {
-        let viewcontroller = createModalViewController()
-        self.present(viewcontroller, animated: true)
-        
-        viewcontroller.setHandler { [weak self] card in
-            self?.board.apepnd(with: card, type: .done)
-            self?.done.reloadData()
-        }
+        viewController.setHandler(handler: { [weak self] card in
+            self?.board.apepnd(with: card, type: cardType)
+        })
     }
     func createModalViewController() -> ModalViewController{
         let storyboard = UIStoryboard(name: "Modal", bundle: nil)
@@ -62,6 +50,19 @@ class CardViewController: UIViewController {
         viewcontroller.definesPresentationContext = true
         viewcontroller.modalPresentationStyle = .formSheet
         return viewcontroller
+    }
+}
+// MARK: - Notification Fucntion
+extension CardViewController {
+    func setNotificationCenter(){
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadBoard), name: Board.TodoListChanged, object: board)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadBoard), name: Board.DoingListChanged, object: board)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadBoard), name: Board.DoneListChanged, object: board)
+    }
+    @objc func reloadBoard(){
+        self.todo.reloadData()
+        self.doing.reloadData()
+        self.done.reloadData()
     }
 }
 // MARK: - Register Nib and Configuration
