@@ -16,18 +16,8 @@ class DoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        doTableView.dataSource = dataSource
-        doTableView.delegate = delegate
-        
-        doTableView.estimatedRowHeight = 108
-        doTableView.rowHeight = UITableView.automaticDimension
-        
-        DoingUseCase().loadDoTask { tasks in
-            self.dataSource.tasks = tasks
-            DispatchQueue.main.async { [weak self] in
-                self?.doTableView.reloadData()
-            }
-        }
+        configure()
+        setupUseCase()
     }
     
     func configure() {
@@ -40,7 +30,7 @@ class DoViewController: UIViewController {
     
     func setupUseCase() {
         DoingUseCase().loadDoTask { tasks in
-            self.dataSource.tasks = tasks
+            self.dataSource.doDTO.update(tasks: tasks)
             DispatchQueue.main.async { [weak self] in
                 self?.doTableView.reloadData()
             }

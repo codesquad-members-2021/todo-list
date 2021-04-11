@@ -31,6 +31,8 @@
 		D0F41D41261EEAFC0024D7B1 /* DoDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F41D40261EEAFC0024D7B1 /* DoDataSource.swift */; };
 		D0F41D46261EEB8C0024D7B1 /* DoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F41D45261EEB8C0024D7B1 /* DoDelegate.swift */; };
 		D0F41D4B261EEC360024D7B1 /* DoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F41D4A261EEC360024D7B1 /* DoTableViewCell.swift */; };
+		D0F41D612622C99F0024D7B1 /* DoingDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F41D602622C99F0024D7B1 /* DoingDTO.swift */; };
+		D0F41D662622D04C0024D7B1 /* DoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F41D652622D04C0024D7B1 /* DoDTO.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +83,8 @@
 		D0F41D40261EEAFC0024D7B1 /* DoDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoDataSource.swift; sourceTree = "<group>"; };
 		D0F41D45261EEB8C0024D7B1 /* DoDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoDelegate.swift; sourceTree = "<group>"; };
 		D0F41D4A261EEC360024D7B1 /* DoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoTableViewCell.swift; sourceTree = "<group>"; };
+		D0F41D602622C99F0024D7B1 /* DoingDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoingDTO.swift; sourceTree = "<group>"; };
+		D0F41D652622D04C0024D7B1 /* DoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoDTO.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +174,7 @@
 			children = (
 				BF7EB2A9261C419E003EB682 /* DoingViewController.swift */,
 				BFBF30E3261D4E65000BDDE3 /* DoingDataSource.swift */,
+				D0F41D602622C99F0024D7B1 /* DoingDTO.swift */,
 				D0F41D34261ED86E0024D7B1 /* DoingUseCase.swift */,
 				BFBF30E8261D4F01000BDDE3 /* DoingDelegate.swift */,
 				BF7EB2AE261C4E5C003EB682 /* DoingTableViewCell.swift */,
@@ -192,6 +197,7 @@
 		D0F41D3C261EEA580024D7B1 /* Do */ = {
 			isa = PBXGroup;
 			children = (
+				D0F41D652622D04C0024D7B1 /* DoDTO.swift */,
 				BF7EB29F261C418B003EB682 /* DoViewController.swift */,
 				D0F41D4A261EEC360024D7B1 /* DoTableViewCell.swift */,
 				D0F41D45261EEB8C0024D7B1 /* DoDelegate.swift */,
@@ -335,10 +341,12 @@
 				D0F41D0D261E9EC60024D7B1 /* EndPoint.swift in Sources */,
 				BF7EB26E261C3CBF003EB682 /* ViewController.swift in Sources */,
 				D0F41D2D261ED5C80024D7B1 /* Decoder.swift in Sources */,
+				D0F41D662622D04C0024D7B1 /* DoDTO.swift in Sources */,
 				BF7EB2A5261C4199003EB682 /* DoneViewController.swift in Sources */,
 				D0F41D12261E9FE70024D7B1 /* URLSessionManager.swift in Sources */,
 				BF7EB2AF261C4E5C003EB682 /* DoingTableViewCell.swift in Sources */,
 				BFA7556D261FEBE2008FB904 /* AddViewController.swift in Sources */,
+				D0F41D612622C99F0024D7B1 /* DoingDTO.swift in Sources */,
 				BFBF30E4261D4E65000BDDE3 /* DoingDataSource.swift in Sources */,
 				D0F41D46261EEB8C0024D7B1 /* DoDelegate.swift in Sources */,
 				D0F41D4B261EEC360024D7B1 /* DoTableViewCell.swift in Sources */,

@@ -31,7 +31,7 @@ class DoingViewController: UIViewController {
     
     func setupUseCase() {
         DoingUseCase().loadDoingTask { tasks in
-            self.doingDataSource.tasks = tasks
+            self.doingDataSource.doingDTO.update(tasks: tasks)
             DispatchQueue.main.async { [weak self] in
                 self?.doingTableView.reloadData()
             }

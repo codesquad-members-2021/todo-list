@@ -26,4 +26,9 @@ class DoTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    func configure(task: Task) {
+        self.title.text = task.title
+        self.content.text = task.contents
+        self.author.text = "author by IOS"
+    }
 }
