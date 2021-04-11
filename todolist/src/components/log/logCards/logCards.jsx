@@ -4,17 +4,17 @@ import LogCardAuthor from "./logCardAuthor.jsx";
 import WorkHistory from "./workHistory.jsx";
 import HistoryTime from "./historyTime.jsx";
 
-const LogCards = ({ cardData }) => {
+const LogCards = ({ logData, time }) => {
   return (
     <div className="log-cards-section">
       <Emoji emoji={"👉"} />
-      <LogCardAuthor user={cardData.user} />
+      <LogCardAuthor user={logData.user} />
       <WorkHistory
-        columnTitle={cardData.columnTitle}
-        cardTitle={cardData.cardTitle}
-        action={cardData.action}
+        columnTitle={logData.columnTitle}
+        cardTitle={logData.cardTitle}
+        action={logData.action}
       />
-      <HistoryTime time={"2021년"} />
+      <HistoryTime time={time} />
     </div>
   );
 };

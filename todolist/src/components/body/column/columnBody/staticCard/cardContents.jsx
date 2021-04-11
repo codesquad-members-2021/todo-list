@@ -1,11 +1,15 @@
 import React from "react";
 
-const CardContents = ({ contents }) => {
-  const contentList = contents.map((v) => (
-    <span className="card-contents"> - {v} </span>
-  ));
-
-  return <div className="card-contents-section">{contentList}</div>;
+const CardContents = ({ cardContents }) => {
+  return (
+    <div className="card-contents-section">
+      {cardContents.map((content, index) => (
+        <div key={index} className="content">
+          - {content}
+        </div>
+      ))}
+    </div>
+  );
 };
 
 export default CardContents;
