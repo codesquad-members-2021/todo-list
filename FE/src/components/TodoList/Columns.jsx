@@ -5,7 +5,7 @@ import Card from '../atoms/Card'
 import Form from './Form'
 
 
-const Column = ({data:{columns}, changeColumns}) => {
+const Column = ({data:{columns}}) => {
     const [initialColumns, setColumn] = useState(columns);
     const [currentID, setCurrentID] = useState(null);
 
@@ -34,7 +34,7 @@ const Column = ({data:{columns}, changeColumns}) => {
     const handleClickCancel = () => {
         setCurrentID(null);
     }
-    const columnLists = initialColumns.map((column) => {
+    const columnList = initialColumns.map((column) => {
         const {id, title, cards} = column;
         return (<ul key={id}>
         <header>
@@ -54,7 +54,7 @@ const Column = ({data:{columns}, changeColumns}) => {
 
     return (
         <ColumnContainer>
-        {columnLists}
+        {columnList}
         </ColumnContainer>
     )
 }
