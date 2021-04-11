@@ -11,10 +11,14 @@ public class Column {
     private String columnTitle;
     private List<Task> taskList;
 
-    public Column(Long id, String columnTitle) {
+    public Column(long id, String columnTitle, List<Task> taskList) {
         this.id = id;
         this.columnTitle = columnTitle;
-        taskList = new ArrayList<>();
+        this.taskList = taskList;
+    }
+
+    public Column(long id, String columnTitle) {
+        this(id, columnTitle, new ArrayList<>());
     }
 
     public Long getId() {
