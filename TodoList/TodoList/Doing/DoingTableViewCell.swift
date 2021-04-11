@@ -23,4 +23,10 @@ class DoingTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+    
+    func configure(task: Task) {
+        self.title.text = task.title
+        self.content.text = task.contents
+        self.author.text = "author by IOS"
+    }
 }

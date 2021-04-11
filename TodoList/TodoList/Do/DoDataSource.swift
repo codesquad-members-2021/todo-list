@@ -8,8 +8,7 @@
 import UIKit
 
 class DoDataSource : NSObject {
-    let author = "author by IOS"
-    var tasks: [Task] = []
+    private(set) var doDTO = DoDTO()
 }
 
 extension DoDataSource : UITableViewDataSource {
@@ -19,7 +18,7 @@ extension DoDataSource : UITableViewDataSource {
     }
    
     func numberOfSections(in tableView: UITableView) -> Int {
-        return tasks.count
+        return doDTO.count()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -27,10 +26,9 @@ extension DoDataSource : UITableViewDataSource {
             return UITableViewCell()
         }
         
-        cell.title.text = tasks[indexPath.section].title
-        cell.content.text = tasks[indexPath.section].contents
-        cell.author.text = author
-   
+        let task = doDTO.configure(index: indexPath.section)
+        cell.configure(task: task)
+
         return cell
     }
 }
