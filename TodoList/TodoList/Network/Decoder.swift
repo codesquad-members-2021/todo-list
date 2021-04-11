@@ -17,8 +17,12 @@ class Decoder {
         return try? decoder.decode([Task].self, from: task)
     }
     
-    static func decode(result: Data) -> Bool? {
+    static func decode(result: Data) -> Task? {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "YYYY-MM-DD'T'HH:mm:ss.SSS"
+        
         let decoder = JSONDecoder()
-        return try? decoder.decode(Bool.self, from: result)
+        decoder.dateDecodingStrategy = .formatted(formatter)
+        return try? decoder.decode(Task.self, from: result)
     }
 }

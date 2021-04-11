@@ -14,7 +14,7 @@ struct Task: Codable {
     let category: TaskState
     var dateTime: Date?
     var order: Int?
-    var deleted: Bool?
+    var isDeleted: Int? // var deleted: Bool?
     
     init(title: String, contents: String, category: TaskState) {
         self.title = title
@@ -24,7 +24,6 @@ struct Task: Codable {
     
     func encode() -> Data? {
         let data = try? JSONEncoder().encode(self)
-        print(data)
         return data
     }
 }

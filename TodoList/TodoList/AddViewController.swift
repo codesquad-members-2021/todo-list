@@ -27,7 +27,6 @@ class AddViewController: UIViewController {
             return
         }
         DoingUseCase().postTask(body: data) { (result) in
-            print(result)
         }
     }
     
