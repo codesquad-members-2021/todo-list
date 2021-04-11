@@ -41,12 +41,40 @@ class ColumnTest {
 
     @Test
     @DisplayName("Column에 Card를 임의의 위치에 추가한다.")
-    public void addCardWithAnyPosition() {
+    public void addCardAtAnyPosition() {
         Long prevCardId = 3L;
         Card newCard = Card.of("Spring 공부하기", "토비의 스프링 공부하기").withId(4L);
         reversedCardList.add(1, newCard);
         column.addCard(prevCardId, newCard);
         assertColumnCardList(4);
+    }
+
+    @Test
+    @DisplayName("Column에 Card를 처음에 추가한다.")
+    public void addCardAtFirstPosition() {
+        Long prevCardId = 1L;
+        Card newCard = Card.of("Database 공부하기", "호눅스 DB 강의").withId(6L);
+        reversedCardList.add(newCard);
+        column.addCard(prevCardId, newCard);
+        assertColumnCardList(4);
+    }
+
+    @Test
+    @DisplayName("addCard(0L, newCard)는 Card를 리스트의 끝에 추가한다.")
+    public void addCardLastPosition() {
+        Card newCard = Card.of("알고리즘 공부하기", "프로그래머스 문제 풀기").withId(5L);
+        reversedCardList.add(0, newCard);
+        column.addCard(0L, newCard);
+        assertColumnCardList(4);
+    }
+
+    @Test
+    @DisplayName("prevId가 Column의 Card 리스트에 존재하지 않는 경우, 예외 발생")
+    public void addCardThrowsException() {
+        Card newCard = Card.of("알고리즘 공부하기", "프로그래머스 문제 풀기").withId(5L);
+        softly.assertThatThrownBy(() -> {
+            column.addCard(7L, newCard);
+        }).isInstanceOf(RuntimeException.class);
     }
 
     @Test

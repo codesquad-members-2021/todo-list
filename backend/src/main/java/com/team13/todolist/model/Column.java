@@ -22,9 +22,7 @@ public class Column {
     }
 
     private CardRef createCardRef(Card card) {
-        CardRef cardRef = new CardRef();
-        cardRef.card = card.getId();
-        return cardRef;
+        return CardRef.of(card.getId());
     }
 
     public Long getId() {
@@ -40,20 +38,17 @@ public class Column {
     }
 
     public void addCard(Card card) {
-        CardRef lastCard = cards.get(0L);
-        cards.put(0L, createCardRef(card));
-        if (lastCard != null) {
-            cards.put(card.getId(), lastCard);
-        }
+        addCard(0L, card);
     }
 
     public void addCard(Long prevCardId, Card card) {
-        // prevCardId must be checked whether it exist in Column card list
-        CardRef nextCard = cards.get(prevCardId);
-        if (nextCard != null) {
-            cards.put(card.getId(), nextCard);
+        if (!(cards.containsKey(prevCardId) || prevCardId.equals(0L))) {
+            checkCardListContains(prevCardId);
         }
-        cards.put(prevCardId, createCardRef(card));
+        CardRef nextCard = cards.put(prevCardId, createCardRef(card));
+        if (nextCard != null) {
+            cards.putIfAbsent(card.getId(), nextCard);
+        }
     }
 
     public void removeCard(Long cardId, Long prevCardId) {
@@ -61,6 +56,13 @@ public class Column {
         CardRef nextCard = cards.remove(cardId);
         if (nextCard != null) {
             cards.put(prevCardId, nextCard);
+        }
+    }
+
+    private void checkCardListContains(Long cardId) {
+        if (!cards.containsValue(CardRef.of(cardId))) {
+            // TODO: Throw prefer exception
+            throw new RuntimeException("Not Found");
         }
     }
 }
