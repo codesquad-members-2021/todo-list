@@ -8,5 +8,13 @@
 import UIKit
 
 class TitleTextFieldDelegate : NSObject, UITextFieldDelegate {
+    private let cardAddManager : CardAddManager!
     
+    override init() {
+        cardAddManager = CardAddManager()
+    }
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        cardAddManager.addCard()
+    }
 }

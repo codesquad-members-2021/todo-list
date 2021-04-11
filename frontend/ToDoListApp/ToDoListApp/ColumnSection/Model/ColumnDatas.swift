@@ -14,6 +14,10 @@ class ColumnDatas : DataManager{
         cellDatas = []
     }
     
+    func add(cellData : CellData) -> Void{
+        cellDatas.append(cellData)
+    }
+    
     func currentDatasCount() -> Int{
         return cellDatas.count
     }

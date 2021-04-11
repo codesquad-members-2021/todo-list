@@ -9,4 +9,5 @@ import Foundation
 
 protocol DataManager {
     func currentDatasCount() -> Int
+    func add(cellData : CellData) -> Void
 }

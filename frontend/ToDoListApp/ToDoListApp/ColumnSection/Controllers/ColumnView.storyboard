@@ -137,10 +137,10 @@
             </objects>
             <point key="canvasLocation" x="592.75362318840587" y="-129.91071428571428"/>
         </scene>
-        <!--Modal View-->
+        <!--Modal View Controller-->
         <scene sceneID="vvi-nJ-c4e">
             <objects>
-                <viewController storyboardIdentifier="newCard" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cRD-uS-59D" customClass="ModalView" customModule="ToDoListApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="newCard" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cRD-uS-59D" customClass="ModalViewController" customModule="ToDoListApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YGv-8O-Is7">
                         <rect key="frame" x="0.0" y="0.0" width="400" height="219"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
