@@ -8,6 +8,7 @@ import TodoListItem from "./components/molecules/TodoListItem";
 import TodoList from "./components/molecules/TodoList";
 import TodoListWrap from "./components/molecules/TodoListWrap";
 
+fetch('url', { method: 'POST', })
 
 function App() {
 
