@@ -27,7 +27,7 @@ struct URLSessionManager {
     }
     
     func requestPost(with url: Path, method : HTTPMethod, body : Data, completion: @escaping (Result<Data, Error>) -> Void) {
-        guard let urlRequest = makeURLRequest(with: url, method: method, body: body) else {
+        guard let urlRequest = makePostURLRequest(with: url, method: method, body: body) else {
             return
         }
         
@@ -50,6 +50,20 @@ struct URLSessionManager {
         var request = URLRequest(url: url)
         request.httpMethod = method.rawValue
         request.httpBody = body
+        EndPoint.headers.forEach {
+            request.setValue($0, forHTTPHeaderField: $1)
+        }
+        return request
+    }
+    
+    private func makePostURLRequest(with path : Path, method : HTTPMethod, body : Data?) -> URLRequest? {
+        guard let url = EndPoint.postUrl(with: path) else { return nil }
+        var request = URLRequest(url: url)
+        request.httpMethod = method.rawValue
+        request.httpBody = body
+        EndPoint.headers.forEach {
+            request.setValue($0, forHTTPHeaderField: $1)
+        }
         return request
     }
 }
