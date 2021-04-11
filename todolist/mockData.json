@@ -13,51 +13,78 @@
     "Json"
   ],
 
-  "column": {
-    "data_scheme": {
-      "id": 0,
-      "columnTitle": null,
-      "cardsNumber": 0,
-      "cardTitle": null,
-      "cardContents": null,
-      "user": null
-    },
-    "data_stack": [{ "0": "data", "1": "data" }],
-
-    "initColumn_1": {
+  "column": [
+    {
       "id": 1,
       "columnTitle": "해야할 일",
-      "cardsNumber": 0,
-      "cardTitle": null,
-      "cardContents": null,
-      "user": null
+      "cards": [
+        {
+          "id": "card_1",
+          "cardTitle": "js공부",
+          "cardContents": ["this공부", "closure공부", "재귀공부"]
+        },
+        {
+          "id": "card_2",
+          "cardTitle": "git공부",
+          "cardContents": ["merge공부", "push공부", "pull공부"]
+        }
+      ]
     },
-    "initColumn_2": {
+    {
       "id": 2,
       "columnTitle": "하고있는 일",
-      "cardsNumber": 0,
-      "cardTitle": null,
-      "cardContents": null,
-      "user": null
+      "cards": [
+        {
+          "id": "card_1",
+          "cardTitle": "react공부",
+          "cardContents": ["useState공부", "useEffect공부", "hooks공부"]
+        }
+      ]
     },
-    "initColumn_3": {
+    {
       "id": 3,
       "columnTitle": "완료한 일",
-      "cardsNumber": 0,
-      "cardTitle": null,
-      "cardContents": null,
-      "user": null
+      "cards": [
+        {
+          "id": "card_1",
+          "cardTitle": "js공부",
+          "cardContents": ["this공부", "closure공부", "재귀공부"]
+        },
+        {
+          "id": "card_2",
+          "cardTitle": "git공부",
+          "cardContents": ["merge공부", "push공부", "pull공부"]
+        },
+        {
+          "id": "card_3",
+          "cardTitle": "react공부",
+          "cardContents": ["useState공부", "useEffect공부", "hooks공부"]
+        }
+      ]
     }
-  },
+  ],
 
-  "log": {
-    "data_scheme": {
-      "id": 0,
-      "user": null,
-      "columnTitle": null,
-      "cardTitle": null,
-      "action": null
+  "log": [
+    {
+      "id": 1,
+      "user": "swing",
+      "columnTitle": "해야할 일",
+      "cardTitle": "js공부",
+      "action": "등록"
     },
-    "data_stack": []
-  }
+    {
+      "id": 2,
+      "user": "sienna",
+      "columnTitle": "하고있는 일",
+      "cardTitle": "git공부",
+      "action": "수정"
+    },
+    {
+      "id": 3,
+      "user": "young",
+      "columnTitle": "완료한 일",
+      "cardTitle": "react공부",
+      "action": "삭제"
+    }
+  ]
 }
