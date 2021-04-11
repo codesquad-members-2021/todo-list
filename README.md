@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # todo-list practice
 
 ## 개요
@@ -7,7 +7,7 @@
 시연 후 서로 코드 리뷰를 진행!
 
 마지막으로 학습한 내용에 대해 통합적인 문서 작성
-=======
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -78,4 +78,3 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
->>>>>>> 466bfabdaf017324ca32c6efcd4471f1fecb0da2
