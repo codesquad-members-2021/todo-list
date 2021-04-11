@@ -36,6 +36,14 @@ class Board {
     func appendCard(_ card: CardManageable) {
         self.cards.append(card)
     }
+    
+    func removeCard(at index: Int) {
+        self.cards.remove(at: index)
+    }
+    
+    func insertCard(card: CardManageable, at destinationIndex: Int) {
+        self.cards.insert(card, at: destinationIndex)
+    }
 }
 
 class Card: CardManageable, Decodable {
