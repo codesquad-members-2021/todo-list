@@ -22,7 +22,7 @@ extension Endpoint {
         components.host = "localhost"
         components.port = 3000
         components.path = "\(path)"
-        components.queryItems = queryItems
+        //components.queryItems = queryItems
 
         guard let url = components.url else {
             preconditionFailure("Invalid URL components: \(components)")
@@ -36,7 +36,8 @@ extension Endpoint {
 
     //GET용
     static func cards(state: State) -> Self {
-            return Endpoint(path: "/cards/\(state)")
+        print(Endpoint(path: "/cards/\(state.rawValue)"))
+        return Endpoint(path: "/cards/\(state.rawValue)")
         }
     
     //POST용
@@ -78,9 +79,9 @@ extension Endpoint {
 }
 
 enum State: String {
-    case todo = "todo"
-    case doing = "doing"
-    case did = "did"
+    case todo = "1"
+    case doing = "2"
+    case done = "3"
 
     var state: String {
         return rawValue

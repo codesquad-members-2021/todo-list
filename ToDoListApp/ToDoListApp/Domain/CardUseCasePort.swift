@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 protocol CardManageable {
     func add()
@@ -19,5 +20,5 @@ protocol CardUseCasePort {
     func edit()
     func delete()
     func goToDone()
-    func get() -> [Board]
+    func get(state: State) -> AnyPublisher<[Card], Error>
 }

@@ -6,33 +6,46 @@
 //
 
 import UIKit
+import Combine
 
 class MainViewController: UIViewController {
-
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
     private var cardViewModel: CardViewModel!
-    private var boards: [Board]! // ViewModel로 옮길 필요가 있음
+    
+    private var loadDataSubject = PassthroughSubject<Void,Never>()
+    var subsciptions = Set<AnyCancellable>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.dataSource = self
         self.cardViewModel = CardViewModel()
-        self.boards = cardViewModel.get()
+        cardViewModel.requestBoard()
+        bind()
+    }
+    
+    func bind() {
+        cardViewModel.$boards
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { _ in}, receiveValue:{ [weak self] _ in self?.collectionView.reloadData() })
+            
+            .store(in: &self.subsciptions)
     }
 }
 
 extension MainViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.boards.count
+        return self.cardViewModel.boards.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainCell.identifier, for: indexPath) as? MainCell else { return UICollectionViewCell() }
-
-        cell.setup(with: boards[indexPath.item])
-        cell.titleLabel.text = boards[indexPath.row].title
+        
+        cell.setup(with: cardViewModel.boards[indexPath.item])
+        cell.titleLabel.text = cardViewModel.boards[indexPath.row].title
         
         return cell
     }
 }
+
