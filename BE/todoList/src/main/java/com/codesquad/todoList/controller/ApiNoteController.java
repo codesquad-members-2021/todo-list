@@ -22,7 +22,7 @@ public class ApiNoteController {
     private final NoteService noteService;
 
     @PostMapping
-    public ResponseEntity<?> addNote(@Validated @RequestBody Note note, BindingResult bindingResult) {
+    public ResponseEntity<?> addNote(@RequestBody Note note, BindingResult bindingResult) {
         if(bindingResult.hasErrors()) {
             log.error("ERROR ");
             return ResponseEntity.notFound().build();

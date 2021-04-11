@@ -7,6 +7,7 @@ import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
 import javax.validation.constraints.Max;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -19,13 +20,16 @@ public class Card {
     @Id
     private final Long id;
 
-    @Size(max = 50)
+    @NotBlank(message = "Card 의 제목은 비어 있을 수 없습니다.")
+    @Size(max = 50, message = "Card 의 제목은 50자 미만입니다.")
     private String title;
 
-    @Size(max = 500)
+    @NotBlank(message = "Card 의 내용은 비어 있을 수 없습니다.")
+    @Size(max = 500, message = "Card 의 내용은 500 자 미만 입니다.")
     private String content;
 
-    @Size(max = 30)
+    @NotBlank(message = "작가의 이름은 비어 있을 수 없습니다.")
+    @Size(max = 30, message = "작가의 이름은 30자 미만입니다.")
     private String author;
 
     @Column(value = "CREATE_DATETIME")
