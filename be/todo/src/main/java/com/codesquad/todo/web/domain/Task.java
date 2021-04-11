@@ -1,5 +1,6 @@
 package com.codesquad.todo.web.domain;
 
+import com.codesquad.todo.web.service.dto.TaskDto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.time.LocalDateTime;
@@ -50,5 +51,12 @@ public class Task {
 
     public LocalDateTime getUpdatedDateTime() {
         return updatedDateTime;
+    }
+
+    public String getAuthorName() {
+        if (author != null) {
+            return author.getName();
+        }
+        return "";
     }
 }

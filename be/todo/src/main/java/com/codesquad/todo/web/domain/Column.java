@@ -1,7 +1,10 @@
 package com.codesquad.todo.web.domain;
 
+import com.codesquad.todo.web.service.dto.TaskDto;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Column {
     private Long id;
@@ -28,5 +31,9 @@ public class Column {
 
     public void addTask(Task task) {
         taskList.add(task);
+    }
+
+    public List<TaskDto> convertTaskListToTaskDtoList() {
+        return taskList.stream().map(TaskDto::new).collect(Collectors.toList());
     }
 }
