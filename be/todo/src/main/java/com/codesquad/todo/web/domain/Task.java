@@ -1,6 +1,5 @@
 package com.codesquad.todo.web.domain;
 
-import com.codesquad.todo.web.service.dto.TaskDto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.time.LocalDateTime;
