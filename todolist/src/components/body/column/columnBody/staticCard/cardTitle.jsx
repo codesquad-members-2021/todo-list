@@ -1,9 +1,10 @@
-import React from "react";
+import React from 'react';
+import CardTitleStyle from './cardTitle.style';
 
 const CardTitle = ({ cardTitle }) => {
   return (
     <div className="card-title-section">
-      <span className="card-title">{cardTitle}</span>
+      <CardTitleStyle className="card-title">{cardTitle}</CardTitleStyle>
     </div>
   );
 };

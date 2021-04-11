@@ -1,12 +1,12 @@
 import React from 'react';
+import { ButtonNormalHover, ButtonNormalHoverText } from '../../../../style/button-normal-hover.jsx';
 
 const ModifyCardCancelButton = () => {
-	return (
-		<div className="modify-card-cancel-button-section">
-			<button className="modify-card-cancel-button">취소</button>
-		</div>
-	)
+  return (
+    <ButtonNormalHover className="modify-card-cancel-button-section">
+      <ButtonNormalHoverText className="modify-card-cancel-button">취소</ButtonNormalHoverText>
+    </ButtonNormalHover>
+  );
 };
 
-export default ModifyCardCancelButton
-
+export default ModifyCardCancelButton;

@@ -8,11 +8,7 @@ const Button = styled(FabBtn)`
 `;
 
 const FabButton = () => {
-  return (
-    <div className="fab-button-section">
-      <Button className="fab-button" />
-    </div>
-  );
+  return <Button className="fab-button-section">hi</Button>;
 };
 
 export default FabButton;
