@@ -39,9 +39,7 @@ const Form = ({addCard, column, handleClickCancel}) => {
     </div> 
     </form>);
     return (
-        <>
         <NewForm/>
-    </>
     )
 }
 
