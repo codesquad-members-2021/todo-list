@@ -87,6 +87,34 @@ class ColumnTest {
         assertColumnCardList(2);
     }
 
+    @Test
+    @DisplayName("Card List의 끝에 있는 카드를 삭제합니다.")
+    public void removeLastCard() {
+        Long cardId = 3L;
+        Long prevCardId = 0L;
+        reversedCardList.remove(0);
+        column.removeCard(cardId, prevCardId);
+        assertColumnCardList(2);
+    }
+
+    @Test
+    @DisplayName("Card List의 처음에 있는 카드를 삭제합니다.")
+    public void removeFirstCard() {
+        Long cardId = 1L;
+        Long prevCardId = 2L;
+        reversedCardList.remove(2);
+        column.removeCard(cardId, prevCardId);
+        assertColumnCardList(2);
+    }
+
+    @Test
+    @DisplayName("Column에 존재하지 않는 카드를 삭제할 경우 Exception 발생")
+    public void throwExceptionIfDeletedCardIsNotExist() {
+        softly.assertThatThrownBy(() -> {
+            column.removeCard(2L, 5L);
+        }).isInstanceOf(RuntimeException.class);
+    }
+
     private void initColumn() {
         column = Column.of("해야할 일", new HashMap<>());
         for (int i = reversedCardList.size() - 1; i >= 0; i--) {

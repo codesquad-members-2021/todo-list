@@ -53,6 +53,12 @@ public class Column {
 
     public void removeCard(Long cardId, Long prevCardId) {
         // The row (columnId, cardId , prevCardId) must be in COLUMN_CARD DB table
+        CardRef deletedCard = CardRef.of(cardId);
+        if (!deletedCard.equals(cards.get(prevCardId))) {
+            //TODO: Throw prefer exception
+            throw new RuntimeException("Not Found");
+        }
+        cards.remove(prevCardId);
         CardRef nextCard = cards.remove(cardId);
         if (nextCard != null) {
             cards.put(prevCardId, nextCard);
