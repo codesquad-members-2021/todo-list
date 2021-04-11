@@ -6,3 +6,11 @@
 //
 
 import UIKit
+
+extension CardViewController : UITableViewDropDelegate {
+    func tableView(_ tableView: UITableView, performDropWith coordinator: UITableViewDropCoordinator) {
+        
+    }
+    
+    
+}

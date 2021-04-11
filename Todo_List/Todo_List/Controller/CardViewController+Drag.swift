@@ -6,3 +6,12 @@
 //
 
 import UIKit
+
+extension CardViewController : UITableViewDragDelegate {
+    func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+        
+        return [UIDragItem]()
+    }
+    
+    
+}
