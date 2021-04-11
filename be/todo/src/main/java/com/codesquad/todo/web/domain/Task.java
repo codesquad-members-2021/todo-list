@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.time.LocalDateTime;
 
 public class Task {
-    private long id;
+    private Long id;
     private String taskTitle;
     private String taskContent;
     private User author;
@@ -14,7 +14,7 @@ public class Task {
     private LocalDateTime createdDateTime;
     private LocalDateTime updatedDateTime;
 
-    public Task(long id, String taskTitle, String taskContent, User author, Column column) {
+    public Task(Long id, String taskTitle, String taskContent, User author, Column column) {
         this.id = id;
         this.taskTitle = taskTitle;
         this.taskContent = taskContent;
@@ -24,7 +24,7 @@ public class Task {
         this.updatedDateTime = null;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

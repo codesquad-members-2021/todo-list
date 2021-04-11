@@ -4,17 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Column {
-    private long id;
+    private Long id;
     private String columnTitle;
     private List<Task> taskList;
 
-    public Column(long id, String columnTitle) {
+    public Column(Long id, String columnTitle) {
         this.id = id;
         this.columnTitle = columnTitle;
         taskList = new ArrayList<>();
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
