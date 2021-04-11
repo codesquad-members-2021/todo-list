@@ -9,6 +9,4 @@ import team_16.todolist.domain.Board;
 @Repository
 public interface BoardRepository extends CrudRepository<Board, Long> {
 
-    @Query("select count(*) from card")
-    int countCards();
 }
