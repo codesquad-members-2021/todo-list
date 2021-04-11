@@ -11,16 +11,24 @@ const Column = ({data:{columns}, changeColumns}) => {
 
 
     const handleClick = (clickedID) => {
-        if(currentID !== clickedID) setCurrentID(clickedID);
-        else if(currentID !== null) setCurrentID(null);
-        else setCurrentID(clickedID);
+        return () => {
+            if(currentID !== clickedID) setCurrentID(clickedID);
+            else if(currentID !== null) setCurrentID(null);
+            else setCurrentID(clickedID)
+        };
     };
+
+    const deleteColumn = (deletedID) => {
+        return () => {
+            const newColumn = initialColumns.filter(({id}) => id !== deletedID)
+            setColumn([...newColumn])
+        }
+    }
 
     const addCard = (column) => {
         const newColumns = Object.assign(initialColumns, column)
         setColumn([...newColumns]);
     }
-    console.log('column 데이타',initialColumns);
 
     const handleClickCancel = () => {
         setCurrentID(null);
@@ -31,8 +39,8 @@ const Column = ({data:{columns}, changeColumns}) => {
         <header>
         <span>{title}</span>
         <span>{cards.length}개</span>
-        <button onClick={() => handleClick(id)}><i className="fas fa-plus"></i></button>
-        <button><i className="fas fa-times"></i></button>
+        <button onClick={handleClick(id)}><i className="fas fa-plus"></i></button>
+        <button onClick={deleteColumn(id)}><i className="fas fa-times"></i></button>
         </header>
         <div>
         
