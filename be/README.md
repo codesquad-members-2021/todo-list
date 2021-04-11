@@ -151,7 +151,7 @@
 
 * ```json
   {
-      task : {
+      "task" : {
               "id" : 1,
               "taskTitle" : "모던 자바스크립트 예제 실습",
               "taskContent" : "1장 예제 내용 실습 후 커밋까지",
