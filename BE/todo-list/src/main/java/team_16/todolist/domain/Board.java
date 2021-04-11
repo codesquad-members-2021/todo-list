@@ -10,7 +10,7 @@ public class Board {
 
     @Id
     private Long id;
-    public String title;
+    private String title;
     private Set<Card> cards = new HashSet<>();
 
     public Long getId() {

@@ -44,10 +44,5 @@ public class BoardController {
         boardRepository.deleteById(id);
     }
 
-//    @GetMapping("/{id}")
-//    public List<Card> getBoard2(@PathVariable Long id) {
-//        Board board =  boardRepository.findById(id).get();
-//        return board.getCards();
-//    }
 
 }
