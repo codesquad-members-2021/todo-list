@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import { ReactComponent as menuBtn } from './showLogButton.svg';
+import React from "react";
+import styled from "styled-components";
+import { ReactComponent as menuBtn } from "./showLogButton.svg";
 
 const MenuBtn = styled(menuBtn)`
   width: 17px;
@@ -13,7 +13,7 @@ const ShowLogButton = () => {
       <MenuBtn className="show-log-button" />
     </div>
   );
-  
+};
 // import menu from './menu.svg';
 // import styles from "./header.module.css"
 

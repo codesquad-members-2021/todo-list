@@ -3,7 +3,7 @@ import React from "react";
 const HistoryTime = ({ time }) => {
   return (
     <div className="history-time-section">
-      <span className="history-time">{time}</span>
+      <span className="history-time">로그기록시간 : {time}</span>
     </div>
   );
 };
