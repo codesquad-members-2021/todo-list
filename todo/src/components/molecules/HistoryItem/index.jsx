@@ -5,7 +5,6 @@ import Span from '../../atoms/Span';
 import userIcon from '../../../images/userIcon.png';
 
 const WrapDiv = styled.div`
-  width: 330px;
   display: flex;
   padding: 15px;
   background:#fff;

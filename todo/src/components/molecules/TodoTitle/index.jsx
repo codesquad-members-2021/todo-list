@@ -9,6 +9,7 @@ import ButtonList from '../ButtonList';
 
 const WrapDiv = styled.div`
   display: flex;
+  width:200px;
   padding: 15px;
   justify-content: space-between;
   place-items: center;
@@ -19,6 +20,8 @@ const WrapDiv = styled.div`
 const LeftDiv = styled.div`
   display:flex;
   place-items: center;
+  font-size:20px;
+  font-size:700;
 `;
 
 const TodoTitle = ({ children, ...props }) => (

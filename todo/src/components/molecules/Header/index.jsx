@@ -12,17 +12,12 @@ const Div = styled.div`
   place-items: center;
 `;
 
-const Header = () => {
-  const clickHandler = () => {
-    console.log("success");
-  };
+const Header = ({ toggleClickHandler }) => {
 
   return (
     <Div>
-      <Span _fontSize="45px" _fontWeight="700">
-        To do List
-      </Span>
-      <SmallButton onClick={clickHandler}>
+      <Span _fontSize="45px" _fontWeight="700">To do List</Span>
+      <SmallButton onClick={toggleClickHandler}>
         <Image src={hamburgerBtn} _width="30px" />
       </SmallButton>
     </Div>
