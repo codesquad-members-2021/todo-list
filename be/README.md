@@ -81,43 +81,48 @@
 ##### Response
 
 * ```json
-  [
-      {
-          "id": 1,
-          "columnTitle": "TODO",
-          "taskList": [
-              {
-                  "id": 1,
-                  "taskTitle": "task1",
-                  "taskContent": "taskContent1",
-                  "authorName": "라쿠운",
-                  "createdDateTime": "2021-04-08T16:17:10.538"
-              },
-              {
-                  "id": 2,
-                  "taskTitle": "task2",
-                  "taskContent": "taskContent2",
-                  "authorName": "라쿠운",
-                  "createdDateTime": "2021-04-08T16:17:10.538"
-              }
-          ]
-      },
-      {
-          "id": 2,
-          "columnTitle": "IN_PROGRESS",
-          "taskList": [
-              {
-                  "id": 3,
-                  "taskTitle": "task3",
-                  "taskContent": "taskContent3",
-                  "authorName": "라쿠운",
-                  "createdDateTime": "2021-04-08T16:17:10.541"
-              }
-          ]
-      }
-  ]
+  {
+      "columns": [
+          {
+              "id": 1,
+              "columnTitle": "TODO",
+              "taskList": [
+                  {
+                      "id": 1,
+                      "taskTitle": "task1",
+                      "taskContent": "taskContent1",
+                      "authorName": "라쿠운",
+                      "createdDateTime": "2021-04-11T17:13:58.32"
+                  },
+                  {
+                      "id": 2,
+                      "taskTitle": "task2",
+                      "taskContent": "taskContent2",
+                      "authorName": "라쿠운",
+                      "createdDateTime": "2021-04-11T17:13:58.32"
+                  }
+              ]
+          },
+          {
+              "id": 2,
+              "columnTitle": "IN_PROGRESS",
+              "taskList": [
+                  {
+                      "id": 3,
+                      "taskTitle": "task3",
+                      "taskContent": "taskContent3",
+                      "authorName": "라쿠운",
+                      "createdDateTime": "2021-04-11T17:13:58.322"
+                  }
+              ]
+          }
+      ]
+  }
   ```
   
+
+* `21-04-11 오후 05:19`부로 columns키가 추가되었습니다
+  * [수정 사유는 링크와 같습니다](https://github.com/Malloc72P/todo-list/issues/24)
 
 ## 3. Task
 
@@ -146,21 +151,18 @@
 
 * ```json
   {
-      "id" : 1,
-      "taskTitle" : "모던 자바스크립트 예제 실습",
-      "taskContent" : "1장 예제 내용 실습 후 커밋까지",
-      "createdDateTime" : "2021-03-21 13:24:00",
-      "updatedDateTime" : null,
-      "author" : {
-          "id" : 1,
-          "userId" : "Raccoon",
-          "password" : "1234",
-          "name" : "라쿠운",
-          "profileImage" : "http://어딘가에_있는_라쿤_이미지.jpeg"
+      task : {
+              "id" : 1,
+              "taskTitle" : "모던 자바스크립트 예제 실습",
+              "taskContent" : "1장 예제 내용 실습 후 커밋까지",
+              "createdDateTime" : "2021-03-21 13:24:00",
+              "updatedDateTime" : null
       }
   }
   ```
 
+* `21-04-11 오후 05:19`부로 task키가 추가되었습니다
+  * [수정 사유는 링크와 같습니다](https://github.com/Malloc72P/todo-list/issues/24)
 
 #### 3-2. 태스크 변경
 
@@ -243,19 +245,26 @@
 ##### Response
 
 * ```json
-  [
-      {
-          "id": 1,
-          "action": "'move' '1 자바스크립트 예제 실습 수정됨!' 'TODO' 'IN_PROGRESS'",
-          "authorName": "라쿠운",
-          "createdDateTime": "2021-04-08T16:18:24.96"
-      },
-      {
-          "id": 2,
-          "action": "'move' '2 자바스크립트 예제 실습 수정됨!' 'TODO' 'IN_PROGRESS'",
-          "authorName": "라쿠운",
-          "createdDateTime": "2021-04-08T16:18:24.96"
-      }
-  ]
+  {
+      "todoLogs": [
+          {
+              "id": 1,
+              "action": "'move' '1 자바스크립트 예제 실습 수정됨!' 'TODO' 'IN_PROGRESS'",
+              "authorName": "라쿠운",
+              "createdDateTime": "2021-04-11T17:14:03.128"
+          },
+          {
+              "id": 2,
+              "action": "'move' '2 자바스크립트 예제 실습 수정됨!' 'TODO' 'IN_PROGRESS'",
+              "authorName": "라쿠운",
+              "createdDateTime": "2021-04-11T17:14:03.128"
+          }
+      ]
+  }
   ```
   
+
+`21-04-11 오후 05:19`부로 todoLogs키가 추가되었습니다
+
+* [수정 사유는 링크와 같습니다](https://github.com/Malloc72P/todo-list/issues/24)
+
