@@ -11,7 +11,7 @@ import java.util.List;
 @RequestMapping("/api/tasks")
 public class TaskController {
 
-    @GetMapping()
+    @GetMapping
     public List<Task> showTaskList() {
         return null;
     }
