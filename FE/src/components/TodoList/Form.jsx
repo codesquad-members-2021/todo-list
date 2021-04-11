@@ -1,5 +1,5 @@
 
-import {useState, useRef} from 'react'
+import {useRef} from 'react'
 
 const Form = ({addCard, column, handleClickCancel}) => {
     const titleInput = useRef();
