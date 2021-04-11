@@ -15,9 +15,13 @@ class DoingViewController: UIViewController {
         super.viewDidLoad()
         self.doingCardTableView.register(UINib(nibName: "ToDoCardCell", bundle: nil), forCellReuseIdentifier: "ToDoCardCell")
         self.doingCardTableView.dataSource = self
+        self.doingCardTableView.delegate = self
         self.doingCardTableView.rowHeight = 150
         
         fetchCards()
+        
+        doingCardTableView.register(CustomHeader.self,
+               forHeaderFooterViewReuseIdentifier: "sectionHeader")
     }
     
     func fetchCards() {
@@ -45,5 +49,22 @@ extension DoingViewController: UITableViewDataSource {
         cell.authorLabel.text = "author by \(cards[indexPath.row].id)"
         
         return cell
+    }
+}
+
+extension DoingViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView,
+            viewForHeaderInSection section: Int) -> UIView? {
+       let view = tableView.dequeueReusableHeaderFooterView(withIdentifier:
+                   "sectionHeader") as! CustomHeader
+       view.title.text = "해야 할 일"
+        view.button.addAction(UIAction.init(handler: { (touch) in
+            print("touched")
+        }), for: .touchUpInside)
+       return view
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        CGFloat(50)
     }
 }
