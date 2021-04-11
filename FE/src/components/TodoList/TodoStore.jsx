@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import {useState, useEffect} from 'react';
 import "./TodoList.css";
 import Columns from './Columns'
 
@@ -28,7 +28,7 @@ const TodoStore = () => {
     return (
        <>
         <div className="TodoList">
-            <ul>{columnLists}</ul>
+            <div>{columnLists}</div>
         </div>
       </>
     )
