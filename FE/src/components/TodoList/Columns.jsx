@@ -7,28 +7,27 @@ import Form from './Form'
 
 const Column = ({data:{columns}, changeColumns}) => {
     const [initialColumns, setColumn] = useState(columns);
-    const [cardList, setCardList] = useState(columns.cards)
-    // 현재 true값 false값으로 변경해주어야함
-    // const [isClicked, setIsClicked] = useState(false);
     const [currentID, setCurrentID] = useState(null);
-    // const toggleCard = () => {
-    // }
-   
 
-    // null값인지 값이 들어있는지 확인
+
     const handleClick = (clickedID) => {
         if(currentID !== clickedID) setCurrentID(clickedID);
         else if(currentID !== null) setCurrentID(null);
         else setCurrentID(clickedID);
-        
     };
 
-    const addCard = ({newCard}) => {
-        setCardList([...cardList, newCard])
+    const addCard = (column) => {
+        const newColumns = Object.assign(initialColumns, column)
+        setColumn([...newColumns]);
     }
+    console.log('column 데이타',initialColumns);
 
-    const columnLists = initialColumns.map(({id, title, cards}) => (
-        <li key={id}>
+    const handleClickCancel = () => {
+        setCurrentID(null);
+    }
+    const columnLists = initialColumns.map((column) => {
+        const {id, title, cards} = column;
+        return (<ul key={id}>
         <header>
         <span>{title}</span>
         <span>{cards.length}개</span>
@@ -37,11 +36,11 @@ const Column = ({data:{columns}, changeColumns}) => {
         </header>
         <div>
         
-        {currentID === id ? <Form key={id} cards={cards} addCard={addCard}/> : <></>}
-        {console.log(currentID, id)}
+        {currentID === id ? <Form key={id} addCard={addCard} handleClickCancel={handleClickCancel} column={column}/> : <></>}
+        <Card cards={cards} />
         </div>
-        </li>
-))
+        </ul>)
+        })
 
     return (
         <ColumnContainer>
