@@ -8,20 +8,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/logs")
 public class TodoLogController {
 
     @GetMapping
-    public List<TodoLogDto> showTodoLogList() {
-        List<TodoLogDto> todoLogList = new ArrayList<>();
+    public Map<String, Object> showTodoLogList() {
+        Map<String, Object> responseMap = new HashMap<>();
+        List<TodoLogDto> todoLogs = new ArrayList<>();
 
         User author = new User(1L, "라쿠운", "Racoon", "1234", "");
-        todoLogList.add(new TodoLogDto(new TodoLog(1L, "'move' '1 자바스크립트 예제 실습 수정됨!' 'TODO' 'IN_PROGRESS'", author)));
-        todoLogList.add(new TodoLogDto(new TodoLog(2L, "'move' '2 자바스크립트 예제 실습 수정됨!' 'TODO' 'IN_PROGRESS'", author)));
+        todoLogs.add(new TodoLogDto(new TodoLog(1L, "'move' '1 자바스크립트 예제 실습 수정됨!' 'TODO' 'IN_PROGRESS'", author)));
+        todoLogs.add(new TodoLogDto(new TodoLog(2L, "'move' '2 자바스크립트 예제 실습 수정됨!' 'TODO' 'IN_PROGRESS'", author)));
 
-        return todoLogList;
+        responseMap.put("todoLogs", todoLogs);
+        return responseMap;
     }
 }
