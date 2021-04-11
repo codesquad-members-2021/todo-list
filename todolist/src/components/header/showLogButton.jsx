@@ -3,8 +3,11 @@ import styled from 'styled-components';
 import { ReactComponent as menuBtn } from './showLogButton.svg';
 
 const MenuBtn = styled(menuBtn)`
-  width: 17px;
-  height: 11px;
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  left: 1336px;
+  top: 44px;
 `;
 
 const ShowLogButton = () => {

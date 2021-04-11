@@ -1,5 +1,5 @@
 import React from 'react';
-import CardContentsStyle from './cardTitle.style';
+import CardContentsStyle from './cardContents.style';
 
 const CardContents = ({ contents }) => {
   const contentList = contents.map(v => <CardContentsStyle className="card-contents"> - {v} </CardContentsStyle>);

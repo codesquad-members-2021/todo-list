@@ -1,6 +1,6 @@
-import React from "react";
-import LogTitle from "./logTitle.jsx";
-import LogHideButton from "./logHideButton.jsx";
+import React from 'react';
+import LogTitle from './logTitle.jsx';
+import LogHideButton from './logHideButton.jsx';
 
 const LogHeader = () => {
   return (

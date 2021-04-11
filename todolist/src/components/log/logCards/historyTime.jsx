@@ -1,10 +1,11 @@
-import React from "react";
+import React from 'react';
+import HistoryTimeStyle from './historyTime.style';
 
 const HistoryTime = ({ time }) => {
   return (
-    <div className="history-time-section">
+    <HistoryTimeStyle className="history-time-section">
       <span className="history-time">{time}</span>
-    </div>
+    </HistoryTimeStyle>
   );
 };
 

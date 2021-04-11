@@ -1,11 +1,13 @@
-import React from 'react'
+import React from 'react';
+import LogHideButtonStyle from './logHideButton.style';
+import { ReactComponent as HideBtn } from '../../style/deleteIcon.svg';
 
 const LogHideButton = () => {
-	return (
-		<div className="log-hide-button-section">
-			<button className="log-hide-button">기획 디자인에 svg(x)를 가져오세요.</button>
-		</div>
-	)
+  return (
+    <LogHideButtonStyle className="log-hide-button-section">
+      <HideBtn className="log-hide-button" />
+    </LogHideButtonStyle>
+  );
 };
 
-export default LogHideButton
+export default LogHideButton;
