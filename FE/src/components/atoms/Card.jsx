@@ -1,21 +1,20 @@
-import React from 'react';
 
 const Card = ({cards}) => {
-  console.log(cards);
   const cardlists = cards.map(({id, title, content, author}) => {
     return (
-      <>
-        <li key={id}>
+      <li key={id+title}>
+      <div>
         <h3>{title}</h3>
+        <span>icon</span>
+      </div>
         <p>{content}</p>
         <span>{author}</span>
-        </li>
-      </>
+      </li>
     )
   })
 
   return (
-    <div>{cardlists}</div>
+    <>{cardlists}</>
   )
 }
 
