@@ -1,3 +1,4 @@
+
 import {useState, useRef} from 'react'
 
 const Form = ({addCard, column, handleClickCancel}) => {
@@ -17,7 +18,6 @@ const Form = ({addCard, column, handleClickCancel}) => {
         nextID.current++;
         addCard(column)
     }
-
 
     const NewForm = () => (
     <form onSubmit={handleSubmit}>

@@ -10,6 +10,7 @@ const Column = ({data:{columns}, changeColumns}) => {
     const [currentID, setCurrentID] = useState(null);
 
 
+
     const handleClick = (clickedID) => {
         return () => {
             if(currentID !== clickedID) setCurrentID(clickedID);
@@ -46,6 +47,7 @@ const Column = ({data:{columns}, changeColumns}) => {
         
         {currentID === id ? <Form key={id} addCard={addCard} handleClickCancel={handleClickCancel} column={column}/> : <></>}
         <Card cards={cards} />
+
         </div>
         </ul>)
         })
