@@ -1,9 +1,14 @@
 import React from 'react';
 import './Menu.css'
 
-function Menu() {
+const Menu =() => {
+
+  const toggleSidebar = () => {
+    console.log("menu popup");
+  }
+
   return (
-    <div className="Menu">
+    <div className="Menu" onClick={toggleSidebar} >
        <i className="fa fa-bars"></i>
     </div>
   );
