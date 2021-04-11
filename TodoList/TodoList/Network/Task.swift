@@ -11,7 +11,7 @@ struct Task: Codable {
     var id: Int?
     let title: String
     let contents: String
-    let category: TaskState
+    var category: TaskState
     var dateTime: Date?
     var order: Int?
     var isDeleted: Int? // var deleted: Bool?

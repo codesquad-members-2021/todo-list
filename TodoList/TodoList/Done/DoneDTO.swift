@@ -1,5 +1,5 @@
 //
-//  DoDTO.swift
+//  DoneDTO.swift
 //  TodoList
 //
 //  Created by Ador on 2021/04/11.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class DoDTO {
+class DoneDTO {
     private var tasks: [Task]
     
     init() {
@@ -26,9 +26,7 @@ class DoDTO {
         self.tasks = tasks
     }
     
-    func move(index: Int) -> Task {
-        var task = tasks[index]
-        task.category = TaskState.done
-        return task
+    func insert(task: Task) {
+        tasks.insert(task, at: 0)
     }
 }
