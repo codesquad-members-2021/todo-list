@@ -11,15 +11,9 @@ const TodoListItem = () => {
       <SmallButton _position="absolute" _right="3px">
         <Image src={closeButton} _width="10px" />
       </SmallButton>
-      <Span _color="#000" _fontSize="17px" _fontWeight="700">
-        GitHub 공부하기
-      </Span>
-      <Span _color="#000" _fontSize="16px">
-        add, commit, push
-      </Span>
-      <Span _color="#969595" _fontSize="13px">
-        author by Daisy
-      </Span>
+      <Span _color="#000" _fontSize="17px" _fontWeight="700"></Span>
+      <Span _color="#000" _fontSize="16px"></Span>
+      <Span _color="#969595" _fontSize="13px"></Span>
     </Form>
   );
 };

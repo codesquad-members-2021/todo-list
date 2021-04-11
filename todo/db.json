@@ -2,30 +2,33 @@
   "todos": [
     {
       "id": 1,
-      "content": "HTML",
-      "completed": true
+      "title": "GitHub 공부하기",
+      "content": "add, commit 공부하기",
+      "sectionId": 1
     },
     {
       "id": 2,
-      "content": "CSS",
-      "completed": false
+      "title": "JS 공부하기",
+      "content": "비동기 공부하기",
+      "sectionId": 2
     },
     {
       "id": 3,
-      "content": "Javascript",
-      "completed": true
+      "title": "React 공부하기",
+      "content": "useState란?",
+      "sectionId": 3
     }
   ],
   "users": [
     {
       "id": 1,
-      "name": "Lee",
-      "role": "developer"
-    },
-    {
-      "id": 2,
-      "name": "Kim",
-      "role": "designer"
+      "name": "Beemo",
+      "role": "Gatekeeper"
     }
+  ],
+  "sections": [
+    { "id": 1, "name": "해야할 일" },
+    { "id": 2, "name": "비동기 공부하기" },
+    { "id": 3, "name": "완료한 일" }
   ]
 }

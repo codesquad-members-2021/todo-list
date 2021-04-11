@@ -17,8 +17,6 @@ server.use(middlewares);
 server.delete("/todos/completed", (req, res) => {
   // lowdb를 사용해서 db.json에서 completed: true인 todo를 제거
   db.get("todos").remove({ completed: true }).write();
-
-  // todos를 응답
   res.send(db.get("todos").value());
 });
 
