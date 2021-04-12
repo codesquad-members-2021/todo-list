@@ -10,10 +10,10 @@ const MenuBtn = styled(menuBtn)`
   top: 44px;
 `;
 
-const ShowLogButton = () => {
+const ShowLogButton = ({renderLoghandler} ) => {
   return (
     <div className="show-log-button-section">
-      {/* <MenuBtn className="show-log-button" /> */}
+      <MenuBtn className="show-log-button" onClick={renderLoghandler} />
     </div>
   );
 };

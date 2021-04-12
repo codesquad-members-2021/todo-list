@@ -17,13 +17,19 @@ const MenuBtn = styled(menuBtn)`
 `;
 
 const App = () => {
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
+  const handleLogRender = () => {
+    setShow(false);
+  }
+  const renderLoghandler = () => {
+    setShow(true);
+  }
   return (
     <div className="App">
-      <Header />
+      <Header renderLoghandler={renderLoghandler} />
       <Body />
-      {show ? <Log /> : null}
-      <MenuBtn className="show-log-button" onClick={() => setShow(!show)} />
+      {show ? <Log handleLogRender={handleLogRender} /> : null}
+      {/* <MenuBtn className="show-log-button" onClick={() => setShow(!show)} /> */}
     </div>
   );
 };
