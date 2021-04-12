@@ -64,6 +64,7 @@ class SectionViewController: UIViewController, DataPassable {
     private func setTitleText() {
         guard let mode = self.sectionMode else { return }
         self.sectionTitle.text = mode.sectionTitle
+        self.sectionTitle.sizeToFit()
     }
     
     private func setTODOTableView() {
