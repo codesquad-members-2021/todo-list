@@ -9,8 +9,6 @@ const HistoryTimeStyle = styled.div`
   left: 0px;
   top: 85px;
 
-  font-family: Noto Sans KR;
-  font-style: normal;
   font-weight: normal;
   font-size: 14px;
   line-height: 20px;

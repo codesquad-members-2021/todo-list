@@ -20,8 +20,6 @@ const ButtonAccentDefault = styled.div`
 `;
 
 const ButtonAccentDefaultText = styled.div`
-  font-family: Noto Sans KR;
-  font-style: normal;
   font-weight: bold;
   font-size: 14px;
   line-height: 20px;

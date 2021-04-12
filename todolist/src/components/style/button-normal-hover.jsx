@@ -23,8 +23,6 @@ const ButtonNormalHoverText = styled.div`
   width: 114px;
   height: 20px;
 
-  font-family: Noto Sans KR;
-  font-style: normal;
   font-weight: normal;
   font-size: 14px;
   line-height: 20px;

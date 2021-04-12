@@ -6,8 +6,6 @@ const LogContentsStyle = styled.div`
   width: 244px;
   height: 46px;
 
-  font-family: Noto Sans KR;
-  font-style: normal;
   font-weight: bold;
   font-size: 16px;
   line-height: 23px;

@@ -20,8 +20,7 @@ const ButtonAccentHover = styled.div`
 
 const ButtonAccentHoverText = styled.div`
   /* title */
-  font-family: Noto Sans KR;
-  font-style: normal;
+
   font-weight: bold;
   font-size: 14px;
   line-height: 20px;

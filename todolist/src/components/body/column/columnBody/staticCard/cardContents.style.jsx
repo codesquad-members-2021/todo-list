@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
-const CardContentsStyle = styled.span`
-  font-family: Noto Sans KR;
-  font-style: normal;
+const CardContentsStyle = styled.div`
   font-weight: normal;
   font-size: 14px;
   line-height: 20px;

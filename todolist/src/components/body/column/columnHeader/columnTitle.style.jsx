@@ -7,8 +7,6 @@ const ColumnTitleStyle = styled.span`
   left: 0px;
   top: 0px;
 
-  font-family: Noto Sans KR;
-  font-style: normal;
   font-weight: bold;
   font-size: 18px;
   line-height: 26px;
