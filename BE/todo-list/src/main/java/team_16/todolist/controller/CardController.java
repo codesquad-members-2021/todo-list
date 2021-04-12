@@ -17,9 +17,10 @@ public class CardController {
 
     @PostMapping()
     public Card createdCard(@PathVariable Long boardId, String title, String content) {
-        Board board = boardRepository.findById(boardId).get();
+        Board board = boardRepository.findById(boardId).orElseThrow(IllegalArgumentException::new);
         Card newCard = board.addCard(title, content);
         boardRepository.save(board);
+
         return newCard;
     }
 
@@ -28,15 +29,16 @@ public class CardController {
      */
     @PutMapping("/{cardId}")
     public Card updateCard(@PathVariable Long boardId, @PathVariable Long cardId, Card card) {
-        Board board = boardRepository.findById(boardId).get();
+        Board board = boardRepository.findById(boardId).orElseThrow(IllegalArgumentException::new);
         Card updateCard = board.updateCard(cardId, card);
         boardRepository.save(board);
+
         return updateCard;
     }
 
     @DeleteMapping("/{cardId}")
     public void deleteCard(@PathVariable Long boardId, @PathVariable Long cardId) {
-        Board board = boardRepository.findById(boardId).get();
+        Board board = boardRepository.findById(boardId).orElseThrow(IllegalArgumentException::new);
         board.deleteCard(cardId);
         boardRepository.save(board);
     }
