@@ -1,7 +1,6 @@
 package com.team06.todo.dto;
 
 import com.team06.todo.domain.Card;
-import com.team06.todo.domain.ColumnType;
 
 import java.time.LocalDateTime;
 
@@ -10,7 +9,7 @@ public class CardResponseDto {
     private Long id;
     private String title;
     private String contents;
-    private ColumnType columnType;
+    private int columnType;
     private LocalDateTime createdDateTime;
 
     protected CardResponseDto() {
@@ -37,7 +36,7 @@ public class CardResponseDto {
         return contents;
     }
 
-    public ColumnType getColumnType() {
+    public int getColumnType() {
         return columnType;
     }
 

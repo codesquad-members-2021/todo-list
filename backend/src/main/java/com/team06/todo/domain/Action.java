@@ -14,14 +14,14 @@ public class Action {
     private LocalDateTime createdDateTime;
 
     // move 할 때
-    private ColumnType columnFrom;
-    private ColumnType columnTo;
+    private int columnFrom;
+    private int columnTo;
 
     public Action() {
     }
 
     // move
-    public Action(String cardTitle, ColumnType columnFrom, ColumnType columnTo, ActionType actionType) {
+    public Action(String cardTitle, int columnFrom, int columnTo, ActionType actionType) {
         this.cardTitle = cardTitle;
         this.actionType = actionType;
         this.columnFrom = columnFrom;
@@ -52,11 +52,11 @@ public class Action {
         return createdDateTime;
     }
 
-    public ColumnType getColumnFrom() {
+    public int getColumnFrom() {
         return columnFrom;
     }
 
-    public ColumnType getColumnTo() {
+    public int getColumnTo() {
         return columnTo;
     }
 

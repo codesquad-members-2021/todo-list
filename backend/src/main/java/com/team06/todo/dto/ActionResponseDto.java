@@ -2,14 +2,13 @@ package com.team06.todo.dto;
 
 import com.team06.todo.domain.Action;
 import com.team06.todo.domain.ActionType;
-import com.team06.todo.domain.ColumnType;
 
 import java.time.LocalDateTime;
 
 public class ActionResponseDto {
     private String cardTitle;
-    private ColumnType columnFrom;
-    private ColumnType columnTo;
+    private int columnFrom;
+    private int columnTo;
     private ActionType actionType;
     private LocalDateTime createdDateTime;
 
@@ -28,11 +27,11 @@ public class ActionResponseDto {
         return cardTitle;
     }
 
-    public ColumnType getColumnFrom() {
+    public int getColumnFrom() {
         return columnFrom;
     }
 
-    public ColumnType getColumnTo() {
+    public int getColumnTo() {
         return columnTo;
     }
 

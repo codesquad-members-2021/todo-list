@@ -1,8 +1,7 @@
 package com.team06.todo.controller;
 
 import com.team06.todo.domain.Card;
-import com.team06.todo.dto.CardResponseDto;
-import com.team06.todo.dto.CardsResponse;
+import com.team06.todo.dto.*;
 import com.team06.todo.service.CardsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,18 +28,19 @@ public class CardsController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<CardResponseDto> create(@RequestBody HashMap<String, String> cardInfo) {
-        return ResponseEntity.ok(cardsService.save(cardInfo));
+    public ResponseEntity<CardResponseDto> create(@RequestBody CardCreateRequestDto cardCreateRequestDto) {
+        CardResponseDto cardResponseDto= cardsService.save(cardCreateRequestDto);
+        return ResponseEntity.ok(cardResponseDto);
     }
 
     @PutMapping("/{id}/move")
-    public ResponseEntity<CardResponseDto> move(@PathVariable Long id, @RequestBody HashMap<String, String> cardInfo) {
-        return ResponseEntity.ok(cardsService.move(id, cardInfo));
+    public ResponseEntity<CardResponseDto> move(@PathVariable Long id, @RequestBody CardMoveRequestDto cardMoveRequestDto) {
+        return ResponseEntity.ok(cardsService.move(id, cardMoveRequestDto));
     }
 
     @PutMapping("/{id}/update")
-    public ResponseEntity<CardResponseDto> update(@PathVariable Long id, @RequestBody HashMap<String, String> cardInfo) {
-        return ResponseEntity.ok(cardsService.update(id, cardInfo));
+    public ResponseEntity<CardResponseDto> update(@PathVariable Long id, @RequestBody CardUpdateRequestDto cardUpdateRequestDto) {
+        return ResponseEntity.ok(cardsService.update(id, cardUpdateRequestDto));
     }
 
     @DeleteMapping("/{id}/delete")

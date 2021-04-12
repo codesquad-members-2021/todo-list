@@ -25,7 +25,7 @@ public class ActionsService {
         actionsRepository.save(new Action(card.getTitle(), ActionType.ADD));
     }
 
-    public void move(Card card, ColumnType columnFrom, ColumnType columnTo) {
+    public void move(Card card, int columnFrom, int columnTo) {
         actionsRepository.save(new Action(card.getTitle(), columnFrom, columnTo, ActionType.MOVE));
     }
 

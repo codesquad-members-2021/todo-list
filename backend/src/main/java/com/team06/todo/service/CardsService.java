@@ -2,8 +2,7 @@ package com.team06.todo.service;
 
 import com.team06.todo.domain.Card;
 import com.team06.todo.domain.ColumnType;
-import com.team06.todo.dto.CardResponseDto;
-import com.team06.todo.dto.CardsResponse;
+import com.team06.todo.dto.*;
 import com.team06.todo.repository.CardsRepository;
 import org.springframework.stereotype.Service;
 
@@ -22,8 +21,8 @@ public class CardsService {
         this.actionsService = actionsService;
     }
 
-    public CardResponseDto save(HashMap<String, String> cardInfo) {
-        Card card = new Card(cardInfo);
+    public CardResponseDto save(CardCreateRequestDto cardCreateRequestDto) {
+        Card card = new Card(cardCreateRequestDto);
         cardsRepository.save(card);
         actionsService.save(card);
         return new CardResponseDto(card);
@@ -43,20 +42,20 @@ public class CardsService {
                 .orElseThrow(() -> new IllegalStateException("해당 카드를 찾을 수 없습니다. id = " + id));
     }
 
-    public CardResponseDto move(Long id, HashMap<String, String> cardInfo) {
+    public CardResponseDto move(Long id, CardMoveRequestDto cardMoveRequestDto) {
         Card card = cardsRepository.findById(id)
                 .orElseThrow(() -> new IllegalStateException("해당 카드를 찾을 수 없습니다. id = " + id));
-        ColumnType columnFrom = card.getColumnType();
-        card.move(cardInfo);
+        int columnFrom = card.getColumnType();
+        card.move(cardMoveRequestDto);
         cardsRepository.save(card);
-        actionsService.move(card, columnFrom, ColumnType.valueOf(cardInfo.get("column_type")));
+        actionsService.move(card, columnFrom, card.getColumnType());
         return new CardResponseDto(card);
     }
 
-    public CardResponseDto update(Long id, HashMap<String, String> cardInfo) {
+    public CardResponseDto update(Long id, CardUpdateRequestDto cardUpdateRequestDto) {
         Card card = cardsRepository.findById(id)
                 .orElseThrow(() -> new IllegalStateException("해당 카드를 찾을 수 없습니다. id = " + id));
-        card.update(cardInfo);
+        card.update(cardUpdateRequestDto);
         cardsRepository.save(card);
         actionsService.update(card);
         return new CardResponseDto(card);
