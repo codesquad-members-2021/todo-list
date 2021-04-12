@@ -4,6 +4,8 @@ import com.team08.todolist.DateTimeUtils;
 
 import java.time.LocalDateTime;
 
+import static com.team08.todolist.DateTimeUtils.reformatByPattern;
+
 public class CardDto {
     private Long cardId;
     private String title;
@@ -12,12 +14,12 @@ public class CardDto {
     private LocalDateTime createdDateTime;
     private Integer position;
 
-    public CardDto(Long cardId, String title, String content, boolean isApp, LocalDateTime createdDateTime, Integer position) {
+    public CardDto(Long cardId, String title, String content, boolean isApp, String createdTime, Integer position) {
         this.cardId = cardId;
         this.title = title;
         this.content = content;
         this.isApp = isApp;
-        this.createdDateTime = createdDateTime;
+        this.createdDateTime = reformatByPattern(createdTime);
         this.position = position;
     }
 
@@ -43,5 +45,17 @@ public class CardDto {
 
     public Integer getPosition() {
         return position;
+    }
+
+    @Override
+    public String toString() {
+        return "CardDto{" +
+                "cardId=" + cardId +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", isApp=" + isApp +
+                ", createdDateTime=" + createdDateTime +
+                ", position=" + position +
+                '}';
     }
 }

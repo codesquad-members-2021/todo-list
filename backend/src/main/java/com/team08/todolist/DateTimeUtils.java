@@ -9,5 +9,8 @@ public class DateTimeUtils {
     public static String formatByPattern(LocalDateTime localDateTime) {
         return localDateTime.format(formatter);
     }
+    public static LocalDateTime reformatByPattern(String localDateTime) {
+        return LocalDateTime.parse(localDateTime, formatter);
+    }
 
 }

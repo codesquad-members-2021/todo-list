@@ -1,5 +1,6 @@
 package com.team08.todolist.controller;
 
+import com.team08.todolist.DateTimeUtils;
 import com.team08.todolist.dto.CardDto;
 import com.team08.todolist.model.Column;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,11 +29,11 @@ public class ApiColumnController {
     public List<CardDto> column(@PathVariable Long columnId) {
         List<CardDto> cards = new ArrayList<>();
         cards.add(new CardDto(1L, "title1",
-                "content1", true, LocalDateTime.now(), 65535));
+                "content1", true, DateTimeUtils.formatByPattern(LocalDateTime.now()), 65535));
         cards.add(new CardDto(2L, "title2",
-                "content2", true, LocalDateTime.now(), 65535 * 2));
+                "content2", true, DateTimeUtils.formatByPattern(LocalDateTime.now()), 65535 * 2));
         cards.add(new CardDto(3L, "title3",
-                "content3", false, LocalDateTime.now(), 65535 * 4));
+                "content3", false, DateTimeUtils.formatByPattern(LocalDateTime.now()), 65535 * 4));
         return cards;
     }
 }
