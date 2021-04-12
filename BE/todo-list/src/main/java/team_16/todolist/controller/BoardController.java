@@ -34,7 +34,7 @@ public class BoardController {
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getBoard(@PathVariable Long id) {
-        Set<Card> boards = boardRepository.findById(id).get().getCards();
+        Set<Card> boards = boardRepository.findById(id).orElseThrow(IllegalArgumentException::new).getCards();
 
         return ResponseEntity.ok().body(boards);
     }
