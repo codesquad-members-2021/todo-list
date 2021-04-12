@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		105DCBB526247E31008AC441 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105DCBB426247E31008AC441 /* HTTPMethod.swift */; };
+		105DCBBA26247F4A008AC441 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105DCBB926247F4A008AC441 /* APIError.swift */; };
 		107249D5261DBEEF005B3DD8 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107249D3261DBEEF005B3DD8 /* CardCell.swift */; };
 		107249D6261DBEEF005B3DD8 /* CardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 107249D4261DBEEF005B3DD8 /* CardCell.xib */; };
 		107249DB261DC182005B3DD8 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107249DA261DC182005B3DD8 /* CardViewController.swift */; };
@@ -53,6 +54,7 @@
 
 /* Begin PBXFileReference section */
 		105DCBB426247E31008AC441 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		105DCBB926247F4A008AC441 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		107249D3261DBEEF005B3DD8 /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
 		107249D4261DBEEF005B3DD8 /* CardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardCell.xib; sourceTree = "<group>"; };
 		107249DA261DC182005B3DD8 /* CardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
@@ -132,10 +134,11 @@
 		10FA92EA262424260002DBE2 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				10FA92EE262425AA0002DBE2 /* CardsAPI.swift */,
 				10FA92F626242C620002DBE2 /* URLSessionProtocol.swift */,
-				10FA92FE262444A90002DBE2 /* CardAPIClient.swift */,
 				105DCBB426247E31008AC441 /* HTTPMethod.swift */,
+				10FA92FE262444A90002DBE2 /* CardAPIClient.swift */,
+				10FA92EE262425AA0002DBE2 /* CardsAPI.swift */,
+				105DCBB926247F4A008AC441 /* APIError.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -377,6 +380,7 @@
 				FA41FF04261C4FD2004ECD45 /* AppDelegate.swift in Sources */,
 				10C1B409261EFE6900B6BD9E /* ModalViewController.swift in Sources */,
 				FA41FF06261C4FD2004ECD45 /* SceneDelegate.swift in Sources */,
+				105DCBBA26247F4A008AC441 /* APIError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

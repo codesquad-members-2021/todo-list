@@ -17,8 +17,3 @@ enum CardAPI : String, CodingKey{
     var path : String { self.stringValue }
     var url : URL { URL(string: CardAPI.baseURL + path)! }
 }
-
-enum APIError: LocalizedError {
-    case unknownError
-    var errorDescription: String? { "unknown Error"}
-}
