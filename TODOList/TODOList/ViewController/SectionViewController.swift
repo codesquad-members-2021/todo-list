@@ -33,7 +33,7 @@ class SectionViewController: UIViewController, DataPassable {
         self.exportViewModel = AppearViewModel(mode: sectionMode)
         self.changeCardViewModel = ChangeCardViewModel()
         
-        self.changeCardViewModel.addCardClosure = { card in
+        self.changeCardViewModel.addCardHandler = { card in
             self.cards.append(card)
             DispatchQueue.main.async {
                 self.TODOTableView.reloadData()
@@ -58,7 +58,8 @@ class SectionViewController: UIViewController, DataPassable {
         addView.modalPresentationStyle = .overCurrentContext
         guard let sectionMode = sectionMode else { return }
         addView.setSectionMode(mode: sectionMode)
-        present(addView, animated: false, completion: nil)
+        addView.modalTransitionStyle = .crossDissolve
+        present(addView, animated: true, completion: nil)
     }
     
     private func setTitleText() {

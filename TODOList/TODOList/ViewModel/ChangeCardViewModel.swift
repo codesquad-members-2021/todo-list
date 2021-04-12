@@ -12,7 +12,7 @@ class ChangeCardViewModel {
     private(set) var body: Observable<String>
     private var cardsNetworkCenter: CardsNetworkCenter
     
-    var addCardClosure: ((Card) -> Void)?
+    var addCardHandler: ((Card) -> Void)?
     
     init(subject: String, body: String) {
         self.subject = Observable(value: subject)
@@ -30,7 +30,7 @@ class ChangeCardViewModel {
         guard let contents = body.value else { return }
         let card = CardFactory.makeCard(title: title, contents: contents, mode: mode)
         self.cardsNetworkCenter.postCards(card: card) { (card) in
-            self.addCardClosure?(card)
+            self.addCardHandler?(card)
         }
     }
     
