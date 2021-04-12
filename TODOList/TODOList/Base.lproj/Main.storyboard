@@ -256,6 +256,9 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="새로운 카드 추가" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lfz-pK-mS0">
                                         <rect key="frame" x="16" y="16" width="368" height="19.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="368" id="wYa-Ab-J1O"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -270,67 +273,67 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bXM-ak-P1n" customClass="SubmitButton" customModule="TODOList" customModuleProvider="target">
-                                        <rect key="frame" x="276" y="119" width="108" height="40"/>
-                                        <color key="backgroundColor" systemColor="systemBlueColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="108" id="H8D-Vf-7sU"/>
-                                            <constraint firstAttribute="height" constant="40" id="w7o-Ez-go0"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                        <state key="normal" title="등록">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <state key="disabled" title="등록"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="3"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="touchSubmitButton:" destination="Ypj-LH-wc2" eventType="touchUpInside" id="9bP-sC-DSl"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ul4-l4-h4q">
-                                        <rect key="frame" x="160" y="119" width="108" height="40"/>
-                                        <color key="backgroundColor" systemColor="systemGray5Color"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="108" id="ZPK-O3-yFn"/>
-                                            <constraint firstAttribute="height" constant="40" id="gZQ-u4-2VO"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <state key="normal" title="취소">
-                                            <color key="titleColor" systemColor="systemGray3Color"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="3"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="touchCancelButton:" destination="Ypj-LH-wc2" eventType="touchUpInside" id="7p6-vK-kCn"/>
-                                        </connections>
-                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="cIl-sK-cW7">
+                                        <rect key="frame" x="160" y="119" width="224" height="40"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ul4-l4-h4q">
+                                                <rect key="frame" x="0.0" y="0.0" width="108" height="40"/>
+                                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="108" id="ZPK-O3-yFn"/>
+                                                    <constraint firstAttribute="height" constant="40" id="gZQ-u4-2VO"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <state key="normal" title="취소">
+                                                    <color key="titleColor" systemColor="systemGray3Color"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="3"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="touchCancelButton:" destination="Ypj-LH-wc2" eventType="touchUpInside" id="7p6-vK-kCn"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bXM-ak-P1n" customClass="SubmitButton" customModule="TODOList" customModuleProvider="target">
+                                                <rect key="frame" x="116" y="0.0" width="108" height="40"/>
+                                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="108" id="H8D-Vf-7sU"/>
+                                                    <constraint firstAttribute="height" constant="40" id="w7o-Ez-go0"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                                <state key="normal" title="등록">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <state key="disabled" title="등록"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="3"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="touchSubmitButton:" destination="Ypj-LH-wc2" eventType="touchUpInside" id="9bP-sC-DSl"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="bXM-ak-P1n" secondAttribute="trailing" constant="16" id="1r4-Tf-kgt"/>
-                                    <constraint firstAttribute="trailing" secondItem="Lfz-pK-mS0" secondAttribute="trailing" constant="16" id="3V5-Qp-ebN"/>
-                                    <constraint firstAttribute="trailing" secondItem="Lfj-oR-65E" secondAttribute="trailing" constant="16" id="AN1-aJ-NWX"/>
-                                    <constraint firstAttribute="bottom" secondItem="bXM-ak-P1n" secondAttribute="bottom" constant="16" id="ARE-Yi-hns"/>
-                                    <constraint firstItem="Lfz-pK-mS0" firstAttribute="leading" secondItem="K6Y-z2-w8f" secondAttribute="leading" constant="16" id="BiJ-Ke-D8X"/>
-                                    <constraint firstItem="bXM-ak-P1n" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ul4-l4-h4q" secondAttribute="trailing" constant="8" symbolic="YES" id="LRN-M2-DET"/>
-                                    <constraint firstItem="Lfj-oR-65E" firstAttribute="leading" secondItem="K6Y-z2-w8f" secondAttribute="leading" constant="16" id="Lfw-bD-Epf"/>
+                                    <constraint firstAttribute="bottom" secondItem="Lfj-oR-65E" secondAttribute="bottom" constant="78.5" id="15f-h6-GXW"/>
+                                    <constraint firstItem="Lfj-oR-65E" firstAttribute="width" secondItem="Lfz-pK-mS0" secondAttribute="width" id="3EV-IB-kAc"/>
+                                    <constraint firstItem="cIl-sK-cW7" firstAttribute="trailing" secondItem="Lfj-oR-65E" secondAttribute="trailing" id="Fwb-rc-OnW"/>
                                     <constraint firstAttribute="height" constant="175" id="O19-fX-Zef"/>
+                                    <constraint firstItem="96r-Hy-xC3" firstAttribute="width" secondItem="Lfz-pK-mS0" secondAttribute="width" id="Rtc-oG-W66"/>
                                     <constraint firstItem="Lfz-pK-mS0" firstAttribute="top" secondItem="K6Y-z2-w8f" secondAttribute="top" constant="16" id="Shr-Q9-tra"/>
-                                    <constraint firstItem="96r-Hy-xC3" firstAttribute="top" secondItem="Lfz-pK-mS0" secondAttribute="bottom" constant="16" id="VyV-SD-fKX"/>
-                                    <constraint firstItem="ul4-l4-h4q" firstAttribute="leading" secondItem="K6Y-z2-w8f" secondAttribute="leading" constant="160" id="Wjd-f8-Xdw"/>
-                                    <constraint firstItem="bXM-ak-P1n" firstAttribute="top" secondItem="Lfj-oR-65E" secondAttribute="top" constant="41" id="ZZA-G5-cbS"/>
-                                    <constraint firstAttribute="trailing" secondItem="96r-Hy-xC3" secondAttribute="trailing" constant="16" id="r7l-fo-yh3"/>
-                                    <constraint firstItem="Lfj-oR-65E" firstAttribute="top" secondItem="96r-Hy-xC3" secondAttribute="bottom" constant="8" id="uIL-FO-EY4"/>
-                                    <constraint firstAttribute="bottom" secondItem="ul4-l4-h4q" secondAttribute="bottom" constant="16" id="wMe-Xe-z6C"/>
-                                    <constraint firstItem="ul4-l4-h4q" firstAttribute="top" secondItem="Lfj-oR-65E" secondAttribute="top" constant="41" id="xS9-l9-Bek"/>
-                                    <constraint firstItem="96r-Hy-xC3" firstAttribute="leading" secondItem="K6Y-z2-w8f" secondAttribute="leading" constant="16" id="xUe-vl-P4V"/>
+                                    <constraint firstItem="cIl-sK-cW7" firstAttribute="top" secondItem="Lfj-oR-65E" secondAttribute="bottom" constant="22.5" id="XEG-LG-yTA"/>
+                                    <constraint firstItem="96r-Hy-xC3" firstAttribute="top" secondItem="Lfz-pK-mS0" secondAttribute="bottom" constant="16" id="Y0Z-62-nP2"/>
+                                    <constraint firstItem="96r-Hy-xC3" firstAttribute="centerX" secondItem="K6Y-z2-w8f" secondAttribute="centerX" id="f5D-rz-95Z"/>
+                                    <constraint firstItem="Lfj-oR-65E" firstAttribute="top" secondItem="96r-Hy-xC3" secondAttribute="bottom" constant="8" symbolic="YES" id="gHt-OL-JTm"/>
+                                    <constraint firstItem="Lfz-pK-mS0" firstAttribute="centerX" secondItem="K6Y-z2-w8f" secondAttribute="centerX" id="jbw-e1-HxN"/>
+                                    <constraint firstItem="Lfj-oR-65E" firstAttribute="centerX" secondItem="K6Y-z2-w8f" secondAttribute="centerX" id="qMX-7B-DpW"/>
                                     <constraint firstAttribute="width" constant="400" id="zgX-Te-Kpq"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -343,8 +346,8 @@
                         <viewLayoutGuide key="safeArea" id="QIy-wa-k2e"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="K6Y-z2-w8f" firstAttribute="centerX" secondItem="QIy-wa-k2e" secondAttribute="centerX" id="7IR-Y9-ztJ"/>
-                            <constraint firstItem="K6Y-z2-w8f" firstAttribute="top" secondItem="QIy-wa-k2e" secondAttribute="top" constant="319.5" id="naP-36-AXf"/>
+                            <constraint firstItem="K6Y-z2-w8f" firstAttribute="top" secondItem="QIy-wa-k2e" secondAttribute="top" constant="319.5" id="Yrt-NS-HIJ"/>
+                            <constraint firstItem="K6Y-z2-w8f" firstAttribute="centerX" secondItem="fk8-mF-q8L" secondAttribute="centerX" id="bkB-WN-8Pm"/>
                         </constraints>
                     </view>
                     <connections>

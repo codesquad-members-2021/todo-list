@@ -12,7 +12,7 @@ class AddViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak private var subjectField: ObservingTextField!
     @IBOutlet weak private var bodyField: ObservingTextField!
     @IBOutlet weak private var writeButton: SubmitButton!
-    var sectionMode: SectionMode?
+    private var sectionMode: SectionMode?
     private var writeViewModel: ChangeCardViewModel!
     
     override func viewDidLoad() {
