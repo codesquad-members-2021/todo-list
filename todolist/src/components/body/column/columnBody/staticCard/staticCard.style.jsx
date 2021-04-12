@@ -2,13 +2,14 @@ import styled from 'styled-components';
 
 const StaticCardStyle = styled.div`
   display: flex;
+  flex-direction: column; //지워
 
   align-items: flex-start;
   padding: 16px;
   margin: 7px 0;
 
   width: 308px;
-  height: 108px;
+  height: 150px; //원래 108
 
   background: #ffffff;
 

@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
-const ButtonNormalDefault = styled.div`
+const ButtonNormal = styled.button`
   display: flex;
-
   justify-content: center;
   align-items: center;
   padding: 10px;
@@ -12,9 +11,14 @@ const ButtonNormalDefault = styled.div`
 
   background: #e0e0e0;
   border-radius: 6px;
+  cursor: pointer;
+
+  &:hover {
+    background: #828282;
+  }
 `;
 
-const ButtonNormalDefaultText = styled.div`
+const ButtonNormalText = styled.div`
   width: 114px;
   height: 20px;
 
@@ -25,10 +29,11 @@ const ButtonNormalDefaultText = styled.div`
 
   color: #828282;
 
-  flex: none;
-  order: 0;
-  flex-grow: 0;
   margin: 0px 10px;
+
+  &:hover {
+    color: #ffffff;
+  }
 `;
 
-export { ButtonNormalDefault, ButtonNormalDefaultText };
+export { ButtonNormal, ButtonNormalText };

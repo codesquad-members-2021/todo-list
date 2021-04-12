@@ -107,3 +107,12 @@ input {
   -webkit-appearance: none;
   border-radius: 0;
 }
+
+button,
+div {
+  border: none;
+
+  &:focus {
+    outline: 0;
+  }
+}
