@@ -4,17 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b38d5df3-bbe2-42f6-99b2-d9a7514aa779" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_8_0_23.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/todo-list.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/todo-list.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/backend/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/codesquad/todolist/TodolistApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/codesquad/todolist/TodolistApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
-    </list>
+    <list default="true" id="b38d5df3-bbe2-42f6-99b2-d9a7514aa779" name="Default Changelist" comment="" />
+    <disabled>
+      <disabled_changelists>
+        <list default="true" id="b38d5df3-bbe2-42f6-99b2-d9a7514aa779" name="Default Changelist" comment="">
+          <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+          <change afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_8_0_23.xml" afterDir="false" />
+          <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+          <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+          <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+          <change beforePath="$PROJECT_DIR$/.idea/todo-list.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/todo-list.iml" afterDir="false" />
+          <change beforePath="$PROJECT_DIR$/backend/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/backend/build.gradle" afterDir="false" />
+          <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/codesquad/todolist/TodolistApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/codesquad/todolist/TodolistApplication.java" afterDir="false" />
+          <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
+        </list>
+      </disabled_changelists>
+      <disabled_trackers />
+    </disabled>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -65,7 +71,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../MySQL/mysql-connector-java-8.0.23/mysql-connector-java-8.0.23.jar" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
@@ -73,17 +79,6 @@
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="TodolistApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="todolist.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.codesquad.todolist.TodolistApplication" />
@@ -104,6 +99,7 @@
       <workItem from="1617702457060" duration="4255000" />
       <workItem from="1617724738816" duration="2241000" />
       <workItem from="1617756574115" duration="3655000" />
+      <workItem from="1618232441383" duration="3000" />
     </task>
     <servers />
   </component>
