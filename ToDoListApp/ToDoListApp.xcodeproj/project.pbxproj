@@ -27,6 +27,7 @@
 		9386C086261F0732008645D9 /* Done.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9386C085261F0732008645D9 /* Done.swift */; };
 		9386C089261F33F3008645D9 /* BoardManageable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9386C088261F33F3008645D9 /* BoardManageable.swift */; };
 		9386C08C26216D3D008645D9 /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9386C08B26216D3D008645D9 /* InputViewController.swift */; };
+		9386C09826244721008645D9 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9386C09726244721008645D9 /* Board.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		9386C085261F0732008645D9 /* Done.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Done.swift; sourceTree = "<group>"; };
 		9386C088261F33F3008645D9 /* BoardManageable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardManageable.swift; sourceTree = "<group>"; };
 		9386C08B26216D3D008645D9 /* InputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
+		9386C09726244721008645D9 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				933A1E8E261C39C50017FFBD /* Card.swift */,
+				9386C09726244721008645D9 /* Board.swift */,
 				9386C07E261F068C008645D9 /* ToDo.swift */,
 				9386C081261F0717008645D9 /* Doing.swift */,
 				9386C085261F0732008645D9 /* Done.swift */,
@@ -259,6 +262,7 @@
 				933A1E7A261C387B0017FFBD /* AppDelegate.swift in Sources */,
 				9386C089261F33F3008645D9 /* BoardManageable.swift in Sources */,
 				9348A4A2261D71F4002B63C6 /* CardCell.swift in Sources */,
+				9386C09826244721008645D9 /* Board.swift in Sources */,
 				9386C054261D9B7F008645D9 /* MainCell.swift in Sources */,
 				9386C067261EE907008645D9 /* CardNetworkManager.swift in Sources */,
 				9386C062261EE8E3008645D9 /* Endpoint.swift in Sources */,

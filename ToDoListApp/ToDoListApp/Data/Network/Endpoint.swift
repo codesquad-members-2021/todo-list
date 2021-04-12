@@ -22,7 +22,6 @@ extension Endpoint {
         components.host = "localhost"
         components.port = 3000
         components.path = "\(path)"
-        components.queryItems = queryItems
 
         guard let url = components.url else {
             preconditionFailure("Invalid URL components: \(components)")
@@ -33,56 +32,51 @@ extension Endpoint {
 }
 
 extension Endpoint {
-    //GET용
-    static var cards: Self {
-        return Endpoint(path: "/cards")
-    }
 
+    //GET용
+    static func cards(state: State) -> Self {
+        return Endpoint(path: "/cards/\(state)")
+    }
+    
     //POST용
     static func add(state: State) -> Self {
-            return Endpoint(path: "/add",
-                            queryItems: [
-                                URLQueryItem(name: "\(state.rawValue)",
-                                             value: "\(state.rawValue)_id")
-                ]
-            )
-        }
-
+        return Endpoint(path: "/card\(state.rawValue)")
+    }
+    
     static func remove(state: State) -> Self {
-            return Endpoint(path: "/remove",
-                            queryItems: [
-                                URLQueryItem(name: "\(state.rawValue)",
-                                             value: "\(state.rawValue)_id")
-                ]
-            )
-        }
-
+        return Endpoint(path: "/remove",
+                        queryItems: [
+                            URLQueryItem(name: "\(state.rawValue)",
+                                         value: "\(state.rawValue)_id")
+                        ]
+        )
+    }
+    
     static func update(state: State) -> Self {
-            return Endpoint(path: "/update",
-                            queryItems: [
-                                URLQueryItem(name: "\(state.rawValue)",
-                                             value: "\(state.rawValue)_id")
-                ]
-            )
-        }
-
+        return Endpoint(path: "/update",
+                        queryItems: [
+                            URLQueryItem(name: "\(state.rawValue)",
+                                         value: "\(state.rawValue)_id")
+                        ]
+        )
+    }
+    
     static func move(state: State) -> Self {
-            return Endpoint(path: "/move",
-                            queryItems: [
-                                URLQueryItem(name: "\(state.rawValue)",
-                                             value: "\(state.rawValue)_id")
-                ]
-            )
-        }
+        return Endpoint(path: "/move",
+                        queryItems: [
+                            URLQueryItem(name: "\(state.rawValue)",
+                                         value: "\(state.rawValue)_id")
+                        ]
+        )
+    }
 }
 
-enum State: String {
-    case todo = "todo"
-    case doing = "doing"
-    case did = "did"
+enum State: Int {
+    case todo = 1
+    case doing = 2
+    case done = 3
 
-    var state: String {
+    var state: Int {
         return rawValue
     }
 }
-

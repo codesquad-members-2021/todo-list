@@ -7,65 +7,30 @@
 
 import Foundation
 
-class Board {
-    private var cards: [CardManageable]
+class Card: CardManageable, Codable {
     
-    init(cards: [CardManageable]) {
-        self.cards = cards
-    }
-    
-    convenience init() {
-        let cards = [Card]()
-        self.init(cards: cards)
-    }
-    
-    func count() -> Int {
-        return self.cards.count
-    }
-    
-    func forEachCards(handler: (CardManageable) -> ()) {
-        cards.forEach { card in
-            handler(card)
-        }
-    }
-    
-    func getCards() -> [CardManageable] {
-        return self.cards
-    }
-    
-    func appendCard(_ card: CardManageable) {
-        self.cards.append(card)
-    }
-    
-    func removeCard(at index: Int) {
-        self.cards.remove(at: index)
-    }
-    
-    func insertCard(card: CardManageable, at destinationIndex: Int) {
-        self.cards.insert(card, at: destinationIndex)
-    }
-}
-
-class Card: CardManageable, Decodable {
-    
-    private var id: String
+    private var id: Int?
     private var title: String
     private var contents: String
-    private var columndId: Int
+    private var columnId: Int?
     
-    init(id: String, title: String, contents: String, columndId: Int) {
+    init(id: Int?, title: String, contents: String, columnId: Int?) {
         self.id = id
         self.title = title
         self.contents = contents
-        self.columndId = columndId
+        self.columnId = columnId
+    }
+    
+    convenience init(title: String, contents: String) {
+        self.init(id: nil, title: title, contents: contents, columnId: nil)
     }
     
     convenience init() {
-        let id = ""
+        let id = Int()
         let title = ""
         let contents = ""
-        let columndId = Int()
-        self.init(id: id, title: title, contents: contents, columndId: columndId)
+        let columnId = Int()
+        self.init(id: id, title: title, contents: contents, columnId: columnId)
     }
     
     func add() {
