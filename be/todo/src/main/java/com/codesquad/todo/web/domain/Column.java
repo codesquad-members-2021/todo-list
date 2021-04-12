@@ -32,6 +32,14 @@ public class Column {
                 .orElseThrow(TaskNotFoundException::new);
     }
 
+    public Task lastTask() {
+        Task task = taskList.get(taskList.size() - 1);
+        if (task == null) {
+            throw new TaskNotFoundException();
+        }
+        return task;
+    }
+
     public void addTaskAt(int index, Task task) {
         taskList.add(index, task);
     }
