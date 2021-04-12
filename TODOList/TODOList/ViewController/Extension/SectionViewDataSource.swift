@@ -10,7 +10,7 @@ import UIKit
 class SectionViewDataSource: NSObject {
     weak var dataSource: DataPassable?
     
-    var deleteCard: ((Status) -> ())?
+    var deleteCard: ((Card) -> ())?
 }
 
 extension SectionViewDataSource: UITableViewDataSource {
@@ -21,9 +21,9 @@ extension SectionViewDataSource: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SectionCell.identifier, for: indexPath) as? SectionCell else { return SectionCell() }
-        guard let status = self.dataSource?.passData() else { return SectionCell() }
-        cell.subject.text = status[indexPath.row].title
-        cell.body.text = status[indexPath.row].contents
+        guard let cards = self.dataSource?.passData() else { return SectionCell() }
+        cell.subject.text = cards[indexPath.row].title
+        cell.body.text = cards[indexPath.row].contents
         cell.body.sizeToFit()
         
         return cell
@@ -31,9 +31,8 @@ extension SectionViewDataSource: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            print("delete")
-            guard let status = self.dataSource?.passData() else { return }
-            deleteCard?(status[indexPath.row])
+            guard let cards = self.dataSource?.passData() else { return }
+            deleteCard?(cards[indexPath.row])
         }
     }
 }

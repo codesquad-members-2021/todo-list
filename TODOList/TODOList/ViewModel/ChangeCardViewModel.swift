@@ -10,6 +10,7 @@ import Foundation
 class ChangeCardViewModel {
     private(set) var subject: Observable<String>
     private(set) var body: Observable<String>
+    private 
     
     init(subject: String, body: String) {
         self.subject = Observable(value: subject)
@@ -20,11 +21,14 @@ class ChangeCardViewModel {
         self.init(subject: "", body: "")
     }
     
-    func trigger() {
-        //usecase 쓰이는 곳
+    func addCard(mode: SectionMode) {
+        guard let title = subject.value else { return }
+        guard let contents = body.value else { return }
+        let card = CardFactory.makeCard(title: title, contents: contents, mode: mode)
+        
     }
     
-    func delete(status: Status) {
+    func deleteCard(card: Card) {
         //delete
     }
     

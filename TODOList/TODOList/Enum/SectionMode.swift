@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Mode: Int {
+enum SectionMode: Int {
     case willTODO = 0
     case doingTODO = 1
     case completeTODO = 2
