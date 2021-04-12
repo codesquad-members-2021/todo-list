@@ -1,8 +1,9 @@
 import Button from '../Button'
+import HistoryList from './HistoryList'
 import { FaChevronRight } from 'react-icons/fa'
 import styled from 'styled-components'
 
-export default function Navigator ({ children }) {
+export default function Navigator () {
   const NavigatorBlock = styled.div`
     top: 0;
     right: 0;
@@ -23,7 +24,7 @@ export default function Navigator ({ children }) {
       <Button>
         <FaChevronRight />
       </Button>
-      {children}
+      <HistoryList></HistoryList>
     </NavigatorBlock>
   )
 }
