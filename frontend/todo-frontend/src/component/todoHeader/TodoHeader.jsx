@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import TodoNavBar from "./TodoNavBar";
 
 const StyledTodoHeader = styled.div`
   display: flex;
@@ -22,19 +23,28 @@ const HeaderMenuButton = styled.svg`
   }
 `;
 
-const TodoHeader = (props) => {
+const TodoHeader = ({ logs }) => {
+  const [navSelected, setNavSelected] = useState(false);
+  const toggleNav = () => {
+    setNavSelected((navSelected) => !navSelected);
+  };
   return (
     <StyledTodoHeader>
       <HeaderTitle>TODO LIST</HeaderTitle>
-      <HeaderMenuButton
-        width="17"
-        height="11"
-        viewBox="0 0 17 11"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path d="M0 1V0H17V1H0ZM17 5V6H0V5H17ZM0 10H17V11H0V10Z" />
-      </HeaderMenuButton>
+      {navSelected ? (
+        <TodoNavBar logs={logs} toggleNav={toggleNav} />
+      ) : (
+        <HeaderMenuButton
+          onClick={toggleNav}
+          width="17"
+          height="11"
+          viewBox="0 0 17 11"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M0 1V0H17V1H0ZM17 5V6H0V5H17ZM0 10H17V11H0V10Z" />
+        </HeaderMenuButton>
+      )}
     </StyledTodoHeader>
   );
 };

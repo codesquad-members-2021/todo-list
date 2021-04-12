@@ -92,7 +92,7 @@ const TodoItem = ({
             handleClick={editItem}
             disabled={isDisabled}
           />
-          <CancelBtn value="취소" onClick={toggleEditForm} />
+          <CancelBtn value="취소" handleClick={toggleEditForm} />
         </TodoCardBtnWrapper>
       </TodoCard>
     );

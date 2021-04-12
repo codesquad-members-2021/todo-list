@@ -1,12 +1,10 @@
 import React, { useRef } from "react";
-import styled from "styled-components";
 import Input from "../../atom/Input.jsx";
 import { TodoCardBtnWrapper, TodoCard } from "./TodoItem";
 import { ConfirmBtn, CancelBtn } from "../../atom/Button.jsx";
 
 const TodoListForm = ({ addTodoItem, toggleForm }) => {
   //수정완료
-  const StyledForm = styled.form``;
 
   const onSubmitForm = (e) => {
     e.preventDefault();
@@ -61,23 +59,3 @@ const TodoListForm = ({ addTodoItem, toggleForm }) => {
 };
 
 export default TodoListForm;
-
-// <TodoCard flexDir="column">
-//       <Input
-//         defaultValue={inputTitle}
-//         handleChange={onChangeTitle}
-//         placeholderValue="제목을 입력하세요"
-//         name="title"
-//       ></Input>
-//       <Input
-//         defaultValue={inputContent}
-//         handleChange={onChangeContent}
-//         placeholderValue="내용을 입력하세요"
-//         name="content"
-//       ></Input>
-
-//       <TodoCardBtnWrapper>
-//         <button onClick={editItem}>수정</button>
-//         <button onClick={toggleEditForm}>취소</button>
-//       </TodoCardBtnWrapper>
-//     </TodoCard>
