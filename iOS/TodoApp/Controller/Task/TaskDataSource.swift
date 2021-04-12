@@ -32,8 +32,6 @@ extension TaskViewController: UITableViewDataSource {
     
     func addNotificationObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(insertTask(_:)), name: .addTask, object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: <#T##Selector#>, name: .setupTask, object: nil)
     }
     
     @objc func insertTask(_ notification: Notification) {
@@ -45,6 +43,4 @@ extension TaskViewController: UITableViewDataSource {
 //        taskTableView.insertRows(at: [IndexPath(row: taskCount-1, section: 0)], with: .automatic)
     }
     
-    @objc func
 }
-

@@ -9,13 +9,7 @@ class TaskViewController: UIViewController {
     var titleText: String?
     var contentText: String?
     let taskStackManager = TaskStackManager()
-    let taskStack = TaskStack()
     
-    let cellReuseIdentifier = "TaskCell"
-    let cellSpacingHeight: CGFloat = 10
-    
-    //test code
-    var taskCards: [TaskCard] = [TaskCard(id: 0, status: StatusValue.toDo, title: "7시 기상", content: "알람 듣고 바로 기상"), TaskCard(id: 1, status: StatusValue.inProgress, title: "데일리 스크럼", content: "1팀")]
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var taskCountLabel: UILabel!
@@ -67,8 +61,8 @@ extension TaskViewController {
 
 extension TaskViewController {
     func setupData() {
-        taskStack.append(taskCard: taskCards[0])
-        taskStack.append(taskCard: taskCards[1])
+//        taskStack.append(taskCard: taskCards[0])
+//        taskStack.append(taskCard: taskCards[1])
     }
     
     
