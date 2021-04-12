@@ -13,7 +13,6 @@ const NoteStyle = styled.div`
 `;
 
 const NoteInfoStyle = styled.div`
-    display: inline-block;
     height: 80%;
     width: 75%;
     float: right;
