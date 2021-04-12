@@ -27,6 +27,7 @@ class SectionViewController: UIViewController, DataPassable {
         self.setTitleText()
         
         self.sectionViewDataSource.dataSource = self
+        self.setTODOTableView()
         
         guard let sectionMode = sectionMode else { return }
         self.exportViewModel = AppearViewModel(mode: sectionMode)
@@ -65,6 +66,11 @@ class SectionViewController: UIViewController, DataPassable {
         self.sectionTitle.text = mode.sectionTitle
     }
     
+    private func setTODOTableView() {
+        self.TODOTableView.rowHeight = UITableView.automaticDimension
+        self.TODOTableView.estimatedRowHeight = 500
+    }
+    
     func passData() -> [Card]? {
         return self.cards
     }
@@ -73,5 +79,3 @@ class SectionViewController: UIViewController, DataPassable {
         self.sectionMode = mode
     }
 }
-
-
