@@ -5,7 +5,7 @@ import org.springframework.data.relational.core.mapping.Column;
 
 import java.time.LocalDateTime;
 
-public class Card {
+public class Board {
 
     @Id
     private Long id;
@@ -18,10 +18,10 @@ public class Card {
     @Column(value = "is_deleted")
     private boolean isDeleted = false;
 
-    protected Card() {
+    protected Board() {
     }
 
-    public Card(String title, String contents, String category) {
+    public Board(String title, String contents, String category) {
         this.title = title;
         this.contents = contents;
         this.category = category;

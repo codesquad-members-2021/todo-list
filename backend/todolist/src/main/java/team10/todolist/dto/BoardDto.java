@@ -1,16 +1,16 @@
 package team10.todolist.dto;
 
-import team10.todolist.domain.Card;
+import team10.todolist.domain.Board;
 
-public class CardDto {
+public class BoardDto {
     private String title;
     private String contents;
     private String category;
 
-    protected CardDto() {
+    protected BoardDto() {
     }
 
-    public CardDto(String title, String contents, String category) {
+    public BoardDto(String title, String contents, String category) {
         this.title = title;
         this.contents = contents;
         this.category = category;
@@ -28,7 +28,7 @@ public class CardDto {
         return category;
     }
 
-    public Card toEntity() {
-        return new Card(title, contents, category);
+    public Board toEntity() {
+        return new Board(title, contents, category);
     }
 }
