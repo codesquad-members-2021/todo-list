@@ -1,116 +1,63 @@
 import React from 'react';
 import styled from 'styled-components';
-import ButtonDelete from './partial/ButtonDelete';
-import ButtonPlus from './partial/ButtonPlus';
+import ColumnDeleteButton from './partial/ColumnDeleteButton';
+import ColumnPlusButton from './partial/ColumnPlusButton';
 
 const ColumnWrapper = styled.div`
-    .column {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        padding: 0px 8px;
+    margin: 0 15px;
+    padding: 0px 8px;
+`;
 
-        position: relative;
-        width: 308px;
-        height: 26px;
+const ColumnHeader = styled.div`
+    display: flex;
+    padding: 8px 0;
+    justify-content: flex-start;
+    align-items: center;
+
+    .column--title,
+    .column--count {
+        display: inline-block;
     }
-    .column__text {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        padding: 0px;
+`;
 
-        position: absolute;
-        width: 228px;
-        height: 26px;
-        left: 8px;
-        top: 0px;
-    }
-    .column__text--title {
-        position: absolute;
-        /* width: 114px; */
-        /* height: 26px; */
-        left: 0px;
-        top: 0px;
+const ColumnHeaderCount = styled.div`
+    margin-left: 10px;
 
-        font-family: Noto Sans KR;
-        font-style: normal;
-        font-weight: bold;
-        font-size: 18px;
-        line-height: 26px;
-        /* identical to box height */
+    background-color: #bdbdbd;
+    color: #010101;
+    font-size: 16px;
 
-        display: flex;
-        align-items: center;
+    border-radius: 20px;
+    width: 26px;
+    height: 26px;
 
-        white-space: nowrap;
-        overflow-x: scroll;
-    }
-    .column__text--count {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        padding: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
 
-        position: absolute;
-        width: 26px;
-        height: 26px;
-        left: 122px;
-        top: 0px;
+const ColumnHeaderTitle = styled.div`
+    font-family: Noto Sans KR;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 4px;
+`;
 
-        /* Gray 4 */
-
-        background: #bdbdbd;
-        border-radius: 20px;
-
-        font-family: Noto Sans KR;
-        font-style: normal;
-        font-weight: bold;
-        font-size: 14px;
-        line-height: 20px;
-        display: flex;
-        align-items: center;
-        text-align: center;
-
-        /* Black */
-
-        color: #010101;
-    }
-    .column__plus-button {
-        position: absolute;
-        width: 24px;
-        height: 24px;
-        left: 249px;
-        top: 1px;
-    }
-    .column__delete-button {
-        position: absolute;
-        width: 24px;
-        height: 24px;
-        left: 282px;
-        top: 1px;
-    }
+const ColumnHeaderButtons = styled.div`
+    margin-left: auto;
 `;
 
 const Column = ({ title, cardList, plusEvent }) => {
     return (
         <ColumnWrapper>
-            <div className="column">
-                <span className="column__text">
-                    <span className="column__text--title">{title}</span>
-                    <span className="column__text--count">
-                        {cardList && cardList.length}
-                    </span>
-                </span>
-                <div onClick={plusEvent} className="column__plus-button">
-                    <ButtonPlus />
-                </div>
-                <div className="column__delete-button">
-                    <ButtonDelete />
-                </div>
-            </div>
+            <ColumnHeader>
+                <ColumnHeaderTitle>{title}</ColumnHeaderTitle>
+                <ColumnHeaderCount>{cardList && cardList.length}</ColumnHeaderCount>
+                <ColumnHeaderButtons>
+                    <ColumnPlusButton onClick={plusEvent} />
+                    <ColumnDeleteButton />
+                </ColumnHeaderButtons>
+            </ColumnHeader>
             <ul>{cardList}</ul>
         </ColumnWrapper>
     );
