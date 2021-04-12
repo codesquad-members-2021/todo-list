@@ -135,6 +135,7 @@
 		B0BC8AC7261C433E00B8122D /* ToDoListApp */ = {
 			isa = PBXGroup;
 			children = (
+				B0BC8BA2262423D300B8122D /* Service */,
 				8282B068261D2C180032D82C /* ColumnSection */,
 				B0BC8AC8261C433E00B8122D /* AppDelegate.swift */,
 				B0BC8ACA261C433E00B8122D /* SceneDelegate.swift */,
@@ -143,8 +144,6 @@
 				B0BC8AD1261C434100B8122D /* Assets.xcassets */,
 				B0BC8AD3261C434100B8122D /* LaunchScreen.storyboard */,
 				B0BC8AD6261C434100B8122D /* Info.plist */,
-				B0BC8AFB261C4F3200B8122D /* NetworkService.swift */,
-				B0BC8B00261C8BDC00B8122D /* MockNetworkService.swift */,
 			);
 			path = ToDoListApp;
 			sourceTree = "<group>";
@@ -197,6 +196,15 @@
 				82E026D0261D3BA800651B9C /* DataManager.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		B0BC8BA2262423D300B8122D /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				B0BC8AFB261C4F3200B8122D /* NetworkService.swift */,
+				B0BC8B00261C8BDC00B8122D /* MockNetworkService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
