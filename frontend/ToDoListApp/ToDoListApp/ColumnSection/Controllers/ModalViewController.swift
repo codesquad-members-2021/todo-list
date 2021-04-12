@@ -12,8 +12,36 @@ class ModalViewController : UIViewController {
     @IBOutlet weak private var CancelButton: UIButton!
     @IBOutlet weak private var titleTextField: UITextField!
     @IBOutlet weak private var contentTextField: UITextField!
-        
+    
+    private var isTitleTextFieldNil : Bool
+    private var isContentTextFieldNil : Bool
+    
+    private let titleTextFieldDelegate : UITextFieldDelegate
+    private let contentTextFieldDelegate : UITextFieldDelegate
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        isTitleTextFieldNil = false
+        isContentTextFieldNil = false
+        titleTextFieldDelegate = TitleTextFieldDelegate()
+        contentTextFieldDelegate = ContentTextFieldDelegate()
+        self.titleTextField.delegate = titleTextFieldDelegate
+        self.contentTextField.delegate = contentTextFieldDelegate
+        super.init(nibName: nil, bundle: nil)
+        initObservers()
+    }
+    
+    required init?(coder: NSCoder) {
+        isTitleTextFieldNil = false
+        isContentTextFieldNil = false
+        titleTextFieldDelegate = TitleTextFieldDelegate()
+        contentTextFieldDelegate = ContentTextFieldDelegate()
+        super.init(coder: coder)
+        initObservers()
+    }
+    
     override func viewDidLoad() {
+        self.titleTextField.delegate = titleTextFieldDelegate
+        self.contentTextField.delegate = contentTextFieldDelegate
         super.viewDidLoad()
     }
     
@@ -36,5 +64,35 @@ class ModalViewController : UIViewController {
         
         let cellData : CellData = CellData.init(title: titlefieldText, content: contentFieldText)
         return cellData
+    }
+}
+
+extension ModalViewController {
+    
+    private func initObservers(){
+        NotificationCenter.default.addObserver(self, selector: #selector(setTitleBool(notification:)), name: NSNotification.Name("updateTitleTextField"), object: titleTextFieldDelegate)
+        NotificationCenter.default.addObserver(self, selector: #selector(setContentBool(notification:)), name: NSNotification.Name("updateContentTextField"), object: contentTextFieldDelegate)
+    }
+
+    @objc private func setTitleBool(notification: Notification){
+        guard let tempuserInfo : Bool = notification.userInfo?["textUpdate"] as? Bool else {return}
+        self.isTitleTextFieldNil = tempuserInfo
+        if isContentTextFieldNil && isTitleTextFieldNil{
+            self.addButton.isEnabled = true
+        }
+        else {
+            self.addButton.isEnabled = false
+        }
+    }
+    
+    @objc private func setContentBool(notification: Notification){
+        guard let tempuserInfo : Bool = notification.userInfo?["textUpdate"] as? Bool else {return}
+        self.isContentTextFieldNil = tempuserInfo
+        if isContentTextFieldNil && isTitleTextFieldNil{
+            self.addButton.isEnabled = true
+        }
+        else {
+            self.addButton.isEnabled = false
+        }
     }
 }
