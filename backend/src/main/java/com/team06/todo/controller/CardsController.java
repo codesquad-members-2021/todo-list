@@ -1,6 +1,8 @@
 package com.team06.todo.controller;
 
 import com.team06.todo.domain.Card;
+import com.team06.todo.dto.CardResponseDto;
+import com.team06.todo.dto.CardsResponse;
 import com.team06.todo.service.CardsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,8 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 @RequestMapping("/api/cards")
 @RestController
@@ -24,34 +24,27 @@ public class CardsController {
     }
 
     @GetMapping("/show")
-    public ResponseEntity<Map<String, List<Card>>> show() {
-        Map<String, List<Card>> cardsResponse = new HashMap<>();
-        cardsResponse.put("cards", cardsService.show());
-        logger.info(cardsResponse.toString());
-        return ResponseEntity.ok(cardsResponse);
+    public ResponseEntity<CardsResponse> show() {
+        return ResponseEntity.ok(cardsService.show());
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Card> create(@RequestBody HashMap<String, String> cardInfo) {
-        Card card = cardsService.save(cardInfo);
-        return ResponseEntity.ok(card);
+    public ResponseEntity<CardResponseDto> create(@RequestBody HashMap<String, String> cardInfo) {
+        return ResponseEntity.ok(cardsService.save(cardInfo));
     }
 
     @PutMapping("/{id}/move")
-    public ResponseEntity<Card> move(@PathVariable Long id, @RequestBody HashMap<String, String> cardInfo) {
-        Card card = cardsService.move(id, cardInfo);
-        return ResponseEntity.ok(card);
+    public ResponseEntity<CardResponseDto> move(@PathVariable Long id, @RequestBody HashMap<String, String> cardInfo) {
+        return ResponseEntity.ok(cardsService.move(id, cardInfo));
     }
 
     @PutMapping("/{id}/update")
-    public ResponseEntity<Card> update(@PathVariable Long id, @RequestBody HashMap<String, String> cardInfo) {
-        Card card = cardsService.update(id, cardInfo);
-        return ResponseEntity.ok(card);
+    public ResponseEntity<CardResponseDto> update(@PathVariable Long id, @RequestBody HashMap<String, String> cardInfo) {
+        return ResponseEntity.ok(cardsService.update(id, cardInfo));
     }
 
     @DeleteMapping("/{id}/delete")
-    public ResponseEntity<Card> delete(@PathVariable Long id) {
-        Card card = cardsService.delete(id);
-        return ResponseEntity.ok(card);
+    public ResponseEntity<CardResponseDto> delete(@PathVariable Long id) {
+        return ResponseEntity.ok(cardsService.delete(id));
     }
 }

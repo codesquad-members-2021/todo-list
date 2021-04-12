@@ -6,17 +6,17 @@ import com.team06.todo.domain.ColumnType;
 
 import java.time.LocalDateTime;
 
-public class ActionsResponseDto {
+public class ActionResponseDto {
     private String cardTitle;
     private ColumnType columnFrom;
     private ColumnType columnTo;
     private ActionType actionType;
     private LocalDateTime createdDateTime;
 
-    public ActionsResponseDto() {
+    public ActionResponseDto() {
     }
 
-    public ActionsResponseDto(Action action) {
+    public ActionResponseDto(Action action) {
         this.cardTitle = action.getCardTitle();
         this.columnFrom = action.getColumnFrom();
         this.columnTo = action.getColumnTo();

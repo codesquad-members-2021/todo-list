@@ -5,7 +5,7 @@ import com.team06.todo.domain.ActionType;
 import com.team06.todo.domain.Card;
 import com.team06.todo.domain.ColumnType;
 import com.team06.todo.dto.ActionsResponse;
-import com.team06.todo.dto.ActionsResponseDto;
+import com.team06.todo.dto.ActionResponseDto;
 import com.team06.todo.repository.ActionsRepository;
 import org.springframework.stereotype.Service;
 
@@ -35,11 +35,11 @@ public class ActionsService {
 
     public ActionsResponse show() {
         List<Action> actions = (List<Action>) actionsRepository.findAll();
-        List<ActionsResponseDto> actionsResponseDtos = new ArrayList<>();
+        List<ActionResponseDto> actionResponseDtos = new ArrayList<>();
         for (Action action : actions) {
-            actionsResponseDtos.add(new ActionsResponseDto(action));
+            actionResponseDtos.add(new ActionResponseDto(action));
         }
-        return new ActionsResponse(actionsResponseDtos);
+        return new ActionsResponse(actionResponseDtos);
     }
 
     public void delete(Card card) {

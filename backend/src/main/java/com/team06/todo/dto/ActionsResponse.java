@@ -6,15 +6,15 @@ import java.util.List;
 
 public class ActionsResponse {
 
-    private final List<ActionsResponseDto> actionsResponse = new ArrayList<>();
+    private final List<ActionResponseDto> actionsResponse = new ArrayList<>();
 
-    public ActionsResponse(List<ActionsResponseDto> actionsResponseDtos) {
-        for (ActionsResponseDto actionsResponseDto : actionsResponseDtos) {
-            actionsResponse.add(actionsResponseDto);
+    public ActionsResponse(List<ActionResponseDto> actionResponseDtos) {
+        for (ActionResponseDto actionResponseDto : actionResponseDtos) {
+            actionsResponse.add(actionResponseDto);
         }
     }
 
-    public List<ActionsResponseDto> getActionsResponse() {
+    public List<ActionResponseDto> getActionsResponse() {
         return Collections.unmodifiableList(actionsResponse);
     }
 }
