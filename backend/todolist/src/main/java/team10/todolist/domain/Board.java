@@ -16,7 +16,7 @@ public class Board {
     @Column(value = "date_time")
     private LocalDateTime dateTime;
     @Column(value = "is_deleted")
-    private boolean isDeleted = false;
+    private int isDeleted = 1;
 
     protected Board() {
     }
@@ -48,7 +48,7 @@ public class Board {
         return dateTime;
     }
 
-    public boolean getIsDeleted() {
+    public int getIsDeleted() {
         return isDeleted;
     }
 
