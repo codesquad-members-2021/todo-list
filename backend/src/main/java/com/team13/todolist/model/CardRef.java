@@ -6,7 +6,8 @@ import java.util.Objects;
 
 @Table("COLUMN_CARD")
 public class CardRef {
-    Long card;
+
+    private Long card;
 
     CardRef(Long card) {
         this.card = card;
@@ -14,6 +15,10 @@ public class CardRef {
 
     public static CardRef of(Long cardId) {
         return new CardRef(cardId);
+    }
+
+    public Long getCardId() {
+        return card;
     }
 
     @Override
