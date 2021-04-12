@@ -42,8 +42,8 @@ class ViewController: UIViewController {
     
     private func setting() {
         setVC(self.todoViewController, data: TodoCards(), name: .todo)
-        setVC(self.doingViewController, data: doingCards, name: .doing)
-        setVC(self.doneViewController, data: doneCards, name: .done)
+        setVC(self.doingViewController, data: TodoCards(), name: .doing)
+        setVC(self.doneViewController, data: TodoCards(), name: .done)
     }
     
     private func setVC(_ viewController: TodoTableViewController?, data: TodoCardsManageable, name: Column) {
@@ -53,9 +53,3 @@ class ViewController: UIViewController {
     }
     
 }
-
-
-// MARK:- test variable
-
-let doingCards = TodoCards(cards: [TodoCard(title: "doing", content: "~~dd", postTime: "", user: User()), TodoCard(), TodoCard(title: "3rd", content: "something blabla", postTime: "", user: User())])
-let doneCards = TodoCards(cards: [TodoCard(title: "done", content: "아무말을 써보겠음", postTime: "", user: User()), TodoCard(), TodoCard(title: "제목임", content: "본 내용은 다음과 같습니다. \n아무 말", postTime: "", user: User()), TodoCard(title: "아아e", content: "후우..", postTime: "", user: User())])

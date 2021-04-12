@@ -5,7 +5,7 @@
 //  Created by Lia on 2021/04/12.
 //
 
-import Foundation
+import UIKit
 
 class ModalDelegate: NSObject, UITextViewDelegate {
         
@@ -15,7 +15,7 @@ class ModalDelegate: NSObject, UITextViewDelegate {
         self.placeHolder = placeHolder
     }
     
-    // TextView Place Holder
+    
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.textColor == UIColor.lightGray {
             textView.text = ""
@@ -23,7 +23,7 @@ class ModalDelegate: NSObject, UITextViewDelegate {
         }
         
     }
-    // TextView Place Holder
+    
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
             textView.text = placeHolder
