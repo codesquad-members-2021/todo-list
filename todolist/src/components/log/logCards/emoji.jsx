@@ -1,11 +1,11 @@
 import React from 'react';
-// import EmojiStyle from './historyTime';
+import EmojiStyle from './emoji.style';
 
 const Emoji = ({ emoji }) => {
   return (
-    <div className="emoji-section">
+    <EmojiStyle className="emoji-section">
       <span className="emoji">{emoji}</span>
-    </div>
+    </EmojiStyle>
   );
 };
 

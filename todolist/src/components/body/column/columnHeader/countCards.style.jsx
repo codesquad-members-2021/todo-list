@@ -2,10 +2,9 @@ import styled from 'styled-components';
 
 const CountCardsStyle = styled.div`
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 0px;
+  padding: 0;
 
   width: 26px;
   height: 26px;

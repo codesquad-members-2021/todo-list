@@ -6,6 +6,10 @@ const DeleteColumnBtn = styled(deleteColumnBtn)`
   width: 13.79px;
   height: 13.79px;
 
+  flex: none;
+  order: 2;
+  flex-grow: 0;
+  margin: 0px 8px;
   path {
     fill: #bdbdbd;
   }

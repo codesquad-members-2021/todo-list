@@ -8,11 +8,7 @@ const CardAuthorStyle = styled.span`
   width: 252px;
   height: 17px;
 
-  /* Gray 4 */
-
   color: #bdbdbd;
-
-  /* Inside Auto Layout */
 
   margin: 8px 0px;
 `;

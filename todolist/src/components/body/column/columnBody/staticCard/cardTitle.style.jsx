@@ -7,11 +7,9 @@ const CardTitleStyle = styled.span`
 
   width: 252px;
   height: 17px;
-  /* Black */
 
   color: #010101;
 
-  /* Inside Auto Layout */
   margin: 8px 0px;
 `;
 

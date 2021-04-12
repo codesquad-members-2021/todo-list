@@ -3,6 +3,7 @@ import LogHeader from './logHeader/logHeader.jsx';
 import LogCards from './logCards/logCards.jsx';
 import { getData } from '../../utils/axios.js';
 import LogStyle from './log.style';
+import LogCardsWrapper from './logCardsWrapper.style';
 
 const Log = () => {
   const [logCards, setLogCards] = useState([]);
@@ -27,9 +28,11 @@ const Log = () => {
   return (
     <LogStyle className="log">
       <LogHeader />
-      {logCards.map((logData, index) => (
-        <LogCards key={index} logData={logData} time={time} />
-      ))}
+      <LogCardsWrapper>
+        {logCards.map((logData, index) => (
+          <LogCards key={index} logData={logData} time={time} />
+        ))}
+      </LogCardsWrapper>
     </LogStyle>
   );
 };

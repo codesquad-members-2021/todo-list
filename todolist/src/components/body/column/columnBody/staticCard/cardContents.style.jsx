@@ -8,11 +8,8 @@ const CardContentsStyle = styled.div`
   width: 265px;
   height: 20px;
 
-  /* Black */
-
   color: #010101;
 
-  /* Inside Auto Layout */
   margin: 5px 0px;
   overflow: auto;
 `;

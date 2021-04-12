@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
 const LogContentsStyle = styled.div`
-  /* body */
-
   width: 244px;
   height: 46px;
 
@@ -12,11 +10,6 @@ const LogContentsStyle = styled.div`
 
   color: #010101;
 
-  /* Inside Auto Layout */
-
-  flex: none;
-  order: 1;
-  flex-grow: 0;
   margin: 8px 0px;
 `;
 

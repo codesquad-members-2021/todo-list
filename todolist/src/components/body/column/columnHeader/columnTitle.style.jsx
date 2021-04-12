@@ -1,9 +1,6 @@
 import styled from 'styled-components';
 
 const ColumnTitleStyle = styled.span`
-  width: 114px;
-  height: 26px;
-
   font-weight: bold;
   font-size: 18px;
   line-height: 26px;

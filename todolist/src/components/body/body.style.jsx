@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
 const BodyStyle = styled.div`
-  /* Auto Layout */
-
   display: flex;
   flex-direction: column;
   align-items: center;
