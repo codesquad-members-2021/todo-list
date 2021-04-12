@@ -12,21 +12,21 @@ extension CardViewController {
     func setUpDelegate(){
         todo.delegate = self
         todo.dataSource = self
-//        todo.dragDelegate = self
-//        todo.dropDelegate = self
-//        todo.dragInteractionEnabled = true
+        todo.dragDelegate = self
+        todo.dropDelegate = self
+        todo.dragInteractionEnabled = true
         
         doing.delegate = self
         doing.dataSource = self
-//        doing.dragDelegate = self
-//        doing.dropDelegate = self
-//        doing.dragInteractionEnabled = true
-
+        doing.dragDelegate = self
+        doing.dropDelegate = self
+        doing.dragInteractionEnabled = true
+        
         done.delegate = self
         done.dataSource = self
-//        done.dragDelegate = self
-//        done.dropDelegate = self
-//        done.dragInteractionEnabled = true
+        done.dragDelegate = self
+        done.dropDelegate = self
+        done.dragInteractionEnabled = true
         
     }
 }
@@ -86,25 +86,38 @@ extension CardViewController : UITableViewDelegate, UITableViewDataSource {
         
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-     
+        
         switch tableView {
         case todo:
             board.remove(at: indexPath.section, type: .todo)
-//            todo.deleteSections([indexPath.section], with: .fade)
         case doing:
             board.remove(at: indexPath.section, type: .doing)
-//            doing.deleteSections([indexPath.section], with: .fade)
         case done:
             board.remove(at: indexPath.section, type: .done)
-//            done.deleteSections([indexPath.section], with: .fade)
         default:
             return
         }
     }
     
+    
+    /*원치 않는 row값을 재 조정해주는 함수. moveSection 앱 크래쉬를 막기위한 함수.*/
+    func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
+        
+        //앱 설계상 1 Section 1 Row이기에 row가 1이면 0으로 바꾸어 앱 크래쉬를 막아준다.
+        if proposedDestinationIndexPath.row != 0 {
+            let proposedIndexPath = IndexPath(row: 0, section: proposedDestinationIndexPath.section)
+        
+            return proposedIndexPath
+        }
+        
+        return proposedDestinationIndexPath
+    }
+    
     /*각 테이블 내부에서 섹션을 변경할수 있는 프로토콜 */
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        print("sourceIndexPath : ",sourceIndexPath, "destinationIndexPath : ",destinationIndexPath)
+        
+        
         tableView.moveSection(sourceIndexPath.section, toSection: destinationIndexPath.section)
+        
     }
 }
