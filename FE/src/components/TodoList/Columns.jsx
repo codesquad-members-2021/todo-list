@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ColumnContainer } from './columnStyle';
-import Card from '../atoms/Card';
+import CardLists from '../atoms/CardLists';
 import Form from './Form';
 
 const Column = ({ data: { columns } }) => {
@@ -15,7 +15,7 @@ const Column = ({ data: { columns } }) => {
     };
   };
 
-  const deleteColumn = (deletedID) => {
+  const handleClickDeleteBtn = (deletedID) => {
     return () => {
       const newColumn = columnData.filter(({ id }) => id !== deletedID);
       setColumnData([...newColumn]);
@@ -23,8 +23,7 @@ const Column = ({ data: { columns } }) => {
   };
 
   const addCard = (column) => {
-    const newColumns = Object.assign(columnData, column);
-    setColumnData([...newColumns]);
+    setColumnData(Object.assign(columnData, column));
   };
 
   const offDisplay = () => {
@@ -42,22 +41,20 @@ const Column = ({ data: { columns } }) => {
             <button onClick={handleClick(id)}>
               <i className="fas fa-plus"></i>
             </button>
-            <button onClick={deleteColumn(id)}>
+            <button onClick={handleClickDeleteBtn(id)}>
               <i className="fas fa-times"></i>
             </button>
           </header>
           <div>
-            {currentID === id ? (
+            {currentID === id && (
               <Form
                 key={id}
                 addCard={addCard}
                 offDisplay={offDisplay}
                 column={column}
               />
-            ) : (
-              <></>
             )}
-            <Card cards={cards} />
+            <CardLists cards={cards} />
           </div>
         </ul>
       </section>
