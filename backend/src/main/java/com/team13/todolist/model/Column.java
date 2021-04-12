@@ -51,18 +51,23 @@ public class Column {
         }
     }
 
-    public void removeCard(Long cardId, Long prevCardId) {
-        // The row (columnId, cardId , prevCardId) must be in COLUMN_CARD DB table
-        CardRef deletedCard = CardRef.of(cardId);
-        if (!deletedCard.equals(cards.get(prevCardId))) {
-            //TODO: Throw prefer exception
-            throw new RuntimeException("Not Found");
-        }
+    public void removeCard(Long cardId) {
+        Long prevCardId = findPrevCardId(cardId);
         cards.remove(prevCardId);
         CardRef nextCard = cards.remove(cardId);
         if (nextCard != null) {
             cards.put(prevCardId, nextCard);
         }
+    }
+
+    private Long findPrevCardId(Long cardId) {
+        CardRef cardRef = CardRef.of(cardId);
+        for (Map.Entry<Long, CardRef> entry : cards.entrySet()) {
+            if (entry.getValue().equals(cardRef)) {
+                return entry.getKey();
+            }
+        }
+        throw new RuntimeException("Not Found");
     }
 
     private void checkCardListContains(Long cardId) {

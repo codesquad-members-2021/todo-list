@@ -81,9 +81,8 @@ class ColumnTest {
     @DisplayName("Column에서 카드를 삭제합니다.")
     public void removeCard() {
         Long cardId = 2L;
-        Long prevCardId = 3L;
         reversedCardList.remove(1);
-        column.removeCard(cardId, prevCardId);
+        column.removeCard(cardId);
         assertColumnCardList(2);
     }
 
@@ -91,9 +90,8 @@ class ColumnTest {
     @DisplayName("Card List의 끝에 있는 카드를 삭제합니다.")
     public void removeLastCard() {
         Long cardId = 3L;
-        Long prevCardId = 0L;
         reversedCardList.remove(0);
-        column.removeCard(cardId, prevCardId);
+        column.removeCard(cardId);
         assertColumnCardList(2);
     }
 
@@ -101,9 +99,8 @@ class ColumnTest {
     @DisplayName("Card List의 처음에 있는 카드를 삭제합니다.")
     public void removeFirstCard() {
         Long cardId = 1L;
-        Long prevCardId = 2L;
         reversedCardList.remove(2);
-        column.removeCard(cardId, prevCardId);
+        column.removeCard(cardId);
         assertColumnCardList(2);
     }
 
@@ -111,7 +108,7 @@ class ColumnTest {
     @DisplayName("Column에 존재하지 않는 카드를 삭제할 경우 Exception 발생")
     public void throwExceptionIfDeletedCardIsNotExist() {
         softly.assertThatThrownBy(() -> {
-            column.removeCard(2L, 5L);
+            column.removeCard(5L);
         }).isInstanceOf(RuntimeException.class);
     }
 
