@@ -11,6 +11,7 @@
 		220E7CD0262281C600B07364 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220E7CCF262281C600B07364 /* Card.swift */; };
 		220E7CD72622832B00B07364 /* CardsNetworkCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220E7CD62622832B00B07364 /* CardsNetworkCenter.swift */; };
 		22139783261EA4840091C577 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22139782261EA4840091C577 /* AddViewController.swift */; };
+		2231ACB62624966700D3AC04 /* SectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2231ACB52624966700D3AC04 /* SectionViewDelegate.swift */; };
 		223CAACA2620502900358D84 /* SectionMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223CAAC92620502900358D84 /* SectionMode.swift */; };
 		22560CDD261C310F00E2B80D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22560CDC261C310F00E2B80D /* AppDelegate.swift */; };
 		22560CDF261C310F00E2B80D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22560CDE261C310F00E2B80D /* SceneDelegate.swift */; };
@@ -46,6 +47,7 @@
 		220E7CCF262281C600B07364 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		220E7CD62622832B00B07364 /* CardsNetworkCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsNetworkCenter.swift; sourceTree = "<group>"; };
 		22139782261EA4840091C577 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
+		2231ACB52624966700D3AC04 /* SectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionViewDelegate.swift; sourceTree = "<group>"; };
 		223CAAC92620502900358D84 /* SectionMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionMode.swift; sourceTree = "<group>"; };
 		22560CD9261C310F00E2B80D /* TODOList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TODOList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22560CDC261C310F00E2B80D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				22A41EEC261C91B200248CAF /* SectionViewDataSource.swift */,
+				2231ACB52624966700D3AC04 /* SectionViewDelegate.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 				2265715A261F2F5500E455FA /* SubmitButton.swift in Sources */,
 				22AE4A7A261D847B0081AA19 /* AppearViewModel.swift in Sources */,
 				B3532088261D55B100EA788D /* Timeline.swift in Sources */,
+				2231ACB62624966700D3AC04 /* SectionViewDelegate.swift in Sources */,
 				B3F4ACC3261C3AD700D04B00 /* ToDoList.swift in Sources */,
 				B35B4435261D969C00FD5E83 /* SessionManager.swift in Sources */,
 				22B0CD96262421770080950B /* CardFactory.swift in Sources */,

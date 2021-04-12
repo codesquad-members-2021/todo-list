@@ -201,7 +201,7 @@
                                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="15"/>
+                                                <integer key="value" value="10"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
@@ -213,7 +213,7 @@
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="WJB-cl-lP7" id="4E5-if-MjW"/>
-                                    <outlet property="delegate" destination="WJB-cl-lP7" id="NFp-Vx-9hQ"/>
+                                    <outlet property="delegate" destination="kjb-21-g9E" id="Fge-xb-WSI"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -239,7 +239,8 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j8h-aN-DkO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <customObject id="WJB-cl-lP7" userLabel="TODO TableView DataSource" customClass="SectionViewDataSource" customModule="TODOList" customModuleProvider="target"/>
+                <customObject id="WJB-cl-lP7" userLabel="Section View DataSource" customClass="SectionViewDataSource" customModule="TODOList" customModuleProvider="target"/>
+                <customObject id="kjb-21-g9E" userLabel="Section View Delegate" customClass="SectionViewDelegate" customModule="TODOList" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="138.69346733668343" y="839.56834532374103"/>
         </scene>

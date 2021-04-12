@@ -13,7 +13,7 @@ class SectionViewDataSource: NSObject {
     var deleteCard: ((Card) -> ())?
 }
 
-extension SectionViewDataSource: UITableViewDataSource, UITableViewDelegate {
+extension SectionViewDataSource: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         guard let cards = self.dataSource?.passData() else { return 0 }
         return cards.count
@@ -21,12 +21,6 @@ extension SectionViewDataSource: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
-    }
-    
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let footer = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 20))
-        footer.backgroundColor = .systemGray6
-        return footer
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
