@@ -16,21 +16,14 @@ class CellData : Codable {
     var createdTime : String
     var position: Int
     
-    init() { //tempinit
+    init(title: String, content: String) { //tempinit
         self.cardId = 0
-        self.title = ""
-        self.content = ""
+        self.title = title
+        self.content = content
         self.isApp = false
         self.createdTime = ""
         self.position = 0
-    }
-    
-    func set(Title : String){
-        self.title = Title
-    }
-    
-    func set(Content : String){
-        self.content = Content
+        setCaption()
     }
     
     func setCaption(){
@@ -40,5 +33,14 @@ class CellData : Codable {
         else {
             
         }
+    }
+    
+    func sendTitle() -> Void{
+        let userInfo : [String : String] = ["cardData" : title]
+        NotificationCenter.default.post(name: NSNotification.Name("abcd"), object: self, userInfo: userInfo)
+    }
+    
+    func sendContent() -> Void{
+        
     }
 }

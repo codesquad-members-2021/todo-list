@@ -21,6 +21,8 @@ class ColumnViewController : UIViewController {
         self.columnDelegate = ColumnDelegate()
         self.columnDataSource = ColumnDataSource.init(datamanager: cellDataManager)
         super.init(nibName: nil, bundle: nil)
+        columnTableView.estimatedRowHeight = 108
+        columnTableView.rowHeight = UITableView.automaticDimension
     }
     
     required init?(coder: NSCoder) {

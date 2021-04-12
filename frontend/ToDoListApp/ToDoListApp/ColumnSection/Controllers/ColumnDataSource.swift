@@ -12,6 +12,7 @@ class ColumnDataSource : NSObject, UITableViewDataSource {
     
     init(datamanager : DataManager) {
         self.datas = datamanager
+        super.init()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -24,7 +25,8 @@ class ColumnDataSource : NSObject, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell : ColumnCell = tableView.dequeueReusableCell(withIdentifier: "ColumnCell", for: indexPath) as? ColumnCell else {return UITableViewCell()}
-        
+        cell.update(title: datas.cellDataTitle(index: indexPath.section))
+        cell.update(content: datas.cellDataContent(index: indexPath.section))
         return cell
     }
 }

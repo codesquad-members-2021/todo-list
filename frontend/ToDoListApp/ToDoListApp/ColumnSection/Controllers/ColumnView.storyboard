@@ -59,12 +59,12 @@
                                     <constraint firstAttribute="width" constant="258" id="hhi-1y-Ct9"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ColumnCell" rowHeight="95" id="YZu-Va-MSi" customClass="ColumnCell" customModule="ToDoListApp" customModuleProvider="target">
-                                        <rect key="frame" x="16" y="55.5" width="226" height="95"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ColumnCell" id="YZu-Va-MSi" customClass="ColumnCell" customModule="ToDoListApp" customModuleProvider="target">
+                                        <rect key="frame" x="16" y="55.5" width="226" height="108"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YZu-Va-MSi" id="xvE-bX-8oK">
-                                            <rect key="frame" x="0.0" y="0.0" width="226" height="95"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="226" height="108"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VKH-Qc-TsI">
                                                     <rect key="frame" x="16" y="10.5" width="194" height="20"/>
@@ -75,10 +75,11 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Content" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="INo-Rd-e5X">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Content" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="INo-Rd-e5X">
                                                     <rect key="frame" x="16" y="38.5" width="194" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="32" id="NI1-of-Bq0"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="17" id="qeA-1w-FxT"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="textColor"/>
@@ -109,6 +110,11 @@
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="bz1-NX-W6n" secondAttribute="trailing" constant="16" id="5qd-QE-gmv"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="caption" destination="bz1-NX-W6n" id="tDG-ON-TnW"/>
+                                            <outlet property="content" destination="INo-Rd-e5X" id="5Tq-wa-di1"/>
+                                            <outlet property="title" destination="VKH-Qc-TsI" id="WTg-dY-IYM"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>

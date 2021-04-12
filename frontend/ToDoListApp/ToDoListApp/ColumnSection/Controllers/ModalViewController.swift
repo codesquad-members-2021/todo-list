@@ -12,10 +12,7 @@ class ModalViewController : UIViewController {
     @IBOutlet weak private var CancelButton: UIButton!
     @IBOutlet weak private var titleTextField: UITextField!
     @IBOutlet weak private var contentTextField: UITextField!
-    
-    private let titleTextFieldDelegate : TitleTextFieldDelegate = TitleTextFieldDelegate()
-    private let contentTextFieldDelgate : ContentTextFieldDelegate = ContentTextFieldDelegate()
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -35,12 +32,9 @@ class ModalViewController : UIViewController {
     func makeCellData() -> CellData{
         guard let titlefieldText = titleTextField.text,
               let contentFieldText = contentTextField.text
-              else { return CellData() }
+        else { return CellData.init(title: "", content: "") }
         
-        let cellData : CellData = CellData.init()
-        cellData.set(Title: titlefieldText)
-        cellData.set(Content: contentFieldText)
-        cellData.setCaption()
+        let cellData : CellData = CellData.init(title: titlefieldText, content: contentFieldText)
         return cellData
     }
 }
