@@ -4,8 +4,11 @@ import styled from "styled-components";
 
 const Wrap = styled.div`
   display: flex;
-  justify-content: space-between;
-  width: 1110px;
+  border: 3px solid #000;
+  width: max-content;
+  margin: 0 0px 10px 5px;
+  background:	#d9ffea;
+  border-radius:10px;
 `;
 
 const TodoContent = ({ todos }) => {

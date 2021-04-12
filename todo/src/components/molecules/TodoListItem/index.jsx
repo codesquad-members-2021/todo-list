@@ -11,10 +11,16 @@ const Div = styled.div`
   padding: 16px;
   margin: 16px;
   background: #fff;
+  border: 2px solid #000;
   border-radius: 5px;
+  cursor: pointer;
+  &:hover{
+    border:2px solid blue;
+    background: #e0efff;
+  }
 `;
 
-const TodoListItem = ({ children, title, content, author, ...props }) => {
+const TodoListItem = ({ title, content, author }) => {
   return (
     <Div>
       <SmallButton _position="absolute" _right="3px">
