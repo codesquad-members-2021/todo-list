@@ -14,6 +14,7 @@ const SidebarStyle = styled.aside`
         height: 100vh;
         background-color: #fff;
         padding: 2rem;
+        transition: 0.5s;
 `;
 
 const IconBox = styled.div`
