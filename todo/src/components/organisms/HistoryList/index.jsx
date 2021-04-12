@@ -3,6 +3,7 @@ import styled from "styled-components";
 import SmallButton from '../../atoms/Buttons/SmallButton';
 import Image from '../../atoms/Image';
 import closeButton from '../../../images/closeButton.svg';
+import HistoryItem from '../../molecules/HistoryItem';
 
 const WrapDiv = styled.div`
   position: absolute;
@@ -21,16 +22,16 @@ const ButtonDiv = styled.div`
   text-align: end;
 `;
 
-const HistoryList = ({ children, toggleClickHandler, isOpenActions, ...props }) => {
+const HistoryList = ({ isOpenActions, isOpen }) => {
   return (
-    <WrapDiv {...props}>
+    <WrapDiv isOpen={isOpen}>
       <ButtonDiv>
         <SmallButton onClick={isOpenActions.toggle}>
           <Image _width="20px" src={closeButton} />
         </SmallButton>
       </ButtonDiv>
       <div>
-        {children}
+        <HistoryItem />
       </div>
     </WrapDiv>
   )
