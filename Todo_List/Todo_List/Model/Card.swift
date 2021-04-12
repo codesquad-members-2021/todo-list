@@ -7,20 +7,24 @@
 
 import Foundation
 
-class Card {
+struct Card : Decodable {
     
     var id : Int?
     var title : String
     var content : String
     var writer : String
-    var create : Date?
+//    var create : Date?
+    
+    var deleted : Bool?
+    var previousId : Int?
+    
     
     init(title : String, content: String, writer : String){
         self.title = title
         self.content = content
         self.writer = writer
     }
-    convenience init(){
+    init(){
         self.init(title : "iOS",
                   content: "implements plus button with jackson in codesquad. test code for content line. Am I right?",
                   writer : "elly")

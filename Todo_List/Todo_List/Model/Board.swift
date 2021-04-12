@@ -18,20 +18,20 @@ class Board {
         case doing
         case done
     }
-    var todoList = [Card]()
-    var doingList = [Card]()
-    var doneList = [Card]()
+    var todoList = Cards()
+    var doingList = Cards()
+    var doneList = Cards()
     
     func apepnd(with card : Card, type : Board.CardType) {
         switch type {
         case .todo:
-            todoList.insert(card, at: 0)
+            todoList.apepnd(with: card)
             NotificationCenter.default.post(name: Board.TodoListChanged, object: self)
         case .doing:
-            doingList.insert(card, at: 0)
+            doingList.apepnd(with: card)
             NotificationCenter.default.post(name: Board.DoingListChanged, object: self)
         case .done:
-            doneList.insert(card, at: 0)
+            doneList.apepnd(with: card)
             NotificationCenter.default.post(name: Board.DoneListChanged, object: self)
         }
     }

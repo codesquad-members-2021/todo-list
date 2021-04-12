@@ -28,6 +28,14 @@ class CardViewController: UIViewController {
         setNotificationCenter()
         registerNib()
         configureTextField()
+        DispatchQueue.main.async {
+            CardAPIClient().fetchData(completion: { result in
+                switch result {
+                case .success(let cards) : self.board.doingList.list = cards
+                case .failure(let error) : print(error)
+                }
+            })
+        }
     }
     
     @IBAction func didTouchAddButton(_ sender: UIButton) {
