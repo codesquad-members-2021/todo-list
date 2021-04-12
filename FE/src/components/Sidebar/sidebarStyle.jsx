@@ -7,9 +7,8 @@ const SidebarContainer = styled.div`
   flex-direction: column;
   position: absolute;
   align-items: center;
-  width: 452px;   /* 0 ~ 452 */
-  height: 1024px;
-  /* left: 2000px;   */
+  width: 452px; 
+  height: 824px;
   animation-duration: 3s;
   animation-name: slidein;
   top: -100px;

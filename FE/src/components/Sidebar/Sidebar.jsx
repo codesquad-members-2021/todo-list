@@ -4,8 +4,9 @@ import LogList from './LogList';
 import { SidebarContainer, CloseContainer, LogContainer } from './sidebarStyle'
 import { useSpring, animated } from 'react-spring';
 
-const Sidebar = ({isClicked, toggleSidebar}) => {
+const Sidebar = ({isClicked, toggleSidebar, transitionFrom, transitionTo, visible}) => {
   const [logArray, setLogArray] = useState();
+
 
 
   useEffect(() => {
@@ -20,22 +21,24 @@ const Sidebar = ({isClicked, toggleSidebar}) => {
     callback(data);
   }
 
-  let spring = useSpring({
+  const spring = useSpring({
     from: {
-      transform: `translate(-120px)`,
+      transform: `translate(${transitionFrom}px)`,
+      display: visible
     },
     to: {
-      transform: `translate(-360px)`,
+      transform: `translate(${transitionTo}px)`,
+      display: visible
     },
     config: {
-      mass: 6,
+      mass: 1
     },
   });
 
 
                                         // inline-block <-> none
   return (
-    isClicked ? <animated.div style={{ ...spring, display: 'inline-block'}}>  
+    <animated.div style={{ ...spring}}>  
       <SidebarContainer>
         <CloseContainer>
           <Close toggleSidebar = {toggleSidebar}/>
@@ -44,7 +47,7 @@ const Sidebar = ({isClicked, toggleSidebar}) => {
           <LogList logArray={logArray} />
         </LogContainer>
       </SidebarContainer>
-    </animated.div> : <></>
+    </animated.div>
   );
 }
 
