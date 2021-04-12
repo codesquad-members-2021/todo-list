@@ -1,12 +1,9 @@
 import styled from 'styled-components';
 
-const ColumnHeader = styled.div`
+const DivFlex = styled.div`
   display: flex;
 `;
 
-const ColumnContainer = styled.div`
-  display: flex;
-`;
+const ColumnContainer = ({ children }) => <DivFlex>{children}</DivFlex>;
 
-
-export { ColumnHeader, ColumnContainer };
+export { ColumnContainer };

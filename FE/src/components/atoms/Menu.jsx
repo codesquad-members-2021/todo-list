@@ -1,10 +1,10 @@
 import React from 'react';
-import './Menu.css'
+import './Menu.css';
 
 function Menu() {
   return (
     <div className="Menu">
-       <i className="fa fa-bars"></i>
+      <i className="fa fa-bars"></i>
     </div>
   );
 }

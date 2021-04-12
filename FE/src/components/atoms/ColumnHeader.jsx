@@ -29,12 +29,14 @@ const Icon = styled.div`
   border-radius: 20px;
 `;
 
-export const ColumnTitle = ({children}) => {
-    return <Title>{children}</Title>
-}
+export const ColumnTitle = ({ children }) => {
+  return <Title>{children}</Title>;
+};
 
-export const ColumnIcon = ({children}) => {
-  return <Icon><Span>{children}</Span></Icon>
-}
-
-
+export const ColumnIcon = ({ children }) => {
+  return (
+    <Icon>
+      <Span>{children}</Span>
+    </Icon>
+  );
+};

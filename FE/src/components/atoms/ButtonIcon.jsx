@@ -9,13 +9,17 @@ const ButtonIcon = styled.button`
 `;
 
 export const PlusBtn = () => {
-    return (
-        <ButtonIcon><i className="fas fa-plus"></i></ButtonIcon>
-    )
-}
+  return (
+    <ButtonIcon>
+      <i className="fas fa-plus"></i>
+    </ButtonIcon>
+  );
+};
 
 export const CancelBtn = () => {
-    return (
-        <ButtonIcon><i className="fas fa-times"></i></ButtonIcon>
-    )
-}
+  return (
+    <ButtonIcon>
+      <i className="fas fa-times"></i>
+    </ButtonIcon>
+  );
+};
