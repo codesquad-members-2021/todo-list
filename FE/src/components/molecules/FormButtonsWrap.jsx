@@ -1,16 +1,18 @@
 import styled from 'styled-components';
-import { useState, useRef } from 'react';
 
-const FormButtonsWrap = ({ offDisplay, inputs, resetForm }) => {
-  const { title, content } = inputs;
-
+const FormButtonsWrap = ({ offDisplay, hasInput }) => {
   return (
     <FormButtons>
       <button className="button__cancel" onClick={offDisplay}>
         <span className="click__cancel">취소</span>
       </button>
-      <button className="button__add">
-        <span className="click__add">등록</span>
+      <button
+        className={hasInput ? 'button__add btn--active' : 'button__add'}
+        disabled={hasInput ? false : true}
+      >
+        <span className={hasInput ? 'click__add span--active' : 'click__add'}>
+          등록
+        </span>
       </button>
     </FormButtons>
   );
@@ -74,5 +76,13 @@ const FormButtons = styled.div`
     text-align: center;
 
     color: rgba(255, 255, 255, 0.4);
+  }
+
+  .btn--active {
+    background: #0075de;
+  }
+
+  .span--active {
+    color: #ffffff;
   }
 `;
