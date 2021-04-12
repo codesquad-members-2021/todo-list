@@ -4,6 +4,7 @@ import com.codesquad.todo.web.domain.Column;
 import com.codesquad.todo.web.domain.Task;
 import com.codesquad.todo.web.domain.User;
 import com.codesquad.todo.web.service.dto.ColumnDto;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,7 +19,7 @@ import java.util.Map;
 public class ColumnController {
 
     @GetMapping
-    public Map<String, Object> showColumnList() {
+    public ResponseEntity<Map<String, Object>> showColumnList() {
         Map<String, Object> responseMap = new HashMap<>();
 
         List<ColumnDto> columns = new ArrayList<>();
@@ -35,7 +36,7 @@ public class ColumnController {
 
 
         responseMap.put("columns", columns);
-        return responseMap;
+        return ResponseEntity.ok(responseMap);
     }
 
 }
