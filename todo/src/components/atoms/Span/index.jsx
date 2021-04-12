@@ -2,9 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledSpan = styled.span`
-  /* display: block;
-  width: 300px;
-  padding: 5px; */
+  display: ${props => props._display};
   color: ${props => props._color};
   margin: ${props => props._margin};
   font-size: ${props => props._fontSize};

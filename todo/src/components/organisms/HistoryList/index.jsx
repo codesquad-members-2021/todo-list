@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
-import SmallButton from '../../atoms/SmallButton';
+import SmallButton from '../../atoms/Buttons/SmallButton';
 import Image from '../../atoms/Image';
 import closeButton from '../../../images/closeButton.svg';
 

@@ -1,6 +1,6 @@
 import React from "react";
 import Span from "../../atoms/Span";
-import SmallButton from "../../atoms/SmallButton";
+import SmallButton from "../../atoms/Buttons/SmallButton";
 import Image from "../../atoms/Image";
 import hamburgerBtn from "../../../images/hamburgerButtonIcon.png";
 import styled from "styled-components";

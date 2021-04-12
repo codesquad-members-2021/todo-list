@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Span from "../../atoms/Span";
 import Label from "../../atoms/Label";
-import ButtonList from "../ButtonList";
+import ButtonList from "../../atoms/Buttons/ButtonList";
 
 const WrapDiv = styled.div`
   display: flex;

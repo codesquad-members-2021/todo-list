@@ -2,18 +2,21 @@ import { useState, useEffect } from "react";
 import useToggle from "../../hooks/useToggle";
 import axios from "axios";
 import Header from "../molecules/Header";
-import HistoryContent from "../organisms/HistoryContent";
-import TodoContent from "../organisms/TodoContent";
+import HistoryList from "../organisms/HistoryList";
+import TodoContent from "../templates/TodoListWrap/TodoListWrap";
 import styled from "styled-components";
-const getAxios = async (setState, url) => {
-  const { data } = await axios.get(url);
-  setState(data);
-};
+
+
 const Div = styled.div`
   border: 3px solid black;
   background: #63bda4;
   border-radius: 10px;
 `;
+
+const getAxios = async (setState, url) => {
+  const { data } = await axios.get(url);
+  setState(data);
+};
 
 function App() {
   const [isOpen, isOpenActions] = useToggle(false);
@@ -29,7 +32,7 @@ function App() {
 
   return (
     <Div>
-      <HistoryContent isOpen={isOpen} isOpenActions={isOpenActions} />
+      <HistoryList isOpen={isOpen} isOpenActions={isOpenActions} />
       <Header isOpenActions={isOpenActions} />
       <TodoContent todos={todos}></TodoContent>
     </Div>

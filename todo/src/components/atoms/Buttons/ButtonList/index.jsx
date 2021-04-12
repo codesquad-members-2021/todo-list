@@ -1,10 +1,10 @@
 import React from "react";
-import Span from "../../atoms/Span";
-import Image from "../../atoms/Image";
-import SmallButton from "../../atoms/SmallButton";
-import MediumButton from "../../atoms/MediumButton";
-import PlusButtonImg from "../../../images/plusButton.svg";
-import CloseButtonImg from "../../../images/closeButton.svg";
+import Span from "../../Span";
+import Image from "../../Image";
+import SmallButton from "../SmallButton";
+import MediumButton from "../MediumButton";
+import PlusButtonImg from "../../../../images/plusButton.svg";
+import CloseButtonImg from "../../../../images/closeButton.svg";
 
 const ButtonList = ({ isIcon }) => {
   const plusButton = (
@@ -15,7 +15,7 @@ const ButtonList = ({ isIcon }) => {
   const closeButton = (
     <SmallButton>
       <Image src={CloseButtonImg} _width="20px" />
-</SmallButton>
+    </SmallButton>
   );
   const cancelButtons = (
     <MediumButton _background="#fff" _color="#3c4243">
