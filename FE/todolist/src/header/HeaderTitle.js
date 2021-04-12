@@ -14,14 +14,15 @@ const HeaderStyle = styled.header`
         font-weight: 400;
     }`
 
-const HeaderTitle = function () {
+const HeaderTitle = function ({ handleClick }) {
     // const [icon, setIcon] = useState('');
     const type = "bars"
+
     return (
         <HeaderStyle>
         <header className="header">
             <h1>TO-DO LIST</h1>
-            <Icon type={ type } />
+            <Icon type={ type } handleClick={handleClick}/>
         </header>
         </HeaderStyle>
     );

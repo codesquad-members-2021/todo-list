@@ -19,9 +19,9 @@ const PlusIcon = ({ type }) => {
     )
 }
 
-const CloseIcon = ({type}) => {
+const CloseIcon = ({type, handleClick }) => {
     return (
-        <IconButton type={type}>
+        <IconButton type={type} onClick={handleClick}>
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M1.5 11.25L0.75 10.5L5.25 6L0.75 1.5L1.5 0.75L6 5.25L10.5 0.75L11.25 1.5L6.75 6L11.25 10.5L10.5 11.25L6 6.75L1.5 11.25Z" fill="black"/>
             </svg>
@@ -29,9 +29,9 @@ const CloseIcon = ({type}) => {
     )
 }
 
-const BarsIcon = ({ type }) => {
+const BarsIcon = ({ type, handleClick }) => {
     return (
-        <IconButton type={ type }>
+        <IconButton type={ type } onClick={handleClick}>
             <svg width="17" height="11" viewBox="0 0 17 11" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M0 1V0H17V1H0ZM17 5V6H0V5H17ZM0 10H17V11H0V10Z" fill="black"/>
             </svg>
@@ -39,11 +39,11 @@ const BarsIcon = ({ type }) => {
     )
 }
 
-const Icon = ({ type }) => {
+const Icon = ({ type, handleClick }) => {
     return {
         plus: <PlusIcon type={ type }/>,
-        close: <CloseIcon type={ type }/>,
-        bars: <BarsIcon type={ type }/>
+        close: <CloseIcon type={ type } handleClick={handleClick}/>,
+        bars: <BarsIcon type={ type } handleClick={handleClick}/>
     }[type];
 }
 
