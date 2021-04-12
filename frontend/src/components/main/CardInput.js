@@ -37,44 +37,38 @@ const CardInputButtons = styled.div`
     justify-content: space-around;
 `;
 
-const CardInput = ({ list, index, clickHandler, isModify, originCard }) => {
-    const [title, setTitle] = useState(isModify ? originCard.title : '');
-    const [body, setBody] = useState(isModify ? originCard.body : '');
-    const [isAble, setAbility] = useState(isModify ? true : false);
+//prettier-ignore
+const CardInput = ({ title, body, index, setCardList }) => {
+    const [inputTitle, setTitle] = useState(title);
+    const [inputBody, setBody] = useState(body);
+    const isAble = inputTitle.length * inputBody.length;
 
     const addCard = () => {
         if (!isAble) return;
-        list.splice(index, isModify ? 1 : 0, { title, body, author: 'web' });
-        clickHandler();
-    };
-    const deleteCard = () => clickHandler();
-    const changeTitle = ({ target }) => {
-        setTitle(() => {
-            body.length * target.value.length
-                ? setAbility(true)
-                : setAbility(false);
-            return target.value;
+        setCardList((cardList) => {
+            const left = cardList.slice(0, index);
+            const right = cardList.slice(index + 1);
+            return left.concat({ title: inputTitle, body: inputBody }, right);
         });
     };
-    const changebody = ({ target }) => {
-        setBody(() => {
-            title.length * target.value.length
-                ? setAbility(true)
-                : setAbility(false);
-            return target.value;
-        });
-    };
+
+    const deleteCard = () => setCardList((cardList) => cardList.filter((_, i) => i !== index));
+
+    const changeTitle = ({ target }) => setTitle(() => target.value);
+
+    const changeBody = ({ target }) => setBody(() => target.value);
+
     return (
         <CardInputWrapper>
             <CardInputInput
                 placeholder="제목을 입력하세요"
                 onChange={changeTitle}
-                value={title}
+                value={inputTitle}
             />
             <CardInputInput
                 placeholder="내용을 입력하세요"
-                onChange={changebody}
-                value={body}
+                onChange={changeBody}
+                value={inputBody}
             />
             <CardInputButtons>
                 <ColumnNormalButton clickHandler={deleteCard}>
@@ -84,7 +78,7 @@ const CardInput = ({ list, index, clickHandler, isModify, originCard }) => {
                     clickHandler={addCard}
                     isAble={isAble}
                 >
-                    {isModify ? '수정' : '등록'}
+                    {title.length * body.length ? '수정' : '등록'}
                 </ColumnAccentButton>
             </CardInputButtons>
         </CardInputWrapper>

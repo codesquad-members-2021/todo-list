@@ -11,7 +11,6 @@ const CardWrapper = styled.div`
     background-color: var(--background-color);
     border-radius: 8px;
     box-shadow: 0px 1px 30px var(--boxShadow-color);
-
     margin: 10px 0;
 `;
 
@@ -47,23 +46,26 @@ const CardAuthor = styled.p`
 
     color: var(--author-text-color);
 `;
+//prettier-ignore
+const Card = ({ title, body, index, setCardList }) => {
+    const deleteCard = () => setCardList((cardList) => cardList.filter((_, i) => i !== index));
 
-const Card = ({ title, body, author, index, list, clickHandler, dbClickHandler }) => {
-
-    const deleteEvent = () => {
-        list.splice(index, 1)
-        clickHandler()
-    }
-    const dbClickEvent = () => dbClickHandler(index, {title, body})
+    const editCard = () => {
+        setCardList((cardList) => {
+            const left = cardList.slice(0, index);
+            const right = cardList.slice(index + 1);
+            return left.concat({ title, body, isInput: true }, right);
+        });
+    };
 
     return (
-        <CardWrapper onDoubleClick={dbClickEvent}>
+        <CardWrapper onDoubleClick={editCard}>
             <CardTitle>
                 <span className="title">{title}</span>
-                <ColumnDeleteButton onClick={deleteEvent} />
+                <ColumnDeleteButton onClick={deleteCard} />
             </CardTitle>
             <CardContent>{body}</CardContent>
-            <CardAuthor>author by {author}</CardAuthor>
+            <CardAuthor>author by web</CardAuthor>
         </CardWrapper>
     );
 };
