@@ -35,6 +35,8 @@ class ColumnViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewInit()
+//        columnTableView.estimatedRowHeight = 108
+//        columnTableView.rowHeight = UITableView.automaticDimension
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -67,6 +69,7 @@ class ColumnViewController : UIViewController {
         guard let currentModalVC = currentModalViewController else { return }
         cellDataManager.add(cellData: currentModalVC.makeCellData())
         columnTableView.insertSections(IndexSet(integer: columnTableView.numberOfSections), with: .automatic)
+        print(cellDataManager.currentDatasCount())
         currentModalVC.set(active: false)
         self.currentModalViewController = nil
     }

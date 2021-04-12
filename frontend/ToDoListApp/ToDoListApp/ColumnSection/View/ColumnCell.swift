@@ -30,5 +30,4 @@ class ColumnCell : UITableViewCell {
 }
 
 extension ColumnCell {
-    
 }

@@ -29,4 +29,11 @@ class ColumnDataSource : NSObject, UITableViewDataSource {
         cell.update(content: datas.cellDataContent(index: indexPath.section))
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete{
+            datas.remove(index: indexPath.section)
+            tableView.deleteSections(IndexSet(integer: indexPath.section), with: .fade)
+        }
+    }
 }

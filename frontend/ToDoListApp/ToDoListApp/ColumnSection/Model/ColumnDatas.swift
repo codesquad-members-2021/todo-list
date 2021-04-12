@@ -8,6 +8,7 @@
 import Foundation
 
 class ColumnDatas : DataManager{
+    
     private var cellDatas : [CellData]
     
     init() {
@@ -16,6 +17,9 @@ class ColumnDatas : DataManager{
     
     func add(cellData : CellData) -> Void{
         cellDatas.append(cellData)
+    }
+    func remove(index : Int) -> Void {
+        cellDatas.remove(at: index)
     }
     
     func currentDatasCount() -> Int{
