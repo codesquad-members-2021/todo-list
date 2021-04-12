@@ -1,6 +1,7 @@
 package com.example.todolist.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.MappedCollection;
 
@@ -9,23 +10,31 @@ import java.util.List;
 import java.util.Objects;
 
 public class User {
+
+    @JsonIgnore
     @Id
     private Long userId;
 
     private String name;
-    private String password;
 
+    @JsonIgnore
+    private String password;
+    private String profileUrl;
+
+    @JsonIgnore
     private String token;
 
+    @JsonIgnore
     @MappedCollection(idColumn = "user_id", keyColumn = "user_id")
     private List<Card> cards = new LinkedList<>();
 
     public User() {
     }
 
-    public User(String name, String password, String token) {
+    public User(String name, String password, String profileUrl, String token) {
         this.name = name;
         this.password = password;
+        this.profileUrl = profileUrl;
         this.token = token;
     }
 
@@ -67,6 +76,14 @@ public class User {
 
     public void setCards(List<Card> cards) {
         this.cards = cards;
+    }
+
+    public String getProfileUrl() {
+        return profileUrl;
+    }
+
+    public void setProfileUrl(String profileUrl) {
+        this.profileUrl = profileUrl;
     }
 
     @Override

@@ -4,6 +4,7 @@ CREATE TABLE user(
     user_id  int auto_increment primary key,
     name     varchar(30),
     password varchar(30),
+    profile_url varchar(255),
     token varchar(255)
 );
 

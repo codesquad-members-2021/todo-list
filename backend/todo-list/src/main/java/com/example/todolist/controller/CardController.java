@@ -1,7 +1,6 @@
 package com.example.todolist.controller;
 
 
-import com.example.todolist.ApiResponse;
 import com.example.todolist.domain.Card;
 import com.example.todolist.domain.User;
 import com.example.todolist.repository.CardRepository;
@@ -14,8 +13,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
-
-import static com.example.todolist.ApiResponse.Status.SUCCESS;
 
 @RestController
 @RequestMapping("/cards")
@@ -35,11 +32,11 @@ public class CardController {
     }
 
     @PostMapping
-    public ResponseEntity<ApiResponse> create(@RequestBody HashMap<String, String> cardInfo, HttpServletRequest request) {
+    public ResponseEntity<Card> create(@RequestBody HashMap<String, String> cardInfo, HttpServletRequest request) {
         User tokenUser = getUserFromToken(request);
         Card card = new Card(tokenUser, cardInfo.get("title"), cardInfo.get("contents"), cardInfo.get("status"));
         cardRepository.save(card);
-        return new ResponseEntity<>(new ApiResponse(card, SUCCESS), HttpStatus.OK);
+        return new ResponseEntity<>(card, HttpStatus.OK);
     }
 
     @PutMapping("/{id}")
