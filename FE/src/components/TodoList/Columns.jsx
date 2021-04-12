@@ -27,9 +27,10 @@ const Column = ({ data: { columns } }) => {
     setColumn([...newColumns]);
   };
 
-  const handleClickCancel = () => {
+  const offDisplay = () => {
     setCurrentID(null);
   };
+
   const columnList = initialColumns.map((column) => {
     const { id, title, cards } = column;
     return (
@@ -50,7 +51,7 @@ const Column = ({ data: { columns } }) => {
               <Form
                 key={id}
                 addCard={addCard}
-                handleClickCancel={handleClickCancel}
+                offDisplay={offDisplay}
                 column={column}
               />
             ) : (

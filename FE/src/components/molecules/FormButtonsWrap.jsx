@@ -1,9 +1,12 @@
 import styled from 'styled-components';
+import { useState, useRef } from 'react';
 
-const FormButtonsWrap = ({ handleClickCancel }) => {
+const FormButtonsWrap = ({ offDisplay, inputs, resetForm }) => {
+  const { title, content } = inputs;
+
   return (
     <FormButtons>
-      <button className="button__cancel" onClick={handleClickCancel}>
+      <button className="button__cancel" onClick={offDisplay}>
         <span className="click__cancel">취소</span>
       </button>
       <button className="button__add">

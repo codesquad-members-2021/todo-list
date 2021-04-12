@@ -3,7 +3,7 @@ import StyledForm from '../atoms/StyledForm';
 import { InputTitle, InputContent } from '../atoms/StyledInputs';
 import FormButtonsWrap from '../molecules/FormButtonsWrap';
 
-const Form = ({ addCard, column, handleClickCancel }) => {
+const Form = ({ addCard, column, offDisplay }) => {
   const [inputs, setInputs] = useState({
     title: '',
     content: '',
@@ -26,6 +26,7 @@ const Form = ({ addCard, column, handleClickCancel }) => {
     column.cards = cardAdded;
     nextID.current++;
     addCard(column);
+    offDisplay();
   };
 
   const onChange = ({ target }) => {
@@ -64,7 +65,7 @@ const Form = ({ addCard, column, handleClickCancel }) => {
         onKeyUp={resize}
         onChange={onChange}
       />
-      <FormButtonsWrap handleClickCancel={handleClickCancel} inputs={inputs} />
+      <FormButtonsWrap offDisplay={offDisplay} inputs={inputs} />
     </StyledForm>
   );
 };
