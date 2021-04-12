@@ -19,6 +19,13 @@ public class ErrorResponse {
     private LocalDateTime time;
     private List<FieldError> errors;
 
+    public static ErrorResponse of(ErrorCode errorCode) {
+        return ErrorResponse.builder()
+                .message(errorCode.getReason())
+                .time(LocalDateTime.now())
+                .build();
+    }
+
     public static ErrorResponse of(ErrorCode errorCode, BindingResult bindingResult) {
         return ErrorResponse.builder()
                 .message(errorCode.getReason())
