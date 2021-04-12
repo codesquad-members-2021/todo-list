@@ -29,11 +29,9 @@ const TodoStore = () => {
   ));
 
   return (
-    <>
-      <div className="TodoList">
-        <div>{columnLists}</div>
-      </div>
-    </>
+    <div className="TodoList">
+      <div>{columnLists}</div>
+    </div>
   );
 };
 
