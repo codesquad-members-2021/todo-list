@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import ButtonDelete from './partial/ButtonDelete'
+import ButtonDelete from './partial/ButtonDelete';
 
 const CardWrapper = styled.div`
     .card {
@@ -17,13 +17,13 @@ const CardWrapper = styled.div`
 
         background: #ffffff;
         /* nomal */
-        border:1px solid red;
+        border: 1px solid red;
 
         box-shadow: 0px 1px 30px rgba(224, 224, 224, 0.3);
         border-radius: 6px;
 
-        margin-top:20px;
-        margin-left:20px;
+        margin-top: 20px;
+        margin-left: 20px;
     }
     .card__text {
         display: flex;
@@ -133,24 +133,29 @@ const CardWrapper = styled.div`
         margin: 0px 0px;
     }
 `;
+//prettier-ignore
+const Card = ({ title, body, index, setCardList }) => {
+    const deleteCard = () => setCardList((cardList) => cardList.filter((_, i) => i !== index));
 
-const Card = ({ title, body, author, index, list, clickHandler, dbClickHandler }) => {
-
-    const deleteEvent = () => {
-        list.splice(index, 1)
-        clickHandler()
-    }
-    const dbClickEvent = () => dbClickHandler(index, {title, body})
+    const editCard = () => {
+        setCardList((cardList) => {
+            const left = cardList.slice(0, index);
+            const right = cardList.slice(index + 1);
+            return left.concat({ title, body, isInput: true }, right);
+        });
+    };
 
     return (
         <CardWrapper>
-            <div className="card" onDoubleClick={dbClickEvent}>
+            <div className="card" onDoubleClick={editCard}>
                 <div className="card__text">
                     <div className="card__text--title">{title}</div>
                     <div className="card__text--body">{body}</div>
-                    <div className="card__text--author">author by {author}</div>
+                    <div className="card__text--author">author by web</div>
                 </div>
-                <div onClick={deleteEvent} className="card__delete-button"><ButtonDelete /></div>
+                <div onClick={deleteCard} className="card__delete-button">
+                    <ButtonDelete />
+                </div>
             </div>
         </CardWrapper>
     );

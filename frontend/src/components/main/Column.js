@@ -101,7 +101,7 @@ const Column = ({ title, cardList, plusEvent }) => {
                 <span className="column__text">
                     <span className="column__text--title">{title}</span>
                     <span className="column__text--count">
-                        {cardList.length}
+                        {cardList && cardList.length}
                     </span>
                 </span>
                 <div onClick={plusEvent} className="column__plus-button">

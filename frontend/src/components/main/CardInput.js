@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import ButtonAccent from './partial/ButtonAccent';
 import ButtonNomal from './partial/ButtonNomal';
@@ -154,33 +154,29 @@ const Wrapper = styled.div`
     }
 `;
 
-const CardInput = ({ list, index, clickHandler, isModify, originCard }) => {
-    const [title, setTitle] = useState(isModify ? originCard.title : '');
-    const [body, setBody] = useState(isModify ? originCard.body : '');
-    const [isAble, setAbility] = useState(isModify ? true : false);
+//prettier-ignore
+const CardInput = ({ title, body, index, setCardList }) => {
+    const [inputTitle, setTitle] = useState(title);
+    const [inputBody, setBody] = useState(body);
+    const [isAble, setAbility] = useState(title.length * body.length);
+
+    useEffect(() => setAbility(Boolean(inputTitle.length * inputBody.length)), [inputTitle, inputBody]);
 
     const addCard = () => {
         if (!isAble) return;
-        list.splice(index, isModify ? 1 : 0, { title, body, author: 'web' });
-        clickHandler();
-    };
-    const deleteCard = () => clickHandler();
-    const changeTitle = ({ target }) => {
-        setTitle(() => {
-            body.length * target.value.length
-                ? setAbility(true)
-                : setAbility(false);
-            return target.value;
+        setCardList((cardList) => {
+            const left = cardList.slice(0, index);
+            const right = cardList.slice(index + 1);
+            return left.concat({ title: inputTitle, body: inputBody }, right);
         });
     };
-    const changebody = ({ target }) => {
-        setBody(() => {
-            title.length * target.value.length
-                ? setAbility(true)
-                : setAbility(false);
-            return target.value;
-        });
-    };
+
+    const deleteCard = () => setCardList((cardList) => cardList.filter((_, i) => i !== index));
+
+    const changeTitle = ({ target }) => setTitle(() => target.value);
+
+    const changebody = ({ target }) => setBody(() => target.value);
+
     return (
         <Wrapper>
             <div className="card-input">
@@ -189,13 +185,13 @@ const CardInput = ({ list, index, clickHandler, isModify, originCard }) => {
                         className="card-input__text--title"
                         placeholder="제목을 입력하세요"
                         onChange={changeTitle}
-                        value={title}
+                        value={inputTitle}
                     ></input>
                     <input
                         className="card-input__text--body"
                         placeholder="내용을 입력하세요"
                         onChange={changebody}
-                        value={body}
+                        value={inputBody}
                     ></input>
                 </div>
                 <div className="card-input__button">
@@ -203,7 +199,7 @@ const CardInput = ({ list, index, clickHandler, isModify, originCard }) => {
                     <ButtonAccent
                         clickHandler={addCard}
                         isAble={isAble}
-                        title={isModify ? '수정' : '등록'}
+                        title={title.length * body.length ? '수정' : '등록'}
                     />
                 </div>
             </div>
