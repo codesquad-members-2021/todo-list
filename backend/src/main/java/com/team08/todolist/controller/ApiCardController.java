@@ -1,5 +1,6 @@
 package com.team08.todolist.controller;
 
+import com.team08.todolist.dto.CardDto;
 import com.team08.todolist.model.Card;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,32 +18,31 @@ public class ApiCardController {
     }
 
     @GetMapping
-    public List<Card> list() {
-        List<Card> cards = new ArrayList<>();
-        cards.add(new Card(1L, "woody", "title1",
-                "content1", LocalDateTime.now(), true,
-                1L, 0));
-        cards.add(new Card(2L, "woody", "title2",
-                "content2", LocalDateTime.now(), false,
-                2L, 0));
-        cards.add(new Card(3L, "woody", "title3",
-                "content3", LocalDateTime.now(), false,
-                2L, 2));
+    public List<CardDto> list() {
+        List<CardDto> cards = new ArrayList<>();
+        cards.add(new CardDto(1L, "title1",
+                "content1", true, LocalDateTime.now(), 65535));
+        cards.add(new CardDto(2L, "title2",
+                "content2", true, LocalDateTime.now(), 65535 * 2));
+        cards.add(new CardDto(3L, "title3",
+                "content3", false, LocalDateTime.now(), 65535 * 4));
+
         return cards;
     }
 
     @GetMapping("/{cardId}")
-    public Card getCard(@PathVariable Long cardId) {
-        return new Card(cardId, "woody", "title1",
-                "content1", LocalDateTime.now(), true,
-                1L, 0);
+    public CardDto getCard(@PathVariable Long cardId) {
+        return new CardDto(cardId, "title1",
+                "content1", true, LocalDateTime.now(), 65535);
     }
 
+    // TODO : to return API result
     @PutMapping("/{cardId}")
     public void update(@PathVariable Long cardId, Card cardToUpdate) {
 
     }
 
+    // TODO : to return API result
     @DeleteMapping("/{cardId}")
     public void delete(@PathVariable Long cardId) {
 
