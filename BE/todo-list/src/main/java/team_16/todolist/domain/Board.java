@@ -29,6 +29,16 @@ public class Board {
         this.cards = cards;
     }
 
+    public Board(Long id, String title, Set<Card> cards) {
+        this.id = id;
+        this.title = title;
+        this.cards = cards;
+    }
+
+    public Board(String title) {
+        this.title = title;
+    }
+
     public Card addCard(String title, String content) {
         Card newCard = createCard(title, content);
         cards.add(newCard);

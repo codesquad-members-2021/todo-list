@@ -21,22 +21,21 @@ public class BoardController {
 
     @PostMapping
     public void createBoard(String title) {
-        Board board = new Board();
-        board.title = title;
+        Board board = new Board(title);
         boardRepository.save(board);
     }
 
     @GetMapping
-    public List<Board> getBoards() {
+    public Set<Board> getBoards() {
 
-        return (List<Board>) boardRepository.findAll();
+        return (Set<Board>) boardRepository.findAll();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getBoard(@PathVariable Long id) {
-        Set<Card> boards = boardRepository.findById(id).orElseThrow(IllegalArgumentException::new).getCards();
+        Set<Card> board = boardRepository.findById(id).orElseThrow(IllegalArgumentException::new).getCards();
 
-        return ResponseEntity.ok().body(boards);
+        return ResponseEntity.ok().body(board);
     }
 
     @DeleteMapping("/{id}")

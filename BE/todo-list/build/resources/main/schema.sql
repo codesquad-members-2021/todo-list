@@ -1,5 +1,3 @@
-# DROP TABLE IF EXISTS card;
-# DROP TABLE IF EXISTS board;
 
 create table if not exists board (
     id bigint auto_increment primary key ,
@@ -12,6 +10,5 @@ create table if not exists card (
     content varchar(500),
     created_time datetime,
     board bigint,
-    board_key int,
     constraint column_foreign_id foreign key (board) references board(id)
 );
