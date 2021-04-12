@@ -6,18 +6,13 @@ import CardDeleteButton from './cardDeleteButton.jsx';
 import StaticCardStyle from './staticCard.style';
 import CardTextWrapper from './cardTextWrapper.style';
 
-const StaticCard = () => {
-  const mockData = {
-    cardTitle: 'js공부',
-    contents: ['curry공부', 'this공부', 'closure공부'],
-    user: 'swing',
-  };
+const StaticCard = ({ cardTitle, cardContents, user }) => {
   return (
     <StaticCardStyle className="static-card">
       <CardTextWrapper>
-        <CardTitle cardTitle={mockData.cardTitle} />
-        <CardContents contents={mockData.contents} />
-        <CardAuthor user={mockData.user} />
+        <CardTitle cardTitle={cardTitle} />
+        <CardContents cardContents={cardContents} />
+        <CardAuthor user={user} />
       </CardTextWrapper>
       <CardDeleteButton />
     </StaticCardStyle>

@@ -1,10 +1,16 @@
 import React from 'react';
 import CardContentsStyle from './cardContents.style';
 
-const CardContents = ({ contents }) => {
-  const contentList = contents.map(v => <CardContentsStyle className="card-contents"> - {v} </CardContentsStyle>);
-
-  return <div className="card-contents-section">{contentList}</div>;
+const CardContents = ({ cardContents }) => {
+  return (
+    <div className="card-contents-section">
+      {cardContents.map((content, index) => (
+        <CardContentsStyle key={index} className="content">
+          - {content}
+        </CardContentsStyle>
+      ))}
+    </div>
+  );
 };
 
 export default CardContents;

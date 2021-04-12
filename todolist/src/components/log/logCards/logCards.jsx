@@ -6,14 +6,14 @@ import HistoryTime from './historyTime.jsx';
 import LogCardsStyle from './logCards.style';
 import LogContentsStyle from './logContents.style';
 
-const LogCards = ({ cardData }) => {
+const LogCards = ({ logData, time }) => {
   return (
     <LogCardsStyle className="log-cards-section">
       <Emoji emoji={'👉'} />
       <LogContentsStyle>
-        <LogCardAuthor user={cardData.user} />
-        <WorkHistory columnTitle={cardData.columnTitle} cardTitle={cardData.cardTitle} action={cardData.action} />
-        <HistoryTime time={'2021년'} />
+        <LogCardAuthor user={logData.user} />
+        <WorkHistory columnTitle={logData.columnTitle} cardTitle={logData.cardTitle} action={logData.action} />
+        <HistoryTime time={time} />
       </LogContentsStyle>
     </LogCardsStyle>
   );

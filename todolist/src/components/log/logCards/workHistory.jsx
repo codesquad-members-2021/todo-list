@@ -4,7 +4,12 @@ const WorkHistory = ({ columnTitle, cardTitle, action }) => {
   return (
     <div className="work-history-section">
       <span className="work-history">
-        {columnTitle}에 {cardTitle}를 {action}하였습니다.
+        <span className="work-history-columnTitle">[{columnTitle}]</span>
+        <span className="work-history-extraText">에 </span>
+        <span className="work-history-cardTitle">[{cardTitle}]</span>
+        <span className="work-history-extraText">를 </span>
+        <span className="work-history-action">[{action}]</span>
+        <span className="work-history-extraText">하였습니다.</span>
       </span>
     </div>
   );

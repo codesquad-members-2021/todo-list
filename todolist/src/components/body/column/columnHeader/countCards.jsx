@@ -1,5 +1,5 @@
-import React from 'react';
-import CountCardsStyle from './countCards.style';
+import React from "react";
+import CountCardsStyle from "./countCards.style";
 
 const CountCards = ({ cardsNumber }) => {
   return (
