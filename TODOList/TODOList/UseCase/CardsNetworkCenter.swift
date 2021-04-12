@@ -24,10 +24,10 @@ class CardsNetworkCenter {
         }
     }
     
-    func postCards(card: Card, action: @escaping (KindOfCards) -> Void) {
+    func postCards(card: Card, action: @escaping (Card) -> Void) {
         let url = "https://793ff2e3-7dec-416a-a0e4-09f4c24be362.mock.pstmn.io/api/cards"
         self.networking.postToDoList(url: url, card: card) { (card) in
-            print("Hello")
+            action(card)
         }
     }
     

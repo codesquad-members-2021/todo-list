@@ -32,6 +32,13 @@ class SectionViewController: UIViewController, DataPassable {
         self.exportViewModel = AppearViewModel(mode: sectionMode)
         self.changeCardViewModel = ChangeCardViewModel()
         
+        self.changeCardViewModel.addCardClosure = { card in
+            self.cards.append(card)
+            DispatchQueue.main.async {
+                self.TODOTableView.reloadData()
+            }
+        }
+        
         self.exportViewModel.passingDataHandler = { cards in
             self.cards = cards
             DispatchQueue.main.async {
@@ -40,14 +47,13 @@ class SectionViewController: UIViewController, DataPassable {
             }
         }
         
-        
         self.sectionViewDataSource.deleteCard = { card in
             self.changeCardViewModel.deleteCard(card: card)
         }
     }
     
     @IBAction func tapAddButton(_ sender: UIButton) {
-        let addView = self.storyboard?.instantiateViewController(withIdentifier: "AddView") as! AddViewController
+        let addView = self.storyboard?.instantiateViewController(withIdentifier: AddViewController.identifier) as! AddViewController
         addView.modalPresentationStyle = .overCurrentContext
         guard let sectionMode = sectionMode else { return }
         addView.setSectionMode(mode: sectionMode)

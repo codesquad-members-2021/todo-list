@@ -15,7 +15,7 @@ class ObservingTextField: UITextField {
     }
     
     func bind(to observable: Observable<String>) {
-        self.addTarget(self, action: #selector(valueChanged), for: .editingDidEnd)
+        self.addTarget(self, action: #selector(valueChanged), for: .valueChanged)
         
         changeClosure = { [weak self] in
             observable.changeValue(to: self?.text ?? "")

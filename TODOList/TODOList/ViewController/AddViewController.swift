@@ -8,11 +8,11 @@
 import UIKit
 
 class AddViewController: UIViewController, UITextFieldDelegate {
+    static let identifier = "AddView"
     @IBOutlet weak private var subjectField: ObservingTextField!
     @IBOutlet weak private var bodyField: ObservingTextField!
     @IBOutlet weak private var writeButton: SubmitButton!
-    @IBOutlet weak private var cardView: UIView!
-    private var sectionMode: SectionMode?
+    var sectionMode: SectionMode?
     private var writeViewModel: ChangeCardViewModel!
     
     override func viewDidLoad() {
