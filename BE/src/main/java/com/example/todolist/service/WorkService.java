@@ -9,8 +9,6 @@ import com.example.todolist.exception.EntityRelatedException;
 import com.example.todolist.exception.ErrorMessage;
 import com.example.todolist.exception.IllegalUserAccessException;
 import com.example.todolist.web.dto.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,7 +20,6 @@ import static com.example.todolist.web.utils.TimelineDescription.moveDescription
 @Service
 public class WorkService {
 
-    private final Logger logger = LoggerFactory.getLogger(WorkService.class);
     private final WorkRepository workRepository;
     private final TimelineRepository timelineRepository;
 
