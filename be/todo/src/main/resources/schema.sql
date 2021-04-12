@@ -17,9 +17,7 @@ create table COLUMN
     ID                int auto_increment primary key,
     COLUMN_TITLE      varchar(30),
     USER              int references user (id),
-    USER_KEY          int,
-    CREATED_DATE_TIME timestamp,
-    UPDATED_DATE_TIME timestamp
+    USER_KEY          int
 );
 
 create table TASK
