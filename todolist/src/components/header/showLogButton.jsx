@@ -6,7 +6,7 @@ const MenuBtn = styled(menuBtn)`
   position: absolute;
   width: 24px;
   height: 24px;
-  left: 1336px;
+  left: 1200px;
   top: 44px;
 `;
 
