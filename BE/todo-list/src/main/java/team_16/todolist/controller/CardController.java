@@ -23,10 +23,7 @@ public class CardController {
 
         return newCard;
     }
-
-    /*
-    update 테스트 실패?
-     */
+    
     @PutMapping("/{cardId}")
     public Card updateCard(@PathVariable Long boardId, @PathVariable Long cardId, Card card) {
         Board board = boardRepository.findById(boardId).orElseThrow(IllegalArgumentException::new);
