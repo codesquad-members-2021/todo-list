@@ -3,6 +3,8 @@ package com.codesquad.todoList.service;
 import com.codesquad.todoList.entity.Card;
 import com.codesquad.todoList.entity.Columns;
 import com.codesquad.todoList.entity.Project;
+import com.codesquad.todoList.error.exception.NotFoundColumnException;
+import com.codesquad.todoList.error.exception.NotFoundProjectException;
 import com.codesquad.todoList.repository.ColumnRepository;
 import com.codesquad.todoList.repository.ProjectRepository;
 import lombok.RequiredArgsConstructor;
@@ -27,42 +29,34 @@ public class ColumnService {
 
     @Transactional
     public void addColumn(Columns columns) {
-        Project project = projectRepository.findById(1L).orElseThrow(IllegalArgumentException::new);
+        Project project = projectRepository.findById(1L).orElseThrow(NotFoundProjectException::new);
         project.addColumn(columns);
         projectRepository.save(project);
     }
 
     @Transactional
     public void addCard(Long columnId, Card card) {
-        Project project = projectRepository.findById(1L).orElseThrow(IllegalArgumentException::new);
-        Columns columns = columnRepository.findById(columnId).orElseThrow(IllegalArgumentException::new);
+        Project project = projectRepository.findById(1L).orElseThrow(NotFoundProjectException::new);
+        Columns columns = columnRepository.findById(columnId).orElseThrow(NotFoundColumnException::new);
         columns.addCard(card);
-        for(Columns c : project.getColumns()) {
-            if(c.equals(columns)) {
-                c.updateColumn(columns);
-            }
-        }
+        updateColumn(columns, project);
         projectRepository.save(project);
     }
 
     @Transactional
     public boolean delete(Long columnId, Long cardId) {
-        Project project = projectRepository.findById(1L).orElseThrow(IllegalArgumentException::new);
-        Columns columns = columnRepository.findById(columnId).orElseThrow(IllegalArgumentException::new);
+        Project project = projectRepository.findById(1L).orElseThrow(NotFoundProjectException::new);
+        Columns columns = columnRepository.findById(columnId).orElseThrow(NotFoundColumnException::new);
         columns.deleteCard(cardId);
-        for(Columns c : project.getColumns()) {
-            if(c.equals(columns)) {
-                c.updateColumn(columns);
-            }
-        }
+        updateColumn(columns, project);
         projectRepository.save(project);
         return true;
     }
 
     @Transactional
     public Card updateCard(Long columnId, Long cardId, Card card) {
-        Project project = projectRepository.findById(1L).orElseThrow(IllegalArgumentException::new);
-        Columns columns = columnRepository.findById(columnId).orElseThrow(IllegalArgumentException::new);
+        Project project = projectRepository.findById(1L).orElseThrow(NotFoundProjectException::new);
+        Columns columns = columnRepository.findById(columnId).orElseThrow(NotFoundColumnException::new);
         Card updatedCard = null;
 
         for(Card beforeCard : columns.getCardList()) {
@@ -70,31 +64,30 @@ public class ColumnService {
                 updatedCard = beforeCard.update(card);
             }
         }
-
-        for(Columns c : project.getColumns()) {
-            if(c.equals(columns)) {
-                c.updateColumn(columns);
-            }
-        }
+        updateColumn(columns, project);
         projectRepository.save(project);
         return updatedCard;
     }
 
     @Transactional
     public void updateColumn(Long columnId, Columns columns) {
-        Project project = projectRepository.findById(1L).orElseThrow(IllegalArgumentException::new);
-        Columns beforeColumn = columnRepository.findById(columnId).orElseThrow(IllegalArgumentException::new);
+        Project project = projectRepository.findById(1L).orElseThrow(NotFoundProjectException::new);
+        Columns beforeColumn = columnRepository.findById(columnId).orElseThrow(NotFoundColumnException::new);
         beforeColumn.updateColumn(columns);
-        for(Columns c : project.getColumns()) {
-            if(c.equals(beforeColumn)) {
-                c.updateColumn(beforeColumn);
-            }
-        }
+        updateColumn(beforeColumn, project);
         projectRepository.save(project);
     }
 
     public List<Card> getColumn(Long id) {
-       return columnRepository.findById(id).orElseThrow(IllegalArgumentException::new).getCardList();
+       return columnRepository.findById(id).orElseThrow(NotFoundColumnException::new).getCardList();
+    }
+
+    private void updateColumn(Columns columns, Project project) {
+        for(Columns column : project.getColumns()) {
+            if(column.equals(columns)) {
+                column.updateColumn(columns);
+            }
+        }
     }
 
 }
