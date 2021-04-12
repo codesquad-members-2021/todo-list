@@ -1,6 +1,7 @@
 drop table if exists USER;
 drop table if exists COLUMN;
 drop table if exists TASK;
+drop table if exists TODO_LOG;
 
 create table USER
 (
@@ -37,5 +38,6 @@ create table TODO_LOG
     ID                int auto_increment primary key,
     ACTION            varchar(30),
     USER              int references user (id),
+    USER_KEY          int,
     CREATED_DATE_TIME timestamp
 );
