@@ -19,6 +19,8 @@ class ModalViewController: UIViewController {
     @IBOutlet weak var backgroundViewHeigthConstraint: NSLayoutConstraint!
     
     private var contentTextViewDelegate = ModalTextViewDelegate()
+    private var titleTextFieldDelegate = ModalTextFieldDelegate()
+    private var buttonManager = ButtonManager()
     private var sizeManager = SizeManager()
     private var cardMaker = CardMaker()
     
@@ -28,6 +30,7 @@ class ModalViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         NotificationCenter.default.addObserver(self, selector: #selector(changeSize), name: SizeManager.changeSize, object: sizeManager)
+        NotificationCenter.default.addObserver(self, selector: #selector(changeButtonState), name: ButtonManager.changeState, object: buttonManager)
         
         setUpView()
         setUpButton()
@@ -49,7 +52,16 @@ class ModalViewController: UIViewController {
     }
     
     func setUpDelegate() {
+        self.titleTextField.delegate = titleTextFieldDelegate
         self.contentTextView.delegate = contentTextViewDelegate
+        
+        self.titleTextFieldDelegate.changeText { text in
+            self.buttonManager.change(title: text)
+        }
+        
+        self.contentTextViewDelegate.changeText { text in
+            self.buttonManager.change(content: text)
+        }
     }
     
     func setUpViewSize() {
@@ -66,6 +78,7 @@ class ModalViewController: UIViewController {
         self.cardDelegate = delegate
     }
     
+    //MARK: IBAction 처리
     @IBAction func cancelButtonPressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -82,7 +95,7 @@ class ModalViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    
+    //MARK: objc 처리
     @objc func changeSize(notification: Notification) {
         guard let backgroundViewHeight = notification.userInfo?[SizeManager.Size.backgroundViewHeight] as? CGFloat
         else {
@@ -92,4 +105,12 @@ class ModalViewController: UIViewController {
         self.backgroundViewHeigthConstraint.constant = backgroundViewHeight
     }
     
+    @objc func changeButtonState(notification: Notification) {
+        guard let state = notification.userInfo?[ButtonManager.ButtonState.isEnable] as? Bool, state == true
+        else {
+            return
+        }
+        self.updateButton.backgroundColor = UIColor.systemBlue
+        self.updateButton.isEnabled = state
+    }
 }
