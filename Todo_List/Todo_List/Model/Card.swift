@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Card : Decodable {
+struct Card : Codable {
     
     var id : Int?
     var title : String

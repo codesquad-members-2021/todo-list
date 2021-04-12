@@ -29,7 +29,7 @@ class CardViewController: UIViewController {
         registerNib()
         configureTextField()
         DispatchQueue.main.async {
-            CardAPIClient().fetchData(completion: { result in
+            CardAPIClient().loadAllCards(completion: { result in
                 switch result {
                 case .success(let cards) : self.board.doingList.list = cards
                 case .failure(let error) : print(error)

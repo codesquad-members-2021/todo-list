@@ -13,9 +13,8 @@ class CardAPIClient {
         self.session = session
     }
     
-    func fetchData(completion : @escaping (Result<[Card], Error>) -> Void) {
-        let url = URL(string: "http://3.36.140.12:8080/tasks/")!
-        let request = URLRequest(url: url)
+    func loadAllCards(completion : @escaping (Result<[Card], Error>) -> Void) {
+        let request = URLRequest(url: CardAPI.all.url)
         
         let task : URLSessionTask = session
             .dataTask(with: request) { data, urlResponse, error in
@@ -32,6 +31,34 @@ class CardAPIClient {
                     return
                 }
                 completion(.failure(APIError.unknownError))
+            }
+        task.resume()
+    }
+    func deleteCard(){
+        
+    }
+    func createCard(with card : Card){
+        
+        guard let json = try? JSONEncoder().encode(card) else {
+            return
+        }
+        var request = URLRequest(url: CardAPI.all.url)
+        request.httpMethod = "POST"
+        
+        //HTTP Headers
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("applicatoin/json", forHTTPHeaderField: "Accept")
+        request.httpBody = json
+        
+        let task : URLSessionTask = session
+            .dataTask(with: request) { data, urlResponse, error in
+            
+                guard let response = urlResponse as? HTTPURLResponse,
+                      (200...399).contains(response.statusCode)
+                else {
+                    print(error ?? APIError.unknownError)
+                    return
+                }
             }
         task.resume()
     }

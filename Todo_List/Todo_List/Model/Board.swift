@@ -23,6 +23,9 @@ class Board {
     var doneList = Cards()
     
     func apepnd(with card : Card, type : Board.CardType) {
+        DispatchQueue.global().async {
+            CardAPIClient().createCard(with: card)
+        }
         switch type {
         case .todo:
             todoList.apepnd(with: card)

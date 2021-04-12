@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Cards : Decodable {
+class Cards : Codable {
     var list = [Card]()
     
     var count : Int {
