@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { ColumnHeader, ColumnContainer } from './columnStyle';
-import { ColumnTitle, ColumnIcon } from '../atoms/ColumnHeader';
+import { useState } from 'react';
+import { ColumnContainer } from './columnStyle';
 import Card from '../atoms/Card';
 import Form from './Form';
 
