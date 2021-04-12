@@ -1,5 +1,6 @@
 package codesquad.TodoList.domain;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
@@ -7,6 +8,18 @@ import java.time.LocalDateTime;
 
 @Entity
 public class Card {
+
+    public enum Status {
+        TODO,
+        DOING,
+        DONE,
+        DELETED;
+
+        @JsonCreator
+        public static Status from(String s) {
+            return Status.valueOf(s.toUpperCase());
+        }
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,36 +33,12 @@ public class Card {
     @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss", timezone = "Asia/Seoul")
     private LocalDateTime dateTime = LocalDateTime.now();
 
-    private boolean todo;
-    private boolean doing;
-    private boolean done;
-    private boolean deleted;
+    private Status status;
 
     public void update(Card card) {
         this.title = card.title;
         this.contents = card.contents;
-    }
-
-    public void changeStateTodo() {
-        this.todo = true;
-        this.doing = false;
-        this.done = false;
-    }
-
-    public void changeStateDoing() {
-        this.todo = false;
-        this.doing = true;
-        this.done = false;
-    }
-
-    public void changeStateDone() {
-        this.todo = false;
-        this.doing = false;
-        this.done = true;
-    }
-
-    public void delete() {
-        this.deleted = true;
+        this.status = card.status;
     }
 
     public Long getId() {
@@ -80,20 +69,12 @@ public class Card {
         this.dateTime = createDate;
     }
 
-    public boolean isTodo() {
-        return todo;
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
-    public boolean isDoing() {
-        return doing;
-    }
-
-    public boolean isDone() {
-        return done;
-    }
-
-    public boolean isDeleted() {
-        return deleted;
+    public Status getStatus() {
+        return this.status;
     }
 
     @Override
@@ -103,9 +84,6 @@ public class Card {
                 ", title='" + title + '\'' +
                 ", contents='" + contents + '\'' +
                 ", dateTime=" + dateTime +
-                ", todo=" + todo +
-                ", doing=" + doing +
-                ", done=" + done +
                 '}';
     }
 }
