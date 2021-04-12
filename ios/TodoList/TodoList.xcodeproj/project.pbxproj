@@ -134,9 +134,9 @@
 		A0130D7A261C43F20091BBEF /* TodoList */ = {
 			isa = PBXGroup;
 			children = (
-				A0130D91261C44620091BBEF /* Model */,
 				A0130D7B261C43F20091BBEF /* AppDelegate.swift */,
 				A0130D7D261C43F20091BBEF /* SceneDelegate.swift */,
+				A0130D91261C44620091BBEF /* Model */,
 				88EC8F0F261EA62F008A4EE5 /* Controllers */,
 				88EC8F16261EA929008A4EE5 /* View */,
 				A0130D84261C43F30091BBEF /* Assets.xcassets */,

@@ -20,8 +20,7 @@ class DoingViewController: UIViewController {
         
         fetchCards()
         
-        doingCardTableView.register(CustomHeader.self,
-               forHeaderFooterViewReuseIdentifier: "sectionHeader")
+        doingCardTableView.register(CustomHeader.self, forHeaderFooterViewReuseIdentifier: "sectionHeader")
     }
     
     func fetchCards() {
@@ -57,7 +56,8 @@ extension DoingViewController: UITableViewDelegate {
             viewForHeaderInSection section: Int) -> UIView? {
        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier:
                    "sectionHeader") as! CustomHeader
-       view.title.text = "해야 할 일"
+       view.title.text = "진행중인 일"
+        view.displayCurrentCardNumOnBadge(number: self.cards.count)
         view.button.addAction(UIAction.init(handler: { (touch) in
             print("touched")
         }), for: .touchUpInside)
