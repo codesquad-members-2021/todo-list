@@ -6,23 +6,29 @@ import Header from "../molecules/Header";
 import TodoTitle from "../molecules/TodoTitle";
 import ButtonList from "../molecules/ButtonList";
 import TodoListWrap from "../molecules/TodoListWrap";
+import TodoList from '../molecules/TodoList';
+import TodoListItem from '../molecules/TodoListItem';
 import HistoryContent from '../organisms/HistoryContent';
+
+const getAxios = async (setState, url) => {
+  const { data } = await axios.get(url);
+  setState(data);
+}
 
 function App() {
   const [isOpen, isOpenActions] = useToggle(false);
+  const [todoTitle, setTitle] = useState([]);
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {
-    const getData = async () => {
-      const { data } = await axios.get("/todos");
-      setTodos(data);
-    };
-    getData();
+    getAxios(setTodos, '/todos');
+    getAxios(setTitle, '/sections');
   }, []);
 
   useEffect(() => {
-    console.log(todos)
-  }, [todos]);
+    console.log(todos);
+    console.log(todoTitle)
+  }, [todoTitle]);
 
   return (
     <div className="App">
@@ -34,6 +40,14 @@ function App() {
       <ButtonList isIcon={false} />
       <ButtonList isIcon />
       <TodoListWrap>
+        {todoTitle.map(({ id, name }) =>
+          <TodoList key={id}>
+
+          </TodoList>
+        )}
+        <TodoList>
+          <TodoListItem />
+        </TodoList>
       </TodoListWrap>
     </div>
   );
