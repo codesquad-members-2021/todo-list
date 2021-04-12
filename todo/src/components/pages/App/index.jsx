@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import useToggle from "../../hooks/useToggle";
+import useToggle from "../../../hooks/useToggle";
 import axios from "axios";
-import Header from "../molecules/Header";
-import HistoryList from "../organisms/HistoryList";
-import TodoContent from "../templates/TodoListWrap/TodoListWrap";
+import Header from "../../molecules/Header";
+import HistoryList from "../../organisms/HistoryList";
+import TodoListWrap from "../../templates/TodoListWrap";
 import styled from "styled-components";
 
 
@@ -34,7 +34,7 @@ function App() {
     <Div>
       <HistoryList isOpen={isOpen} isOpenActions={isOpenActions} />
       <Header isOpenActions={isOpenActions} />
-      <TodoContent todos={todos}></TodoContent>
+      <TodoListWrap todos={todos}></TodoListWrap>
     </Div>
   );
 }
