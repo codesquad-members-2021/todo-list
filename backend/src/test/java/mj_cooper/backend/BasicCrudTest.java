@@ -1,8 +1,9 @@
 package mj_cooper.backend;
 
 import mj_cooper.backend.domain.Todo;
+import mj_cooper.backend.domain.User;
 import mj_cooper.backend.domain.Vertical;
-import mj_cooper.backend.repository.VerticalRepository;
+import mj_cooper.backend.repository.UserRepository;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,22 +22,24 @@ public class BasicCrudTest {
     private ApplicationContext ctx;
 
     @Autowired
-    private VerticalRepository verticalRepository;
+    private UserRepository userRepository;
 
     @BeforeEach
     void setup() {
     }
 
-
     @Test
     @DisplayName("Create Todo")
     void createTodoTest() {
-        Vertical vertical = verticalRepository.findById(1L).get();
+        User user = userRepository.findById(1L).get();
+        Vertical vertical = user.getVertical(1L);
+
         vertical.addTodo(new Todo("Study 111"));
         vertical.addTodo(new Todo("Study 123"));
-        Vertical savedVertical = verticalRepository.save(vertical);
-        assertThat(savedVertical.getId()).isNotNull();
-        assertThat(savedVertical.getTodos().get(1)).isNotNull();
+
+        User savedUser = userRepository.save(user);
+        assertThat(savedUser.getId()).isNotNull();
+        assertThat(savedUser.getVerticals().get(1)).isNotNull();
     }
 
 //    @Test

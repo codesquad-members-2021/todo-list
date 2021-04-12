@@ -1,6 +1,11 @@
-INSERT INTO vertical (status) VALUES ('To Do');
 
-INSERT INTO vertical (status) VALUES ('Doing');
+INSERT INTO user (name) VALUES ('sunny');
+
+INSERT INTO vertical (user, status) VALUES (1, 'ToDo');
+
+INSERT INTO vertical (user, status) VALUES (1, 'Doing');
+
+INSERT INTO vertical (user, status) VALUES (1, 'Done');
 
 INSERT INTO todo (vertical, title) VALUES (1, "test1 vertical 1");
 

@@ -32,7 +32,6 @@ public class Vertical {
     }
 
     public Todo getTodo(Long id) {
-        System.out.println("trans to Int : " + Math.toIntExact(id));
         return todos.get(Math.toIntExact(id) - 1);
     }
 
