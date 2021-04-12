@@ -1,7 +1,11 @@
-import React, { useRef } from 'react';
+import React, { useRef } from "react";
+import Input from "../../atom/Input.jsx";
+import { TodoCardBtnWrapper, TodoCard } from "./TodoItem";
+import { ConfirmBtn, CancelBtn } from "../../atom/Button.jsx";
 
 const TodoListForm = ({ addTodoItem, toggleForm }) => {
   //수정완료
+
   const onSubmitForm = (e) => {
     e.preventDefault();
     const cardId = Date.now();
@@ -11,8 +15,10 @@ const TodoListForm = ({ addTodoItem, toggleForm }) => {
       content: inputContentRef.current.value,
     };
     addTodoItem(newTodo.id, newTodo);
-    inputTitleRef.current.value = '';
-    inputContentRef.current.value = '';
+
+    inputTitleRef.current.value = "";
+    inputContentRef.current.value = "";
+
     toggleForm();
   };
 
@@ -25,11 +31,29 @@ const TodoListForm = ({ addTodoItem, toggleForm }) => {
   const inputContentRef = useRef(); //inputContentRef.current.value
 
   return (
-    <form onSubmit={onSubmitForm}>
-      <input type='text' placeholder='제목을 입력하세요' ref={inputTitleRef} />
-      <input type='text' placeholder='내용을 입력하세요' ref={inputContentRef} />
-      <button type='submit'>등록</button>
-      <button onClick={foldForm}>취소</button>
+    <form
+      onSubmit={onSubmitForm}
+      addTodoItem={addTodoItem}
+      toggleForm={toggleForm}
+    >
+      <TodoCard flexDir="column">
+        <Input
+          name="title"
+          type="text"
+          placeholder="제목을 입력하세요"
+          inputRef={inputTitleRef}
+        />
+        <Input
+          name="content"
+          type="text"
+          placeholder="내용을 입력하세요"
+          inputRef={inputContentRef}
+        />
+        <TodoCardBtnWrapper>
+          <ConfirmBtn value="등록" type="submit" />
+          <CancelBtn value="취소" handleClick={foldForm} />
+        </TodoCardBtnWrapper>
+      </TodoCard>
     </form>
   );
 };

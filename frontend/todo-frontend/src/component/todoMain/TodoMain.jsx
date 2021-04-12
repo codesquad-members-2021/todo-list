@@ -1,6 +1,11 @@
-import React, { useState } from 'react';
-import TodoList from './todoList/TodoList';
-import style from './todoMain.module.css';
+import React, { useState } from "react";
+import TodoList from "./todoList/TodoList";
+import styled from "styled-components";
+
+const StyledTodoMain = styled.div`
+  display: flex;
+  padding: 0 80px;
+`;
 
 const TodoMain = ({ datas }) => {
   const [todoColumns, setTodoColumns] = useState(datas.todoData);
@@ -16,6 +21,6 @@ const TodoMain = ({ datas }) => {
     <TodoList data={data} deleteTodoColumn={deleteTodoColumn} />
   ));
 
-  return <div className={style.todoContainer}>{todoColumneList}</div>;
+  return <StyledTodoMain>{todoColumneList}</StyledTodoMain>;
 };
 export default TodoMain;
