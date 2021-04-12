@@ -1,18 +1,21 @@
 package com.codesquad.todo.web.domain;
 
+import org.springframework.data.annotation.Id;
+
 import java.time.LocalDateTime;
 
 public class TodoLog {
+    @Id
     private Long id;
     private String action;
-    private User author;
     private LocalDateTime createdDateTime;
 
-    public TodoLog(Long id, String action, User author) {
-        this.id = id;
+    public TodoLog(String action) {
         this.action = action;
-        this.author = author;
         this.createdDateTime = LocalDateTime.now();
+    }
+
+    protected TodoLog() {
     }
 
     public Long getId() {
@@ -23,11 +26,16 @@ public class TodoLog {
         return action;
     }
 
-    public User getAuthor() {
-        return author;
-    }
-
     public LocalDateTime getCreatedDateTime() {
         return createdDateTime;
+    }
+
+    @Override
+    public String toString() {
+        return "TodoLog{" +
+                "id=" + id +
+                ", action='" + action + '\'' +
+                ", createdDateTime=" + createdDateTime +
+                '}';
     }
 }

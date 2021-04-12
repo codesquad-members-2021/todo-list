@@ -13,7 +13,7 @@ public class TodoLogDto {
     public TodoLogDto(TodoLog todoLog) {
         this.id = todoLog.getId();
         this.action = todoLog.getAction();
-        this.authorName = todoLog.getAuthor().getName();
+        this.authorName = "";
         this.createdDateTime = todoLog.getCreatedDateTime();
     }
 

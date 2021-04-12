@@ -1,24 +1,30 @@
 package com.codesquad.todo.web.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.data.annotation.Id;
 
 import java.time.LocalDateTime;
 
 public class Task {
+    @Id
     private Long id;
     private String taskTitle;
     private String taskContent;
-    private Column column;
     private LocalDateTime createdDateTime;
     private LocalDateTime updatedDateTime;
 
-    public Task(Long id, String taskTitle, String taskContent, Column column) {
-        this.id = id;
+    public Task(String taskTitle, String taskContent) {
         this.taskTitle = taskTitle;
         this.taskContent = taskContent;
-        this.column = column;
         this.createdDateTime = LocalDateTime.now();
         this.updatedDateTime = null;
+    }
+
+    protected Task() {
+    }
+
+    public boolean isSameId(Long taskId){
+        return id.equals(taskId);
     }
 
     public Long getId() {
@@ -45,14 +51,6 @@ public class Task {
         this.taskContent = taskContent;
     }
 
-    public Column getColumn() {
-        return column;
-    }
-
-    public void setColumn(Column column) {
-        this.column = column;
-    }
-
     public LocalDateTime getCreatedDateTime() {
         return createdDateTime;
     }
@@ -67,5 +65,16 @@ public class Task {
 
     public void setUpdatedDateTime(LocalDateTime updatedDateTime) {
         this.updatedDateTime = updatedDateTime;
+    }
+
+    @Override
+    public String toString() {
+        return "\nTask{" +
+                "id=" + id +
+                ", taskTitle='" + taskTitle + '\'' +
+                ", taskContent='" + taskContent + '\'' +
+                ", createdDateTime=" + createdDateTime +
+                ", updatedDateTime=" + updatedDateTime +
+                '}' + '\n';
     }
 }
