@@ -1,137 +1,51 @@
 import React from 'react';
-import styled from 'styled-components';
-import ButtonDelete from './partial/ButtonDelete'
+import styled, { css } from 'styled-components';
+import ColumnDeleteButton from './partial/ColumnDeleteButton'
 
 const CardWrapper = styled.div`
-    .card {
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-        padding: 16px;
+    --background-color: #fff;
+    --boxShadow-color: rgba(224, 224, 224, 0.3);
 
-        position: relative;
-        width: 308px;
-        height: 108px;
+    width: 300px;
+    padding: 16px;
+    background-color: var(--background-color);
+    border-radius: 8px;
+    box-shadow: 0px 1px 30px var(--boxShadow-color);
 
-        /* White */
+    margin: 10px 0;
+`;
 
-        background: #ffffff;
-        /* nomal */
-        border:1px solid red;
+// CardTitle, CardContent, CardAuthor --> p 태그
+const CSSCardCommonStyle = css`
+    font-family: Noto Sans KR;
+    margin-bottom: 10px;
+`;
 
-        box-shadow: 0px 1px 30px rgba(224, 224, 224, 0.3);
-        border-radius: 6px;
 
-        margin-top:20px;
-        margin-left:20px;
-    }
-    .card__text {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 0px;
+const CardTitle = styled.p`
+    display: flex;
 
-        position: absolute;
-        width: 252px;
-        height: 76px;
-        left: 16px;
-        top: 16px;
-
-        border-radius: 8px;
-
-        /* Inside Auto Layout */
-
-        flex: none;
-        order: 0;
-        flex-grow: 0;
-        margin: 0px 0px;
-    }
-    .card__text--title {
-        position: absolute;
-        width: 252px;
-        height: 23px;
-        left: 0px;
-        top: 0px;
-
-        font-family: Noto Sans KR;
-        font-style: normal;
-        font-weight: bold;
+    span.title {
+        ${CSSCardCommonStyle}
+        margin-right: auto;
+        font-weight: 600;
         font-size: 16px;
-        line-height: 23px;
-
-        /* Black */
-
-        color: #010101;
-
-        /* Inside Auto Layout */
-
-        flex: none;
-        order: 0;
-        flex-grow: 0;
-        margin: 8px 0px;
     }
-    .card__text--body {
-        position: absolute;
-        width: 252px;
-        height: 20px;
-        left: 0px;
-        top: 31px;
+`;
 
-        font-family: Noto Sans KR;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 14px;
-        line-height: 20px;
+const CardContent = styled.p`
+    ${CSSCardCommonStyle}
+    font-weight: normal;
+    font-size: 14px;
+`;
 
-        /* Black */
+const CardAuthor = styled.p`
+    ${CSSCardCommonStyle}
+    --author-text-color: #bdbdbd;
+    font-weight: normal;
+    font-size: 12px;
 
-        color: #010101;
-
-        /* Inside Auto Layout */
-
-        flex: none;
-        order: 1;
-        flex-grow: 0;
-        margin: 8px 0px;
-    }
-    .card__text--author {
-        position: absolute;
-        width: 252px;
-        height: 17px;
-        left: 0px;
-        top: 59px;
-
-        font-family: Noto Sans KR;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 12px;
-        line-height: 17px;
-
-        /* Gray 4 */
-
-        color: #bdbdbd;
-
-        /* Inside Auto Layout */
-
-        flex: none;
-        order: 2;
-        flex-grow: 0;
-        margin: 8px 0px;
-    }
-    .card__delete-button {
-        position: absolute;
-        width: 24px;
-        height: 24px;
-        left: 268px;
-        top: 16px;
-
-        /* Inside Auto Layout */
-
-        flex: none;
-        order: 1;
-        flex-grow: 0;
-        margin: 0px 0px;
-    }
+    color: var(--author-text-color);
 `;
 
 const Card = ({ title, body, author, index, list, clickHandler, dbClickHandler }) => {
@@ -143,15 +57,13 @@ const Card = ({ title, body, author, index, list, clickHandler, dbClickHandler }
     const dbClickEvent = () => dbClickHandler(index, {title, body})
 
     return (
-        <CardWrapper>
-            <div className="card" onDoubleClick={dbClickEvent}>
-                <div className="card__text">
-                    <div className="card__text--title">{title}</div>
-                    <div className="card__text--body">{body}</div>
-                    <div className="card__text--author">author by {author}</div>
-                </div>
-                <div onClick={deleteEvent} className="card__delete-button"><ButtonDelete /></div>
-            </div>
+        <CardWrapper onDoubleClick={dbClickEvent}>
+            <CardTitle>
+                <span className="title">{title}</span>
+                <ColumnDeleteButton onClick={deleteEvent} />
+            </CardTitle>
+            <CardContent>{body}</CardContent>
+            <CardAuthor>author by {author}</CardAuthor>
         </CardWrapper>
     );
 };

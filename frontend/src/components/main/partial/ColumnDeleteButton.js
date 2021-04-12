@@ -1,26 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
+import { TranslateBtn } from "../../common/StyledModels";
 
-const Wrapper = styled.div`
+const StyledColumnDeleteButton = styled(TranslateBtn)`
     svg {
-        position: absolute;
-        left: 28.12%;
-        right: 28.12%;
-        top: 28.12%;
-        bottom: 28.12%;
-
-        /* Gray 4 */
         fill: #bdbdbd;
-    }
-    svg:hover {
-        /* Red */
-        fill: #ff4343;
+        &:hover {
+            fill: #ff4343;
+        }
     }
 `;
 
-const ButtonDelete = () => {
+const ColumnDeleteButton = ({onClick}) => {
     return (
-        <Wrapper>
+        <StyledColumnDeleteButton onClick={onClick && onClick}>
             <svg
                 width="12"
                 height="12"
@@ -30,8 +23,8 @@ const ButtonDelete = () => {
             >
                 <path d="M1.5 11.25L0.75 10.5L5.25 6L0.75 1.5L1.5 0.75L6 5.25L10.5 0.75L11.25 1.5L6.75 6L11.25 10.5L10.5 11.25L6 6.75L1.5 11.25Z" />
             </svg>
-        </Wrapper>
+        </StyledColumnDeleteButton>
     );
 };
 
-export default ButtonDelete;
+export default ColumnDeleteButton;
