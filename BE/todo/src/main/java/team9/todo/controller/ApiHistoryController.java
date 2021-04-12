@@ -6,8 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import team9.todo.domain.History;
+import team9.todo.domain.HistoryWithCardTitle;
 import team9.todo.repository.HistoryRepository;
+import team9.todo.repository.HistoryWithCardTitleRepository;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @RestController
@@ -15,9 +18,20 @@ import java.util.List;
 public class ApiHistoryController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     private final HistoryRepository historyRepository;
-    @Autowired
-    public ApiHistoryController(HistoryRepository historyRepository) {
+    private final HistoryWithCardTitleRepository historyWithCardTitleRepository;
+
+    public ApiHistoryController(HistoryRepository historyRepository, HistoryWithCardTitleRepository historyWithCardTitleRepository) {
         this.historyRepository = historyRepository;
+        this.historyWithCardTitleRepository = historyWithCardTitleRepository;
+    }
+
+    @Autowired
+
+    @GetMapping
+    public List<HistoryWithCardTitle> getHistoryOfUser(HttpSession httpSession){
+        Long userId = 1L;
+        List<HistoryWithCardTitle> historyList = historyWithCardTitleRepository.findAllByUserId(userId);
+        return historyList;
     }
 
     @GetMapping("/card/{cardId}")
