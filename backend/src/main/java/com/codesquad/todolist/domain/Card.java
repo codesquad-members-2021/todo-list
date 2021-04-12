@@ -11,14 +11,12 @@ public class Card {
 
     private String title;
     private String contents;
-    private String status;
     private Long columnId;
     private LocalDateTime createdTime;
 
-    public Card(String title, String contents, String status, Long columnId) {
+    public Card(String title, String contents, Long columnId) {
         this.title = title;
         this.contents = contents;
-        this.status = status;
         this.columnId = columnId;
         this.createdTime = LocalDateTime.now();
     }
@@ -35,15 +33,20 @@ public class Card {
         return contents;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
     public Long getColumnId() {
         return columnId;
     }
 
     public LocalDateTime getCreatedTime() {
         return createdTime;
+    }
+
+    public void update(String title, String contents) {
+        this.title = title;
+        this.contents = contents;
+    }
+
+    public void move(Long toColumnId) {
+        this.columnId = toColumnId;
     }
 }
