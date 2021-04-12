@@ -5,7 +5,7 @@ import com.codesquad.todo.web.domain.Column;
 import java.util.List;
 
 public class ColumnDto {
-    private long id;
+    private Long id;
     private String columnTitle;
     private List<TaskDto> taskList;
 
@@ -15,15 +15,27 @@ public class ColumnDto {
         this.taskList = column.convertTaskListToTaskDtoList();
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getColumnTitle() {
         return columnTitle;
     }
 
+    public void setColumnTitle(String columnTitle) {
+        this.columnTitle = columnTitle;
+    }
+
     public List<TaskDto> getTaskList() {
         return taskList;
+    }
+
+    public void setTaskList(List<TaskDto> taskList) {
+        this.taskList = taskList;
     }
 }

@@ -8,17 +8,14 @@ public class Task {
     private Long id;
     private String taskTitle;
     private String taskContent;
-    private User author;
-    @JsonIgnore
     private Column column;
     private LocalDateTime createdDateTime;
     private LocalDateTime updatedDateTime;
 
-    public Task(Long id, String taskTitle, String taskContent, User author, Column column) {
+    public Task(Long id, String taskTitle, String taskContent, Column column) {
         this.id = id;
         this.taskTitle = taskTitle;
         this.taskContent = taskContent;
-        this.author = author;
         this.column = column;
         this.createdDateTime = LocalDateTime.now();
         this.updatedDateTime = null;
@@ -28,34 +25,47 @@ public class Task {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getTaskTitle() {
         return taskTitle;
+    }
+
+    public void setTaskTitle(String taskTitle) {
+        this.taskTitle = taskTitle;
     }
 
     public String getTaskContent() {
         return taskContent;
     }
 
-    public User getAuthor() {
-        return author;
+    public void setTaskContent(String taskContent) {
+        this.taskContent = taskContent;
     }
 
     public Column getColumn() {
         return column;
     }
 
+    public void setColumn(Column column) {
+        this.column = column;
+    }
+
     public LocalDateTime getCreatedDateTime() {
         return createdDateTime;
+    }
+
+    public void setCreatedDateTime(LocalDateTime createdDateTime) {
+        this.createdDateTime = createdDateTime;
     }
 
     public LocalDateTime getUpdatedDateTime() {
         return updatedDateTime;
     }
 
-    public String getAuthorName() {
-        if (author != null) {
-            return author.getName();
-        }
-        return "";
+    public void setUpdatedDateTime(LocalDateTime updatedDateTime) {
+        this.updatedDateTime = updatedDateTime;
     }
 }

@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 public class Column {
     private Long id;
     private String columnTitle;
+    private User author;
     private List<Task> taskList;
 
     public Column(long id, String columnTitle, List<Task> taskList) {
@@ -21,23 +22,43 @@ public class Column {
         this(id, columnTitle, new ArrayList<>());
     }
 
+    public void addTask(Task task) {
+        taskList.add(task);
+    }
+
+    public List<TaskDto> convertTaskListToTaskDtoList() {
+        return taskList.stream().map(task -> new TaskDto(task, author.getName())).collect(Collectors.toList());
+    }
+
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getColumnTitle() {
         return columnTitle;
     }
 
+    public void setColumnTitle(String columnTitle) {
+        this.columnTitle = columnTitle;
+    }
+
     public List<Task> getTaskList() {
         return taskList;
     }
 
-    public void addTask(Task task) {
-        taskList.add(task);
+    public void setTaskList(List<Task> taskList) {
+        this.taskList = taskList;
     }
 
-    public List<TaskDto> convertTaskListToTaskDtoList() {
-        return taskList.stream().map(TaskDto::new).collect(Collectors.toList());
+    public User getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
     }
 }

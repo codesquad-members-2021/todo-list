@@ -26,12 +26,12 @@ public class ColumnController {
         User author = new User(1L, "라쿠운", "Racoon", "1234", "");
 
         Column todoColumn = new Column(1L, "TODO");
-        todoColumn.addTask(new Task(1L, "task1", "taskContent1", author, todoColumn));
-        todoColumn.addTask(new Task(2L, "task2", "taskContent2", author, todoColumn));
+        todoColumn.addTask(new Task(1L, "task1", "taskContent1", todoColumn));
+        todoColumn.addTask(new Task(2L, "task2", "taskContent2", todoColumn));
         columns.add(new ColumnDto(todoColumn));
 
         Column inProgressColumn = new Column(2L, "IN_PROGRESS");
-        inProgressColumn.addTask(new Task(3L, "task3", "taskContent3", author, inProgressColumn));
+        inProgressColumn.addTask(new Task(3L, "task3", "taskContent3", inProgressColumn));
         columns.add(new ColumnDto(inProgressColumn));
 
 
