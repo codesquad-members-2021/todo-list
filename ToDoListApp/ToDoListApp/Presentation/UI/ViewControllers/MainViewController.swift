@@ -42,6 +42,7 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
     @objc func presentInputVC(_ sender: UIButton) {
         guard let inputViewController = self.storyboard?.instantiateViewController(withIdentifier: "InputViewController") as? InputViewController else { return }
         inputViewController.modalPresentationStyle = .overCurrentContext
+        inputViewController.mode = "add"
         present(inputViewController, animated: false, completion: nil)
     }
 }

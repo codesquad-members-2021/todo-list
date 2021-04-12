@@ -20,6 +20,7 @@ class MainCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.dragInteractionEnabled = true
         tableView.dragDelegate = self
         tableView.dropDelegate = self
@@ -28,6 +29,20 @@ class MainCell: UICollectionViewCell {
     func setup(with board: BoardManageable) {
         self.board = board
         tableView.reloadData()
+    }
+    
+    private func makeContextMenu() -> UIMenu {
+        let goToDone = UIAction(title: "완료한 일로 이동", image: .none) { action in
+        }
+        
+        let edit = UIAction(title: "수정하기", image: .none) { action in
+            
+        }
+        
+        let delete = UIAction(title: "삭제하기", image: .none, attributes: .destructive) { action in
+        }
+        
+        return UIMenu(title: "", children: [goToDone, edit, delete])
     }
 }
 
@@ -74,5 +89,15 @@ extension MainCell: UITableViewDragDelegate, UITableViewDropDelegate {
         }
         return UITableViewDropProposal(operation: .cancel, intent: .unspecified)
     }
-    func tableView(_ tableView: UITableView, performDropWith coordinator: UITableViewDropCoordinator) { }
+    func tableView(_ tableView: UITableView, performDropWith coordinator: UITableViewDropCoordinator) {
+
+    }
+}
+
+extension MainCell: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        return UIContextMenuConfiguration(identifier: .none, previewProvider: .none) { suggestedAction -> UIMenu? in
+            return self.makeContextMenu()
+        }
+    }
 }

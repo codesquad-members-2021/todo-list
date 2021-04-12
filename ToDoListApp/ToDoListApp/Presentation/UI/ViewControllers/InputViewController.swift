@@ -12,6 +12,8 @@ class InputViewController: UIViewController {
     @IBOutlet weak var enrollmentButton: UIButton!
     @IBOutlet var inputTextFields: [UITextField]!
     
+    var mode: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
