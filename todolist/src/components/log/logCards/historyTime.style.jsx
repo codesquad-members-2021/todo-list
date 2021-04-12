@@ -24,7 +24,6 @@ const HistoryTimeStyle = styled.div`
   flex: none;
   order: 2;
   flex-grow: 0;
-  margin: 8px 0px;
 `;
 
 export default HistoryTimeStyle;

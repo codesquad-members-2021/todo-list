@@ -13,7 +13,7 @@ const MenuBtn = styled(menuBtn)`
 const ShowLogButton = () => {
   return (
     <div className="show-log-button-section">
-      <MenuBtn className="show-log-button" />
+      {/* <MenuBtn className="show-log-button" /> */}
     </div>
   );
 };
