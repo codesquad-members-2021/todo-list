@@ -6,24 +6,34 @@
 //
 
 import UIKit
-import Combine
 
 class SectionViewDataSource: NSObject {
     weak var dataSource: DataPassable?
     
+    var deleteCard: ((Status) -> ())?
 }
 
 extension SectionViewDataSource: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let data = self.dataSource?.passData() else { return 0 }
-        return data.subject.count
+        guard let status = self.dataSource?.passData() else { return 0 }
+        return status.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SectionCell.identifier, for: indexPath) as? SectionCell else { return SectionCell() }
-        guard let data = self.dataSource?.passData() else { return SectionCell() }
-        cell.subject.text = data.subject[indexPath.row]
-        cell.body.text = data.body[indexPath.row]
+        guard let status = self.dataSource?.passData() else { return SectionCell() }
+        cell.subject.text = status[indexPath.row].title
+        cell.body.text = status[indexPath.row].contents
+        cell.body.sizeToFit()
+        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            print("delete")
+            guard let status = self.dataSource?.passData() else { return }
+            deleteCard?(status[indexPath.row])
+        }
     }
 }

@@ -11,7 +11,7 @@ class Feed {
     private var cardTitle: String
     private var timeStamp: Date
     private var actionState: ActionState
-    
+
     init(cardTitle: String, timeStamp: Date, actionState: ActionState) {
         self.cardTitle = cardTitle
         self.timeStamp = timeStamp

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class WriteViewModel {
+class ChangeCardViewModel {
     private(set) var subject: Observable<String>
     private(set) var body: Observable<String>
     
@@ -23,4 +23,9 @@ class WriteViewModel {
     func trigger() {
         //usecase 쓰이는 곳
     }
+    
+    func delete(status: Status) {
+        //delete
+    }
+    
 }
