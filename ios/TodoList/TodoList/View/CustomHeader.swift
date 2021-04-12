@@ -14,6 +14,16 @@ class CustomHeader: UITableViewHeaderFooterView {
         return label
     }()
     
+    let badge: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.backgroundColor = .darkGray
+        label.layer.cornerRadius = 10
+        label.layer.masksToBounds = true
+        label.textAlignment = .center
+        return label
+    }()
+    
     let button: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -31,9 +41,14 @@ class CustomHeader: UITableViewHeaderFooterView {
         super.init(coder: coder)
         configureContents()
     }
+
+    func displayCurrentCardNumOnBadge(number: Int) {
+        self.badge.text = "\(number)"
+    }
     
     func configureContents() {
         contentView.addSubview(button)
+        contentView.addSubview(badge)
         contentView.addSubview(title)
         contentView.backgroundColor = .white
         
@@ -41,9 +56,12 @@ class CustomHeader: UITableViewHeaderFooterView {
             title.heightAnchor.constraint(equalToConstant: 30),
             title.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,
                    constant: 8),
-//            title.trailingAnchor.constraint(equalTo:
-//                   contentView.layoutMarginsGuide.trailingAnchor),
             title.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            
+            badge.heightAnchor.constraint(equalToConstant: 30),
+            badge.widthAnchor.constraint(equalTo: badge.heightAnchor),
+            badge.leadingAnchor.constraint(equalTo: title.trailingAnchor, constant: 10),
+            badge.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             
 //            button.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
             button.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),

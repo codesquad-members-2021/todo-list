@@ -20,8 +20,7 @@ class ToDoViewController: UIViewController {
         
         fetchCards()
         
-        toDoCardTableView.register(CustomHeader.self,
-               forHeaderFooterViewReuseIdentifier: "sectionHeader")
+        toDoCardTableView.register(CustomHeader.self, forHeaderFooterViewReuseIdentifier: "sectionHeader")
     }
     
     func fetchCards() {
@@ -58,6 +57,7 @@ extension ToDoViewController: UITableViewDelegate {
        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier:
                    "sectionHeader") as! CustomHeader
        view.title.text = "해야 할 일"
+        view.displayCurrentCardNumOnBadge(number: self.cards.count)
         view.button.addAction(UIAction.init(handler: { (touch) in
             print("touched")
         }), for: .touchUpInside)
