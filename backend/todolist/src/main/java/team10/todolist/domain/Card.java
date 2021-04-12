@@ -1,4 +1,4 @@
-package team10;
+package team10.todolist.domain;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
