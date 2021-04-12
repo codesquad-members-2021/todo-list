@@ -25,10 +25,9 @@ class DoingViewController: UIViewController {
     
     func fetchCards() {
         let urlString = Constants.url
-        DataManager.getData(urlString: urlString) { (toDoList) in
-            guard let safeToDoList = toDoList else { return }
+        DataManager.request(urlString, "GET") { (bool, output) in
             
-            self.cards = safeToDoList.doing
+            self.cards = output.doing
             DispatchQueue.main.async {
                 self.doingCardTableView.reloadData()
             }
