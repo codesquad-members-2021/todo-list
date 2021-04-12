@@ -1,5 +1,3 @@
-# DROP TABLE IF EXISTS card;
-# DROP TABLE IF EXISTS board;
 
 create table if not exists board (
     id bigint auto_increment primary key ,
