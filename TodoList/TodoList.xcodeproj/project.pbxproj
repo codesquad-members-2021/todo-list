@@ -25,6 +25,7 @@
 		BFBF30E9261D4F01000BDDE3 /* DoingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBF30E8261D4F01000BDDE3 /* DoingDelegate.swift */; };
 		D0E6A9D72624128B00E9B023 /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E6A9D62624128B00E9B023 /* ActivityTableViewCell.swift */; };
 		D0E6A9DF262414B600E9B023 /* CardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E6A9DE262414B600E9B023 /* CardButton.swift */; };
+		D0E6A9EC26243AC600E9B023 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E6A9EB26243AC600E9B023 /* Router.swift */; };
 		D0F41D0D261E9EC60024D7B1 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F41D0C261E9EC60024D7B1 /* EndPoint.swift */; };
 		D0F41D12261E9FE70024D7B1 /* URLSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F41D11261E9FE70024D7B1 /* URLSessionManager.swift */; };
 		D0F41D28261EA9B50024D7B1 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F41D27261EA9B50024D7B1 /* Task.swift */; };
@@ -82,6 +83,7 @@
 		BFBF30E8261D4F01000BDDE3 /* DoingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoingDelegate.swift; sourceTree = "<group>"; };
 		D0E6A9D62624128B00E9B023 /* ActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewCell.swift; sourceTree = "<group>"; };
 		D0E6A9DE262414B600E9B023 /* CardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardButton.swift; sourceTree = "<group>"; };
+		D0E6A9EB26243AC600E9B023 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		D0F41D0C261E9EC60024D7B1 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		D0F41D11261E9FE70024D7B1 /* URLSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionManager.swift; sourceTree = "<group>"; };
 		D0F41D27261EA9B50024D7B1 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				BF7EB26B261C3CBF003EB682 /* SceneDelegate.swift */,
 				BF7EB26D261C3CBF003EB682 /* ViewController.swift */,
 				BFA7556C261FEBE2008FB904 /* AddViewController.swift */,
+				D0E6A9EB26243AC600E9B023 /* Router.swift */,
 				D0F41D3C261EEA580024D7B1 /* Do */,
 				BFBF30ED261D50CB000BDDE3 /* Doing */,
 				D0F41D752622E6620024D7B1 /* Done */,
@@ -363,6 +366,7 @@
 				BFBF30E9261D4F01000BDDE3 /* DoingDelegate.swift in Sources */,
 				D0F41D7A2622E6BA0024D7B1 /* DoneDataSource.swift in Sources */,
 				D0F41D0D261E9EC60024D7B1 /* EndPoint.swift in Sources */,
+				D0E6A9EC26243AC600E9B023 /* Router.swift in Sources */,
 				BF7EB26E261C3CBF003EB682 /* ViewController.swift in Sources */,
 				D0F41D2D261ED5C80024D7B1 /* Decoder.swift in Sources */,
 				D0F41D662622D04C0024D7B1 /* DoDTO.swift in Sources */,

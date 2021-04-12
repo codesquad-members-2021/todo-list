@@ -17,6 +17,14 @@ class ViewController: UIViewController {
         activityTrailingConstraint.constant -= activityView.frame.width
     }
 
+    @IBAction func touchUpAdd(_ sender: Any) {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "Add") as? AddViewController else {
+            return
+        }
+        vc.status = .add
+        vc.modalPresentationStyle = .overFullScreen
+        present(vc, animated: true, completion: nil)
+    }
     
     @IBAction func touchUpMenu(_ sender: Any) {
         activityTrailingConstraint.constant = 0
