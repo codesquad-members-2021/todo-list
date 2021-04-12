@@ -28,4 +28,8 @@ class TaskStackManager {
     func remove(_ status: Int, at index: Int) {
         tasks[status].remove(at: index)
     }
+    
+    func arrayCount() -> [Int] {
+        return [tasks[0].count, tasks[1].count, tasks[2].count]
+    }
 }

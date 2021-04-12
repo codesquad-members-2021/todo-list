@@ -5,8 +5,6 @@ class TaskViewController: UIViewController {
 
     var id: Int?
 
-    var titleText: String?
-    var contentText: String?
     let taskStackManager = TaskStackManager()
     
     
@@ -62,15 +60,27 @@ extension TaskViewController {
 extension TaskViewController {
     func addNotificationObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(insertTask(_:)), name: .addTask, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(insertTask(_:)), name: .setupTask, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(drawTaskCard(_:)), name: .setupTask, object: nil)
+    }
+    
+    @objc func drawTaskCard(_ notification: Notification) {
+        let card = notification.userInfo?["taskCard"] as! TaskCard
+        let status = card.status
+        taskStackManager.tasks[status].append(taskCard: card)
+        let count = taskStackManager.arrayCount()
+        taskCountLabel.text = "\(count[id!])"
+        taskTableView.reloadData()
     }
     
     @objc func insertTask(_ notification: Notification) {
-        let card = notification.userInfo?["taskCard"] as! TaskCard
-        let status = card.status
-        taskStackManager.append(status, taskCard: card)
-        dump(taskStackManager)
-//        taskTableView.insertRows(at: [IndexPath(row: taskStackManager.count(status)-1, section: 0)], with: .automatic)
+        //나중에 구현
     }
 }
 
+/*
+ [1, 2, 3]
+ 
+ if status == 1 {
+    tableview[1] = 배열[1]
+ }
+ */
