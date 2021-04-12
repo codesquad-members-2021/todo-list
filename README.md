@@ -5,6 +5,12 @@ TEAM 14
 
 roach, Dico, eve
 
+## AWS 배포 주소
+
+- URL : ec2-52-78-163-242.ap-northeast-2.compute.amazonaws.com:8080
+
+- 실험용으로 해보시는건 좋으나.. 무분별한 API 요청은 삼가바랍니다.. ㅠㅠ
+
 ## Commit Convention
 
 ```
