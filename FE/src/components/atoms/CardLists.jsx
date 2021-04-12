@@ -1,4 +1,4 @@
-const Card = ({ cards }) => {
+const CardLists = ({ cards }) => {
   const cardlists = cards.map(({ id, title, content, author }) => {
     return (
       <li key={id + title}>
@@ -15,4 +15,4 @@ const Card = ({ cards }) => {
   return <>{cardlists}</>;
 };
 
-export default Card;
+export default CardLists;
