@@ -1,7 +1,7 @@
 import "./App.css";
 import styled from "styled-components";
-import TemplateHead from "./components/Templates/TemplateHead";
 import { createGlobalStyle } from "styled-components";
+import NavBar from "./components/NavBar";
 const GlobalStyle = createGlobalStyle`
   body{
     background: #e9ecef;

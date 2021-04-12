@@ -43,7 +43,7 @@ function NavBar() {
 
   const handleLogBtnClick = () => {
     setLogViewState(true); //바로 값이 바뀌지는 않는다.
-    if (appear) LogStorageDom.current.classList.add("appear");
+    // if (appear) LogStorageDom.current.classList.add("appear");
   };
 
   return (
@@ -54,7 +54,7 @@ function NavBar() {
           <HiMenu className="icon" onClick={handleLogBtnClick} />
         </LogBtnBlock>
       </NavBlock>
-      <LogStorage logDom={LogStorageDom}></LogStorage>
+      {appear && <LogStorage logDom={LogStorageDom}></LogStorage>}
     </>
   );
 }

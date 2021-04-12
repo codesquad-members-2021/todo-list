@@ -25,7 +25,7 @@ const LogBlock = styled.div`
   left: 0px;
   top: 0px;
 
-  background: #b48484;
+  background: #ffffff;
 
   flex: none;
   order: 0;
@@ -33,10 +33,8 @@ const LogBlock = styled.div`
   margin: auto auto;
 `;
 
-const IconX = styled.div`
-  position: absolute;
-  right: 80px;
-  top: 50px;
+const LogList = styled.div`
+  margin-top: 80px;
 `;
 
 function LogStorage({ LogStorageDom }) {
@@ -46,9 +44,9 @@ function LogStorage({ LogStorageDom }) {
         <IconX>
           <HiX></HiX>
         </IconX>
-        <LogBlock>dkssud?</LogBlock>
-        <LogBlock>dkssud?</LogBlock>
-        <LogBlock>dkssud?</LogBlock>
+        <LogList>
+          <LogCommit></LogCommit>
+        </LogList>
       </LogStorageBlock>
       ;
     </>
