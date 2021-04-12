@@ -13,6 +13,9 @@ class CardViewController: UIViewController ,CardDelegate {
     @IBOutlet weak var inProgressTableView: UITableView!
     @IBOutlet weak var doneTableView: UITableView!
     
+    @IBOutlet weak var todoBadge: BadgeView!
+    @IBOutlet weak var inProgressBadge: BadgeView!
+    @IBOutlet weak var doneBadge: BadgeView!
     
     private var cardManager = CardManager()
     
@@ -27,8 +30,10 @@ class CardViewController: UIViewController ,CardDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        configureDelegate()
+        NotificationCenter.default.addObserver(self, selector: #selector(changeBadge), name: CardManager.changeCardCount, object: cardManager)
         
+        configureDelegate()
+        configureBadge()
     }
     
     func configureDelegate() {
@@ -46,12 +51,21 @@ class CardViewController: UIViewController ,CardDelegate {
         doneTableView.dataSource = doneDataSource
     }
 
+    func configureBadge() {
+        self.todoBadge.label.text  = "\(cardManager.count(states: .ToDo))"
+        self.inProgressBadge.label.text  = "\(cardManager.count(states: .InProgress))"
+        self.doneBadge.label.text  = "\(cardManager.count(states: .Done))"
+    }
+    
     func cardData(_ card: Card) {
         self.cardManager.add(card: card)
         self.toDoTableView.reloadData()
+        self.inProgressTableView.reloadData()
+        self.doneTableView.reloadData()
     }
     
-    @IBAction func addCardButtonPressed(_ sender: UIButton) {
+    //MARK: IBAction 처리
+    @IBAction func addToDoCardButtonPressed(_ sender: UIButton) {
         guard let modalViewController = self.storyboard?.instantiateViewController(identifier: "modalViewController") as? ModalViewController
         else {
             return
@@ -59,5 +73,32 @@ class CardViewController: UIViewController ,CardDelegate {
         
         modalViewController.setUpCardDelegate(state: .ToDo, delegate: self)
         self.present(modalViewController, animated: true, completion: nil)
+    }
+    
+    @IBAction func addInProgressButtonPressed(_ sender: UIButton) {
+        guard let modalViewController = self.storyboard?.instantiateViewController(identifier: "modalViewController") as? ModalViewController
+        else {
+            return
+        }
+        
+        modalViewController.setUpCardDelegate(state: .InProgress, delegate: self)
+        self.present(modalViewController, animated: true, completion: nil)
+    }
+    
+    @IBAction func addDoneButtonPressed(_ sender: UIButton) {
+        guard let modalViewController = self.storyboard?.instantiateViewController(identifier: "modalViewController") as? ModalViewController
+        else {
+            return
+        }
+        
+        modalViewController.setUpCardDelegate(state: .Done, delegate: self)
+        self.present(modalViewController, animated: true, completion: nil)
+    }
+    
+    //MARK: objc 처리
+    @objc func changeBadge(notification: Notification) {
+        self.todoBadge.label.text = "\(cardManager.count(states: .ToDo))"
+        self.inProgressBadge.label.text  = "\(cardManager.count(states: .InProgress))"
+        self.doneBadge.label.text  = "\(cardManager.count(states: .Done))"
     }
 }

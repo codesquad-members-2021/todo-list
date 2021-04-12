@@ -38,5 +38,10 @@ class CardManager: CardManageDelegate {
     
     func add(card: Card) {
         self.cardDic[card.states]?.append(card)
+        NotificationCenter.default.post(name: CardManager.changeCardCount, object: self)
     }
+}
+
+extension CardManager {
+    static let changeCardCount = Notification.Name("changeCardCount")
 }
