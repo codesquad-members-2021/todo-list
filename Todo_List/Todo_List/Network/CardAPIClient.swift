@@ -43,7 +43,7 @@ class CardAPIClient {
             return
         }
         var request = URLRequest(url: CardAPI.all.url)
-        request.httpMethod = "POST"
+        request.httpMethod = HTTPMethod.post.rawValue
         
         //HTTP Headers
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
