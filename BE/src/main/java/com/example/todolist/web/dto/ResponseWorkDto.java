@@ -13,7 +13,7 @@ public class ResponseWorkDto {
 
     private String description;
 
-    private LocalDateTime createdTime;
+    private LocalDateTime createdAt;
 
     private int status;
 
@@ -25,7 +25,7 @@ public class ResponseWorkDto {
         this.id = work.getId();
         this.title = work.getTitle();
         this.description = work.getDescription();
-        this.createdTime = work.getCreatedTime();
+        this.createdAt = work.getCreatedAt();
         this.status = work.getStatus();
         this.author = user.getUserId();
     }
@@ -42,8 +42,8 @@ public class ResponseWorkDto {
         return description;
     }
 
-    public LocalDateTime getCreatedTime() {
-        return createdTime;
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
     }
 
     public int getStatus() {
@@ -60,7 +60,7 @@ public class ResponseWorkDto {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
-                ", createdTime=" + createdTime +
+                ", createdAt=" + createdAt +
                 ", status=" + status +
                 ", author='" + author + '\'' +
                 '}';

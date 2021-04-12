@@ -29,7 +29,7 @@ public class WorkService {
     }
 
     public List<ResponseWorkDto> getWorks(User sessionUser) {
-        return workRepository.findAllByAuthor(sessionUser.getId()).stream()
+        return workRepository.findAllByAuthorId(sessionUser.getId()).stream()
                 .filter(Work::isNotDeleted)
                 .map(work -> new ResponseWorkDto(work, sessionUser))
                 .collect(Collectors.toList());
@@ -67,7 +67,7 @@ public class WorkService {
     }
 
     public void saveTimeline(Work work, String description) {
-        timelineRepository.save(new Timeline(description, work.getAuthor()));
+        timelineRepository.save(new Timeline(description, work.getAuthorId()));
     }
 
     private Work verifyWork(Long id, User sessionUser) {

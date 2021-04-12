@@ -11,16 +11,16 @@ public class Timeline {
 
     private String description;
 
-    private LocalDateTime createdTime;
+    private LocalDateTime createdAt;
 
-    private Long author;
+    private Long authorId;
 
     public Timeline() {}
 
-    public Timeline(String description, Long author) {
+    public Timeline(String description, Long authorId) {
         this.description = description;
-        this.createdTime = LocalDateTime.now();
-        this.author = author;
+        this.createdAt = LocalDateTime.now();
+        this.authorId = authorId;
     }
 
     public Long getId() {
@@ -31,12 +31,12 @@ public class Timeline {
         return description;
     }
 
-    public LocalDateTime getCreatedTime() {
-        return createdTime;
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
     }
 
-    public Long getAuthor() {
-        return author;
+    public Long getAuthorId() {
+        return authorId;
     }
 
     @Override
@@ -44,8 +44,8 @@ public class Timeline {
         return "Timeline{" +
                 "id=" + id +
                 ", description='" + description + '\'' +
-                ", createdTime=" + createdTime +
-                ", author=" + author +
+                ", createdAt=" + createdAt +
+                ", authorId=" + authorId +
                 '}';
     }
 

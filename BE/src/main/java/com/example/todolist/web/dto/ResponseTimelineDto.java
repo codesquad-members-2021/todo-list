@@ -11,7 +11,7 @@ public class ResponseTimelineDto {
 
     private String description;
 
-    private LocalDateTime createdTime;
+    private LocalDateTime createdAt;
 
     private String author;
 
@@ -20,7 +20,7 @@ public class ResponseTimelineDto {
     public ResponseTimelineDto(Timeline timeline, User user) {
         this.id = timeline.getId();
         this.description = timeline.getDescription();
-        this.createdTime = timeline.getCreatedTime();
+        this.createdAt = timeline.getCreatedAt();
         this.author = user.getUserId();
     }
 
@@ -32,8 +32,8 @@ public class ResponseTimelineDto {
         return description;
     }
 
-    public LocalDateTime getCreatedTime() {
-        return createdTime;
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
     }
 
     public String getAuthor() {
@@ -45,7 +45,7 @@ public class ResponseTimelineDto {
         return "ResponseTimelineDto{" +
                 "id=" + id +
                 ", description='" + description + '\'' +
-                ", createdTime=" + createdTime +
+                ", createdAt=" + createdAt +
                 ", author='" + author + '\'' +
                 '}';
     }

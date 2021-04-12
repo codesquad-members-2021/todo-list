@@ -14,18 +14,18 @@ public class Work {
 
     private String description;
 
-    private LocalDateTime createdTime;
+    private LocalDateTime createdAt;
 
     private int status;
 
-    private Long author;
+    private Long authorId;
 
     public Work() {}
 
     public Work(String title, String description, int status) {
         this.title = title;
         this.description = description;
-        this.createdTime = LocalDateTime.now();
+        this.createdAt = LocalDateTime.now();
         this.status = status;
     }
 
@@ -39,7 +39,7 @@ public class Work {
     }
 
     public void save(User sessionUser) {
-        this.author = sessionUser.getId();
+        this.authorId = sessionUser.getId();
     }
 
     public void update(Work work) {
@@ -56,7 +56,7 @@ public class Work {
     }
 
     public boolean matchAuthor(User sessionUser) {
-        return author.equals(sessionUser.getId());
+        return authorId.equals(sessionUser.getId());
     }
 
     public boolean isNotDeleted() {
@@ -75,16 +75,16 @@ public class Work {
         return description;
     }
 
-    public LocalDateTime getCreatedTime() {
-        return createdTime;
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
     }
 
     public int getStatus() {
         return status;
     }
 
-    public Long getAuthor() {
-        return author;
+    public Long getAuthorId() {
+        return authorId;
     }
 
     @Override
@@ -93,9 +93,9 @@ public class Work {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
-                ", createdTime=" + createdTime +
+                ", createdAt=" + createdAt +
                 ", status=" + status +
-                ", author=" + author +
+                ", authorId=" + authorId +
                 '}';
     }
 

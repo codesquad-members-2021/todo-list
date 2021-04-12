@@ -18,7 +18,7 @@ public class TimelineService {
     }
 
     public List<ResponseTimelineDto> getTimelines(User sessionUser) {
-        return timelineRepository.findAllByAuthor(sessionUser.getId()).stream()
+        return timelineRepository.findAllByAuthorId(sessionUser.getId()).stream()
                 .map(timeline -> new ResponseTimelineDto(timeline, sessionUser))
                 .collect(Collectors.toList());
     }

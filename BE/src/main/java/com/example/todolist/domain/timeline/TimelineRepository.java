@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface TimelineRepository extends CrudRepository<Timeline, Long> {
 
-    List<Timeline> findAllByAuthor(Long author);
+    List<Timeline> findAllByAuthorId(Long author);
 
 }
