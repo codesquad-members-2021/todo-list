@@ -5,21 +5,19 @@ import org.springframework.data.annotation.Id;
 import java.time.LocalDateTime;
 
 public class Card {
+
     @Id
     private Long id;
 
     private String title;
-    private String content;
-    private String status;
+    private String contents;
+    private Long columnId;
     private LocalDateTime createdTime;
 
-    protected Card() {
-    }
-
-    public Card(String title, String content) {
+    public Card(String title, String contents, Long columnId) {
         this.title = title;
-        this.content = content;
-        this.status = Status.TODO.name();
+        this.contents = contents;
+        this.columnId = columnId;
         this.createdTime = LocalDateTime.now();
     }
 
@@ -27,21 +25,28 @@ public class Card {
         return id;
     }
 
-    public enum Status {
-        TODO, DOING, DONE
+    public String getTitle() {
+        return title;
     }
 
-    @Override
-    public String toString() {
-        return "Card{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", content='" + content + '\'' +
-                ", status=" + status +
-//                ", createdTime=" + createdTime +
-                '}';
+    public String getContents() {
+        return contents;
     }
 
+    public Long getColumnId() {
+        return columnId;
+    }
 
+    public LocalDateTime getCreatedTime() {
+        return createdTime;
+    }
+
+    public void update(String title, String contents) {
+        this.title = title;
+        this.contents = contents;
+    }
+
+    public void move(Long toColumnId) {
+        this.columnId = toColumnId;
+    }
 }
-

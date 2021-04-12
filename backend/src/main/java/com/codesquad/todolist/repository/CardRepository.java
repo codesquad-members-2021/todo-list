@@ -1,17 +1,19 @@
 package com.codesquad.todolist.repository;
 
 import com.codesquad.todolist.domain.Card;
+import org.springframework.data.jdbc.repository.query.Query;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
 
-@Repository
 public interface CardRepository extends CrudRepository<Card, Long> {
 
-    List<Card> findAll();
+    @Query("SELECT * FROM CARD WHERE CARD.COLUMN_ID=1")
+    public List<Card> findTodoCards();
 
-    Optional<Card> findById(Long id);
+    @Query("SELECT * FROM CARD WHERE CARD.COLUMN_ID=2")
+    public List<Card> findDoingCards();
 
+    @Query("SELECT * FROM CARD WHERE CARD.COLUMN_ID=3")
+    public List<Card> findDoneCards();
 }
