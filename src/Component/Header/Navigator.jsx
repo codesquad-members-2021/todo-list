@@ -24,7 +24,7 @@ export default function Navigator () {
       <Button>
         <FaChevronRight />
       </Button>
-      <HistoryList></HistoryList>
+      <HistoryList/>
     </NavigatorBlock>
   )
 }

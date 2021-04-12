@@ -3,7 +3,7 @@ import Navigator from './Navigator'
 export default function Header () {
   return (
     <HeaderTitle>
-      <Navigator></Navigator>
+      <Navigator/>
     </HeaderTitle>
   )
 }
