@@ -6,47 +6,30 @@ import com.example.todolist.web.dto.RequestMoveWorkDto;
 public class TimelineDescription {
     public static String makeTimelineDescription(Work work, String method) {
         String description = "";
-
         description += getStatus(work.getStatus()) + "에 ";
-
         description += getComleteWordByJongsung(work.getTitle(), "을", "를");
 
         switch(method) {
             case "save" :
-                description += " 등록하였습니다.";
-                break;
+                return description + " 등록하였습니다.";
             case "update" :
-                description += " 수정하였습니다.";
-                break;
+                return description + " 수정하였습니다.";
             case "delete" :
-                description += " 삭제하였습니다.";
-                break;
+                return description + " 삭제하였습니다.";
+            default :
+                return "";
         }
-
-        return description;
     }
 
-//    public static String moveDescription(Work work, int to, int from) {
-//        String description = "";
-//        description += getComleteWordByJongsung(work.getTitle(), "을", "를");
-//        description += " " + getStatus(to) + "에서 ";
-//        description += getStatus(from) + "로 이동하였습니다.";
-//
-//
-//        return description;
-//    }
     public static String moveDescription(Work work, RequestMoveWorkDto workDto) {
         String description = "";
         description += getComleteWordByJongsung(work.getTitle(), "을", "를");
         description += " " + getStatus(work.getStatus()) + "에서 ";
         description += getStatus(workDto.toEntity().getStatus()) + "로 이동하였습니다.";
-
-
         return description;
     }
 
     public static String getStatus(int status) {
-
         switch(status) {
             case 1 :
                 return  "해야할 일";
@@ -54,8 +37,9 @@ public class TimelineDescription {
                 return "하고 있는 일";
             case 3 :
                 return  "완료한 일";
+            default :
+                return "";
         }
-        return "";
     }
 
     public static final String getComleteWordByJongsung(String title, String firstValue, String secondValue) {
