@@ -64,12 +64,17 @@ extension DoViewController : UITableViewDelegate {
                 NotificationCenter.default.post(name: .taskCompleted, object: self, userInfo: ["task": task])
             }
             
-            let rename = UIAction(title: "수정하기") { action in
-                // Perform renaming
+            let rename = UIAction(title: "수정하기") { [weak self] action in
+                guard let cell = tableView.cellForRow(at: indexPath) as? DoTableViewCell else { return }
+                guard let title = cell.title.text, let contents = cell.content.text, let storyboard = self?.storyboard, let vc = Router.shared.route(storyboard, title: title, contents: contents) else { return }
+                self?.present(vc, animated: true, completion: nil)
             }
             
-            let delete = UIAction(title: "삭제하기", attributes: .destructive) { action in
-                // Perform delete
+            let delete = UIAction(title: "삭제하기", attributes: .destructive) { [weak self] action in
+                // Perform delete API
+                self?.dataSource.doDTO.delete(index: indexPath.section)
+                tableView.deleteSections(IndexSet(indexPath.section...indexPath.section), with: .fade)
+                tableView.reloadData()
             }
             
             return UIMenu(title: "", children: [share, rename, delete])

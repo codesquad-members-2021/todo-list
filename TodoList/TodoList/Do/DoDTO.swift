@@ -31,4 +31,8 @@ class DoDTO {
         task.category = TaskState.done
         return task
     }
+    
+    func delete(index: Int) {
+        tasks.remove(at: index)
+    }
 }
