@@ -1,34 +1,53 @@
 {
-  "todos": [
-    {
-      "id": 1,
-      "title": "GitHub 공부하기",
-      "content": "add, commit 공부하기",
-      "sectionId": 1
+  "todos": [{
+      "columnId": 1,
+      "columnName": "해야할 일",
+      "items": [{
+          "id": 1,
+          "title": "GitHub 공부하기",
+          "content": "add, commit 공부하기"
+        },
+        {
+          "id": 2,
+          "title": "GitHub 공부하기2",
+          "content": "add, commit 공부하기2"
+        }
+      ]
     },
     {
-      "id": 2,
-      "title": "JS 공부하기",
-      "content": "비동기 공부하기",
-      "sectionId": 2
+      "columnId": 2,
+      "columnName": "비동기 공부하기",
+      "items": [{
+          "id": 3,
+          "title": "비동기 공부하기",
+          "content": "add, 비동기 공부하기"
+        },
+        {
+          "id": 4,
+          "title": "비동기 공부하기2",
+          "content": "add, 비동기 공부하기2"
+        }
+      ]
     },
     {
-      "id": 3,
-      "title": "React 공부하기",
-      "content": "useState란?",
-      "sectionId": 3
+      "columnId": 3,
+      "columnName": "완료한 일",
+      "items": [{
+          "id": 5,
+          "title": "완료한 공부하기",
+          "content": "add, 완료한 공부하기"
+        },
+        {
+          "id": 6,
+          "title": "완료한 공부하기2",
+          "content": "add, 완료한 공부하기2"
+        }
+      ]
     }
   ],
-  "users": [
-    {
-      "id": 1,
-      "name": "Beemo",
-      "role": "Gatekeeper"
-    }
-  ],
-  "sections": [
-    { "id": 1, "name": "해야할 일" },
-    { "id": 2, "name": "비동기 공부하기" },
-    { "id": 3, "name": "완료한 일" }
-  ]
+  "users": [{
+    "id": 1,
+    "name": "Beemo",
+    "role": "Gatekeeper"
+  }]
 }
