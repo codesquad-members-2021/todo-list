@@ -22,7 +22,7 @@ public class CardController {
     // CREATE
     @PostMapping
     public void newCard(@RequestBody Card card) {
-        cardService.createTodo(card);
+        cardService.create(card);
     }
 
     // READ
@@ -30,22 +30,6 @@ public class CardController {
     @ResponseBody
     public List<Card> showCards() {
         return cardService.read();
-    }
-
-    // MOVE
-    @PutMapping("/{id}/todo")
-    public void moveCardsTodo(@PathVariable Long id) {
-        cardService.changeStateTodo(id);
-    }
-
-    @PutMapping("/{id}/doing")
-    public void moveCardsDoing(@PathVariable Long id) {
-        cardService.changeStateDoing(id);
-    }
-
-    @PutMapping("/{id}/done")
-    public void moveCardsDone(@PathVariable Long id) {
-        cardService.changeStateDone(id);
     }
 
     // UPDATE

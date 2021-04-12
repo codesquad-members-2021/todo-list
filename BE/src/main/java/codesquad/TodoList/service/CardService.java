@@ -17,23 +17,12 @@ public class CardService {
         this.cardRepository = cardRepository;
     }
 
-    public void createTodo(Card card) {
-        card.changeStateTodo();
-        cardRepository.save(card);
-    }
-
-    public void createDoing(Card card) {
-        card.changeStateDoing();
-        cardRepository.save(card);
-    }
-
-    public void createDone(Card card) {
-        card.changeStateDone();
+    public void create(Card card) {
         cardRepository.save(card);
     }
 
     public List<Card> read() {
-        return cardRepository.findAllByDeletedFalse();
+        return (List<Card>) cardRepository.findAll();
     }
 
     public void edit(Long id, Card newCard) {
@@ -44,23 +33,11 @@ public class CardService {
 
     public void delete(Long id) {
         Card card = getCardById(id);
-        card.delete();
+        card.setStatus(Card.Status.DELETED);
         cardRepository.save(card);
     }
 
     public Card getCardById(Long id) {
         return cardRepository.findById(id).orElseThrow(NullPointerException::new);
-    }
-
-    public void changeStateTodo(Long id) {
-        createTodo(getCardById(id));
-    }
-
-    public void changeStateDoing(Long id) {
-        createDoing(getCardById(id));
-    }
-
-    public void changeStateDone(Long id) {
-        createDone(getCardById(id));
     }
 }
