@@ -7,11 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		88D276FB2621B1B60060B75A /* CustomHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D276FA2621B1B60060B75A /* CustomHeader.swift */; };
 		88EC8EE5261D4914008A4EE5 /* ToDoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88EC8EE4261D4914008A4EE5 /* ToDoCard.swift */; };
 		88EC8EE9261D4BE6008A4EE5 /* ToDoCardProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88EC8EE8261D4BE6008A4EE5 /* ToDoCardProtocol.swift */; };
 		88EC8EEE261D4ECF008A4EE5 /* CardToBeDone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88EC8EED261D4ECF008A4EE5 /* CardToBeDone.swift */; };
 		88EC8EF2261D4EE4008A4EE5 /* CardOnProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88EC8EF1261D4EE4008A4EE5 /* CardOnProgress.swift */; };
 		88EC8EF6261D4EF0008A4EE5 /* CardCompleted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88EC8EF5261D4EF0008A4EE5 /* CardCompleted.swift */; };
+		88EC8F02261D9BF4008A4EE5 /* TodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88EC8F01261D9BF4008A4EE5 /* TodoViewController.swift */; };
+		88EC8F0C261EA607008A4EE5 /* DoingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88EC8F0B261EA607008A4EE5 /* DoingViewController.swift */; };
+		88EC8F13261EA651008A4EE5 /* DoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88EC8F12261EA651008A4EE5 /* DoneViewController.swift */; };
+		88EC8F19261EA969008A4EE5 /* ToDoCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88EC8F17261EA969008A4EE5 /* ToDoCardCell.swift */; };
+		88EC8F1A261EA969008A4EE5 /* ToDoCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88EC8F18261EA969008A4EE5 /* ToDoCardCell.xib */; };
+		88EC8F2426200095008A4EE5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88EC8F2326200095008A4EE5 /* Constants.swift */; };
 		A0130D7C261C43F20091BBEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0130D7B261C43F20091BBEF /* AppDelegate.swift */; };
 		A0130D7E261C43F20091BBEF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0130D7D261C43F20091BBEF /* SceneDelegate.swift */; };
 		A0130D80261C43F20091BBEF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0130D7F261C43F20091BBEF /* ViewController.swift */; };
@@ -38,11 +45,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		88D276FA2621B1B60060B75A /* CustomHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeader.swift; sourceTree = "<group>"; };
 		88EC8EE4261D4914008A4EE5 /* ToDoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoCard.swift; sourceTree = "<group>"; };
 		88EC8EE8261D4BE6008A4EE5 /* ToDoCardProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoCardProtocol.swift; sourceTree = "<group>"; };
 		88EC8EED261D4ECF008A4EE5 /* CardToBeDone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardToBeDone.swift; sourceTree = "<group>"; };
 		88EC8EF1261D4EE4008A4EE5 /* CardOnProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardOnProgress.swift; sourceTree = "<group>"; };
 		88EC8EF5261D4EF0008A4EE5 /* CardCompleted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCompleted.swift; sourceTree = "<group>"; };
+		88EC8F01261D9BF4008A4EE5 /* TodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoViewController.swift; sourceTree = "<group>"; };
+		88EC8F0B261EA607008A4EE5 /* DoingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoingViewController.swift; sourceTree = "<group>"; };
+		88EC8F12261EA651008A4EE5 /* DoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneViewController.swift; sourceTree = "<group>"; };
+		88EC8F17261EA969008A4EE5 /* ToDoCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoCardCell.swift; sourceTree = "<group>"; };
+		88EC8F18261EA969008A4EE5 /* ToDoCardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ToDoCardCell.xib; sourceTree = "<group>"; };
+		88EC8F2326200095008A4EE5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A0130D78261C43F20091BBEF /* TodoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0130D7B261C43F20091BBEF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0130D7D261C43F20091BBEF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +91,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		88EC8F0F261EA62F008A4EE5 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A0130D7F261C43F20091BBEF /* ViewController.swift */,
+				88EC8F01261D9BF4008A4EE5 /* TodoViewController.swift */,
+				88EC8F0B261EA607008A4EE5 /* DoingViewController.swift */,
+				88EC8F12261EA651008A4EE5 /* DoneViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		88EC8F16261EA929008A4EE5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A0130D81261C43F20091BBEF /* Main.storyboard */,
+				88D276FA2621B1B60060B75A /* CustomHeader.swift */,
+				88EC8F17261EA969008A4EE5 /* ToDoCardCell.swift */,
+				88EC8F18261EA969008A4EE5 /* ToDoCardCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		A0130D6F261C43F20091BBEF = {
 			isa = PBXGroup;
 			children = (
@@ -98,11 +134,11 @@
 		A0130D7A261C43F20091BBEF /* TodoList */ = {
 			isa = PBXGroup;
 			children = (
-				A0130D91261C44620091BBEF /* Model */,
 				A0130D7B261C43F20091BBEF /* AppDelegate.swift */,
 				A0130D7D261C43F20091BBEF /* SceneDelegate.swift */,
-				A0130D7F261C43F20091BBEF /* ViewController.swift */,
-				A0130D81261C43F20091BBEF /* Main.storyboard */,
+				A0130D91261C44620091BBEF /* Model */,
+				88EC8F0F261EA62F008A4EE5 /* Controllers */,
+				88EC8F16261EA929008A4EE5 /* View */,
 				A0130D84261C43F30091BBEF /* Assets.xcassets */,
 				A0130D86261C43F30091BBEF /* LaunchScreen.storyboard */,
 				A0130D89261C43F30091BBEF /* Info.plist */,
@@ -113,6 +149,7 @@
 		A0130D91261C44620091BBEF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				88EC8F2326200095008A4EE5 /* Constants.swift */,
 				A0130D92261C458B0091BBEF /* ToDoDataModel.swift */,
 				A0130D95261C470E0091BBEF /* DataManager.swift */,
 				A0130D98261C47A60091BBEF /* JSONParser.swift */,
@@ -215,6 +252,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0130D88261C43F30091BBEF /* LaunchScreen.storyboard in Resources */,
+				88EC8F1A261EA969008A4EE5 /* ToDoCardCell.xib in Resources */,
 				A0130D85261C43F30091BBEF /* Assets.xcassets in Resources */,
 				A0130D83261C43F20091BBEF /* Main.storyboard in Resources */,
 			);
@@ -234,17 +272,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88EC8F13261EA651008A4EE5 /* DoneViewController.swift in Sources */,
+				88EC8F02261D9BF4008A4EE5 /* TodoViewController.swift in Sources */,
 				88EC8EF6261D4EF0008A4EE5 /* CardCompleted.swift in Sources */,
+				88D276FB2621B1B60060B75A /* CustomHeader.swift in Sources */,
 				A0130D99261C47A60091BBEF /* JSONParser.swift in Sources */,
 				A0130D80261C43F20091BBEF /* ViewController.swift in Sources */,
 				A0130D7C261C43F20091BBEF /* AppDelegate.swift in Sources */,
 				88EC8EEE261D4ECF008A4EE5 /* CardToBeDone.swift in Sources */,
+				88EC8F2426200095008A4EE5 /* Constants.swift in Sources */,
 				88EC8EE9261D4BE6008A4EE5 /* ToDoCardProtocol.swift in Sources */,
 				88EC8EF2261D4EE4008A4EE5 /* CardOnProgress.swift in Sources */,
 				88EC8EE5261D4914008A4EE5 /* ToDoCard.swift in Sources */,
+				88EC8F19261EA969008A4EE5 /* ToDoCardCell.swift in Sources */,
 				A0130D7E261C43F20091BBEF /* SceneDelegate.swift in Sources */,
 				A0130D93261C458B0091BBEF /* ToDoDataModel.swift in Sources */,
 				A0130D96261C470E0091BBEF /* DataManager.swift in Sources */,
+				88EC8F0C261EA607008A4EE5 /* DoingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

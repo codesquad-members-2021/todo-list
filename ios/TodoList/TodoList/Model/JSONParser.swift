@@ -18,5 +18,4 @@ class JSONParser {
             return nil
         }
     }
-    
 }
