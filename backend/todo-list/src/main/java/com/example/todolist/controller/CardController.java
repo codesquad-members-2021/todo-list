@@ -1,41 +1,53 @@
 package com.example.todolist.controller;
 
+
+import com.example.todolist.ApiResponse;
 import com.example.todolist.domain.Card;
 import com.example.todolist.domain.User;
 import com.example.todolist.repository.CardRepository;
 import com.example.todolist.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 
+import static com.example.todolist.ApiResponse.Status.SUCCESS;
 
 @RestController
+@RequestMapping("/cards")
 public class CardController {
 
     public final CardRepository cardRepository;
     public final UserRepository userRepository;
 
+    @Autowired
     public CardController(CardRepository cardRepository, UserRepository userRepository) {
         this.cardRepository = cardRepository;
         this.userRepository = userRepository;
     }
 
+    public User getUserFromToken(HttpServletRequest request) {
+        return (User) request.getAttribute("user");
+    }
+
     @PostMapping
-    public ResponseEntity<Card> create(@RequestBody HashMap<String, String> cardInfo, HttpSession session) {
-        User user = (User) session.getAttribute("sessionUser");
-        System.out.println("in create:" + user.toString());
-        Card card = new Card(user, cardInfo.get("title"), cardInfo.get("content"), cardInfo.get("status"));
+    public ResponseEntity<ApiResponse> create(@RequestBody HashMap<String, String> cardInfo, HttpServletRequest request) {
+        User tokenUser = getUserFromToken(request);
+        Card card = new Card(tokenUser, cardInfo.get("title"), cardInfo.get("contents"), cardInfo.get("status"));
         cardRepository.save(card);
-        return new ResponseEntity<>(card, HttpStatus.OK);
+        return new ResponseEntity<>(new ApiResponse(card, SUCCESS), HttpStatus.OK);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity update(@PathVariable Long id, @RequestBody HashMap<String, String> newCardInfo, HttpSession session) {
+    public ResponseEntity update(HttpServletRequest request, @PathVariable Long id, @RequestBody HashMap<String, String> newCardInfo) {
         Card card = cardRepository.findById(id).orElseThrow(RuntimeException::new);
-        User user = (User) session.getAttribute("sessionUser");
+        System.out.println("card: " + card.toString());
+        User user = getUserFromToken(request);
+        System.out.println("user: " + user.toString());
         if (!card.getUserId().equals(user.getUserId())) {
             throw new RuntimeException("수정 권한이 없습니다.");
         }
@@ -45,13 +57,14 @@ public class CardController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity delete (@PathVariable Long id, HttpSession session){
+    public ResponseEntity delete(@PathVariable Long id, HttpSession session, HttpServletRequest request) {
         Card card = cardRepository.findById(id).orElseThrow(RuntimeException::new);
-        User user = (User) session.getAttribute("sessionUser");
-        if (!card.getUserId().equals(user.getUserId())) {
+        User tokeUser = getUserFromToken(request);
+        if (!card.getUserId().equals(tokeUser.getUserId())) {
             throw new RuntimeException("삭제 권한이 없습니다.");
         }
         cardRepository.delete(card);
-        return new ResponseEntity(card , HttpStatus.OK);
+        return new ResponseEntity(card, HttpStatus.OK);
     }
 }
+

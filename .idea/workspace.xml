@@ -4,17 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="af93a8a2-2eed-469e-a744-7ac329506fe2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/controller/CardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/controller/CardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/domain/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/domain/Card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/todo-list/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/todo-list/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/todo-list/src/main/resources/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/backend/todo-list/src/main/resources/schema.sql" afterDir="false" />
+    <list default="true" id="af93a8a2-2eed-469e-a744-7ac329506fe2" name="Default Changelist" comment="fix: jwt 인증 관련 에러 해결, 세션 인증 방식을 토큰 인증으로 변경">
+      <change beforePath="$PROJECT_DIR$/backend/todo-list/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/backend/todo-list/.gitignore" afterDir="false" />
     </list>
-    <list id="e789658e-71ba-41fc-810c-115e6323bee0" name="Changes by yunhyeji" comment="">
-      <change beforePath="$PROJECT_DIR$/backend/todo-list/src/main/resources/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/backend/todo-list/src/main/resources/data.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/todo-list/src/main/resources/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/backend/todo-list/src/main/resources/schema.sql" afterDir="false" />
-    </list>
+    <list id="e789658e-71ba-41fc-810c-115e6323bee0" name="Changes by yunhyeji" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -52,14 +45,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/backend/todo-list/src/main/resources/schema.sql">
-      <ranges>
-        <range start1="14" end1="14" start2="14" end2="15" changelist="af93a8a2-2eed-469e-a744-7ac329506fe2" />
-        <range start1="17" end1="17" start2="18" end2="20" changelist="e789658e-71ba-41fc-810c-115e6323bee0" />
-      </ranges>
-    </file>
   </component>
   <component name="ProjectId" id="1qoZS7VqS2TcEUdf5pH0pvtyiJp" />
   <component name="ProjectLevelVcsManager">
@@ -107,7 +92,26 @@
       <workItem from="1617748279403" duration="4858000" />
       <workItem from="1617754187733" duration="7966000" />
       <workItem from="1617775402711" duration="8870000" />
+      <workItem from="1617881539581" duration="16728000" />
+      <workItem from="1617898878065" duration="5178000" />
+      <workItem from="1617965898351" duration="17114000" />
+      <workItem from="1617986554460" duration="30000" />
     </task>
+    <task id="LOCAL-00001" summary="bug: jwt 인증 관련 오류 발생">
+      <created>1617898549211</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1617898549211</updated>
+    </task>
+    <task id="LOCAL-00002" summary="fix: jwt 인증 관련 에러 해결, 세션 인증 방식을 토큰 인증으로 변경">
+      <created>1617980713167</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1617980713167</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -127,5 +131,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="bug: jwt 인증 관련 오류 발생" />
+    <MESSAGE value="fix: jwt 인증 관련 에러 해결, 세션 인증 방식을 토큰 인증으로 변경" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: jwt 인증 관련 에러 해결, 세션 인증 방식을 토큰 인증으로 변경" />
   </component>
 </project>
