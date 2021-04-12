@@ -115,8 +115,7 @@ extension CardViewController : UITableViewDelegate, UITableViewDataSource {
     
     /*각 테이블 내부에서 섹션을 변경할수 있는 프로토콜 */
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        
-        
+
         tableView.moveSection(sourceIndexPath.section, toSection: destinationIndexPath.section)
         
     }
