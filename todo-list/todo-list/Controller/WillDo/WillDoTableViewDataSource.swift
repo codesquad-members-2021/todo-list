@@ -11,14 +11,18 @@ class WillDoTableViewDataSource: NSObject, UITableViewDataSource {
     
     var cardList: CardList?
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return cardList?.todo.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath) as! ToDoTableViewCell
-        cell.titleLabel.text = cardList?.todo[indexPath.row].title
-        cell.contentLabel.text = cardList?.todo[indexPath.row].contents
+        cell.titleLabel.text = cardList?.todo[indexPath.section].title
+        cell.contentLabel.text = cardList?.todo[indexPath.section].contents
         return cell
     }
 }

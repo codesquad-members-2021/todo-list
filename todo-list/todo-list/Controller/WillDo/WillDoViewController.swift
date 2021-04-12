@@ -27,8 +27,9 @@ class WillDoViewController: UIViewController {
         setBadgeViewRadius()
         updateTableView()
         loadData()
+        
+        willDoTableView.register(CardMargin.self, forHeaderFooterViewReuseIdentifier: "cardMargin")
     }
-    
     
     @IBAction func addButtonTouched(_ sender: Any) {
         cellCount += 1
@@ -66,6 +67,24 @@ class WillDoViewController: UIViewController {
 }
 
 extension WillDoViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "cardMargin") as! CardMargin
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "cardMargin") as! CardMargin
+        return footerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 8
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 8
+    }
     
 }
 
