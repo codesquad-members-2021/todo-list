@@ -38,30 +38,14 @@ class ModalViewController: UIViewController {
         textView.sizeToFit()
     }
     
+    @IBAction func cancelButtonTouched(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func registerButtonTouched(_ sender: UIButton) {
+        // action: save at model
+        dismiss(animated: true, completion: nil)
+    }
+    
 }
 
-class ModalDelegate: NSObject, UITextViewDelegate {
-        
-    private var placeHolder: String
-    
-    init(placeHolder: String) {
-        self.placeHolder = placeHolder
-    }
-    
-    // TextView Place Holder
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == UIColor.lightGray {
-            textView.text = ""
-            textView.textColor = UIColor.black
-        }
-        
-    }
-    // TextView Place Holder
-    func textViewDidEndEditing(_ textView: UITextView) {
-        if textView.text.isEmpty {
-            textView.text = placeHolder
-            textView.textColor = UIColor.lightGray
-        }
-    }
-    
-}

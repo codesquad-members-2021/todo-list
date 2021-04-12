@@ -65,6 +65,9 @@
                                 </userDefinedRuntimeAttribute>
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="cancelButtonTouched:" destination="-1" eventType="touchUpInside" id="oAc-ao-vSG"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="36C-iH-p72">
                             <rect key="frame" x="260" y="126" width="75" height="30"/>
@@ -83,6 +86,9 @@
                                 </userDefinedRuntimeAttribute>
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="registerButtonTouched:" destination="-1" eventType="touchUpInside" id="ncN-4F-Jas"/>
+                            </connections>
                         </button>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="249" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fJ4-Jp-rR5" userLabel="Content Text View">
                             <rect key="frame" x="10" y="83" width="265" height="33"/>
