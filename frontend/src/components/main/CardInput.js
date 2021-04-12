@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import ButtonAccent from './partial/ButtonAccent';
 import ButtonNomal from './partial/ButtonNomal';
@@ -158,9 +158,7 @@ const Wrapper = styled.div`
 const CardInput = ({ title, body, index, setCardList }) => {
     const [inputTitle, setTitle] = useState(title);
     const [inputBody, setBody] = useState(body);
-    const [isAble, setAbility] = useState(title.length * body.length);
-
-    useEffect(() => setAbility(Boolean(inputTitle.length * inputBody.length)), [inputTitle, inputBody]);
+    const isAble = inputTitle.length * inputBody.length;
 
     const addCard = () => {
         if (!isAble) return;
