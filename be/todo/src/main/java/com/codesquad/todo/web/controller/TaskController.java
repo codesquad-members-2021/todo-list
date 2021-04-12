@@ -4,10 +4,7 @@ import com.codesquad.todo.web.domain.*;
 import com.codesquad.todo.web.exceptions.ColumnNotFoundException;
 import com.codesquad.todo.web.exceptions.UserNotFoundException;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -34,4 +31,13 @@ public class TaskController {
         responseMap.put("task", column.lastTask());
         return ResponseEntity.ok(responseMap);
     }
+
+    @DeleteMapping("/{taskId}")
+    public void removeTask(@PathVariable Long columnId, @PathVariable Long taskId) {
+        User user = userRepository.findById(1L).orElseThrow(UserNotFoundException::new);
+        Column column = user.findColumnById(columnId);
+        column.removeTaskById(taskId);
+        userRepository.save(user);
+    }
+
 }
