@@ -7,7 +7,11 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+protocol EditViewControllerDelegate {
+    func addCard(type: DoType, with card: TodoCard)
+}
+
+class ViewController: UIViewController, EditViewControllerDelegate {
     
     enum Column: String {
         case todo = "해야할 일"
@@ -18,6 +22,9 @@ class ViewController: UIViewController {
     private var todoViewController: TodoTableViewController?
     private var doingViewController: TodoTableViewController?
     private var doneViewController: TodoTableViewController?
+    
+    private var cardManager: CardManageable!
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
@@ -33,6 +40,7 @@ class ViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        self.cardManager = CardManager()
         setting()
         super.viewDidLoad()
     }
@@ -41,15 +49,20 @@ class ViewController: UIViewController {
     // MARK:- Method
     
     private func setting() {
-        setVC(self.todoViewController, data: TodoCards(), name: .todo)
-        setVC(self.doingViewController, data: TodoCards(), name: .doing)
-        setVC(self.doneViewController, data: TodoCards(), name: .done)
+        setVC(self.todoViewController, data: self.cardManager.getCards(type: .todo), name: .todo)
+        setVC(self.doingViewController, data: self.cardManager.getCards(type: .doing), name: .doing)
+        setVC(self.doneViewController, data: self.cardManager.getCards(type: .done), name: .done)
     }
     
     private func setVC(_ viewController: TodoTableViewController?, data: TodoCardsManageable, name: Column) {
         viewController?.getData(with: data)
         viewController?.setting()
         viewController?.setHeader(columnName: name.rawValue)
+    }
+    
+    func addCard(type: DoType, with card: TodoCard) {
+        self.cardManager.addCard(type: type, card: card)
+        doingViewController?.reloadData()
     }
     
 }

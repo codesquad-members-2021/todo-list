@@ -9,6 +9,7 @@ import Foundation
 
 protocol TodoCardsManageable {
     func getCard(at indexPath: IndexPath) -> TodoCard
+    func addCard(with card: TodoCard)
     func countCards() -> Int
 }
 
@@ -27,6 +28,10 @@ class TodoCards: TodoCardsManageable {
     
     func getCard(at indexPath: IndexPath) -> TodoCard {
         return cards[indexPath.item]
+    }
+    
+    func addCard(with card: TodoCard) {
+        self.cards.append(card)
     }
     
     func countCards() -> Int {

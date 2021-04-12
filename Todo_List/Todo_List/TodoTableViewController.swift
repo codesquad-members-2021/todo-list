@@ -34,8 +34,12 @@ class TodoTableViewController: UIViewController {
         cardNumLabel.text = "\(tableView.numberOfRows(inSection: 0))"
     }
     
+    func reloadData() {
+        tableView.reloadData()
+    }
+    
     @IBAction func addCardButtonTouched(_ sender: UIButton) {
-        let modalView = ModalViewController(nibName: "ModalViewController", bundle: nil)
+        let modalView = ModalViewController(nibName: "ModalViewController", bundle: nil, self.superclass as! EditViewControllerDelegate)
         modalView.modalPresentationStyle = .custom
         self.present(modalView, animated: true, completion: nil)
         

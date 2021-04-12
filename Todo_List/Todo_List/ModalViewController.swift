@@ -19,6 +19,23 @@ class ModalViewController: UIViewController {
     private lazy var titleDelegate = ModalDelegate(placeHolder: titlePlaceHolder)
     private lazy var contentDelegate = ModalDelegate(placeHolder: contentPlaceHolder)
     
+    private var editViewController: EditViewControllerDelegate?
+    
+    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?,_ editViewController: EditViewControllerDelegate) {
+        self.editViewController = editViewController
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+//        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    func getViewController(_ editViewController: EditViewControllerDelegate) {
+        self.editViewController = editViewController
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setTextView()
@@ -43,7 +60,8 @@ class ModalViewController: UIViewController {
     }
     
     @IBAction func registerButtonTouched(_ sender: UIButton) {
-        // action: save at model
+        let card = TodoCard(title: titleTextView.text ?? "", content: contentTextView.text ?? "", postTime: "\(Date())", user: User())
+        editViewController?.addCard(type: .doing, with: card)
         dismiss(animated: true, completion: nil)
     }
     
