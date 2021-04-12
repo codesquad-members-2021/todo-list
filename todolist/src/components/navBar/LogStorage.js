@@ -33,20 +33,19 @@ const LogBlock = styled.div`
   margin: auto auto;
 `;
 
-const iconX = styled.div`
+const IconX = styled.div`
   position: absolute;
   right: 80px;
   top: 50px;
-  
 `;
 
 function LogStorage({ LogStorageDom }) {
   return (
     <>
       <LogStorageBlock className="logStorage appear" ref={LogStorageDom}>
-        <iconX>
+        <IconX>
           <HiX></HiX>
-        </iconX>
+        </IconX>
         <LogBlock>dkssud?</LogBlock>
         <LogBlock>dkssud?</LogBlock>
         <LogBlock>dkssud?</LogBlock>
