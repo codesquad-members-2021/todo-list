@@ -1,9 +1,10 @@
 import React from 'react'
+import LogTitleStyle from './logTitle.style';
 
 const LogTitle = () => {
 	return (
 		<div className="log-title-section">
-			<span className="log-title">활동 로그 입니다.</span>
+			<LogTitleStyle  className="log-title">활동 로그</LogTitleStyle>
 		</div>
 	)
 };
