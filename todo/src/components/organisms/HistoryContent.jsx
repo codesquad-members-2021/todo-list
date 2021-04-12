@@ -1,11 +1,14 @@
-import React from 'react'
+import HistoryList from '../molecules/HistoryList';
+import HistoryItem from '../molecules/HistoryItem';
 
-const HistoryContent = () => {
+const HistoryContent = ({ ...props }) => {
   return (
-    <div>
-
-    </div>
+    <>
+      <HistoryList {...props}>
+        <HistoryItem />
+      </HistoryList>
+    </>
   )
 }
 
-export default HistoryContent
+export default HistoryContent;

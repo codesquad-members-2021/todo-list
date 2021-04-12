@@ -1,13 +1,13 @@
 import "./App.scss";
 import { useState, useEffect } from "react";
+import useToggle from '../../hooks/useToggle';
 import axios from "axios";
 import Header from "../molecules/Header";
 import TodoTitle from "../molecules/TodoTitle";
-import HistoryList from "../molecules/HistoryList";
 import ButtonList from "../molecules/ButtonList";
-import TodoListItem from "../molecules/TodoListItem";
-import TodoList from "../molecules/TodoList";
 import TodoListWrap from "../molecules/TodoListWrap";
+import HistoryContent from '../organisms/HistoryContent';
+
 
 // const getData = async () => {
 //   axios.get("/api/todos").then(data => console.log(data.json);
@@ -17,16 +17,12 @@ import TodoListWrap from "../molecules/TodoListWrap";
 axios.get("/todos").then(data => console.log(data.data));
 
 function App() {
-  const [isHide, setHide] = useState(true);
-
-  const toggleClickHandler = () => {
-    setHide(!isHide);
-  };
+  const [isOpen, isOpenActions] = useToggle(false);
 
   return (
     <div className="App">
-      <HistoryList isHide={isHide} toggleClickHandler={toggleClickHandler} />
-      <Header toggleClickHandler={toggleClickHandler} />
+      <HistoryContent isOpen={isOpen} isOpenActions={isOpenActions} />
+      <Header isOpenActions={isOpenActions} />
       <div>
         <TodoTitle>해야할 일</TodoTitle>
       </div>

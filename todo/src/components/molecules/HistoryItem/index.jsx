@@ -22,23 +22,14 @@ const TextDiv = styled.div`
 
 const HistoryItem = () => (
   <WrapDiv>
-
     <ImgDiv>
       <Image _width="40px" src={userIcon} />
     </ImgDiv>
-
     <TextDiv>
-      <div>
-        <Span>@Jake</Span>
-      </div>
-      <div>
-        <Span>해야할 일에 HTML/CSS 공부하기를 등록하였습니다</Span>
-      </div>
-      <div>
-        <Span _fontColor="#777777">1분 전</Span>
-      </div>
+      <div><Span>@Jake</Span></div>
+      <div><Span>해야할 일에 HTML/CSS 공부하기를 등록하였습니다</Span></div>
+      <div><Span _fontColor="#777777">1분 전</Span></div>
     </TextDiv>
-
   </WrapDiv>
 );
 

@@ -12,12 +12,11 @@ const Div = styled.div`
   place-items: center;
 `;
 
-const Header = ({ toggleClickHandler }) => {
-
+const Header = ({ isOpenActions }) => {
   return (
     <Div>
       <Span _fontSize="45px" _fontWeight="700">To do List</Span>
-      <SmallButton onClick={toggleClickHandler}>
+      <SmallButton onClick={isOpenActions.toggle}>
         <Image src={hamburgerBtn} _width="30px" />
       </SmallButton>
     </Div>

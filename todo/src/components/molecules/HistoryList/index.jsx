@@ -2,7 +2,6 @@ import React from 'react';
 import styled from "styled-components";
 import SmallButton from '../../atoms/SmallButton';
 import Image from '../../atoms/Image';
-import HistoryItem from '../HistoryItem';
 import closeButton from '../../../images/closeButton.svg';
 
 const WrapDiv = styled.div`
@@ -11,7 +10,7 @@ const WrapDiv = styled.div`
   height: 100%;
   padding: 15px;
   background: #fff;
-  right: ${props => props.isHide ? -480 : 3}px;
+  right: ${props => props.isOpen ? 3 : -480}px;
   top:3px;
   transition: all 1s;
 `;
@@ -21,16 +20,16 @@ const ButtonDiv = styled.div`
   text-align: end;
 `;
 
-const HistoryList = ({ children, toggleClickHandler, ...props }) => {
+const HistoryList = ({ children, toggleClickHandler, isOpenActions, ...props }) => {
   return (
     <WrapDiv {...props}>
       <ButtonDiv>
-        <SmallButton onClick={toggleClickHandler}>
+        <SmallButton onClick={isOpenActions.toggle}>
           <Image _width="20px" src={closeButton} />
         </SmallButton>
       </ButtonDiv>
       <div>
-        <HistoryItem />
+        {children}
       </div>
     </WrapDiv>
   )
