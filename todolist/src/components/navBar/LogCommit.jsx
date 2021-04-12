@@ -33,10 +33,10 @@ function LogCommit() {
     <>
       <LogBlock>
         <UserImg />
-        dkssud?
+        test!
       </LogBlock>
-      <LogBlock>dkssud?</LogBlock>
-      <LogBlock>dkssud?</LogBlock>
+      <LogBlock>test!</LogBlock>
+      <LogBlock>test!</LogBlock>
     </>
   );
 }

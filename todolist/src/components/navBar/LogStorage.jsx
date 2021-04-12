@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { HiX } from "react-icons/hi";
+import IconButton from "../utils/IconButton";
+import LogCommit from "./LogCommit";
 
 const LogStorageBlock = styled.div`
   position: absolute;
@@ -41,9 +42,7 @@ function LogStorage({ LogStorageDom }) {
   return (
     <>
       <LogStorageBlock className="logStorage appear" ref={LogStorageDom}>
-        <IconX>
-          <HiX></HiX>
-        </IconX>
+        <IconButton type="delete"></IconButton>
         <LogList>
           <LogCommit></LogCommit>
         </LogList>

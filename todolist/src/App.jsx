@@ -1,6 +1,6 @@
 import "./App.css";
 import { createGlobalStyle } from "styled-components";
-import NavBar from "./components/NavBar";
+import NavBar from "./components/navBar/NavBar";
 import { Column } from "./components/card/CardList.jsx";
 const GlobalStyle = createGlobalStyle`
   body{

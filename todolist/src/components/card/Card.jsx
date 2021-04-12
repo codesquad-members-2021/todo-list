@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { HiX } from "react-icons/hi";
-
+import IconButton from "../utils/IconButton";
 const CardTitle = styled.div`
   font-weight: bold;
   font-size: 16px;
@@ -25,6 +25,11 @@ function Card(props) {
     <div className="card">
       <CardTitle className="card-title">{card.title}</CardTitle>
       <CardContent className="card-content">{card.content}</CardContent>
+      <IconButton
+        className="button-delete"
+        type="delete"
+        cb={() => onDelete(card)}
+      ></IconButton>
       <HiX className="button-delete" onClick={() => onDelete(card)}></HiX>
     </div>
   );
