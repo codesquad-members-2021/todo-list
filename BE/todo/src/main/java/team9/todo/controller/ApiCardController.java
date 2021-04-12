@@ -31,12 +31,25 @@ public class ApiCardController {
     }
 
     @GetMapping("/{column}")
-    public List<Card> getList(@PathVariable String column, HttpSession httpSession) {
+    public List<Card> getList(@PathVariable int column, HttpSession httpSession) {
         logger.debug("{}의 카드 목록 요청", column);
-        return cardRepository.findAllByUserAndColumnType(1, column);
+        String str = "";
+        switch (column){  //M 숫자로 인식이돼서 잠시 스위치문으로 바꿈, 문자열주소인경우 퍼센트 인코딩도 고려해봐야할 거 같음
+            case 1:
+                str = "할일";
+                break;
+            case 2:
+                str = "하는중";
+                break;
+            case 3:
+                str = "완료";
+                break;
+        }
+
+        return cardRepository.findAllByUserAndColumnType(1, str);
     }
 
-    @PutMapping("/{columnId}")
+    @PutMapping("/{columnId}") //TODO. 어떤 컬럼의 몇번째 카드에 대한 정보를 받아야할 것 같음. 아니면 그냥 모든 카드 번호로 탐색?
     public Card update(@PathVariable long columnId, Card card, HttpSession httpSession) {
         logger.debug("{}번 카드의 내용 수정 요청", columnId);
         Card toUpdate = cardRepository.findById(columnId).get();

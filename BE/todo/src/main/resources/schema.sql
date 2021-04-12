@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `todo`.`history`
     `ID`      INT         NOT NULL AUTO_INCREMENT,
     `CARD`    INT         NOT NULL,
     `ACTION`  VARCHAR(45) NOT NULL,
-    `DATE`    DATETIME    NOT NULL,
+    `DATE`    Timestamp    NOT NULL,   /*m 이전에 사용한 DATE는 기본값이 없어서 POSTMAN 으로 처리하기 까다로워 기본값이 있는 Timestamp로 변경*/
     `FROM`    VARCHAR(45) NULL,
     `TO`      VARCHAR(45) NULL,
     `DELETED` TINYINT(1)  NOT NULL DEFAULT 0,
