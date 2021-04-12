@@ -8,7 +8,7 @@
 import UIKit
 
 protocol DataPassable: class {
-    func passData() -> [Status]?
+    func passData() -> [Card]?
 }
 
 class SectionViewController: UIViewController, DataPassable {
@@ -17,10 +17,10 @@ class SectionViewController: UIViewController, DataPassable {
     @IBOutlet weak private var sectionTitle: UILabel!
     @IBOutlet weak private var TODOCount: UILabel!
     @IBOutlet weak private var addButton: UIButton!
-    private var sectionMode: Mode?
+    private var sectionMode: SectionMode?
     private var exportViewModel: AppearViewModel!
     private var changeCardViewModel: ChangeCardViewModel!
-    private var status: [Status]!
+    private var cards: [Card]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,17 +32,17 @@ class SectionViewController: UIViewController, DataPassable {
         self.exportViewModel = AppearViewModel(mode: sectionMode)
         self.changeCardViewModel = ChangeCardViewModel()
         
-        self.exportViewModel.passingDataHandler = { status in
-            self.status = status
+        self.exportViewModel.passingDataHandler = { cards in
+            self.cards = cards
             DispatchQueue.main.async {
-                self.TODOCount.text = "\(status.count)"
+                self.TODOCount.text = "\(cards.count)"
                 self.TODOTableView.reloadData()
             }
         }
         
         
-        self.sectionViewDataSource.deleteCard = { status in
-            self.changeCardViewModel.delete(status: status)
+        self.sectionViewDataSource.deleteCard = { card in
+            self.changeCardViewModel.deleteCard(card: card)
         }
     }
     
@@ -59,11 +59,11 @@ class SectionViewController: UIViewController, DataPassable {
         self.sectionTitle.text = mode.sectionTitle
     }
     
-    func passData() -> [Status]? {
-        return self.status
+    func passData() -> [Card]? {
+        return self.cards
     }
     
-    func setSectionMode(mode: Mode) {
+    func setSectionMode(mode: SectionMode) {
         self.sectionMode = mode
     }
 }

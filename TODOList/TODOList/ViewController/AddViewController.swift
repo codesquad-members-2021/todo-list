@@ -12,7 +12,7 @@ class AddViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak private var bodyField: ObservingTextField!
     @IBOutlet weak private var writeButton: SubmitButton!
     @IBOutlet weak private var cardView: UIView!
-    private var sectionMode: Mode?
+    private var sectionMode: SectionMode?
     private var writeViewModel: ChangeCardViewModel!
     
     override func viewDidLoad() {
@@ -38,7 +38,8 @@ class AddViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func touchSubmitButton(_ sender: UIButton) {
-        self.writeViewModel.trigger()
+        guard let mode = sectionMode else { return }
+        self.writeViewModel.addCard(mode: mode)
         dismiss(animated: false, completion: nil)
     }
     
@@ -50,7 +51,7 @@ class AddViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    func setSectionMode(mode: Mode) {
+    func setSectionMode(mode: SectionMode) {
         self.sectionMode = mode
     }
 }

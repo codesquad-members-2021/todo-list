@@ -8,40 +8,27 @@
 import Foundation
 
 class AppearViewModel {
-    private(set) var status: [Status] {
+    private(set) var cards: [Card] {
         didSet {
             self.passingData()
         }
     }
-    private var mode: Mode
-    var passingDataHandler: (([Status]) -> ())?
-    var loadCards: LoadCards
     
-    init(mode: Mode) {
+    private var mode: SectionMode
+    var passingDataHandler: (([Card]) -> ())?
+    var cardsNetworkCenter: CardsNetworkCenter
+    
+    init(mode: SectionMode) {
         self.mode = mode
-        self.loadCards = LoadCards()
-        self.status = [Status]()
+        self.cardsNetworkCenter = CardsNetworkCenter()
+        self.cards = [Card]()
         
-        loadCards.getCards { (dict) in
-            switch self.mode {
-            case .doingTODO:
-                self.status = dict[self.mode.rawValue, default: [Status]()]
-            case .completeTODO:
-                self.status = dict[self.mode.rawValue, default: [Status]()]
-            case .willTODO:
-                self.status = dict[self.mode.rawValue, default: [Status]()]
-            }
+        cardsNetworkCenter.getCards { (dict) in
+            self.cards = dict[self.mode.rawValue, default: [Card]()]
         }
     }
     
     private func passingData() {
-        switch self.mode {
-        case .completeTODO:
-            passingDataHandler?(status)
-        case .doingTODO:
-            passingDataHandler?(status)
-        case .willTODO:
-            passingDataHandler?(status)
-        }
+        passingDataHandler?(cards)
     }
 }

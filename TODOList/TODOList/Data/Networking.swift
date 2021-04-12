@@ -24,15 +24,15 @@ class Networking {
         }
     }
     
-    func postToDoList(url: String, cards: [Card], comletionHandler: @escaping ([Card])->Void) {
+    func postToDoList(url: String, card: Card, comletionHandler: @escaping (Card) -> Void) {
         guard let url = URL(string: url) else { return }
         var request = URLRequest(url: url)
-        let encodedData = DataManager.encoding(encodable: cards)
+        let encodedData = DataManager.encoding(encodable: card)
         request.httpMethod = "POST"
         request.httpBody = encodedData
         SessionManger.request(urlRequest: request) { (data) in
-            guard let decodedData = DataManager.decoding(decodable: BundleOfCards.self, data: data) else { return }
-            comletionHandler(decodedData.cards)
+            guard let card = DataManager.decoding(decodable: Card.self, data: data) else { return }
+            comletionHandler(card)
         }
     }
 }
