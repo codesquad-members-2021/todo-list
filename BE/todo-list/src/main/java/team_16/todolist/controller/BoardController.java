@@ -28,7 +28,7 @@ public class BoardController {
 
     @GetMapping
     public List<Board> getBoards() {
-        System.out.println("BoardController.getBoards");
+
         return (List<Board>) boardRepository.findAll();
     }
 
