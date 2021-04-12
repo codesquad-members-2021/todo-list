@@ -42,10 +42,7 @@ public class WorkService {
         Work work = workDto.toEntity();
         work.save(sessionUser);
         Work saveWork = workRepository.save(work);
-
-        String method = Thread.currentThread().getStackTrace()[1].getMethodName();
-        Timeline timeline = new Timeline(makeTimelineDescription(work, method), saveWork.getAuthor());
-        timelineRepository.save(timeline);
+        saveTimeline(work, "save");
         return new ResponseWorkDto(saveWork, sessionUser);
     }
 
@@ -53,38 +50,34 @@ public class WorkService {
         Work work = verifyWork(id, sessionUser);
         work.update(workDto.toEntity());
         workRepository.save(work);
-
-        String method = Thread.currentThread().getStackTrace()[1].getMethodName();
-        Timeline timeline = new Timeline(makeTimelineDescription(work, method), work.getAuthor());
-        timelineRepository.save(timeline);
+        saveTimeline(work, "update");
         return new ResponseWorkDto(work, sessionUser);
     }
 
     public void delete(Long id, User sessionUser) {
         Work work = verifyWork(id, sessionUser);
         work.delete();
-
-        String method = Thread.currentThread().getStackTrace()[1].getMethodName();
-        Timeline timeline = new Timeline(makeTimelineDescription(work, method), work.getAuthor());
-        timelineRepository.save(timeline);
+        saveTimeline(work, "delete");
         workRepository.save(work);
     }
 
     public ResponseWorkDto move(Long id, RequestMoveWorkDto workDto, User sessionUser) {
         Work work = verifyWork(id, sessionUser);
-        int to = work.getStatus();
-        logger.info(String.valueOf(to));
-
         work.move(workDto.toEntity());
-        int from = work.getStatus();
-
-        logger.info(String.valueOf(from));
-
-        Timeline timeline = new Timeline(moveDescription(work, to, from), work.getAuthor());
-        logger.info(timeline.toString());
         workRepository.save(work);
-        timelineRepository.save(timeline);
+        moveTimeline(work, workDto);
         return new ResponseWorkDto(work, sessionUser);
+    }
+
+    public void saveTimeline(Work work, String method) {
+        timelineRepository.save(new Timeline(makeTimelineDescription(work, method), work.getAuthor()));
+    }
+
+    public void moveTimeline(Work work, RequestMoveWorkDto workDto) {
+        int to = work.getStatus();
+        int from = workDto.toEntity().getStatus();
+        Timeline timeline = new Timeline(moveDescription(work, to, from), work.getAuthor());
+        timelineRepository.save(timeline);
     }
 
     private Work verifyWork(Long id, User sessionUser) {
