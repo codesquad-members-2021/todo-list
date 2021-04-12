@@ -6,7 +6,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class TODoStatusPatternValidator implements ConstraintValidator<ToDoStatusPattern, Enum<?>> {
-    private Pattern pattern = Pattern.compile("TODO|DOING|DONE");
+    private Pattern pattern = Pattern.compile("TODO|DOING|DONE|DELETED");
 
     @Override
     public boolean isValid(Enum<?> value, ConstraintValidatorContext context) {
