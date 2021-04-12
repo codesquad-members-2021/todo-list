@@ -4,7 +4,7 @@ import Card from '../atoms/Card';
 import Form from './Form';
 
 const Column = ({ data: { columns } }) => {
-  const [initialColumns, setColumn] = useState(columns);
+  const [columnData, setColumnData] = useState(columns);
   const [currentID, setCurrentID] = useState(null);
 
   const handleClick = (clickedID) => {
@@ -17,21 +17,21 @@ const Column = ({ data: { columns } }) => {
 
   const deleteColumn = (deletedID) => {
     return () => {
-      const newColumn = initialColumns.filter(({ id }) => id !== deletedID);
-      setColumn([...newColumn]);
+      const newColumn = columnData.filter(({ id }) => id !== deletedID);
+      setColumnData([...newColumn]);
     };
   };
 
   const addCard = (column) => {
-    const newColumns = Object.assign(initialColumns, column);
-    setColumn([...newColumns]);
+    const newColumns = Object.assign(columnData, column);
+    setColumnData([...newColumns]);
   };
 
   const offDisplay = () => {
     setCurrentID(null);
   };
 
-  const columnList = initialColumns.map((column) => {
+  const columnList = columnData.map((column) => {
     const { id, title, cards } = column;
     return (
       <section key={id}>
