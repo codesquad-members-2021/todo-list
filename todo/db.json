@@ -5,12 +5,14 @@
       "items": [{
           "id": 1,
           "title": "GitHub 공부하기",
-          "content": "add, commit 공부하기"
+          "content": "add, commit 공부하기",
+          "author":"Beemo"
         },
         {
           "id": 2,
           "title": "GitHub 공부하기2",
-          "content": "add, commit 공부하기2"
+          "content": "add, commit 공부하기2",
+          "author":"Daisy"
         }
       ]
     },
@@ -20,12 +22,14 @@
       "items": [{
           "id": 3,
           "title": "비동기 공부하기",
-          "content": "add, 비동기 공부하기"
+          "content": "add, 비동기 공부하기",
+          "author":"Daisy"
         },
         {
           "id": 4,
           "title": "비동기 공부하기2",
-          "content": "add, 비동기 공부하기2"
+          "content": "add, 비동기 공부하기2",
+          "author":"Tami"
         }
       ]
     },
@@ -35,12 +39,14 @@
       "items": [{
           "id": 5,
           "title": "완료한 공부하기",
-          "content": "add, 완료한 공부하기"
+          "content": "add, 완료한 공부하기",
+          "author":"Tami"
         },
         {
           "id": 6,
           "title": "완료한 공부하기2",
-          "content": "add, 완료한 공부하기2"
+          "content": "add, 완료한 공부하기2",
+          "author":"Beemo"
         }
       ]
     }

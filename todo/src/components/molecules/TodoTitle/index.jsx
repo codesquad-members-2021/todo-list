@@ -2,27 +2,19 @@ import React from "react";
 import styled from "styled-components";
 import Span from "../../atoms/Span";
 import Label from "../../atoms/Label";
-import SmallButton from "../../atoms/SmallButton";
-import Image from "../../atoms/Image";
-import hamburgerBtn from "../../../images/hamburgerButtonIcon.png";
 import ButtonList from "../ButtonList";
 
 const WrapDiv = styled.div`
   display: flex;
-  width: 308px;
-  padding: 15px;
-  justify-content: space-between;
+  padding: 10px;
+  margin: 10px 0px 10px 10px;
   place-items: center;
-  width: 300px;
-  margin: 15px;
-  background-color: white;
+  justify-content: space-between;
 `;
 
 const LeftDiv = styled.div`
   display: flex;
   place-items: center;
-  font-size: 20px;
-  font-size: 700;
 `;
 
 const TodoTitle = ({ children, ...props }) => (

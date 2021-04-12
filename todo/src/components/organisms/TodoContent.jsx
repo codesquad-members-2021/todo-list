@@ -5,34 +5,28 @@ import TodoListInput from "../molecules/TodoListInput";
 import TodoTitle from "../molecules/TodoTitle";
 import TodoListForm from "../molecules/TodoListForm";
 import TodoListColumn from "../molecules/TodoListColumn";
-// add 이벤트 구현
 
-// <ButtonList isIcon={false} />
-// <ButtonList isIcon />
+const TodoContent = ({ todos }) => {
+  const getForms = (items) => {
+    return items.map(({ id, title, content, author }) => {
+      return (
+        <TodoListForm id={id}>
+          <TodoListItem {...{ title, content, author }}></TodoListItem>
+        </TodoListForm>
+      );
+    })
+  }
 
-const TodoContent = () => {
   return (
     <TodoListWrap>
-      <TodoListColumn>
-        <TodoTitle>1번</TodoTitle>
-        <TodoListForm>
-          <TodoListInput></TodoListInput>
-        </TodoListForm>
-      </TodoListColumn>
-
-      <TodoListColumn>
-        <TodoTitle>2번</TodoTitle>
-        <TodoListForm>
-          <TodoListItem></TodoListItem>
-        </TodoListForm>
-      </TodoListColumn>
-
-      <TodoListColumn>
-        <TodoTitle>3번</TodoTitle>
-        <TodoListForm>
-          <TodoListItem></TodoListItem>
-        </TodoListForm>
-      </TodoListColumn>
+      {todos.map(({ columnId, columnName, items }) => {
+        return (
+          <TodoListColumn key={columnId}>
+            <TodoTitle>{columnName}</TodoTitle>
+            {getForms(items)}
+          </TodoListColumn>
+        );
+      })}
     </TodoListWrap>
   );
 };

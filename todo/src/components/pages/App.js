@@ -17,24 +17,21 @@ const Div = styled.div`
 
 function App() {
   const [isOpen, isOpenActions] = useToggle(false);
-  const [todoTitle, setTitle] = useState([]);
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {
     getAxios(setTodos, "/todos");
-    getAxios(setTitle, "/sections");
   }, []);
 
   useEffect(() => {
     console.log(todos);
-    console.log(todoTitle);
-  }, [todoTitle]);
+  }, [todos]);
 
   return (
     <Div>
       <HistoryContent isOpen={isOpen} isOpenActions={isOpenActions} />
       <Header isOpenActions={isOpenActions} />
-      <TodoContent></TodoContent>
+      <TodoContent todos={todos}></TodoContent>
     </Div>
   );
 }

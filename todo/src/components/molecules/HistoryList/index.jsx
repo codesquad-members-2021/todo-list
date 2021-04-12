@@ -11,8 +11,9 @@ const WrapDiv = styled.div`
   padding: 15px;
   background: #fff;
   right: ${props => props.isOpen ? 3 : -480}px;
-  top:3px;
+  top: 3px;
   transition: all 1s;
+  z-index: 1;
 `;
 
 const ButtonDiv = styled.div`
