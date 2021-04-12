@@ -12,21 +12,21 @@ extension CardViewController {
     func setUpDelegate(){
         todo.delegate = self
         todo.dataSource = self
-        todo.dragDelegate = self
-        todo.dropDelegate = self
-        todo.dragInteractionEnabled = true
+//        todo.dragDelegate = self
+//        todo.dropDelegate = self
+//        todo.dragInteractionEnabled = true
         
         doing.delegate = self
         doing.dataSource = self
-        doing.dragDelegate = self
-        doing.dropDelegate = self
-        doing.dragInteractionEnabled = true
-        
+//        doing.dragDelegate = self
+//        doing.dropDelegate = self
+//        doing.dragInteractionEnabled = true
+
         done.delegate = self
         done.dataSource = self
-        done.dragDelegate = self
-        done.dropDelegate = self
-        done.dragInteractionEnabled = true
+//        done.dragDelegate = self
+//        done.dropDelegate = self
+//        done.dragInteractionEnabled = true
         
     }
 }
@@ -90,13 +90,13 @@ extension CardViewController : UITableViewDelegate, UITableViewDataSource {
         switch tableView {
         case todo:
             board.remove(at: indexPath.section, type: .todo)
-            todo.deleteSections([indexPath.section], with: .fade)
+//            todo.deleteSections([indexPath.section], with: .fade)
         case doing:
             board.remove(at: indexPath.section, type: .doing)
-            doing.deleteSections([indexPath.section], with: .fade)
+//            doing.deleteSections([indexPath.section], with: .fade)
         case done:
             board.remove(at: indexPath.section, type: .done)
-            done.deleteSections([indexPath.section], with: .fade)
+//            done.deleteSections([indexPath.section], with: .fade)
         default:
             return
         }
@@ -104,7 +104,7 @@ extension CardViewController : UITableViewDelegate, UITableViewDataSource {
     
     /*각 테이블 내부에서 섹션을 변경할수 있는 프로토콜 */
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-//        print("sourceIndexPath : ",sourceIndexPath, "destinationIndexPath : ",destinationIndexPath)
+        print("sourceIndexPath : ",sourceIndexPath, "destinationIndexPath : ",destinationIndexPath)
         tableView.moveSection(sourceIndexPath.section, toSection: destinationIndexPath.section)
     }
 }

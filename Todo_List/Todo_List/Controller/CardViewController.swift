@@ -40,7 +40,7 @@ class CardViewController: UIViewController {
             return
         }
         viewController.setHandler(handler: { [weak self] card in
-            self?.board.apepnd(with: card, type: cardType)
+            self?.board.append(with: card, type: cardType)
         })
     }
     func createModalViewController() -> ModalViewController{

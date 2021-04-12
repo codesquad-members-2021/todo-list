@@ -22,7 +22,7 @@ class Board {
     var doingList = [Card]()
     var doneList = [Card]()
     
-    func apepnd(with card : Card, type : Board.CardType) {
+    func append(with card : Card, type : Board.CardType) {
         switch type {
         case .todo:
             todoList.insert(card, at: 0)
