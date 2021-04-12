@@ -212,7 +212,7 @@
                                         <color key="tintColor" systemColor="systemGray4Color"/>
                                         <state key="normal" image="plus" catalog="system"/>
                                         <connections>
-                                            <action selector="addCardButtonPressed:" destination="EVs-s3-gWZ" eventType="touchUpInside" id="uHM-Eh-XEO"/>
+                                            <action selector="addToDoCardButtonPressed:" destination="EVs-s3-gWZ" eventType="touchUpInside" id="uHM-Eh-XEO"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -273,6 +273,9 @@
                                         <rect key="frame" x="228" y="0.0" width="18" height="30"/>
                                         <color key="tintColor" systemColor="systemGray4Color"/>
                                         <state key="normal" image="plus" catalog="system"/>
+                                        <connections>
+                                            <action selector="addInProgressButtonPressed:" destination="EVs-s3-gWZ" eventType="touchUpInside" id="cPa-WP-Ewp"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
@@ -332,6 +335,9 @@
                                         <rect key="frame" x="228" y="0.0" width="18" height="30"/>
                                         <color key="tintColor" systemColor="systemGray4Color"/>
                                         <state key="normal" image="plus" catalog="system"/>
+                                        <connections>
+                                            <action selector="addDoneButtonPressed:" destination="EVs-s3-gWZ" eventType="touchUpInside" id="1Wr-0K-jgv"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
@@ -375,9 +381,12 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="doneBadge" destination="UJS-t8-Iae" id="w4q-2R-ivR"/>
                         <outlet property="doneTableView" destination="gGa-vQ-obB" id="g36-4f-Y1b"/>
+                        <outlet property="inProgressBadge" destination="Tbc-X0-DxA" id="jjU-ve-w9u"/>
                         <outlet property="inProgressTableView" destination="Ndr-pZ-Qip" id="ow7-gd-8Ka"/>
                         <outlet property="toDoTableView" destination="a6h-Dz-YDK" id="G3c-f1-gXn"/>
+                        <outlet property="todoBadge" destination="iEt-8C-OFo" id="Qhh-iQ-7sn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K6F-cV-G5X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
