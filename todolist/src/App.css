@@ -1,38 +1,61 @@
-.App {
-  text-align: center;
+ul {
+  all: unset;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.icon {
+  width: 2em;
+  height: 2em;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.icon-add-open {
+  color: #0075de;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.icon-add-close {
+  color: #bdbdbd;
+}
+
+.icon-delete {
+  color: #bdbdbd;
+}
+
+input {
+  border: none;
+  width: 276px;
+  height: 23px;
+}
+
+.card-input-title::placeholder {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.card-btn-section {
+  display: flex;
+  margin-top: 1em;
+}
+
+.card-input-section {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.btn {
+  padding: 10px;
+  width: 134px;
+  height: 40px;
+  background: #e0e0e0;
+  border-radius: 6px;
+  border: none;
+  margin: 0px 4px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.edit-btn {
+  background: #0075de !important;
+  color: #fff;
+}
+
+.enroll-btn {
+  background: #86c6ff;
+  color: rgba(255, 255, 255, 0.4);
 }
