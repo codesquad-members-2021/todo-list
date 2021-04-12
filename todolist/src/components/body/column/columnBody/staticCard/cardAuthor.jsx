@@ -1,9 +1,10 @@
-import React from "react";
+import React from 'react';
+import CardAuthorStyle from './cardAuthor.style';
 
 const CardAuthor = ({ user }) => {
   return (
     <div className="card-author-section">
-      <span className="card-author">author by {user}</span>
+      <CardAuthorStyle className="card-author">author by {user}</CardAuthorStyle>
     </div>
   );
 };

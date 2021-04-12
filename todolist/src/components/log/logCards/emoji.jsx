@@ -1,4 +1,5 @@
-import React from "react";
+import React from 'react';
+// import EmojiStyle from './historyTime';
 
 const Emoji = ({ emoji }) => {
   return (

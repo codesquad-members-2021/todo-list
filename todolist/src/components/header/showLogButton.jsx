@@ -1,10 +1,13 @@
-import React from "react";
-import styled from "styled-components";
-import { ReactComponent as menuBtn } from "./showLogButton.svg";
+import React from 'react';
+import styled from 'styled-components';
+import { ReactComponent as menuBtn } from './showLogButton.svg';
 
 const MenuBtn = styled(menuBtn)`
-  width: 17px;
-  height: 11px;
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  left: 1200px;
+  top: 44px;
 `;
 
 const ShowLogButton = () => {
@@ -14,21 +17,5 @@ const ShowLogButton = () => {
     </div>
   );
 };
-// import menu from './menu.svg';
-// import styles from "./header.module.css"
-
-// const showModal = () => {
-// 	console.log("A")
-// }
-
-// const ShowLogButton = () => {
-// 	return (
-// 		<div className="show-log-button-section">
-// 			<button className={styles.showLogButton} onClick={showModal}>
-// 				<img src={menu} className="menu-btn" alt="menu-btn" />
-// 			</button>
-// 		</div>
-// 	)
-// };
 
 export default ShowLogButton;

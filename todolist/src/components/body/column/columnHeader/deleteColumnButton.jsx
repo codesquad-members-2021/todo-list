@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ReactComponent as deleteColumnBtn } from './deleteColumnBtn.svg';
+import { ReactComponent as deleteColumnBtn } from '../../../style/deleteIcon.svg';
 
 const DeleteColumnBtn = styled(deleteColumnBtn)`
   width: 13.79px

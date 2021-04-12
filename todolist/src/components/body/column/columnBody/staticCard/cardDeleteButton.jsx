@@ -1,11 +1,15 @@
 import React from 'react';
+import styled from 'styled-components';
+import { ReactComponent as cardDeleteBtn } from '../../../../style/deleteIcon.svg';
+
+const CardDeleteBtn = styled(cardDeleteBtn)`
+  width: 13.79px
+  height: 13.79px
+	background: #828282;
+`;
 
 const CardDeleteButton = () => {
-	return (
-		<div className="card-delete-button-section">
-			<button className="card-delete-button">기획 디자인에서 svg(x)를 가져오세요.</button>
-		</div>
-	)
+  return <CardDeleteBtn className="card-delete-button" />;
 };
 
-export default CardDeleteButton
+export default CardDeleteButton;

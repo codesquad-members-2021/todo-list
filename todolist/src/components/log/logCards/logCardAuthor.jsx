@@ -1,10 +1,11 @@
-import React from "react";
+import React from 'react';
+import LogCardAuthorStyle from './logCardAuthor.style';
 
 const LogCardAuthor = ({ user }) => {
   return (
-    <div className="log-card-author-section">
+    <LogCardAuthorStyle className="log-card-author-section">
       <span className="log-card-author">@{user}</span>
-    </div>
+    </LogCardAuthorStyle>
   );
 };
 
