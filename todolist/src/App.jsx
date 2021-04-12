@@ -15,10 +15,9 @@ function App() {
   return (
     <>
       <GlobalStyle />
-       <NavBar />
-      <Column />;
-     
+      <NavBar />
+      <Column />
     </>
   );
-
+}
 export default App;
