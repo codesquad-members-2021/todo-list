@@ -8,16 +8,21 @@ import ButtonList from "../molecules/ButtonList";
 import TodoListWrap from "../molecules/TodoListWrap";
 import HistoryContent from '../organisms/HistoryContent';
 
-
-// const getData = async () => {
-//   axios.get("/api/todos").then(data => console.log(data.json);
-// };
-// getData();
-
-axios.get("/todos").then(data => console.log(data.data));
-
 function App() {
   const [isOpen, isOpenActions] = useToggle(false);
+  const [todos, setTodos] = useState([]);
+
+  useEffect(() => {
+    const getData = async () => {
+      const { data } = await axios.get("/todos");
+      setTodos(data);
+    };
+    getData();
+  }, []);
+
+  useEffect(() => {
+    console.log(todos)
+  }, [todos]);
 
   return (
     <div className="App">
@@ -28,7 +33,8 @@ function App() {
       </div>
       <ButtonList isIcon={false} />
       <ButtonList isIcon />
-      <TodoListWrap></TodoListWrap>
+      <TodoListWrap>
+      </TodoListWrap>
     </div>
   );
 }
