@@ -42,7 +42,7 @@ public class WorkService {
         Work work = workDto.toEntity();
         work.save(sessionUser);
         Work saveWork = workRepository.save(work);
-        saveTimeline(work, "save");
+        saveTimeline(work, makeTimelineDescription(work, "save"));
         return new ResponseWorkDto(saveWork, sessionUser);
     }
 
@@ -50,14 +50,14 @@ public class WorkService {
         Work work = verifyWork(id, sessionUser);
         work.update(workDto.toEntity());
         workRepository.save(work);
-        saveTimeline(work, "update");
+        saveTimeline(work, makeTimelineDescription(work, "update"));
         return new ResponseWorkDto(work, sessionUser);
     }
 
     public void delete(Long id, User sessionUser) {
         Work work = verifyWork(id, sessionUser);
         work.delete();
-        saveTimeline(work, "delete");
+        saveTimeline(work, makeTimelineDescription(work, "delete"));
         workRepository.save(work);
     }
 
@@ -65,19 +65,12 @@ public class WorkService {
         Work work = verifyWork(id, sessionUser);
         work.move(workDto.toEntity());
         workRepository.save(work);
-        moveTimeline(work, workDto);
+        saveTimeline(work, moveDescription(work, workDto));
         return new ResponseWorkDto(work, sessionUser);
     }
 
-    public void saveTimeline(Work work, String method) {
-        timelineRepository.save(new Timeline(makeTimelineDescription(work, method), work.getAuthor()));
-    }
-
-    public void moveTimeline(Work work, RequestMoveWorkDto workDto) {
-        int to = work.getStatus();
-        int from = workDto.toEntity().getStatus();
-        Timeline timeline = new Timeline(moveDescription(work, to, from), work.getAuthor());
-        timelineRepository.save(timeline);
+    public void saveTimeline(Work work, String description) {
+        timelineRepository.save(new Timeline(description, work.getAuthor()));
     }
 
     private Work verifyWork(Long id, User sessionUser) {

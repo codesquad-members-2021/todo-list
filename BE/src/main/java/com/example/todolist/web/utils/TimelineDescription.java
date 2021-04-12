@@ -1,6 +1,7 @@
 package com.example.todolist.web.utils;
 
 import com.example.todolist.domain.work.Work;
+import com.example.todolist.web.dto.RequestMoveWorkDto;
 
 public class TimelineDescription {
     public static String makeTimelineDescription(Work work, String method) {
@@ -25,11 +26,20 @@ public class TimelineDescription {
         return description;
     }
 
-    public static String moveDescription(Work work, int to, int from) {
+//    public static String moveDescription(Work work, int to, int from) {
+//        String description = "";
+//        description += getComleteWordByJongsung(work.getTitle(), "을", "를");
+//        description += " " + getStatus(to) + "에서 ";
+//        description += getStatus(from) + "로 이동하였습니다.";
+//
+//
+//        return description;
+//    }
+    public static String moveDescription(Work work, RequestMoveWorkDto workDto) {
         String description = "";
         description += getComleteWordByJongsung(work.getTitle(), "을", "를");
-        description += " " + getStatus(to) + "에서 ";
-        description += getStatus(from) + "로 이동하였습니다.";
+        description += " " + getStatus(work.getStatus()) + "에서 ";
+        description += getStatus(workDto.toEntity().getStatus()) + "로 이동하였습니다.";
 
 
         return description;
