@@ -31,6 +31,7 @@
 		E47346E9261ED8DD0055DD0A /* SideMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E47346E7261ED8DD0055DD0A /* SideMenuViewController.xib */; };
 		E47346F1261EE5700055DD0A /* SideMenuTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47346F0261EE5700055DD0A /* SideMenuTransitionDelegate.swift */; };
 		E47346FC261F2F9C0055DD0A /* SlideAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47346FB261F2F9C0055DD0A /* SlideAnimation.swift */; };
+		E48D392026242801002E469E /* CardMargin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48D391F26242801002E469E /* CardMargin.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		E47346E7261ED8DD0055DD0A /* SideMenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuViewController.xib; sourceTree = "<group>"; };
 		E47346F0261EE5700055DD0A /* SideMenuTransitionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTransitionDelegate.swift; sourceTree = "<group>"; };
 		E47346FB261F2F9C0055DD0A /* SlideAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideAnimation.swift; sourceTree = "<group>"; };
+		E48D391F26242801002E469E /* CardMargin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardMargin.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -243,6 +245,7 @@
 				E47346E7261ED8DD0055DD0A /* SideMenuViewController.xib */,
 				E47346FB261F2F9C0055DD0A /* SlideAnimation.swift */,
 				BD62EA2B261C8F2A00E44D80 /* LaunchScreen.storyboard */,
+				E48D391F26242801002E469E /* CardMargin.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -393,6 +396,7 @@
 				E47346F1261EE5700055DD0A /* SideMenuTransitionDelegate.swift in Sources */,
 				BDD9DB64261D97B300718566 /* ToDoTableViewCell.swift in Sources */,
 				BD511A8126240EBC00BE3C94 /* WillDoTableViewDataSource.swift in Sources */,
+				E48D392026242801002E469E /* CardMargin.swift in Sources */,
 				BD62EA25261C8F2900E44D80 /* ToDoListViewController.swift in Sources */,
 				BD62EA21261C8F2900E44D80 /* AppDelegate.swift in Sources */,
 				BD794ABE2620211B00C03DF4 /* ParsingManager.swift in Sources */,
