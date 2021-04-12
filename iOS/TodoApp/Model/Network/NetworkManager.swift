@@ -9,7 +9,7 @@ import Foundation
 
 class NetworkManager {
     
-    func loginPost() {
+    static func loginPost() {
         let data = ["userId" : "user1", "password" : "1234"]
         let body = try? JSONEncoder().encode(data)
         
@@ -43,7 +43,7 @@ class NetworkManager {
         task.resume()
     }
 
-    func workGet() {
+    static func workGet() {
         DispatchQueue.main.async {
             do {
                 let url = URL(string: "http://3.36.217.168:8080/works")
@@ -51,12 +51,12 @@ class NetworkManager {
                 let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [Any]
                 json?.forEach({ parse in
                     let task = parse as! [String: Any]
-                    let id = task["id"] as! Int
-                    let status = task["status"] as! Int
+                    let _ = task["id"] as! Int
+                    let status = task["status"] as! Int - 1
                     let title = task["title"] as! String
-                    let content = task["content"] as! String
+                    let content = task["description"] as! String
                     
-                    let taskCard = TaskCard(id: id, status: status, title: title, content: content)
+                    let taskCard = TaskCard(status: status, title: title, content: content)
                     NotificationCenter.default.post(name: .setupTask, object: self, userInfo: ["taskCard": taskCard])
                 })
             } catch let error as NSError {

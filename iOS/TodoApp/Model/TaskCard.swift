@@ -2,7 +2,6 @@
 import Foundation
 
 struct TaskCard {
-    var id: Int
     var status: Int
     var title: String
     var content: String

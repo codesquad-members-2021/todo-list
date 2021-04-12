@@ -5,7 +5,6 @@ class TaskViewController: UIViewController {
 
     var id: Int?
 
-    var taskCount = 0 
     var titleText: String?
     var contentText: String?
     let taskStackManager = TaskStackManager()
@@ -19,7 +18,6 @@ class TaskViewController: UIViewController {
         super.viewDidLoad()
         setupSubViews()
         addNotificationObserver()
-        setupData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -33,6 +31,7 @@ class TaskViewController: UIViewController {
     }
 }
 
+//MARK: -SetUp && Configure
 extension TaskViewController {
     
     private func setupSubViews() {
@@ -59,12 +58,19 @@ extension TaskViewController {
     }
 }
 
+//MARK: -Notification
 extension TaskViewController {
-    func setupData() {
-//        taskStack.append(taskCard: taskCards[0])
-//        taskStack.append(taskCard: taskCards[1])
+    func addNotificationObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(insertTask(_:)), name: .addTask, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(insertTask(_:)), name: .setupTask, object: nil)
     }
     
-    
+    @objc func insertTask(_ notification: Notification) {
+        let card = notification.userInfo?["taskCard"] as! TaskCard
+        let status = card.status
+        taskStackManager.append(status, taskCard: card)
+        dump(taskStackManager)
+//        taskTableView.insertRows(at: [IndexPath(row: taskStackManager.count(status)-1, section: 0)], with: .automatic)
+    }
 }
 

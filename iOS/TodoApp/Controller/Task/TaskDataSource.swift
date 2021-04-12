@@ -29,18 +29,4 @@ extension TaskViewController: UITableViewDataSource {
 //            // Not used in our example, but if you were adding a new row, this is where you would do it.
 //        }
     }
-    
-    func addNotificationObserver() {
-        NotificationCenter.default.addObserver(self, selector: #selector(insertTask(_:)), name: .addTask, object: nil)
-    }
-    
-    @objc func insertTask(_ notification: Notification) {
-//        taskStack += 1
-//        titleText = notification.userInfo?["title"] as? String
-//        contentText = notification.userInfo?["content"] as? String
-//        print(notification.userInfo?["id"])
-//        
-//        taskTableView.insertRows(at: [IndexPath(row: taskCount-1, section: 0)], with: .automatic)
-    }
-    
 }
