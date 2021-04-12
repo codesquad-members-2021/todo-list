@@ -3,6 +3,7 @@ package com.team06.todo.domain;
 import com.team06.todo.dto.CardCreateRequestDto;
 import com.team06.todo.dto.CardMoveRequestDto;
 import com.team06.todo.dto.CardUpdateRequestDto;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 
 import java.time.LocalDateTime;
@@ -16,6 +17,8 @@ public class Card {
     private String contents;
     // colunmType 할 일(0), 하는 중(1), 마친 일(2)
     private int columnType;
+
+    @CreatedDate
     private LocalDateTime createdDateTime;
 
     public Card() {
@@ -25,7 +28,6 @@ public class Card {
         this.title = cardCreateRequestDto.getTitle();
         this.contents = cardCreateRequestDto.getContents();
         this.columnType = cardCreateRequestDto.getColumnType();
-        this.createdDateTime = LocalDateTime.now();
     }
 
     public Long getId() {

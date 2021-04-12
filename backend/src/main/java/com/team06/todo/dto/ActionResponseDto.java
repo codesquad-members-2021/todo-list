@@ -12,15 +12,7 @@ public class ActionResponseDto {
     private ActionType actionType;
     private LocalDateTime createdDateTime;
 
-    public ActionResponseDto() {
-    }
-
-    public ActionResponseDto(Action action) {
-        this.cardTitle = action.getCardTitle();
-        this.columnFrom = action.getColumnFrom();
-        this.columnTo = action.getColumnTo();
-        this.actionType = action.getActionType();
-        this.createdDateTime = action.getCreatedDateTime();
+    private ActionResponseDto() {
     }
 
     public String getCardTitle() {
@@ -41,5 +33,62 @@ public class ActionResponseDto {
 
     public LocalDateTime getCreatedDateTime() {
         return createdDateTime;
+    }
+
+
+    public static class Builder {
+        private String cardTitle;
+        private int columnFrom;
+        private int columnTo;
+        private ActionType actionType;
+        private LocalDateTime createdDateTime;
+
+        public Builder() {
+        }
+
+        private Builder cardTitle(String cardTitle) {
+            this.cardTitle = cardTitle;
+            return this;
+        }
+
+        private Builder columnFrom(int columnFrom) {
+            this.columnFrom = columnFrom;
+            return this;
+        }
+
+        private Builder columnTo(int columnTo) {
+            this.columnTo = columnTo;
+            return this;
+        }
+
+        private Builder actionType(ActionType actionType) {
+            this.actionType = actionType;
+            return this;
+        }
+
+        private Builder createdDateTime(LocalDateTime createdDateTime) {
+            this.createdDateTime = createdDateTime;
+            return this;
+        }
+
+        public ActionResponseDto build() {
+            ActionResponseDto actionResponseDto = new ActionResponseDto();
+            actionResponseDto.cardTitle = cardTitle;
+            actionResponseDto.columnFrom = columnFrom;
+            actionResponseDto.columnTo = columnTo;
+            actionResponseDto.actionType = actionType;
+            actionResponseDto.createdDateTime = createdDateTime;
+            return actionResponseDto;
+        }
+    }
+
+    public static ActionResponseDto from(Action action) {
+        return new Builder()
+                .cardTitle(action.getCardTitle())
+                .columnFrom(action.getColumnFrom())
+                .columnTo(action.getColumnTo())
+                .actionType(action.getActionType())
+                .createdDateTime(action.getCreatedDateTime())
+                .build();
     }
 }

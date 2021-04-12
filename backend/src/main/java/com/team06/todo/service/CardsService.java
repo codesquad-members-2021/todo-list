@@ -1,13 +1,11 @@
 package com.team06.todo.service;
 
 import com.team06.todo.domain.Card;
-import com.team06.todo.domain.ColumnType;
 import com.team06.todo.dto.*;
 import com.team06.todo.repository.CardsRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 @Service
@@ -25,15 +23,28 @@ public class CardsService {
         Card card = new Card(cardCreateRequestDto);
         cardsRepository.save(card);
         actionsService.save(card);
-        return new CardResponseDto(card);
+        return new CardResponseDto.Builder()
+                .id(card.getId())
+                .title(card.getTitle())
+                .contents(card.getContents())
+                .columnType(card.getColumnType())
+                .createdDateTime(card.getCreatedDateTime())
+                .build();
     }
+
+//    public CardsResponse show() {
+//        List<Card> cards = (List<Card>) cardsRepository.findAll();
+//        List<CardResponseDto> cardResponseDtos = new ArrayList<>();
+//        for (Card card : cards) {
+//            cardResponseDtos.add(new CardResponseDto(card));
+//        }
+//        return new CardsResponse(cardResponseDtos);
+//    }
 
     public CardsResponse show() {
         List<Card> cards = (List<Card>) cardsRepository.findAll();
         List<CardResponseDto> cardResponseDtos = new ArrayList<>();
-        for (Card card : cards) {
-            cardResponseDtos.add(new CardResponseDto(card));
-        }
+        cards.forEach(card -> cardResponseDtos.add(CardResponseDto.from(card)));
         return new CardsResponse(cardResponseDtos);
     }
 
@@ -49,7 +60,7 @@ public class CardsService {
         card.move(cardMoveRequestDto);
         cardsRepository.save(card);
         actionsService.move(card, columnFrom, card.getColumnType());
-        return new CardResponseDto(card);
+        return CardResponseDto.from(card);
     }
 
     public CardResponseDto update(Long id, CardUpdateRequestDto cardUpdateRequestDto) {
@@ -58,7 +69,7 @@ public class CardsService {
         card.update(cardUpdateRequestDto);
         cardsRepository.save(card);
         actionsService.update(card);
-        return new CardResponseDto(card);
+        return CardResponseDto.from(card);
     }
 
     public CardResponseDto delete(Long id) {
@@ -66,6 +77,6 @@ public class CardsService {
                 .orElseThrow(() -> new IllegalStateException("해당 카드를 찾을 수 없습니다. id = " + id));
         actionsService.delete(card);
         cardsRepository.deleteById(id);
-        return new CardResponseDto(card);
+        return CardResponseDto.from(card);
     }
 }

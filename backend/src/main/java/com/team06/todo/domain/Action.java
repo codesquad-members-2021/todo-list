@@ -1,5 +1,6 @@
 package com.team06.todo.domain;
 
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 
 import java.time.LocalDateTime;
@@ -11,6 +12,8 @@ public class Action {
 
     private ActionType actionType;
     private String cardTitle;
+
+    @CreatedDate
     private LocalDateTime createdDateTime;
 
     // move 할 때
@@ -26,14 +29,12 @@ public class Action {
         this.actionType = actionType;
         this.columnFrom = columnFrom;
         this.columnTo = columnTo;
-        this.createdDateTime = LocalDateTime.now();
     }
 
     // add, update, delete
     public Action(String cardTitle, ActionType actionType) {
         this.cardTitle = cardTitle;
         this.actionType = actionType;
-        this.createdDateTime = LocalDateTime.now();
     }
 
     public Long getId() {
