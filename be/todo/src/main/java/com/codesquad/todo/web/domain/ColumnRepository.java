@@ -2,6 +2,9 @@ package com.codesquad.todo.web.domain;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface ColumnRepository extends CrudRepository<Column, Long> {
+import java.util.List;
 
+public interface ColumnRepository extends CrudRepository<Column, Long> {
+    @Override
+    List<Column> findAll();
 }

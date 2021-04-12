@@ -21,6 +21,10 @@ public class Column {
     protected Column() {
     }
 
+    public int sizeOfTaskList() {
+        return taskList.size();
+    }
+
     public Task findTaskById(Long taskId) {
         return taskList.stream()
                 .filter(task -> task.isSameId(taskId))
@@ -58,6 +62,10 @@ public class Column {
 
     public List<TaskDto> convertTaskListToTaskDtoList() {
         return taskList.stream().map(task -> new TaskDto(task, "test")).collect(Collectors.toList());
+    }
+
+    public boolean isSameTitle(Column column) {
+        return this.columnTitle.equals(column.columnTitle);
     }
 
     public boolean isSameId(Long columnId) {

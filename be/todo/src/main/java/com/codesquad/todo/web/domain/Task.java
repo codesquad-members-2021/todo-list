@@ -1,6 +1,5 @@
 package com.codesquad.todo.web.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.annotation.Id;
 
 import java.time.LocalDateTime;
@@ -23,8 +22,22 @@ public class Task {
     protected Task() {
     }
 
-    public boolean isSameId(Long taskId){
+    public boolean isSameId(Long taskId) {
         return id.equals(taskId);
+    }
+
+    public boolean isSameTitle(Task task) {
+        return taskTitle.equals(task.taskTitle);
+    }
+
+    public boolean isSameContent(Task task) {
+        return taskContent.equals(task.taskContent);
+    }
+
+    public void update(String newTitle, String newContent) {
+        taskTitle = newTitle;
+        taskContent = newContent;
+        updatedDateTime = LocalDateTime.now();
     }
 
     public Long getId() {
