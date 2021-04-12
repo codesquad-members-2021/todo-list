@@ -3,6 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/todo-list.iml" filepath="$PROJECT_DIR$/.idea/todo-list.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/todolist.iml" filepath="$PROJECT_DIR$/.idea/modules/todolist.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/todolist.main.iml" filepath="$PROJECT_DIR$/.idea/modules/todolist.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/todolist.test.iml" filepath="$PROJECT_DIR$/.idea/modules/todolist.test.iml" />
     </modules>
   </component>
 </project>
