@@ -1,15 +1,20 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './Menu.css'
+import Sidebar from './../Sidebar/Sidebar'
 
-const Menu =() => {
+const Menu = () => {
+  const [isClicked, setIsClicked] = useState(false);
 
   const toggleSidebar = () => {
-    console.log("menu popup");
+    setIsClicked(!isClicked);
   }
 
   return (
-    <div className="Menu" onClick={toggleSidebar} >
-       <i className="fa fa-bars"></i>
+    <div>
+      <div className="Menu" onClick={toggleSidebar} >
+        <i className="fa fa-bars"></i>
+      </div>
+      <Sidebar isClicked={isClicked} toggleSidebar= {toggleSidebar}/>
     </div>
   );
 }
