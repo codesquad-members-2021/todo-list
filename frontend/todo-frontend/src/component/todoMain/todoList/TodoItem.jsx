@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import DeleteBtn from "../../atom/DeleteBtn.jsx";
 import styled from "styled-components";
 import Input from "../../atom/Input.jsx";
@@ -24,9 +24,10 @@ export const TodoCardBtnWrapper = styled.div`
   width: 100%;
 `;
 
-const TodoCardTitle = styled.div`
+export const TodoCardTitle = styled.div`
   font-weight: 700;
   height: 23px;
+  margin-bottom: 10px;
 `;
 
 const TodoCardContent = styled.div`

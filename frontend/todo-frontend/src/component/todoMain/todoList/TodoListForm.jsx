@@ -17,8 +17,10 @@ const TodoListForm = ({ addTodoItem, toggleForm }) => {
       content: inputContentRef.current.value,
     };
     addTodoItem(newTodo.id, newTodo);
+
     inputTitleRef.current.value = "";
     inputContentRef.current.value = "";
+
     toggleForm();
   };
 
@@ -41,13 +43,13 @@ const TodoListForm = ({ addTodoItem, toggleForm }) => {
           name="title"
           type="text"
           placeholder="제목을 입력하세요"
-          ref={inputTitleRef}
+          inputRef={inputTitleRef}
         />
         <Input
           name="content"
           type="text"
           placeholder="내용을 입력하세요"
-          ref={inputContentRef}
+          inputRef={inputContentRef}
         />
         <TodoCardBtnWrapper>
           <ConfirmBtn value="등록" type="submit" />

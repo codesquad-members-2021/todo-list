@@ -25,7 +25,7 @@ const CancelButton = styled.button`
   background-color: #d8e3e7;
 `;
 
-export const ConfirmBtn = ({ value, type, handleClick, disabled }) => {
+export const ConfirmBtn = ({ value, type, handleClick, disabled = false }) => {
   return (
     <ConfirmButton
       type={type ? type : ""}
