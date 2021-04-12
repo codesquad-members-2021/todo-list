@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import DeleteBtn from "../../atom/DeleteBtn.jsx";
 import styled from "styled-components";
 import Input from "../../atom/Input.jsx";
-import { ConfirmBtn } from "../../atom/Button.jsx";
+import { ConfirmBtn, CancelBtn } from "../../atom/Button.jsx";
 
 export const TodoCard = styled.div`
   display: flex;
@@ -20,6 +20,8 @@ export const TodoCard = styled.div`
 
 export const TodoCardBtnWrapper = styled.div`
   display: flex;
+  justify-content: space-between;
+  width: 100%;
 `;
 
 const TodoCardTitle = styled.div`
@@ -89,7 +91,7 @@ const TodoItem = ({
             handleClick={editItem}
             disabled={isDisabled}
           />
-          <button onClick={toggleEditForm}>취소</button>
+          <CancelBtn value="취소" onClick={toggleEditForm} />
         </TodoCardBtnWrapper>
       </TodoCard>
     );

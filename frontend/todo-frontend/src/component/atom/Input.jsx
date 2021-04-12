@@ -10,7 +10,7 @@ const StyledInput = styled.input`
   font-weight: ${(props) => (props.name === "title" ? "600" : "400")};
 `;
 
-const Input = ({ name, defaultValue, handleChange, placeholder }) => {
+const Input = ({ name, defaultValue, handleChange, placeholder, ref }) => {
   return (
     <StyledInput
       type="text"
@@ -18,6 +18,7 @@ const Input = ({ name, defaultValue, handleChange, placeholder }) => {
       value={defaultValue}
       onChange={handleChange}
       placeholder={placeholder}
+      ref={ref}
     ></StyledInput>
   );
 };

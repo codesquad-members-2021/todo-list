@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import styled from "styled-components";
 import Input from "../../atom/Input.jsx";
 import { TodoCardBtnWrapper, TodoCard } from "./TodoItem";
+import { ConfirmBtn, CancelBtn } from "../../atom/Button.jsx";
 
 const TodoListForm = ({ addTodoItem, toggleForm }) => {
   //수정완료
@@ -49,8 +50,8 @@ const TodoListForm = ({ addTodoItem, toggleForm }) => {
           ref={inputContentRef}
         />
         <TodoCardBtnWrapper>
-          <button type="submit">등록</button>
-          <button onClick={foldForm}>취소</button>
+          <ConfirmBtn value="등록" type="submit" />
+          <CancelBtn value="취소" handleClick={foldForm} />
         </TodoCardBtnWrapper>
       </TodoCard>
     </form>

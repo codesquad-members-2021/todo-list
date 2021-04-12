@@ -15,14 +15,14 @@ const commonBtn = css`
 const ConfirmButton = styled.button`
   ${commonBtn};
   color: white;
-  background-color: rgba(0, 117, 222, 1);
+  background-color: #126e82;
   opacity: ${(props) => (props.disabled ? "0.5" : "1")};
 `;
 
 const CancelButton = styled.button`
   ${commonBtn};
-  color: white;
-  background-color: #e0e0e0;
+  color: gray;
+  background-color: #d8e3e7;
 `;
 
 export const ConfirmBtn = ({ value, type, handleClick, disabled }) => {
@@ -38,8 +38,8 @@ export const ConfirmBtn = ({ value, type, handleClick, disabled }) => {
 };
 export const CancelBtn = ({ value, type, handleClick }) => {
   return (
-    <ConfirmButton type={type ? type : ""} onClick={handleClick}>
+    <CancelButton type={type ? type : ""} onClick={handleClick}>
       {value}
-    </ConfirmButton>
+    </CancelButton>
   );
 };
