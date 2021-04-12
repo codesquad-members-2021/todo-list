@@ -8,17 +8,7 @@
 import Foundation
 
 class AppearViewModel {
-    private(set) var doingStatus: [Status] {
-        didSet {
-            self.passingData()
-        }
-    }
-    private(set) var completeStatus: [Status] {
-        didSet {
-            self.passingData()
-        }
-    }
-    private(set) var willStatus: [Status] {
+    private(set) var status: [Status] {
         didSet {
             self.passingData()
         }
@@ -30,18 +20,16 @@ class AppearViewModel {
     init(mode: Mode) {
         self.mode = mode
         self.loadCards = LoadCards()
-        self.doingStatus = [Status]()
-        self.completeStatus = [Status]()
-        self.willStatus = [Status]()
+        self.status = [Status]()
         
         loadCards.getCards { (dict) in
             switch self.mode {
             case .doingTODO:
-                self.doingStatus = dict[self.mode.rawValue, default: [Status]()]
+                self.status = dict[self.mode.rawValue, default: [Status]()]
             case .completeTODO:
-                self.completeStatus = dict[self.mode.rawValue, default: [Status]()]
+                self.status = dict[self.mode.rawValue, default: [Status]()]
             case .willTODO:
-                self.willStatus = dict[self.mode.rawValue, default: [Status]()]
+                self.status = dict[self.mode.rawValue, default: [Status]()]
             }
         }
     }
@@ -49,11 +37,11 @@ class AppearViewModel {
     private func passingData() {
         switch self.mode {
         case .completeTODO:
-            passingDataHandler?(completeStatus)
+            passingDataHandler?(status)
         case .doingTODO:
-            passingDataHandler?(doingStatus)
+            passingDataHandler?(status)
         case .willTODO:
-            passingDataHandler?(willStatus)
+            passingDataHandler?(status)
         }
     }
 }
