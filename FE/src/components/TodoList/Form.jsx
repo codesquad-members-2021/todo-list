@@ -1,24 +1,38 @@
-import { useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import StyledForm from '../atoms/StyledForm';
 import { InputTitle, InputContent } from '../atoms/StyledInputs';
 import FormButtonsWrap from '../molecules/FormButtonsWrap';
 
 const Form = ({ addCard, column, handleClickCancel }) => {
+  const [inputs, setInputs] = useState({
+    title: '',
+    content: '',
+  });
   const titleInput = useRef();
   const contentInput = useRef();
   const nextID = useRef(5); // 임시 아이디
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const newCard = {
       id: nextID.current,
       title: titleInput.current.value,
       content: contentInput.current.value,
       author: column.cards.author,
     };
+
     const cardAdded = [...column.cards, newCard];
     column.cards = cardAdded;
     nextID.current++;
     addCard(column);
+  };
+
+  const onChange = ({ target }) => {
+    setInputs({
+      ...inputs,
+      [target.name]: target.value,
+    });
   };
 
   const resize = () => {
@@ -31,7 +45,7 @@ const Form = ({ addCard, column, handleClickCancel }) => {
     }
   };
 
-  const NewForm = () => (
+  return (
     <StyledForm onSubmit={handleSubmit}>
       <InputTitle
         name="title"
@@ -39,6 +53,7 @@ const Form = ({ addCard, column, handleClickCancel }) => {
         placeholder="제목을 적어주세요"
         ref={titleInput}
         autoComplete="off"
+        onChange={onChange}
       />
       <InputContent
         name="content"
@@ -47,11 +62,11 @@ const Form = ({ addCard, column, handleClickCancel }) => {
         ref={contentInput}
         autoComplete="off"
         onKeyUp={resize}
+        onChange={onChange}
       />
-      <FormButtonsWrap handleClickCancel={handleClickCancel} />
+      <FormButtonsWrap handleClickCancel={handleClickCancel} inputs={inputs} />
     </StyledForm>
   );
-  return <NewForm />;
 };
 
 export default Form;
