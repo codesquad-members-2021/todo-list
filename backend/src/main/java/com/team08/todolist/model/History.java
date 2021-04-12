@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 
 public class History {
 
-    private Integer historyId;
+    private Long id;
     private Integer cardId;
     private String author;
     private String title;
@@ -15,8 +15,8 @@ public class History {
     private String to;
     private LocalDateTime createdDateTime;
 
-    public History(Integer historyId, Integer cardId, String author, String title, String action, String from, String to, LocalDateTime createdDateTime) {
-        this.historyId = historyId;
+    public History(Long id, Integer cardId, String author, String title, String action, String from, String to, LocalDateTime createdDateTime) {
+        this.id = id;
         this.cardId = cardId;
         this.author = author;
         this.title = title;
@@ -26,8 +26,8 @@ public class History {
         this.createdDateTime = createdDateTime;
     }
 
-    public Integer getHistoryId() {
-        return historyId;
+    public Long getId() {
+        return id;
     }
 
     public Integer getCardId() {

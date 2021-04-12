@@ -6,28 +6,28 @@ import java.time.LocalDateTime;
 
 public class Card {
 
-    private int cardId;
+    private Long id;
     private String author;
     private String title;
     private String content;
     private LocalDateTime createdDateTime;
     private boolean isApp;
-    private int itemId;
-    private int position;
+    private Long columnId;
+    private Integer position;
 
-    public Card(int cardId, String author, String title, String content, LocalDateTime createdDateTime, boolean isApp, int itemId, int position) {
-        this.cardId = cardId;
+    public Card(Long id, String author, String title, String content, LocalDateTime createdDateTime, boolean isApp, Long columnId, Integer position) {
+        this.id = id;
         this.author = author;
         this.title = title;
         this.content = content;
         this.createdDateTime = createdDateTime;
         this.isApp = isApp;
-        this.itemId = itemId;
+        this.columnId = columnId;
         this.position = position;
     }
 
-    public int getCardId() {
-        return cardId;
+    public Long getId() {
+        return id;
     }
 
     public String getAuthor() {
@@ -46,15 +46,15 @@ public class Card {
         return DateTimeUtils.formatByPattern(createdDateTime);
     }
 
-    public boolean isApp() {
+    public boolean getIsApp() {
         return isApp;
     }
 
-    public int getItemId() {
-        return itemId;
+    public Long getColumnId() {
+        return columnId;
     }
 
-    public int getPosition() {
+    public Integer getPosition() {
         return position;
     }
 }

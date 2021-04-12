@@ -19,32 +19,32 @@ public class ApiCardController {
     @GetMapping
     public List<Card> list() {
         List<Card> cards = new ArrayList<>();
-        cards.add(new Card(1, "woody", "title1",
+        cards.add(new Card(1L, "woody", "title1",
                 "content1", LocalDateTime.now(), true,
-                1, 0));
-        cards.add(new Card(2, "woody", "title2",
+                1L, 0));
+        cards.add(new Card(2L, "woody", "title2",
                 "content2", LocalDateTime.now(), false,
-                2, 0));
-        cards.add(new Card(3, "woody", "title3",
+                2L, 0));
+        cards.add(new Card(3L, "woody", "title3",
                 "content3", LocalDateTime.now(), false,
-                2, 2));
+                2L, 2));
         return cards;
     }
 
     @GetMapping("/{cardId}")
-    public Card getCard(@PathVariable int cardId) {
+    public Card getCard(@PathVariable Long cardId) {
         return new Card(cardId, "woody", "title1",
                 "content1", LocalDateTime.now(), true,
-                1, 0);
+                1L, 0);
     }
 
     @PutMapping("/{cardId}")
-    public void update(@PathVariable int cardId, Card cardToUpdate) {
+    public void update(@PathVariable Long cardId, Card cardToUpdate) {
 
     }
 
     @DeleteMapping("/{cardId}")
-    public void delete(@PathVariable int cardId) {
+    public void delete(@PathVariable Long cardId) {
 
     }
 }
