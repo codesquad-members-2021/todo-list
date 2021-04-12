@@ -17,10 +17,12 @@ class AddViewController: UIViewController {
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var contentTextField: UITextField!
     @IBOutlet weak var positiveButton: CardButton!
+    @IBOutlet weak var popUp: UIView!
     
     var status: CardStatus?
     var titleName: String?
     var contents: String?
+    private var isKeyboardActive: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +32,24 @@ class AddViewController: UIViewController {
         default:
             break
         }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(adjustPopUp), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(adjustPopUpDown), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func adjustPopUp(noti: Notification) {
+        if isKeyboardActive != true {
+            guard let userInfo = noti.userInfo else { return }
+            guard let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+            popUp.frame.origin.y -= keyboardFrame.height / 3
+            isKeyboardActive = true
+        }
+    }
+    
+    @objc func adjustPopUpDown(noti: Notification) {
+        guard let userInfo = noti.userInfo else { return }
+        guard let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+        popUp.frame.origin.y += keyboardFrame.height / 3
     }
     
     func encodeTask() -> Data? {
@@ -56,5 +76,10 @@ class AddViewController: UIViewController {
     
     @IBAction func closeButtonTouched(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func tap(_ sender: Any) {
+        titleTextField.resignFirstResponder()
+        contentTextField.resignFirstResponder()
     }
 }
