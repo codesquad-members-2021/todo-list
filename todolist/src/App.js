@@ -10,7 +10,7 @@ const App = () => {
     <div className="App">
       <Header />
       <Body />
-      <Log />
+      {/* <Log /> */}
     </div>
   );
 };

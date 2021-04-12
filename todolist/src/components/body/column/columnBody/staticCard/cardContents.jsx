@@ -3,13 +3,13 @@ import CardContentsStyle from './cardContents.style';
 
 const CardContents = ({ cardContents }) => {
   return (
-    <div className="card-contents-section">
+    <CardContentsStyle className="card-contents-section">
       {cardContents.map((content, index) => (
-        <CardContentsStyle key={index} className="content">
+        <div key={index} className="content">
           - {content}
-        </CardContentsStyle>
+        </div>
       ))}
-    </div>
+    </CardContentsStyle>
   );
 };
 

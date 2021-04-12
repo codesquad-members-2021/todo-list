@@ -13,9 +13,6 @@ const StaticCardStyle = styled.div`
 
   /* Inside Auto Layout */
 
-  flex: none;
-  order: 0;
-  flex-grow: 0;
   margin: 0px 0px;
 `;
 

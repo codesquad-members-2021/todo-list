@@ -5,16 +5,16 @@ const CardContentsStyle = styled.div`
   font-size: 14px;
   line-height: 20px;
 
+  width: 265px;
+  height: 20px;
+
   /* Black */
 
   color: #010101;
 
   /* Inside Auto Layout */
-
-  flex: none;
-  order: 1;
-  flex-grow: 0;
-  margin: 8px 0px;
+  margin: 5px 0px;
+  overflow: auto;
 `;
 
 export default CardContentsStyle;

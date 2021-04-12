@@ -1,18 +1,16 @@
 import styled from 'styled-components';
 
-const BodyStyle = styled.section`
+const BodyStyle = styled.div`
   /* Auto Layout */
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0px;
+  padding: 0;
+  margin: 0 15px 0 0;
 
-  position: absolute;
   width: 308px;
   height: 294px;
-  left: 80px;
-  top: 136px;
 `;
 
 export default BodyStyle;

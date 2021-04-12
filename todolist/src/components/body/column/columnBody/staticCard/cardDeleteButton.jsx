@@ -3,9 +3,12 @@ import styled from 'styled-components';
 import { ReactComponent as cardDeleteBtn } from '../../../../style/deleteIcon.svg';
 
 const CardDeleteBtn = styled(cardDeleteBtn)`
-  width: 13.79px
-  height: 13.79px
-	background: #828282;
+  width: 13.79px;
+  height: 13.79px;
+
+  path {
+    fill: #828282;
+  }
 `;
 
 const CardDeleteButton = () => {

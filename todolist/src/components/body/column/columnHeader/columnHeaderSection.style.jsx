@@ -13,10 +13,6 @@ const ColumnHeaderSection = styled.span`
   height: 26px;
 
   /* Inside Auto Layout */
-
-  flex: none;
-  order: 0;
-  flex-grow: 0;
   margin: 16px 0px;
 `;
 

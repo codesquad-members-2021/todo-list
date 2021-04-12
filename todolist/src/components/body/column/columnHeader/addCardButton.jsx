@@ -3,8 +3,12 @@ import styled from 'styled-components';
 import { ReactComponent as addCardBtn } from '../../../style/addIcon.svg';
 
 const AddCardBtn = styled(addCardBtn)`
-  width: 13.79px
-  height: 13.79px
+  width: 13.79px;
+  height: 13.79px;
+
+  path {
+    fill: #bdbdbd;
+  }
 `;
 
 const AddCardButton = () => {

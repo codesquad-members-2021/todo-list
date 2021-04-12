@@ -3,7 +3,7 @@ import ColumnTitle from './columnTitle.jsx';
 import CountCards from './countCards.jsx';
 import AddCardButton from './addCardButton.jsx';
 import DeleteColumnButton from './deleteColumnButton.jsx';
-import ColumnHeaderSection from './columnHeaderSection.jsx';
+import ColumnHeaderSection from './columnHeaderSection.style.jsx';
 
 const ColumnHeader = ({ columnTitle, cards }) => {
   return (
