@@ -1,5 +1,6 @@
 package com.example.todolist.domain.work;
 
+import com.example.todolist.domain.user.User;
 import org.springframework.data.annotation.Id;
 
 import java.time.LocalDateTime;
@@ -21,12 +22,45 @@ public class Work {
 
     public Work() {}
 
-    public Work(String title, String description, int status, Long author) {
+    public Work(String title, String description, int status) {
         this.title = title;
         this.description = description;
         this.createdTime = LocalDateTime.now();
         this.status = status;
-        this.author = author;
+    }
+
+    public Work(String title, String description) {
+        this.title = title;
+        this.description = description;
+    }
+
+    public Work(int status) {
+        this.status = status;
+    }
+
+    public void save(User sessionUser) {
+        this.author = sessionUser.getId();
+    }
+
+    public void update(Work work) {
+        this.title = work.title;
+        this.description = work.description;
+    }
+
+    public void delete() {
+        this.status = 0;
+    }
+
+    public void move(Work work) {
+        this.status = work.status;
+    }
+
+    public boolean matchAuthor(User sessionUser) {
+        return author.equals(sessionUser.getId());
+    }
+
+    public boolean isNotDeleted() {
+        return this.status != 0;
     }
 
     public Long getId() {

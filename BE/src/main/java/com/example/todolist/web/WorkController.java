@@ -1,32 +1,57 @@
 package com.example.todolist.web;
 
-import com.example.todolist.domain.user.User;
-import com.example.todolist.domain.work.Work;
-import com.example.todolist.domain.work.WorkRepository;
-
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.todolist.service.WorkService;
+import com.example.todolist.web.dto.RequestCreateWorkDto;
+import com.example.todolist.web.dto.RequestMoveWorkDto;
+import com.example.todolist.web.dto.RequestUpdateWorkDto;
+import com.example.todolist.web.dto.ResponseWorkDto;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.List;
+
+import static com.example.todolist.web.utils.HttpSessionUtils.getUserFromSession;
 
 @RestController
 public class WorkController {
 
-    public final WorkRepository workRepository;
+    private final Logger logger = LoggerFactory.getLogger(WorkController.class);
+    public final WorkService workService;
 
-    public WorkController(WorkRepository workRepository) {
-        this.workRepository = workRepository;
+    public WorkController(WorkService workService) {
+        this.workService = workService;
     }
 
     @GetMapping("/works")
-    public List<Work> showWorks(HttpSession session) {
-        User user = (User) session.getAttribute("sessionUser");
-        if (user == null || user.getId() != 1) {
-            return new ArrayList<>();
-        }
-        return workRepository.findAllByAuthor(1L);
+    public List<ResponseWorkDto> showWorks(HttpSession session) {
+        logger.info("work 리스트 요청");
+        return workService.getWorks(getUserFromSession(session));
+    }
+
+    @PostMapping("/works")
+    public ResponseWorkDto createWork(@RequestBody RequestCreateWorkDto workDto, HttpSession session) {
+        logger.info("work 생성 요청");
+        return workService.save(workDto, getUserFromSession(session));
+    }
+
+    @PutMapping("/works/{id}")
+    public ResponseWorkDto updateWork(@PathVariable Long id, @RequestBody RequestUpdateWorkDto workDto, HttpSession session) {
+        logger.info("work 수정 요청");
+        return workService.update(id, workDto, getUserFromSession(session));
+    }
+
+    @DeleteMapping("/works/{id}")
+    public void deleteWork(@PathVariable Long id, HttpSession session) {
+        logger.info("work 삭제 요청");
+        workService.delete(id, getUserFromSession(session));
+    }
+
+    @PostMapping("/works/{id}")
+    public ResponseWorkDto moveWork(@PathVariable Long id, @RequestBody RequestMoveWorkDto workDto, HttpSession session) {
+        logger.info("work 이동 요청");
+        return workService.move(id, workDto, getUserFromSession(session));
     }
 
 }
