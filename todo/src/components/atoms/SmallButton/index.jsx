@@ -5,14 +5,14 @@ const SmallButton = styled.button`
   position: ${props => props._position};
   width: 40px;
   height: 40px;
-  padding: 0;
   border: none;
   background: none;
   cursor: pointer;
-  right: ${props => props._right};
+  right: 0px;
+  top: 0px;
   &:focus {
-      border: none;
-      outline:none;
+    border: none;
+    outline: none;
   }
 `;
 

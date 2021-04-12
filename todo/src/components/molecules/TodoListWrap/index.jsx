@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Wrap = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 600px;
+  width: 1110px;
 `;
 
 const TodoListWrap = ({ children, ...props }) => {

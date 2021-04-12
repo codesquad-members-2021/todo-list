@@ -1,33 +1,36 @@
-import React from 'react'
+import React from "react";
 import styled from "styled-components";
-import Span from '../../atoms/Span';
-import Label from '../../atoms/Label';
-import SmallButton from '../../atoms/SmallButton';
-import Image from '../../atoms/Image';
+import Span from "../../atoms/Span";
+import Label from "../../atoms/Label";
+import SmallButton from "../../atoms/SmallButton";
+import Image from "../../atoms/Image";
 import hamburgerBtn from "../../../images/hamburgerButtonIcon.png";
-import ButtonList from '../ButtonList';
+import ButtonList from "../ButtonList";
 
 const WrapDiv = styled.div`
   display: flex;
-  width:200px;
+  width: 308px;
   padding: 15px;
   justify-content: space-between;
   place-items: center;
-  width:300px;
-  margin:15px;
+  width: 300px;
+  margin: 15px;
+  background-color: white;
 `;
 
 const LeftDiv = styled.div`
-  display:flex;
+  display: flex;
   place-items: center;
-  font-size:20px;
-  font-size:700;
+  font-size: 20px;
+  font-size: 700;
 `;
 
 const TodoTitle = ({ children, ...props }) => (
   <WrapDiv>
     <LeftDiv>
-      <Span _fontSize="20px" _fontWeight="700">{children}</Span>
+      <Span _fontSize="20px" _fontWeight="700">
+        {children}
+      </Span>
       <Label>10</Label>
     </LeftDiv>
     <div>

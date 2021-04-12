@@ -1,5 +1,5 @@
-import HistoryList from '../molecules/HistoryList';
-import HistoryItem from '../molecules/HistoryItem';
+import HistoryList from "../molecules/HistoryList";
+import HistoryItem from "../molecules/HistoryItem";
 
 const HistoryContent = ({ ...props }) => {
   return (
@@ -8,7 +8,7 @@ const HistoryContent = ({ ...props }) => {
         <HistoryItem />
       </HistoryList>
     </>
-  )
-}
+  );
+};
 
 export default HistoryContent;
