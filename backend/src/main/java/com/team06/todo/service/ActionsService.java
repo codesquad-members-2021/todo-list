@@ -4,6 +4,7 @@ import com.team06.todo.domain.Action;
 import com.team06.todo.domain.ActionType;
 import com.team06.todo.domain.Card;
 import com.team06.todo.domain.ColumnType;
+import com.team06.todo.dto.ActionsResponse;
 import com.team06.todo.dto.ActionsResponseDto;
 import com.team06.todo.repository.ActionsRepository;
 import org.springframework.stereotype.Service;
@@ -32,13 +33,13 @@ public class ActionsService {
         actionsRepository.save(new Action(card.getTitle(), ActionType.UPDATE));
     }
 
-    public List<ActionsResponseDto> show() {
+    public ActionsResponse show() {
         List<Action> actions = (List<Action>) actionsRepository.findAll();
         List<ActionsResponseDto> actionsResponseDtos = new ArrayList<>();
         for (Action action : actions) {
             actionsResponseDtos.add(new ActionsResponseDto(action));
         }
-        return actionsResponseDtos;
+        return new ActionsResponse(actionsResponseDtos);
     }
 
     public void delete(Card card) {
