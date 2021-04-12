@@ -31,6 +31,7 @@
 		E4207B1B261EA4950054BCB0 /* CardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4207B19261EA4950054BCB0 /* CardCell.xib */; };
 		E4207B26261EB7EA0054BCB0 /* TodoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4207B25261EB7EA0054BCB0 /* TodoData.swift */; };
 		E4207B36261F011F0054BCB0 /* ListViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4207B35261F011F0054BCB0 /* ListViewControllerProtocol.swift */; };
+		E43752E4262436140093E80F /* MockJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43752E3262436140093E80F /* MockJSON.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		E4207B19261EA4950054BCB0 /* CardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardCell.xib; sourceTree = "<group>"; };
 		E4207B25261EB7EA0054BCB0 /* TodoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoData.swift; sourceTree = "<group>"; };
 		E4207B35261F011F0054BCB0 /* ListViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewControllerProtocol.swift; sourceTree = "<group>"; };
+		E43752E3262436140093E80F /* MockJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockJSON.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 			children = (
 				E4207A09261C57210054BCB0 /* AppDelegate.swift */,
 				E4207A0B261C57210054BCB0 /* SceneDelegate.swift */,
+				E43752E3262436140093E80F /* MockJSON.swift */,
 				E4207B3A261F012C0054BCB0 /* Protocols */,
 				E4207A9D261C7C890054BCB0 /* Models */,
 				E4207AA5261C7C9C0054BCB0 /* Views */,
@@ -355,6 +358,7 @@
 				E4207A8F261C7B380054BCB0 /* ActivityFeed.swift in Sources */,
 				E4207A85261C7ABA0054BCB0 /* List.swift in Sources */,
 				E4207B36261F011F0054BCB0 /* ListViewControllerProtocol.swift in Sources */,
+				E43752E4262436140093E80F /* MockJSON.swift in Sources */,
 				E4207AFC261DB55A0054BCB0 /* ListHeaderView.swift in Sources */,
 				E4207B0F261EA07E0054BCB0 /* DoingViewController.swift in Sources */,
 			);
