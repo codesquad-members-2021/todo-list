@@ -23,4 +23,12 @@ struct ToDoItem: Codable {
     let contents: String
     let createDateTime: String
     let status: String
+    
+    init(id: String, title: String, contents: String, createDateTime: String, status: String) {
+        self.id = id
+        self.title = title
+        self.contents = contents
+        self.createDateTime = createDateTime
+        self.status = status
+    }
 }

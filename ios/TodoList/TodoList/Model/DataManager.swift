@@ -42,19 +42,52 @@ class DataManager {
             }.resume()
     }
 
-    static private func requestPost(url: String, method: String, param: [String: Any], completionHandler: @escaping (Bool, ToDoList) -> Void) {
+    static private func requestPost(url: String, method: String, param: [String: Any], completionHandler: @escaping (Bool, Any) -> Void) {
         
+        guard let url = URL(string: url) else {
+            print("Error: cannot create URL")
+            return
+        }
         
+        var request = URLRequest(url: url)
+        request.httpMethod = method
         
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: param)
+        } catch {
+            print(error.localizedDescription)
+            completionHandler(false, error)
+        }
+        
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            
+        // create dataTask using the session object to send data to the server
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            guard error == nil else {
+                print("Error: error calling GET")
+                print(error!)
+                return
+            }
+            guard let data = data else {
+                print("Error: Did not receive data")
+                return
+            }
+            
+            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+            if let responseJSON = responseJSON as? [String: Any] {
+                print(responseJSON)
+            }
+            
+            completionHandler(true, responseJSON)
+        }.resume()
     }
 
-    static public func request(_ url: String, _ method: String, _ param: [String: Any]? = nil, completionHandler: @escaping (Bool, ToDoList) -> Void) {
+    static public func request(url: String, method: String, param: [String: Any]? = nil, completionHandler: @escaping (Bool, Any) -> Void) {
         if method == "GET" {
             requestGet(url: url) { (success, data) in
                 completionHandler(success, data)
             }
-        }
-        else {
+        } else {
             requestPost(url: url, method: method, param: param!) { (success, data) in
                 completionHandler(success, data)
             }

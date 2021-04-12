@@ -25,9 +25,9 @@ class DoneViewController: UIViewController {
     
     func fetchCards() {
         let urlString = Constants.url
-        DataManager.request(urlString, "GET") { (bool, output) in
+        DataManager.request(url: urlString, method: "GET") { (bool, output) in
             
-            self.cards = output.done
+            self.cards = ((output as? ToDoList)?.done)!
             DispatchQueue.main.async {
                 self.doneCardTableView.reloadData()
             }
