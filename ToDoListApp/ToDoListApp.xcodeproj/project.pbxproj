@@ -16,6 +16,7 @@
 		CE9A2B2D261EDB6C0097A940 /* CardTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9A2B2C261EDB6C0097A940 /* CardTableView.swift */; };
 		CE9A2B39261EF6CE0097A940 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9A2B38261EF6CE0097A940 /* ModalViewController.swift */; };
 		CEA19A122624136D008B270E /* SizeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA19A112624136D008B270E /* SizeManager.swift */; };
+		CEA19A152624828F008B270E /* CardMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA19A142624828F008B270E /* CardMaker.swift */; };
 		CEB0D08026208945002BC69D /* ModalTextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB0D07F26208945002BC69D /* ModalTextViewDelegate.swift */; };
 		FFC61936261D4ED20033D622 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC61935261D4ED20033D622 /* AppDelegate.swift */; };
 		FFC61938261D4ED20033D622 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC61937261D4ED20033D622 /* SceneDelegate.swift */; };
@@ -42,6 +43,7 @@
 		CE9A2B2C261EDB6C0097A940 /* CardTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTableView.swift; sourceTree = "<group>"; };
 		CE9A2B38261EF6CE0097A940 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		CEA19A112624136D008B270E /* SizeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeManager.swift; sourceTree = "<group>"; };
+		CEA19A142624828F008B270E /* CardMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardMaker.swift; sourceTree = "<group>"; };
 		CEB0D07F26208945002BC69D /* ModalTextViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalTextViewDelegate.swift; sourceTree = "<group>"; };
 		FFC61932261D4ED20033D622 /* ToDoListApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoListApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFC61935261D4ED20033D622 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				CE9A2B38261EF6CE0097A940 /* ModalViewController.swift */,
 				CEB0D07F26208945002BC69D /* ModalTextViewDelegate.swift */,
 				CEA19A112624136D008B270E /* SizeManager.swift */,
+				CEA19A142624828F008B270E /* CardMaker.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 				CE5ED8A9261D8B9800789822 /* BadgeView.swift in Sources */,
 				CEA19A122624136D008B270E /* SizeManager.swift in Sources */,
 				FFC6193A261D4ED20033D622 /* ViewController.swift in Sources */,
+				CEA19A152624828F008B270E /* CardMaker.swift in Sources */,
 				CE9A2B39261EF6CE0097A940 /* ModalViewController.swift in Sources */,
 				FFC6197C261EEB1A0033D622 /* States.swift in Sources */,
 				CE9A2B1D261E9A600097A940 /* ToDoTableViewDataSource.swift in Sources */,

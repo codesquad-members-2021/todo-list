@@ -118,6 +118,9 @@
                                         <state key="normal" title="등록">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="updateButtonPressed:" destination="DqU-d2-HbO" eventType="touchUpInside" id="Y2V-mS-6Xr"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -148,6 +151,7 @@
                             <constraint firstItem="KTc-dr-Vxv" firstAttribute="top" secondItem="fWv-OT-qxb" secondAttribute="top" constant="330" id="phm-EQ-xm4"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="bNs-Ix-Kue"/>
                     <connections>
                         <outlet property="backgroundView" destination="KTc-dr-Vxv" id="blc-RA-4Po"/>
                         <outlet property="backgroundViewHeigthConstraint" destination="7JR-hW-a1o" id="Ehc-6j-RP5"/>
@@ -378,7 +382,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K6F-cV-G5X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-832.1608040201005" y="260.43165467625903"/>
+            <point key="canvasLocation" x="-857" y="339"/>
         </scene>
     </scenes>
     <resources>

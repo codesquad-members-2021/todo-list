@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CardViewController: UIViewController {
+class CardViewController: UIViewController ,CardDelegate {
 
     @IBOutlet weak var toDoTableView: UITableView!
     @IBOutlet weak var inProgressTableView: UITableView!
@@ -46,12 +46,18 @@ class CardViewController: UIViewController {
         doneTableView.dataSource = doneDataSource
     }
 
+    func cardData(_ card: Card) {
+        self.cardManager.add(card: card)
+        self.toDoTableView.reloadData()
+    }
+    
     @IBAction func addCardButtonPressed(_ sender: UIButton) {
         guard let modalViewController = self.storyboard?.instantiateViewController(identifier: "modalViewController") as? ModalViewController
         else {
             return
         }
+        
+        modalViewController.setUpCardDelegate(state: .ToDo, delegate: self)
         self.present(modalViewController, animated: true, completion: nil)
     }
-    
 }

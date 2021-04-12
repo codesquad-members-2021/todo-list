@@ -1,11 +1,10 @@
-//
-//  ModalViewController.swift
-//  ToDoListApp
-//
-//  Created by user on 2021/04/08.
-//
 
 import UIKit
+
+protocol CardDelegate {
+    func cardData(_ card: Card)
+}
+
 
 class ModalViewController: UIViewController {
 
@@ -21,6 +20,9 @@ class ModalViewController: UIViewController {
     
     private var contentTextViewDelegate = ModalTextViewDelegate()
     private var sizeManager = SizeManager()
+    private var cardMaker = CardMaker()
+    
+    private var cardDelegate: CardDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,10 +61,28 @@ class ModalViewController: UIViewController {
         }
     }
     
+    func setUpCardDelegate(state: States, delegate: CardDelegate) {
+        self.cardMaker.change(state: state)
+        self.cardDelegate = delegate
+    }
+    
     @IBAction func cancelButtonPressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
 
+    @IBAction func updateButtonPressed(_ sender: UIButton) {
+        guard let title = titleTextField.text, let content = contentTextView.text
+        else {
+            return
+        }
+        
+        let card = cardMaker.makeCard(title: title, content: content)
+        self.cardDelegate.cardData(card)
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
     @objc func changeSize(notification: Notification) {
         guard let backgroundViewHeight = notification.userInfo?[SizeManager.Size.backgroundViewHeight] as? CGFloat
         else {
