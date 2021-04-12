@@ -17,3 +17,10 @@ enum StatusValue {
 enum TitleList {
     static let ofStatus = [StatusValue.toDo:StatusInfo.toDo, StatusValue.inProgress:StatusInfo.inProgress, StatusValue.done:StatusInfo.done]
 }
+
+//MARK: -Notification.Name
+extension Notification.Name {
+    static let addTask = Notification.Name("addTask")
+    static let setupTask = Notification.Name("setupTask")
+}
+

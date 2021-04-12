@@ -41,7 +41,4 @@ extension NewTaskViewController {
     
 }
 
-//MARK: -Notification.Name
-extension Notification.Name {
-    static let addTask = Notification.Name("addTask")
-}
+
