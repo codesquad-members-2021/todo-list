@@ -13,19 +13,30 @@ class SectionViewDataSource: NSObject {
     var deleteCard: ((Card) -> ())?
 }
 
-extension SectionViewDataSource: UITableViewDataSource {
+extension SectionViewDataSource: UITableViewDataSource, UITableViewDelegate {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        guard let cards = self.dataSource?.passData() else { return 0 }
+        return cards.count
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let status = self.dataSource?.passData() else { return 0 }
-        return status.count
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footer = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 20))
+        footer.backgroundColor = .systemGray6
+        return footer
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SectionCell.identifier, for: indexPath) as? SectionCell else { return SectionCell() }
         guard let cards = self.dataSource?.passData() else { return SectionCell() }
-        cell.subject.text = cards[indexPath.row].title
-        cell.body.text = cards[indexPath.row].contents
+        cell.subject.text = cards[indexPath.section].title
+        cell.body.text = cards[indexPath.section].contents + "안녕하세요 반갑습니다 잘 부탁드립니다"
+        cell.backgroundColor = .white
         cell.body.sizeToFit()
-        
+
         return cell
     }
     

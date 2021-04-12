@@ -8,7 +8,7 @@
 import UIKit
 
 class SectionCell: UITableViewCell {
-    static let identifier = "SectionCell"
+    static let identifier = "sectionCell"
     
     @IBOutlet weak var subject: UILabel!
     @IBOutlet weak var body: UILabel!
