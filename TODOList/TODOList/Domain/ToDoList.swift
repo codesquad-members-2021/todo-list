@@ -7,16 +7,16 @@
 
 import Foundation
 
-class ToDoList {
-    private var toDo: ToDo
-    
-    
-    init(toDo: ToDo) {
-        self.toDo = toDo
-    }
-    
-    
-    func addTimeLine() {
-        
-    }
-}
+//class ToDoList {
+//    private var toDo: ToDo
+//    
+//    
+//    init(toDo: ToDo) {
+//        self.toDo = toDo
+//    }
+//    
+//    
+//    func addTimeLine() {
+//        
+//    }
+//}

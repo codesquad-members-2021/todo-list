@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cpl-hA-6Pk">
-    <device id="ipad11_0rounded" orientation="landscape" layout="fullscreen" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -13,20 +12,20 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="TODOList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="1194" height="834"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FHY-K2-ISa" userLabel="header">
-                                <rect key="frame" x="0.0" y="0.0" width="1194" height="72"/>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FHY-K2-ISa" userLabel="header">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="72"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TO-DO LIST" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBd-hQ-2QS">
-                                        <rect key="frame" x="48" y="13" width="171" height="46"/>
+                                        <rect key="frame" x="48" y="13" width="171" height="38.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VHO-Dy-e82" userLabel="List">
-                                        <rect key="frame" x="1121" y="25" width="21" height="22"/>
+                                        <rect key="frame" x="527" y="21.5" width="21" height="22"/>
                                         <color key="tintColor" systemColor="labelColor"/>
                                         <state key="normal" image="line.horizontal.3" catalog="system"/>
                                         <connections>
@@ -44,7 +43,7 @@
                                     <constraint firstAttribute="trailing" secondItem="VHO-Dy-e82" secondAttribute="trailing" constant="52" id="n7W-SV-SR9"/>
                                 </constraints>
                             </view>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n1H-aR-p5d">
+                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n1H-aR-p5d">
                                 <rect key="frame" x="48" y="123" width="258" height="650"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="650" id="GBM-WI-rz9"/>
@@ -54,7 +53,7 @@
                                     <segue destination="xmE-KC-seP" kind="embed" identifier="WillTODO" id="Wk7-gX-wyl"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VUg-rS-DP2">
+                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VUg-rS-DP2">
                                 <rect key="frame" x="328" y="123" width="258" height="650"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="258" id="m0o-Yp-XLd"/>
@@ -64,7 +63,7 @@
                                     <segue destination="xmE-KC-seP" kind="embed" identifier="DoingTODO" id="Dzb-BK-GkN"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Msk-CH-6RS">
+                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Msk-CH-6RS">
                                 <rect key="frame" x="608" y="123" width="258" height="650"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="258" id="Dw5-Vc-KXJ"/>
@@ -171,7 +170,7 @@
                                                         <constraint firstAttribute="width" constant="258" id="N4p-1C-vfr"/>
                                                     </constraints>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Body" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5gm-ki-UpW">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Body" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5gm-ki-UpW">
                                                     <rect key="frame" x="16" y="47" width="226" height="25"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -202,11 +201,11 @@
                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                     </view>
                     <connections>
-                        <outlet property="SectionViewDataSource" destination="WJB-cl-lP7" id="qQp-J8-BIn"/>
                         <outlet property="TODOCount" destination="2pm-vx-0vF" id="94s-Fz-ibz"/>
                         <outlet property="TODOTableView" destination="5VT-Hg-llj" id="uT8-h2-XT3"/>
                         <outlet property="addButton" destination="lKw-w3-fDm" id="BB2-QD-nsE"/>
                         <outlet property="sectionTitle" destination="GOo-3b-3me" id="BXL-rU-XEr"/>
+                        <outlet property="sectionViewDataSource" destination="WJB-cl-lP7" id="qQp-J8-BIn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j8h-aN-DkO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -219,11 +218,11 @@
             <objects>
                 <viewController storyboardIdentifier="AddView" id="Ypj-LH-wc2" customClass="AddViewController" customModule="TODOList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fk8-mF-q8L">
-                        <rect key="frame" x="0.0" y="0.0" width="1194" height="834"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K6Y-z2-w8f">
-                                <rect key="frame" x="397" y="319.5" width="400" height="175"/>
+                                <rect key="frame" x="100" y="319.5" width="400" height="175"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="새로운 카드 추가" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lfz-pK-mS0">
                                         <rect key="frame" x="16" y="16" width="368" height="19.5"/>
@@ -336,6 +335,7 @@
                     <toolbarItems/>
                     <nil key="simulatedTopBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="VaT-cU-Sha">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

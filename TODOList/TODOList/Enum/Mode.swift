@@ -7,10 +7,10 @@
 
 import Foundation
 
-enum Mode {
-    case willTODO
-    case doingTODO
-    case completeTODO
+enum Mode: Int {
+    case willTODO = 0
+    case doingTODO = 1
+    case completeTODO = 2
     
     var sectionTitle: String {
         switch self {

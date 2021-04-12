@@ -13,11 +13,11 @@ class AddViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak private var writeButton: SubmitButton!
     @IBOutlet weak private var cardView: UIView!
     private var sectionMode: Mode?
-    private var writeViewModel: WriteViewModel!
+    private var writeViewModel: ChangeCardViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.writeViewModel = WriteViewModel()
+        self.writeViewModel = ChangeCardViewModel()
         self.bind()
         self.addButtonCheckingTargets()
         self.subjectField.becomeFirstResponder()

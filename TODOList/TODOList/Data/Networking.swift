@@ -9,32 +9,30 @@ import Foundation
 
 class Networking {
     let session: URLSession
-    let baseURL: String
     
-    init(baseURL: String) {
+    init() {
         session = .shared
-        self.baseURL = baseURL
     }
-//    
-//    func getToDoList(completionHandler: @escaping (Data)->Void) {
-//        guard let url = URL(string: baseURL) else { return }
-//        var request = URLRequest(url: url)
-//        request.httpMethod = "GET"
-//        SessionManger.request(urlRequest: request) { (data) in
-//            let decodedData = DataManager.decoding(decodable: <#T##Decodable.Protocol#>, data: data)
-//            completionHandler(decodedData)
-//        }
-//    }
-//    
-//    func postToDoList(comletionHandler: @escaping (Data)->Void) {
-//        guard let url = URL(string: baseURL) else { return }
-//        var request = URLRequest(url: url)
-//        let encodedData = DataManager.encoding(encodable: <#T##Encodable#>)
-//        request.httpMethod = "POST"
-//        request.httpBody = encodedData
-//        SessionManger.request(urlRequest: request) { (data) in
-//            let decodedData = DataManager.decoding(decodable: <#T##Decodable.Protocol#>, data: data)
-//            completionHandler(decodedData)
-//        }
-//    }
+    
+    func getToDoList(url: String, completionHandler: @escaping ([Card])->Void) {
+        guard let url = URL(string: url) else { return }
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        SessionManger.request(urlRequest: request) { (data) in
+            guard let decodedData = DataManager.decoding(decodable: BundleOfCards.self, data: data) else { return }
+            completionHandler(decodedData.cards)
+        }
+    }
+    
+    func postToDoList(url: String, cards: [Card], comletionHandler: @escaping ([Card])->Void) {
+        guard let url = URL(string: url) else { return }
+        var request = URLRequest(url: url)
+        let encodedData = DataManager.encoding(encodable: cards)
+        request.httpMethod = "POST"
+        request.httpBody = encodedData
+        SessionManger.request(urlRequest: request) { (data) in
+            guard let decodedData = DataManager.decoding(decodable: BundleOfCards.self, data: data) else { return }
+            comletionHandler(decodedData.cards)
+        }
+    }
 }

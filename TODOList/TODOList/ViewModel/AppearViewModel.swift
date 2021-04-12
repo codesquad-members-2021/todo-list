@@ -7,32 +7,42 @@
 
 import Foundation
 
-//MARK:이 부분을 협의해봐야 한다.
-struct Status {
-    var subject: [String]
-    var body: [String]
-}
-
 class AppearViewModel {
-    private(set) var doingStatus: Status {
+    private(set) var doingStatus: [Status] {
         didSet {
-            //변화가 생기면 trigger
+            self.passingData()
         }
     }
-    private(set) var completeStatus: Status
-    private(set) var willStatus: Status
-    private var mode: Mode //받아올때 잘 판별하기
-    var passingDataHandler: ((Status) -> ())?
+    private(set) var completeStatus: [Status] {
+        didSet {
+            self.passingData()
+        }
+    }
+    private(set) var willStatus: [Status] {
+        didSet {
+            self.passingData()
+        }
+    }
+    private var mode: Mode
+    var passingDataHandler: (([Status]) -> ())?
+    var loadCards: LoadCards
     
     init(mode: Mode) {
-        self.doingStatus = Status(subject: ["두잉"], body: ["입니다"])
-        self.completeStatus = Status(subject: ["컴플리트"], body: ["입니다"])
-        self.willStatus = Status(subject: ["윌"], body: ["입니다"])
         self.mode = mode
+        self.loadCards = LoadCards()
+        self.doingStatus = [Status]()
+        self.completeStatus = [Status]()
+        self.willStatus = [Status]()
         
-        //output test
-        DispatchQueue.global().asyncAfter(deadline: .now() + 2) {
-            self.passingData()
+        loadCards.getCards { (dict) in
+            switch self.mode {
+            case .doingTODO:
+                self.doingStatus = dict[self.mode.rawValue, default: [Status]()]
+            case .completeTODO:
+                self.completeStatus = dict[self.mode.rawValue, default: [Status]()]
+            case .willTODO:
+                self.willStatus = dict[self.mode.rawValue, default: [Status]()]
+            }
         }
     }
     

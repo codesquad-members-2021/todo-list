@@ -2,34 +2,23 @@
 //  Card.swift
 //  TODOList
 //
-//  Created by 양준혁 on 2021/04/07.
+//  Created by Issac on 2021/04/11.
 //
 
 import Foundation
 
-class Card {
-    private var title: String
-    private var content: String
-    private var author: String
+struct Card: Codable {
+    var id: Int
+    var title: String
+    var contents: String
+    var columnId: Int
+    var createdDateTime: Date
     
-    init(title: String, content: String, author: String) {
-        self.title = title
-        self.content = content
-        self.author = author
-    }
-    
-    func setTitle(with title: String) {
-        self.title = title
-    }
-    
-    func setContent(with content: String) {
-        self.content = content
-    }
-    
-}
-
-extension Card: Equatable {
-    static func == (lhs: Card, rhs: Card) -> Bool {
-        return lhs.title == rhs.title && lhs.author == rhs.author && lhs.content == rhs.content
+    enum CodingKeys: String, CodingKey {
+        case id
+        case title
+        case contents
+        case columnId = "column_id"
+        case createdDateTime = "created_date_time"
     }
 }
