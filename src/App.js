@@ -1,3 +1,5 @@
+import Button from "./Component/Button";
+
 function App() {
   return (
     <>
