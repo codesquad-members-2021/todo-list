@@ -10,10 +10,10 @@ import java.time.LocalDateTime;
 public class Card {
 
     public enum Status {
+        DELETED,
         TODO,
         DOING,
-        DONE,
-        DELETED;
+        DONE;
 
         @JsonCreator
         public static Status from(String s) {

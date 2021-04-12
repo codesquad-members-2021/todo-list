@@ -22,7 +22,7 @@ public class CardService {
     }
 
     public List<Card> read() {
-        return (List<Card>) cardRepository.findAll();
+        return cardRepository.findByStatusIsNot(Card.Status.DELETED);
     }
 
     public void edit(Long id, Card newCard) {
