@@ -35,7 +35,7 @@ extension Endpoint {
 
     //GET용
     static func cards(state: State) -> Self {
-        return Endpoint(path: "/cards/\(state)")
+        return Endpoint(path: "/cards/\(state.rawValue)")
     }
     
     //POST용

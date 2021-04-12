@@ -54,8 +54,8 @@ extension MainCell: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CardCell.identifier, for: indexPath) as? CardCell else { return UITableViewCell() }
         
-        cell.title = board?.getBoard().getCards()[indexPath.row].getTitle()
-        cell.contents = board?.getBoard().getCards()[indexPath.row].getContents()
+//        cell.title = board?.getBoard().getCards()[indexPath.row].getTitle()
+//        cell.contents = board?.getBoard().getCards()[indexPath.row].getContents()
         
         return cell
     }
