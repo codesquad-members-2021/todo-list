@@ -16,7 +16,7 @@ protocol CardManageable {
 }
 
 protocol CardUseCasePort {
-    func add()
+    func add(title: String, contents: String) -> AnyPublisher<[Card], Error>
     func edit()
     func delete()
     func goToDone()

@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 class CardUseCase: CardUseCasePort {
-
+  
     private var card: CardManageable
     private var cardNetworkManager: CardNetworkManagerProtocol
     var bag = Set<AnyCancellable>()
@@ -23,9 +23,13 @@ class CardUseCase: CardUseCasePort {
 
         return cardNetworkManager.getCards(state: state)
     }
+ 
+    func add(title: String, contents: String) -> AnyPublisher<[Card], Error>  {
+        return cardNetworkManager.postCards(title: title, contents: contents)
+    }
     
-    func add() {
-
+    func myAdd() {
+       
     }
     
     func edit() {

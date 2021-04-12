@@ -13,9 +13,8 @@ class MainViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     private var cardViewModel: CardViewModel!
-    
     private var loadDataSubject = PassthroughSubject<Void,Never>()
-    var subsciptions = Set<AnyCancellable>()
+    private var subsciptions = Set<AnyCancellable>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,14 +23,28 @@ class MainViewController: UIViewController {
         cardViewModel.requestBoard()
         bind()
     }
+
+    @IBAction func addCard(_ sender: Any) {
+        loadDataSubject.send()
+    }
     
     func bind() {
         cardViewModel.$boards
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { _ in}, receiveValue:{ [weak self] _ in self?.collectionView.reloadData() })
-            
             .store(in: &self.subsciptions)
-    }
+        
+        //Test
+        cardViewModel.attachViewEventListener(loadData: loadDataSubject.eraseToAnyPublisher(), cardState: .todo)
+        cardViewModel.reloadCardList
+                    .sink(receiveCompletion: { completion in
+                        // Handle the error
+                    }) { [weak self] _ in
+                        print("이벤트를 뷰모델에 전달했습니다.")
+                        self?.collectionView.reloadData()
+                }
+                .store(in: &subsciptions)
+            }
 }
 
 extension MainViewController: UICollectionViewDataSource, UICollectionViewDelegate {
@@ -48,4 +61,3 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         return cell
     }
 }
-
