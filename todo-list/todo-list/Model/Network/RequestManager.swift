@@ -27,7 +27,7 @@ class RequestManager {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.httpBody = data
-//        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         return request
     }
     
@@ -42,21 +42,4 @@ class RequestManager {
         return request
     }
     
-}
-
-class NetworkManager {
-    
-    static func getData(urlString: String, completion: @escaping (String) -> ()) {
-        if let url = URL(string: urlString) {
-            URLSession.shared.dataTask(with: url) { (data, response, error) in
-                if let data = data {
-                    guard let result = ParsingManager.decodeData(type: TodoInfoList.self, data: data) else {
-                        return
-                    }
-                    print(result)
-                    completion(result.getTodoListString())
-                }
-            }.resume()
-        }
-    }
 }
