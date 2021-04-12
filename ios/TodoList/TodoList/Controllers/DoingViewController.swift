@@ -25,9 +25,9 @@ class DoingViewController: UIViewController {
     
     func fetchCards() {
         let urlString = Constants.url
-        DataManager.request(url: urlString, method: "GET") { (bool, output) in
+        DataManager.requestGet(url: urlString) { (bool, output) in
             
-            self.cards = ((output as? ToDoList)?.doing)!
+            self.cards = output.doing
             DispatchQueue.main.async {
                 self.doingCardTableView.reloadData()
             }
@@ -58,7 +58,9 @@ extension DoingViewController: UITableViewDelegate {
        view.title.text = "진행중인 일"
         view.displayCurrentCardNumOnBadge(number: self.cards.count)
         view.button.addAction(UIAction.init(handler: { (touch) in
-            print("touched")
+            DataManager.requestDelete(url: Constants.url, id: "2") { (success, output) in
+                print(output)
+            }
         }), for: .touchUpInside)
        return view
     }

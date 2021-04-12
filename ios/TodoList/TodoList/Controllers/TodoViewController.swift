@@ -25,9 +25,9 @@ class ToDoViewController: UIViewController {
     
     func fetchCards() {
         let urlString = Constants.url
-        DataManager.request(url: urlString, method: "GET") { (bool, output) in
+        DataManager.requestGet(url: urlString) { (bool, output) in
             
-            self.cards = ((output as? ToDoList)?.todo)!
+            self.cards = output.todo
             DispatchQueue.main.async {
                 self.toDoCardTableView.reloadData()
             }
@@ -62,7 +62,7 @@ extension ToDoViewController: UITableViewDelegate {
             let dateString = DateFormatter().string(from: Date())
             let testCard = ["id": "jeje", "title": "안녕하세요", "contents": "테스트용 콘텐츠", "createDateTime": dateString, "status": "TODO"]
             
-            DataManager.request(url: Constants.url, method: "POST", param: testCard) { (bool, toDoList) in
+            DataManager.requestPost(url: Constants.url, parameter: testCard) { (bool, toDoList) in
                 print(toDoList)
             }
             }), for: .touchUpInside)
