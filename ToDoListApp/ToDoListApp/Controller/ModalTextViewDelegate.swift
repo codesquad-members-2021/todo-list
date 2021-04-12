@@ -5,6 +5,7 @@ import UIKit
 class ModalTextViewDelegate : NSObject, UITextViewDelegate {
     
     private let contentPlaceHolder = "내용을 입력하세요"
+    private var text: ((String) -> Void)!
     private var height: ((CGFloat) -> Void)!
     
     func textViewSetUp(_ textView: UITextView) {
@@ -39,9 +40,14 @@ class ModalTextViewDelegate : NSObject, UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         let estimatedSize = textView.sizeThatFits(textView.contentSize)
         self.height(estimatedSize.height)
+        self.text(textView.text)
     }
     
     func configureHeight(closure: @escaping (CGFloat) -> Void) {
         self.height = closure
+    }
+    
+    func changeText(closure: @escaping (String) -> Void) {
+        self.text = closure
     }
 }
