@@ -43,9 +43,9 @@ class TodoDataSource: NSObject, UITableViewDataSource {
         let cell = self.todoCards.getCard(at: sourceIndexPath)
         self.todoCards.removeCard(at: sourceIndexPath)
         self.todoCards.insertCard(item: cell, at: destinationIndexPath)
-        
-    }
+        print(self.todoCards.dragItems(for: sourceIndexPath))
     
+    }
 }
 
 

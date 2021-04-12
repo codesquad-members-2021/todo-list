@@ -6,8 +6,47 @@
 //
 
 import Foundation
+import MobileCoreServices
 
-class TodoCard {
+class TodoCard: NSObject, Codable, NSItemProviderWriting, NSItemProviderReading {
+    
+    static var writableTypeIdentifiersForItemProvider: [String] {
+        
+        return [kUTTypeData as String]
+    }
+    
+    
+    func loadData(withTypeIdentifier typeIdentifier: String, forItemProviderCompletionHandler completionHandler: @escaping (Data?, Error?) -> Void) -> Progress? {
+        
+        let progress = Progress(totalUnitCount: 100)
+        
+        do {
+            let encoder = JSONEncoder()
+            encoder.outputFormatting = .prettyPrinted
+            let data = try encoder.encode(self)
+            let json = String(data: data, encoding: .utf8)
+            progress.completedUnitCount = 100
+            completionHandler(data, nil)
+        } catch {
+            completionHandler(nil,error)
+        }
+        return progress
+    }
+    
+    static var readableTypeIdentifiersForItemProvider: [String] {
+        return [kUTTypeData as String]
+    }
+    
+    static func object(withItemProviderData data: Data, typeIdentifier: String) throws -> Self {
+        let decoder = JSONDecoder()
+        do {
+            let myJson = try decoder.decode(self, from: data)
+            return myJson
+        } catch {
+            fatalError("err")
+        }
+    }
+    
     
     private(set) var title: String
     private(set) var content: String
@@ -21,7 +60,7 @@ class TodoCard {
         self.user = user
     }
     
-    convenience init() {
+    convenience override init() {
         let title = "title"
         let content = "content"
         let postTime = "2021.04.08"

@@ -10,8 +10,11 @@ import UIKit
 class TodoTableViewDragDelegate: NSObject, UITableViewDragDelegate {
     
     func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+        print(session)
         return []
+//        let provider = NSItemProvider(object: tableView.cellForRow(at: indexPath) as! NSItemProviderWriting)
+//        let item = UIDragItem(itemProvider: provider)
+//        return [item]
     }
-    
     
 }
