@@ -13,8 +13,8 @@ import java.util.List;
 public class ApiCardController {
 
     @PostMapping
-    public void create() {
-
+    public CardDto create(CardDto cardToCreate) {
+        return cardToCreate;
     }
 
     @GetMapping
