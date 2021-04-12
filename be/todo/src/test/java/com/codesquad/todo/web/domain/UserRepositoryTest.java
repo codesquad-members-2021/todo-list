@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.collection.IsIterableContainingInAnyOrder.containsInAnyOrder;
 
 @DataJdbcTest
 class UserRepositoryTest {
@@ -108,7 +107,7 @@ class UserRepositoryTest {
     private User createUserAndInitColumn() {
         User user = createUser();
         List<Column> columnList = createColumnList();
-        for (Column column : columnList){
+        for (Column column : columnList) {
             user.addColumn(column);
         }
         userRepository.save(user);
