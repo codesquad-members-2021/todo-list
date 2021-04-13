@@ -20,6 +20,14 @@ server.delete("/todos/completed", (req, res) => {
   res.send(db.get("todos").value());
 });
 
+server.patch('/todos', (req, res) => {
+  const { id, title, content } = req.query;
+  // console.log(db.get("todos").value().map(({ items }) => items).flat());
+  db.get("todos").filter(({ items }) => items.id === id)
+    .assign({ title: title, content: content }).write();
+  res.send(db.get("todos").value());
+});
+
 // Use default router
 server.use(router);
 

@@ -1,59 +1,67 @@
 {
-  "todos": [{
+  "todos": [
+    {
       "columnId": 1,
       "columnName": "해야할 일",
-      "items": [{
+      "items": [
+        {
           "id": 1,
           "title": "GitHub 공부하기",
           "content": "add, commit 공부하기",
-          "author":"Beemo"
+          "author": "Beemo"
         },
         {
           "id": 2,
           "title": "GitHub 공부하기2",
           "content": "add, commit 공부하기2",
-          "author":"Daisy"
+          "author": "Daisy"
         }
-      ]
+      ],
+      "title": "25125",
+      "content": "4235245"
     },
     {
       "columnId": 2,
       "columnName": "비동기 공부하기",
-      "items": [{
+      "items": [
+        {
           "id": 3,
           "title": "비동기 공부하기",
           "content": "add, 비동기 공부하기",
-          "author":"Daisy"
+          "author": "Daisy"
         },
         {
           "id": 4,
           "title": "비동기 공부하기2",
           "content": "add, 비동기 공부하기2",
-          "author":"Tami"
+          "author": "Tami"
         }
       ]
     },
     {
       "columnId": 3,
       "columnName": "완료한 일",
-      "items": [{
+      "items": [
+        {
           "id": 5,
           "title": "완료한 공부하기",
           "content": "add, 완료한 공부하기",
-          "author":"Tami"
+          "author": "Tami"
         },
         {
           "id": 6,
           "title": "완료한 공부하기2",
           "content": "add, 완료한 공부하기2",
-          "author":"Beemo"
+          "author": "Beemo"
         }
       ]
     }
   ],
-  "users": [{
-    "id": 1,
-    "name": "Beemo",
-    "role": "Gatekeeper"
-  }]
+  "users": [
+    {
+      "id": 1,
+      "name": "Beemo",
+      "role": "Gatekeeper"
+    }
+  ]
 }

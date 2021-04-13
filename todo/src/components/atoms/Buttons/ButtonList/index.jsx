@@ -6,7 +6,7 @@ import MediumButton from "../MediumButton";
 import PlusButtonImg from "../../../../images/plusButton.svg";
 import CloseButtonImg from "../../../../images/closeButton.svg";
 
-const ButtonList = ({ isIcon, toggleActions }) => {
+const ButtonList = ({ isIcon, toggleActions, patchClickHandler }) => {
   const plusButton = (
     <SmallButton>
       <Image src={PlusButtonImg} _width="23px" />
@@ -23,7 +23,7 @@ const ButtonList = ({ isIcon, toggleActions }) => {
     </MediumButton>
   );
   const enrollButtons = (
-    <MediumButton _background="#62afb7" _color="white">
+    <MediumButton _background="#62afb7" _color="white" onClick={() => patchClickHandler()}>
       등록
     </MediumButton>
   );

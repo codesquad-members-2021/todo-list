@@ -20,7 +20,7 @@ const Div = styled.div`
   `}
 `;
 
-const TodoSwitch = ({ title, content, author }) => {
+const TodoSwitch = ({ id, title, content, author }) => {
   const [isInput, toggleActions] = useToggle(false);
 
   let template;
@@ -28,12 +28,12 @@ const TodoSwitch = ({ title, content, author }) => {
   if (isInput) {
     template = (
       <Div>
-        <TodoListInput  {...{ title, content, toggleActions }} />
+        <TodoListInput  {...{ id, title, content, toggleActions }} />
       </Div>);
   } else {
     template = (
       <Div hover onClick={toggleActions.toggle}>
-        <TodoListItem {...{ title, content, author }} />
+        <TodoListItem {...{ id, title, content, author }} />
       </Div>);
   }
 
