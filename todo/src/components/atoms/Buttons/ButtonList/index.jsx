@@ -6,7 +6,7 @@ import MediumButton from "../MediumButton";
 import PlusButtonImg from "../../../../images/plusButton.svg";
 import CloseButtonImg from "../../../../images/closeButton.svg";
 
-const ButtonList = ({ isIcon }) => {
+const ButtonList = ({ isIcon, toggleActions }) => {
   const plusButton = (
     <SmallButton>
       <Image src={PlusButtonImg} _width="23px" />
@@ -18,7 +18,7 @@ const ButtonList = ({ isIcon }) => {
     </SmallButton>
   );
   const cancelButtons = (
-    <MediumButton _background="#fff" _color="#3c4243">
+    <MediumButton _background="#fff" _color="#3c4243" onClick={() => toggleActions.toggle()}>
       취소
     </MediumButton>
   );
