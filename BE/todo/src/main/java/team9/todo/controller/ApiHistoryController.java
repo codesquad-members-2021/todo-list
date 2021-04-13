@@ -5,53 +5,40 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import team9.todo.domain.ApiResult;
 import team9.todo.domain.History;
 import team9.todo.domain.HistoryWithCardTitle;
-import team9.todo.repository.HistoryRepository;
-import team9.todo.repository.HistoryWithCardTitleRepository;
+import team9.todo.domain.User;
+import team9.todo.service.HistoryService;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
+
+import static team9.todo.utils.HttpSessionUtils.getUser;
 
 @RestController
 @RequestMapping("/api/histories")
 public class ApiHistoryController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-    private final HistoryRepository historyRepository;
-    private final HistoryWithCardTitleRepository historyWithCardTitleRepository;
-
-    public ApiHistoryController(HistoryRepository historyRepository, HistoryWithCardTitleRepository historyWithCardTitleRepository) {
-        this.historyRepository = historyRepository;
-        this.historyWithCardTitleRepository = historyWithCardTitleRepository;
-    }
+    private final HistoryService historyService;
 
     @Autowired
-
-    @GetMapping
-    public List<HistoryWithCardTitle> getHistoryOfUser(HttpSession httpSession){
-        Long userId = 1L;
-        List<HistoryWithCardTitle> historyList = historyWithCardTitleRepository.findAllByUserId(userId);
-        return historyList;
+    public ApiHistoryController(HistoryService historyService) {
+        this.historyService = historyService;
     }
 
-    @GetMapping("/card/{cardId}")
-    public List<History>  historyOfCard(@PathVariable long cardId){
-        List<History> historyList = historyRepository.findAllByCard(cardId);
-        return historyList;
+    @GetMapping
+    public ApiResult<List<HistoryWithCardTitle>> getHistoryOfUser(HttpSession httpSession) {
+        logger.debug("history 목록 요청");
+        User user = getUser(httpSession);
+
+        return ApiResult.succeed(historyService.getHistoryOfUser(user));
     }
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    public History create(History history){
-        logger.debug("history 생성 요청: {}, {}, {}, {}, {}", history.getAction(), history.getCard(), history.getDate(), history.getFrom(),history.getTo());
-        return historyRepository.save(history);
+    public ApiResult<History> create(History history) {
+        logger.debug("history 생성 요청: {}, {}, {}, {}, {}", history.getAction(), history.getCard(), history.getDate(), history.getFrom(), history.getTo());
+        return ApiResult.succeed(historyService.create(history));
     }
-
-    @DeleteMapping("/{historyId}")
-    @ResponseStatus(code = HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable Long historyId){
-        logger.debug("{}번 히스토리 삭제 요청", historyId);
-        historyRepository.deleteById(historyId);
-    }
-
 }
