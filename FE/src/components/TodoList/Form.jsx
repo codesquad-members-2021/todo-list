@@ -2,9 +2,14 @@ import { useState, useRef, useEffect } from 'react';
 import StyledForm from '../atoms/StyledForm';
 import { InputTitle, InputContent } from '../atoms/StyledInputs';
 import FormButtonsWrap from '../molecules/FormButtonsWrap';
+import resize from './custom.js';
 
-const Form = ({ addCard, column, offDisplay, onChange, inputs }) => {
+const Form = ({ addCard, column, offDisplay }) => {
   const [hasInput, setHasInput] = useState(false);
+  const [inputs, setInputs] = useState({
+    title: '',
+    content: '',
+  });
   const titleInput = useRef();
   const contentInput = useRef();
   const nextID = useRef(5); // 임시 아이디
@@ -26,14 +31,11 @@ const Form = ({ addCard, column, offDisplay, onChange, inputs }) => {
     offDisplay();
   };
 
-  const resize = () => {
-    const currentHeight = contentInput.current.clientHeight;
-    const scrollHeight = contentInput.current.scrollHeight;
-    if (currentHeight < scrollHeight) {
-      contentInput.current.style.height = `${
-        contentInput.current.scrollHeight + 2
-      }px`;
-    }
+  const onChange = ({ target }) => {
+    setInputs({
+      ...inputs,
+      [target.name]: target.value,
+    });
   };
 
   const checkInputValue = ({ title, content }) => {
@@ -61,7 +63,7 @@ const Form = ({ addCard, column, offDisplay, onChange, inputs }) => {
         placeholder="내용을 적어주세요"
         ref={contentInput}
         autoComplete="off"
-        onKeyUp={resize}
+        onKeyUp={() => resize(contentInput)}
         onChange={onChange}
       />
       <FormButtonsWrap offDisplay={offDisplay} hasInput={hasInput} />
