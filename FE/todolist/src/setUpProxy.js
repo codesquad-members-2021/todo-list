@@ -7,7 +7,7 @@ const aws = {
 
 module.exports = function (app) {
     app.use(
-        '/',
+        '/projects',
         createProxyMiddleware(aws)
     ),
     app.use(
