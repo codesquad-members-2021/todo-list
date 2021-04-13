@@ -7,9 +7,6 @@
 
 import UIKit
 
-protocol EditViewControllerDelegate {
-    func addCard(type: DoType, with card: TodoCard)
-}
 
 class ViewController: UIViewController {
     
