@@ -1,6 +1,7 @@
 package team9.todo.domain;
 
 import org.springframework.data.annotation.Id;
+import team9.todo.domain.enums.CardColumn;
 
 public class Card {
     @Id
@@ -14,11 +15,11 @@ public class Card {
 
     private double priority;
 
-    private String columnType;
+    private CardColumn columnType;
 
     private boolean deleted;
 
-    public Card(String title, String content, double priority, String columnType) {
+    public Card(String title, String content, double priority, CardColumn columnType) {
         this.title = title;
         this.content = content;
         this.priority = priority;
@@ -65,11 +66,11 @@ public class Card {
         this.priority = priority;
     }
 
-    public String getColumnType() {
+    public CardColumn getColumnType() {
         return columnType;
     }
 
-    public void setColumnType(String columnType) {
+    public void setColumnType(CardColumn columnType) {
         this.columnType = columnType;
     }
 
