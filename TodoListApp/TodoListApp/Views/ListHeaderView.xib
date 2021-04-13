@@ -22,13 +22,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OcE-qD-Zx6">
-                    <rect key="frame" x="8" y="0.0" width="47" height="98"/>
+                    <rect key="frame" x="19" y="0.0" width="47" height="98"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3kr-h7-C4G">
-                    <rect key="frame" x="393" y="42.5" width="13" height="13"/>
+                    <rect key="frame" x="382" y="42.5" width="13" height="13"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="13" id="YRY-b1-yOa"/>
                         <constraint firstAttribute="width" constant="13" id="fI5-QR-OAc"/>
@@ -36,7 +36,7 @@
                     <state key="normal" image="addCardButton"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hf8-J3-goD">
-                    <rect key="frame" x="63" y="0.0" width="47" height="98"/>
+                    <rect key="frame" x="74" y="0.0" width="47" height="98"/>
                     <color key="backgroundColor" name="badgeBackgroundGray"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                     <state key="normal" title="Button"/>
@@ -45,12 +45,12 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <constraints>
                 <constraint firstItem="hf8-J3-goD" firstAttribute="leading" secondItem="OcE-qD-Zx6" secondAttribute="trailing" constant="8" id="3yi-gS-OsB"/>
-                <constraint firstAttribute="trailing" secondItem="3kr-h7-C4G" secondAttribute="trailing" constant="8" id="CVN-t0-hhg"/>
+                <constraint firstAttribute="trailing" secondItem="3kr-h7-C4G" secondAttribute="trailing" constant="19" id="CVN-t0-hhg"/>
                 <constraint firstItem="OcE-qD-Zx6" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="JWb-GP-4In"/>
                 <constraint firstAttribute="bottom" secondItem="OcE-qD-Zx6" secondAttribute="bottom" id="MsJ-GC-AX5"/>
                 <constraint firstAttribute="bottom" secondItem="hf8-J3-goD" secondAttribute="bottom" id="cPe-28-hN0"/>
                 <constraint firstItem="3kr-h7-C4G" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="etg-D9-17D"/>
-                <constraint firstItem="OcE-qD-Zx6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="gKT-I7-NYo"/>
+                <constraint firstItem="OcE-qD-Zx6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="19" id="gKT-I7-NYo"/>
                 <constraint firstItem="hf8-J3-goD" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="j1P-1i-Bfh"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

@@ -22,6 +22,7 @@ class TodoViewController: UIViewController, ListViewControllerProtocol {
         cardTableView.dataSource = self
         cardTableView.delegate  = self
         cardTableView.register(CardCell.nib(), forCellReuseIdentifier: CardCell.identifier)
+        cardTableView.sectionFooterHeight = 0.0
     }
     
     func filterCards(of category: String, from allCards: [Card]) {

@@ -43,31 +43,31 @@
                                     <constraint firstItem="ww5-my-TLS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iPg-HR-DQK" secondAttribute="trailing" id="srd-WE-OEA"/>
                                 </constraints>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="zdt-VD-UNK">
-                                <rect key="frame" x="48" y="122" width="818" height="672"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="zdt-VD-UNK">
+                                <rect key="frame" x="37" y="122" width="840" height="672"/>
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lw3-2b-xeB">
-                                        <rect key="frame" x="0.0" y="0.0" width="258" height="672"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="672"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="258" id="gCN-NN-aGw"/>
+                                            <constraint firstAttribute="width" constant="280" id="gCN-NN-aGw"/>
                                         </constraints>
                                         <connections>
                                             <segue destination="NY3-3x-QFv" kind="embed" identifier="goToTodo" id="UZC-So-fFW"/>
                                         </connections>
                                     </containerView>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V4G-ju-dRd">
-                                        <rect key="frame" x="280" y="0.0" width="258" height="672"/>
+                                        <rect key="frame" x="280" y="0.0" width="280" height="672"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="258" id="LRD-Lf-1DA"/>
+                                            <constraint firstAttribute="width" constant="280" id="LRD-Lf-1DA"/>
                                         </constraints>
                                         <connections>
                                             <segue destination="CjH-x2-Qgo" kind="embed" identifier="goToDoing" id="PHH-au-vZj"/>
                                         </connections>
                                     </containerView>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="14m-Ig-ThD">
-                                        <rect key="frame" x="560" y="0.0" width="258" height="672"/>
+                                        <rect key="frame" x="560" y="0.0" width="280" height="672"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="258" id="WiP-4b-u0V"/>
+                                            <constraint firstAttribute="width" constant="280" id="WiP-4b-u0V"/>
                                         </constraints>
                                         <connections>
                                             <segue destination="p8J-Qm-vgn" kind="embed" identifier="goToDone" id="vOl-Si-NEi"/>
@@ -80,7 +80,7 @@
                         <color key="backgroundColor" name="backgroundGray"/>
                         <constraints>
                             <constraint firstItem="a7V-fu-JWU" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="2A0-9T-vOt"/>
-                            <constraint firstItem="zdt-VD-UNK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="48" id="Q7f-FZ-76K"/>
+                            <constraint firstItem="zdt-VD-UNK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="37" id="Q7f-FZ-76K"/>
                             <constraint firstItem="a7V-fu-JWU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Uxs-KY-lxl"/>
                             <constraint firstItem="zdt-VD-UNK" firstAttribute="top" secondItem="a7V-fu-JWU" secondAttribute="bottom" constant="50" id="jlo-Iu-cDf"/>
                             <constraint firstAttribute="trailing" secondItem="a7V-fu-JWU" secondAttribute="trailing" id="pfX-Tz-CRu"/>
@@ -97,17 +97,17 @@
             <objects>
                 <viewController id="NY3-3x-QFv" customClass="TodoViewController" customModule="TodoListApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IjX-cA-2cI">
-                        <rect key="frame" x="0.0" y="0.0" width="258" height="672"/>
+                        <rect key="frame" x="0.0" y="0.0" width="280" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Epo-gG-IXs" customClass="ListHeaderView" customModule="TodoListApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="258" height="26"/>
+                                <rect key="frame" x="0.0" y="0.0" width="280" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="6A7-zN-PRg"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gVf-YE-k3e">
-                                <rect key="frame" x="0.0" y="26" width="258" height="646"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="gVf-YE-k3e">
+                                <rect key="frame" x="0.0" y="26" width="280" height="646"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -136,17 +136,17 @@
             <objects>
                 <viewController id="CjH-x2-Qgo" customClass="DoingViewController" customModule="TodoListApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8yp-b3-bHO">
-                        <rect key="frame" x="0.0" y="0.0" width="258" height="672"/>
+                        <rect key="frame" x="0.0" y="0.0" width="280" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ViQ-tK-Hun" customClass="ListHeaderView" customModule="TodoListApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="258" height="26"/>
+                                <rect key="frame" x="0.0" y="0.0" width="280" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="eY4-r9-XTN"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="et5-he-cOG">
-                                <rect key="frame" x="0.0" y="26" width="258" height="646"/>
+                                <rect key="frame" x="0.0" y="26" width="280" height="646"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -175,17 +175,17 @@
             <objects>
                 <viewController id="p8J-Qm-vgn" customClass="DoneViewController" customModule="TodoListApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CPn-cn-q50">
-                        <rect key="frame" x="0.0" y="0.0" width="258" height="672"/>
+                        <rect key="frame" x="0.0" y="0.0" width="280" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="39q-Hz-MVb" customClass="ListHeaderView" customModule="TodoListApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="258" height="26"/>
+                                <rect key="frame" x="0.0" y="0.0" width="280" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="3zO-xo-J0t"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ma6-Cx-WNC">
-                                <rect key="frame" x="0.0" y="26" width="258" height="646"/>
+                                <rect key="frame" x="0.0" y="26" width="280" height="646"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
