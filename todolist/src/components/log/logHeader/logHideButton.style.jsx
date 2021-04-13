@@ -6,6 +6,7 @@ const LogHideButtonStyle = styled.div`
   position: absolute;
   top: 50px;
   right: 50px;
+  cursor: pointer;
 
   path {
     fill: #010101;

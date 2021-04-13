@@ -6,6 +6,8 @@ const CardDeleteBtn = styled(cardDeleteBtn)`
   width: 13.79px;
   height: 13.79px;
 
+  cursor: pointer;
+
   path {
     fill: #828282;
   }

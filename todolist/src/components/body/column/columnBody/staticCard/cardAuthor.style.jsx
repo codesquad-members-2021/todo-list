@@ -6,7 +6,7 @@ const CardAuthorStyle = styled.span`
   line-height: 17px;
 
   width: 252px;
-  height: 17px;
+  height: auto;
 
   color: #bdbdbd;
 

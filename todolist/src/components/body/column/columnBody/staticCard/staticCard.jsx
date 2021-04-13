@@ -15,7 +15,7 @@ const StaticCard = ({ cardTitle, cardContents, user }) => {
         <CardContents cardContents={cardContents} />
         <CardAuthor user={user} />
       </CardTextWrapper>
-      <ModifyCardCancelButton />
+      {/* <ModifyCardCancelButton /> */}
       <CardDeleteButton />
     </StaticCardStyle>
   );

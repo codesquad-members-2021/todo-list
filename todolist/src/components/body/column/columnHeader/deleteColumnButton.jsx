@@ -10,9 +10,16 @@ const DeleteColumnBtn = styled(deleteColumnBtn)`
   order: 2;
   flex-grow: 0;
   margin: 0px 8px;
+   cursor: pointer;
+
   path {
     fill: #bdbdbd;
   }
+
+  &:hover {
+    path {
+      fill: #FF4343;
+    }
 `;
 
 const DeleteColumnButton = () => {

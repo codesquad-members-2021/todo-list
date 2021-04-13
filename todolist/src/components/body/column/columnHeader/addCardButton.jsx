@@ -10,9 +10,16 @@ const AddCardBtn = styled(addCardBtn)`
   order: 1;
   flex-grow: 0;
   margin: 0px 8px;
+  cursor: pointer;
 
   path {
     fill: #bdbdbd;
+  }
+
+  &:hover {
+    path {
+      fill: #0075de;
+    }
   }
 `;
 

@@ -6,7 +6,7 @@ const StaticCardStyle = styled.div`
   align-items: flex-start;
 
   width: 252px;
-  height: 76px;
+  height: auto;
 
   border-radius: 8px;
 

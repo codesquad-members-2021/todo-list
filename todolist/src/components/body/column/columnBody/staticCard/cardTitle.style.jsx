@@ -6,7 +6,7 @@ const CardTitleStyle = styled.span`
   line-height: 23px;
 
   width: 252px;
-  height: 17px;
+  height: auto;
 
   color: #010101;
 

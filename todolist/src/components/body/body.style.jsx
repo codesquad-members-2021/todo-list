@@ -8,7 +8,6 @@ const BodyStyle = styled.div`
   margin: 0 15px 0 0;
 
   width: 308px;
-  height: 294px;
 `;
 
 export default BodyStyle;

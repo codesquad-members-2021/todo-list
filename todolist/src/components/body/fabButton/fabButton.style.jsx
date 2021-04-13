@@ -18,10 +18,11 @@ const Button = styled.div`
   justify-content: center;
   align-items: center;
   position: absolute;
-  bottom: 120px;
-  right: 130px;
+  bottom: 30px;
+  right: 100px;
 
   background: #0075de;
+  cursor: pointer;
 
   box-shadow: 0px 0px 4px rgba(204, 204, 204, 0.5), 0px 2px 4px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(4px);

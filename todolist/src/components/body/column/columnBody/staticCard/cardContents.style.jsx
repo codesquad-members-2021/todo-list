@@ -6,12 +6,11 @@ const CardContentsStyle = styled.div`
   line-height: 20px;
 
   width: 265px;
-  height: 20px;
+  height: auto;
 
   color: #010101;
 
-  margin: 5px 0px;
-  overflow: auto;
+  margin: 8px 0px;
 `;
 
 export default CardContentsStyle;
