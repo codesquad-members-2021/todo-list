@@ -16,7 +16,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "db-start": "node server.js",
+    "db-start": "nodemon server.js",
     "start": "node tools/start"
   },
   "eslintConfig": {

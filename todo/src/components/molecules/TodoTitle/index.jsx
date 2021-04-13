@@ -26,7 +26,7 @@ const TodoTitle = ({ children, ...props }) => (
       <Label>10</Label>
     </LeftDiv>
     <div>
-      <ButtonList isIcon={true}></ButtonList>
+      <ButtonList isIcon={true} addTodo={props.addTodo}></ButtonList>
     </div>
   </WrapDiv>
 );

@@ -7,15 +7,17 @@ const Wrap = styled.div`
   border: 3px solid #000;
   width: max-content;
   margin: 0 0px 10px 5px;
-  background:	#d9ffea;
-  border-radius:10px;
+  background: #d9ffea;
+  border-radius: 10px;
 `;
 
 const TodoContent = ({ todos }) => {
   return (
     <Wrap>
       {todos.map(({ columnId, columnName, items }) => {
-        return (<TodoListColumn key={columnId} {...{ columnName, items }} />);
+        return (
+          <TodoListColumn key={columnId} {...{ columnId, columnName, items }} />
+        );
       })}
     </Wrap>
   );

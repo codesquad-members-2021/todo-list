@@ -1,4 +1,5 @@
 import React from "react";
+import styled from "styled-components";
 import Span from "../../Span";
 import Image from "../../Image";
 import SmallButton from "../SmallButton";
@@ -6,15 +7,18 @@ import MediumButton from "../MediumButton";
 import PlusButtonImg from "../../../../images/plusButton.svg";
 import CloseButtonImg from "../../../../images/closeButton.svg";
 
-const ButtonList = ({ isIcon }) => {
+const Div = styled.div`
+  padding: 10px 45px 0px 45px;
+`;
+const ButtonList = ({ isIcon, ...props }) => {
   const plusButton = (
-    <SmallButton>
-      <Image src={PlusButtonImg} _width="23px" />
+    <SmallButton onClick={props.addTodo}>
+      <Image id="plusBtn" src={PlusButtonImg} _width="23px" />
     </SmallButton>
   );
   const closeButton = (
     <SmallButton>
-      <Image src={CloseButtonImg} _width="20px" />
+      <Image id="closeBtn" src={CloseButtonImg} _width="20px" />
     </SmallButton>
   );
   const cancelButtons = (
@@ -38,7 +42,7 @@ const ButtonList = ({ isIcon }) => {
       {enrollButtons}
     </>
   );
-  return <Span>{currentButton}</Span>;
+  return <Div>{currentButton}</Div>;
 };
 
 export default ButtonList;
