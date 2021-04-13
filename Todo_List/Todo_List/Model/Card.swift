@@ -9,10 +9,12 @@ import Foundation
 import MobileCoreServices
 
 /*카드를 Drag & Drop하기 위해 필요한 상속( NSObject, NSItemProviderWriting, NSItemProviderReading, Codable)
- final Class를
+ final Class는 더 이상 자식 클래스를 만들 수 없다.
  */
 
 final class Card : NSObject, NSItemProviderWriting, NSItemProviderReading, Codable {
+    
+//    static let PickedCard = Notification.Name("PickedCard")
     
     static var writableTypeIdentifiersForItemProvider: [String] {
         return [(kUTTypeData as String)]
@@ -42,15 +44,12 @@ final class Card : NSObject, NSItemProviderWriting, NSItemProviderReading, Codab
     static func object(withItemProviderData data: Data, typeIdentifier: String) throws -> Card {
         let decoder = JSONDecoder()
         
-        //        do {
+        
         let card = try decoder.decode(Card.self, from: data)
         return card
-        //        } catch {
-        //            return fatalError(error) <- 이 부분이 계속 문제가 되어진다.
-        //        }
+        
         
     }
-    
     
     var id : Int?
     var title : String

@@ -8,80 +8,60 @@
 import UIKit
 
 extension CardViewController : UITableViewDropDelegate {
+    //카피문제.. 테이블내에서 움직이는것은 1.테이블델리게이터, 2.드드 양자택일
+    
+//    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+//        true //이건 왜 쓰는지 잘 모르겠음여
+//
+//    }
+    func tableView(_ tableView: UITableView, canHandle session: UIDropSession) -> Bool {
+        true
+    }
+    
+    /*테이블 이동 시 handling a drop in a table view. */
+    func tableView(_ tableView: UITableView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UITableViewDropProposal {
+        UITableViewDropProposal(operation: .move, intent: .insertAtDestinationIndexPath)
+    }
+    
     func tableView(_ tableView: UITableView, performDropWith coordinator: UITableViewDropCoordinator) {
         
-        //        print("coordinator",coordinator)
-        //guard let dragItems = coordinator.session.localDragSession?.items else {
-        //        coordinator.session.loadObjects(ofClass: NSString.self)  { item in
-        //
-        //            print(item)
-        //
-        //        }
+        let destinationIndexPath: IndexPath
+        
+        
+        if let indexPath = coordinator.destinationIndexPath {
+            destinationIndexPath = IndexPath(row: 0, section: indexPath.section)
+            
+        } else {
+            destinationIndexPath = IndexPath(row: 0, section: 0)
+        }
+        
+        print("destinationIndexPath=",destinationIndexPath)
+        print("coordinator.items=",coordinator.items.count)
         
         for item in coordinator.items {
             item.dragItem.itemProvider.loadObject(ofClass: Card.self, completionHandler: { (card, error) in
                 if let card = card as? Card {
-                    //Here is your your custom object
-                    print("card",card.content,card.title,card.writer)
+//                    print("card",card.content,card.title,card.writer)
+                    
+                    DispatchQueue.main.async { //꼭 해야하는지는 후에 테스트가 필요.
+                        switch tableView {
+                        //특정함수를 호출하기 위한 노티피케이션
+                        case self.todo :
+                            self.board.append(with: card, type: .todo, at: destinationIndexPath.section)
+                        case self.doing :
+                            self.board.append(with: card, type: .doing, at: destinationIndexPath.section)
+                        case self.done :
+                            self.board.append(with: card, type: .done, at: destinationIndexPath.section)
+                        default:
+                            break
+                        }
+                        let cm = CardManager.shared
+                        self.board.remove(at: cm.indexPathSection, type: Board.CardType(rawValue: cm.getBoardType())!)
+//                        self.indexPathSection = -1
+//                        self.boardType = -1
+                    }
                 }
             })
-            
-            
-            
-            
-            /*
-             // attempt to load strings from the drop coordinator
-             coordinator.session.loadObjects(ofClass: NSString.self) { items in
-             // convert the item provider array to a string array or bail out
-             guard let strings = items as? [String] else { return }
-             
-             // create an empty array to track rows we've copied
-             var indexPaths = [IndexPath]()
-             
-             // loop over all the strings we received
-             for (index, string) in strings.enumerated() {
-             // create an index path for this new row, moving it down depending on how many we've already inserted
-             let indexPath = IndexPath(row: destinationIndexPath.row + index, section: destinationIndexPath.section)
-             
-             // insert the copy into the correct array
-             if tableView == self.leftTableView {
-             self.leftItems.insert(string, at: indexPath.row)
-             } else {
-             self.rightItems.insert(string, at: indexPath.row)
-             }
-             
-             // keep track of this new row
-             indexPaths.append(indexPath)
-             }
-             
-             // insert them all into the table view at once
-             tableView.insertRows(at: indexPaths, with: .automatic)
-             }
-             */
-            
-            
-            //        print("dragItems", dragItems.)
-            
-            
-            
-            
-            
-            //        let localObjects = draggedItems.compactMap { return $0.localObject as? Card }
-            
-            //        print("localObjects =",localObjects)
-            //        if let indexPath = coordinator.destinationIndexPath{
-            //            destinationIndexPath = indexPath
-            //
-            //        let destinationIndexPath: IndexPath
-            //        if let indexPath = coordinator.destinationIndexPath {
-            //            destinationIndexPath = indexPath
-            //        } else {
-            //            let section = tableView.numberOfSections - 1
-            //            let row = tableView.numberOfRows(inSection: section)
-            //            destinationIndexPath = IndexPath(row: row, section: section)
-            //        }
-            
-            
         }
     }
 }

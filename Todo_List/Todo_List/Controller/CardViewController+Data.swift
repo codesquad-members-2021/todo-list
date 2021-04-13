@@ -15,6 +15,7 @@ extension CardViewController {
         todo.dragDelegate = self
         todo.dropDelegate = self
         todo.dragInteractionEnabled = true
+        todo.allowsSelectionDuringEditing = true
         
         doing.delegate = self
         doing.dataSource = self
@@ -58,10 +59,12 @@ extension CardViewController : UITableViewDelegate, UITableViewDataSource {
         (view as! UITableViewHeaderFooterView).contentView.backgroundColor = #colorLiteral(red: 0.968627451, green: 0.968627451, blue: 0.9607843137, alpha: 1)
     }
     
+    
     /*섹션의 헤더섹션 사이즈를 늘리는 방법.*/
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return CardViewConstant.heightForHeaderInSection
     }
+    
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -103,20 +106,23 @@ extension CardViewController : UITableViewDelegate, UITableViewDataSource {
     /*원치 않는 row값을 재 조정해주는 함수. moveSection 앱 크래쉬를 막기위한 함수.*/
     func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
         
+        print("numberOFSection = ",numberOfSections(in: tableView))
+        print("proposedDestinationIndexPath=",proposedDestinationIndexPath)
         //앱 설계상 1 Section 1 Row이기에 row가 1이면 0으로 바꾸어 앱 크래쉬를 막아준다.
         if proposedDestinationIndexPath.row != 0 {
             let proposedIndexPath = IndexPath(row: 0, section: proposedDestinationIndexPath.section)
-        
+            
             return proposedIndexPath
         }
-        
         return proposedDestinationIndexPath
+        
     }
     
-    /*각 테이블 내부에서 섹션을 변경할수 있는 프로토콜 */
+    /*각 테이블 내부에서 섹션을 변경할수 있는 프로토콜
+     이 프로토콜이 없어도 Drag&Drop으로 움직여지지만 새로운 값으로 바꾸는 위험이 있다.
+     */
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-
         tableView.moveSection(sourceIndexPath.section, toSection: destinationIndexPath.section)
-        
+
     }
 }

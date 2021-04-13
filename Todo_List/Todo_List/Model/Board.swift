@@ -22,16 +22,16 @@ class Board {
     var doingList = [Card]()
     var doneList = [Card]()
     
-    func append(with card : Card, type : Board.CardType) {
+    func append(with card : Card, type : Board.CardType, at position : Int) {
         switch type {
         case .todo:            
-            todoList.insert(card, at: 0)
+            todoList.insert(card, at: position) //insert가 defualt로 0이 되어 있어서 이 부분을 변경해야 할지도 모르겠다.
             NotificationCenter.default.post(name: Board.TodoListChanged, object: self)
         case .doing:
-            doingList.insert(card, at: 0)
+            doingList.insert(card, at: position)
             NotificationCenter.default.post(name: Board.DoingListChanged, object: self)
         case .done:
-            doneList.insert(card, at: 0)
+            doneList.insert(card, at: position)
             NotificationCenter.default.post(name: Board.DoneListChanged, object: self)
         }
     }

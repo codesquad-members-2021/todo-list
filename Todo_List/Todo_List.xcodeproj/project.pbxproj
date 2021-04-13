@@ -18,6 +18,7 @@
 		10E6431D26201835002D6FE5 /* CardViewController+Drop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E6431C26201835002D6FE5 /* CardViewController+Drop.swift */; };
 		10E6432226201842002D6FE5 /* CardViewController+Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E6432126201842002D6FE5 /* CardViewController+Data.swift */; };
 		10E6432A26201DD7002D6FE5 /* CardViewConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E6432926201DD7002D6FE5 /* CardViewConstant.swift */; };
+		FA3A7AC02625C73A00A07FAB /* CardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3A7ABF2625C73A00A07FAB /* CardManager.swift */; };
 		FA41FF04261C4FD2004ECD45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA41FF03261C4FD2004ECD45 /* AppDelegate.swift */; };
 		FA41FF06261C4FD2004ECD45 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA41FF05261C4FD2004ECD45 /* SceneDelegate.swift */; };
 		FA41FF08261C4FD2004ECD45 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA41FF07261C4FD2004ECD45 /* ViewController.swift */; };
@@ -58,6 +59,7 @@
 		10E6431C26201835002D6FE5 /* CardViewController+Drop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CardViewController+Drop.swift"; sourceTree = "<group>"; };
 		10E6432126201842002D6FE5 /* CardViewController+Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CardViewController+Data.swift"; sourceTree = "<group>"; };
 		10E6432926201DD7002D6FE5 /* CardViewConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewConstant.swift; sourceTree = "<group>"; };
+		FA3A7ABF2625C73A00A07FAB /* CardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardManager.swift; sourceTree = "<group>"; };
 		FA41FF00261C4FD2004ECD45 /* Todo_List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Todo_List.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA41FF03261C4FD2004ECD45 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA41FF05261C4FD2004ECD45 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 			children = (
 				10C1B3FA261EDE9F00B6BD9E /* Card.swift */,
 				10AA054C261FE73C00CAD7D0 /* Board.swift */,
+				FA3A7ABF2625C73A00A07FAB /* CardManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -349,6 +352,7 @@
 				FA41FF04261C4FD2004ECD45 /* AppDelegate.swift in Sources */,
 				10C1B409261EFE6900B6BD9E /* ModalViewController.swift in Sources */,
 				FA41FF06261C4FD2004ECD45 /* SceneDelegate.swift in Sources */,
+				FA3A7AC02625C73A00A07FAB /* CardManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
