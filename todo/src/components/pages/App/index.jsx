@@ -34,7 +34,7 @@ function App() {
     <Div>
       <HistoryList isOpen={isOpen} isOpenActions={isOpenActions} />
       <Header isOpenActions={isOpenActions} />
-      <TodoListWrap todos={todos}></TodoListWrap>
+      <TodoListWrap todos={todos} ></TodoListWrap>
     </Div>
   );
 }

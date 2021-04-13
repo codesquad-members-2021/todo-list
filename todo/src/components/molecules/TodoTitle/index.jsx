@@ -17,7 +17,7 @@ const LeftDiv = styled.div`
   place-items: center;
 `;
 
-const TodoTitle = ({ children, itemCount }) => (
+const TodoTitle = ({ children, itemCount, newInputClickHandler, ...props }) => (
   <WrapDiv>
     <LeftDiv>
       <Span _fontSize="20px" _fontWeight="700">
@@ -26,7 +26,11 @@ const TodoTitle = ({ children, itemCount }) => (
       <Label>{itemCount}</Label>
     </LeftDiv>
     <div>
-      <ButtonList isIcon={true} addTodo={props.addTodo}></ButtonList>
+      <ButtonList
+        newInputClickHandler={newInputClickHandler}
+        isIcon={true}
+        addTodo={props.addTodo}
+      ></ButtonList>
     </div>
   </WrapDiv>
 );

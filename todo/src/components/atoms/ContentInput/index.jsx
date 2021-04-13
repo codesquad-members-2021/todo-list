@@ -21,8 +21,8 @@ const StyledInput = styled.input`
   color: #828282;
 `;
 
-const ContentInput = ({ type = "text", ...props }) => (
-  <StyledInput type={type} {...props} />
+const ContentInput = ({ type = "text", contentRef, ...props }) => (
+  <StyledInput type={type} ref={contentRef}{...props} />
 );
 
 export default ContentInput;

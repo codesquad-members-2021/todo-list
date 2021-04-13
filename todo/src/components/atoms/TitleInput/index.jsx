@@ -19,8 +19,8 @@ const StyledInput = styled.input`
   /* Inside Auto Layout */
 `;
 
-const TitleInput = ({ type = "text", ...props }) => (
-  <StyledInput type={type} {...props} />
+const TitleInput = ({ type = "text", titleRef, ...props }) => (
+  <StyledInput type={type} ref={titleRef} {...props} />
 );
 
 export default TitleInput;
