@@ -15,7 +15,7 @@ const NavBar = styled.div`
 `;
 
 const NavCloseBtn = styled.svg`
-  position: absolute;
+  position: fixed;
   right: 0;
   fill: #bdbdbd;
   margin: 16px 80px 0 0;

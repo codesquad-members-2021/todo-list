@@ -56,6 +56,7 @@ const TodoItem = ({
       id,
       title: inputTitle,
       content: inputContent,
+      date: Date.now(),
     };
     editTodoItem(id, newTodo);
     toggleEditForm();

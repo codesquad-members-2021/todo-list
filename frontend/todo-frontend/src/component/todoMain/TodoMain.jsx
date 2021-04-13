@@ -1,14 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TodoList from "./todoList/TodoList";
 import styled from "styled-components";
+import todoListService from "../../service/todoListService.js";
 
 const StyledTodoMain = styled.div`
   display: flex;
   padding: 0 80px;
 `;
 
-const TodoMain = ({ datas, addLogItem }) => {
-  const [todoColumns, setTodoColumns] = useState(datas.todoData);
+const TodoMain = ({ addLogItem }) => {
+  const [todoColumns, setTodoColumns] = useState({});
+
+  useEffect(() => {
+    const todoListData = todoListService.getTodoList();
+    setTodoColumns(todoListData.todoData);
+  }, []);
 
   const deleteTodoColumn = (id) => {
     setTodoColumns((todoColumns) => {

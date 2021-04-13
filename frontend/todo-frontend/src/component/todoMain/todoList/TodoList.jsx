@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TodoItem from "./TodoItem";
 import TodoListForm from "./TodoListForm";
 import DeleteBtn from "../../atom/DeleteBtn.jsx";
 import styled from "styled-components";
+import todoListService from "../../../service/todoListService.js";
 
 const StyledTodoList = styled.div`
   width: 308px;
@@ -55,6 +56,10 @@ const TodoList = ({
   const [todos, setTodos] = useState(todoCards);
   const [formSelected, setFormSelected] = useState(false);
 
+  useEffect(() => {
+    todoListService.postTodoList(todos, id);
+  }, [todos]);
+
   const addTodoItem = (cardId, todoCard) => {
     const { title: itemTitle, date: itemDate } = todoCard;
     addLogItem({
@@ -85,7 +90,12 @@ const TodoList = ({
 
   const editTodoItem = (id, newTodo) => {
     const newLog = getLogData(id);
-    addLogItem({ ...newLog, action: "update", changedTitle: newTodo.title });
+    addLogItem({
+      ...newLog,
+      action: "update",
+      changedTitle: newTodo.title,
+      date: newTodo.date,
+    });
     setTodos((todos) => ({ ...todos, [id]: newTodo }));
   };
 
