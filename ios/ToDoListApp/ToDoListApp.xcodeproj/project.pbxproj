@@ -28,6 +28,9 @@
 		9386C089261F33F3008645D9 /* BoardManageable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9386C088261F33F3008645D9 /* BoardManageable.swift */; };
 		9386C08C26216D3D008645D9 /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9386C08B26216D3D008645D9 /* InputViewController.swift */; };
 		9386C09826244721008645D9 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9386C09726244721008645D9 /* Board.swift */; };
+		9386C0A826258913008645D9 /* TableviewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9386C0A726258913008645D9 /* TableviewDelegate.swift */; };
+		9386C0AB26259426008645D9 /* TableViewDragDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9386C0AA26259426008645D9 /* TableViewDragDelegate.swift */; };
+		9386C0AF26259697008645D9 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9386C0AE26259697008645D9 /* TableViewDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +57,9 @@
 		9386C088261F33F3008645D9 /* BoardManageable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardManageable.swift; sourceTree = "<group>"; };
 		9386C08B26216D3D008645D9 /* InputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
 		9386C09726244721008645D9 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		9386C0A726258913008645D9 /* TableviewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableviewDelegate.swift; sourceTree = "<group>"; };
+		9386C0AA26259426008645D9 /* TableViewDragDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDragDelegate.swift; sourceTree = "<group>"; };
+		9386C0AE26259697008645D9 /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +120,9 @@
 			children = (
 				9386C053261D9B7F008645D9 /* MainCell.swift */,
 				9348A4A1261D71F4002B63C6 /* CardCell.swift */,
+				9386C0A726258913008645D9 /* TableviewDelegate.swift */,
+				9386C0AA26259426008645D9 /* TableViewDragDelegate.swift */,
+				9386C0AE26259697008645D9 /* TableViewDataSource.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -256,7 +265,9 @@
 			files = (
 				9386C06A261EE91F008645D9 /* NetworkManager.swift in Sources */,
 				9348A4B1261D87F5002B63C6 /* CardViewModel.swift in Sources */,
+				9386C0AB26259426008645D9 /* TableViewDragDelegate.swift in Sources */,
 				9386C07F261F068C008645D9 /* ToDo.swift in Sources */,
+				9386C0A826258913008645D9 /* TableviewDelegate.swift in Sources */,
 				9386C082261F0717008645D9 /* Doing.swift in Sources */,
 				9386C08C26216D3D008645D9 /* InputViewController.swift in Sources */,
 				933A1E7A261C387B0017FFBD /* AppDelegate.swift in Sources */,
@@ -264,6 +275,7 @@
 				9348A4A2261D71F4002B63C6 /* CardCell.swift in Sources */,
 				9386C09826244721008645D9 /* Board.swift in Sources */,
 				9386C054261D9B7F008645D9 /* MainCell.swift in Sources */,
+				9386C0AF26259697008645D9 /* TableViewDataSource.swift in Sources */,
 				9386C067261EE907008645D9 /* CardNetworkManager.swift in Sources */,
 				9386C062261EE8E3008645D9 /* Endpoint.swift in Sources */,
 				933A1E7C261C387B0017FFBD /* SceneDelegate.swift in Sources */,

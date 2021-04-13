@@ -9,7 +9,6 @@ import Foundation
 import Combine
 
 class CardUseCase: CardUseCasePort {
-  
     private var card: CardManageable
     private var toDo: BoardManageable
     private var doing: BoardManageable
@@ -41,19 +40,7 @@ class CardUseCase: CardUseCasePort {
         return cardNetworkManager.postCards(title: title, contents: contents)
     }
     
-    func myAdd() {
-       
-    }
-    
     func edit() {
-        
-    }
-    
-    func delete() {
-        
-    }
-    
-    func goToDone() {
         
     }
 }

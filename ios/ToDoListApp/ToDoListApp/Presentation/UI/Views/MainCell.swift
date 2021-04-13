@@ -17,95 +17,22 @@ class MainCell: UICollectionViewCell {
     
     private var cardViewModel: CardViewModel?
     private var column: Int!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.dragInteractionEnabled = true
-        tableView.dragDelegate = self
-        tableView.dropDelegate = self
-    }
+    private var tableViewDelegate: TableViewDelegate!
+    private var tableViewDragDelegate: TableViewDragDelegate!
+    private var tableViewDataSource: UITableViewDataSource!
     
     func setup(with cardViewModel: CardViewModel, column: Int) {
         self.cardViewModel = cardViewModel
         self.column = column
+        self.tableViewDelegate = TableViewDelegate(cardViewModel: cardViewModel, column: column)
+        self.tableViewDataSource = TableViewDataSource(cardViewModel: cardViewModel, column: column)
+        self.tableViewDragDelegate = TableViewDragDelegate()
+        
+        tableView.delegate = self.tableViewDelegate
+        tableView.dragInteractionEnabled = true
+        tableView.dragDelegate = tableViewDragDelegate
+        tableView.dropDelegate = tableViewDragDelegate
+        tableView.dataSource = tableViewDataSource
         tableView.reloadData()
-    }
-    
-    private func makeContextMenu(indexPath: IndexPath) -> UIMenu {
-        let goToDone = UIAction(title: "완료한 일로 이동", image: .none) { action in
-        }
-        
-        let edit = UIAction(title: "수정하기", image: .none) { action in
-            guard let inputViewController = UIStoryboard(name: "Main", bundle: .none).instantiateViewController(identifier: "InputViewController") as? InputViewController else {
-                return
-            }
-            inputViewController.modalPresentationStyle = .overCurrentContext
-            inputViewController.setupMode("edit")
-            inputViewController.setupId(self.cardViewModel?.boards[self.column].getBoard().getCards()[indexPath.row].getId() ?? 0)
-            self.window?.rootViewController?.present(inputViewController, animated: false, completion: .none)
-        }
-        
-        let delete = UIAction(title: "삭제하기", image: .none, attributes: .destructive) { action in
-        }
-        
-        return UIMenu(title: "", children: [goToDone, edit, delete])
-    }
-}
-
-extension MainCell: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cardViewModel?.boards[column].count() ?? 0
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: CardCell.identifier, for: indexPath) as? CardCell else { return UITableViewCell() }
-        
-        cell.title = cardViewModel?.boards[column].getBoard().getCards()[indexPath.row].getTitle()
-        cell.contents = cardViewModel?.boards[column].getBoard().getCards()[indexPath.row].getContents()
-        
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if (editingStyle == .delete) {
-            cardViewModel?.boards[column].getBoard().removeCard(at: indexPath.row)
-            self.tableView.reloadData()
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        guard let movedCard = cardViewModel?.boards[column].getBoard().getCards()[sourceIndexPath.row] else { return }
-        cardViewModel?.boards[column].getBoard().removeCard(at: sourceIndexPath.row)
-        cardViewModel?.boards[column].getBoard().insertCard(card: movedCard, at: destinationIndexPath.row)
-    }
-}
-
-extension MainCell: UITableViewDragDelegate, UITableViewDropDelegate {
-    
-    func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
-        return [UIDragItem(itemProvider: NSItemProvider())]
-    }
-    
-    func tableView(_ tableView: UITableView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UITableViewDropProposal {
-        if session.localDragSession != nil {
-            return UITableViewDropProposal(operation: .move, intent: .insertAtDestinationIndexPath)
-        }
-        return UITableViewDropProposal(operation: .cancel, intent: .unspecified)
-    }
-    
-    func tableView(_ tableView: UITableView, performDropWith coordinator: UITableViewDropCoordinator) {}
-}
-
-extension MainCell: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-        return UIContextMenuConfiguration(identifier: .none, previewProvider: .none) { suggestedAction -> UIMenu? in
-            return self.makeContextMenu(indexPath: indexPath)
-        }
     }
 }

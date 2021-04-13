@@ -33,21 +33,6 @@ class Card: CardManageable, Codable {
         self.init(id: id, title: title, contents: contents, columnId: columnId)
     }
     
-    func add() {
-    }
-    
-    func edit() {
-        
-    }
-    
-    func delete() {
-        
-    }
-    
-    func goToDone() {
-        
-    }
-    
     func getTitle() -> String {
         return self.title
     }

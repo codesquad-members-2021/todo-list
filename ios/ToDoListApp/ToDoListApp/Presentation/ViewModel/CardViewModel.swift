@@ -56,10 +56,8 @@ class CardViewModel {
                     case .finished: print("finished")
                     case .failure(let error): print(error.localizedDescription) } },
                   receiveValue: { cards in
-                    print("뚜바")
                     self.boards[columnId].appendCard(cards.first!)
                     self.reloadCardListSubject.send(.success(()))
-                    print(self.boards[columnId])
                   })
             .store(in: &subscriptions)
     }

@@ -9,10 +9,6 @@ import Foundation
 import Combine
 
 protocol CardManageable {
-    func add()
-    func edit()
-    func delete()
-    func goToDone()
     func getTitle() -> String
     func getContents() -> String
     func getId() -> Int?
@@ -21,7 +17,5 @@ protocol CardManageable {
 protocol CardUseCasePort {
     func add(title: String, contents: String) -> AnyPublisher<[Card], Error>
     func edit()
-    func delete()
-    func goToDone()
     func get(state: State) -> AnyPublisher<[Card], Error>
 }
