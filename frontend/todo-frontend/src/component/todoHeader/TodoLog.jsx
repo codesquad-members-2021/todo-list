@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const TodoLog = ({
   author,
-  log: { columnTitle, itemTitle, action, date, movedColumnTitle },
+  log: { columnTitle, itemTitle, action, date, changedTitle, movedColumnTitle },
 }) => {
   const LogCard = styled.div`
     display: flex;
@@ -39,6 +39,9 @@ const TodoLog = ({
       break;
     case "delete":
       logMessage = `${columnTitle}에 ${itemTitle}을 삭제하였습니다.`;
+      break;
+    case "update":
+      logMessage = `${columnTitle}에 ${itemTitle}를 ${changedTitle}로 변경하였습니다.`;
       break;
     case "move":
       break;

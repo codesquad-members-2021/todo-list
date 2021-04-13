@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TodoItem from "./TodoItem";
 import TodoListForm from "./TodoListForm";
 import DeleteBtn from "../../atom/DeleteBtn.jsx";
 import styled from "styled-components";
+import todoListService from "../../../service/todoListService.js";
 
 const StyledTodoList = styled.div`
   width: 308px;
@@ -47,26 +48,60 @@ const CircleNumber = styled.span`
   float: right;
 `;
 
-const TodoList = ({ data: { id, title, todoCards }, deleteTodoColumn }) => {
+const TodoList = ({
+  data: { id, title, todoCards },
+  deleteTodoColumn,
+  postLogs,
+}) => {
   const [todos, setTodos] = useState(todoCards);
   const [formSelected, setFormSelected] = useState(false);
-  //수정완료
+
+  // useEffect(() => {
+  //   todoListService.postTodoList(todos, id);
+  // }, [todos]);
+
   const addTodoItem = (cardId, todoCard) => {
+    const { title: itemTitle, date: itemDate } = todoCard;
+    postLogs({
+      columnTitle: title,
+      itemTitle: itemTitle,
+      date: itemDate,
+      action: "add",
+    });
+    todoListService.postTodoList(id, { [cardId]: todoCard });
     setTodos((todos) => ({ ...todos, [cardId]: todoCard }));
   };
 
-  //수정완료
-  const deleteTodoItem = (id) => {
+  const deleteTodoItem = (cardId) => {
+    const newLog = getLogData(cardId);
+    postLogs({ ...newLog, action: "delete" });
+    todoListService.deleteTodoList(id, cardId);
     setTodos((todos) => {
-      delete todos[id];
+      delete todos[cardId];
       return { ...todos };
     });
   };
-  //수정완료
-  const editTodoItem = (id, newTodo) => {
-    setTodos((todos) => ({ ...todos, [id]: newTodo }));
+
+  const editTodoItem = (cardId, newTodo) => {
+    const newLog = getLogData(cardId);
+    postLogs({
+      ...newLog,
+      action: "update",
+      changedTitle: newTodo.title,
+    });
+    todoListService.updateTodoList(id, cardId, { [cardId]: newTodo });
+    setTodos((todos) => ({ ...todos, [cardId]: newTodo }));
   };
-  //수정완료
+
+  const getLogData = (cardId) => {
+    const newLog = {
+      columnTitle: title,
+      itemTitle: todos[cardId].title,
+      date: Date.now(),
+    };
+    return newLog;
+  };
+
   const todoCardList = Object.values(todos).map((card) => (
     <TodoItem
       todoCard={card}

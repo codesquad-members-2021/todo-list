@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import DeleteBtn from "../../atom/DeleteBtn.jsx";
 import styled from "styled-components";
 import Input from "../../atom/Input.jsx";
@@ -10,7 +10,7 @@ export const TodoCard = styled.div`
   align-items: flex-start;
   padding: 16px;
   width: 308px;
-  height: 108px;
+  min-height: 108px;
   background-color: #ffffff;
   margin-bottom: 20px;
   justify-content: space-between;
@@ -26,13 +26,11 @@ export const TodoCardBtnWrapper = styled.div`
 
 export const TodoCardTitle = styled.div`
   font-weight: 700;
-  height: 23px;
   margin-bottom: 10px;
 `;
 
 const TodoCardContent = styled.div`
   font-size: 0.8rem;
-  height: 20px;
 `;
 
 const TodoItem = ({
@@ -56,6 +54,7 @@ const TodoItem = ({
       id,
       title: inputTitle,
       content: inputContent,
+      date: Date.now(),
     };
     editTodoItem(id, newTodo);
     toggleEditForm();
@@ -64,10 +63,12 @@ const TodoItem = ({
   const onChangeTitle = (e) => {
     setInputTitle(e.target.value);
     if (!e.target.value) setIsDisabled(true);
+    else setIsDisabled(false);
   };
   const onChangeContent = (e) => {
     setInputContent(e.target.value);
     if (!e.target.value) setIsDisabled(true);
+    else setIsDisabled(false);
   };
 
   if (isEditing) {

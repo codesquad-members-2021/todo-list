@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import TodoLog from "./TodoLog";
+import logService from "../../service/logService.js";
 
 const NavBar = styled.div`
   width: 452px;
@@ -11,10 +12,11 @@ const NavBar = styled.div`
   position: absolute;
   top: 0;
   right: 0;
+  overflow-y: scroll;
 `;
 
 const NavCloseBtn = styled.svg`
-  position: absolute;
+  position: fixed;
   right: 0;
   fill: #bdbdbd;
   margin: 16px 80px 0 0;
@@ -22,9 +24,11 @@ const NavCloseBtn = styled.svg`
     fill: #126e82;
   }
 `;
-
+const MAX_LOG = 15;
 const TodoNavBar = ({ logs, toggleNav }) => {
-  const logList = logs.map((log) => TodoLog({ author: "Jenny", log }));
+  const logList = logs
+    .slice(0, MAX_LOG)
+    .map((log) => TodoLog({ author: "Jenny", log }));
   return (
     <NavBar>
       <NavCloseBtn
