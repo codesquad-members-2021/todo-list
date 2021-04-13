@@ -8,7 +8,7 @@ const StyledTodoMain = styled.div`
   padding: 0 80px;
 `;
 
-const TodoMain = ({ addLogItem }) => {
+const TodoMain = ({ postLogs }) => {
   const [todoColumns, setTodoColumns] = useState({});
 
   useEffect(() => {
@@ -27,7 +27,7 @@ const TodoMain = ({ addLogItem }) => {
     <TodoList
       data={data}
       deleteTodoColumn={deleteTodoColumn}
-      addLogItem={addLogItem}
+      postLogs={postLogs}
     />
   ));
 

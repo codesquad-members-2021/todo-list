@@ -18,6 +18,7 @@ const Input = ({ name, defaultValue, handleChange, placeholder, inputRef }) => {
       value={defaultValue}
       onChange={handleChange}
       placeholder={placeholder}
+      autoComplete="off"
       ref={inputRef}
     ></StyledInput>
   );

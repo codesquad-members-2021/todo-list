@@ -51,55 +51,56 @@ const CircleNumber = styled.span`
 const TodoList = ({
   data: { id, title, todoCards },
   deleteTodoColumn,
-  addLogItem,
+  postLogs,
 }) => {
   const [todos, setTodos] = useState(todoCards);
   const [formSelected, setFormSelected] = useState(false);
 
-  useEffect(() => {
-    todoListService.postTodoList(todos, id);
-  }, [todos]);
+  // useEffect(() => {
+  //   todoListService.postTodoList(todos, id);
+  // }, [todos]);
 
   const addTodoItem = (cardId, todoCard) => {
     const { title: itemTitle, date: itemDate } = todoCard;
-    addLogItem({
+    postLogs({
       columnTitle: title,
       itemTitle: itemTitle,
       date: itemDate,
       action: "add",
     });
+    todoListService.postTodoList(id, { [cardId]: todoCard });
     setTodos((todos) => ({ ...todos, [cardId]: todoCard }));
   };
 
-  const deleteTodoItem = (id) => {
-    const newLog = getLogData(id);
-    addLogItem({ ...newLog, action: "delete" });
+  const deleteTodoItem = (cardId) => {
+    const newLog = getLogData(cardId);
+    postLogs({ ...newLog, action: "delete" });
+    todoListService.deleteTodoList(id, cardId);
     setTodos((todos) => {
-      delete todos[id];
+      delete todos[cardId];
       return { ...todos };
     });
   };
-  const getLogData = (id) => {
-    const newLog = {
-      columnTitle: title,
-      itemTitle: todos[id].title,
-      date: todos[id].date,
-    };
-    return newLog;
-  };
 
-  const editTodoItem = (id, newTodo) => {
-    const newLog = getLogData(id);
-    addLogItem({
+  const editTodoItem = (cardId, newTodo) => {
+    const newLog = getLogData(cardId);
+    postLogs({
       ...newLog,
       action: "update",
       changedTitle: newTodo.title,
-      date: newTodo.date,
     });
-    setTodos((todos) => ({ ...todos, [id]: newTodo }));
+    todoListService.updateTodoList(id, cardId, { [cardId]: newTodo });
+    setTodos((todos) => ({ ...todos, [cardId]: newTodo }));
   };
 
-  //전 title , 현재 title
+  const getLogData = (cardId) => {
+    const newLog = {
+      columnTitle: title,
+      itemTitle: todos[cardId].title,
+      date: Date.now(),
+    };
+    return newLog;
+  };
 
   const todoCardList = Object.values(todos).map((card) => (
     <TodoItem
