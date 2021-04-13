@@ -14,6 +14,7 @@ class ToDoViewController: UIViewController {
     @IBOutlet weak var badgeLabel: UILabel!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var cardTableView: UITableView!
+    private var toDoDelegate = ToDoTableViewDelegate()
     private var willDoDataSource: ToDoTableViewDataSource!
     private var doingDataSource: ToDoTableViewDataSource!
     private var doneDataSource: ToDoTableViewDataSource!
@@ -35,7 +36,10 @@ class ToDoViewController: UIViewController {
         cardTableView.register(nibName, forCellReuseIdentifier: "tableCell")
         configureHeaderView()
         loadData()
+        
+        cardTableView.register(CardMargin.self, forHeaderFooterViewReuseIdentifier: "cardMargin")
     }
+    
     @objc func didRecieveTestNotification(_ notification: Notification) {
         if segueInfo == SegueIdentifier.WillDo.rawValue {
             guard let userInfo = notification.userInfo?["TodoCount"] else { return }
@@ -75,7 +79,7 @@ class ToDoViewController: UIViewController {
     
     //MARK: - DataSource Method
     private func setDelegateAndDataSource() {
-        cardTableView.delegate = self
+        cardTableView.delegate = toDoDelegate
         if segueInfo == SegueIdentifier.WillDo.rawValue {
             cardTableView.dataSource = willDoDataSource
         } else if segueInfo == SegueIdentifier.Doing.rawValue {
