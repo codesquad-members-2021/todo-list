@@ -42,6 +42,10 @@ class Done: BoardManageable, CardFactory {
         return self.title
     }
     
+    func editCard(_ card: CardManageable, index: Int) {
+        self.board.editCard(at: index, for: card)
+    }
+    
     static func makeBoard(cards: [CardManageable]) -> BoardManageable {
         return Done(board: Board(cards: cards))
     }

@@ -12,7 +12,8 @@ protocol CardNetworkManagerProtocol: class {
     var networkManager: HttpMethodProtocol { get }
 
     func getCards(state: State) -> AnyPublisher<[Card], Error>
-    func postCards(title: String, contents: String) -> AnyPublisher<[Card], Error>
+    func postCard(columnId: Int, title: String, contents: String) -> AnyPublisher<[Card], Error>
+    func putCard(id: Int, title: String, contents: String) -> AnyPublisher<[Card], Error>
 }
 
 class CardNetworkManager: CardNetworkManagerProtocol {
@@ -32,14 +33,15 @@ class CardNetworkManager: CardNetworkManagerProtocol {
         return networkManager.get(type: [Card].self, url: endpoint.url)
     }
     
-    func postCards(title: String, contents: String) -> AnyPublisher<[Card], Error> {
-        return networkManager.post(title: "해위", contents: "해위2", url: URL(string: "http://localhost:3000/cards/2")!)
+    func postCard(columnId: Int, title: String, contents: String) -> AnyPublisher<[Card], Error> {
+        let endpoint = Endpoint.add(columnId: columnId)
+        
+        return networkManager.post(title: title, contents: contents, url: endpoint.url)
     }
-}
-
-struct postTest: Codable {
-    var id: Int?
-    var title: String
-    var contents: String
-    var columnId: Int?
+    
+    func putCard(id: Int, title: String, contents: String) -> AnyPublisher<[Card], Error> {
+        let endpoint = Endpoint.update(id: id)
+        
+        return networkManager.post(title: title, contents: contents, url: endpoint.url)
+    }
 }

@@ -49,7 +49,12 @@ class InputViewController: UIViewController {
     }
     
     func bind() {
-        cardViewModel?.attachViewEventListener(loadData: loadDataSubject.eraseToAnyPublisher(), columnId: self.columnId ?? 0)
+        if mode == "add" {
+        cardViewModel?.addEventListener(loadData: loadDataSubject.eraseToAnyPublisher(), columnId: self.columnId ?? 0)
+        }
+        else {
+            cardViewModel?.editEventListener(loadData: loadDataSubject.eraseToAnyPublisher(), columnId: self.columnId ?? 0, id: self.id ?? 0)
+        }
     }
     
     @IBAction func cancelButtonTapped(_ sender: UIButton) {

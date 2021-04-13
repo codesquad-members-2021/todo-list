@@ -12,6 +12,8 @@ protocol CardFactory {
 }
 
 class ToDo: BoardManageable, CardFactory {
+
+    
     private var board: Board
     private let title = "해야하는 일"
     
@@ -44,6 +46,10 @@ class ToDo: BoardManageable, CardFactory {
     
     func getTitle() -> String {
         return self.title
+    }
+    
+    func editCard(_ card: CardManageable, index: Int) {
+        self.board.editCard(at: index, for: card)
     }
     
     static func makeBoard(cards: [CardManageable]) -> BoardManageable {

@@ -8,6 +8,7 @@
 import Foundation
 
 class Doing: BoardManageable, CardFactory {
+ 
     private var board: Board
     private let title = "하고 있는 일"
     
@@ -40,6 +41,10 @@ class Doing: BoardManageable, CardFactory {
     
     func getTitle() -> String {
         return self.title
+    }
+    
+    func editCard(_ card: CardManageable, index: Int) {
+        self.board.editCard(at: index, for: card)
     }
     
     static func makeBoard(cards: [CardManageable]) -> BoardManageable {
