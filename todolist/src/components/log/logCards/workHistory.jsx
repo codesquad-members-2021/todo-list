@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import WorkHistoryStyle from './workHistory.style';
 
 const WorkHistory = ({ columnTitle, cardTitle, action }) => {

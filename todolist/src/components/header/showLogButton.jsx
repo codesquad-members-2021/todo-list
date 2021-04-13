@@ -6,8 +6,9 @@ const MenuBtn = styled(menuBtn)`
   position: absolute;
   width: 24px;
   height: 24px;
-  left: 1200px;
-  top: 44px;
+  top: 50px;
+  right: 100px;
+  cursor: pointer;
 `;
 
 const ShowLogButton = ({renderLoghandler} ) => {

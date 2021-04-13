@@ -29,7 +29,6 @@ const App = () => {
       <Header renderLoghandler={renderLoghandler} />
       <Body />
       {show ? <Log handleLogRender={handleLogRender} /> : null}
-      {/* <MenuBtn className="show-log-button" onClick={() => setShow(!show)} /> */}
     </div>
   );
 };
