@@ -44,17 +44,16 @@ public class ColumnService {
     }
 
     @Transactional
-    public boolean delete(Long columnId, Long cardId) {
+    public void deleteCard(Long columnId, Long cardId) {
         Project project = projectRepository.findById(1L).orElseThrow(NotFoundProjectException::new);
         Columns columns = columnRepository.findById(columnId).orElseThrow(NotFoundColumnException::new);
         columns.deleteCard(cardId);
         updateColumn(columns, project);
         projectRepository.save(project);
-        return true;
     }
 
     @Transactional
-    public Card updateCard(Long columnId, Long cardId, Card card) {
+    public void updateCard(Long columnId, Long cardId, Card card) {
         Project project = projectRepository.findById(1L).orElseThrow(NotFoundProjectException::new);
         Columns columns = columnRepository.findById(columnId).orElseThrow(NotFoundColumnException::new);
         Card updatedCard = null;
@@ -66,7 +65,6 @@ public class ColumnService {
         }
         updateColumn(columns, project);
         projectRepository.save(project);
-        return updatedCard;
     }
 
     @Transactional
