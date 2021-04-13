@@ -12,7 +12,7 @@ public class ApiProjectController {
 
     private final ProjectRepository projectRepository;
 
-    @GetMapping("")
+    @GetMapping("/projects")
     public ResponseEntity<?> getProjects() {
         return ResponseEntity.ok(projectRepository.findById(1L).orElseThrow(IllegalArgumentException::new));
     }
