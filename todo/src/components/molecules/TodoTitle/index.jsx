@@ -17,13 +17,13 @@ const LeftDiv = styled.div`
   place-items: center;
 `;
 
-const TodoTitle = ({ children, ...props }) => (
+const TodoTitle = ({ children, itemCount }) => (
   <WrapDiv>
     <LeftDiv>
       <Span _fontSize="20px" _fontWeight="700">
         {children}
       </Span>
-      <Label>10</Label>
+      <Label>{itemCount}</Label>
     </LeftDiv>
     <div>
       <ButtonList isIcon={true}></ButtonList>
