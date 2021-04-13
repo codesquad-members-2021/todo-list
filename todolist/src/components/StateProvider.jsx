@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import NavBar from "./navBar/NavBar";
-import Column from "./column/Column";
+import Board from "./Board";
 
 function StateProvider(props) {
   const [log, setLog] = useState([
@@ -24,7 +24,7 @@ function StateProvider(props) {
   return (
     <>
       <NavBar logs={log} />
-      <Column onLog={handleLog} />
+      <Board onLog={handleLog} />
     </>
   );
 }
