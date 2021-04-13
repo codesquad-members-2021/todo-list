@@ -18,6 +18,14 @@
       "columnTitle": "해야할 일",
       "cards": [
         {
+          "cardTitle": "bbdfa",
+          "cardContents": "dfasdf"
+        },
+        {
+          "cardTitle": "aaa",
+          "cardContents": "bbbb"
+        },
+        {
           "cardTitle": "js공부",
           "cardContents": "this공부\nclosure공부\n재귀공부"
         },
@@ -85,6 +93,22 @@
       "cardTitle": "react공부",
       "action": "삭제",
       "time": "Tue Apr 8 2021 20:18:34 GMT+0900 (대한민국 표준시)"
+    },
+    {
+      "user": "Junami",
+      "columnTitle": "완료한 일",
+      "cardTitle": "react공부",
+      "action": "수정",
+      "time": "2021-04-13T16:27:53.825Z",
+      "id": 4
+    },
+    {
+      "user": "Goody",
+      "columnTitle": "완료한 일",
+      "cardTitle": "react공부",
+      "action": "수정",
+      "time": "2021-04-13T16:28:40.008Z",
+      "id": 5
     }
   ]
 }

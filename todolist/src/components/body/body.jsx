@@ -5,7 +5,7 @@ import FabButton from "./fabButton/fabButton.jsx";
 import { getData, getRandomUser } from "../../utils/axios.js";
 import BodyStyle from "./body.style";
 import CardSectionStyle from "./cardSection.style";
-import { patchData } from "../../utils/axios.js";
+import { patchData, postData } from "../../utils/axios.js";
 
 const Body = () => {
   const [columnData, setColumnData] = useState([]);
@@ -21,11 +21,24 @@ const Body = () => {
     }
   };
 
+  const postLogData = (id) => {
+    const logUrl = `http://localhost:3002/log/`;
+    let data = {
+      "user": user,
+      "columnTitle": "완료한 일",
+      "cardTitle": "카드 제목",
+      "action": "수정",
+      "time": new Date()
+    }
+    postData(logUrl, data)
+  }
+
   const postCardData = ({ target: { id } }) => {
     const url = `http://localhost:3002/column/${id}`;
     let newCards = [...columnData[id - 1].cards];
     newCards.unshift(card);
     patchData(url, { cards: newCards });
+    postLogData(id);
     getColumnData();
   };
 

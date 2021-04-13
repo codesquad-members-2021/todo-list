@@ -7,7 +7,7 @@ import LogCardsWrapper from './logCardsWrapper.style';
 
 const Log = ( { handleLogRender }) => {
   const [logCards, setLogCards] = useState([]);
-
+  const reversedLogCards = logCards.reverse();
   const getLogData = () => {
     getData("http://localhost:3002/log") //
       .then((res) => setLogCards(res.data));
@@ -21,9 +21,9 @@ const Log = ( { handleLogRender }) => {
     <LogStyle className="log">
       <LogHeader handleLogRender={ handleLogRender } />
         <LogCardsWrapper>
-      {logCards.map((logData, index) => (
-        <LogCards key={index} logData={logData} />
-      ))}
+        {reversedLogCards.map((logData, index) => (
+          <LogCards key={index} logData={logData} />
+        ))}
         </LogCardsWrapper>
     </LogStyle>
   );
