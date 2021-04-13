@@ -17,7 +17,7 @@ class CardViewController: UIViewController ,CardDelegate {
     @IBOutlet weak var inProgressBadge: BadgeView!
     @IBOutlet weak var doneBadge: BadgeView!
     
-    private var cardManager = CardManager()
+    private var cardManager = CardManager.shared
     
     private var todoDataSource = ToDoTableViewDataSource()
     private var todoDelegate = ToDoTableViewDelegate()
@@ -38,16 +38,13 @@ class CardViewController: UIViewController ,CardDelegate {
     
     func configureDelegate() {
         toDoTableView.delegate = todoDelegate
-        todoDataSource.delegate = cardManager
         toDoTableView.dataSource = todoDataSource
         
         inProgressTableView.delegate = inProgressDelegate
-        inProgressDataSource.delegate = cardManager
         inProgressTableView.dataSource = inProgressDataSource
         
         
         doneTableView.delegate = doneDelegate
-        doneDataSource.delegate = cardManager
         doneTableView.dataSource = doneDataSource
     }
 
