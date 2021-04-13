@@ -18,9 +18,8 @@ class SectionViewController: UIViewController, DataPassable {
     @IBOutlet weak private var TODOCount: UILabel!
     @IBOutlet weak private var addButton: UIButton!
     private var sectionMode: SectionMode?
-    private var exportViewModel: AppearViewModel!
+    private var appearViewModel: AppearViewModel!
     private var changeCardViewModel: ChangeCardViewModel!
-    private var cards: [Card]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,18 +29,18 @@ class SectionViewController: UIViewController, DataPassable {
         self.setTODOTableView()
         
         guard let sectionMode = sectionMode else { return }
-        self.exportViewModel = AppearViewModel(mode: sectionMode)
+        self.appearViewModel = AppearViewModel(mode: sectionMode)
         self.changeCardViewModel = ChangeCardViewModel()
         
         self.changeCardViewModel.addCardHandler = { card in
-            self.cards.append(card)
+            self.appearViewModel.frontEnqueue(card: card)
             DispatchQueue.main.async {
                 self.TODOTableView.reloadData()
             }
         }
         
-        self.exportViewModel.passingDataHandler = { cards in
-            self.cards = cards
+        self.appearViewModel.passingDataHandler = { cards in
+            let cards = self.appearViewModel.cards
             DispatchQueue.main.async {
                 self.TODOCount.text = "\(cards.count)"
                 self.TODOTableView.reloadData()
@@ -74,7 +73,7 @@ class SectionViewController: UIViewController, DataPassable {
     }
     
     func passData() -> [Card]? {
-        return self.cards
+        return self.appearViewModel.cards
     }
     
     func setSectionMode(mode: SectionMode) {

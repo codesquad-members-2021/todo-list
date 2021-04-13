@@ -3,65 +3,74 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" restorationIdentifier="HistoryCell" translatesAutoresizingMaskIntoConstraints="NO" id="iN0-l3-epB" customClass="HistoryCell" customModule="TODOList" customModuleProvider="target">
+        <view contentMode="scaleToFill" verticalCompressionResistancePriority="749" restorationIdentifier="HistoryCell" translatesAutoresizingMaskIntoConstraints="NO" id="iN0-l3-epB" customClass="HistoryCell" customModule="TODOList" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="332" height="137"/>
             <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@sam" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ycg-y4-xiB">
+                    <rect key="frame" x="66" y="14" width="250" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="Q0o-Uo-FBa"/>
+                        <constraint firstAttribute="width" constant="250" id="oj6-Z0-oUc"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="749" text="~~~를 ~~~일에서 ~~~일로 이동했습니다. 높이가 제대로 먹히는지 확인하기 위해서 글을 많이많이 써보도록 해보겠습니다." textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bGt-eu-1Ue">
+                    <rect key="frame" x="66" y="46" width="250" height="46"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="250" id="K3X-0k-2gH"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="Onx-5k-pyU"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="1분 전" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hCJ-iV-m0U">
+                    <rect key="frame" x="66" y="104" width="250" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" systemColor="systemGray3Color"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="moon.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="UsS-jU-RPz">
-                    <rect key="frame" x="16" y="17" width="40" height="38.5"/>
+                    <rect key="frame" x="16" y="15" width="40" height="38.5"/>
                     <color key="tintColor" systemColor="systemTealColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="1m8-pC-x7w"/>
                         <constraint firstAttribute="width" constant="40" id="xFi-GR-73I"/>
                     </constraints>
                 </imageView>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="PbJ-li-gFy">
-                    <rect key="frame" x="74" y="16" width="250" height="89"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@sam" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jeY-HM-WbI">
-                            <rect key="frame" x="0.0" y="0.0" width="250" height="19.5"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="~~~를 ~~~일에서 ~~~일로 이동" textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CY3-zp-GVd">
-                            <rect key="frame" x="0.0" y="35.5" width="250" height="20.5"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1분 전" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SiC-Kw-KNg">
-                            <rect key="frame" x="0.0" y="72" width="250" height="17"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <color key="textColor" systemColor="systemGray3Color"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                </stackView>
             </subviews>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="UsS-jU-RPz" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="ENR-Or-1Eq"/>
-                <constraint firstItem="PbJ-li-gFy" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" constant="-8" id="FkI-Ix-dE7"/>
-                <constraint firstItem="PbJ-li-gFy" firstAttribute="top" secondItem="UsS-jU-RPz" secondAttribute="top" id="IXk-5h-IE3"/>
-                <constraint firstAttribute="top" secondItem="UsS-jU-RPz" secondAttribute="top" constant="-16" id="VDh-8T-lXv"/>
-                <constraint firstItem="PbJ-li-gFy" firstAttribute="leading" secondItem="UsS-jU-RPz" secondAttribute="trailing" constant="18" id="aR3-7V-D2E"/>
+                <constraint firstItem="ycg-y4-xiB" firstAttribute="leading" secondItem="UsS-jU-RPz" secondAttribute="trailing" constant="10" id="39X-1o-UVD"/>
+                <constraint firstItem="ycg-y4-xiB" firstAttribute="top" secondItem="UsS-jU-RPz" secondAttribute="top" id="5J5-rN-g4E"/>
+                <constraint firstItem="bGt-eu-1Ue" firstAttribute="trailing" secondItem="ycg-y4-xiB" secondAttribute="trailing" id="7oE-2a-5uH"/>
+                <constraint firstItem="UsS-jU-RPz" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="ENR-Or-1Eq"/>
+                <constraint firstItem="bGt-eu-1Ue" firstAttribute="leading" secondItem="ycg-y4-xiB" secondAttribute="leading" id="G0B-BB-qZN"/>
+                <constraint firstItem="hCJ-iV-m0U" firstAttribute="leading" secondItem="bGt-eu-1Ue" secondAttribute="leading" id="Mkk-gS-gpW"/>
+                <constraint firstAttribute="top" secondItem="UsS-jU-RPz" secondAttribute="top" constant="-14" id="Poc-Wh-9Tb"/>
+                <constraint firstAttribute="trailing" secondItem="bGt-eu-1Ue" secondAttribute="trailing" constant="16" id="bqW-50-wja"/>
+                <constraint firstItem="hCJ-iV-m0U" firstAttribute="trailing" secondItem="ycg-y4-xiB" secondAttribute="trailing" id="doA-xd-8zL"/>
+                <constraint firstItem="hCJ-iV-m0U" firstAttribute="top" secondItem="bGt-eu-1Ue" secondAttribute="bottom" constant="12" id="dzr-X2-xcj"/>
+                <constraint firstAttribute="bottom" secondItem="hCJ-iV-m0U" secondAttribute="bottom" constant="16" id="fYc-u7-PsT"/>
+                <constraint firstItem="bGt-eu-1Ue" firstAttribute="top" secondItem="ycg-y4-xiB" secondAttribute="bottom" constant="12" id="gEE-mg-lOZ"/>
+                <constraint firstAttribute="trailing" secondItem="ycg-y4-xiB" secondAttribute="trailing" constant="16" id="r3g-IP-5eQ"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="content" destination="CY3-zp-GVd" id="RQj-20-Uls"/>
+                <outlet property="contents" destination="bGt-eu-1Ue" id="PyL-l3-pRq"/>
                 <outlet property="stateImageView" destination="UsS-jU-RPz" id="P9I-Qq-3tF"/>
-                <outlet property="time" destination="SiC-Kw-KNg" id="nW2-ks-Wfx"/>
-                <outlet property="user" destination="jeY-HM-WbI" id="dzh-Bk-MnM"/>
+                <outlet property="time" destination="hCJ-iV-m0U" id="Msd-2G-92f"/>
+                <outlet property="user" destination="ycg-y4-xiB" id="z65-cq-pQh"/>
             </connections>
-            <point key="canvasLocation" x="140.57971014492756" y="396.76339285714283"/>
+            <point key="canvasLocation" x="149" y="365"/>
         </view>
     </objects>
     <resources>
