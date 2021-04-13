@@ -8,9 +8,8 @@ export default function HistoryItem ({ author, text, time, profile }) {
     border: 1px solid black;
     padding: 0.5rem 0;
     display: flex;
-
   `
-  const HistoryItemtTextBlock = styled.div`
+  const HistoryItemTextBlock = styled.div`
     div {
       margin-bottom: 0.4rem;
     }
@@ -24,15 +23,25 @@ export default function HistoryItem ({ author, text, time, profile }) {
     font-size: 2.8rem;
   `
 
+  const Id = styled.div`
+  font-size: 0.8rem;`
+
+  const Contents = styled.div`
+  font-size: 0.8rem;`
+
+  const Time = styled.div`
+    font-size: 0.7rem;
+    color: gray;
+  `
+
   return (
     <HistoryItemBlock>
-    
       <HistoryItemProfileBlock>{profile}</HistoryItemProfileBlock>
-      <HistoryItemtTextBlock>
-        <div>@{author}</div>
-        <div dangerouslySetInnerHTML={{ __html: text }}></div>
-        <div>{time}</div>
-      </HistoryItemtTextBlock>
+      <HistoryItemTextBlock>
+        <Id>@{author}</Id>
+        <Contents dangerouslySetInnerHTML={{ __html: text }}></Contents>
+        <Time>{time}</Time>
+      </HistoryItemTextBlock>
     </HistoryItemBlock>
   )
 }
