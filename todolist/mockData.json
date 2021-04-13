@@ -71,7 +71,7 @@
       "columnTitle": "해야할 일",
       "cardTitle": "js공부",
       "action": "등록",
-      "time": "1618217312287",
+      "time": "Tue Apr 13 2021 20:29:00 GMT+0900 (대한민국 표준시)",
       "temp": "04121714"
     },
     {
@@ -80,7 +80,7 @@
       "columnTitle": "하고있는 일",
       "cardTitle": "git공부",
       "action": "수정",
-      "time": "1618217312287"
+      "time": "Tue Apr 10 2021 20:18:34 GMT+0900 (대한민국 표준시)"
     },
     {
       "id": 3,
@@ -88,7 +88,7 @@
       "columnTitle": "완료한 일",
       "cardTitle": "react공부",
       "action": "삭제",
-      "time": "1618217312287"
+      "time": "Tue Apr 8 2021 20:18:34 GMT+0900 (대한민국 표준시)"
     }
   ]
 }
