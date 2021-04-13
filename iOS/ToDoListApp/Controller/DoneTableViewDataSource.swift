@@ -32,4 +32,11 @@ class DoneTableViewDataSource: NSObject, UITableViewDataSource {
         }
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            cardManager.remove(states: .Done, at: indexPath.section)
+            tableView.reloadData()
+        }
+    }
 }
