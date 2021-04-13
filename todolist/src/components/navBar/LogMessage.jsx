@@ -7,7 +7,7 @@ function LogMessage({ log }) {
   if (log.modeType === "edit")
     message = `<strong><${log.columnTitle}></strong> 내용이 변경되었습니다.`;
   if (log.modeType === "delete")
-    message = `<strong><${log.columnTitle}></strong> 삭제되었습니다.`;
+    message = `<strong><${log.columnTitle}></strong>가 삭제되었습니다.`;
   return <div dangerouslySetInnerHTML={{ __html: message }} />;
 }
 
