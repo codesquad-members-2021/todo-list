@@ -1,78 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import ColumnContainer from '../column/ColumnContainer';
-import Main from "../../components/main/Main";
+import Main from '../../components/main/Main';
 
-const MainContainer = ({ /* ...props */ }) => {
-    // const [list, setList] = useState([
-    //     {
-    //         title: '대충제목',
-    //         body: '대충내용',
-    //         author: 'web',
-    //     },
-    //     {
-    //         title: '제목',
-    //         body: '대충ㅇㅇㅇㅇㅇㅇㅇㅇㅇ내용',
-    //         author: 'web',
-    //     },
-    // ]);
+//prettier-ignore
+const MainContainer = () => {
+    const [columnData, setColumnData] = useState([]);
+    const [columns, setColumns] = useState();
 
-    const [columnData, setColumnData] = useState([
-        {
-            title: "대충 칼럼 제목 1 (성 천재)",
-            list : [
-                {
-                    title: '라노',
-                    body: '리프레시하기',
-                    author: 'web',
-                },
-                {
-                    title: '성',
-                    body: '닉네임 어떻게하면 자연스럽게 몰래 바꿀지 고민하기',
-                    author: 'web',
-                },
-                {
-                    title: '성&라노',
-                    body: 'CSSSSSSSSSSSSSSSSS',
-                    author: 'web',
-                },
-            ]
-        },
-        {
-            title: "대충 칼럼 제목 2",
-            list : [
-                {
-                    title: '낙산공원',
-                    body: '가고싶다',
-                    author: 'web',
-                },
-                {
-                    title: '여의도한강공원에서',
-                    body: '치맥 먹고싶다',
-                    author: 'web',
-                },
-            ]
-        },
-        {
-            title: "제목이몇글자면줄바꿈이될까",
-            list : [
-                {
-                    title: '판교가기',
-                    body: '내년안에 가야지',
-                    author: 'web',
-                }
-            ]
-        }
-    ]);
+    useEffect(() => axios.get('/api/columns').then((json) => setColumnData(() => json.data.columns)), []);
 
-    const [columns, setColumns] = useState(
-        columnData.map(({title, list}, i) => <li key={i}><ColumnContainer title={title} list={list} /></li>));
+    useEffect(() => {
+        setColumns(() =>
+            columnData.map(({ columnId, name, cards }, i) => (
+                <li key={i}><ColumnContainer columnId={columnId} title={name} list={cards}/></li>
+            )),
+        );
+    }, [columnData]);
 
-    return (
-        <Main>{columns}</Main>
-        // 
-        // <ColumnContainer title="Column title" list={list} />
-        // <ColumnContainer title="Column title" list={list} />
-    );
+    return <Main>{columns}</Main>;
 };
 
 export default MainContainer;
