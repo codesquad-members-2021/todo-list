@@ -2,7 +2,7 @@ package com.example.todolist.web.dto;
 
 import com.example.todolist.domain.user.User;
 
-public class ResponseLoginUserDto {
+public class ResponseUserDto {
 
     private Long id;
 
@@ -12,9 +12,9 @@ public class ResponseLoginUserDto {
 
     private String email;
 
-    public ResponseLoginUserDto() {}
+    public ResponseUserDto() {}
 
-    public ResponseLoginUserDto(User user) {
+    public ResponseUserDto(User user) {
         this.id = user.getId();
         this.userId = user.getUserId();
         this.name = user.getName();
@@ -39,7 +39,7 @@ public class ResponseLoginUserDto {
 
     @Override
     public String toString() {
-        return "ResponseLoginUserDto{" +
+        return "ResponseUserDto{" +
                 "id=" + id +
                 ", userId='" + userId + '\'' +
                 ", name='" + name + '\'' +

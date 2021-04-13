@@ -1,9 +1,10 @@
 package com.example.todolist.web;
 
+import com.example.todolist.domain.user.User;
 import com.example.todolist.service.UserService;
 import com.example.todolist.web.dto.RequestLoginUserDto;
 import com.example.todolist.web.dto.RequestSignInUserDto;
-import com.example.todolist.web.dto.ResponseLoginUserDto;
+import com.example.todolist.web.dto.ResponseUserDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
@@ -25,23 +26,23 @@ public class UserController {
     }
 
     @PostMapping("/signIn")
-    public void signIn(@RequestBody RequestSignInUserDto requestUserDto) {
+    public ResponseUserDto signIn(@RequestBody RequestSignInUserDto requestUserDto) {
         logger.info("회원가입 요청");
-        userService.signIn(requestUserDto);
+        return userService.signIn(requestUserDto);
     }
 
     @PostMapping("/login")
-    public ResponseLoginUserDto login(@RequestBody RequestLoginUserDto requestUserDto, HttpSession session) {
+    public ResponseUserDto login(@RequestBody RequestLoginUserDto requestUserDto, HttpSession session) {
         logger.info("로그인 요청");
-        ResponseLoginUserDto responseUserDto = userService.login(requestUserDto);
-        session.setAttribute(USER_SESSION_KEY, responseUserDto);
-        return responseUserDto;
+        User user = userService.login(requestUserDto);
+        session.setAttribute(USER_SESSION_KEY, user);
+        return new ResponseUserDto(user);
     }
 
     @GetMapping("/logout")
     public void logout(HttpSession session) {
         logger.info("로그아웃 요청");
-        session.removeAttribute("sessionUser");
+        session.removeAttribute(USER_SESSION_KEY);
     }
 
 }

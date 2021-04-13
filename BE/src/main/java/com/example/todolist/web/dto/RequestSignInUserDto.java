@@ -1,7 +1,8 @@
 package com.example.todolist.web.dto;
 
 import com.example.todolist.domain.user.User;
-import com.example.todolist.exception.EntityNotCreateException;
+import com.example.todolist.exception.EntityRelatedException;
+import com.example.todolist.exception.ErrorMessage;
 
 public class RequestSignInUserDto {
 
@@ -15,7 +16,7 @@ public class RequestSignInUserDto {
 
     public User toEntity() {
         if (userId == null || password == null || name == null || email == null) {
-            throw new EntityNotCreateException();
+            throw new EntityRelatedException(ErrorMessage.ENTITY_NOT_CREATE);
         }
         return new User(userId, password, name, email);
     }
