@@ -33,10 +33,10 @@ public class CardController {
         return updateCard;
     }
 
-    @DeleteMapping("/{cardId}")
-    public void deleteCard(@PathVariable Long boardId, @PathVariable Long cardId) {
+    @DeleteMapping
+    public void deleteCard(Card card) {
         Board board = boardRepository.findById(boardId).orElseThrow(IllegalArgumentException::new);
-        board.deleteCard(cardId);
+        board.deleteCard(card);
         boardRepository.save(board);
     }
 

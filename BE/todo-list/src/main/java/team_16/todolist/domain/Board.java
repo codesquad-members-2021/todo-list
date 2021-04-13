@@ -51,12 +51,8 @@ public class Board {
         return cards;
     }
 
-    public void deleteCard(Long cardId) {
-        for (Card card : cards) {
-            if (card.getId() == cardId) {
-                cards.remove(card);
-            }
-        }
+    public void deleteCard(Card card) {
+        cards.remove(card);
     }
 
     public Card updateCard(Long cardId, Card updateCard) {
