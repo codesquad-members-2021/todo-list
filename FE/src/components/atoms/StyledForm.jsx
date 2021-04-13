@@ -4,6 +4,7 @@ const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  margin-bottom: 1rem;
   padding: 16px;
   width: 308px;
   height: auto;
