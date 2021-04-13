@@ -8,9 +8,7 @@
 import Foundation
 import UIKit
 
-class DoingDataSource : NSObject {
-    private(set) var doingDTO = DoingDTO()
-}
+class DoingDataSource : NSObject { }
 
 extension DoingDataSource : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection
@@ -19,7 +17,7 @@ extension DoingDataSource : UITableViewDataSource {
     }
    
     func numberOfSections(in tableView: UITableView) -> Int {
-        return doingDTO.count()
+        return DoingDTO.shared.count()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -27,7 +25,7 @@ extension DoingDataSource : UITableViewDataSource {
             return UITableViewCell()
         }
         
-        let task = doingDTO.configure(index: indexPath.section)
+        let task = DoingDTO.shared.configure(index: indexPath.section)
         cell.configure(task: task)
         return cell
     }

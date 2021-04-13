@@ -8,6 +8,8 @@
 import Foundation
 
 class DoneDTO {
+    static let shared = DoneDTO()
+    
     private var tasks: [Task]
     
     init() {
@@ -28,5 +30,9 @@ class DoneDTO {
     
     func insert(task: Task) {
         tasks.insert(task, at: 0)
+    }
+    
+    func delete(index: Int) {
+        tasks.remove(at: index)
     }
 }

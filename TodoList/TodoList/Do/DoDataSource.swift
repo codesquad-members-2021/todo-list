@@ -7,9 +7,7 @@
 
 import UIKit
 
-class DoDataSource : NSObject {
-    private(set) var doDTO = DoDTO()
-}
+class DoDataSource : NSObject { }
 
 extension DoDataSource : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection
@@ -18,7 +16,7 @@ extension DoDataSource : UITableViewDataSource {
     }
    
     func numberOfSections(in tableView: UITableView) -> Int {
-        return doDTO.count()
+        return DoDTO.shared.count()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -26,7 +24,7 @@ extension DoDataSource : UITableViewDataSource {
             return UITableViewCell()
         }
         
-        let task = doDTO.configure(index: indexPath.section)
+        let task = DoDTO.shared.configure(index: indexPath.section)
         cell.configure(task: task)
 
         return cell

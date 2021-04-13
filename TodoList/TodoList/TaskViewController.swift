@@ -29,12 +29,15 @@ class TaskViewController: UIViewController {
     func setupUseCase() {
         UseCase().loadTasks { [weak self] tasks in
             self?.taskDTO.filter(tasks: tasks)
-            if let dataSource = self?.dataSource as? DoDataSource {
-                dataSource.doDTO.update(tasks: self?.taskDTO.todos ?? [])
-            } else if let dataSource = self?.dataSource as? DoingDataSource {
-                dataSource.doingDTO.update(tasks: self?.taskDTO.doing ?? [])
-            } else if let dataSource = self?.dataSource as? DoneDataSource {
-                dataSource.doneDTO.update(tasks: self?.taskDTO.done ?? [])
+            switch self?.dataSource {
+            case is DoDataSource:
+                DoDTO.shared.update(tasks: self?.taskDTO.todos ?? [])
+            case is DoingDataSource:
+                DoingDTO.shared.update(tasks: self?.taskDTO.doing ?? [])
+            case is DoneDataSource:
+                DoneDTO.shared.update(tasks: self?.taskDTO.done ?? [])
+            default:
+                break
             }
             DispatchQueue.main.async { [weak self] in
                 self?.taskTableView.reloadData()
