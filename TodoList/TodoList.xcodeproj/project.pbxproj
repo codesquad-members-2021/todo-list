@@ -14,7 +14,7 @@
 		BF7EB276261C3CC3003EB682 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF7EB274261C3CC3003EB682 /* LaunchScreen.storyboard */; };
 		BF7EB281261C3CC3003EB682 /* TodoListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7EB280261C3CC3003EB682 /* TodoListTests.swift */; };
 		BF7EB28C261C3CC3003EB682 /* TodoListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7EB28B261C3CC3003EB682 /* TodoListUITests.swift */; };
-		BF7EB2A0261C418B003EB682 /* DoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7EB29F261C418B003EB682 /* DoViewController.swift */; };
+		BF7EB2A0261C418B003EB682 /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7EB29F261C418B003EB682 /* Notification+Extension.swift */; };
 		BFA75568261FE696008FB904 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA75567261FE696008FB904 /* HTTPMethod.swift */; };
 		BFA7556D261FEBE2008FB904 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA7556C261FEBE2008FB904 /* AddViewController.swift */; };
 		BFBF30E4261D4E65000BDDE3 /* DoingDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBF30E3261D4E65000BDDE3 /* DoingDataSource.swift */; };
@@ -24,6 +24,8 @@
 		D09A5811262561CC00DA620A /* DoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09A5810262561CC00DA620A /* DoDelegate.swift */; };
 		D09A581926256A5800DA620A /* DoingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09A581826256A5800DA620A /* DoingDelegate.swift */; };
 		D09A581E26256A7F00DA620A /* DoneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09A581D26256A7F00DA620A /* DoneDelegate.swift */; };
+		D09A58352625748800DA620A /* DragDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09A58342625748800DA620A /* DragDelegate.swift */; };
+		D09A584C2625783100DA620A /* DropDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09A584B2625783100DA620A /* DropDelegate.swift */; };
 		D0E6A9D72624128B00E9B023 /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E6A9D62624128B00E9B023 /* ActivityTableViewCell.swift */; };
 		D0E6A9DF262414B600E9B023 /* CardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E6A9DE262414B600E9B023 /* CardButton.swift */; };
 		D0E6A9EC26243AC600E9B023 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E6A9EB26243AC600E9B023 /* Router.swift */; };
@@ -71,7 +73,7 @@
 		BF7EB287261C3CC3003EB682 /* TodoListUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodoListUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF7EB28B261C3CC3003EB682 /* TodoListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListUITests.swift; sourceTree = "<group>"; };
 		BF7EB28D261C3CC3003EB682 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BF7EB29F261C418B003EB682 /* DoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoViewController.swift; sourceTree = "<group>"; };
+		BF7EB29F261C418B003EB682 /* Notification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extension.swift"; sourceTree = "<group>"; };
 		BFA75567261FE696008FB904 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		BFA7556C261FEBE2008FB904 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		BFBF30E3261D4E65000BDDE3 /* DoingDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoingDataSource.swift; sourceTree = "<group>"; };
@@ -81,6 +83,8 @@
 		D09A5810262561CC00DA620A /* DoDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoDelegate.swift; sourceTree = "<group>"; };
 		D09A581826256A5800DA620A /* DoingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoingDelegate.swift; sourceTree = "<group>"; };
 		D09A581D26256A7F00DA620A /* DoneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneDelegate.swift; sourceTree = "<group>"; };
+		D09A58342625748800DA620A /* DragDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DragDelegate.swift; path = TodoList/DragDelegate.swift; sourceTree = SOURCE_ROOT; };
+		D09A584B2625783100DA620A /* DropDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDelegate.swift; sourceTree = "<group>"; };
 		D0E6A9D62624128B00E9B023 /* ActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewCell.swift; sourceTree = "<group>"; };
 		D0E6A9DE262414B600E9B023 /* CardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardButton.swift; sourceTree = "<group>"; };
 		D0E6A9EB26243AC600E9B023 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
@@ -146,21 +150,19 @@
 			isa = PBXGroup;
 			children = (
 				BF7EB26F261C3CBF003EB682 /* Main.storyboard */,
-				D09A57F126253ADB00DA620A /* TaskViewController.swift */,
 				D09A580B26254AF500DA620A /* TaskDTO.swift */,
-				D09A57E72625380A00DA620A /* MainViewController.swift */,
-				D0E6A9DE262414B600E9B023 /* CardButton.swift */,
-				D0E6A9D62624128B00E9B023 /* ActivityTableViewCell.swift */,
-				BF7EB269261C3CBF003EB682 /* AppDelegate.swift */,
-				BF7EB26B261C3CBF003EB682 /* SceneDelegate.swift */,
-				BFA7556C261FEBE2008FB904 /* AddViewController.swift */,
 				D0E6A9EB26243AC600E9B023 /* Router.swift */,
+				BF7EB29F261C418B003EB682 /* Notification+Extension.swift */,
+				D09A58342625748800DA620A /* DragDelegate.swift */,
+				D09A584B2625783100DA620A /* DropDelegate.swift */,
+				D09A5828262573C300DA620A /* Controllers */,
+				D09A5830262573EC00DA620A /* Views */,
+				D09A582C262573D800DA620A /* Apps */,
 				D0F41D3C261EEA580024D7B1 /* Do */,
 				BFBF30ED261D50CB000BDDE3 /* Doing */,
 				D0F41D752622E6620024D7B1 /* Done */,
 				D0F41D23261EA9900024D7B1 /* Network */,
 				BF7EB272261C3CC3003EB682 /* Assets.xcassets */,
-				BF7EB274261C3CC3003EB682 /* LaunchScreen.storyboard */,
 				BF7EB277261C3CC3003EB682 /* Info.plist */,
 			);
 			path = TodoList;
@@ -195,6 +197,35 @@
 			path = Doing;
 			sourceTree = "<group>";
 		};
+		D09A5828262573C300DA620A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D09A57F126253ADB00DA620A /* TaskViewController.swift */,
+				D09A57E72625380A00DA620A /* MainViewController.swift */,
+				BFA7556C261FEBE2008FB904 /* AddViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		D09A582C262573D800DA620A /* Apps */ = {
+			isa = PBXGroup;
+			children = (
+				BF7EB269261C3CBF003EB682 /* AppDelegate.swift */,
+				BF7EB26B261C3CBF003EB682 /* SceneDelegate.swift */,
+				BF7EB274261C3CC3003EB682 /* LaunchScreen.storyboard */,
+			);
+			path = Apps;
+			sourceTree = "<group>";
+		};
+		D09A5830262573EC00DA620A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D0E6A9DE262414B600E9B023 /* CardButton.swift */,
+				D0E6A9D62624128B00E9B023 /* ActivityTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		D0F41D23261EA9900024D7B1 /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -211,7 +242,6 @@
 			isa = PBXGroup;
 			children = (
 				D0F41D652622D04C0024D7B1 /* DoDTO.swift */,
-				BF7EB29F261C418B003EB682 /* DoViewController.swift */,
 				D0F41D4A261EEC360024D7B1 /* TaskTableViewCell.swift */,
 				D0F41D40261EEAFC0024D7B1 /* DoDataSource.swift */,
 				D09A5810262561CC00DA620A /* DoDelegate.swift */,
@@ -372,6 +402,7 @@
 				BFBF30E4261D4E65000BDDE3 /* DoingDataSource.swift in Sources */,
 				D09A57F226253ADB00DA620A /* TaskViewController.swift in Sources */,
 				D0F41D6E2622E6450024D7B1 /* DoneDTO.swift in Sources */,
+				D09A584C2625783100DA620A /* DropDelegate.swift in Sources */,
 				D0F41D4B261EEC360024D7B1 /* TaskTableViewCell.swift in Sources */,
 				D0F41D35261ED86E0024D7B1 /* UseCase.swift in Sources */,
 				D09A5811262561CC00DA620A /* DoDelegate.swift in Sources */,
@@ -380,11 +411,12 @@
 				D0F41D41261EEAFC0024D7B1 /* DoDataSource.swift in Sources */,
 				D0F41D28261EA9B50024D7B1 /* Task.swift in Sources */,
 				D09A581E26256A7F00DA620A /* DoneDelegate.swift in Sources */,
+				D09A58352625748800DA620A /* DragDelegate.swift in Sources */,
 				BFA75568261FE696008FB904 /* HTTPMethod.swift in Sources */,
 				BF7EB26A261C3CBF003EB682 /* AppDelegate.swift in Sources */,
 				D0E6A9DF262414B600E9B023 /* CardButton.swift in Sources */,
 				BF7EB26C261C3CBF003EB682 /* SceneDelegate.swift in Sources */,
-				BF7EB2A0261C418B003EB682 /* DoViewController.swift in Sources */,
+				BF7EB2A0261C418B003EB682 /* Notification+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

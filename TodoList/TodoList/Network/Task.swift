@@ -33,3 +33,7 @@ enum TaskState: String, Codable {
     case progress = "PROGRESS"
     case done = "DONE"
 }
+
+extension Task: Equatable {
+    //
+}

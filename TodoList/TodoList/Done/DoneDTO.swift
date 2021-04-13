@@ -35,4 +35,14 @@ class DoneDTO {
     func delete(index: Int) {
         tasks.remove(at: index)
     }
+    
+    func insert(index: Int, task: Task) {
+        tasks.insert(task, at: index)
+    }
+    
+    func filter(task: Task) {
+        tasks = tasks.filter {
+            return $0 != task
+        }
+    }
 }
