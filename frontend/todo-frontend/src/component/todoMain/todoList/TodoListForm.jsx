@@ -13,6 +13,7 @@ const TodoListForm = ({ addTodoItem, toggleForm }) => {
       id: cardId,
       title: inputTitleRef.current.value,
       content: inputContentRef.current.value,
+      date: Date.now(),
     };
     addTodoItem(newTodo.id, newTodo);
 

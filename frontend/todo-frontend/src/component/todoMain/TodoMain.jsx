@@ -7,7 +7,7 @@ const StyledTodoMain = styled.div`
   padding: 0 80px;
 `;
 
-const TodoMain = ({ datas }) => {
+const TodoMain = ({ datas, addLogItem }) => {
   const [todoColumns, setTodoColumns] = useState(datas.todoData);
 
   const deleteTodoColumn = (id) => {
@@ -18,7 +18,11 @@ const TodoMain = ({ datas }) => {
   };
 
   const todoColumneList = Object.values(todoColumns).map((data) => (
-    <TodoList data={data} deleteTodoColumn={deleteTodoColumn} />
+    <TodoList
+      data={data}
+      deleteTodoColumn={deleteTodoColumn}
+      addLogItem={addLogItem}
+    />
   ));
 
   return <StyledTodoMain>{todoColumneList}</StyledTodoMain>;

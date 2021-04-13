@@ -60,10 +60,16 @@ const logDatas = {
 
 const TodoTemplate = () => {
   const [logs, setLog] = useState(logDatas.logs);
+
+  //Add 함수 => newLog
+  const addLogItem = (newLog) => {
+    setLog((logs) => [newLog, ...logs]);
+  };
+
   return (
     <>
       <TodoHeader logs={logs} />
-      <TodoMain datas={datas} />
+      <TodoMain datas={datas} addLogItem={addLogItem} />
     </>
   );
 };

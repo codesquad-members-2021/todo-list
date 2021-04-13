@@ -47,26 +47,50 @@ const CircleNumber = styled.span`
   float: right;
 `;
 
-const TodoList = ({ data: { id, title, todoCards }, deleteTodoColumn }) => {
+const TodoList = ({
+  data: { id, title, todoCards },
+  deleteTodoColumn,
+  addLogItem,
+}) => {
   const [todos, setTodos] = useState(todoCards);
   const [formSelected, setFormSelected] = useState(false);
-  //수정완료
+
   const addTodoItem = (cardId, todoCard) => {
+    const { title: itemTitle, date: itemDate } = todoCard;
+    addLogItem({
+      columnTitle: title,
+      itemTitle: itemTitle,
+      date: itemDate,
+      action: "add",
+    });
     setTodos((todos) => ({ ...todos, [cardId]: todoCard }));
   };
 
-  //수정완료
   const deleteTodoItem = (id) => {
+    const newLog = getLogData(id);
+    addLogItem({ ...newLog, action: "delete" });
     setTodos((todos) => {
       delete todos[id];
       return { ...todos };
     });
   };
-  //수정완료
+  const getLogData = (id) => {
+    const newLog = {
+      columnTitle: title,
+      itemTitle: todos[id].title,
+      date: todos[id].date,
+    };
+    return newLog;
+  };
+
   const editTodoItem = (id, newTodo) => {
+    const newLog = getLogData(id);
+    addLogItem({ ...newLog, action: "update", changedTitle: newTodo.title });
     setTodos((todos) => ({ ...todos, [id]: newTodo }));
   };
-  //수정완료
+
+  //전 title , 현재 title
+
   const todoCardList = Object.values(todos).map((card) => (
     <TodoItem
       todoCard={card}
