@@ -15,8 +15,6 @@
 		BF7EB281261C3CC3003EB682 /* TodoListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7EB280261C3CC3003EB682 /* TodoListTests.swift */; };
 		BF7EB28C261C3CC3003EB682 /* TodoListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7EB28B261C3CC3003EB682 /* TodoListUITests.swift */; };
 		BF7EB2A0261C418B003EB682 /* DoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7EB29F261C418B003EB682 /* DoViewController.swift */; };
-		BF7EB2A5261C4199003EB682 /* DoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7EB2A4261C4199003EB682 /* DoneViewController.swift */; };
-		BF7EB2AA261C419E003EB682 /* DoingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7EB2A9261C419E003EB682 /* DoingViewController.swift */; };
 		BFA75568261FE696008FB904 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA75567261FE696008FB904 /* HTTPMethod.swift */; };
 		BFA7556D261FEBE2008FB904 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA7556C261FEBE2008FB904 /* AddViewController.swift */; };
 		BFBF30E4261D4E65000BDDE3 /* DoingDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBF30E3261D4E65000BDDE3 /* DoingDataSource.swift */; };
@@ -74,8 +72,6 @@
 		BF7EB28B261C3CC3003EB682 /* TodoListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListUITests.swift; sourceTree = "<group>"; };
 		BF7EB28D261C3CC3003EB682 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF7EB29F261C418B003EB682 /* DoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoViewController.swift; sourceTree = "<group>"; };
-		BF7EB2A4261C4199003EB682 /* DoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneViewController.swift; sourceTree = "<group>"; };
-		BF7EB2A9261C419E003EB682 /* DoingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoingViewController.swift; sourceTree = "<group>"; };
 		BFA75567261FE696008FB904 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		BFA7556C261FEBE2008FB904 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		BFBF30E3261D4E65000BDDE3 /* DoingDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoingDataSource.swift; sourceTree = "<group>"; };
@@ -191,7 +187,6 @@
 		BFBF30ED261D50CB000BDDE3 /* Doing */ = {
 			isa = PBXGroup;
 			children = (
-				BF7EB2A9261C419E003EB682 /* DoingViewController.swift */,
 				BFBF30E3261D4E65000BDDE3 /* DoingDataSource.swift */,
 				D0F41D602622C99F0024D7B1 /* DoingDTO.swift */,
 				D0F41D34261ED86E0024D7B1 /* UseCase.swift */,
@@ -228,7 +223,6 @@
 			isa = PBXGroup;
 			children = (
 				D0F41D792622E6BA0024D7B1 /* DoneDataSource.swift */,
-				BF7EB2A4261C4199003EB682 /* DoneViewController.swift */,
 				D0F41D6D2622E6450024D7B1 /* DoneDTO.swift */,
 				D09A581D26256A7F00DA620A /* DoneDelegate.swift */,
 			);
@@ -365,14 +359,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF7EB2AA261C419E003EB682 /* DoingViewController.swift in Sources */,
 				D0F41D7A2622E6BA0024D7B1 /* DoneDataSource.swift in Sources */,
 				D0F41D0D261E9EC60024D7B1 /* EndPoint.swift in Sources */,
 				D0E6A9EC26243AC600E9B023 /* Router.swift in Sources */,
 				D0F41D2D261ED5C80024D7B1 /* Decoder.swift in Sources */,
 				D09A57E82625380A00DA620A /* MainViewController.swift in Sources */,
 				D0F41D662622D04C0024D7B1 /* DoDTO.swift in Sources */,
-				BF7EB2A5261C4199003EB682 /* DoneViewController.swift in Sources */,
 				D0F41D12261E9FE70024D7B1 /* URLSessionManager.swift in Sources */,
 				BFA7556D261FEBE2008FB904 /* AddViewController.swift in Sources */,
 				D0E6A9D72624128B00E9B023 /* ActivityTableViewCell.swift in Sources */,

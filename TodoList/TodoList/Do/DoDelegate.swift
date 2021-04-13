@@ -51,7 +51,7 @@ class DoDelegate: NSObject, UITableViewDelegate {
                 self?.updateTask(title: title, contents: contents, completion: handler)
             }
             
-            let delete = UIAction(title: "삭제하기", attributes: .destructive) { [weak self] action in
+            let delete = UIAction(title: "삭제하기", attributes: .destructive) { action in
                 // Perform delete API
                 DoDTO.shared.delete(index: indexPath.section)
                 tableView.deleteSections(IndexSet(indexPath.section...indexPath.section), with: .fade)
