@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import styled from "styled-components";
 import IconButton from "../../utils/IconButton";
 import { CardButtonSection, CardButton } from "./CardButton.style";
@@ -23,6 +23,7 @@ const CardContent = styled.span`
 const CardItem = styled.div`
   display: flex;
   justify-content: space-between;
+  background: ${(props) => props.backgroundColor || "none"};
 `;
 
 const CardSection = styled.span`
@@ -61,12 +62,12 @@ const ModalQuestion = styled.div`
 `;
 
 function Card(props) {
-  const { card, onDelete } = props;
+  const { card, onDelete, cardContainer } = props;
   const [modalMode, setModalMode] = useState(false);
-
-  const askToDelete = () => {
-    setModalMode(!modalMode);
-  };
+  // const [deleteHoverMode, setDeleteHoverMode] = useState(false);
+  const askToDelete = () => setModalMode(!modalMode);
+  // const hover = () => setDeleteHoverMode(!deleteHoverMode);
+  // const cardItem = useRef();
 
   return (
     <>
@@ -91,7 +92,15 @@ function Card(props) {
           <CardContent className="card-content">{card.content}</CardContent>
         </CardSection>
         <CardSection>
-          <IconButton type="delete" cb={askToDelete}></IconButton>
+          {/* <CardWrap onMouseOver={() => console.log("over")}> */}
+          <div
+            onMouseOver={() => (cardContainer.current.style.backgroundColor = "red")}
+            onMouseOut={() => (cardContainer.current.style.backgroundColor = "white")}
+          >
+            <IconButton type="delete" cb={askToDelete} />
+            {/* 왜 여기선 이벤트 등록이 안돼죠???? 왜?  */}
+          </div>
+          {/* </CardWrap> */}
         </CardSection>
       </CardItem>
     </>
