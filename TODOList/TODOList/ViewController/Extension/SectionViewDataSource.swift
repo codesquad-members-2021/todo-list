@@ -27,7 +27,7 @@ extension SectionViewDataSource: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SectionCell.identifier, for: indexPath) as? SectionCell else { return SectionCell() }
         guard let cards = self.dataSource?.passData() else { return SectionCell() }
         cell.subject.text = cards[indexPath.section].title
-        cell.body.text = cards[indexPath.section].contents + "안녕하세요 반갑습니다 잘 부탁드립니다"
+        cell.body.text = cards[indexPath.section].contents + "안녕하세요 반갑습니다 잘 부탁드립니다안녕하세요 반갑습니다 잘 부탁드립니다안녕하세요 반갑습니다 잘 부탁드립니다"
         cell.backgroundColor = .white
         cell.body.sizeToFit()
 

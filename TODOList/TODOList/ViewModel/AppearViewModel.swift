@@ -28,6 +28,10 @@ class AppearViewModel {
         }
     }
     
+    func frontEnqueue(card: Card) {
+        self.cards.insert(card, at: 0)
+    }
+    
     private func passingData() {
         passingDataHandler?(cards)
     }

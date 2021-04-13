@@ -25,21 +25,33 @@ class MainViewController: UIViewController {
     func setMenuView() {
         self.menuView = UIView()
         self.menuView.backgroundColor = .white
-        self.menuView.frame.size.width = self.view.frame.width * 0.3
+        self.menuView.frame.size.width = self.view.frame.width * 0.35
         self.menuView.frame.size.height = self.view.frame.height
         self.menuView.frame.origin.x = self.view.frame.maxX
         
         
         var tableView = UITableView()
-        tableView = UITableView(frame: CGRect(x: 30, y: 60, width: self.view.frame.width * 0.3 - 60, height: self.view.frame.height))
+        tableView = UITableView(frame: CGRect(x: 40, y: 60, width: self.view.frame.width * 0.35 - 60, height: self.view.frame.height))
         tableView.separatorStyle = .none
         tableView.allowsSelection = false
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 500
         
-        tableView.rowHeight = 137
+        tableView.dataSource = self
+        
         let nibName = UINib(nibName: "HistoryCell", bundle: nil)
         tableView.register(nibName, forCellReuseIdentifier: HistoryCell.identifier)
         
+        
         self.menuView.addSubview(tableView)
+        
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.topAnchor.constraint(equalTo: self.menuView.topAnchor, constant: 60).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: self.menuView.bottomAnchor, constant: 0).isActive = true
+        tableView.leadingAnchor.constraint(equalTo: self.menuView.leadingAnchor, constant: 40).isActive = true
+        tableView.trailingAnchor.constraint(equalTo: self.menuView.trailingAnchor, constant: 40).isActive = true
+        
+        
         
         guard let largeBold = UIImage(systemName: "xmark") else { return }
         self.closeButton = UIButton(frame: CGRect(x: self.menuView.frame.width - 50.75, y: 30.75, width: 40, height: 40))
@@ -49,7 +61,7 @@ class MainViewController: UIViewController {
         self.view.addSubview(self.menuView)
         self.menuView.addSubview(self.closeButton)
         
-        tableView.dataSource = self
+        
     }
     
     
@@ -68,7 +80,7 @@ class MainViewController: UIViewController {
     
     @IBAction func touchSideMenuButton(_ sender: UIButton) {
         UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut) {
-            self.menuView.frame.origin.x = self.view.frame.maxX * 0.7
+            self.menuView.frame.origin.x = self.view.frame.maxX * 0.65
         }
     }
     
@@ -81,11 +93,13 @@ class MainViewController: UIViewController {
 
 extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: HistoryCell.identifier) as! HistoryCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: HistoryCell.identifier, for: indexPath) as? HistoryCell else { return HistoryCell() }
+        
+        cell.contents.sizeToFit()
         return cell
     }
 
