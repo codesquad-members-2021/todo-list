@@ -63,7 +63,6 @@ class CustomHeader: UITableViewHeaderFooterView {
             badge.leadingAnchor.constraint(equalTo: title.trailingAnchor, constant: 10),
             badge.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             
-//            button.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
             button.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             button.widthAnchor.constraint(equalToConstant: 50),
             button.heightAnchor.constraint(equalToConstant: 50),

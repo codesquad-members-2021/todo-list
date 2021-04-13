@@ -62,7 +62,7 @@ extension DoingTableViewDelegates: UITableViewDelegate {
        view.title.text = "진행중인 일"
         view.displayCurrentCardNumOnBadge(number: self.list.count)
         view.button.addAction(UIAction.init(handler: { (touch) in
-            DataManager.requestDelete(url: Constants.url, id: "2") { (success, output) in
+            DataManager.requestDelete(url: Constants.url, id: 2) { (success, output) in
                 print(output)
             }
         }), for: .touchUpInside)
@@ -72,4 +72,13 @@ extension DoingTableViewDelegates: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         CGFloat(50)
     }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .normal, title: "삭제", handler: { action, view, completionHaldler in
+            self.deleteCard(at: indexPath.row)
+            completionHaldler(true)
+        })
+        deleteAction.backgroundColor = .systemRed
+        return UISwipeActionsConfiguration(actions: [deleteAction])
+      }
 }

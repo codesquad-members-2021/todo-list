@@ -8,5 +8,5 @@
 import Foundation
 
 class Constants {
-    public static let url = "http://ec2-52-78-202-110.ap-northeast-2.compute.amazonaws.com:8080/todos"
+    public static let url = "http://ec2-54-180-87-91.ap-northeast-2.compute.amazonaws.com:8080/todos"
 }
