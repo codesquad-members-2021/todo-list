@@ -56,22 +56,13 @@ public class Board {
     }
 
     public Card updateCard(Long cardId, Card updateCard) {
-        for(Card beforeCard : cards) {
-            if(beforeCard.getId() == cardId) {
+        for (Card beforeCard : cards) {
+            if (beforeCard.getId() == cardId) {
                 beforeCard.updateCard(updateCard);
                 return beforeCard;
             }
         }
         return null;
-    }
-
-    @Override
-    public String toString() {
-        return "Column{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", cards=" + cards +
-                '}';
     }
 
 }
