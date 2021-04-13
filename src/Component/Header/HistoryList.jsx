@@ -21,17 +21,17 @@ const test = {
   ]
 }
 const profile = <FaUserCircle />
+const HistoryListBlock = styled.ul`
+  margin-top: 1rem;
+  font-size: 1rem;
+  line-height: 1.4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+`
 
 export default function HistoryList ({ children }) {
-  const HistoryListBlock = styled.ul`
-    margin-top: 1rem;
-    font-size: 1rem;
-    line-height: 1.4;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0;
-  `
   //store 에 저장할 로그
   //author
   //text
