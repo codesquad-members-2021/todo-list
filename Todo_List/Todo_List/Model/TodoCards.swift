@@ -12,8 +12,6 @@ protocol TodoCardsManageable {
     func countCards() -> Int
     func removeCard(at indexPath: IndexPath)
     func insertCard(item: TodoCard, at indexPath: IndexPath)
-    func dragItems(for indexPath: IndexPath) -> [UIDragItem]
-    func canHandle(_ session: UIDropSession) -> Bool
 }
 
 
@@ -54,18 +52,6 @@ class TodoCards: TodoCardsManageable  {
     
     func insertCard(item: TodoCard, at indexPath: IndexPath) {
         cards.insert(item, at: indexPath.row)
-    }
-    
-    func dragItems(for indexPath: IndexPath) -> [UIDragItem] {
-        let card = cards[indexPath.row]
-        
-        let itemProvider = NSItemProvider(object: card as! NSItemProviderWriting)
-        return [UIDragItem(itemProvider: itemProvider)]
-    }
-    
-    func canHandle(_ session: UIDropSession) -> Bool {
-        print(session.canLoadObjects(ofClass: TodoCard.self))
-        return session.canLoadObjects(ofClass: TodoCard.self)
     }
 }
 
