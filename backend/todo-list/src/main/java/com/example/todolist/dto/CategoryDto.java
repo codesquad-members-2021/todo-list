@@ -16,18 +16,6 @@ public class CategoryDto {
         this.done = done;
     }
 
-    public void addTodo(CardDto card) {
-        todo.add(card);
-    }
-
-    public void addDoing(CardDto card) {
-        doing.add(card);
-    }
-
-    public void addDone(CardDto card) {
-        done.add(card);
-    }
-
     public List<CardDto> getTodo() {
         return todo;
     }
@@ -50,5 +38,14 @@ public class CategoryDto {
 
     public void setDone(List<CardDto> done) {
         this.done = done;
+    }
+
+    @Override
+    public String toString() {
+        return "CategoryDto{" +
+                "todo=" + todo +
+                ", doing=" + doing +
+                ", done=" + done +
+                '}';
     }
 }

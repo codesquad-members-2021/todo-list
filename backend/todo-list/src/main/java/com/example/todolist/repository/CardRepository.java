@@ -10,6 +10,6 @@ import java.util.List;
 
 @Repository
 public interface CardRepository extends CrudRepository<Card, Long> {
-    @Query("SELECT id, user_id, title, contents, status, post_time FROM card WHERE status = :status ORDER BY post_time DESC")
+    @Query("SELECT id, user_id, title, contents, status, post_time FROM card WHERE status = :status and is_deleted = 0 ORDER BY post_time DESC")
     List<Card> findAllByStatus(@Param("status") String status);
 }

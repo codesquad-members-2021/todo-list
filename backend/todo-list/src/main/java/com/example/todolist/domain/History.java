@@ -1,20 +1,28 @@
 package com.example.todolist.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.data.annotation.Id;
 
 import java.time.LocalDateTime;
 
-public class CardLog {
+public class History {
+    public static final String DATETIME_FORMAT = "yyyy-MM-dd HH:mm";
+
     @Id
     private Long id;
 
     private Long cardId;
     private String action;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATETIME_FORMAT, timezone = "Asia/Seoul")
     private LocalDateTime actionTime;
     private String preStatus;
     private String currStatus;
 
-    public CardLog(Card card, String action, String preStatus) {
+    public History(){
+
+    }
+
+    public History(Card card, String action, String preStatus) {
         this.cardId = card.getId();
         this.action = action;
         this.preStatus = preStatus;
@@ -22,7 +30,7 @@ public class CardLog {
         this.actionTime = LocalDateTime.now();
     }
 
-    public CardLog(Card card, String action) {
+    public History(Card card, String action) {
         this.cardId = card.getId();
         this.action = action;
         this.preStatus = null;
@@ -76,5 +84,17 @@ public class CardLog {
 
     public void setCurrStatus(String status) {
         this.currStatus = status;
+    }
+
+    @Override
+    public String toString() {
+        return "History{" +
+                "id=" + id +
+                ", cardId=" + cardId +
+                ", action='" + action + '\'' +
+                ", actionTime=" + actionTime +
+                ", preStatus='" + preStatus + '\'' +
+                ", currStatus='" + currStatus + '\'' +
+                '}';
     }
 }

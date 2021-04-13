@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS card_log, card, user;
+DROP TABLE IF EXISTS history, card, user;
 
 CREATE TABLE user
 (
@@ -16,11 +16,12 @@ CREATE TABLE card
     contents  varchar(30),
     status    varchar(30),
     post_time datetime DEFAULT CURRENT_TIMESTAMP(),
+    is_deleted boolean,
     user_id   int,
-    foreign key (user_id) references user (user_id) ON UPDATE CASCADE
+    foreign key (user_id) references user(user_id) ON UPDATE CASCADE
 );
 
-CREATE TABLE card_log
+CREATE TABLE history
 (
     id          int auto_increment primary key,
     action      varchar(30),

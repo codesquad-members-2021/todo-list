@@ -22,7 +22,7 @@ public class Card {
     private String status;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATETIME_FORMAT, timezone = "Asia/Seoul")
     private LocalDateTime postTime;
-//    private boolean isDeleted;
+    private boolean isDeleted;
 
     public Card() {
 
@@ -34,7 +34,7 @@ public class Card {
         this.contents = contents;
         this.status = status;
         this.postTime = LocalDateTime.now();
-//        this.isDeleted=false;
+        this.isDeleted = false;
     }
 
     public void update(String title, String contents) {
@@ -44,6 +44,10 @@ public class Card {
 
     public void update(String status) {
         this.status = status;
+    }
+
+    public void delete() {
+        this.isDeleted = true;
     }
 
     public LocalDateTime getPostTime() {

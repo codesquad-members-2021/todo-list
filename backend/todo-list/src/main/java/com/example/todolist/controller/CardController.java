@@ -2,9 +2,9 @@ package com.example.todolist.controller;
 
 
 import com.example.todolist.domain.Card;
-import com.example.todolist.domain.CardLog;
+import com.example.todolist.domain.History;
 import com.example.todolist.domain.User;
-import com.example.todolist.repository.CardLogRepository;
+import com.example.todolist.repository.HistoryRepository;
 import com.example.todolist.repository.CardRepository;
 import com.example.todolist.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +22,10 @@ public class CardController {
 
     public final CardRepository cardRepository;
     public final UserRepository userRepository;
-    public final CardLogRepository cardLogRepository;
+    public final HistoryRepository cardLogRepository;
 
     @Autowired
-    public CardController(CardRepository cardRepository, UserRepository userRepository, CardLogRepository cardLogRepository) {
+    public CardController(CardRepository cardRepository, UserRepository userRepository, HistoryRepository cardLogRepository) {
         this.cardRepository = cardRepository;
         this.userRepository = userRepository;
         this.cardLogRepository = cardLogRepository;
@@ -40,7 +40,7 @@ public class CardController {
         User tokenUser = getUserFromToken(request);
         Card card = new Card(tokenUser, cardInfo.get("title"), cardInfo.get("contents"), cardInfo.get("status"));
         cardRepository.save(card);
-        CardLog log = new CardLog(card, "add");
+        History log = new History(card, "add");
         cardLogRepository.save(log);
         return new ResponseEntity<>(card, HttpStatus.OK);
     }
@@ -56,7 +56,7 @@ public class CardController {
         }
         card.update(newCardInfo.get("title"), newCardInfo.get("contents"));
         cardRepository.save(card);
-        CardLog log = new CardLog(card, "update");
+        History log = new History(card, "update");
         cardLogRepository.save(log);
         return new ResponseEntity(card, HttpStatus.OK);
     }
@@ -71,7 +71,7 @@ public class CardController {
         String preStatus = card.getStatus();
         card.update(newCardInfo.get("status"));
         cardRepository.save(card);
-        CardLog log = new CardLog(card,"move", preStatus);
+        History log = new History(card,"move", preStatus);
         cardLogRepository.save(log);
         return new ResponseEntity(card, HttpStatus.OK);
     }
@@ -83,9 +83,10 @@ public class CardController {
         if (!card.getUserId().equals(tokeUser.getUserId())) {
             throw new RuntimeException("삭제 권한이 없습니다.");
         }
-        CardLog log = new CardLog(card, "remove");
+        History log = new History(card, "remove");
+        card.delete();
         cardLogRepository.save(log);
-        cardRepository.delete(card);
+        cardRepository.save(card);
         return new ResponseEntity(card, HttpStatus.OK);
     }
 }
