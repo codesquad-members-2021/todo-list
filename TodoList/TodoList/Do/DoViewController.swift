@@ -65,7 +65,7 @@ extension DoViewController : UITableViewDelegate {
             }
             
             let rename = UIAction(title: "수정하기") { [weak self] action in
-                guard let cell = tableView.cellForRow(at: indexPath) as? DoTableViewCell else { return }
+                guard let cell = tableView.cellForRow(at: indexPath) as? TaskTableViewCell else { return }
                 guard let title = cell.title.text, let contents = cell.content.text, let storyboard = self?.storyboard, let vc = Router.shared.route(storyboard, title: title, contents: contents) else { return }
                 self?.present(vc, animated: true, completion: nil)
             }

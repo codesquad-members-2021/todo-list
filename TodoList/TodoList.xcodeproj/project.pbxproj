@@ -18,11 +18,11 @@
 		BF7EB2A0261C418B003EB682 /* DoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7EB29F261C418B003EB682 /* DoViewController.swift */; };
 		BF7EB2A5261C4199003EB682 /* DoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7EB2A4261C4199003EB682 /* DoneViewController.swift */; };
 		BF7EB2AA261C419E003EB682 /* DoingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7EB2A9261C419E003EB682 /* DoingViewController.swift */; };
-		BF7EB2AF261C4E5C003EB682 /* DoingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7EB2AE261C4E5C003EB682 /* DoingTableViewCell.swift */; };
 		BFA75568261FE696008FB904 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA75567261FE696008FB904 /* HTTPMethod.swift */; };
 		BFA7556D261FEBE2008FB904 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA7556C261FEBE2008FB904 /* AddViewController.swift */; };
 		BFBF30E4261D4E65000BDDE3 /* DoingDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBF30E3261D4E65000BDDE3 /* DoingDataSource.swift */; };
-		BFBF30E9261D4F01000BDDE3 /* DoingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBF30E8261D4F01000BDDE3 /* DoingDelegate.swift */; };
+		D09A57E82625380A00DA620A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09A57E72625380A00DA620A /* MainViewController.swift */; };
+		D09A57F226253ADB00DA620A /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09A57F126253ADB00DA620A /* TaskViewController.swift */; };
 		D0E6A9D72624128B00E9B023 /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E6A9D62624128B00E9B023 /* ActivityTableViewCell.swift */; };
 		D0E6A9DF262414B600E9B023 /* CardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E6A9DE262414B600E9B023 /* CardButton.swift */; };
 		D0E6A9EC26243AC600E9B023 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E6A9EB26243AC600E9B023 /* Router.swift */; };
@@ -32,13 +32,11 @@
 		D0F41D2D261ED5C80024D7B1 /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F41D2C261ED5C80024D7B1 /* Decoder.swift */; };
 		D0F41D35261ED86E0024D7B1 /* DoingUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F41D34261ED86E0024D7B1 /* DoingUseCase.swift */; };
 		D0F41D41261EEAFC0024D7B1 /* DoDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F41D40261EEAFC0024D7B1 /* DoDataSource.swift */; };
-		D0F41D46261EEB8C0024D7B1 /* DoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F41D45261EEB8C0024D7B1 /* DoDelegate.swift */; };
-		D0F41D4B261EEC360024D7B1 /* DoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F41D4A261EEC360024D7B1 /* DoTableViewCell.swift */; };
+		D0F41D4B261EEC360024D7B1 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F41D4A261EEC360024D7B1 /* TaskTableViewCell.swift */; };
 		D0F41D612622C99F0024D7B1 /* DoingDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F41D602622C99F0024D7B1 /* DoingDTO.swift */; };
 		D0F41D662622D04C0024D7B1 /* DoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F41D652622D04C0024D7B1 /* DoDTO.swift */; };
 		D0F41D6E2622E6450024D7B1 /* DoneDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F41D6D2622E6450024D7B1 /* DoneDTO.swift */; };
 		D0F41D7A2622E6BA0024D7B1 /* DoneDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F41D792622E6BA0024D7B1 /* DoneDataSource.swift */; };
-		D0F41D822622E8480024D7B1 /* DoneTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F41D812622E8480024D7B1 /* DoneTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,11 +74,11 @@
 		BF7EB29F261C418B003EB682 /* DoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoViewController.swift; sourceTree = "<group>"; };
 		BF7EB2A4261C4199003EB682 /* DoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneViewController.swift; sourceTree = "<group>"; };
 		BF7EB2A9261C419E003EB682 /* DoingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoingViewController.swift; sourceTree = "<group>"; };
-		BF7EB2AE261C4E5C003EB682 /* DoingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoingTableViewCell.swift; sourceTree = "<group>"; };
 		BFA75567261FE696008FB904 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		BFA7556C261FEBE2008FB904 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		BFBF30E3261D4E65000BDDE3 /* DoingDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoingDataSource.swift; sourceTree = "<group>"; };
-		BFBF30E8261D4F01000BDDE3 /* DoingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoingDelegate.swift; sourceTree = "<group>"; };
+		D09A57E72625380A00DA620A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		D09A57F126253ADB00DA620A /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
 		D0E6A9D62624128B00E9B023 /* ActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewCell.swift; sourceTree = "<group>"; };
 		D0E6A9DE262414B600E9B023 /* CardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardButton.swift; sourceTree = "<group>"; };
 		D0E6A9EB26243AC600E9B023 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
@@ -90,13 +88,11 @@
 		D0F41D2C261ED5C80024D7B1 /* Decoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decoder.swift; sourceTree = "<group>"; };
 		D0F41D34261ED86E0024D7B1 /* DoingUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoingUseCase.swift; sourceTree = "<group>"; };
 		D0F41D40261EEAFC0024D7B1 /* DoDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoDataSource.swift; sourceTree = "<group>"; };
-		D0F41D45261EEB8C0024D7B1 /* DoDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoDelegate.swift; sourceTree = "<group>"; };
-		D0F41D4A261EEC360024D7B1 /* DoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoTableViewCell.swift; sourceTree = "<group>"; };
+		D0F41D4A261EEC360024D7B1 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		D0F41D602622C99F0024D7B1 /* DoingDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoingDTO.swift; sourceTree = "<group>"; };
 		D0F41D652622D04C0024D7B1 /* DoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoDTO.swift; sourceTree = "<group>"; };
 		D0F41D6D2622E6450024D7B1 /* DoneDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneDTO.swift; sourceTree = "<group>"; };
 		D0F41D792622E6BA0024D7B1 /* DoneDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneDataSource.swift; sourceTree = "<group>"; };
-		D0F41D812622E8480024D7B1 /* DoneTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +144,8 @@
 			isa = PBXGroup;
 			children = (
 				BF7EB26F261C3CBF003EB682 /* Main.storyboard */,
+				D09A57F126253ADB00DA620A /* TaskViewController.swift */,
+				D09A57E72625380A00DA620A /* MainViewController.swift */,
 				D0E6A9DE262414B600E9B023 /* CardButton.swift */,
 				D0E6A9D62624128B00E9B023 /* ActivityTableViewCell.swift */,
 				BF7EB269261C3CBF003EB682 /* AppDelegate.swift */,
@@ -191,8 +189,6 @@
 				BFBF30E3261D4E65000BDDE3 /* DoingDataSource.swift */,
 				D0F41D602622C99F0024D7B1 /* DoingDTO.swift */,
 				D0F41D34261ED86E0024D7B1 /* DoingUseCase.swift */,
-				BFBF30E8261D4F01000BDDE3 /* DoingDelegate.swift */,
-				BF7EB2AE261C4E5C003EB682 /* DoingTableViewCell.swift */,
 			);
 			path = Doing;
 			sourceTree = "<group>";
@@ -214,8 +210,7 @@
 			children = (
 				D0F41D652622D04C0024D7B1 /* DoDTO.swift */,
 				BF7EB29F261C418B003EB682 /* DoViewController.swift */,
-				D0F41D4A261EEC360024D7B1 /* DoTableViewCell.swift */,
-				D0F41D45261EEB8C0024D7B1 /* DoDelegate.swift */,
+				D0F41D4A261EEC360024D7B1 /* TaskTableViewCell.swift */,
 				D0F41D40261EEAFC0024D7B1 /* DoDataSource.swift */,
 			);
 			path = Do;
@@ -227,7 +222,6 @@
 				D0F41D792622E6BA0024D7B1 /* DoneDataSource.swift */,
 				BF7EB2A4261C4199003EB682 /* DoneViewController.swift */,
 				D0F41D6D2622E6450024D7B1 /* DoneDTO.swift */,
-				D0F41D812622E8480024D7B1 /* DoneTableViewCell.swift */,
 			);
 			path = Done;
 			sourceTree = "<group>";
@@ -363,27 +357,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF7EB2AA261C419E003EB682 /* DoingViewController.swift in Sources */,
-				BFBF30E9261D4F01000BDDE3 /* DoingDelegate.swift in Sources */,
 				D0F41D7A2622E6BA0024D7B1 /* DoneDataSource.swift in Sources */,
 				D0F41D0D261E9EC60024D7B1 /* EndPoint.swift in Sources */,
 				D0E6A9EC26243AC600E9B023 /* Router.swift in Sources */,
 				BF7EB26E261C3CBF003EB682 /* ViewController.swift in Sources */,
 				D0F41D2D261ED5C80024D7B1 /* Decoder.swift in Sources */,
+				D09A57E82625380A00DA620A /* MainViewController.swift in Sources */,
 				D0F41D662622D04C0024D7B1 /* DoDTO.swift in Sources */,
 				BF7EB2A5261C4199003EB682 /* DoneViewController.swift in Sources */,
 				D0F41D12261E9FE70024D7B1 /* URLSessionManager.swift in Sources */,
-				BF7EB2AF261C4E5C003EB682 /* DoingTableViewCell.swift in Sources */,
 				BFA7556D261FEBE2008FB904 /* AddViewController.swift in Sources */,
 				D0E6A9D72624128B00E9B023 /* ActivityTableViewCell.swift in Sources */,
 				D0F41D612622C99F0024D7B1 /* DoingDTO.swift in Sources */,
 				BFBF30E4261D4E65000BDDE3 /* DoingDataSource.swift in Sources */,
-				D0F41D46261EEB8C0024D7B1 /* DoDelegate.swift in Sources */,
+				D09A57F226253ADB00DA620A /* TaskViewController.swift in Sources */,
 				D0F41D6E2622E6450024D7B1 /* DoneDTO.swift in Sources */,
-				D0F41D4B261EEC360024D7B1 /* DoTableViewCell.swift in Sources */,
+				D0F41D4B261EEC360024D7B1 /* TaskTableViewCell.swift in Sources */,
 				D0F41D35261ED86E0024D7B1 /* DoingUseCase.swift in Sources */,
 				D0F41D41261EEAFC0024D7B1 /* DoDataSource.swift in Sources */,
 				D0F41D28261EA9B50024D7B1 /* Task.swift in Sources */,
-				D0F41D822622E8480024D7B1 /* DoneTableViewCell.swift in Sources */,
 				BFA75568261FE696008FB904 /* HTTPMethod.swift in Sources */,
 				BF7EB26A261C3CBF003EB682 /* AppDelegate.swift in Sources */,
 				D0E6A9DF262414B600E9B023 /* CardButton.swift in Sources */,
