@@ -18,13 +18,13 @@ struct ToDoList: Codable {
 }
 
 struct ToDoItem: Codable {
-    let id: String
+    let id: Int
     let title: String
     let contents: String
     let createDateTime: String
     let status: String
     
-    init(id: String, title: String, contents: String, createDateTime: String, status: String) {
+    init(id: Int, title: String, contents: String, createDateTime: String, status: String) {
         self.id = id
         self.title = title
         self.contents = contents

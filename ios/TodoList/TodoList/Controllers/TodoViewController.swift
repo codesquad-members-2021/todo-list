@@ -14,6 +14,8 @@ class ToDoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(toDoCardsListHasBeenChanged), name: .didChangeToDoCardsList, object: nil)
+        
         self.toDoCardTableView.dataSource = toDoTableViewDelegates
         self.toDoCardTableView.delegate = toDoTableViewDelegates
         self.toDoCardTableView.rowHeight = 150
@@ -21,11 +23,13 @@ class ToDoViewController: UIViewController {
         self.toDoCardTableView.register(UINib(nibName: "ToDoCardCell", bundle: nil), forCellReuseIdentifier: "ToDoCardCell")
         toDoCardTableView.register(CustomHeader.self, forHeaderFooterViewReuseIdentifier: "sectionHeader")
         
-        toDoTableViewDelegates.fetchCards(handler: {
-            DispatchQueue.main.async {
-                self.toDoCardTableView.reloadData()
-            }
-        })
+        toDoTableViewDelegates.fetchCards()
+    }
+    
+    @objc func toDoCardsListHasBeenChanged() {
+        DispatchQueue.main.async {
+            self.toDoCardTableView.reloadData()
+        }
     }
 }
 
