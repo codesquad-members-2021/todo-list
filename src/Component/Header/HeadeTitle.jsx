@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Button from '../Button'
+import Navigator from './Navigator'
 import { FaChevronLeft } from 'react-icons/fa'
 import styled from 'styled-components'
 
@@ -30,18 +31,16 @@ export default function HeadTitle ({ children }) {
         return toggle + 1
       }
     });
-    console.log(toggle);
   }
 
 
   return (
     <HeadTitleBlock>
       <span>Json-Luke-mon To-do List</span>
-
       <Button onClick={onClick}>
         <FaChevronLeft />
       </Button>
-      {children}
+      <Navigator toggle={toggle} onClick={onClick}/>
     </HeadTitleBlock>
   )
 }

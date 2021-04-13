@@ -1,9 +1,7 @@
 import HeaderTitle from './HeadeTitle'
-import Navigator from './Navigator'
+// import Navigator from './Navigator'
 export default function Header () {
   return (
-    <HeaderTitle>
-      <Navigator/>
-    </HeaderTitle>
+    <HeaderTitle/>
   )
 }
