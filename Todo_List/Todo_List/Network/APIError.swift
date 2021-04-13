@@ -7,7 +7,8 @@
 
 import Foundation
 
-enum APIError: LocalizedError {
-    case unknownError
-    var errorDescription: String? { "unknown Error"}
+enum APIError: String, LocalizedError {
+    case unknownError = "unknown Error"
+    case notIncludeID = "ID가 없습니다."
+    var errorDescription: String? { self.rawValue }
 }

@@ -59,10 +59,8 @@ class CardAPIClient {
             }
         task.resume()
     }
-    /*
-     // 두개의 index를 넘겨줌
-    func exchangeCard(from : Int, to : Int ){
-        
+    
+    func moveCard(from : Int, to : Int){
         let current = String(from)
         let target = String(to)
         let path = "\(current)" + "/" + "\(target)"
@@ -81,12 +79,11 @@ class CardAPIClient {
             }
         task.resume()
     }
-     */
     func deleteCard(with id : Int?){
         
         guard let id = id else {
-            print("ID가 없습니다.")
-            return 
+            print(APIError.notIncludeID)
+            return
         }
         var request = URLRequest(url: CardAPI.all.url.appendingPathComponent(String(id)))
         request.httpMethod = HTTPMethod.delete.rawValue
