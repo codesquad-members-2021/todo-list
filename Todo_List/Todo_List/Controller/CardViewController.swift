@@ -30,11 +30,11 @@ class CardViewController: UIViewController {
         configureTextField()
         
         DispatchQueue.main.async {
-            CardAPIClient().loadAllCards(completion: { result in
+            CardAPIClient().loadAllCards(completion: { [weak self] result in
                 switch result {
                 case .success(let cards) :
-                    self.board.doingList.list = cards
-                    self.reloadBoard()
+                    self?.board.doingList.list = cards
+                    self?.reloadBoard()
                 case .failure(let error) : print(error)
                 }
             })
