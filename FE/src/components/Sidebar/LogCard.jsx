@@ -26,7 +26,7 @@ const LogCard = ({ data: { logs }, userID }) => {
             <span>{diff}분전</span>
           </>
         );
-      if (diff < 1440 && diff >= 60)
+      else if (diff < 1440 && diff >= 60)
         return (
           <>
             <span>
@@ -34,7 +34,7 @@ const LogCard = ({ data: { logs }, userID }) => {
             </span>
           </>
         );
-      if (diff >= 1440)
+      else if (diff >= 1440)
         return (
           <>
             <span>{Math.floor(diff / 1440)}일 전</span>

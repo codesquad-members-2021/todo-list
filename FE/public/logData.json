@@ -28,7 +28,7 @@
       },
       {
         "id": 4,
-        "action": "CHANGE",
+        "action": "MODIFY",
         "card_title": "HTML/CSS 공부하기",
         "time": "2021-02-01 03:05:03",
         "prevBoard": null,
@@ -36,11 +36,19 @@
       },
       {
         "id": 5,
-        "action": "CHANGE",
+        "action": "MODIFY",
         "card_title": "HTML/CSS 공부하기",
         "time": "2021-04-13 22:25:00",
         "prevBoard": null,
         "currBoard": null
+      },
+      {
+        "id": 6,
+        "action": "MOVE",
+        "card_title": "React 공부하기",
+        "time": "2021-04-13 23:40:00",
+        "prevBoard": "todo",
+        "currBoard": "done"
       }
     ]
   }
