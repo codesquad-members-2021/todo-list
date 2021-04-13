@@ -23,10 +23,10 @@ public class History {
 
     private boolean deleted;
 
-    public History(long card, HistoryAction action, LocalDateTime date, CardColumn from, CardColumn to) {
+    public History(long card, HistoryAction action, CardColumn from, CardColumn to) {
         this.card = card;
         this.action = action;
-        this.date = date;
+        this.date = LocalDateTime.now();
         this.from = from;
         this.to = to;
     }

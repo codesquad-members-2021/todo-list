@@ -82,10 +82,9 @@ public class Card {
         this.deleted = deleted;
     }
 
-    public void update(Card card) {
-        this.title = card.title;
-        this.content = card.content;
-        this.priority = card.priority;
-        this.columnType = card.columnType;
+    public void update(String title, String content, double priority) {
+        this.title = title;
+        this.content = content;
+        this.priority = priority;
     }
 }

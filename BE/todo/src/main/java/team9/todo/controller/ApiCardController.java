@@ -62,11 +62,19 @@ public class ApiCardController {
     }
 
     @PutMapping("/{cardId}")
-    public ApiResult<Card> update(@PathVariable long cardId, Card card, HttpSession httpSession) {
+    public ApiResult<Card> update(@PathVariable long cardId, String title, String contents, double priority, HttpSession httpSession) {
         logger.debug("{}번 카드의 내용 수정 요청", cardId);
         User user = getUser(httpSession);
 
-        return ApiResult.succeed(cardService.update(cardId, card, user));
+        return ApiResult.succeed(cardService.update(cardId, title, contents, priority, user));
+    }
+
+    @PutMapping("/move/{cardId}")
+    public ApiResult<Card> move(@PathVariable long cardId, CardColumn to, HttpSession httpSession) {
+        logger.debug("{}번 카드 {}로 이동 요청", cardId, to.name());
+        User user = getUser(httpSession);
+
+        return ApiResult.succeed(cardService.move(cardId, to, user));
     }
 
     @DeleteMapping("/{cardId}")
