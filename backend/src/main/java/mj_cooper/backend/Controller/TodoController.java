@@ -10,8 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -46,25 +44,47 @@ public class TodoController {
     }
 
     @GetMapping("/{todoId}")
-    public ResponseEntity<Todo> getTodoById(@PathVariable(value = "verticalId") final Long verticalId,
+    public ResponseEntity<String> getTodoById(@PathVariable(value = "verticalId") final Long verticalId,
                                             @PathVariable(value = "todoId") final Long todoId) {
 
         User user = userRepository.findById(1L).get();
         Vertical vertical = user.getVertical(verticalId);
 
-        return ResponseEntity.ok().body(vertical.getTodo(todoId));
+        // Json 변환 로직
+        Gson gson = new Gson();
+        JsonParser parser = new JsonParser();
+
+        Map<String, Todo> response = new HashMap<>();
+        response.put("todo", vertical.getTodo(todoId));
+
+        JsonObject object = new JsonObject();
+        object.addProperty("status", "success");
+        object.add("data", parser.parse(gson.toJson(response)));
+
+        return ResponseEntity.ok().body(gson.toJson(object));
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void createTodo(@RequestBody Todo todo, @PathVariable(value = "verticalId") final Long verticalId) {
+    public String createTodo(@RequestBody Todo todo, @PathVariable(value = "verticalId") final Long verticalId) {
 
         User user = userRepository.findById(1L).get();
         Vertical vertical = user.getVertical(verticalId);
 
         vertical.addTodo(todo);
 
-        userRepository.save(user);
+        return userRepository.save(user).toString();
+
+//        // Json 변환 로직
+//        Gson gson = new Gson();
+//        JsonParser parser = new JsonParser();
+//
+//        Map<String, Todo> response = new HashMap<>();
+//        response.put("todo", vertical.getTodo(todo));
+//
+//        JsonObject object = new JsonObject();
+//        object.addProperty("status", "success");
+//        object.add("data", parser.parse(gson.toJson(response)));
     }
 
     @PutMapping("/{todoId}")
