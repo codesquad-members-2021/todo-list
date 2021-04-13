@@ -6,5 +6,5 @@ import team9.todo.domain.Card;
 import java.util.List;
 
 public interface CardRepository extends CrudRepository<Card, Long> {
-    public List<Card> findAllByUserAndColumnType(int user, String columnType);
+    public List<Card> findAllByUserAndColumnType(long user, String columnType);
 }
