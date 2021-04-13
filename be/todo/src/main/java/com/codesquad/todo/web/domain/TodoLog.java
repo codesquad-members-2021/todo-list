@@ -45,20 +45,24 @@ public class TodoLog {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getAction() {
         return action;
+    }
+
+    public void setAction(String action) {
+        this.action = action;
     }
 
     public LocalDateTime getCreatedDateTime() {
         return createdDateTime;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setAction(String action) {
-        this.action = action;
+    public void setCreatedDateTime(LocalDateTime createdDateTime) {
+        this.createdDateTime = createdDateTime;
     }
 
     public String getFromColumnTitle() {
@@ -83,10 +87,6 @@ public class TodoLog {
 
     public void setTaskTitle(String taskTitle) {
         this.taskTitle = taskTitle;
-    }
-
-    public void setCreatedDateTime(LocalDateTime createdDateTime) {
-        this.createdDateTime = createdDateTime;
     }
 
     @Override
