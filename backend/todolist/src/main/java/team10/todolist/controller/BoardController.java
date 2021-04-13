@@ -5,7 +5,6 @@ import team10.todolist.Category;
 import team10.todolist.domain.Board;
 import team10.todolist.dto.BoardDto;
 import team10.todolist.service.BoardService;
-
 import java.util.List;
 
 @RestController
