@@ -8,10 +8,11 @@
 import Foundation
 
 class CellData : Codable {
+    
     var cardId : Int
     var title : String
     var content: String
-    var isApp : Bool
+    var isApp : Bool // need Computed?
     var createdTime : String
     var position: Int
     
@@ -27,5 +28,23 @@ class CellData : Codable {
         self.isApp = isApp
         self.createdTime = createdTime
         self.position = position
+    }
+    
+    func setCaption(){
+        if !isApp {
+            
+        }
+        else {
+            
+        }
+    }
+    
+    func sendTitle() -> Void{
+        let userInfo : [String : String] = ["cardData" : title]
+        NotificationCenter.default.post(name: NSNotification.Name("abcd"), object: self, userInfo: userInfo)
+    }
+    
+    func sendContent() -> Void{
+      
     }
 }

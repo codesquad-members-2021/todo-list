@@ -11,7 +11,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ToDoListApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="ToDoListApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="1194" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -30,6 +30,9 @@
                             </label>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FBL-Gv-Vg2">
                                 <rect key="frame" x="48" y="123" width="256" height="678"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="256" id="xXb-UD-BWK"/>
+                                </constraints>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CqF-fM-pls">
                                 <rect key="frame" x="328" y="123" width="256" height="678"/>
@@ -52,7 +55,6 @@
                             <constraint firstItem="CqF-fM-pls" firstAttribute="leading" secondItem="FBL-Gv-Vg2" secondAttribute="trailing" constant="24" id="3qv-Lv-bwc"/>
                             <constraint firstItem="VbQ-CY-eAY" firstAttribute="leading" secondItem="CqF-fM-pls" secondAttribute="trailing" constant="24" id="DYg-01-bVY"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="FBL-Gv-Vg2" secondAttribute="bottom" constant="13" id="MB7-al-A4v"/>
-                            <constraint firstItem="FBL-Gv-Vg2" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.214405" id="OlE-Fe-6th"/>
                             <constraint firstItem="PAD-nf-ISD" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="w4x-kY-HNp" secondAttribute="trailing" constant="8" symbolic="YES" id="OxI-OF-UNz"/>
                             <constraint firstItem="FBL-Gv-Vg2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="123" id="bRf-DT-P04"/>
                             <constraint firstItem="PAD-nf-ISD" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="24" id="gft-OD-Mpi"/>

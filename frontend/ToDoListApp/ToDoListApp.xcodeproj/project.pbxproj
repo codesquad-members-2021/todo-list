@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		8288BCF5261CAF3500883E0E /* ColumnDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8288BCF4261CAF3500883E0E /* ColumnDataSource.swift */; };
+		8290E7932621BCB100EAA369 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8290E7922621BCB100EAA369 /* ModalViewController.swift */; };
+		82A978FA26243A4900E86E07 /* TitleTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A978F926243A4900E86E07 /* TitleTextFieldDelegate.swift */; };
+		82A9790226243A5B00E86E07 /* ContentTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A9790126243A5B00E86E07 /* ContentTextFieldDelegate.swift */; };
 		82E026C4261D367300651B9C /* CellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E026C3261D367300651B9C /* CellData.swift */; };
 		82E026C9261D37A100651B9C /* ColumnDatas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E026C8261D37A100651B9C /* ColumnDatas.swift */; };
 		82E026D1261D3BA800651B9C /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E026D0261D3BA800651B9C /* DataManager.swift */; };
@@ -48,6 +51,9 @@
 
 /* Begin PBXFileReference section */
 		8288BCF4261CAF3500883E0E /* ColumnDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnDataSource.swift; sourceTree = "<group>"; };
+		8290E7922621BCB100EAA369 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
+		82A978F926243A4900E86E07 /* TitleTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTextFieldDelegate.swift; sourceTree = "<group>"; };
+		82A9790126243A5B00E86E07 /* ContentTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTextFieldDelegate.swift; sourceTree = "<group>"; };
 		82E026C3261D367300651B9C /* CellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellData.swift; sourceTree = "<group>"; };
 		82E026C8261D37A100651B9C /* ColumnDatas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnDatas.swift; sourceTree = "<group>"; };
 		82E026D0261D3BA800651B9C /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
@@ -178,9 +184,12 @@
 			isa = PBXGroup;
 			children = (
 				B0BC8B79261EF08E00B8122D /* ColumnDelegate.swift */,
+				8288BCF4261CAF3500883E0E /* ColumnDataSource.swift */,
 				B0BC8B74261EF05500B8122D /* ColumnViewController.swift */,
 				B0BC8B6A261EF00C00B8122D /* ColumnView.storyboard */,
-				8288BCF4261CAF3500883E0E /* ColumnDataSource.swift */,
+				8290E7922621BCB100EAA369 /* ModalViewController.swift */,
+				82A978F926243A4900E86E07 /* TitleTextFieldDelegate.swift */,
+				82A9790126243A5B00E86E07 /* ContentTextFieldDelegate.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -339,13 +348,16 @@
 				B0BC8ACD261C433E00B8122D /* ViewController.swift in Sources */,
 				82E026D1261D3BA800651B9C /* DataManager.swift in Sources */,
 				B0BC8B70261EF03100B8122D /* ColumnCell.swift in Sources */,
+				8290E7932621BCB100EAA369 /* ModalViewController.swift in Sources */,
 				8288BCF5261CAF3500883E0E /* ColumnDataSource.swift in Sources */,
 				82E026C9261D37A100651B9C /* ColumnDatas.swift in Sources */,
 				B0BC8B75261EF05500B8122D /* ColumnViewController.swift in Sources */,
+				82A9790226243A5B00E86E07 /* ContentTextFieldDelegate.swift in Sources */,
 				B0BC8AC9261C433E00B8122D /* AppDelegate.swift in Sources */,
 				B0BC8B7A261EF08E00B8122D /* ColumnDelegate.swift in Sources */,
 				B0BC8B01261C8BDC00B8122D /* MockNetworkService.swift in Sources */,
 				B0BC8ACB261C433E00B8122D /* SceneDelegate.swift in Sources */,
+				82A978FA26243A4900E86E07 /* TitleTextFieldDelegate.swift in Sources */,
 				B0BC8B7F261EF0F300B8122D /* Badge.swift in Sources */,
 				82E026C4261D367300651B9C /* CellData.swift in Sources */,
 			);

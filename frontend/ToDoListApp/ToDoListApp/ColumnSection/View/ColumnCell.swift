@@ -8,21 +8,15 @@
 import UIKit
 
 class ColumnCell : UITableViewCell {
-    private var title : UILabel
-    private var body : UILabel
-    private var caption : UILabel
+    @IBOutlet weak private var title : UILabel!
+    @IBOutlet weak private var content : UILabel!
+    @IBOutlet weak private var caption : UILabel!
     
-    init(reuseIdentifier: String?){
-        title = UILabel()
-        body = UILabel()
-        caption = UILabel()
-        super.init(style: .value1, reuseIdentifier: reuseIdentifier)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
     
     required init?(coder: NSCoder) {
-        title = UILabel()
-        body = UILabel()
-        caption = UILabel()
         super.init(coder: coder)
     }
     
@@ -30,10 +24,11 @@ class ColumnCell : UITableViewCell {
         self.title.text = title
     }
     
-    func update(body: String){
-        
+    func update(content: String){
+        self.content.text = content
     }
 }
 
 extension ColumnCell {
+    
 }

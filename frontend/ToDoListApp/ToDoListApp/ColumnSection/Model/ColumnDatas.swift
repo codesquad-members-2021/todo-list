@@ -8,13 +8,25 @@
 import Foundation
 
 class ColumnDatas : DataManager{
-    private var cellDatas :[CellData]
+    private var cellDatas : [CellData]
     
     init() {
         cellDatas = []
     }
     
+    func add(cellData : CellData) -> Void{
+        cellDatas.append(cellData)
+    }
+    
     func currentDatasCount() -> Int{
         return cellDatas.count
+    }
+    
+    func cellDataTitle(index : Int) -> String{
+        return cellDatas[index].title
+    }
+    
+    func cellDataContent(index : Int) -> String{
+        return cellDatas[index].content
     }
 }
