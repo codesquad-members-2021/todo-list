@@ -3,20 +3,9 @@ import UIKit
 
 class TaskViewController: UIViewController {
 
-    var id: Int?
-
-    var taskCount = 0 
-    var titleText: String?
-    var contentText: String?
+    var column: Int?
     let taskStackManager = TaskStackManager()
-    let taskStack = TaskStack()
-    
-    let cellReuseIdentifier = "TaskCell"
-    let cellSpacingHeight: CGFloat = 10
-    
-    //test code
-    var taskCards: [TaskCard] = [TaskCard(id: 0, status: StatusValue.toDo, title: "7시 기상", content: "알람 듣고 바로 기상"), TaskCard(id: 1, status: StatusValue.inProgress, title: "데일리 스크럼", content: "1팀")]
-    
+
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var taskCountLabel: UILabel!
     @IBOutlet weak var taskTableView: UITableView!
@@ -25,20 +14,23 @@ class TaskViewController: UIViewController {
         super.viewDidLoad()
         setupSubViews()
         addNotificationObserver()
-        setupData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == StatusInfo.addTask {
             if let newTaskViewController = segue.destination as? NewTaskViewController {
-                newTaskViewController.id = self.id
+                newTaskViewController.column = self.column
             }
         }
-        
-        //
+    }
+    func updateTaskCountLabel() {
+        let count = taskStackManager.arrayCount()
+        taskCountLabel.text = "\(count[column!])"
+        taskTableView.reloadData()
     }
 }
 
+//MARK: -SetUp && Configure
 extension TaskViewController {
     
     private func setupSubViews() {
@@ -49,7 +41,7 @@ extension TaskViewController {
     
     // Custom
     private func setupTitleLabel() {
-        guard let id = id else { return }
+        guard let id = column else { return }
         let titles = TitleList.ofStatus
         titleLabel.text = titles[id]
     }
@@ -65,12 +57,46 @@ extension TaskViewController {
     }
 }
 
+//MARK: -Notification
 extension TaskViewController {
-    func setupData() {
-        taskStack.append(taskCard: taskCards[0])
-        taskStack.append(taskCard: taskCards[1])
+    func addNotificationObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(insertTask(_:)), name: .addTask, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(drawTaskCard(_:)), name: .requestSetupTask, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(sendRemovedData(_:)), name: .requestRemoveTask, object: nil)
     }
     
+    @objc func drawTaskCard(_ notification: Notification) {
+        let card = notification.userInfo?["taskCard"] as! TaskCard
+        let status = card.status
+        taskStackManager.append(status, taskCard: card)
+        updateTaskCountLabel()
+    }
     
+    @objc func insertTask(_ notification: Notification) {
+        let (status, title, content) = (notification.userInfo?["column"] as? Int ?? 0,
+                                        notification.userInfo?["title"] as? String ?? "",
+                                        notification.userInfo?["content"] as? String ?? "")
+        let id = taskStackManager.totalCount() + 1
+        let card = TaskCard(id: id, title: title, content: content, createdAt: "\(Date())", status: status, author: "user1")
+        taskStackManager.append(status, taskCard: card)
+        updateTaskCountLabel()
+        NetworkManager.insertedDataPost(httpMethod: HTTPMethod.post, data: card)
+        dump(taskStackManager)
+    }
+    
+    @objc func sendRemovedData(_ notification: Notification) {
+        let removedData = notification.userInfo?["removedData"] as! TaskCard
+        NetworkManager.changedDataPost(httpMethod: HTTPMethod.delete, data: removedData)
+    }
 }
 
+/*
+ 첫번째 Plus Button
+ Optional([AnyHashable("id"): 0, AnyHashable("title"): "111", AnyHashable("content"): "222"])
+ 
+ 두번째 Plus Button
+ Optional([AnyHashable("title"): "222", AnyHashable("content"): "333", AnyHashable("id"): 1])
+ 
+ 세번째 Plus Button
+ Optional([AnyHashable("id"): 2, AnyHashable("title"): "333", AnyHashable("content"): "444"])
+ */
