@@ -145,7 +145,6 @@
 
 * 태스크를 생성하는 API입니다.
 * 로그인된 사용자만 이용할 수 있는 API입니다.
-* **아직 미구현된 API입니다만, 이런 형식으로 구현할 예정입니다!**
 
 ##### Response
 
@@ -174,7 +173,7 @@
 |     PUT     | /api/columns/:columnId/tasks/:taskId |
 
 * ~~URL에 있는 columnId는 수정 전에 태스크가 위치한 컬럼의 아이디 입니다~~
-  * 사유 : 태스크 변경 API는 더이상 태스크를 옮기는 일을 수행하지 않습니다. 따라서 `수정 전에 태스크가 위치한 컬럼`이라는 표현은 부적절하다고 판단되어 지웠습니다
+  * 사유 : 태스크 변경 API는 더이상 태스크를 옮기는 일을 수행하지 않습니다. 따라서 `수정 전에 태스크가 위치한 컬럼`이라는 표현은 부적절하다고 판단되어 지웠습니다
 
 ##### Request Body
 
@@ -186,13 +185,12 @@
 
 * Request Body의 columnId는 수정 후, 태스크가 위치한 컬럼의 아이디입니다.
 * **columnId 필드는 제거되었습니다** : `21-04-12 오후 11:02`
-  * 사유 : 태스크 변경 api는 더이상 태스크를 옮기는 기능을 수행하지 않게 되면서 해당 필드는 필요없어져서 제거되었습니다
+  * 사유 : 태스크 변경 api는 더이상 태스크를 옮기는 기능을 수행하지 않게 되면서 해당 필드는 필요없어져서 제거되었습니다
 
 ##### 설명
 
 * 태스크를 변경하는 API입니다.
 * 로그인된 사용자만 이용할 수 있는 API입니다.
-* **아직 미구현된 API입니다만, 이런 형식으로 구현할 예정입니다!**
 
 ##### Response
 
@@ -207,7 +205,7 @@
 | :---------: | :---------------------------------------: |
 |     PUT     | /api/columns/:columnId/tasks/:taskId/move |
 
-* URL에 있는 `:columnId`는 이전 컬럼의 아이디에 해당합니다
+* URL에 있는 `:columnId`는 이전 컬럼의 아이디에 해당합니다
 
 ##### Request Body
 
@@ -224,7 +222,6 @@
 
 * 태스크를 변경하는 API입니다.
 * 로그인된 사용자만 이용할 수 있는 API입니다.
-* **아직 미구현된 API입니다만, 이런 형식으로 구현할 예정입니다!**
 
 ##### Response
 
@@ -249,7 +246,6 @@
 
 * 태스크를 삭제하는 API입니다.
 * 로그인된 사용자만 이용할 수 있는 API입니다.
-* **아직 미구현된 API입니다만, 이런 형식으로 구현할 예정입니다!**
 
 ##### Response
 
@@ -284,23 +280,50 @@
   {
       "todoLogs": [
           {
-              "id": 1,
-              "action": "'move' '1 자바스크립트 예제 실습 수정됨!' 'TODO' 'IN_PROGRESS'",
-              "authorName": "라쿠운",
-              "createdDateTime": "2021-04-11T17:14:03.128"
+              "id": 3,
+              "action": "add",
+              "fromColumnTitle": "",
+              "toColumnTitle": "TODO",
+              "taskTitle": "title8",
+              "authorName": "라쿤오톰",
+              "createdDateTime": "2021-04-13T15:12:23.41"
+          },
+          {
+              "id": 4,
+              "action": "move",
+              "fromColumnTitle": "DONE",
+              "toColumnTitle": "TODO",
+              "taskTitle": "title8",
+              "authorName": "라쿤오톰",
+              "createdDateTime": "2021-04-13T15:12:23.41"
           },
           {
               "id": 2,
-              "action": "'move' '2 자바스크립트 예제 실습 수정됨!' 'TODO' 'IN_PROGRESS'",
-              "authorName": "라쿠운",
-              "createdDateTime": "2021-04-11T17:14:03.128"
+              "action": "remove",
+              "fromColumnTitle": "",
+              "toColumnTitle": "TODO",
+              "taskTitle": "title8",
+              "authorName": "라쿤오톰",
+              "createdDateTime": "2021-04-13T15:12:23.41"
+          },
+          {
+              "id": 1,
+              "action": "add",
+              "fromColumnTitle": "",
+              "toColumnTitle": "TODO",
+              "taskTitle": "title8",
+              "authorName": "라쿤오톰",
+              "createdDateTime": "2021-04-13T15:12:23.41"
           }
       ]
   }
   ```
   
 
-`21-04-11 오후 05:19`부로 todoLogs키가 추가되었습니다
+* `21-04-11 오후 05:19`부로 todoLogs키가 추가되었습니다
+  * [수정 사유는 링크와 같습니다](https://github.com/Malloc72P/todo-list/issues/24)
 
-* [수정 사유는 링크와 같습니다](https://github.com/Malloc72P/todo-list/issues/24)
+* `21-04-14 오전 01:17`부로 Response 사양이 변경되었습니다
+  * `fromColumnTitle`, `toColumnTitle`, `taskTitle`이 추가되었습니다
+  * 더이상 action을 파싱해서 로그를 출력하지 않게 하기 위해서 이렇게 수정되었습니다
 
