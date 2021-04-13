@@ -5,13 +5,10 @@ import mj_cooper.backend.domain.User;
 import mj_cooper.backend.domain.Vertical;
 import mj_cooper.backend.domain.Todo;
 import mj_cooper.backend.repository.UserRepository;
-import org.apache.tomcat.util.json.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/verticals/{verticalId}/todos")
@@ -30,15 +27,13 @@ public class TodoController {
 
         // Json 변환 로직
         Gson gson = new Gson();
-        JsonObject object = new JsonObject();
         JsonParser parser = new JsonParser();
-        JsonElement todosToJson = parser.parse(gson.toJson(vertical.getTodos()));
 
+        JsonObject object = new JsonObject();
         object.addProperty("status", "success");
-        object.add("todos", todosToJson);
-        String response = gson.toJson(object);
+        object.add("todos", parser.parse(gson.toJson(vertical.getTodos())));
 
-        return response;
+        return gson.toJson(object);
     }
 
     @GetMapping("/{todoId}")

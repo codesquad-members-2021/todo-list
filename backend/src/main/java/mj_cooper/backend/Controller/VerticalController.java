@@ -44,7 +44,7 @@ public class VerticalController {
 //        User user = userRepository.findById(1L).get();
 //        Vertical foundVertical = user.getVertical(id);
 //
-//        foundVertical.set(todo.getTitle());
+//        foundVertical.update(vertical);
 //
 //        userRepository.save(user);
 //    }

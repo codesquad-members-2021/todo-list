@@ -35,7 +35,7 @@ public class Vertical {
         return todos.get(Math.toIntExact(id) - 1);
     }
 
-    public void deleteTodo(Long id){
+    public void deleteTodo(Long id) {
         todos.remove(todos.get(Math.toIntExact(id) - 1));
     }
 
@@ -50,7 +50,11 @@ public class Vertical {
     public boolean addTodo(Todo todo) {
         return this.todos.add(todo);
     }
-
+//
+//    public void update(Vertical vertical) {
+//        this.todos = vertical.getTodos();
+//    }
+//
     @Override
     public String toString() {
         return "Vertical{" +
