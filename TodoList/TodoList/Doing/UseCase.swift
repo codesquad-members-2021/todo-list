@@ -7,7 +7,7 @@
 
 import Foundation
 
-class DoingUseCase {
+class UseCase {
 
     func loadTasks(completion: @escaping ([Task]) -> Void) {
         URLSessionManager().request(with: .lists, method: .get) { result in
