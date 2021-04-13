@@ -7,14 +7,14 @@
 
 import UIKit
 
-class TodoTableViewDragDelegate: NSObject, UITableViewDragDelegate {
+extension TodoTableViewController: UITableViewDragDelegate {
     
     func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
-        print(session)
-        return []
-//        let provider = NSItemProvider(object: tableView.cellForRow(at: indexPath) as! NSItemProviderWriting)
-//        let item = UIDragItem(itemProvider: provider)
-//        return [item]
-    }
-    
+        let card = todoDataSource.todoCards.getCard(at: indexPath)
+        let itemProvider = NSItemProvider()
+        let dragItem = UIDragItem(itemProvider: itemProvider)
+        dragItem.localObject = card
+        
+        return [dragItem]
+    }    
 }

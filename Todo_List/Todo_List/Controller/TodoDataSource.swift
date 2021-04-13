@@ -8,7 +8,7 @@
 import UIKit
 
 class TodoDataSource: NSObject, UITableViewDataSource {
-    private var todoCards: TodoCardsManageable
+    var todoCards: TodoCardsManageable
     
     init(todoCards: TodoCardsManageable) {
         self.todoCards = todoCards
@@ -39,12 +39,11 @@ class TodoDataSource: NSObject, UITableViewDataSource {
     }
 
     // 아래 함수를 구현해줘야 일단 UI에서 cell이 움직인다!
+    // 같은 테이블뷰 내에서 cell이 움직이면 이 함수가 호출된다.
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         let cell = self.todoCards.getCard(at: sourceIndexPath)
         self.todoCards.removeCard(at: sourceIndexPath)
         self.todoCards.insertCard(item: cell, at: destinationIndexPath)
-        print(self.todoCards.dragItems(for: sourceIndexPath))
-    
     }
 }
 

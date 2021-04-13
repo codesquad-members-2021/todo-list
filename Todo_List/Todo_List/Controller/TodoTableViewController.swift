@@ -15,15 +15,12 @@ class TodoTableViewController: UIViewController {
     @IBOutlet weak var addCardButton: UIButton!
     
     private lazy var tableViewDelegate = TodoDelegate()
-    private var todoDataSource = TodoDataSource()
-    private var dropDelegate = TodoTableViewDropDelegate()
-    private var dragDelegate = TodoTableViewDragDelegate()
-    
-    
+    var todoDataSource = TodoDataSource()
+        
     func setting() {
         tableView.delegate = tableViewDelegate
-        tableView.dropDelegate = dropDelegate
-        tableView.dragDelegate = dragDelegate
+        tableView.dropDelegate = self
+        tableView.dragDelegate = self
         tableView.dragInteractionEnabled = true
         tableView.register(UINib(nibName: TodoCell.identifier, bundle: nil), forCellReuseIdentifier: TodoCell.identifier)
         

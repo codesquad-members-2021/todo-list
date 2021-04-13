@@ -13,10 +13,11 @@ protocol TodoCardsManageable {
     func removeCard(at indexPath: IndexPath)
     func insertCard(item: TodoCard, at indexPath: IndexPath)
     func dragItems(for indexPath: IndexPath) -> [UIDragItem]
+    func canHandle(_ session: UIDropSession) -> Bool
 }
 
 
-class TodoCards: TodoCardsManageable {
+class TodoCards: TodoCardsManageable  {
     
     private var cards: [TodoCard]
     
@@ -63,6 +64,7 @@ class TodoCards: TodoCardsManageable {
     }
     
     func canHandle(_ session: UIDropSession) -> Bool {
+        print(session.canLoadObjects(ofClass: TodoCard.self))
         return session.canLoadObjects(ofClass: TodoCard.self)
     }
 }
