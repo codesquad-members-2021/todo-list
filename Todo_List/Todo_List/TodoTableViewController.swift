@@ -39,7 +39,7 @@ class TodoTableViewController: UIViewController {
     }
     
     @IBAction func addCardButtonTouched(_ sender: UIButton) {
-        let modalView = ModalViewController(nibName: "ModalViewController", bundle: nil, self.superclass as! EditViewControllerDelegate)
+        let modalView = ModalViewController(nibName: "ModalViewController", bundle: nil, todoDataSource.todoCards)
         modalView.modalPresentationStyle = .custom
         self.present(modalView, animated: true, completion: nil)
         

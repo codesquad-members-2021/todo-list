@@ -8,7 +8,7 @@
 import UIKit
 
 class TodoDataSource: NSObject, UITableViewDataSource {
-    private var todoCards: TodoCardsManageable
+    private (set) var todoCards: TodoCardsManageable
     
     init(todoCards: TodoCardsManageable) {
         self.todoCards = todoCards
