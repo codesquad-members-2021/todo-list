@@ -37,8 +37,8 @@ class CardUseCase: CardUseCasePort {
         return cardNetworkManager.getCards(state: state)
     }
  
-    func add(title: String, contents: String) -> AnyPublisher<[Card], Error>  {
-        return cardNetworkManager.postCards(title: title, contents: contents)
+    func add(state: State, title: String, contents: String) -> AnyPublisher<[Card], Error>  {
+        return cardNetworkManager.postCards(state: state, title: title, contents: contents)
     }
     
     func myAdd() {
