@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import ColumnAccentButton from './partial/ColumnAccentButton';
@@ -27,7 +28,7 @@ const CardInputInput = styled.input`
     font-size: 14px;
 
     & + & {
-        margin-top: 8px
+        margin-top: 8px;
     }
 `;
 
@@ -36,19 +37,21 @@ const CardInputButtons = styled.div`
     display: flex;
     justify-content: space-around;
 `;
-
 //prettier-ignore
-const CardInput = ({ title, body, index, setCardList }) => {
+const CardInput = ({ title, body, index, setCardList, columnId, cardId, previousCardId }) => {
     const [inputTitle, setTitle] = useState(title);
     const [inputBody, setBody] = useState(body);
     const isAble = inputTitle.length * inputBody.length;
 
-    const addCard = () => {
+    const addCard = async () => {
         if (!isAble) return;
+        const json = title.length * body.length
+        ? await axios.put(`api/columns/${columnId}/cards/${cardId}`, {card: { title: inputTitle, body:inputBody, columnId, cardId, previousCardId}})
+        : await axios.post(`api/columns/${columnId}/cards/`, {card: { title: inputTitle,body:inputBody}})
         setCardList((cardList) => {
             const left = cardList.slice(0, index);
             const right = cardList.slice(index + 1);
-            return left.concat({ title: inputTitle, body: inputBody }, right);
+            return left.concat(json.data.card, right);
         });
     };
 
