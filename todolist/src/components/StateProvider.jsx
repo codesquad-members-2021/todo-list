@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import NavBar from "./navBar/NavBar";
-import { Column } from "./card/CardList";
+import Column from "./column/Column";
 
 function StateProvider(props) {
   const [log, setLog] = useState([

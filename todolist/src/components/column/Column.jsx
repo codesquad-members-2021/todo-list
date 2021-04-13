@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import CardForm from "./CardForm";
-import CardWrap from "./CardWrap";
+import { useState } from "react";
 import styled from "styled-components";
 import { HiOutlinePlusSm } from "react-icons/hi";
+import CardForm from "./card/CardForm";
+import CardList from "./card/CardList";
 
 const ColumnContainer = styled.section`
   width: 308px;
@@ -114,15 +114,4 @@ function Column(props) {
   );
 }
 
-function CardList(props) {
-  const { cards, onDelete, onUpdate } = props;
-  return (
-    <ul className="card-wrap">
-      {cards.map((card) => (
-        <CardWrap key={card.id} card={card} onDelete={onDelete} onUpdate={onUpdate} />
-      ))}
-    </ul>
-  );
-}
-
-export { CardList, Column };
+export default Column;

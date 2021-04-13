@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 // import { HiX } from "react-icons/hi";
-import IconButton from "../utils/IconButton";
+import IconButton from "../../utils/IconButton";
 
 const CardTitle = styled.div`
   font-weight: bold;
