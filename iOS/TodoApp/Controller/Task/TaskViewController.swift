@@ -77,15 +77,15 @@ extension TaskViewController {
                                         notification.userInfo?["title"] as? String ?? "",
                                         notification.userInfo?["content"] as? String ?? "")
         let id = taskStackManager.totalCount() + 1
-        let card = TaskCard(id: id, title: title, description: content, createdAt: "\(Date())", status: status, author: "user1")
+        let card = TaskCard(id: id, title: title, content: content, createdAt: "\(Date())", status: status, author: "user1")
         taskStackManager.append(status, taskCard: card)
         updateTaskCountLabel()
         NetworkManager.insertedDataPost(httpMethod: HTTPMethod.post, data: card)
+        dump(taskStackManager)
     }
     
     @objc func sendRemovedData(_ notification: Notification) {
         let removedData = notification.userInfo?["removedData"] as! TaskCard
-        updateTaskCountLabel()
         NetworkManager.changedDataPost(httpMethod: HTTPMethod.delete, data: removedData)
     }
 }

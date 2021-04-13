@@ -24,7 +24,7 @@ class TaskCell: UITableViewCell {
     
     func configure(with taskCard: TaskCard){
         titleTextLabel.text = taskCard.title
-        contentTextLabel.text = taskCard.description
+        contentTextLabel.text = taskCard.content
         iOSLabel.text = taskCard.author
     }
 }
