@@ -1,5 +1,5 @@
 import React from 'react';
-import { LogCardContainer } from './sidebarStyle';
+import { LogContainer, LogCardContainer } from './sidebarStyle';
 
 const LogCard = ({ data: { logList }, userID }) => {
   const log = logList.map((log) => {
@@ -17,17 +17,20 @@ const LogCard = ({ data: { logList }, userID }) => {
     };
 
     return (
-      <LogCardContainer key={id}>
-        <div className="user">@{userID}</div>
-        <span>
-          <span className="title">{title}</span>를
-        </span>
-        <ActionPrint from={from} to={to} />
-        <span>
-          <span className="action">{action}</span>하였습니다.
-        </span>
-        <div className="time">{time}</div>
-      </LogCardContainer>
+      <LogContainer key={id}>
+        <div className="emoji">🥳</div>
+        <LogCardContainer key={id}>
+          <div className="user">@{userID}</div>
+          <span>
+            <span className="title">{title}</span>를
+          </span>
+          <ActionPrint from={from} to={to} />
+          <span>
+            <span className="action">{action}</span>하였습니다.
+          </span>
+          <div className="time">{time}</div>
+        </LogCardContainer>
+      </LogContainer>
     );
   });
 

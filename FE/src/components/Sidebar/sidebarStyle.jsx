@@ -32,6 +32,7 @@ const LogListContainer = styled.div`
 const LogCardContainer = styled.div`
   .user {
     color: gray;
+    margin-bottom: 0.2rem;
   }
   .title,
   .action,
@@ -41,10 +42,9 @@ const LogCardContainer = styled.div`
   .time {
     font-size: 14px;
     color: gray;
+    margin-top: 0.2rem;
   }
-  .emoji {
-    float: left;
-  }
+
   line-height: 1.3rem;
   font-size: 16px;
   display: flex;
@@ -53,4 +53,18 @@ const LogCardContainer = styled.div`
   margin-top: 10px;
 `;
 
-export { SidebarContainer, CloseContainer, LogListContainer, LogCardContainer };
+const LogContainer = styled.div`
+  display: flex;
+
+  .emoji {
+    padding: 1.2rem;
+  }
+`;
+
+export {
+  SidebarContainer,
+  CloseContainer,
+  LogListContainer,
+  LogCardContainer,
+  LogContainer,
+};
