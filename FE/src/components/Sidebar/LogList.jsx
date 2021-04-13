@@ -1,15 +1,20 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import LogCard from './LogCard';
 
-const LogList = ({logArray}) => {
+const LogList = ({ logData }) => {
+  const [logs, setLogs] = useState();
 
-  console.log(logArray);
+  // useEffect(() => {
+  //   setLogs(logData.logList);
+  // }, []);
+
+  console.log(logs);
 
   return (
-    <div>
-      
-    </div>
+    <>
+      <LogCard />
+    </>
   );
-}
+};
 
 export default LogList;
