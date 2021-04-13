@@ -5,9 +5,13 @@ import com.codesquad.todoList.error.ErrorResponse;
 import com.codesquad.todoList.error.exception.NotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.server.MethodNotAllowedException;
 
 @ControllerAdvice
 public class ExceptionHandleController {
@@ -24,6 +28,14 @@ public class ExceptionHandleController {
         log.error("ERROR : {}", e.getMessage());
         ErrorCode errorCode = e.getErrorCode();
         return new ResponseEntity<>(ErrorResponse.of(errorCode), errorCode.getHttpStatus());
+    }
+
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<?> catchValidateException(MethodArgumentNotValidException e, BindingResult bindingResult) {
+        ErrorResponse errorResponse = ErrorResponse.of(ErrorCode.BAD_REQUEST, bindingResult);
+        log.error("Binding Validate ERROR : {}", errorResponse);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
     }
 
 }
