@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import { ReactComponent as addCardBtn } from '../../../style/addIcon.svg';
+import React from "react";
+import styled from "styled-components";
+import { ReactComponent as addCardBtn } from "../../../style/addIcon.svg";
 
 const AddCardBtn = styled(addCardBtn)`
   width: 13.79px;
@@ -23,10 +23,14 @@ const AddCardBtn = styled(addCardBtn)`
   }
 `;
 
-const AddCardButton = () => {
+const AddCardButton = ({ id, handleCardAddedColumn }) => {
   return (
     <div className="add-card-button-section">
-      <AddCardBtn className="add-card-button" />
+      <AddCardBtn
+        onClick={handleCardAddedColumn}
+        id={id}
+        className="add-card-button"
+      />
     </div>
   );
 };

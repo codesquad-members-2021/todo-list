@@ -9,8 +9,8 @@ const Log = ( { handleLogRender }) => {
   const [logCards, setLogCards] = useState([]);
 
   const getLogData = () => {
-    getData('http://localhost:3002/log') //
-      .then(res => setLogCards(res.data));
+    getData("http://localhost:3002/log") //
+      .then((res) => setLogCards(res.data));
   };
 
   useEffect(() => {

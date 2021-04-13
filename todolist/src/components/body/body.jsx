@@ -10,13 +10,26 @@ const Body = () => {
   const [columnData, setColumnData] = useState([]);
   const [userData, setUserData] = useState([]);
 
+  const handleAddButtonClick = (ID) => {
+    let newData = columnData;
+    newData.forEach((v) => {
+      if (v.id === Number(ID)) {
+        v.modifyCardFlag = true;
+      }
+    });
+    setColumnData([...newData]);
+  };
+
   const getColumnData = () => {
-    getData('http://localhost:3002/column') //
-      .then(response => setColumnData(response.data));
+    getData("http://localhost:3002/column").then((response) => {
+      const newData = response.data;
+      newData.map((columnData) => (columnData.modifyCardFlag = false));
+      setColumnData(newData);
+    });
   };
 
   const getUserData = () => {
-    getRandomUser('http://localhost:3002/defaultUserList') //
+    getRandomUser("http://localhost:3002/defaultUserList") //
       .then(setUserData);
   };
 
@@ -27,10 +40,20 @@ const Body = () => {
 
   return (
     <CardSectionStyle className="body">
-      {columnData.map(({ columnTitle, cards }, index) => (
+      {columnData.map(({ columnTitle, cards, modifyCardFlag, id }, index) => (
         <BodyStyle className="column" key={index}>
-          <ColumnHeader columnTitle={columnTitle} cards={cards} />
-          <ColumnBody cards={cards} user={userData} />
+          <ColumnHeader
+            id={id}
+            columnTitle={columnTitle}
+            cards={cards}
+            handleAddButtonClick={handleAddButtonClick}
+          />
+          <ColumnBody
+            modifyCardFlag={modifyCardFlag}
+            columnTitle={columnTitle}
+            cards={cards}
+            user={userData}
+          />
         </BodyStyle>
       ))}
       <FabButton />
