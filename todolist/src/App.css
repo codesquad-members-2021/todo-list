@@ -1,0 +1,61 @@
+ul {
+  all: unset;
+}
+
+.icon {
+  width: 2em;
+  height: 2em;
+}
+
+.icon-add-open {
+  color: #0075de;
+}
+
+.icon-add-close {
+  color: #bdbdbd;
+}
+
+.icon-delete {
+  color: #bdbdbd;
+}
+
+input {
+  border: none;
+  width: 276px;
+  height: 23px;
+}
+
+.card-input-title::placeholder {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.card-btn-section {
+  display: flex;
+  margin-top: 1em;
+}
+
+.card-input-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn {
+  padding: 10px;
+  width: 134px;
+  height: 40px;
+  background: #e0e0e0;
+  border-radius: 6px;
+  border: none;
+  margin: 0px 4px;
+}
+
+.edit-btn {
+  background: #0075de !important;
+  color: #fff;
+}
+
+.enroll-btn {
+  background: #86c6ff;
+  color: rgba(255, 255, 255, 0.4);
+}
