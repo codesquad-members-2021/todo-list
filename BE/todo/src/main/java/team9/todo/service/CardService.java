@@ -45,13 +45,13 @@ public class CardService {
     }
 
     @Transactional
-    public Card update(long cardId, String title, String contents, double priority, User user) {
+    public Card update(long cardId, String title, String content, double priority, User user) {
         logger.debug("{}번 카드의 내용 수정 요청", cardId);
         Card card = cardRepository.findByIdAndDeletedFalse(cardId).orElseThrow(() -> new NotFoundException());
         if (card.getUser() != user.getId()) {
             throw new NotAuthorizedException();
         }
-        card.update(title, contents, priority);
+        card.update(title, content, priority);
         Card saved = cardRepository.save(card);
 
         historyRepository.save(new History(saved.getId(), HistoryAction.UPDATE, null, null));
