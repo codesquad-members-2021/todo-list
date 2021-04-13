@@ -136,9 +136,9 @@
 			children = (
 				10FA92F626242C620002DBE2 /* URLSessionProtocol.swift */,
 				105DCBB426247E31008AC441 /* HTTPMethod.swift */,
-				10FA92FE262444A90002DBE2 /* CardAPIClient.swift */,
-				10FA92EE262425AA0002DBE2 /* CardsAPI.swift */,
 				105DCBB926247F4A008AC441 /* APIError.swift */,
+				10FA92EE262425AA0002DBE2 /* CardsAPI.swift */,
+				10FA92FE262444A90002DBE2 /* CardAPIClient.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";

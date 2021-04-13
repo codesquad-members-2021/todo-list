@@ -12,6 +12,8 @@ class ModalViewController: UIViewController {
     
     @IBOutlet var cardTitle: UITextField!
     @IBOutlet weak var cardContent: UITextField!
+    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var enrollButton: UIButton!
     
     var completionHandler : ((Card) -> ())? = nil
     
@@ -37,7 +39,14 @@ class ModalViewController: UIViewController {
         self.completionHandler = handler
     }
     func configure(){
+    
         view.backgroundColor = .white
         self.preferredContentSize = CGSize(width: 400, height: 175)
+        
+        self.cancelButton.backgroundColor = UIColor.init(named: "gray5")
+        self.cancelButton.layer.cornerRadius = 6
+        
+        self.enrollButton.backgroundColor = UIColor.init(named: "lightBlue")
+        self.enrollButton.layer.cornerRadius = 6
     }
 }
