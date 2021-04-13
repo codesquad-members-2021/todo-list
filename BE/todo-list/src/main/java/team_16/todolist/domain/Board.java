@@ -10,6 +10,7 @@ public class Board {
 
     @Id
     private Long id;
+    
     public String title;
     private Set<Card> cards = new HashSet<>();
 
@@ -37,6 +38,9 @@ public class Board {
 
     public Board(String title) {
         this.title = title;
+    }
+
+    public Board() {
     }
 
     public Card addCard(String title, String content) {

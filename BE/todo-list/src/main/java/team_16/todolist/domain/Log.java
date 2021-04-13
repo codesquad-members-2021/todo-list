@@ -8,6 +8,8 @@ public class Log {
 
     @Id
     private Long id;
+
+    private String action;
     private String  title;
     private LocalDateTime time;
     private String prevBoard;

@@ -15,7 +15,7 @@ public class CardController {
         this.boardRepository = boardRepository;
     }
 
-    @PostMapping()
+    @PostMapping
     public Card createdCard(@PathVariable Long boardId, String title, String content) {
         Board board = boardRepository.findById(boardId).orElseThrow(IllegalArgumentException::new);
         Card newCard = board.addCard(title, content);
