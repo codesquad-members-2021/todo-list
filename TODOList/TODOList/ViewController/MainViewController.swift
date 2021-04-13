@@ -30,20 +30,19 @@ class MainViewController: UIViewController {
         self.menuView.frame.origin.x = self.view.frame.maxX
         
         var tableView = UITableView()
-        tableView = UITableView(frame: CGRect(x: 40, y: 60, width: self.view.frame.width * 0.35 - 60, height: self.view.frame.height))
+        tableView = UITableView(frame: CGRect(x: 40, y: 60, width: self.view.frame.width * 0.3 - 60, height: self.view.frame.height))
         tableView.separatorStyle = .none
         tableView.allowsSelection = false
-        
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 500
         
         tableView.dataSource = self
         tableView.delegate = self
         
-        self.menuView.addSubview(tableView)
-        
         let nibName = UINib(nibName: "HistoryCell", bundle: nil)
         tableView.register(nibName, forCellReuseIdentifier: "historyCell")
+        
+        self.menuView.addSubview(tableView)
+        
+        tableView.reloadData()
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.topAnchor.constraint(equalTo: self.menuView.topAnchor, constant: 60).isActive = true
@@ -94,9 +93,20 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "historyCell", for: indexPath) as? HistoryCell else { return HistoryCell() }
-        cell.contents.text = "안녕하세요 반갑습니다.안녕하세요 반갑습니다.안녕하세요 반갑습니다.안녕하세요 반갑습니다."
         cell.contents.sizeToFit()
         return cell
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 160
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 500
     }
 }
 
