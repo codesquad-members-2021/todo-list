@@ -23,6 +23,8 @@ class TodoViewController: UIViewController, ListViewControllerProtocol {
         cardTableView.delegate  = self
         cardTableView.register(CardCell.nib(), forCellReuseIdentifier: CardCell.identifier)
         cardTableView.sectionFooterHeight = 0.0
+        
+        headerView.addButton.addTarget(self, action: #selector(showPopupViewController), for: .touchUpInside)
     }
     
     func filterCards(of category: String, from allCards: [Card]) {
@@ -34,6 +36,18 @@ class TodoViewController: UIViewController, ListViewControllerProtocol {
     func refreshTableView() {
         cardTableView.reloadData()
         headerView.badgeButton.setTitle("\(cards.count)", for: .normal)
+    }
+    
+    @objc func showPopupViewController() {
+        //let popupVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "AddCardPopupViewController")
+        //popupVC.modalPresentationStyle = .overCurrentContext
+        //popupVC.modalTransitionStyle = .crossDissolve
+        //self.present(popupVC, animated: true, completion: nil)
+        let popupVC = PopupViewController(nibName: "PopupViewController", bundle: nil)
+        popupVC.modalPresentationStyle = .formSheet
+        popupVC.modalTransitionStyle = .coverVertical
+        popupVC.preferredContentSize = CGSize(width: 400.0, height: 175.0)
+        self.present(popupVC, animated: true, completion: nil)
     }
 }
 
