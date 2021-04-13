@@ -4,6 +4,7 @@ import CountCards from "./countCards.jsx";
 import AddCardButton from "./addCardButton.jsx";
 import DeleteColumnButton from "./deleteColumnButton.jsx";
 import ColumnHeaderSection from "./columnHeaderSection.jsx";
+import ColumnTitleWrapper from './ColumnTitleWrapper.style';
 
 const ColumnHeader = ({ id, columnTitle, cards, handleAddButtonClick }) => {
   const handleCardAddedColumn = ({ target: { id } }) => {
@@ -12,8 +13,10 @@ const ColumnHeader = ({ id, columnTitle, cards, handleAddButtonClick }) => {
 
   return (
     <ColumnHeaderSection className="column-header-section">
-      <ColumnTitle columnTitle={columnTitle} />
-      <CountCards cardsNumber={cards.length} />
+      <ColumnTitleWrapper>
+        <ColumnTitle columnTitle={columnTitle} />
+        <CountCards cardsNumber={cards.length} />
+      </ColumnTitleWrapper>
       <AddCardButton id={id} handleCardAddedColumn={handleCardAddedColumn} />
       <DeleteColumnButton />
     </ColumnHeaderSection>

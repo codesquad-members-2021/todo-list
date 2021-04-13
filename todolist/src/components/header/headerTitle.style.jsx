@@ -7,8 +7,6 @@ const Title = styled.span`
   left: 80px;
   top: 33px;
 
-  font-family: Noto Sans KR;
-  font-style: normal;
   font-weight: normal;
   font-size: 32px;
   line-height: 46px;

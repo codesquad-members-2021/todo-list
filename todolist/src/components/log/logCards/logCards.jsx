@@ -12,12 +12,8 @@ const LogCards = ({ logData }) => {
       <Emoji emoji={"👉"} />
       <LogContentsStyle>
         <LogCardAuthor user={logData.user} />
-        <WorkHistory
-          columnTitle={logData.columnTitle}
-          cardTitle={logData.cardTitle}
-          action={logData.action}
-        />
-        <HistoryTime time={logData.time} />
+        <WorkHistory columnTitle={logData.columnTitle} cardTitle={logData.cardTitle} action={logData.action} />
+        <HistoryTime time ={logData.time} />
       </LogContentsStyle>
     </LogCardsStyle>
   );

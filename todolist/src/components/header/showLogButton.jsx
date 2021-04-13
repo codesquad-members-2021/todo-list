@@ -6,14 +6,15 @@ const MenuBtn = styled(menuBtn)`
   position: absolute;
   width: 24px;
   height: 24px;
-  left: 1200px;
-  top: 44px;
+  top: 50px;
+  right: 100px;
+  cursor: pointer;
 `;
 
-const ShowLogButton = () => {
+const ShowLogButton = ({renderLoghandler} ) => {
   return (
     <div className="show-log-button-section">
-      <MenuBtn className="show-log-button" />
+      <MenuBtn className="show-log-button" onClick={renderLoghandler} />
     </div>
   );
 };
