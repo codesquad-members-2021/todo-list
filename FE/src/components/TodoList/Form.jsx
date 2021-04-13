@@ -3,11 +3,8 @@ import StyledForm from '../atoms/StyledForm';
 import { InputTitle, InputContent } from '../atoms/StyledInputs';
 import FormButtonsWrap from '../molecules/FormButtonsWrap';
 
-const Form = ({ addCard, column, offDisplay }) => {
-  const [inputs, setInputs] = useState({
-    title: '',
-    content: '',
-  });
+const Form = ({ addCard, column, offDisplay, onChange, inputs }) => {
+  const [hasInput, setHasInput] = useState(false);
   const titleInput = useRef();
   const contentInput = useRef();
   const nextID = useRef(5); // 임시 아이디
@@ -29,13 +26,6 @@ const Form = ({ addCard, column, offDisplay }) => {
     offDisplay();
   };
 
-  const onChange = ({ target }) => {
-    setInputs({
-      ...inputs,
-      [target.name]: target.value,
-    });
-  };
-
   const resize = () => {
     const currentHeight = contentInput.current.clientHeight;
     const scrollHeight = contentInput.current.scrollHeight;
@@ -45,6 +35,15 @@ const Form = ({ addCard, column, offDisplay }) => {
       }px`;
     }
   };
+
+  const checkInputValue = ({ title, content }) => {
+    if (title.length > 0 || content.length > 0) setHasInput(true);
+    else setHasInput(false);
+  };
+
+  useEffect(() => {
+    checkInputValue(inputs);
+  }, [inputs]);
 
   return (
     <StyledForm onSubmit={handleSubmit}>
@@ -65,7 +64,7 @@ const Form = ({ addCard, column, offDisplay }) => {
         onKeyUp={resize}
         onChange={onChange}
       />
-      <FormButtonsWrap offDisplay={offDisplay} inputs={inputs} />
+      <FormButtonsWrap offDisplay={offDisplay} hasInput={hasInput} />
     </StyledForm>
   );
 };

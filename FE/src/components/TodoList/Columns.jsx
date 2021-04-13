@@ -1,11 +1,16 @@
 import { useState } from 'react';
-import { ColumnContainer } from './columnStyle';
-import CardLists from '../atoms/CardLists';
+import CardLists from './CardLists';
 import Form from './Form';
+import styled from 'styled-components';
+import Icon from '../atoms/ColumnHeaderIcons';
 
 const Column = ({ data: { columns } }) => {
   const [columnData, setColumnData] = useState(columns);
   const [currentID, setCurrentID] = useState(null);
+  const [inputs, setInputs] = useState({
+    title: '',
+    content: '',
+  });
 
   const handleClick = (clickedID) => {
     return () => {
@@ -30,20 +35,31 @@ const Column = ({ data: { columns } }) => {
     setCurrentID(null);
   };
 
+  const onChange = ({ target }) => {
+    setInputs({
+      ...inputs,
+      [target.name]: target.value,
+    });
+  };
+
   const columnList = columnData.map((column) => {
     const { id, title, cards } = column;
     return (
-      <section key={id}>
+      <section key={id} className="column">
         <ul>
-          <header>
-            <span>{title}</span>
-            <span>{cards.length}개</span>
-            <button onClick={handleClick(id)}>
-              <i className="fas fa-plus"></i>
-            </button>
-            <button onClick={handleClickDeleteBtn(id)}>
-              <i className="fas fa-times"></i>
-            </button>
+          <header className="column__header">
+            <div className="title">
+              <h2 className="title__h2">{title}</h2>
+              <span className="title__icon">{cards.length}</span>
+            </div>
+            <div className="column_button-wrap">
+              <button onClick={handleClick(id)}>
+                <Icon type="plus" />
+              </button>
+              <button onClick={handleClickDeleteBtn(id)}>
+                <Icon type="cancel" />
+              </button>
+            </div>
           </header>
           <div>
             {currentID === id && (
@@ -52,6 +68,9 @@ const Column = ({ data: { columns } }) => {
                 addCard={addCard}
                 offDisplay={offDisplay}
                 column={column}
+                onChange={onChange}
+                inputs={inputs}
+                setInputs={setInputs}
               />
             )}
             <CardLists cards={cards} />
@@ -65,3 +84,64 @@ const Column = ({ data: { columns } }) => {
 };
 
 export default Column;
+
+const ColumnWrap = styled.div`
+  display: flex;
+
+  button {
+    outline: 0;
+    border: 0;
+  }
+
+  .column {
+    width: 308px;
+    padding-right: 1rem;
+  }
+
+  .column__header {
+    display: flex;
+    padding-bottom: 1rem;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .title {
+    display: flex;
+    align-items: center;
+    height: 26px;
+    width: 228px;
+  }
+
+  .title__h2 {
+    width: auto;
+    height: 26px;
+
+    font-family: Noto Sans KR;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 26px;
+    display: flex;
+    align-items: center;
+    color: #010101;
+  }
+
+  .title__icon {
+    margin-left: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    position: static;
+    width: 26px;
+    height: 26px;
+    background: #bdbdbd;
+    border-radius: 20px;
+  }
+
+  .column_button-wrap {
+    display: flex;
+  }
+`;
+
+const ColumnContainer = ({ children }) => <ColumnWrap>{children}</ColumnWrap>;
