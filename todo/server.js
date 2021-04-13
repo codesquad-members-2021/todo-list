@@ -21,11 +21,14 @@ server.delete("/todos/completed", (req, res) => {
 });
 
 server.patch('/todos', (req, res) => {
-  const { id, title, content } = req.query;
-  // console.log(db.get("todos").value().map(({ items }) => items).flat());
-  db.get("todos").filter(({ items }) => items.id === id)
+  const { columnId, id, title, content } = req.query;
+  db.get("todos")
+    .find(e => e.columnId === Number(columnId))
+    .get('items')
+    .find(e => e.id === Number(id))
     .assign({ title: title, content: content }).write();
-  res.send(db.get("todos").value());
+
+  res.send('success');
 });
 
 // Use default router

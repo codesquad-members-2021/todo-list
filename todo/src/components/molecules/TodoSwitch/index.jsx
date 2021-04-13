@@ -20,7 +20,7 @@ const Div = styled.div`
   `}
 `;
 
-const TodoSwitch = ({ id, title, content, author }) => {
+const TodoSwitch = ({ columnId, id, title, content, author }) => {
   const [isInput, toggleActions] = useToggle(false);
 
   let template;
@@ -28,7 +28,7 @@ const TodoSwitch = ({ id, title, content, author }) => {
   if (isInput) {
     template = (
       <Div>
-        <TodoListInput  {...{ id, title, content, toggleActions }} />
+        <TodoListInput  {...{ columnId, id, title, content, toggleActions }} />
       </Div>);
   } else {
     template = (

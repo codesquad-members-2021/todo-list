@@ -7,7 +7,7 @@ const Div = styled.div`
   margin: 5px;
 `;
 
-const TodoListColumn = ({ columnName, items }) => {
+const TodoListColumn = ({ columnId, columnName, items }) => {
   const [isClicked, toggleActions] = useToggle(false);
 
   let template;
@@ -20,7 +20,7 @@ const TodoListColumn = ({ columnName, items }) => {
           return (
             <TodoSwitch
               key={id}
-              {...{ id, title, content, author }}
+              {...{ columnId, id, title, content, author }}
             ></TodoSwitch>
           );
         })}
@@ -35,7 +35,7 @@ const TodoListColumn = ({ columnName, items }) => {
           return (
             <TodoSwitch
               key={id}
-              {...{ id, title, content, author }}
+              {...{ columnId, id, title, content, author }}
             ></TodoSwitch>
           );
         })}
