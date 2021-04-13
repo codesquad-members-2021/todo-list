@@ -1,8 +1,8 @@
 //
-//  HistoryCell.swift
+//  CustomTableViewCell.swift
 //  TODOList
 //
-//  Created by Issac on 2021/04/10.
+//  Created by Issac on 2021/04/13.
 //
 
 import UIKit
@@ -17,6 +17,7 @@ class HistoryCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.translatesAutoresizingMaskIntoConstraints = false
     }
+    
+    
 }
