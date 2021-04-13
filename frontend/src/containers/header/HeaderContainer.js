@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import Header from '../../components/header/Header';
-import Activity from '../../components/header/Activity';
+import HeaderTemplate from '../../components/header/HeaderTemplate';
+
 
 const HeaderContainer = () => {
     const [activityHide, setActivityHide] = useState(true);
-    const [activityDatas, setActivityDatas] = useState([
+    const [activityDatas] = useState([
         {
             id: 1,
             author: 'sam',
@@ -26,17 +26,12 @@ const HeaderContainer = () => {
     };
 
     return (
-        <>
-            <Header
-                title={'TO-DO LIST'}
-                onClickForLogVisible={onClickForLogVisible}
-            />
-            <Activity
-                activityHide={activityHide}
-                activityDatas={activityDatas}
-                onClickForLogVisible={onClickForLogVisible}
-            />
-        </>
+        <HeaderTemplate
+            title={'TO-DO LIST'}
+            onClickForLogVisible={onClickForLogVisible}
+            activityHide={activityHide}
+            activityDatas={activityDatas}
+        />
     );
 };
 

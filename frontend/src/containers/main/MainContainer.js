@@ -3,6 +3,7 @@ import axios from 'axios';
 import ColumnContainer from '../column/ColumnContainer';
 import Main from '../../components/main/Main';
 
+
 //prettier-ignore
 const MainContainer = () => {
     const [columnData, setColumnData] = useState([]);
@@ -17,6 +18,7 @@ const MainContainer = () => {
             )),
         );
     }, [columnData]);
+
 
     return <Main>{columns}</Main>;
 };

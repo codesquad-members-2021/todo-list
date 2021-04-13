@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import ActivityCloseButton from "./partial/ActivityCloseButton";
-import ActivityItem from "./partial/ActivityItem";
+import ActivityCloseButton from "./ActivityCloseButton";
+import ActivityItem from "./ActivityItem";
 
 const StyledActivity = styled.div`
     --background-color: #fff;
 
-    transform: ${(props) => (props.activityHide ? 'translateX(101%)' : 'translateX(0%)')};
+    transform: ${(props) => (props.activityHide ? 'translateX(100%)' : 'translateX(0%)')};
     transition: transform 0.4s;
 
     position: absolute;
@@ -14,12 +14,13 @@ const StyledActivity = styled.div`
     right: 0;
 
     width: 452px;
+    height: 100%;
     background-color: var(--background-color, #FFF);
     box-shadow: 0px 0px 4px rgba(204, 204, 204, 0.5),
         0px 2px 4px rgba(0, 0, 0, 0.25);
     backdrop-filter: blur(4px);
 
-    padding-bottom: 20px;
+    padding: 0 20px 20px;
 `;
 
 const StyledCloseWrapper = styled.div`
@@ -29,7 +30,6 @@ const StyledCloseWrapper = styled.div`
 
     height: 112px;
     padding-right: 50px;
-    border-bottom: 1px solid #13d47d; // 임시
 `;
 
 const Activity = ({ activityHide, activityDatas, onClickForLogVisible }) => {
@@ -39,10 +39,8 @@ const Activity = ({ activityHide, activityDatas, onClickForLogVisible }) => {
                 <ActivityCloseButton onClick = {onClickForLogVisible} />
             </StyledCloseWrapper>
             <div>
-                {activityDatas.length > 0 &&
-                    activityDatas.map((logData) => (
-                        <ActivityItem key={logData.id} logData={logData} />
-                    ))}
+                {/* ActivityItem -> 데이터 핸들링 필요 */}
+                <ActivityItem />
             </div>
         </StyledActivity>
     );
