@@ -1,7 +1,7 @@
-import TodoListInput from '../TodoListInput';
-import TodoListItem from '../TodoListItem';
+import TodoListInput from "../TodoListInput";
+import TodoListItem from "../TodoListItem";
 import styled, { css } from "styled-components";
-import useToggle from '../../../hooks/useToggle';
+import useToggle from "../../../hooks/useToggle";
 
 const Div = styled.div`
   position: relative;
@@ -12,36 +12,33 @@ const Div = styled.div`
   border: 2px solid #000;
   border-radius: 5px;
   cursor: pointer;
-  ${({ hover }) => hover && css`
-        &:hover{
-        border:2px solid blue;
+  ${({ hover }) =>
+    hover &&
+    css`
+      &:hover {
+        border: 2px solid blue;
         background: #e0efff;
       }
-  `}
+    `}
 `;
 
-const TodoSwitch = ({ columnId, id, title, content, author }) => {
-  const [isInput, toggleActions] = useToggle(false);
+const TodoSwitch = ({ isClicked, columnId, id, title, content, author, toggleActions }) => {
+  const [isInput, toggleActions2] = useToggle(false);
 
   let template;
-
-  if (isInput) {
+  if (isInput || isClicked) {
     template = (
-      <Div>
-        <TodoListInput  {...{ columnId, id, title, content, toggleActions }} />
-      </Div>);
+      <TodoListInput {...{ columnId, id, title, content, toggleActions2, toggleActions }} />
+    );
   } else {
     template = (
-      <Div hover onClick={toggleActions.toggle}>
+      <Div hover onClick={toggleActions2.toggle}>
         <TodoListItem {...{ id, title, content, author }} />
-      </Div>);
+      </Div>
+    );
   }
 
-  return (
-    <>
-      {template}
-    </>
-  )
-}
+  return <>{template}</>;
+};
 
 export default TodoSwitch;
