@@ -1,5 +1,6 @@
 package com.codeSquad.cocokyu.domain.model;
 
+import com.codeSquad.cocokyu.domain.dto.CardDto;
 import org.springframework.data.relational.core.mapping.MappedCollection;
 
 import java.util.HashSet;
@@ -14,8 +15,8 @@ public class Logs {
         logs.add(new Log(card, Log.Action.CREATE));
     }
 
-    public void updateLog(Card card, Card updateCard) {
-        logs.add(new Log(card, updateCard.getStatus(), Log.Action.MOVE));
+    public void updateLog(Card card, CardDto updateCardDto) {
+        logs.add(new Log(card, updateCardDto.getStatus(), Log.Action.MOVE));
     }
 
     public void deleteLog(Card card) {

@@ -1,6 +1,6 @@
 package com.codeSquad.cocokyu.domain.model;
 
-import com.codeSquad.cocokyu.domain.annotation.ToDoStatusPattern;
+import com.codeSquad.cocokyu.domain.dto.CardDto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Embedded;
@@ -21,35 +21,33 @@ public class Card {
     @NotNull
     private String contents;
 
-    @ToDoStatusPattern
+    @NotNull
     private Status status;
 
     @JsonIgnore
     @Embedded.Nullable
     private Logs logs = new Logs();
 
-    private double priority;
+//    private double priority;
 
     private LocalDateTime createDateTime;
 
     protected Card() {
     }
 
-    public Card(String title, String contents, Status status, double priority) {
-        this.title = title;
-        this.contents = contents;
-        this.status = status;
-        this.priority = priority;
+    public Card(CardDto cardDto) {
+        this.title = cardDto.getTitle();
+        this.contents = cardDto.getContents();
+        this.status = cardDto.getStatus();
         this.createDateTime = LocalDateTime.now();
         logs.createLog(this);
     }
 
-    public void modify(Card updateCard) {
-        logs.updateLog(this, updateCard);
-        this.title = updateCard.title;
-        this.contents = updateCard.contents;
-        this.status = updateCard.status;
-        this.priority = updateCard.priority;
+    public void modify(CardDto updateCardDto) {
+        logs.updateLog(this, updateCardDto);
+        this.title = updateCardDto.getTitle();
+        this.contents = updateCardDto.getContents();
+        this.status = updateCardDto.getStatus();
     }
 
     public void delete() {
@@ -77,9 +75,9 @@ public class Card {
         return createDateTime;
     }
 
-    public double getPriority() {
-        return priority;
-    }
+//    public double getPriority() {
+//        return priority;
+//    }
 
     public Logs getLogs() {
         return logs;
