@@ -47,9 +47,9 @@ public class CardController {
         return new ResponseEntity(HttpStatus.OK);
     }
 
-    @PutMapping("/{id}/move/{columnId}")
-    public ResponseEntity move(@PathVariable Long id, @PathVariable Long columnId) {
-        Card card = cardService.move(id, columnId);
+    @PutMapping("/{id}/move/{columnId}/{index}")
+    public ResponseEntity move(@PathVariable Long id, @PathVariable Long columnId, @PathVariable int index) {
+        Card card = cardService.move(id, columnId, index);
         return new ResponseEntity(card, HttpStatus.OK);
     }
 }

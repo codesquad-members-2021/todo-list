@@ -7,6 +7,7 @@ import com.codesquad.todolist.repository.CardRepository;
 import com.codesquad.todolist.repository.HistoryRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -34,7 +35,26 @@ public class CardService {
     }
 
     public Card create(Long columnId, String title, String contents) {
-        Card card = new Card(title, contents, columnId);
+        double flag = 10;
+        if (columnId == 1) {
+            List<Double> flags = new ArrayList<>(cardRepository.findTodoFlags());
+            if (flags.size() > 0) {
+                flag = flags.get(flags.size() - 1) + 10;
+            }
+        }
+        if (columnId == 2) {
+            List<Double> flags = new ArrayList<>(cardRepository.findDoingFlags());
+            if (flags.size() > 0) {
+                flag = flags.get(flags.size() - 1) + 10;
+            }
+        }
+        if (columnId == 3) {
+            List<Double> flags = new ArrayList<>(cardRepository.findDoneFlags());
+            if (flags.size() > 0) {
+                flag = flags.get(flags.size() - 1) + 10;
+            }
+        }
+        Card card = new Card(title, contents, columnId, flag);
         cardRepository.save(card);
         createHistory(Action.ADD.toString(), title, columnId, null);
         return card;
@@ -54,10 +74,23 @@ public class CardService {
         createHistory(Action.REMOVE.toString(), card.getTitle(), card.getColumnId(), null);
     }
 
-    public Card move(Long id, Long toColumnId) {
+    public Card move(Long id, Long toColumnId, int index) {
         Card card = findCard(id);
         Long fromColumnId = card.getColumnId();
-        card.move(toColumnId);
+        double flag = 0;
+        if (toColumnId == 1) {
+            List<Double> flags = new ArrayList<>(cardRepository.findTodoFlags());
+            flag = updateFlag(flags, index);
+        }
+        if (toColumnId == 2) {
+            List<Double> flags = new ArrayList<>(cardRepository.findTodoFlags());
+            flag = updateFlag(flags, index);
+        }
+        if (toColumnId == 3) {
+            List<Double> flags = new ArrayList<>(cardRepository.findTodoFlags());
+            flag = updateFlag(flags, index);
+        }
+        card.move(toColumnId, flag);
         cardRepository.save(card);
         createHistory(Action.MOVE.toString(), card.getTitle(), fromColumnId, toColumnId);
         return card;
@@ -70,5 +103,23 @@ public class CardService {
 
     private Card findCard(Long id) {
         return cardRepository.findById(id).orElse(null);
+    }
+
+    private Double updateFlag(List<Double> flags, int index) {
+        double flag = 0;
+        if (flags.size() == 0) {
+            flag = 10.0;
+            return flag;
+        }
+        if (index == 1) {
+            flag = (0 + flags.get(0)) / 2;
+            return flag;
+        }
+        if (flags.size() < index) {
+            flag = flags.get(flags.size() - 1) + 10;
+            return flag;
+        }
+        flag = (flags.get(index - 2) + flags.get(index - 1)) / 2;
+        return flag;
     }
 }
