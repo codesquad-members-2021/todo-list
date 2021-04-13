@@ -19,20 +19,17 @@ class InputViewController: UIViewController {
     private var cardViewModel: CardViewModel?
     private var mode: String?
     private var columnId: Int?
+    private var id: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         bind()
-        enrollmentButton.addTarget(self, action: #selector(test), for: .touchDown)
-    }
-    
-    @objc
-    func test() {
-        
+        setupTitle()
     }
     
     private func setupTitle() {
-        
+        let title = mode == "add" ? "새로운 카드 추가" : "카드 수정"
+        self.titleLabel.text = title
     }
     
     func setupCardViewModel(_ viewModel: CardViewModel) {
@@ -47,10 +44,17 @@ class InputViewController: UIViewController {
         self.columnId = columnId
     }
     
+    func setupId(_ id: Int) {
+        self.id = id
+    }
+    
     func bind() {
-        cardViewModel?.attachViewEventListener(loadData: loadDataSubject.eraseToAnyPublisher(), cardState: .todo)
-        cardViewModel?.attachViewEventListener(loadData: loadDataSubject.eraseToAnyPublisher(), cardState: .doing)
-        cardViewModel?.attachViewEventListener(loadData: loadDataSubject.eraseToAnyPublisher(), cardState: .done)
+        if mode == "add" {
+        cardViewModel?.addEventListener(loadData: loadDataSubject.eraseToAnyPublisher(), columnId: self.columnId ?? 0)
+        }
+        else {
+            cardViewModel?.editEventListener(loadData: loadDataSubject.eraseToAnyPublisher(), columnId: self.columnId ?? 0, id: self.id ?? 0)
+        }
     }
     
     @IBAction func cancelButtonTapped(_ sender: UIButton) {

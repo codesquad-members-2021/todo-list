@@ -15,11 +15,12 @@ protocol CardManageable {
     func goToDone()
     func getTitle() -> String
     func getContents() -> String
+    func getId() -> Int?
 }
 
 protocol CardUseCasePort {
-    func add(state: State, title: String, contents: String) -> AnyPublisher<[Card], Error>
-    func edit()
+    func add(columnId: Int, title: String, contents: String) -> AnyPublisher<[Card], Error>
+    func edit(id: Int, title: String, contents: String) -> AnyPublisher<[Card], Error>
     func delete()
     func goToDone()
     func get(state: State) -> AnyPublisher<[Card], Error>

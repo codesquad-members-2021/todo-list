@@ -55,4 +55,8 @@ class Card: CardManageable, Codable {
     func getContents() -> String {
         return self.contents
     }
+    
+    func getId() -> Int? {
+        return self.id
+    }
 }

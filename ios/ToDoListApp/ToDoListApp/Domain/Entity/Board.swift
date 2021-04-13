@@ -45,6 +45,9 @@ class Board {
         self.cards.insert(card, at: destinationIndex)
     }
     
+    func editCard(at index: Int, for card: CardManageable) {
+        self.cards[index] = card
+    }
 //    func getBoard() -> Board {
 //        return Board()
 //    }

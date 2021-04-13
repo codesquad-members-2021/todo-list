@@ -39,8 +39,9 @@ extension Endpoint {
     }
     
     //POST용
-    static func add(state: State) -> Self {
-        return Endpoint(path: "/card\(state.rawValue)")
+    static func add(columnId: Int) -> Self {
+        print(Endpoint(path: "/cards/\(columnId+1)").url)
+        return Endpoint(path: "/cards/\(columnId+1)")
     }
     
     static func remove(state: State) -> Self {
@@ -52,13 +53,8 @@ extension Endpoint {
         )
     }
     
-    static func update(state: State) -> Self {
-        return Endpoint(path: "/update",
-                        queryItems: [
-                            URLQueryItem(name: "\(state.rawValue)",
-                                         value: "\(state.rawValue)_id")
-                        ]
-        )
+    static func update(id: Int) -> Self {
+        return Endpoint(path: "/update\(id)")
     }
     
     static func move(state: State) -> Self {
