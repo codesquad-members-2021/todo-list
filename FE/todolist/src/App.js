@@ -1,5 +1,7 @@
+import './reset.css';
 import { useRef } from 'react';
 import HeaderTitle from './header/HeaderTitle';
+import ColumnList from './content/column/ColumnList';
 import Sidebar from './sidebar/Sidebar';
 
 function App() {
@@ -13,6 +15,7 @@ function App() {
   return (
     <>
       <HeaderTitle handleClick={showSidebar}/>
+      <ColumnList />
       <Sidebar sidebarRef={sidebar}/>
     </>
   );
