@@ -1,3 +1,13 @@
+
+# todo-list practice
+
+## 개요
+
+[벨로퍼트 모던 리액트](https://react.vlpt.us/)의 1 ~ 3장을 학습하며, 3장의 멋진 투두리스트를 각자만들기.  
+시연 후 서로 코드 리뷰를 진행!
+
+마지막으로 학습한 내용에 대해 통합적인 문서 작성
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
