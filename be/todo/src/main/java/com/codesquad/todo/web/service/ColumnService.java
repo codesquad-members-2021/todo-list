@@ -23,7 +23,7 @@ public class ColumnService {
         List<Column> columnList = user.getColumnList();
         List<ColumnDto> columnDtoList = new ArrayList<>();
 
-        for(Column column : columnList) {
+        for (Column column : columnList) {
             ColumnDto columnDto = new ColumnDto(column);
             for (Task task : column.getTaskList()) {
                 columnDto.addTaskDto(new TaskDto(task, user.getName()));
