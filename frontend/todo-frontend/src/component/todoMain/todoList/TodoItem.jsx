@@ -39,8 +39,8 @@ const TodoItem = ({ todoCard: { id, title, content }, deleteTodoItem, editTodoIt
   const [inputContent, setInputContent] = useState(content);
   const [isDisabled, setIsDisabled] = useState(false);
 
-  const titleRef = useRef();
-  const contentRef = useRef();
+  const inputTitleRef = useRef();
+  const inputContentRef = useRef();
 
   const toggleEditForm = () => {
     setInputTitle(title);
@@ -51,8 +51,8 @@ const TodoItem = ({ todoCard: { id, title, content }, deleteTodoItem, editTodoIt
   const editItem = () => {
     const newTodo = {
       id,
-      title: titleRef.current.value,
-      content: contentRef.current.value,
+      title: inputTitleRef.current.value,
+      content: inputContentRef.current.value,
       date: Date.now(),
     };
     editTodoItem(id, newTodo);
@@ -60,7 +60,7 @@ const TodoItem = ({ todoCard: { id, title, content }, deleteTodoItem, editTodoIt
   };
 
   const handleChange = () => {
-    if (titleRef.current.value && contentRef.current.value) setIsDisabled(false);
+    if (inputTitleRef.current.value && inputContentRef.current.value) setIsDisabled(false);
     else setIsDisabled(true);
   };
 
@@ -72,14 +72,14 @@ const TodoItem = ({ todoCard: { id, title, content }, deleteTodoItem, editTodoIt
           placeholder='제목을 입력하세요'
           name='title'
           handleChange={handleChange}
-          inputRef={titleRef}
+          inputRef={inputTitleRef}
         ></Input>
         <Input
           defaultValue={inputContent}
           placeholder='내용을 입력하세요'
           name='content'
           handleChange={handleChange}
-          inputRef={contentRef}
+          inputRef={inputContentRef}
         ></Input>
 
         <TodoCardBtnWrapper>
