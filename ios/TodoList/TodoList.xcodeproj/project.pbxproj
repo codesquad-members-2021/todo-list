@@ -9,11 +9,13 @@
 /* Begin PBXBuildFile section */
 		88D276FB2621B1B60060B75A /* CustomHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D276FA2621B1B60060B75A /* CustomHeader.swift */; };
 		88D277082625374E0060B75A /* ToDoTableViewDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D277072625374E0060B75A /* ToDoTableViewDelegates.swift */; };
+		88D2770E26253E6D0060B75A /* DoingTableViewDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D2770D26253E6D0060B75A /* DoingTableViewDelegates.swift */; };
+		88D2771226253FFE0060B75A /* DoneTableViewDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D2771126253FFE0060B75A /* DoneTableViewDelegates.swift */; };
 		88EC8EE5261D4914008A4EE5 /* ToDoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88EC8EE4261D4914008A4EE5 /* ToDoCard.swift */; };
 		88EC8EE9261D4BE6008A4EE5 /* ToDoCardProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88EC8EE8261D4BE6008A4EE5 /* ToDoCardProtocol.swift */; };
 		88EC8EEE261D4ECF008A4EE5 /* CardsToBeDone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88EC8EED261D4ECF008A4EE5 /* CardsToBeDone.swift */; };
-		88EC8EF2261D4EE4008A4EE5 /* CardOnProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88EC8EF1261D4EE4008A4EE5 /* CardOnProgress.swift */; };
-		88EC8EF6261D4EF0008A4EE5 /* CardCompleted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88EC8EF5261D4EF0008A4EE5 /* CardCompleted.swift */; };
+		88EC8EF2261D4EE4008A4EE5 /* CardsOnProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88EC8EF1261D4EE4008A4EE5 /* CardsOnProgress.swift */; };
+		88EC8EF6261D4EF0008A4EE5 /* CardsCompleted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88EC8EF5261D4EF0008A4EE5 /* CardsCompleted.swift */; };
 		88EC8F02261D9BF4008A4EE5 /* TodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88EC8F01261D9BF4008A4EE5 /* TodoViewController.swift */; };
 		88EC8F0C261EA607008A4EE5 /* DoingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88EC8F0B261EA607008A4EE5 /* DoingViewController.swift */; };
 		88EC8F13261EA651008A4EE5 /* DoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88EC8F12261EA651008A4EE5 /* DoneViewController.swift */; };
@@ -48,11 +50,13 @@
 /* Begin PBXFileReference section */
 		88D276FA2621B1B60060B75A /* CustomHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeader.swift; sourceTree = "<group>"; };
 		88D277072625374E0060B75A /* ToDoTableViewDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewDelegates.swift; sourceTree = "<group>"; };
+		88D2770D26253E6D0060B75A /* DoingTableViewDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoingTableViewDelegates.swift; sourceTree = "<group>"; };
+		88D2771126253FFE0060B75A /* DoneTableViewDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneTableViewDelegates.swift; sourceTree = "<group>"; };
 		88EC8EE4261D4914008A4EE5 /* ToDoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoCard.swift; sourceTree = "<group>"; };
 		88EC8EE8261D4BE6008A4EE5 /* ToDoCardProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoCardProtocol.swift; sourceTree = "<group>"; };
 		88EC8EED261D4ECF008A4EE5 /* CardsToBeDone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsToBeDone.swift; sourceTree = "<group>"; };
-		88EC8EF1261D4EE4008A4EE5 /* CardOnProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardOnProgress.swift; sourceTree = "<group>"; };
-		88EC8EF5261D4EF0008A4EE5 /* CardCompleted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCompleted.swift; sourceTree = "<group>"; };
+		88EC8EF1261D4EE4008A4EE5 /* CardsOnProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsOnProgress.swift; sourceTree = "<group>"; };
+		88EC8EF5261D4EF0008A4EE5 /* CardsCompleted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsCompleted.swift; sourceTree = "<group>"; };
 		88EC8F01261D9BF4008A4EE5 /* TodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoViewController.swift; sourceTree = "<group>"; };
 		88EC8F0B261EA607008A4EE5 /* DoingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoingViewController.swift; sourceTree = "<group>"; };
 		88EC8F12261EA651008A4EE5 /* DoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +101,8 @@
 			isa = PBXGroup;
 			children = (
 				88D277072625374E0060B75A /* ToDoTableViewDelegates.swift */,
+				88D2770D26253E6D0060B75A /* DoingTableViewDelegates.swift */,
+				88D2771126253FFE0060B75A /* DoneTableViewDelegates.swift */,
 			);
 			path = TableViewDelegates;
 			sourceTree = "<group>";
@@ -166,8 +172,8 @@
 				88EC8EE4261D4914008A4EE5 /* ToDoCard.swift */,
 				88EC8EE8261D4BE6008A4EE5 /* ToDoCardProtocol.swift */,
 				88EC8EED261D4ECF008A4EE5 /* CardsToBeDone.swift */,
-				88EC8EF1261D4EE4008A4EE5 /* CardOnProgress.swift */,
-				88EC8EF5261D4EF0008A4EE5 /* CardCompleted.swift */,
+				88EC8EF1261D4EE4008A4EE5 /* CardsOnProgress.swift */,
+				88EC8EF5261D4EF0008A4EE5 /* CardsCompleted.swift */,
 				88D27706262537200060B75A /* TableViewDelegates */,
 			);
 			path = Model;
@@ -285,7 +291,7 @@
 			files = (
 				88EC8F13261EA651008A4EE5 /* DoneViewController.swift in Sources */,
 				88EC8F02261D9BF4008A4EE5 /* TodoViewController.swift in Sources */,
-				88EC8EF6261D4EF0008A4EE5 /* CardCompleted.swift in Sources */,
+				88EC8EF6261D4EF0008A4EE5 /* CardsCompleted.swift in Sources */,
 				88D276FB2621B1B60060B75A /* CustomHeader.swift in Sources */,
 				A0130D99261C47A60091BBEF /* JSONParser.swift in Sources */,
 				A0130D80261C43F20091BBEF /* ViewController.swift in Sources */,
@@ -293,8 +299,10 @@
 				A0130D7C261C43F20091BBEF /* AppDelegate.swift in Sources */,
 				88EC8EEE261D4ECF008A4EE5 /* CardsToBeDone.swift in Sources */,
 				88EC8F2426200095008A4EE5 /* Constants.swift in Sources */,
+				88D2771226253FFE0060B75A /* DoneTableViewDelegates.swift in Sources */,
 				88EC8EE9261D4BE6008A4EE5 /* ToDoCardProtocol.swift in Sources */,
-				88EC8EF2261D4EE4008A4EE5 /* CardOnProgress.swift in Sources */,
+				88D2770E26253E6D0060B75A /* DoingTableViewDelegates.swift in Sources */,
+				88EC8EF2261D4EE4008A4EE5 /* CardsOnProgress.swift in Sources */,
 				88EC8EE5261D4914008A4EE5 /* ToDoCard.swift in Sources */,
 				88EC8F19261EA969008A4EE5 /* ToDoCardCell.swift in Sources */,
 				A0130D7E261C43F20091BBEF /* SceneDelegate.swift in Sources */,
