@@ -1,20 +1,63 @@
-import React, { useState, useEffect } from 'react';
-import ColumnHeader from './column/columnHeader/columnHeader.jsx';
-import ColumnBody from './column/columnBody/columnBody.jsx';
-import FabButton from './fabButton/fabButton.jsx';
-import { getData, getRandomUser } from '../../utils/axios.js';
-import BodyStyle from './body.style';
-import CardSectionStyle from './cardSection.style';
+import React, { useState, useEffect } from "react";
+import ColumnHeader from "./column/columnHeader/columnHeader.jsx";
+import ColumnBody from "./column/columnBody/columnBody.jsx";
+import FabButton from "./fabButton/fabButton.jsx";
+import { getData, getRandomUser } from "../../utils/axios.js";
+import BodyStyle from "./body.style";
+import CardSectionStyle from "./cardSection.style";
+import { patchData, postData } from "../../utils/axios.js";
 
 const Body = () => {
   const [columnData, setColumnData] = useState([]);
-  const [userData, setUserData] = useState([]);
+  const [user, setUser] = useState([]);
+  const [buttonFlag, setButtonFlag] = useState(true);
+  const [card, setCard] = useState({});
 
-  const handleAddButtonClick = (ID) => {
+  const handleButtonFlag = ({ target: { value } }) => {
+    if (value.length > 0) {
+      setButtonFlag(false);
+    } else {
+      setButtonFlag(true);
+    }
+  };
+
+  const postLogData = (id) => {
+    const logUrl = `http://localhost:3002/log/`;
+    let data = {
+      "user": user,
+      "columnTitle": "완료한 일",
+      "cardTitle": "카드 제목",
+      "action": "수정",
+      "time": new Date()
+    }
+    postData(logUrl, data)
+  }
+
+  const postCardData = ({ target: { id } }) => {
+    const url = `http://localhost:3002/column/${id}`;
+    let newCards = [...columnData[id - 1].cards];
+    newCards.unshift(card);
+    patchData(url, { cards: newCards });
+    postLogData(id);
+    getColumnData();
+  };
+
+  const handleChangeTItle = ({ target: { value } }) => {
+    setCard({ ...card, cardTitle: value });
+  };
+  const handleChangeContents = ({ target: { value } }) => {
+    setCard({ ...card, cardContents: value });
+  };
+
+  const handleAddButtonClick = ({ target: { id } }) => {
     let newData = columnData;
     newData.forEach((v) => {
-      if (v.id === Number(ID)) {
-        v.modifyCardFlag = true;
+      if (v.id === Number(id)) {
+        if (v.modifyCardFlag === true) {
+          v.modifyCardFlag = false;
+        } else {
+          v.modifyCardFlag = true;
+        }
       }
     });
     setColumnData([...newData]);
@@ -28,14 +71,14 @@ const Body = () => {
     });
   };
 
-  const getUserData = () => {
+  const getUser = () => {
     getRandomUser("http://localhost:3002/defaultUserList") //
-      .then(setUserData);
+      .then(setUser);
   };
 
   useEffect(() => {
     getColumnData();
-    getUserData();
+    getUser();
   }, []);
 
   return (
@@ -49,10 +92,17 @@ const Body = () => {
             handleAddButtonClick={handleAddButtonClick}
           />
           <ColumnBody
+            id={id}
             modifyCardFlag={modifyCardFlag}
             columnTitle={columnTitle}
             cards={cards}
-            user={userData}
+            user={user}
+            postCardData={postCardData}
+            buttonFlag={buttonFlag}
+            handleAddButtonClick={handleAddButtonClick}
+            handleButtonFlag={handleButtonFlag}
+            handleChangeTItle={handleChangeTItle}
+            handleChangeContents={handleChangeContents}
           />
         </BodyStyle>
       ))}
