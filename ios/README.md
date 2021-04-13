@@ -12,7 +12,7 @@
 - JSON
 - Codable
 
-### 2. (branch feature_todo_table) ToDoCards 로직 생성
+### 2. (branch feature_card_model) ToDoCards 로직 생성 Wed Apr 7 15:16:44 2021 +0900
 #### Major features
 - [x] ToDoCardProtocol 구현
 - [x] ToDo 상태에 따른 카드 객체 클래스 생성
