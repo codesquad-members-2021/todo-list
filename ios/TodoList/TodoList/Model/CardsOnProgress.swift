@@ -1,5 +1,5 @@
 //
-//  CardCompleted.swift
+//  CardOnProgress.swift
 //  TodoList
 //
 //  Created by 조중윤 on 2021/04/07.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class CardCompleted: ToDoCardProtocol {
+class CardsOnProgress: ToDoCardProtocol {
     var list: [ToDoItem]
     
     init() {
