@@ -12,6 +12,6 @@ public class Log {
     private String action;
     private String  title;
     private LocalDateTime time;
-    private String prevBoard;
-    private String currBoard;
+    private String from;
+    private String to;
 }

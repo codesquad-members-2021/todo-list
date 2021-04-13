@@ -3,6 +3,7 @@ package team_16.todolist.domain;
 import org.springframework.data.annotation.Id;
 import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 
@@ -55,14 +56,16 @@ public class Board {
         cards.remove(card);
     }
 
-    public Card updateCard(Long cardId, Card updateCard) {
+    public Card updateCard(Long cardId, Card card) {
+        Optional<Card> updateCard = null;
+
         for (Card beforeCard : cards) {
             if (beforeCard.getId() == cardId) {
-                beforeCard.updateCard(updateCard);
-                return beforeCard;
+                updateCard = Optional.of(beforeCard.updateCard(card));
             }
         }
-        return null;
+
+        return updateCard.orElseThrow(IllegalArgumentException::new);
     }
 
 }
