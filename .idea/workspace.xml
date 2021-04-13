@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="af93a8a2-2eed-469e-a744-7ac329506fe2" name="Default Changelist" comment="fix: jwt 인증 관련 에러 해결, 세션 인증 방식을 토큰 인증으로 변경">
-      <change beforePath="$PROJECT_DIR$/backend/todo-list/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/backend/todo-list/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/todo-list/src/test/java/com/example/todolist/TodoListApplicationTests.java" beforeDir="false" />
     </list>
     <list id="e789658e-71ba-41fc-810c-115e6323bee0" name="Changes by yunhyeji" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -46,6 +46,49 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/backend/todo-list/src/main/resources/schema.sql">
+      <ranges>
+        <range start1="0" end1="1" start2="0" end2="1" changelist="e789658e-71ba-41fc-810c-115e6323bee0" />
+        <range start1="18" end1="18" start2="18" end2="19" changelist="af93a8a2-2eed-469e-a744-7ac329506fe2" />
+        <range start1="19" end1="20" start2="20" end2="21" changelist="af93a8a2-2eed-469e-a744-7ac329506fe2" />
+        <range start1="22" end1="23" start2="23" end2="24" changelist="af93a8a2-2eed-469e-a744-7ac329506fe2" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/dto/CardDto.java">
+      <ranges>
+        <range start1="4" end1="4" start2="4" end2="5" changelist="e789658e-71ba-41fc-810c-115e6323bee0" />
+        <range start1="6" end1="6" start2="7" end2="8" changelist="af93a8a2-2eed-469e-a744-7ac329506fe2" />
+        <range start1="8" end1="8" start2="10" end2="11" changelist="e789658e-71ba-41fc-810c-115e6323bee0" />
+        <range start1="11" end1="11" start2="14" end2="15" changelist="e789658e-71ba-41fc-810c-115e6323bee0" />
+        <range start1="55" end1="55" start2="59" end2="69" changelist="af93a8a2-2eed-469e-a744-7ac329506fe2" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/domain/History.java">
+      <ranges>
+        <range start1="2" end1="2" start2="2" end2="3" changelist="e789658e-71ba-41fc-810c-115e6323bee0" />
+        <range start1="6" end1="7" start2="7" end2="10" changelist="af93a8a2-2eed-469e-a744-7ac329506fe2" />
+        <range start1="12" end1="12" start2="15" end2="16" changelist="e789658e-71ba-41fc-810c-115e6323bee0" />
+        <range start1="15" end1="15" start2="19" end2="23" changelist="e789658e-71ba-41fc-810c-115e6323bee0" />
+        <range start1="16" end1="17" start2="24" end2="25" changelist="af93a8a2-2eed-469e-a744-7ac329506fe2" />
+        <range start1="24" end1="25" start2="32" end2="33" changelist="af93a8a2-2eed-469e-a744-7ac329506fe2" />
+        <range start1="79" end1="79" start2="87" end2="99" changelist="af93a8a2-2eed-469e-a744-7ac329506fe2" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/controller/CardController.java">
+      <ranges>
+        <range start1="4" end1="5" start2="4" end2="5" changelist="af93a8a2-2eed-469e-a744-7ac329506fe2" />
+        <range start1="6" end1="7" start2="6" end2="7" changelist="af93a8a2-2eed-469e-a744-7ac329506fe2" />
+        <range start1="24" end1="25" start2="24" end2="25" changelist="af93a8a2-2eed-469e-a744-7ac329506fe2" />
+        <range start1="27" end1="28" start2="27" end2="28" changelist="af93a8a2-2eed-469e-a744-7ac329506fe2" />
+        <range start1="42" end1="43" start2="42" end2="43" changelist="af93a8a2-2eed-469e-a744-7ac329506fe2" />
+        <range start1="58" end1="59" start2="58" end2="59" changelist="af93a8a2-2eed-469e-a744-7ac329506fe2" />
+        <range start1="73" end1="74" start2="73" end2="74" changelist="af93a8a2-2eed-469e-a744-7ac329506fe2" />
+        <range start1="85" end1="86" start2="85" end2="87" changelist="e789658e-71ba-41fc-810c-115e6323bee0" />
+        <range start1="87" end1="88" start2="88" end2="89" changelist="e789658e-71ba-41fc-810c-115e6323bee0" />
+      </ranges>
+    </file>
+  </component>
   <component name="ProjectId" id="1qoZS7VqS2TcEUdf5pH0pvtyiJp" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -69,9 +112,41 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="preferences.editor" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Spring Boot.TodoListApplication">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TodoListApplicationTests.contextLoads" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/backend/todo-list" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;com.example.todolist.TodoListApplicationTests.contextLoads&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="TodoListApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="backend.todo-list.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.todolist.TodoListApplication" />
@@ -79,6 +154,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.TodoListApplicationTests.contextLoads" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -95,7 +175,10 @@
       <workItem from="1617881539581" duration="16728000" />
       <workItem from="1617898878065" duration="5178000" />
       <workItem from="1617965898351" duration="17114000" />
-      <workItem from="1617986554460" duration="30000" />
+      <workItem from="1617986554460" duration="708000" />
+      <workItem from="1618206496707" duration="14903000" />
+      <workItem from="1618280186150" duration="4000" />
+      <workItem from="1618290325006" duration="14315000" />
     </task>
     <task id="LOCAL-00001" summary="bug: jwt 인증 관련 오류 발생">
       <created>1617898549211</created>

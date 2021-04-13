@@ -29,7 +29,8 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity<User> create(@RequestBody HashMap<String, String> newUserInfo) {
-        User newUser = new User(newUserInfo.get("name"), newUserInfo.get("password"), jwtUtil.createToken());
+        User newUser = new User(newUserInfo.get("name"), newUserInfo.get("password"),
+                newUserInfo.get("profileUrl"), jwtUtil.createToken());
         userRepository.save(newUser);
         return new ResponseEntity(newUser, HttpStatus.OK);
     }

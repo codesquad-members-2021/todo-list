@@ -1,21 +1,32 @@
 package com.example.todolist;
 
+import com.example.todolist.dto.CategoryDto;
+import com.example.todolist.dto.HistoryDto;
+
+import java.util.List;
+
 public class ApiResponse {
-    public enum Status { SUCCESS, FAIL };
+    CategoryDto columns;
+    List<HistoryDto> history;
 
-    private Object data;
-    private Status status;
-
-    public ApiResponse(Object data, Status status) {
-        this.data = data;
-        this.status = status;
+    public ApiResponse(CategoryDto columns, List<HistoryDto> history) {
+        this.columns = columns;
+        this.history = history;
     }
 
-    public Object getData() {
-        return data;
+    public CategoryDto getColumns() {
+        return columns;
     }
 
-    public Status getStatus() {
-        return status;
+    public List<HistoryDto> getHistory() {
+        return history;
+    }
+
+    @Override
+    public String toString() {
+        return "ApiResponse{" +
+                "columns=" + columns +
+                ", history=" + history +
+                '}';
     }
 }
