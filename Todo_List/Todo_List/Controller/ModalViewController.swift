@@ -9,7 +9,6 @@ import UIKit
 
 class ModalViewController: UIViewController {
     
-    
     @IBOutlet var cardTitle: UITextField!
     @IBOutlet weak var cardContent: UITextField!
     @IBOutlet weak var cancelButton: UIButton!
@@ -19,6 +18,8 @@ class ModalViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.cardTitle.delegate = self
+        self.cardContent.delegate = self
         configure()
     }
     @IBAction func cancel(_ sender: UIButton) {
@@ -48,5 +49,25 @@ class ModalViewController: UIViewController {
         
         self.enrollButton.backgroundColor = UIColor.init(named: "lightBlue")
         self.enrollButton.layer.cornerRadius = 6
+        self.enrollButton.isEnabled = false
+    }
+}
+extension ModalViewController : UITextFieldDelegate {
+    func isEmpty() -> Bool {
+        guard let title = cardTitle.text,
+              let content = cardTitle.text
+        else {
+            return false
+        }
+        if title.isEmpty || content.isEmpty {
+            return false
+        }
+        return true
+    }
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if isEmpty() {
+            enrollButton.isEnabled = true
+            enrollButton.backgroundColor = UIColor(named: "blue")
+        }
     }
 }
