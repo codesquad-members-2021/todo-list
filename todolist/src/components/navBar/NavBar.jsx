@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { HiMenu } from "react-icons/hi";
 import { useState } from "react";
 import LogStorage from "./LogStorage";
-// import IconButton from "../utils/IconButton";
+import Button from "../utils/Button";
 
 const NavBlock = styled.div`
   width: 1440px;
@@ -46,8 +46,7 @@ function NavBar(props) {
       <NavBlock>
         <TitleBlock>TO-DO LIST</TitleBlock>
         <LogBtnBlock>
-          {/* <IconButton type="menu" cb={handleLogBtnClick} size="60" /> */}
-          <HiMenu className="icon" onClick={handleLogBtnClick} />
+          <Button type="menu" onClick={handleLogBtnClick} size="150" />
         </LogBtnBlock>
       </NavBlock>
 

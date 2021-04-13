@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { CardButtonSection, CardButton } from "./CardButton.style";
+import Button from "../../utils/Button";
+import { CardButtonSection } from "./CardButton.style";
 const CardFormSection = styled.div`
   display: flex;
   flex-direction: column;
@@ -8,7 +9,7 @@ const CardFormSection = styled.div`
 
 const CardFormTitle = styled.input`
   border: none;
-  width: 100%
+  width: 100%;
   height: 23px;
   background-color: #ddd;
 `;
@@ -45,12 +46,12 @@ function CardForm(props) {
         ></CardFormContent>
       </CardFormSection>
       <CardButtonSection>
-        <CardButton backgroundColor="#e0e0e0" onClick={props.onCancel}>
+        <Button type="cancel" onClick={props.onCancel}>
           취소
-        </CardButton>
-        <CardButton fontColor="#fff" onClick={onSubmit}>
+        </Button>
+        <Button type="enroll" onClick={onSubmit}>
           등록
-        </CardButton>
+        </Button>
       </CardButtonSection>
     </form>
   );

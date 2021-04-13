@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 import styled from "styled-components";
-import IconButton from "../../utils/IconButton";
+import Button from "../../utils/Button";
 import { CardButtonSection, CardButton } from "./CardButton.style";
 
 const CardTitle = styled.div`
@@ -97,7 +97,7 @@ function Card(props) {
             onMouseOver={() => (cardContainer.current.style.backgroundColor = "red")}
             onMouseOut={() => (cardContainer.current.style.backgroundColor = "white")}
           >
-            <IconButton type="delete" cb={askToDelete} />
+            <Button type="delete" cb={askToDelete} />
             {/* 왜 여기선 이벤트 등록이 안돼죠???? 왜?  */}
           </div>
           {/* </CardWrap> */}

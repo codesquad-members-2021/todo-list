@@ -3,7 +3,7 @@ import styled from "styled-components";
 import CardForm from "./card/CardForm";
 import CardList from "./card/CardList";
 import CardContainer from "./card/CardContainer.style";
-import IconButton from "../utils/IconButton";
+import Button from "../utils/Button";
 
 const ColumnContainer = styled.section`
   width: 308px;
@@ -95,11 +95,15 @@ function Column(props) {
           <div>해야할 일</div>
           <ColumnCount>{cards.length}</ColumnCount>
         </ColumnTitle>
-        <IconButton cb={() => setEnrollMode(!enrollMode)} type="add" />
+        <Button onClick={() => setEnrollMode(!enrollMode)} type="add" />
       </ColumnMenu>
       {enrollMode ? (
         <CardContainer>
-          <CardForm onSubmit={handleCreate} onCancel={handleCancel} onLog={onLog} />
+          <CardForm
+            onSubmit={handleCreate}
+            onCancel={handleCancel}
+            onLog={onLog}
+          />
         </CardContainer>
       ) : (
         ""
