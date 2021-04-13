@@ -29,7 +29,7 @@ class CardRepositoryTest {
     @Test
     void addCard() {
         cardRepository.save(Card.of("스프링 공부", "토비의 스프링"));
-        softly.assertThat(cardRepository.findAll()).hasSize(1);
+        softly.assertThat(cardRepository.findAll()).hasSize(4);
     }
 
 }

@@ -46,13 +46,13 @@ class ColumnRepositoryTest {
         card2 = cardRepository.save(card2);
         reversedCardList.add(card2);
         reversedCardList.add(card1);
-        softly.assertThat(cardRepository.findAll()).hasSize(2);
+        softly.assertThat(cardRepository.findAll()).hasSize(5);
 
         Column column = Column.of("해야할 일", new HashMap<>());
         column.addCard(card1);
         column.addCard(card2);
         column = columnRepository.save(column);
-        softly.assertThat(columnRepository.findAll()).hasSize(1);
+        softly.assertThat(columnRepository.findAll()).hasSize(4);
 
         column = columnRepository.findById(column.getId()).orElseThrow(() -> new RuntimeException("Not Found"));
 
@@ -61,6 +61,7 @@ class ColumnRepositoryTest {
         int index = 0;
         while ((cardRef = column.getCards().get(key)) != null) {
             softly.assertThat(cardRef).hasFieldOrPropertyWithValue("card", reversedCardList.get(index).getId());
+            key = cardRef.getCardId();
             index++;
         }
 
