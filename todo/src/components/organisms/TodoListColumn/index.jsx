@@ -9,14 +9,14 @@ const Div = styled.div`
   margin: 5px;
 `;
 
-const TodoListColumn = ({ columnName, items }) => {
+const TodoListColumn = ({ columnId, columnName, items }) => {
 
   return (
     <Div>
       <TodoTitle itemCount={items.length}>{columnName}</TodoTitle>
       {items.map(({ id, title, content, author }) => {
         return (
-          <TodoSwitch key={id} {...{ id, title, content, author }}></TodoSwitch>
+          <TodoSwitch key={id} {...{ columnId, id, title, content, author }}></TodoSwitch>
         );
       })}
     </Div>);

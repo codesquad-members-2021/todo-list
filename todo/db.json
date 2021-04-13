@@ -16,9 +16,7 @@
           "content": "add, commit 공부하기2",
           "author": "Daisy"
         }
-      ],
-      "title": "25125",
-      "content": "4235245"
+      ]
     },
     {
       "columnId": 2,
@@ -26,8 +24,8 @@
       "items": [
         {
           "id": 3,
-          "title": "비동기 공부하기",
-          "content": "add, 비동기 공부하기",
+          "title": "비모",
+          "content": "비모2",
           "author": "Daisy"
         },
         {
@@ -36,7 +34,9 @@
           "content": "add, 비동기 공부하기2",
           "author": "Tami"
         }
-      ]
+      ],
+      "title": "데이지",
+      "content": "타미"
     },
     {
       "columnId": 3,

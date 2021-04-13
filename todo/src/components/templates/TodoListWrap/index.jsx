@@ -15,7 +15,7 @@ const TodoContent = ({ todos }) => {
   return (
     <Wrap>
       {todos.map(({ columnId, columnName, items }) => {
-        return (<TodoListColumn key={columnId} {...{ columnName, items }} />);
+        return (<TodoListColumn key={columnId} {...{ columnId, columnName, items }} />);
       })}
     </Wrap>
   );

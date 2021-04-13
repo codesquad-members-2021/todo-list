@@ -14,7 +14,7 @@ const Div = styled.div`
   margin: 15px 0 0 0;
 `
 
-const TodoListInput = ({ id, title, content, toggleActions }) => {
+const TodoListInput = ({ columnId, id, title, content, toggleActions }) => {
 
   const [titleValue, setTitle] = useState(title);
   const [contentValue, setContent] = useState(content);
@@ -27,8 +27,8 @@ const TodoListInput = ({ id, title, content, toggleActions }) => {
   const patchClickHandler = async () => {
     const title = titleRef.current.value;
     const content = contentRef.current.value;
-    const a = await axios.patch(`/todos?id=${id}&title=${title}&content=${content}`);
-    console.log(a);
+    const a = await axios.patch(`/todos?columnId=${columnId}&id=${id}&title=${title}&content=${content}`);
+    console.log(a)
   }
 
   return (
