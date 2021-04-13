@@ -5,7 +5,8 @@ import styled from 'styled-components'
 
 const NavigatorBlock = styled.div`
   top: 0;
-  right: ${({ toggle }) => (toggle === 0 ? '0' : '-20rem')};
+  right: 0;
+  transform: ${({ toggle }) => (toggle === 0 ? 'translateX(+20rem)' : 'translateX(0)')};
   width: 25%;
   height: 100%;
   background: white;
@@ -16,6 +17,7 @@ const NavigatorBlock = styled.div`
   position: absolute;
   box-sizing: border-box;
   padding: 2rem;
+  transition: 0.2s ease-out;
 `
 
 export default function Navigator ({ toggle, onClick }) {
