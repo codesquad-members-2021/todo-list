@@ -27,7 +27,7 @@ class CardViewModel {
         self.init(cardUseCase: cardUseCase)
     }
     
-    private func configureBoard(title: String, cards: AnyPublisher<[Card], Error>) {
+    private func configureBoard(type: CardFactory.Type, cards: AnyPublisher<[Card], Error>) {
         cards
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { (result)
@@ -36,7 +36,7 @@ class CardViewModel {
                     case .finished: print("finished")
                     case .failure(let error): print(error.localizedDescription) } },
                   receiveValue: { (cards) in
-                    self.boards.append(Board(cards: cards))
+                    self.boards.append(type.self.makeBoard(cards: cards))
                   })
             
             .store(in: &subscriptions)
@@ -44,35 +44,38 @@ class CardViewModel {
     
     func requestBoard() {
         boards.removeAll()
-        configureBoard(title: "해야할 일", cards: cardUseCase.get(state: .todo))
-        configureBoard(title: "하고 있는 일", cards: CardNetworkManager().getCards(state: .doing))
-        configureBoard(title: "완료한 일", cards: CardNetworkManager().getCards(state: .done))
+        configureBoard(type: ToDo.self, cards: cardUseCase.get(state: .todo))
+        configureBoard(type: Doing.self, cards: CardNetworkManager().getCards(state: .doing))
+        configureBoard(type: Done.self, cards: CardNetworkManager().getCards(state: .done))
     }
     
-//    func addCard(state: State) {
-//        cardUseCase.add(title: "나는 더해질 카드야", contents: "잘부탁해")
-//            .receive(on: DispatchQueue.main)
-//            .sink(receiveCompletion: { result in
-//                    switch result {
-//                    case .finished: print("finished")
-//                    case .failure(let error): print(error.localizedDescription) } },
-//                  receiveValue: { cards in
-//                    self.boards[state.rawValue-1].getBoard().appendCard(card.first)
-//                  })
-//            .store(in: &subscriptions)
-//    }
+    func addCard(state: State) {
+        cardUseCase.add(title: "나는 더해질 카드야", contents: "잘부탁해")
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { result in
+                    switch result {
+                    case .finished: print("finished")
+                    case .failure(let error): print(error.localizedDescription) } },
+                  receiveValue: { cards in
+                    print("뚜바")
+                    self.boards[state.rawValue-1].appendCard(cards.first!)
+                    self.reloadCardListSubject.send(.success(()))
+                    print(self.boards[state.rawValue-1])
+                  })
+            .store(in: &subscriptions)
+    }
     
-//    func attachViewEventListener(loadData: AnyPublisher<Void, Never>, cardState: State) {
-//        
-//        self.loadData = loadData
-//        self.loadData
-//            .receive(on: DispatchQueue.main)
-//            .sink(receiveCompletion: { _ in },
-//                  receiveValue: { [weak self] cards in
-//                    print("뷰모델입니다. \(cards)")
-//                    self?.addCard(state: cardState)
-//                    self?.reloadCardListSubject.send(.success(()))
-//                  })
-//            .store(in: &subscriptions)
-//    }
+    func attachViewEventListener(loadData: AnyPublisher<Void, Never>, cardState: State) {
+        
+        self.loadData = loadData
+        self.loadData
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { _ in },
+                  receiveValue: { [weak self] cards in
+                    print("뷰모델입니다. \(cards)")
+                    self?.addCard(state: cardState)
+                    //self?.reloadCardListSubject.send(.success(()))
+                  })
+            .store(in: &subscriptions)
+    }
 }

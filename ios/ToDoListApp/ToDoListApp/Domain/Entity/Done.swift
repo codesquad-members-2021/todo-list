@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Done: BoardManageable {
+class Done: BoardManageable, CardFactory {
     private var board: Board
     private let title = "완료한 일"
     
@@ -40,5 +40,9 @@ class Done: BoardManageable {
     
     func getTitle() -> String {
         return self.title
+    }
+    
+    static func makeBoard(cards: [CardManageable]) -> BoardManageable {
+        return Done(board: Board(cards: cards))
     }
 }

@@ -7,7 +7,11 @@
 
 import Foundation
 
-class ToDo: BoardManageable {
+protocol CardFactory {
+    static func makeBoard(cards: [CardManageable]) -> BoardManageable
+}
+
+class ToDo: BoardManageable, CardFactory {
     private var board: Board
     private let title = "해야하는 일"
     
@@ -40,5 +44,9 @@ class ToDo: BoardManageable {
     
     func getTitle() -> String {
         return self.title
+    }
+    
+    static func makeBoard(cards: [CardManageable]) -> BoardManageable {
+        return ToDo(board: Board(cards: cards))
     }
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Board: BoardManageable {
+class Board {
     private var cards: [CardManageable]
     
     init(cards: [CardManageable]) {
@@ -45,11 +45,11 @@ class Board: BoardManageable {
         self.cards.insert(card, at: destinationIndex)
     }
     
-    func getBoard() -> Board {
-        return Board()
-    }
-    
-    func getTitle() -> String {
-        return ""
-    }
+//    func getBoard() -> Board {
+//        return Board()
+//    }
+//    
+//    func getTitle() -> String {
+//        return ""
+//    }
 }

@@ -35,18 +35,18 @@ class MainViewController: UIViewController {
             .store(in: &self.subsciptions)
         
         //Test
-//        cardViewModel.attachViewEventListener(loadData: loadDataSubject.eraseToAnyPublisher(), cardState: .todo)
-//        cardViewModel.reloadCardList
-//                    .sink(receiveCompletion: { completion in
-//                        // Handle the error
-//                    }) { [weak self] _ in
-//                        print("이벤트를 뷰모델에 전달했습니다.")
-//                        self?.collectionView.reloadData()
-//                }
-//                .store(in: &subsciptions)
-//            }
-    }
+        cardViewModel.attachViewEventListener(loadData: loadDataSubject.eraseToAnyPublisher(), cardState: .todo)
+        cardViewModel.reloadCardList
+                    .sink(receiveCompletion: { completion in
+                        // Handle the error
+                    }) { [weak self] _ in
+                        print("이벤트를 뷰모델에 전달했습니다.")
+                        self?.collectionView.reloadData()
+                }
+                .store(in: &subsciptions)
+            }
 }
+
 
 extension MainViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
