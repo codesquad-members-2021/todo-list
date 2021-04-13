@@ -7,6 +7,7 @@ const CreateTodoBlock = styled.div`
   border: 1px solid #ffcc00;
   border-radius: 0.3rem;
   padding: 0.8rem;
+  display: ${({ toggle }) => toggle ? 'block' : 'none'};
 `;
 
 const InputTitle = styled.input.attrs({
@@ -36,19 +37,21 @@ const Buttons = styled.div`
     &:last-child {
       color: #fff;
       background-color: #ffcc00;
+      opacity: ${({ inputs }) => inputs.title !== '' ? 1 : 0.6};
+      user-select: ${({ inputs }) => inputs.title !== '' ? 'initial' : 'none'};
+      pointer-events: ${({ inputs }) => inputs.title !== '' ? 'initial' : 'none'};
     }
   }
 `;
 
-
-const CreateTodo = () => {
+const CreateTodo = ({inputs, onChange, onCancel, onSubmit, toggle}) => {
   return (
-    <CreateTodoBlock>
-      <InputTitle placeholder="제목을 입력하세요"></InputTitle>
-      <InputContent placeholder="내용을 입력하세요"></InputContent>
-      <Buttons>
-        <Button>취소</Button>
-        <Button>등록</Button>
+    <CreateTodoBlock toggle={toggle}>
+      <InputTitle autoComplete="off" name="title" value={inputs.title} onChange={onChange} placeholder="제목을 입력하세요"></InputTitle>
+      <InputContent autoComplete="off" name="content" value={inputs.value} onChange={onChange} placeholder="내용을 입력하세요"></InputContent>
+      <Buttons inputs={inputs}>
+        <Button onClick={onCancel}>취소</Button>
+        <Button onClick={onSubmit}>등록</Button>
       </Buttons>
     </CreateTodoBlock>
   )

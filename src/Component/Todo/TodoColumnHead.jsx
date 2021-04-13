@@ -41,19 +41,22 @@ const HeadButtons = styled.div`
     &:hover {
       color: #ffcc00;
     }
+    &:first-child {
+      color: ${({toggle}) => toggle ? '#ffcc00': '#000'};
+    }
   }
 `;
 
-const TodoColumnHead = ({ title }) => {
+const TodoColumnHead = ({ title, count, toggle, onClick, onAllDelete }) => {
   return (
     <TodoColumnHeadBlock>
       <HeadText>
         <Title>{title}</Title>
-        <Counter>0</Counter>
+        <Counter>{count}</Counter>
       </HeadText>
-      <HeadButtons>
-        <Button><FaPlus/></Button>
-        <Button><FaTimes/></Button>
+      <HeadButtons toggle={toggle}>
+        <Button onClick={onClick}><FaPlus/></Button>
+        <Button onClick={onAllDelete}><FaTimes/></Button>
       </HeadButtons>
     </TodoColumnHeadBlock>
   )

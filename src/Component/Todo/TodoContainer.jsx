@@ -12,10 +12,10 @@ const TodoContainerBlock = styled.div`
 `;
 
 const TodoContainer = () => {
-  const todoColumns = test.todoColumns.map((v, index) => <TodoColumn {...v} key={index}/>);
+  const TodoColumns = test.todoColumns.map((v, index) => <TodoColumn {...v} key={index}/>);
   return (
     <TodoContainerBlock>
-      {todoColumns}
+      {TodoColumns}
     </TodoContainerBlock>
   )
 }
