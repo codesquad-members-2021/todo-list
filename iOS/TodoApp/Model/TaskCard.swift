@@ -4,8 +4,8 @@ import Foundation
 struct TaskCard: Codable {
     var id: Int
     var title: String
-    var content: String
-    var createdTime: String
+    var description: String
+    var createdAt: String
     var status: Int
     var author: String
 }
