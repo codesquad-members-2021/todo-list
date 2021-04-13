@@ -25,10 +25,9 @@ class ToDoViewController: UIViewController {
     
     func fetchCards() {
         let urlString = Constants.url
-        DataManager.getData(urlString: urlString) { (toDoList) in
-            guard let safeToDoList = toDoList else { return }
+        DataManager.requestGet(url: urlString) { (bool, output) in
             
-            self.cards = safeToDoList.todo
+            self.cards = output.todo
             DispatchQueue.main.async {
                 self.toDoCardTableView.reloadData()
             }
@@ -58,9 +57,15 @@ extension ToDoViewController: UITableViewDelegate {
                    "sectionHeader") as! CustomHeader
        view.title.text = "해야 할 일"
         view.displayCurrentCardNumOnBadge(number: self.cards.count)
+        
         view.button.addAction(UIAction.init(handler: { (touch) in
-            print("touched")
-        }), for: .touchUpInside)
+            let dateString = DateFormatter().string(from: Date())
+            let testCard = ["id": "jeje", "title": "안녕하세요", "contents": "테스트용 콘텐츠", "createDateTime": dateString, "status": "TODO"]
+            
+            DataManager.requestPost(url: Constants.url, parameter: testCard) { (bool, toDoList) in
+                print(toDoList)
+            }
+            }), for: .touchUpInside)
        return view
     }
     
