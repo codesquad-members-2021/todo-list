@@ -7,28 +7,47 @@
 
 import UIKit
 
-class DoneTableViewDelegates: NSObject {
-    public var cardsCompleted = CardsCompleted()
+class DoneTableViewDelegates: NSObject, ToDoCardProtocol {
+    var list: [ToDoItem] = [] {
+        didSet {
+            NotificationCenter.default.post(name: .didChangeCompletedCardsLists, object: nil)
+        }
+    }
     
-    public func fetchCards(handler: @escaping () -> ()) {
+    func insertCard(newCard: ToDoItem, at order: Int) {
+        self.list.insert(newCard, at: order)
+    }
+    
+    func deleteCard(at index: Int) {
+        self.list.remove(at: index)
+    }
+    
+    func moveCard(at sourceIndex: Int, to destinationIndex: Int) {
+        guard sourceIndex != destinationIndex else { return }
+        
+        let place = list[sourceIndex]
+        list.remove(at: sourceIndex)
+        list.insert(place, at: destinationIndex)
+    }
+    
+    public func fetchCards() {
         let urlString = Constants.url
         DataManager.requestGet(url: urlString) { (bool, output) in
-            self.cardsCompleted.list = output.done
-            handler()
+            self.list = output.done
         }
     }
 }
 
 extension DoneTableViewDelegates: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cardsCompleted.list.count
+        return list.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoCardCell", for: indexPath) as! ToDoCardCell
-        cell.titleLabel.text = cardsCompleted.list[indexPath.row].title
-        cell.contentLabel.text = cardsCompleted.list[indexPath.row].contents
-        cell.authorLabel.text = "author by \(cardsCompleted.list[indexPath.row].id)"
+        cell.titleLabel.text = list[indexPath.row].title
+        cell.contentLabel.text = list[indexPath.row].contents
+        cell.authorLabel.text = "author by \(list[indexPath.row].id)"
         
         return cell
     }
@@ -40,7 +59,7 @@ extension DoneTableViewDelegates: UITableViewDelegate {
        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier:
                    "sectionHeader") as! CustomHeader
        view.title.text = "완료한 일"
-        view.displayCurrentCardNumOnBadge(number: self.cardsCompleted.list.count)
+        view.displayCurrentCardNumOnBadge(number: self.list.count)
         view.button.addAction(UIAction.init(handler: { (touch) in
             print("touched")
         }), for: .touchUpInside)

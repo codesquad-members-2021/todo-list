@@ -14,6 +14,8 @@ class DoneViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(doneCardsListHasBeenChanged), name: .didChangeCompletedCardsLists, object: nil)
+        
         self.doneCardTableView.dataSource = doneTableViewDelegates
         self.doneCardTableView.delegate = doneTableViewDelegates
         self.doneCardTableView.rowHeight = 150
@@ -21,10 +23,12 @@ class DoneViewController: UIViewController {
         self.doneCardTableView.register(UINib(nibName: "ToDoCardCell", bundle: nil), forCellReuseIdentifier: "ToDoCardCell")
         doneCardTableView.register(CustomHeader.self, forHeaderFooterViewReuseIdentifier: "sectionHeader")
         
-        doneTableViewDelegates.fetchCards(handler: {
-            DispatchQueue.main.async {
-                self.doneCardTableView.reloadData()
-            }
-        })
+        doneTableViewDelegates.fetchCards()
+    }
+    
+    @objc func doneCardsListHasBeenChanged() {
+        DispatchQueue.main.async {
+            self.doneCardTableView.reloadData()
+        }
     }
 }
