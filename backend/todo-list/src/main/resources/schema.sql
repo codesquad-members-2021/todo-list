@@ -3,10 +3,9 @@ DROP TABLE IF EXISTS history, card, user;
 CREATE TABLE user
 (
     user_id     int auto_increment primary key,
-    name        varchar(30),
+    name        varchar(30) UNIQUE,
     password    varchar(30),
-    profile_url varchar(255),
-    token       varchar(255)
+    profile_url varchar(255)
 );
 
 CREATE TABLE card

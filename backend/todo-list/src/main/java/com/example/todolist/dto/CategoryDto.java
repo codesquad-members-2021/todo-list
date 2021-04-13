@@ -1,7 +1,5 @@
 package com.example.todolist.dto;
 
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class CategoryDto {
@@ -20,24 +18,12 @@ public class CategoryDto {
         return todo;
     }
 
-    public void setTodo(List<CardDto> todo) {
-        this.todo = todo;
-    }
-
     public List<CardDto> getDoing() {
         return doing;
     }
 
-    public void setDoing(List<CardDto> doing) {
-        this.doing = doing;
-    }
-
     public List<CardDto> getDone() {
         return done;
-    }
-
-    public void setDone(List<CardDto> done) {
-        this.done = done;
     }
 
     @Override

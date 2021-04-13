@@ -1,7 +1,6 @@
 package com.example.todolist.dto;
 
 
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.time.LocalDateTime;
@@ -16,8 +15,6 @@ public class HistoryDto {
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATETIME_FORMAT, timezone = "Asia/Seoul")
     private LocalDateTime actionTime;
-
-    public HistoryDto() {}
 
     public HistoryDto(CardLogDto card, String action, String preStatus, String currStatus, LocalDateTime actionTime) {
         this.card = card;

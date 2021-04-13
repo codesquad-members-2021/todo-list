@@ -15,17 +15,18 @@ public class JwtUtil {
     private Date expiredTime = new Date(System.currentTimeMillis() + 60 * 60 * 3 * 1000);
     private String ISSUER = "test";
 
-    public String createToken() {
+    public String createToken(String name) {
         return JWT.create()
                 .withIssuer(ISSUER)
                 .withExpiresAt(expiredTime)
+                .withSubject(name)
                 .sign(Algorithm.HMAC256(SECRET_KEY));
     }
 
-    public void verifyToken(String token) {
+    public DecodedJWT verifyToken(String token) {
         JWTVerifier verifier = JWT.require(Algorithm.HMAC256(SECRET_KEY))
                 .withIssuer(ISSUER)
                 .build();
-        verifier.verify(token);
+        return verifier.verify(token);
     }
 }

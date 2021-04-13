@@ -20,10 +20,6 @@ public class CardService {
         this.userRepository = userRepository;
     }
 
-    public Iterable<Card> findCards() {
-        return cardRepository.findAll();
-    }
-
     public List<CardDto> cardDtoTodoList() {
         List<Card> cards = cardRepository.findAllByStatus("todo");
         return cardDtoList(cards);

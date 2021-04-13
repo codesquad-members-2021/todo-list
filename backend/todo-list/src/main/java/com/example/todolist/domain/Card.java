@@ -16,17 +16,19 @@ public class Card {
     private Long id;
 
     private Long userId;
+
     private String title;
+
     private String contents;
 
     private String status;
+
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATETIME_FORMAT, timezone = "Asia/Seoul")
     private LocalDateTime postTime;
+
     private boolean isDeleted;
 
-    public Card() {
-
-    }
+    protected Card(){}
 
     public Card(User user, String title, String contents, String status) {
         this.userId = user.getUserId();
@@ -37,13 +39,13 @@ public class Card {
         this.isDeleted = false;
     }
 
+    public void update(String status) {
+        this.status = status;
+    }
+
     public void update(String title, String contents) {
         this.title = title;
         this.contents = contents;
-    }
-
-    public void update(String status) {
-        this.status = status;
     }
 
     public void delete() {
@@ -72,22 +74,6 @@ public class Card {
 
     public String getStatus() {
         return status;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setContents(String contents) {
-        this.contents = contents;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
 
     @Override

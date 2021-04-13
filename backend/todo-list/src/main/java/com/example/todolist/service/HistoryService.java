@@ -39,21 +39,9 @@ public class HistoryService {
             Card card = cardRepository.findById(history.getCardId()).orElseThrow(RuntimeException::new);
             User user = userRepository.findById(card.getUserId()).orElseThrow(RuntimeException::new);
             CardLogDto cardLogDto = new CardLogDto(user, card.getTitle());
-            HistoryDto historyDto = new HistoryDto(cardLogDto,history.getAction(),history.getPreStatus(),history.getCurrStatus(),history.getActionTime());
+            HistoryDto historyDto = new HistoryDto(cardLogDto, history.getAction(), history.getPreStatus(), history.getCurrStatus(), history.getActionTime());
             result.add(historyDto);
         }
         return result;
-    }
-
-    public HistoryRepository getHistoryRepository() {
-        return historyRepository;
-    }
-
-    public CardRepository getCardRepository() {
-        return cardRepository;
-    }
-
-    public UserRepository getUserRepository() {
-        return userRepository;
     }
 }
