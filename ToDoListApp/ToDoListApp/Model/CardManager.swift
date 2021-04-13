@@ -10,6 +10,7 @@ import Foundation
 protocol CardManageDelegate {
     func count(states: States) -> Int
     func setCell(states: States, index: Int, handler: (Card)->())
+    func add(card: Card)
 }
 
 class CardManager: CardManageDelegate {
@@ -28,9 +29,19 @@ class CardManager: CardManageDelegate {
     }
     
     func setCell(states:States, index: Int, handler: (Card) -> ()) {
-        guard let cards = cardDic[states] else {
+        guard let cards = cardDic[states], !cards.isEmpty else {
             return
         }
-        handler(cards[index])
+        let count = cards.count - 1
+        handler(cards[count - index])
     }
+    
+    func add(card: Card) {
+        self.cardDic[card.states]?.append(card)
+        NotificationCenter.default.post(name: CardManager.changeCardCount, object: self)
+    }
+}
+
+extension CardManager {
+    static let changeCardCount = Notification.Name("changeCardCount")
 }
