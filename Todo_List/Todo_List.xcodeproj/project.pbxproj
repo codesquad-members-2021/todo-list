@@ -106,6 +106,69 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AED1D143262598C400A5F239 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				AE43FD54261D934700CBD630 /* AddLineSpacing.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		AED1D144262598D600A5F239 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AE20EF8E2624208E0076FBF0 /* CardManager.swift */,
+				AE1D84FB261C59BD009D633A /* TodoCard.swift */,
+				AE43FD59261DA83F00CBD630 /* TodoCards.swift */,
+				AEA3CBF1261EF626005E10F2 /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AED1D148262598F000A5F239 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D4BFB839261C470700D68297 /* TodoTableViewController.swift */,
+				D4BFB807261C448700D68297 /* ViewController.swift */,
+				D4BFB96126201F6300D68297 /* TodoTableViewDropDelegate.swift */,
+				D4BFB9662620222D00D68297 /* TodoTableViewDragDelegate.swift */,
+				D4BFB848261C4B8500D68297 /* TodoDelegate.swift */,
+				D4BFB84D261C4C8C00D68297 /* TodoDataSource.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		AED1D1492625990A00A5F239 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D4BFB85B261C4D4A00D68297 /* TodoCell.swift */,
+				D4BFB85C261C4D4A00D68297 /* TodoCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AED1D1502625994500A5F239 /* ModalView */ = {
+			isa = PBXGroup;
+			children = (
+				AEA3CBEA261EE97A005E10F2 /* ModalViewController.swift */,
+				AE20EF8926241A6E0076FBF0 /* ModalTextViewDelegate.swift */,
+				AEA3CBEB261EE97A005E10F2 /* ModalViewController.xib */,
+			);
+			path = ModalView;
+			sourceTree = "<group>";
+		};
+		AED1D1542625997100A5F239 /* Etc */ = {
+			isa = PBXGroup;
+			children = (
+				D4BFB805261C448700D68297 /* SceneDelegate.swift */,
+				D4BFB803261C448700D68297 /* AppDelegate.swift */,
+				D4BFB80C261C448900D68297 /* Assets.xcassets */,
+				D4BFB80E261C448900D68297 /* LaunchScreen.storyboard */,
+				D4BFB811261C448900D68297 /* Info.plist */,
+			);
+			path = Etc;
+			sourceTree = "<group>";
+		};
 		D4BFB7F7261C448700D68297 = {
 			isa = PBXGroup;
 			children = (
@@ -129,28 +192,13 @@
 		D4BFB802261C448700D68297 /* Todo_List */ = {
 			isa = PBXGroup;
 			children = (
-				AE43FD54261D934700CBD630 /* AddLineSpacing.swift */,
-				AE1D84FB261C59BD009D633A /* TodoCard.swift */,
-				AE43FD59261DA83F00CBD630 /* TodoCards.swift */,
-				AEA3CBF1261EF626005E10F2 /* User.swift */,
-				AEA3CBEA261EE97A005E10F2 /* ModalViewController.swift */,
-				AE20EF8926241A6E0076FBF0 /* ModalTextViewDelegate.swift */,
-				AEA3CBEB261EE97A005E10F2 /* ModalViewController.xib */,
-				D4BFB839261C470700D68297 /* TodoTableViewController.swift */,
-				D4BFB807261C448700D68297 /* ViewController.swift */,
-				D4BFB96126201F6300D68297 /* TodoTableViewDropDelegate.swift */,
-				D4BFB9662620222D00D68297 /* TodoTableViewDragDelegate.swift */,
-				D4BFB848261C4B8500D68297 /* TodoDelegate.swift */,
-				D4BFB84D261C4C8C00D68297 /* TodoDataSource.swift */,
-				D4BFB803261C448700D68297 /* AppDelegate.swift */,
-				D4BFB805261C448700D68297 /* SceneDelegate.swift */,
 				D4BFB809261C448700D68297 /* Main.storyboard */,
-				D4BFB85B261C4D4A00D68297 /* TodoCell.swift */,
-				D4BFB85C261C4D4A00D68297 /* TodoCell.xib */,
-				AE20EF8E2624208E0076FBF0 /* CardManager.swift */,
-				D4BFB80C261C448900D68297 /* Assets.xcassets */,
-				D4BFB80E261C448900D68297 /* LaunchScreen.storyboard */,
-				D4BFB811261C448900D68297 /* Info.plist */,
+				AED1D143262598C400A5F239 /* Extension */,
+				AED1D144262598D600A5F239 /* Model */,
+				AED1D148262598F000A5F239 /* Controller */,
+				AED1D1492625990A00A5F239 /* View */,
+				AED1D1502625994500A5F239 /* ModalView */,
+				AED1D1542625997100A5F239 /* Etc */,
 			);
 			path = Todo_List;
 			sourceTree = "<group>";
