@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import CreateTodo from "./CreateTodo";
 import TodoColumnHead from "./TodoColumnHead";
+import TodoItem from "./TodoItem";
 
 const TodoColumnBlock = styled.div``;
 const TodoItemsBlock = styled.div``;
@@ -17,9 +18,10 @@ const TodoColumn = ({title, todoItems}) => {
 
   const onClick = () => setToggle(!toggle);
   const onSubmit = () => {
-    setTodos([...todos, {...inputs}])
+    setTodos([...todos, {...inputs}]);
     setCount(count + 1);
     setInputs({title: "", content: ""});
+    setToggle(!toggle);
   }
   const onCancel = () => {
     setToggle(!toggle);
@@ -28,17 +30,28 @@ const TodoColumn = ({title, todoItems}) => {
   const onChange = ({ target }) => {
     setInputs({...inputs, [target.name] : target.value});
   }
-  const onAllDelete = () => {
+  const onAllRemove = () => {
     setTodos([]);
     setCount(0);
   }
-  // const TodoItems = todoItems.map((v, index) => <TodoItem {...v} key={index}/>); 
+  const onRemove = (index) => {
+    setTodos(todos.filter((v, i) => i !== index));
+    setCount(count - 1);
+  }
+  const onTodoItemChange = (e, index) => {
+    setTodos(todos.map((v, i) => {
+      e.preventDefault();
+      if(i === index) v[e.target.name] = e.target.value;
+      return v;
+    }));
+  } 
+  const TodoItems = todos.map((v, index) => <TodoItem {...v} index={index} onChange={onTodoItemChange} onRemove={onRemove} key={index}/>); 
   return (
     <TodoColumnBlock>
-      <TodoColumnHead toggle={toggle} onClick={onClick} onAllDelete={onAllDelete} count={count} title={title}></TodoColumnHead>
+      <TodoColumnHead toggle={toggle} onClick={onClick} onAllRemove={onAllRemove} count={count} title={title}></TodoColumnHead>
       <CreateTodo inputs={inputs} onChange={onChange} onCancel={onCancel} onSubmit={onSubmit} toggle={toggle}></CreateTodo>
       <TodoItemsBlock>
-        {/* {TodoItems} */}
+        {TodoItems}
       </TodoItemsBlock>
     </TodoColumnBlock>
   )
