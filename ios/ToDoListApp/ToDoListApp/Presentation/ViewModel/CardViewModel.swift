@@ -71,9 +71,7 @@ class CardViewModel {
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { _ in },
                   receiveValue: { [weak self] cards in
-                    print("뷰모델입니다. \(cards)")
                     self?.addCard(columnId: columnId)
-                    //self?.reloadCardListSubject.send(.success(()))
                   })
             .store(in: &subscriptions)
     }

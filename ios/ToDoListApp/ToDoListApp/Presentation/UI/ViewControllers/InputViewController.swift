@@ -25,7 +25,6 @@ class InputViewController: UIViewController {
         super.viewDidLoad()
         bind()
         setupTitle()
-        print("id", self.id)
     }
     
     private func setupTitle() {

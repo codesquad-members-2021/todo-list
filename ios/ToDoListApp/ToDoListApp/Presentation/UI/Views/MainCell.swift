@@ -15,7 +15,8 @@ class MainCell: UICollectionViewCell {
     @IBOutlet weak var inputButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
-    private var board: BoardManageable?
+    private var cardViewModel: CardViewModel?
+    private var column: Int!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,8 +27,9 @@ class MainCell: UICollectionViewCell {
         tableView.dropDelegate = self
     }
     
-    func setup(with board: BoardManageable) {
-        self.board = board
+    func setup(with cardViewModel: CardViewModel, column: Int) {
+        self.cardViewModel = cardViewModel
+        self.column = column
         tableView.reloadData()
     }
     
@@ -41,7 +43,7 @@ class MainCell: UICollectionViewCell {
             }
             inputViewController.modalPresentationStyle = .overCurrentContext
             inputViewController.setupMode("edit")
-            inputViewController.setupId(self.board?.getBoard().getCards()[indexPath.row].getId() ?? 0)
+            inputViewController.setupId(self.cardViewModel?.boards[self.column].getBoard().getCards()[indexPath.row].getId() ?? 0)
             self.window?.rootViewController?.present(inputViewController, animated: false, completion: .none)
         }
         
@@ -54,14 +56,14 @@ class MainCell: UICollectionViewCell {
 
 extension MainCell: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return board?.count() ?? 0
+        return cardViewModel?.boards[column].count() ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CardCell.identifier, for: indexPath) as? CardCell else { return UITableViewCell() }
         
-        cell.title = board?.getBoard().getCards()[indexPath.row].getTitle()
-        cell.contents = board?.getBoard().getCards()[indexPath.row].getContents()
+        cell.title = cardViewModel?.boards[column].getBoard().getCards()[indexPath.row].getTitle()
+        cell.contents = cardViewModel?.boards[column].getBoard().getCards()[indexPath.row].getContents()
         
         return cell
     }
@@ -72,14 +74,15 @@ extension MainCell: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
-            board?.getBoard().removeCard(at: indexPath.row)
+            cardViewModel?.boards[column].getBoard().removeCard(at: indexPath.row)
+            self.tableView.reloadData()
         }
     }
     
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        guard let movedCard = board?.getBoard().getCards()[sourceIndexPath.row] else { return }
-        board?.getBoard().removeCard(at: sourceIndexPath.row)
-        board?.getBoard().insertCard(card: movedCard, at: destinationIndexPath.row)
+        guard let movedCard = cardViewModel?.boards[column].getBoard().getCards()[sourceIndexPath.row] else { return }
+        cardViewModel?.boards[column].getBoard().removeCard(at: sourceIndexPath.row)
+        cardViewModel?.boards[column].getBoard().insertCard(card: movedCard, at: destinationIndexPath.row)
     }
 }
 
@@ -95,9 +98,8 @@ extension MainCell: UITableViewDragDelegate, UITableViewDropDelegate {
         }
         return UITableViewDropProposal(operation: .cancel, intent: .unspecified)
     }
-    func tableView(_ tableView: UITableView, performDropWith coordinator: UITableViewDropCoordinator) {
-
-    }
+    
+    func tableView(_ tableView: UITableView, performDropWith coordinator: UITableViewDropCoordinator) {}
 }
 
 extension MainCell: UITableViewDelegate {

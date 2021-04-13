@@ -49,7 +49,7 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainCell.identifier, for: indexPath) as? MainCell else { return UICollectionViewCell() }
 
-        cell.setup(with: cardViewModel.boards[indexPath.item])
+        cell.setup(with: self.cardViewModel, column: indexPath.item)
         cell.titleLabel.text = cardViewModel.boards[indexPath.item].getTitle()
         cell.boardCountLabel.text = "\(cardViewModel.boards[indexPath.item].getBoard().count())"
         cell.inputButton.tag = indexPath.row
