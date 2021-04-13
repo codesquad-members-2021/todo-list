@@ -27,6 +27,7 @@ const LogListContainer = styled.div`
   display: flex;
   width: 80%;
   flex-direction: column;
+  overflow: auto;
 `;
 
 const LogCardContainer = styled.div`

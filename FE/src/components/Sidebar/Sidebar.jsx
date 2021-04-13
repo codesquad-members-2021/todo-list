@@ -37,9 +37,7 @@ const Sidebar = ({ toggleSidebar, transitionFrom, transitionTo, visible }) => {
   });
 
   const logList = logData.map((data, i) => {
-    return (
-      <LogCard key={data.logList[i].id} data={data} userID={data.userID} />
-    );
+    return <LogCard key={data.logs[i].id} data={data} userID={data.userID} />;
   });
 
   return (
