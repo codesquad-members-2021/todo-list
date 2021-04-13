@@ -11,10 +11,11 @@ protocol CardManageDelegate {
     func count(states: States) -> Int
     func setCell(states: States, index: Int, handler: (Card)->())
     func add(card: Card)
+    func remove(states: States, at index: Int)
 }
 
 class CardManager: CardManageDelegate {
-    
+
     var cardDic: Dictionary<States, [Card]>
     
     static let shared = CardManager()
@@ -40,6 +41,11 @@ class CardManager: CardManageDelegate {
     
     func add(card: Card) {
         self.cardDic[card.states]?.append(card)
+        NotificationCenter.default.post(name: CardManager.changeCardCount, object: self)
+    }
+    
+    func remove(states: States, at index: Int) {
+        self.cardDic[states]!.remove(at: index)
         NotificationCenter.default.post(name: CardManager.changeCardCount, object: self)
     }
 }

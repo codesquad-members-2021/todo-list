@@ -141,11 +141,11 @@
 				FFC619A1261EF4A60033D622 /* DoneTableViewDelegate.swift */,
 				FFC619A2261EF4A60033D622 /* InProgressTableViewDataSource.swift */,
 				FFC619A3261EF4A60033D622 /* InProgressTableViewDelegate.swift */,
-				CE9A2B38261EF6CE0097A940 /* ModalViewController.swift */,
-				CEB0D07F26208945002BC69D /* ModalTextViewDelegate.swift */,
 				CEA19A112624136D008B270E /* SizeManager.swift */,
 				CEA19A142624828F008B270E /* CardMaker.swift */,
 				CEA19A1726249A19008B270E /* ButtonManager.swift */,
+				CE9A2B38261EF6CE0097A940 /* ModalViewController.swift */,
+				CEB0D07F26208945002BC69D /* ModalTextViewDelegate.swift */,
 				CEA19A1A2624A56B008B270E /* ModalTextFieldDelegate.swift */,
 			);
 			path = Controller;
