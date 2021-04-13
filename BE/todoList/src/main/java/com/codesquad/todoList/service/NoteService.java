@@ -13,7 +13,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class NoteService {
 
-    NoteRepository noteRepository;
+    private final NoteRepository noteRepository;
 
     public void save(Note note) {
         noteRepository.save(note);
