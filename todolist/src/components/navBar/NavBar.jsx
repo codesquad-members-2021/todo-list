@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { HiMenu } from "react-icons/hi";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import LogStorage from "./LogStorage";
 // import IconButton from "../utils/IconButton";
 
@@ -34,14 +34,12 @@ const LogBtnBlock = styled.div`
 `;
 
 function NavBar(props) {
-  const { log } = props;
-  console.log(log);
-  // 잘 찍히는거 확인
-  const LogStorageDom = useRef();
+  const { logs } = props;
+  const [clicked, setClickState] = useState(false);
   const [appear, setLogViewState] = useState(false);
-  const handleLogBtnClick = (LogStorageDom) => {
+  const handleLogBtnClick = () => {
     setLogViewState(true);
-    if (appear) LogStorageDom.current.classList.add("appear");
+    setClickState(true);
   };
   return (
     <>
@@ -52,7 +50,13 @@ function NavBar(props) {
           <HiMenu className="icon" onClick={handleLogBtnClick} />
         </LogBtnBlock>
       </NavBlock>
-      {appear && <LogStorage ref={LogStorageDom} setLogViewState={setLogViewState}></LogStorage>}
+
+      <LogStorage
+        logs={logs}
+        clicked={clicked}
+        appear={appear}
+        setLogViewState={setLogViewState}
+      ></LogStorage>
     </>
   );
 }

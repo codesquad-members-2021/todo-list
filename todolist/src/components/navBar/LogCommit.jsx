@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import crong from "./crong.jpg";
+import LogMessage from "./LogMessage";
 
 const LogBlock = styled.div`
   display: flex;
@@ -28,15 +29,16 @@ const UserImg = styled.div`
   margin-right: 10px;
 `;
 
-function LogCommit() {
+function LogCommit({ logs }) {
+  console.log(logs);
   return (
     <>
-      <LogBlock>
-        <UserImg />
-        test!
-      </LogBlock>
-      <LogBlock>test!</LogBlock>
-      <LogBlock>test!</LogBlock>
+      {logs.map((log, index) => (
+        <LogBlock key={index}>
+          <UserImg />@ Crong
+          <LogMessage log={log}></LogMessage>
+        </LogBlock>
+      ))}
     </>
   );
 }

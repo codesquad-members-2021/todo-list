@@ -1,7 +1,5 @@
 import "./App.css";
 import { createGlobalStyle } from "styled-components";
-// import NavBar from "./components/navBar/NavBar";
-// import { Column } from "./components/card/CardList.jsx";
 import StateProvider from "./components/StateProvider";
 const GlobalStyle = createGlobalStyle`
   body{
@@ -17,7 +15,6 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      {/* <NavBar /> */}
       <StateProvider />
     </>
   );
