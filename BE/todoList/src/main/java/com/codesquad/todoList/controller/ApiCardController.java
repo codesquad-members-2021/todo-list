@@ -5,6 +5,7 @@ import com.codesquad.todoList.error.ErrorCode;
 import com.codesquad.todoList.error.ErrorResponse;
 import com.codesquad.todoList.service.ColumnService;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/columns/{id}/cards")
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class ApiCardController {
 
     private static final Logger log = LoggerFactory.getLogger(ApiCardController.class);
@@ -24,13 +25,8 @@ public class ApiCardController {
 
     @PostMapping()
     public ResponseEntity<?> addCard(@Validated @RequestBody Card card, @PathVariable Long id, BindingResult bindingResult) {
-        if(bindingResult.hasErrors()) {
-            ErrorResponse errorResponse = ErrorResponse.of(ErrorCode.BAD_REQUEST, bindingResult);
-            log.error("ADD CARD ERROR : {}", errorResponse);
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
-        }
         columnService.addCard(id, card);
-        return ResponseEntity.ok().body(card);
+        return ResponseEntity.ok().build();
     }
 
 
@@ -42,11 +38,6 @@ public class ApiCardController {
 
     @PutMapping("/{cardId}")
     public ResponseEntity<?> updateCard(@PathVariable Long id, @PathVariable Long cardId, @Validated @RequestBody Card card, BindingResult bindingResult) {
-        if(bindingResult.hasErrors()) {
-            ErrorResponse errorResponse = ErrorResponse.of(ErrorCode.BAD_REQUEST, bindingResult);
-            log.error("UPDATE CARD ERROR : {}", errorResponse);
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
-        }
         Card updateCard = columnService.updateCard(id, cardId, card);
         return ResponseEntity.ok(updateCard);
     }
