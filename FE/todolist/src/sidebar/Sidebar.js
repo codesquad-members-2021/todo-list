@@ -23,38 +23,39 @@ const IconBox = styled.div`
     height: 20px;
 `;
 
+//const noteData = [{note}, {note}, ]
 
-const Sidebar = (props) => {
-    const [ noteList, setNoteList ] = useState([]);
-
-    useEffect(() => console.log("사이드바 렌더링 됌!"), []);
+const Sidebar = ({ sidebarRef, open , noteList, setNoteList }) => {
+    // const [ noteList, setNoteList ] = useState([]);
+    console.log("다시불림", noteList);
 
     const fetchNoteListData = async() => {
+        console.log("fetch")
         try {
             const request = '/notes';
             const response = await axios.get(request);
-            setNoteList(response);
-            console.log(response);
+            setNoteList(() => response.data);
+            // console.log(noteList);
         } catch (error) {
             console.log(error);
         }
     }
-    //Sidebar가 렌더링 될 때마다 실행되어야 하는 작업들을 가짐.
+
     useEffect(() => {
-        fetchNoteListData();
-    }, []);
+        if (open) fetchNoteListData();
+    }, [open]);
 
     const closeSidebar = () => {
-        const sidebarPage = props.sidebarRef.current;
+        const sidebarPage = sidebarRef.current;
         sidebarPage.style.transform = 'translateX(432px)';
     };
 
     return (
-        <SidebarStyle ref={props.sidebarRef}>
+        <SidebarStyle ref={sidebarRef}>
             <IconBox>
                 <Icon type={"close"} handleClick={closeSidebar}/>
             </IconBox>
-            <Note/>
+            <Note noteList={noteList}/>
         </SidebarStyle>
     );
 };
