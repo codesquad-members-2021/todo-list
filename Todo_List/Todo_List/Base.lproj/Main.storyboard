@@ -94,9 +94,11 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n2J-V6-8hs">
-                                        <rect key="frame" x="243" y="12" width="18" height="22"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n2J-V6-8hs">
+                                        <rect key="frame" x="239" y="12" width="22" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="22" id="ep2-at-DTA"/>
+                                        </constraints>
                                         <color key="tintColor" systemColor="systemGray3Color"/>
                                         <state key="normal" image="plus" catalog="system"/>
                                         <connections>
@@ -106,8 +108,11 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="n2J-V6-8hs" secondAttribute="trailing" constant="24" id="CMF-RB-gpa"/>
                                     <constraint firstItem="5Nk-G8-w1N" firstAttribute="leading" secondItem="PCE-JZ-HLn" secondAttribute="leading" constant="20" id="K4n-Ua-F9l"/>
                                     <constraint firstItem="5Nk-G8-w1N" firstAttribute="centerY" secondItem="PCE-JZ-HLn" secondAttribute="centerY" id="NnC-2q-xuR"/>
+                                    <constraint firstItem="n2J-V6-8hs" firstAttribute="top" secondItem="PCE-JZ-HLn" secondAttribute="top" constant="12" id="Xwb-Bn-NjM"/>
+                                    <constraint firstAttribute="bottom" secondItem="n2J-V6-8hs" secondAttribute="bottom" constant="10" id="c24-4d-YbR"/>
                                     <constraint firstItem="2ic-fr-pAD" firstAttribute="leading" secondItem="5Nk-G8-w1N" secondAttribute="trailing" constant="10" id="m7O-pu-ris"/>
                                     <constraint firstItem="2ic-fr-pAD" firstAttribute="centerY" secondItem="PCE-JZ-HLn" secondAttribute="centerY" id="txo-KU-jwq"/>
                                 </constraints>

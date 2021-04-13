@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		AE1D84FC261C59BD009D633A /* TodoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1D84FB261C59BD009D633A /* TodoCard.swift */; };
+		AE20EF8A26241A6E0076FBF0 /* ModalTextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE20EF8926241A6E0076FBF0 /* ModalTextViewDelegate.swift */; };
+		AE20EF8F2624208E0076FBF0 /* CardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE20EF8E2624208E0076FBF0 /* CardManager.swift */; };
 		AE43FD55261D934700CBD630 /* AddLineSpacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE43FD54261D934700CBD630 /* AddLineSpacing.swift */; };
 		AE43FD5A261DA83F00CBD630 /* TodoCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE43FD59261DA83F00CBD630 /* TodoCards.swift */; };
 		AEA3CBEC261EE97A005E10F2 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA3CBEA261EE97A005E10F2 /* ModalViewController.swift */; };
@@ -49,6 +51,8 @@
 
 /* Begin PBXFileReference section */
 		AE1D84FB261C59BD009D633A /* TodoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCard.swift; sourceTree = "<group>"; };
+		AE20EF8926241A6E0076FBF0 /* ModalTextViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalTextViewDelegate.swift; sourceTree = "<group>"; };
+		AE20EF8E2624208E0076FBF0 /* CardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardManager.swift; sourceTree = "<group>"; };
 		AE43FD54261D934700CBD630 /* AddLineSpacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLineSpacing.swift; sourceTree = "<group>"; };
 		AE43FD59261DA83F00CBD630 /* TodoCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCards.swift; sourceTree = "<group>"; };
 		AEA3CBEA261EE97A005E10F2 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
@@ -129,9 +133,8 @@
 				AE1D84FB261C59BD009D633A /* TodoCard.swift */,
 				AE43FD59261DA83F00CBD630 /* TodoCards.swift */,
 				AEA3CBF1261EF626005E10F2 /* User.swift */,
-				D4BFB85B261C4D4A00D68297 /* TodoCell.swift */,
-				D4BFB85C261C4D4A00D68297 /* TodoCell.xib */,
 				AEA3CBEA261EE97A005E10F2 /* ModalViewController.swift */,
+				AE20EF8926241A6E0076FBF0 /* ModalTextViewDelegate.swift */,
 				AEA3CBEB261EE97A005E10F2 /* ModalViewController.xib */,
 				D4BFB839261C470700D68297 /* TodoTableViewController.swift */,
 				D4BFB807261C448700D68297 /* ViewController.swift */,
@@ -142,6 +145,9 @@
 				D4BFB803261C448700D68297 /* AppDelegate.swift */,
 				D4BFB805261C448700D68297 /* SceneDelegate.swift */,
 				D4BFB809261C448700D68297 /* Main.storyboard */,
+				D4BFB85B261C4D4A00D68297 /* TodoCell.swift */,
+				D4BFB85C261C4D4A00D68297 /* TodoCell.xib */,
+				AE20EF8E2624208E0076FBF0 /* CardManager.swift */,
 				D4BFB80C261C448900D68297 /* Assets.xcassets */,
 				D4BFB80E261C448900D68297 /* LaunchScreen.storyboard */,
 				D4BFB811261C448900D68297 /* Info.plist */,
@@ -312,7 +318,9 @@
 				AEA3CBF2261EF626005E10F2 /* User.swift in Sources */,
 				D4BFB84E261C4C8C00D68297 /* TodoDataSource.swift in Sources */,
 				D4BFB806261C448700D68297 /* SceneDelegate.swift in Sources */,
+				AE20EF8F2624208E0076FBF0 /* CardManager.swift in Sources */,
 				D4BFB849261C4B8500D68297 /* TodoDelegate.swift in Sources */,
+				AE20EF8A26241A6E0076FBF0 /* ModalTextViewDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
