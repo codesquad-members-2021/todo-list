@@ -18,7 +18,11 @@ public class RequestUpdateWorkDto {
         if (title == null || content == null) {
             throw new EntityRelatedException(ErrorMessage.ENTITY_NOT_CREATE);
         }
-        return new Work(title, content);
+
+        return Work.builder()
+                .title(title)
+                .content(content)
+                .build();
     }
 
 }

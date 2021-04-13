@@ -11,9 +11,11 @@ import com.example.todolist.exception.IllegalUserAccessException;
 import com.example.todolist.web.dto.*;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.example.todolist.web.dto.ResponseWorkDto.buildResponseWorkDto;
 import static com.example.todolist.web.utils.TimelineContent.makeTimelineContent;
 import static com.example.todolist.web.utils.TimelineContent.moveContent;
 
@@ -31,7 +33,7 @@ public class WorkService {
     public List<ResponseWorkDto> getWorks(User sessionUser) {
         return workRepository.findAllByAuthorId(sessionUser.getId()).stream()
                 .filter(Work::isNotDeleted)
-                .map(work -> new ResponseWorkDto(work, sessionUser))
+                .map(work -> buildResponseWorkDto(work, sessionUser))
                 .collect(Collectors.toList());
     }
 
@@ -40,7 +42,7 @@ public class WorkService {
         work.save(sessionUser);
         Work saveWork = workRepository.save(work);
         saveTimeline(work, makeTimelineContent(work, "save"));
-        return new ResponseWorkDto(saveWork, sessionUser);
+        return buildResponseWorkDto(saveWork, sessionUser);
     }
 
     public ResponseWorkDto update(Long id, RequestUpdateWorkDto workDto, User sessionUser) {
@@ -48,7 +50,7 @@ public class WorkService {
         work.update(workDto.toEntity());
         workRepository.save(work);
         saveTimeline(work, makeTimelineContent(work, "update"));
-        return new ResponseWorkDto(work, sessionUser);
+        return buildResponseWorkDto(work, sessionUser);
     }
 
     public void delete(Long id, User sessionUser) {
@@ -63,11 +65,15 @@ public class WorkService {
         work.move(workDto.toEntity());
         workRepository.save(work);
         saveTimeline(work, moveContent(work, workDto));
-        return new ResponseWorkDto(work, sessionUser);
+        return buildResponseWorkDto(work, sessionUser);
     }
 
     public void saveTimeline(Work work, String content) {
-        timelineRepository.save(new Timeline(content, work.getAuthorId()));
+        timelineRepository.save(Timeline.builder()
+                .content(content)
+                .authorId(work.getAuthorId())
+                .createdAt(LocalDateTime.now())
+                .build());
     }
 
     private Work verifyWork(Long id, User sessionUser) {

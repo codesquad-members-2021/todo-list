@@ -6,6 +6,8 @@ import com.example.todolist.exception.ErrorMessage;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.time.LocalDateTime;
+
 @ToString
 @Setter
 public class RequestCreateWorkDto {
@@ -20,7 +22,13 @@ public class RequestCreateWorkDto {
         if (title == null || content == null || status == 0) {
             throw new EntityRelatedException(ErrorMessage.ENTITY_NOT_CREATE);
         }
-        return new Work(title, content, status);
+
+        return Work.builder()
+                .title(title)
+                .content(content)
+                .status(status)
+                .createdAt(LocalDateTime.now())
+                .build();
     }
 
 }

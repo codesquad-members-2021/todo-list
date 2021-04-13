@@ -18,7 +18,11 @@ public class RequestLoginUserDto {
         if (userId == null || password == null) {
             throw new EntityRelatedException(ErrorMessage.ENTITY_NOT_CREATE);
         }
-        return new User(userId, password);
+
+        return User.builder()
+                .userId(userId)
+                .password(password)
+                .build();
     }
 
 }

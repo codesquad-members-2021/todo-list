@@ -1,14 +1,16 @@
 package com.example.todolist.domain.work;
 
 import com.example.todolist.domain.user.User;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 
 import java.time.LocalDateTime;
 
 @ToString
 @Getter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Work {
 
     @Id
@@ -23,24 +25,6 @@ public class Work {
     private int status;
 
     private Long authorId;
-
-    public Work() {}
-
-    public Work(String title, String content, int status) {
-        this.title = title;
-        this.content = content;
-        this.createdAt = LocalDateTime.now();
-        this.status = status;
-    }
-
-    public Work(String title, String content) {
-        this.title = title;
-        this.content = content;
-    }
-
-    public Work(int status) {
-        this.status = status;
-    }
 
     public void save(User sessionUser) {
         this.authorId = sessionUser.getId();

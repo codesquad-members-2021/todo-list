@@ -22,7 +22,13 @@ public class RequestSignInUserDto {
         if (userId == null || password == null || name == null || email == null) {
             throw new EntityRelatedException(ErrorMessage.ENTITY_NOT_CREATE);
         }
-        return new User(userId, password, name, email);
+
+        return User.builder()
+                .userId(userId)
+                .password(password)
+                .name(name)
+                .email(email)
+                .build();
     }
 
 }

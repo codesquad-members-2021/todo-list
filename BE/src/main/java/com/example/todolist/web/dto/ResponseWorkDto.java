@@ -2,13 +2,15 @@ package com.example.todolist.web.dto;
 
 import com.example.todolist.domain.user.User;
 import com.example.todolist.domain.work.Work;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @ToString
 @Getter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class ResponseWorkDto {
 
     private Long id;
@@ -23,15 +25,15 @@ public class ResponseWorkDto {
 
     private String author;
 
-    public ResponseWorkDto() {}
-
-    public ResponseWorkDto(Work work, User user) {
-        this.id = work.getId();
-        this.title = work.getTitle();
-        this.content = work.getContent();
-        this.createdAt = work.getCreatedAt();
-        this.status = work.getStatus();
-        this.author = user.getUserId();
+    public static ResponseWorkDto buildResponseWorkDto(Work work, User user) {
+        return ResponseWorkDto.builder()
+                .id(work.getId())
+                .title(work.getTitle())
+                .content(work.getContent())
+                .createdAt(work.getCreatedAt())
+                .status(work.getStatus())
+                .author(user.getUserId())
+                .build();
     }
 
 }

@@ -16,7 +16,10 @@ public class RequestMoveWorkDto {
         if (status != 1 && status != 2 && status !=3) {
             throw new EntityRelatedException(ErrorMessage.ENTITY_NOT_CREATE);
         }
-        return new Work(status);
+
+        return Work.builder()
+                .status(status)
+                .build();
     }
 
 }

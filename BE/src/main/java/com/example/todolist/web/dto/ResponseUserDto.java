@@ -1,11 +1,13 @@
 package com.example.todolist.web.dto;
 
 import com.example.todolist.domain.user.User;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
 
 @ToString
 @Getter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class ResponseUserDto {
 
     private Long id;
@@ -16,13 +18,13 @@ public class ResponseUserDto {
 
     private String email;
 
-    public ResponseUserDto() {}
-
-    public ResponseUserDto(User user) {
-        this.id = user.getId();
-        this.userId = user.getUserId();
-        this.name = user.getName();
-        this.email = user.getEmail();
+    public static ResponseUserDto buildResponseUserDto(User user) {
+        return ResponseUserDto.builder()
+                .id(user.getId())
+                .userId(user.getUserId())
+                .name(user.getName())
+                .email(user.getEmail())
+                .build();
     }
 
 }

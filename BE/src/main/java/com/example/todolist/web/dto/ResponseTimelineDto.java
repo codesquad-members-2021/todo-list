@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 
 @ToString
 @Getter
+
 public class ResponseTimelineDto {
 
     private Long id;

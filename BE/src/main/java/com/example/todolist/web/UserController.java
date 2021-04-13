@@ -36,7 +36,7 @@ public class UserController {
         logger.info("로그인 요청");
         User user = userService.login(requestUserDto);
         session.setAttribute(USER_SESSION_KEY, user);
-        return new ResponseUserDto(user);
+        return ResponseUserDto.buildResponseUserDto(user);
     }
 
     @GetMapping("/logout")

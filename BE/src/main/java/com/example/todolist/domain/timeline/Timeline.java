@@ -1,13 +1,15 @@
 package com.example.todolist.domain.timeline;
 
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 
 import java.time.LocalDateTime;
 
 @ToString
 @Getter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Timeline {
 
     @Id
@@ -18,13 +20,5 @@ public class Timeline {
     private LocalDateTime createdAt;
 
     private Long authorId;
-
-    public Timeline() {}
-
-    public Timeline(String content, Long authorId) {
-        this.content = content;
-        this.createdAt = LocalDateTime.now();
-        this.authorId = authorId;
-    }
 
 }
