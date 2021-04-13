@@ -11,7 +11,7 @@ protocol EditViewControllerDelegate {
     func addCard(type: DoType, with card: TodoCard)
 }
 
-class ViewController: UIViewController, EditViewControllerDelegate {
+class ViewController: UIViewController {
     
     enum Column: String {
         case todo = "해야할 일"
@@ -52,6 +52,7 @@ class ViewController: UIViewController, EditViewControllerDelegate {
         setVC(self.todoViewController, data: self.cardManager.getCards(type: .todo), name: .todo)
         setVC(self.doingViewController, data: self.cardManager.getCards(type: .doing), name: .doing)
         setVC(self.doneViewController, data: self.cardManager.getCards(type: .done), name: .done)
+        setObserver()
     }
     
     private func setVC(_ viewController: TodoTableViewController?, data: TodoCardsManageable, name: Column) {
@@ -60,9 +61,14 @@ class ViewController: UIViewController, EditViewControllerDelegate {
         viewController?.setHeader(columnName: name.rawValue)
     }
     
-    func addCard(type: DoType, with card: TodoCard) {
-        self.cardManager.addCard(type: type, card: card)
-        doingViewController?.reloadData()
+    func setObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NSNotification.Name(rawValue: "addCard"), object: nil)
     }
+    
+    @objc func reloadData(_ notification: Notification) {
+        print("reloadData")
+        self.todoViewController?.reloadData()
+    }
+    
     
 }

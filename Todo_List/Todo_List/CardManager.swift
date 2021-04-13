@@ -46,6 +46,9 @@ class CardManager: CardManageable {
     
     func addCard(type: DoType, card: TodoCard) {
         self.doType[type]?.addCard(with: card)
+//        let userInfo: [String: TodoCardsManageable] = ["doType": ]
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "addCard"), object: nil)
     }
     
     

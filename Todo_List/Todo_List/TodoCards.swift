@@ -32,6 +32,7 @@ class TodoCards: TodoCardsManageable {
     
     func addCard(with card: TodoCard) {
         self.cards.append(card)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "addCard"), object: nil)
     }
     
     func countCards() -> Int {
