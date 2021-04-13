@@ -7,8 +7,6 @@
 
 import Foundation
 
-
-
 class DataManager {
     static func requestGet(url: String, completionHandler: @escaping (Bool, ToDoList) -> Void) {
         guard let url = URL(string: url) else {
