@@ -50,3 +50,11 @@
 
 #### Study keywords
 - UITableViewCell swipe actions
+
+### 6. (branch feature_cardAdding_popUpWindow) 테이블뷰 헤더의  플러스 버튼을 누르면 할 일을 추가하는 팝업 윈도우 기능 구현 
+#### Major features
+- [x]
+- [x]
+
+#### Study keywords
+- 
