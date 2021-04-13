@@ -23,10 +23,6 @@ class MainViewController: UIViewController {
         cardViewModel.requestBoard()
         bind()
     }
-
-    @IBAction func addCard(_ sender: Any) {
-        loadDataSubject.send()
-    }
     
     func bind() {
         cardViewModel.$boards
@@ -34,17 +30,14 @@ class MainViewController: UIViewController {
             .sink(receiveCompletion: { _ in}, receiveValue:{ [weak self] _ in self?.collectionView.reloadData() })
             .store(in: &self.subsciptions)
         
-        //Test
-        cardViewModel.attachViewEventListener(loadData: loadDataSubject.eraseToAnyPublisher(), cardState: .todo)
-        cardViewModel.reloadCardList
-                    .sink(receiveCompletion: { completion in
-                        // Handle the error
-                    }) { [weak self] _ in
-                        print("이벤트를 뷰모델에 전달했습니다.")
-                        self?.collectionView.reloadData()
-                }
-                .store(in: &subsciptions)
+        
+        cardViewModel?.reloadCardList
+            .sink(receiveCompletion: { completion in
+            }) { [weak self] _ in
+                self?.collectionView?.reloadData()
             }
+            .store(in: &subsciptions)
+    }
 }
 
 
@@ -68,7 +61,9 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
     @objc func presentInputVC(_ sender: UIButton) {
         guard let inputViewController = self.storyboard?.instantiateViewController(withIdentifier: "InputViewController") as? InputViewController else { return }
         inputViewController.modalPresentationStyle = .overCurrentContext
-        inputViewController.mode = "add"
+        inputViewController.setupMode("add")
+        inputViewController.setupCardViewModel(self.cardViewModel)
+        inputViewController.setupColumnId(sender.tag)
         present(inputViewController, animated: false, completion: nil)
     }
 }

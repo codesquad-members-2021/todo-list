@@ -29,7 +29,6 @@ class CardNetworkManager: CardNetworkManagerProtocol {
     
     func getCards(state: State) -> AnyPublisher<[Card], Error> {
         let endpoint = Endpoint.cards(state: state)
-        print(endpoint.url)
         return networkManager.get(type: [Card].self, url: endpoint.url)
     }
     
