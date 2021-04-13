@@ -9,6 +9,18 @@ import Foundation
 
 class DoingUseCase {
 
+    func loadTasks(completion: @escaping ([Task]) -> Void) {
+        URLSessionManager().request(with: .lists, method: .get) { result in
+            switch result {
+            case .success(let data):
+                let tasks = Decoder.decode(task: data)
+                completion(tasks ?? [])
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
     func loadDoingTask(completion: @escaping ([Task]) -> Void) {
         URLSessionManager().request(with: .doing, method: .get) { result in
             switch result {

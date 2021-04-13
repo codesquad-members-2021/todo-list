@@ -22,7 +22,7 @@ extension DoDataSource : UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "DoCell", for: indexPath) as? DoTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "DoCell", for: indexPath) as? TaskTableViewCell else {
             return UITableViewCell()
         }
         
