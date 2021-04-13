@@ -23,7 +23,7 @@ class TaskStack {
         taskCards.insert(taskCard, at: index)
     }
     
-    func remove(at index: Int) {
-        taskCards.remove(at: index)
+    func remove(at index: Int) -> TaskCard {
+        return taskCards.remove(at: index)
     }
 }

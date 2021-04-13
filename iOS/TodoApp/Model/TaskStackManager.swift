@@ -3,7 +3,11 @@ import Foundation
 class TaskStackManager {
     
     // todo, in progress, done
-    var tasks: [TaskStack]
+    var tasks: [TaskStack] {
+        didSet {
+//            NotificationCenter.default.post
+        }
+    }
     
     init(){
         tasks = [TaskStack(), TaskStack(), TaskStack()]
@@ -26,7 +30,9 @@ class TaskStackManager {
     }
     
     func remove(_ status: Int, at index: Int) {
-        tasks[status].remove(at: index)
+        let removedData = tasks[status].remove(at: index)
+        NotificationCenter.default.post(name: .removeTask, object: self, userInfo: ["removedData":removedData])
+        NetworkManager.updateData()
     }
     
     func arrayCount() -> [Int] {

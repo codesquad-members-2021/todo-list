@@ -34,7 +34,7 @@ class NetworkManager {
                     let object = try JSONSerialization.jsonObject(with: data!, options: []) as? NSDictionary
                     guard let jsonObject = object else { return }
                     print(jsonObject)
-                    self.workGet()
+                    self.fetchData()
                 } catch let error as NSError {
                     print(error.localizedDescription)
                 }
@@ -43,7 +43,7 @@ class NetworkManager {
         task.resume()
     }
 
-    static func workGet() {
+    static func fetchData() {
         DispatchQueue.main.async {
             do {
                 let url = URL(string: "http://3.36.217.168:8080/works")
@@ -64,4 +64,32 @@ class NetworkManager {
             }
         }
     }
+    
+    static func updateData() {
+        NotificationCenter.default.addObserver(self, selector: #selector(sendRemovedData(_:)), name: .removeTask, object: nil)
+    }
+    
+    @objc func sendRemovedData(_ notification: Notification) {
+        let removedData = notification.userInfo?["removedData"] as! TaskCard
+        NetworkManager.dataPost(httpMethod: HTTPMethod.delete, data: removedData)
+    }
+    
+    static func dataPost(httpMethod: String, data: TaskCard) {
+        let url = URL(string: "http://3.36.217.168:8080/works/{id}")
+        let body = try? JSONEncoder().encode(data)
+        var request = URLRequest(url: url!)
+        request.httpMethod = httpMethod
+        request.httpBody = body
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            print(response)
+            if let error = error {
+                print(error)
+                return
+            }
+        }
+        task.resume()
+    }
 }
+

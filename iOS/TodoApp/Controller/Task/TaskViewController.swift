@@ -4,10 +4,8 @@ import UIKit
 class TaskViewController: UIViewController {
 
     var id: Int?
-
     let taskStackManager = TaskStackManager()
-    
-    
+
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var taskCountLabel: UILabel!
     @IBOutlet weak var taskTableView: UITableView!
@@ -24,8 +22,6 @@ class TaskViewController: UIViewController {
                 newTaskViewController.id = self.id
             }
         }
-        
-        //
     }
 }
 

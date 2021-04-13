@@ -18,9 +18,21 @@ enum TitleList {
     static let ofStatus = [StatusValue.toDo:StatusInfo.toDo, StatusValue.inProgress:StatusInfo.inProgress, StatusValue.done:StatusInfo.done]
 }
 
+enum HTTPMethod {
+    static let post = "POST"
+    static let get = "GET"
+    static let delete = "DELETE"
+//    static let
+    
+}
+
 //MARK: -Notification.Name
 extension Notification.Name {
     static let addTask = Notification.Name("addTask")
     static let setupTask = Notification.Name("setupTask")
+    static let removeTask  = Notification.Name("removeTask")
 }
+
+
+
 
