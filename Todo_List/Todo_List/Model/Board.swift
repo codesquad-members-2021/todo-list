@@ -39,16 +39,20 @@ class Board {
         }
     }
     func remove(at index: Int, type : Board.CardType){
+        let result : Card
         switch type {
         case .todo:
-            todoList.remove(at: index)
+            result = todoList.remove(at: index)
             NotificationCenter.default.post(name: Board.TodoListChanged, object: self)
         case .doing:
-            doingList.remove(at: index)
+            result = doingList.remove(at: index)
             NotificationCenter.default.post(name: Board.DoingListChanged, object: self)
         case .done:
-            doneList.remove(at: index)
+            result = doneList.remove(at: index)
             NotificationCenter.default.post(name: Board.DoneListChanged, object: self)
+        }
+        DispatchQueue.global().async {
+            CardAPIClient().deleteCard(with: result.id)
         }
     }
 }

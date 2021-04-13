@@ -17,7 +17,8 @@ class Cards : Codable {
     func apepnd(with card : Card) {
         list.insert(card, at: 0)
     }
-    func remove(at index : Int){
-        list.remove(at: index)
+    
+    func remove(at index : Int) -> Card {
+        return list.remove(at: index)
     }
 }

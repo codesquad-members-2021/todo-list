@@ -77,6 +77,7 @@ extension CardViewController : UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
      
+//        editingStyle == .delete
         switch tableView {
         case todo:
             board.remove(at: indexPath.section, type: .todo)
