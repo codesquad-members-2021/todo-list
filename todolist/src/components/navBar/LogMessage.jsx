@@ -4,8 +4,8 @@ function LogMessage({ log }) {
     message = `<strong>${log.columnTitle}</strong>에 <strong><${log.cardTitle}></strong>를 <strong>등록</strong>하였습니다.`;
   if (log.modeType === "transfer")
     message = `<strong><${log.cardTitle}></strong>를 <strong>하고 있는 일</strong>에서 <strong>${log.columnTitle}</strong>로  <strong>이동</strong>하였습니다.`;
-  if (log.modeType === "edit")
-    message = `<strong><${log.columnTitle}></strong> 내용이 변경되었습니다.`;
+  if (log.modeType === "update")
+    message = `<strong><${log.columnTitle}></strong>의 내용이 변경되었습니다.`;
   if (log.modeType === "delete")
     message = `<strong><${log.columnTitle}></strong>가 삭제되었습니다.`;
   return <div dangerouslySetInnerHTML={{ __html: message }} />;
