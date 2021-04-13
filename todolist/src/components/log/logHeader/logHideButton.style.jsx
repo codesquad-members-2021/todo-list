@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
 const LogHideButtonStyle = styled.div`
-  width: 24px;
-  height: 24px;
+  position: absolute;
+  top: 50.75px;
+  left: 354.75px;
 `;
 
 export default LogHideButtonStyle;

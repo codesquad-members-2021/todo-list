@@ -19,7 +19,6 @@ const LogContentsStyle = styled.div`
   flex: none;
   order: 1;
   flex-grow: 0;
-  margin: 8px 0px;
 `;
 
 export default LogContentsStyle;

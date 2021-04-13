@@ -5,9 +5,6 @@ const LogCardAuthorStyle = styled.div`
 
   position: static;
   width: 244px;
-  height: 20px;
-  left: 0px;
-  top: 85px;
 
   font-family: Noto Sans KR;
   font-style: normal;
@@ -24,7 +21,6 @@ const LogCardAuthorStyle = styled.div`
   flex: none;
   order: 2;
   flex-grow: 0;
-  margin: 8px 0px;
 `;
 
 export default LogCardAuthorStyle;

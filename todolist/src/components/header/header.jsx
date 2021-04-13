@@ -4,12 +4,12 @@ import ShowLogButton from './showLogButton.jsx';
 import styles from './header.module.css';
 import HeaderStyle from './headerTitle.style';
 
-const Header = () => {
+const Header = ({renderLoghandler}) => {
   return (
     <section className="header">
       <HeaderStyle className={styles.headerContainer}>
-        <HeaderTitle />
-        <ShowLogButton />
+        <HeaderTitle  />
+        <ShowLogButton renderLoghandler={renderLoghandler} />
       </HeaderStyle>
     </section>
   );

@@ -8,11 +8,12 @@ const LogCardsStyle = styled.div`
   align-items: flex-start;
   padding: 16px;
 
-  position: static;
+  position: relative;
   width: 332px;
   height: 137px;
-  left: 0px;
-  top: 0px;
+  left: 40px;
+  top: 20px;
+  
 
   /* White */
 
