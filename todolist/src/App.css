@@ -19,26 +19,13 @@ ul {
   color: #bdbdbd;
 }
 
-/* input {
-  border: none;
-  width: 276px;
-  height: 23px;
-} */
 
 .card-input-title::placeholder {
   font-weight: bold;
   font-size: 16px;
 }
 
-/* .card-btn-section {
-  display: flex;
-  margin-top: 1em;
-} */
 
-/* .card-input-section {
-  display: flex;
-  flex-direction: column;
-} */
 
 .btn {
   padding: 10px;
@@ -50,17 +37,5 @@ ul {
   margin: 0px 4px;
 }
 
-/* .edit-btn {
-  background: #0075de !important;
-  color: #fff;
-} */
 
-/* .enroll-btn {
-  background: #86c6ff;
-  color: rgba(255, 255, 255, 0.4);
-} */
 
-.logStorage.appear {
-  right: 0px;
-  transition: all 0.5s;
-}

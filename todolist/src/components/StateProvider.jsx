@@ -23,7 +23,7 @@ function StateProvider(props) {
 
   return (
     <>
-      <NavBar log={log} />
+      <NavBar logs={log} />
       <Column onLog={handleLog} />
     </>
   );
