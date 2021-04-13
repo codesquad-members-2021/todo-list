@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ToDoTableViewDelegates: NSObject {
+class ToDoTableViewDelegates: NSObject, ToDoCardProtocol {
     var list: [ToDoItem] = [] {
         didSet {
             NotificationCenter.default.post(name: .didChangeToDoCardsList, object: nil)
@@ -63,8 +63,7 @@ extension ToDoTableViewDelegates: UITableViewDelegate {
         view.displayCurrentCardNumOnBadge(number: self.list.count)
         
         view.button.addAction(UIAction.init(handler: { (touch) in
-            let dateString = DateFormatter().string(from: Date())
-            let testCard = ["id": "jeje", "title": "안녕하세요", "contents": "테스트용 콘텐츠", "createDateTime": dateString, "status": "TODO"]
+            let testCard = ["title": "testnownow", "contents": "ASDF", "status": "TODO"]
             
             DataManager.requestPost(url: Constants.url, parameter: testCard) { (bool, toDoList) in
                 print(toDoList)
@@ -76,4 +75,13 @@ extension ToDoTableViewDelegates: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         CGFloat(50)
     }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .normal, title: "삭제", handler: { action, view, completionHaldler in
+            self.deleteCard(at: indexPath.row)
+            completionHaldler(true)
+        })
+        deleteAction.backgroundColor = .systemRed
+        return UISwipeActionsConfiguration(actions: [deleteAction])
+      }
 }
