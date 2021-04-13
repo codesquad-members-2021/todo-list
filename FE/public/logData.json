@@ -1,38 +1,46 @@
 [
   {
     "userID": "Q",
-    "logList": [
+    "logs": [
       {
         "id": 1,
-        "title": "HTML/CSS 공부하기",
-        "action": "이동",
-        "time": "2021-02-01",
-        "from": "해야할 일",
-        "to": "하고 있는 일"
+        "action": "MOVE",
+        "card_title": "HTML/CSS 공부하기",
+        "time": "2021-02-01 21:50:45",
+        "prevBoard": "todo",
+        "currBoard": "progress"
       },
       {
         "id": 2,
-        "title": "GitHub 공부하기",
-        "action": "등록",
-        "time": "2021-02-01",
-        "from": null,
-        "to": null
+        "action": "ADD",
+        "card_title": "GitHub 공부하기",
+        "time": "2021-02-01 21:56:18",
+        "prevBoard": null,
+        "currBoard": null
       },
       {
         "id": 3,
-        "title": "GitHub 공부하기",
-        "action": "삭제",
-        "time": "2021-02-01",
-        "from": null,
-        "to": null
+        "action": "DELETE",
+        "card_title": "GitHub 공부하기",
+        "time": "2021-02-01 19:21:32",
+        "prevBoard": null,
+        "currBoard": null
       },
       {
         "id": 4,
-        "title": "HTML/CSS 공부하기",
-        "action": "변경",
-        "time": "2021-02-01",
-        "from": null,
-        "to": null
+        "action": "CHANGE",
+        "card_title": "HTML/CSS 공부하기",
+        "time": "2021-02-01 03:05:03",
+        "prevBoard": null,
+        "currBoard": null
+      },
+      {
+        "id": 5,
+        "action": "CHANGE",
+        "card_title": "HTML/CSS 공부하기",
+        "time": "2021-04-13 22:25:00",
+        "prevBoard": null,
+        "currBoard": null
       }
     ]
   }
