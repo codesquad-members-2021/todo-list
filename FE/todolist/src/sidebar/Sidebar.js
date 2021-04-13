@@ -1,4 +1,5 @@
-import React, { useRef }from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
 import Icon from '../utilComponent/Icon';
 import Note from './note/Note';
@@ -15,7 +16,6 @@ const SidebarStyle = styled.aside`
         background-color: #fff;
         padding: 2rem;
         transition: 0.5s;
-        /* overflow: hidden; */
 `;
 
 const IconBox = styled.div`
@@ -25,11 +25,29 @@ const IconBox = styled.div`
 
 
 const Sidebar = (props) => {
+    const [ noteList, setNoteList ] = useState([]);
+
+    useEffect(() => console.log("사이드바 렌더링 됌!"), []);
+
+    const fetchNoteListData = async() => {
+        try {
+            const request = '/notes';
+            const response = await axios.get(request);
+            setNoteList(response);
+            console.log(response);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    //Sidebar가 렌더링 될 때마다 실행되어야 하는 작업들을 가짐.
+    useEffect(() => {
+        fetchNoteListData();
+    }, []);
 
     const closeSidebar = () => {
         const sidebarPage = props.sidebarRef.current;
         sidebarPage.style.transform = 'translateX(432px)';
-    }
+    };
 
     return (
         <SidebarStyle ref={props.sidebarRef}>
@@ -38,7 +56,7 @@ const Sidebar = (props) => {
             </IconBox>
             <Note/>
         </SidebarStyle>
-    )
-}
+    );
+};
 
 export default Sidebar;
