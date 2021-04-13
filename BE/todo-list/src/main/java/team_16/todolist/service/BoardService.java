@@ -51,4 +51,10 @@ public class BoardService {
         return updateCard;
     }
 
+    public void deleteCard(Long boardId, Card card) {
+        Board board = boardRepository.findById(boardId).orElseThrow(IllegalArgumentException::new);
+        board.deleteCard(card);
+        boardRepository.save(board);
+    }
+
 }
