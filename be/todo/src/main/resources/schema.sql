@@ -14,10 +14,10 @@ create table USER
 
 create table COLUMN
 (
-    ID                int auto_increment primary key,
-    COLUMN_TITLE      varchar(30),
-    USER              int references user (id),
-    USER_KEY          int
+    ID           int auto_increment primary key,
+    COLUMN_TITLE varchar(30),
+    USER         int references user (id),
+    USER_KEY     int
 );
 
 create table TASK
@@ -35,6 +35,9 @@ create table TODO_LOG
 (
     ID                int auto_increment primary key,
     ACTION            varchar(30),
+    FROM_COLUMN_TITLE varchar(30),
+    TO_COLUMN_TITLE   varchar(30),
+    TASK_TITLE        varchar(30),
     USER              int references user (id),
     USER_KEY          int,
     CREATED_DATE_TIME timestamp

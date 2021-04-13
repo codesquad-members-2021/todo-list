@@ -27,6 +27,10 @@ public class TaskController {
         User user = userRepository.findById(1L).orElseThrow(UserNotFoundException::new);
         Column column = user.findColumnById(columnId);
         column.addTask(taskTitle, taskContent);
+
+        TodoLog todoLog = TodoLog.buildCreateTodoLog(column.getColumnTitle(), taskTitle);
+        user.addTodoLog(todoLog);
+
         user = userRepository.save(user);
         column = user.findColumnById(columnId);
 
@@ -38,15 +42,23 @@ public class TaskController {
     public void removeTask(@PathVariable Long columnId, @PathVariable Long taskId) {
         User user = userRepository.findById(1L).orElseThrow(UserNotFoundException::new);
         Column column = user.findColumnById(columnId);
-        column.removeTaskById(taskId);
+        Task removedTask = column.popTask(taskId);
+        TodoLog todoLog = TodoLog.buildRemoveTodoLog(column.getColumnTitle(), removedTask.getTaskTitle());
+        user.addTodoLog(todoLog);
         userRepository.save(user);
     }
 
     @PutMapping("/{taskId}")
     public void updateTask(@PathVariable Long columnId, @PathVariable Long taskId, Task newTask) {
-        Task foundTask = taskRepository.findById(taskId).orElseThrow(TaskNotFoundException::new);
+        User user = userRepository.findById(1L).orElseThrow(UserNotFoundException::new);
+        Column column = user.findColumnById(columnId);
+        Task foundTask = column.findTaskById(taskId);
         foundTask.update(newTask);
-        taskRepository.save(foundTask);
+
+        TodoLog todoLog = TodoLog.buildUpdateTodoLog(column.getColumnTitle(), foundTask.getTaskTitle());
+        user.addTodoLog(todoLog);
+
+        userRepository.save(user);
     }
 
     @PutMapping("/{taskId}/move")

@@ -48,6 +48,9 @@ public class User {
         Task task = prevColumn.popTask(taskId);
         Column nextColumn = findColumnById(nextColumnId);
         nextColumn.addTaskAt(newTaskPosition, task);
+
+        TodoLog todoLog = TodoLog.buildMoveTodoLog(prevColumn.getColumnTitle(), nextColumn.getColumnTitle(), task.getTaskTitle());
+        addTodoLog(todoLog);
     }
 
     public Long getId() {
@@ -117,5 +120,9 @@ public class User {
                 ", columnList=" + columnList +
                 ", todoLogList=" + todoLogList +
                 '}';
+    }
+
+    public void addTodoLog(TodoLog todoLog) {
+        todoLogList.add(todoLog);
     }
 }
