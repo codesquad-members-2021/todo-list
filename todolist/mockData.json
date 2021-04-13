@@ -70,21 +70,24 @@
       "user": "swing",
       "columnTitle": "해야할 일",
       "cardTitle": "js공부",
-      "action": "등록"
+      "action": "등록",
+      "time": "9004000"
     },
     {
       "id": 2,
       "user": "sienna",
       "columnTitle": "하고있는 일",
       "cardTitle": "git공부",
-      "action": "수정"
+      "action": "수정",
+      "time": "9004000"
     },
     {
       "id": 3,
       "user": "young",
       "columnTitle": "완료한 일",
       "cardTitle": "react공부",
-      "action": "삭제"
+      "action": "삭제",
+      "time": "9004000"
     }
   ]
 }

@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-const CardContentsStyle = styled.span`
+const CardContentsStyle = styled.div`
   font-family: Noto Sans KR;
   font-style: normal;
   font-weight: normal;
