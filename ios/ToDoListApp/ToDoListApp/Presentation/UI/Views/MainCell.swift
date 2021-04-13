@@ -36,7 +36,12 @@ class MainCell: UICollectionViewCell {
         }
         
         let edit = UIAction(title: "수정하기", image: .none) { action in
-            
+            guard let inputViewController = UIStoryboard(name: "Main", bundle: .none).instantiateViewController(identifier: "InputViewController") as? InputViewController else {
+                return
+            }
+            inputViewController.modalPresentationStyle = .overCurrentContext
+            inputViewController.setupMode("add")
+            self.window?.rootViewController?.present(inputViewController, animated: false, completion: .none)
         }
         
         let delete = UIAction(title: "삭제하기", image: .none, attributes: .destructive) { action in

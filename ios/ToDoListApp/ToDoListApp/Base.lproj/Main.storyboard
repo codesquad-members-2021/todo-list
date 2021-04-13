@@ -167,9 +167,6 @@
                                                             <state key="normal" title="+">
                                                                 <color key="titleColor" systemColor="linkColor"/>
                                                             </state>
-                                                            <connections>
-                                                                <action selector="addCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9IM-fM-PBE"/>
-                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemGray6Color"/>

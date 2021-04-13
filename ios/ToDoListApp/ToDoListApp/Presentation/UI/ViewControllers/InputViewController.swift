@@ -6,17 +6,33 @@
 //
 
 import UIKit
+import Combine
 
 class InputViewController: UIViewController {
 
     @IBOutlet weak var enrollmentButton: UIButton!
     @IBOutlet var inputTextFields: [UITextField]!
     
-    var mode: String?
+    private var loadDataSubject = PassthroughSubject<Void,Never>()
+    private var subsciptions = Set<AnyCancellable>()
+    private var cardViewModel: CardViewModel?
+    private var mode: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        bind()
+    }
+    
+    func setupCardViewModel(_ viewModel: CardViewModel) {
+        self.cardViewModel = viewModel
+    }
+    
+    func setupMode(_ mode: String) {
+        self.mode = mode
+    }
+    
+    func bind() {
+        cardViewModel?.attachViewEventListener(loadData: loadDataSubject.eraseToAnyPublisher(), cardState: .todo)
     }
     
     @IBAction func cancelButtonTapped(_ sender: UIButton) {
@@ -24,5 +40,6 @@ class InputViewController: UIViewController {
     }
     
     @IBAction func enrollmentButtonTapped(_ sender: UIButton) {
+        loadDataSubject.send()
     }
 }

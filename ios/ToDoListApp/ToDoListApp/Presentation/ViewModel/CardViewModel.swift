@@ -17,7 +17,7 @@ class CardViewModel {
     private var subscriptions = Set<AnyCancellable>()
     private var loadData: AnyPublisher<Void, Never> = PassthroughSubject<Void, Never>().eraseToAnyPublisher()
     private let reloadCardListSubject = PassthroughSubject<Result<Void, Error>, Never>()
-    
+        
     init(cardUseCase: CardUseCasePort) {
         self.cardUseCase = cardUseCase
     }
@@ -31,7 +31,6 @@ class CardViewModel {
         cards
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { (result)
-                    
                     in switch result {
                     case .finished: print("finished")
                     case .failure(let error): print(error.localizedDescription) } },
