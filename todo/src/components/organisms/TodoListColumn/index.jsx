@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import TodoTitle from "../../molecules/TodoTitle";
-import TodoListItem from "../../molecules/TodoListItem";
+import TodoSwitch from "../../molecules/TodoSwitch";
 import TodoListInput from "../../molecules/TodoListInput";
 import useToggle from "../../../hooks/useToggle";
+import TodoSwitch from "../../molecules/TodoSwitch";
 
 const Div = styled.div`
   margin: 5px;
@@ -19,10 +20,7 @@ const TodoListColumn = ({ columnName, items }) => {
         <TodoTitle addTodo={toggleActions.toggle}>{columnName}</TodoTitle>
         {items.map(({ id, title, content, author }) => {
           return (
-            <TodoListItem
-              key={id}
-              {...{ title, content, author }}
-            ></TodoListItem>
+            <TodoSwitch key={id} {...{ title, content, author }}></TodoSwitch>
           );
         })}
       </Div>
@@ -34,10 +32,7 @@ const TodoListColumn = ({ columnName, items }) => {
         <TodoListInput></TodoListInput>
         {items.map(({ id, title, content, author }) => {
           return (
-            <TodoListItem
-              key={id}
-              {...{ title, content, author }}
-            ></TodoListItem>
+            <TodoSwitch key={id} {...{ title, content, author }}></TodoSwitch>
           );
         })}
       </Div>
