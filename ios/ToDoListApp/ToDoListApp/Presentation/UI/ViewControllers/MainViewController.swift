@@ -63,6 +63,7 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         inputViewController.modalPresentationStyle = .overCurrentContext
         inputViewController.setupMode("add")
         inputViewController.setupCardViewModel(self.cardViewModel)
+        inputViewController.setupColumnId(sender.tag)
         present(inputViewController, animated: false, completion: nil)
     }
 }

@@ -10,6 +10,7 @@ import Combine
 
 class InputViewController: UIViewController {
 
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var enrollmentButton: UIButton!
     @IBOutlet var inputTextFields: [UITextField]!
     
@@ -17,10 +18,15 @@ class InputViewController: UIViewController {
     private var subsciptions = Set<AnyCancellable>()
     private var cardViewModel: CardViewModel?
     private var mode: String?
+    private var columnId: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         bind()
+    }
+    
+    private func setupTitle() {
+        
     }
     
     func setupCardViewModel(_ viewModel: CardViewModel) {
@@ -29,6 +35,10 @@ class InputViewController: UIViewController {
     
     func setupMode(_ mode: String) {
         self.mode = mode
+    }
+    
+    func setupColumnId(_ columnId: Int) {
+        self.columnId = columnId
     }
     
     func bind() {

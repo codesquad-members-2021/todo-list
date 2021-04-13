@@ -340,6 +340,7 @@
                     </view>
                     <connections>
                         <outlet property="enrollmentButton" destination="paE-Mj-WFq" id="lAq-lE-unO"/>
+                        <outlet property="titleLabel" destination="r1c-6j-lJt" id="Nbu-mn-6xQ"/>
                         <outletCollection property="inputTextFields" destination="D8X-2L-4tN" collectionClass="NSMutableArray" id="1Cv-T9-A5x"/>
                         <outletCollection property="inputTextFields" destination="9Ew-sW-zZQ" collectionClass="NSMutableArray" id="719-AT-xQv"/>
                     </connections>
