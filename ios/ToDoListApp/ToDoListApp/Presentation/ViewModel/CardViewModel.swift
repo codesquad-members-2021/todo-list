@@ -49,7 +49,7 @@ class CardViewModel {
     }
     
     func addCard(state: State) {
-        cardUseCase.add(title: "나는 더해질 카드야", contents: "잘부탁해")
+        cardUseCase.add(state: state, title: "나는 더해질 카드야", contents: "잘부탁해")
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { result in
                     switch result {

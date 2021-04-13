@@ -23,6 +23,12 @@ class InputViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bind()
+        enrollmentButton.addTarget(self, action: #selector(test), for: .touchDown)
+    }
+    
+    @objc
+    func test() {
+        
     }
     
     private func setupTitle() {
@@ -43,6 +49,8 @@ class InputViewController: UIViewController {
     
     func bind() {
         cardViewModel?.attachViewEventListener(loadData: loadDataSubject.eraseToAnyPublisher(), cardState: .todo)
+        cardViewModel?.attachViewEventListener(loadData: loadDataSubject.eraseToAnyPublisher(), cardState: .doing)
+        cardViewModel?.attachViewEventListener(loadData: loadDataSubject.eraseToAnyPublisher(), cardState: .done)
     }
     
     @IBAction func cancelButtonTapped(_ sender: UIButton) {
