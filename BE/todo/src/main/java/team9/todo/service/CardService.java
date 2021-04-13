@@ -41,13 +41,13 @@ public class CardService {
 
     public List<Card> getList(CardColumn cardColumn, User user) {
         logger.debug("{}의 카드 목록 요청", cardColumn);
-        return cardRepository.findAllByUserAndColumnType(user.getId(), cardColumn.name());
+        return cardRepository.findAllByUserAndColumnTypeAndDeletedFalse(user.getId(), cardColumn.name());
     }
 
     @Transactional
     public Card update(long cardId, String title, String contents, double priority, User user) {
         logger.debug("{}번 카드의 내용 수정 요청", cardId);
-        Card card = cardRepository.findById(cardId).orElseThrow(() -> new NotFoundException());
+        Card card = cardRepository.findByIdAndDeletedFalse(cardId).orElseThrow(() -> new NotFoundException());
         if (card.getUser() != user.getId()) {
             throw new NotAuthorizedException();
         }
@@ -61,7 +61,7 @@ public class CardService {
     @Transactional
     public Card move(long cardId, CardColumn to, User user) {
         logger.debug("{}번 카드 {}로 이동 요청", cardId, to);
-        Card card = cardRepository.findById(cardId).orElseThrow(() -> new NotFoundException());
+        Card card = cardRepository.findByIdAndDeletedFalse(cardId).orElseThrow(() -> new NotFoundException());
         if (card.getUser() != user.getId()) {
             throw new NotAuthorizedException();
         }
@@ -76,11 +76,11 @@ public class CardService {
     @Transactional
     public void delete(long cardId, User user) {
         logger.debug("{}번 카드의 삭제 요청", cardId);
-        Card card = cardRepository.findById(cardId).orElseThrow(() -> new NotFoundException());
+        Card card = cardRepository.findByIdAndDeletedFalse(cardId).orElseThrow(() -> new NotFoundException());
         if (card.getUser() != user.getId()) {
             throw new NotAuthorizedException();
         }
-        cardRepository.deleteById(cardId);
+        cardRepository.softDeleteById(cardId);
 
         historyRepository.save(new History(card.getId(), HistoryAction.REMOVE, card.getColumnType(), null));
     }
