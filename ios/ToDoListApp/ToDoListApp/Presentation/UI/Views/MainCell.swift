@@ -31,7 +31,7 @@ class MainCell: UICollectionViewCell {
         tableView.reloadData()
     }
     
-    private func makeContextMenu() -> UIMenu {
+    private func makeContextMenu(indexPath: IndexPath) -> UIMenu {
         let goToDone = UIAction(title: "완료한 일로 이동", image: .none) { action in
         }
         
@@ -40,7 +40,8 @@ class MainCell: UICollectionViewCell {
                 return
             }
             inputViewController.modalPresentationStyle = .overCurrentContext
-            inputViewController.setupMode("add")
+            inputViewController.setupMode("edit")
+            inputViewController.setupId(self.board?.getBoard().getCards()[indexPath.row].getId() ?? 0)
             self.window?.rootViewController?.present(inputViewController, animated: false, completion: .none)
         }
         
@@ -102,7 +103,7 @@ extension MainCell: UITableViewDragDelegate, UITableViewDropDelegate {
 extension MainCell: UITableViewDelegate {
     func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         return UIContextMenuConfiguration(identifier: .none, previewProvider: .none) { suggestedAction -> UIMenu? in
-            return self.makeContextMenu()
+            return self.makeContextMenu(indexPath: indexPath)
         }
     }
 }

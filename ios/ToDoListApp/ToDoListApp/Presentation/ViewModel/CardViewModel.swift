@@ -48,7 +48,7 @@ class CardViewModel {
         configureBoard(type: Done.self, cards: CardNetworkManager().getCards(state: .done))
     }
     
-    func addCard(state: State) {
+    func addCard(columnId: Int) {
         cardUseCase.add(title: "나는 더해질 카드야", contents: "잘부탁해")
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { result in
@@ -57,14 +57,14 @@ class CardViewModel {
                     case .failure(let error): print(error.localizedDescription) } },
                   receiveValue: { cards in
                     print("뚜바")
-                    self.boards[state.rawValue-1].appendCard(cards.first!)
+                    self.boards[columnId].appendCard(cards.first!)
                     self.reloadCardListSubject.send(.success(()))
-                    print(self.boards[state.rawValue-1])
+                    print(self.boards[columnId])
                   })
             .store(in: &subscriptions)
     }
     
-    func attachViewEventListener(loadData: AnyPublisher<Void, Never>, cardState: State) {
+    func attachViewEventListener(loadData: AnyPublisher<Void, Never>, columnId: Int) {
         
         self.loadData = loadData
         self.loadData
@@ -72,7 +72,7 @@ class CardViewModel {
             .sink(receiveCompletion: { _ in },
                   receiveValue: { [weak self] cards in
                     print("뷰모델입니다. \(cards)")
-                    self?.addCard(state: cardState)
+                    self?.addCard(columnId: columnId)
                     //self?.reloadCardListSubject.send(.success(()))
                   })
             .store(in: &subscriptions)

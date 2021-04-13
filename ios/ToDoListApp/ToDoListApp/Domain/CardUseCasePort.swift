@@ -15,6 +15,7 @@ protocol CardManageable {
     func goToDone()
     func getTitle() -> String
     func getContents() -> String
+    func getId() -> Int?
 }
 
 protocol CardUseCasePort {

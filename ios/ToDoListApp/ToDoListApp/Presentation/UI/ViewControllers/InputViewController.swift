@@ -19,14 +19,18 @@ class InputViewController: UIViewController {
     private var cardViewModel: CardViewModel?
     private var mode: String?
     private var columnId: Int?
+    private var id: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         bind()
+        setupTitle()
+        print("id", self.id)
     }
     
     private func setupTitle() {
-        
+        let title = mode == "add" ? "새로운 카드 추가" : "카드 수정"
+        self.titleLabel.text = title
     }
     
     func setupCardViewModel(_ viewModel: CardViewModel) {
@@ -41,8 +45,12 @@ class InputViewController: UIViewController {
         self.columnId = columnId
     }
     
+    func setupId(_ id: Int) {
+        self.id = id
+    }
+    
     func bind() {
-        cardViewModel?.attachViewEventListener(loadData: loadDataSubject.eraseToAnyPublisher(), cardState: .todo)
+        cardViewModel?.attachViewEventListener(loadData: loadDataSubject.eraseToAnyPublisher(), columnId: self.columnId ?? 0)
     }
     
     @IBAction func cancelButtonTapped(_ sender: UIButton) {
