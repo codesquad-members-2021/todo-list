@@ -21,6 +21,7 @@ const TodoColumn = ({title, todoItems}) => {
     setTodos([...todos, {...inputs}]);
     setCount(count + 1);
     setInputs({title: "", content: ""});
+    setToggle(!toggle);
   }
   const onCancel = () => {
     setToggle(!toggle);
@@ -37,10 +38,10 @@ const TodoColumn = ({title, todoItems}) => {
     setTodos(todos.filter((v, i) => i !== index));
     setCount(count - 1);
   }
-  const onTodoItemChange = (target, index) => {
-    console.log(target);
+  const onTodoItemChange = (e, index) => {
     setTodos(todos.map((v, i) => {
-      if(i === index) v[target.name] = target.value;
+      e.preventDefault();
+      if(i === index) v[e.target.name] = e.target.value;
       return v;
     }));
   } 

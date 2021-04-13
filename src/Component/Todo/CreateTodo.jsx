@@ -16,13 +16,15 @@ const InputTitle = styled.input.attrs({
   width: 100%;
   font-size: 1rem;
   font-weight: 600;
+  margin-bottom: 0.3rem;
 `;
 
-const InputContent = styled.input.attrs({
-  type: "text"
-})`
+const InputContent = styled.textarea`
   width: 100%;
-  margin-bottom: 0.7rem;
+  resize: none;
+  border: 0;
+  height: 3rem;
+  overflow-y: visible;
 `;
 
 const Buttons = styled.div`
