@@ -51,11 +51,6 @@ public class Vertical {
         return this.todos.add(todo);
     }
 
-//    public Todo updateTodo(Todo oldTodo, Todo newTodo) {
-//        int index = todos.indexOf(oldTodo);
-//        return todos.set(index, newTodo);
-//    }
-
     @Override
     public String toString() {
         return "Vertical{" +

@@ -1,16 +1,17 @@
 package mj_cooper.backend.Controller;
 
+import com.google.gson.*;
 import mj_cooper.backend.domain.User;
 import mj_cooper.backend.domain.Vertical;
 import mj_cooper.backend.domain.Todo;
 import mj_cooper.backend.repository.UserRepository;
+import org.apache.tomcat.util.json.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/verticals/{verticalId}/todos")
@@ -23,11 +24,21 @@ public class TodoController {
     }
 
     @GetMapping
-    public List<Todo> getAllTodos(@PathVariable(value = "verticalId") final Long verticalId) {
+    public String getAllTodos(@PathVariable(value = "verticalId") final Long verticalId) {
         User user = userRepository.findById(1L).get();
         Vertical vertical = user.getVertical(verticalId);
 
-        return vertical.getTodos();
+        // Json 변환 로직
+        Gson gson = new Gson();
+        JsonObject object = new JsonObject();
+        JsonParser parser = new JsonParser();
+        JsonElement todosToJson = parser.parse(gson.toJson(vertical.getTodos()));
+
+        object.addProperty("status", "success");
+        object.add("todos", todosToJson);
+        String response = gson.toJson(object);
+
+        return response;
     }
 
     @GetMapping("/{todoId}")
