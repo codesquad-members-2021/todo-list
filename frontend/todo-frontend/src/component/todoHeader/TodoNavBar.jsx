@@ -11,6 +11,7 @@ const NavBar = styled.div`
   position: absolute;
   top: 0;
   right: 0;
+  overflow-y: scroll;
 `;
 
 const NavCloseBtn = styled.svg`
@@ -22,9 +23,11 @@ const NavCloseBtn = styled.svg`
     fill: #126e82;
   }
 `;
-
+const MAX_LOG = 15;
 const TodoNavBar = ({ logs, toggleNav }) => {
-  const logList = logs.map((log) => TodoLog({ author: "Jenny", log }));
+  const logList = logs
+    .slice(0, MAX_LOG)
+    .map((log) => TodoLog({ author: "Jenny", log }));
   return (
     <NavBar>
       <NavCloseBtn
