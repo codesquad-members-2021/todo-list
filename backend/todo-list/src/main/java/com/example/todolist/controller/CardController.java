@@ -2,7 +2,9 @@ package com.example.todolist.controller;
 
 
 import com.example.todolist.domain.Card;
+import com.example.todolist.domain.CardLog;
 import com.example.todolist.domain.User;
+import com.example.todolist.repository.CardLogRepository;
 import com.example.todolist.repository.CardRepository;
 import com.example.todolist.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,11 +22,13 @@ public class CardController {
 
     public final CardRepository cardRepository;
     public final UserRepository userRepository;
+    public final CardLogRepository cardLogRepository;
 
     @Autowired
-    public CardController(CardRepository cardRepository, UserRepository userRepository) {
+    public CardController(CardRepository cardRepository, UserRepository userRepository, CardLogRepository cardLogRepository) {
         this.cardRepository = cardRepository;
         this.userRepository = userRepository;
+        this.cardLogRepository = cardLogRepository;
     }
 
     public User getUserFromToken(HttpServletRequest request) {
@@ -36,10 +40,12 @@ public class CardController {
         User tokenUser = getUserFromToken(request);
         Card card = new Card(tokenUser, cardInfo.get("title"), cardInfo.get("contents"), cardInfo.get("status"));
         cardRepository.save(card);
+        CardLog log = new CardLog(card, "add");
+        cardLogRepository.save(log);
         return new ResponseEntity<>(card, HttpStatus.OK);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/{id}/edit")
     public ResponseEntity update(HttpServletRequest request, @PathVariable Long id, @RequestBody HashMap<String, String> newCardInfo) {
         Card card = cardRepository.findById(id).orElseThrow(RuntimeException::new);
         System.out.println("card: " + card.toString());
@@ -50,6 +56,23 @@ public class CardController {
         }
         card.update(newCardInfo.get("title"), newCardInfo.get("contents"));
         cardRepository.save(card);
+        CardLog log = new CardLog(card, "update");
+        cardLogRepository.save(log);
+        return new ResponseEntity(card, HttpStatus.OK);
+    }
+
+    @PutMapping("/{id}/status")
+    public ResponseEntity move(HttpServletRequest request, @PathVariable Long id, @RequestBody HashMap<String, String> newCardInfo) {
+        Card card = cardRepository.findById(id).orElseThrow(RuntimeException::new);
+        User user = getUserFromToken(request);
+        if (!card.getUserId().equals(user.getUserId())) {
+            throw new RuntimeException("수정 권한이 없습니다.");
+        }
+        String preStatus = card.getStatus();
+        card.update(newCardInfo.get("status"));
+        cardRepository.save(card);
+        CardLog log = new CardLog(card,"move", preStatus);
+        cardLogRepository.save(log);
         return new ResponseEntity(card, HttpStatus.OK);
     }
 
@@ -60,6 +83,8 @@ public class CardController {
         if (!card.getUserId().equals(tokeUser.getUserId())) {
             throw new RuntimeException("삭제 권한이 없습니다.");
         }
+        CardLog log = new CardLog(card, "remove");
+        cardLogRepository.save(log);
         cardRepository.delete(card);
         return new ResponseEntity(card, HttpStatus.OK);
     }

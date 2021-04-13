@@ -1,12 +1,16 @@
 package com.example.todolist.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class Card {
+    public static final String DATETIME_FORMAT = "yyyy-MM-dd HH:mm";
 
     @Id
     private Long id;
@@ -14,8 +18,11 @@ public class Card {
     private Long userId;
     private String title;
     private String contents;
+
     private String status;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATETIME_FORMAT, timezone = "Asia/Seoul")
     private LocalDateTime postTime;
+//    private boolean isDeleted;
 
     public Card() {
 
@@ -27,11 +34,16 @@ public class Card {
         this.contents = contents;
         this.status = status;
         this.postTime = LocalDateTime.now();
+//        this.isDeleted=false;
     }
 
     public void update(String title, String contents) {
         this.title = title;
         this.contents = contents;
+    }
+
+    public void update(String status) {
+        this.status = status;
     }
 
     public LocalDateTime getPostTime() {

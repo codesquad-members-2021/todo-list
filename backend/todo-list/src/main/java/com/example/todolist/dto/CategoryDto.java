@@ -10,14 +10,10 @@ public class CategoryDto {
     private List<CardDto> doing;
     private List<CardDto> done;
 
-//    public CategoryDto(List<CardDto> todo, List<CardDto> doing, List<CardDto> done) {
-//        this.todo = todo;
-//        this.doing = doing;
-//        this.done = done;
-//    }
-
-    public CategoryDto(List<CardDto> todo) {
+    public CategoryDto(List<CardDto> todo, List<CardDto> doing, List<CardDto> done) {
         this.todo = todo;
+        this.doing = doing;
+        this.done = done;
     }
 
     public void addTodo(CardDto card) {

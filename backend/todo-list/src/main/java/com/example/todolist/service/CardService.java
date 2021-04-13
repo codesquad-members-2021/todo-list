@@ -25,12 +25,21 @@ public class CardService {
     }
 
     public List<CardDto> cardDtoTodoList() {
-        List<Card> cards = cardRepository.findAllByStatus("to-do");
-        System.out.println(cards.toString());
+        List<Card> cards = cardRepository.findAllByStatus("todo");
         return cardDtoList(cards);
     }
 
-    public List<CardDto> cardDtoList(List<Card> cards) {
+    public List<CardDto> cardDtoDoingList() {
+        List<Card> cards = cardRepository.findAllByStatus("doing");
+        return cardDtoList(cards);
+    }
+
+    public List<CardDto> cardDtoDoneList() {
+        List<Card> cards = cardRepository.findAllByStatus("done");
+        return cardDtoList(cards);
+    }
+
+    private List<CardDto> cardDtoList(List<Card> cards) {
         List<CardDto> result = new ArrayList<>();
         for (Card card : cards) {
             User user = userRepository.findById(card.getUserId()).orElseThrow(RuntimeException::new);
