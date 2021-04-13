@@ -1,10 +1,9 @@
-import Button from "./Component/Button";
+import TodoContainer from "./Component/Todo/TodoContainer";
 
 function App() {
   return (
     <>
-      {/* <Header></Header> */}
-      {/* <HistoryList></HistoryList> */}
+      <TodoContainer />
     </>
   );
 }
