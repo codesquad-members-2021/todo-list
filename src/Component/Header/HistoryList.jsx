@@ -1,25 +1,28 @@
 import styled from 'styled-components'
 import { FaUserCircle } from 'react-icons/fa'
 import HistoryItem from './HistoryItem'
-const test = {
-  historyList: [
-    {
-      author: 'eamon',
-      text: '<b>정리하기</b> 을(를) <b>해야할 일</b>에 <b>생성</b>하였습니다.',
-      time: '1분전'
-    },
-    {
-      author: 'eamon',
-      text: '<b>정리하기</b> 을(를) <b>해야할 일</b>에 <b>생성</b>하였습니다.',
-      time: '1분전'
-    },
-    {
-      author: 'eamon',
-      text: '<b>정리하기</b> 을(를) <b>해야할 일</b>에 <b>생성</b>하였습니다.',
-      time: '1분전'
-    }
-  ]
-}
+
+let test = [
+  {
+    id: 1,
+    author: 'eamon',
+    text: '<b>정리하기</b> 을(를) <b>해야할 일</b>에 <b>생성</b>하였습니다.',
+    time: '1분전'
+  },
+  {
+    id: 2,
+    author: 'eamon',
+    text: '<b>정리하기</b> 을(를) <b>해야할 일</b>에 <b>생성</b>하였습니다.',
+    time: '1분전'
+  },
+  {
+    id: 3,
+    author: 'eamon',
+    text: '<b>정리하기</b> 을(를) <b>해야할 일</b>에 <b>생성</b>하였습니다.',
+    time: '1분전'
+  }
+]
+
 const profile = <FaUserCircle />
 const HistoryListBlock = styled.ul`
   margin-top: 1rem;
@@ -30,22 +33,18 @@ const HistoryListBlock = styled.ul`
   align-items: center;
   padding: 0;
 `
+localStorage.setItem('historyList', JSON.stringify(test))
+
+const HistoryItems = JSON.parse(localStorage.getItem('historyList')).map(({ author, text, time, id }) => (
+  <HistoryItem
+    author={author}
+    text={text}
+    time={time}
+    key={id}
+    profile={profile}
+  />
+));
 
 export default function HistoryList ({ children }) {
-  //store 에 저장할 로그
-  //author
-  //text
-  //action 이 일어난 시간
-  return (
-    <HistoryListBlock>
-      {test.historyList.map(({ author, text, time }) => (
-        <HistoryItem
-          author={author}
-          text={text}
-          time={time}
-          profile={profile}
-        />
-      ))}
-    </HistoryListBlock>
-  )
+  return <HistoryListBlock>{HistoryItems}</HistoryListBlock>
 }
