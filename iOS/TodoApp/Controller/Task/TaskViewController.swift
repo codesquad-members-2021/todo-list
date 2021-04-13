@@ -3,7 +3,7 @@ import UIKit
 
 class TaskViewController: UIViewController {
 
-    var id: Int?
+    var column: Int?
     let taskStackManager = TaskStackManager()
 
     @IBOutlet weak var titleLabel: UILabel!
@@ -19,9 +19,14 @@ class TaskViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == StatusInfo.addTask {
             if let newTaskViewController = segue.destination as? NewTaskViewController {
-                newTaskViewController.id = self.id
+                newTaskViewController.column = self.column
             }
         }
+    }
+    private func updateTaskCountLabel() {
+        let count = taskStackManager.arrayCount()
+        taskCountLabel.text = "\(count[column!])"
+        taskTableView.reloadData()
     }
 }
 
@@ -36,7 +41,7 @@ extension TaskViewController {
     
     // Custom
     private func setupTitleLabel() {
-        guard let id = id else { return }
+        guard let id = column else { return }
         let titles = TitleList.ofStatus
         titleLabel.text = titles[id]
     }
@@ -63,20 +68,27 @@ extension TaskViewController {
         let card = notification.userInfo?["taskCard"] as! TaskCard
         let status = card.status
         taskStackManager.tasks[status].append(taskCard: card)
-        let count = taskStackManager.arrayCount()
-        taskCountLabel.text = "\(count[id!])"
-        taskTableView.reloadData()
+        updateTaskCountLabel()
     }
     
     @objc func insertTask(_ notification: Notification) {
-        //나중에 구현
+        let (status, title, content) = (notification.userInfo?["column"] as? Int ?? 0,
+                                        notification.userInfo?["title"] as? String ?? "",
+                                        notification.userInfo?["content"] as? String ?? "")
+        let id = taskStackManager.totalCount()
+        let card = TaskCard(id: id, title: title, content: content, createdTime: Date(), status: status, author: "user1")
+        taskStackManager.tasks[status].append(taskCard: card)
+        updateTaskCountLabel()
     }
 }
 
 /*
- [1, 2, 3]
+ 첫번째 Plus Button
+ Optional([AnyHashable("id"): 0, AnyHashable("title"): "111", AnyHashable("content"): "222"])
  
- if status == 1 {
-    tableview[1] = 배열[1]
- }
+ 두번째 Plus Button
+ Optional([AnyHashable("title"): "222", AnyHashable("content"): "333", AnyHashable("id"): 1])
+ 
+ 세번째 Plus Button
+ Optional([AnyHashable("id"): 2, AnyHashable("title"): "333", AnyHashable("content"): "444"])
  */

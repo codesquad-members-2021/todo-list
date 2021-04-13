@@ -11,13 +11,13 @@ class MainViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case StatusInfo.toDo: if let taskViewController = segue.destination as? TaskViewController {
-            taskViewController.id = StatusValue.toDo
+            taskViewController.column = StatusValue.toDo
         }
         case StatusInfo.inProgress: if let taskViewController = segue.destination as? TaskViewController {
-            taskViewController.id = StatusValue.inProgress
+            taskViewController.column = StatusValue.inProgress
         }
         case StatusInfo.done: if let taskViewController = segue.destination as? TaskViewController {
-            taskViewController.id = StatusValue.done
+            taskViewController.column = StatusValue.done
         }
         default:
             break

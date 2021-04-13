@@ -3,7 +3,7 @@ import UIKit
 
 class NewTaskViewController: UIViewController {
     
-    var id: Int?
+    var column: Int?
     
     @IBOutlet weak var newTaskView: UIView!
     @IBOutlet weak var titleTextField: UITextField!
@@ -23,7 +23,7 @@ class NewTaskViewController: UIViewController {
     }
     
     private func addTaskCard() {
-        NotificationCenter.default.post(name: .addTask, object: self, userInfo: ["title": titleTextField.text ?? "", "content": contentTextField.text ?? "", "id": self.id ?? 0])
+        NotificationCenter.default.post(name: .addTask, object: self, userInfo: ["title": titleTextField.text ?? "", "content": contentTextField.text ?? "", "column": self.column ?? 0])
     }
 }
 

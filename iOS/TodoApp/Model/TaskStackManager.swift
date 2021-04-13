@@ -27,6 +27,8 @@ class TaskStackManager {
     
     func insert(_ status: Int, _ taskCard: TaskCard, at index: Int) {
         tasks[status].insert(taskCard, at: index)
+        NotificationCenter.default.post(name: .addTaskCard, object: self, userInfo: ["addData":taskCard])
+        NetworkManager.updateData()
     }
     
     func remove(_ status: Int, at index: Int) {
@@ -37,5 +39,9 @@ class TaskStackManager {
     
     func arrayCount() -> [Int] {
         return [tasks[0].count, tasks[1].count, tasks[2].count]
+    }
+    
+    func totalCount() -> Int {
+        return arrayCount().reduce(0, +)
     }
 }

@@ -2,8 +2,10 @@
 import Foundation
 
 struct TaskCard: Codable {
-    var status: Int
+    var id: Int
     var title: String
     var content: String
-    var author: String = "Authored by iOS"
+    var createdTime: Date
+    var status: Int
+    var author: String
 }

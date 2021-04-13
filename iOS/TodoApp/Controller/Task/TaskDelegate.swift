@@ -5,7 +5,7 @@ extension TaskViewController: UITableViewDelegate {
         
         if editingStyle == .delete {
             // remove the item from the data model
-            taskStackManager.remove(id!, at: indexPath.row)
+            taskStackManager.remove(column!, at: indexPath.row)
             // delete the table view row
             tableView.deleteRows(at: [indexPath], with: .fade)
         }

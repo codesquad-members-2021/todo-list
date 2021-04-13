@@ -51,12 +51,14 @@ class NetworkManager {
                 let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [Any]
                 json?.forEach({ parse in
                     let task = parse as! [String: Any]
-                    let _ = task["id"] as! Int
-                    let status = task["status"] as! Int - 1
+                    let id = task["id"] as! Int
                     let title = task["title"] as! String
                     let content = task["description"] as! String
+                    let createdTime = task["createdTime"] as! Date
+                    let status = task["status"] as! Int - 1
+                    let author = task["author"] as! String
                     
-                    let taskCard = TaskCard(status: status, title: title, content: content)
+                    let taskCard = TaskCard(id: "\(id)", title: title, content: content, createdTime: createdTime, status: status, author: author)
                     NotificationCenter.default.post(name: .setupTask, object: self, userInfo: ["taskCard": taskCard])
                 })
             } catch let error as NSError {
