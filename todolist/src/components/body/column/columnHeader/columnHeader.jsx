@@ -3,8 +3,8 @@ import ColumnTitle from "./columnTitle.jsx";
 import CountCards from "./countCards.jsx";
 import AddCardButton from "./addCardButton.jsx";
 import DeleteColumnButton from "./deleteColumnButton.jsx";
-import ColumnHeaderSection from "./columnHeaderSection.jsx";
-import ColumnTitleWrapper from './ColumnTitleWrapper.style';
+import ColumnHeaderSection from "./columnHeaderSection.style.jsx";
+import ColumnTitleWrapper from "./ColumnTitleWrapper.style";
 
 const ColumnHeader = ({ id, columnTitle, cards, handleAddButtonClick }) => {
   const handleCardAddedColumn = ({ target: { id } }) => {
