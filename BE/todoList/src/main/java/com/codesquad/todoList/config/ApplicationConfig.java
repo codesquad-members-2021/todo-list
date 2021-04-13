@@ -15,7 +15,7 @@ import org.springframework.transaction.TransactionManager;
 import javax.sql.DataSource;
 
 @Configuration
-public class ApplicationConfig extends AbstractJdbcConfiguration {
+public class ApplicationConfig {
 
 
 }
