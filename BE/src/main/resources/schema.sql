@@ -30,7 +30,7 @@ DROP TABLE IF EXISTS `todolist`.`work`;
 CREATE TABLE IF NOT EXISTS `todolist`.`work` (
     `id` INT AUTO_INCREMENT,
     `title` VARCHAR(255) NOT NULL,
-    `description` VARCHAR(255) NOT NULL,
+    `content` VARCHAR(255) NOT NULL,
     `created_at` DATETIME NOT NULL,
     `status` INT NOT NULL,
     `author_id` INT NOT NULL,
@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `todolist`.`work` (
 DROP TABLE IF EXISTS `todolist`.`timeline`;
 CREATE TABLE IF NOT EXISTS `todolist`.`timeline` (
     `id` INT AUTO_INCREMENT,
-    `description` VARCHAR(255) NOT NULL,
+    `content` VARCHAR(255) NOT NULL,
     `created_at` DATETIME NOT NULL,
     `author_id` INT NOT NULL,
     PRIMARY KEY (`id`),
