@@ -31,7 +31,7 @@ public class TaskController {
     @PostMapping("/tasks")
     @ResponseStatus(HttpStatus.CREATED)
     public Long create(@RequestBody Task task) {
-        Task topTask = taskRepository.findOneByPreviousId(Task.TOP_PREVIOUS_ID);
+        Task topTask = readByPreviousId(Task.TOP_PREVIOUS_ID);
         long id = taskRepository.save(task).getId();
 
         topTask.moveAfter(id);
@@ -50,19 +50,30 @@ public class TaskController {
     @DeleteMapping("/tasks/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id) {
-        Task task = taskRepository.findOne(id).delete();
-        taskRepository.save(task);
+        Task task = taskRepository.findOne(id);
+        Optional<Task> nextTask = taskRepository.findOneByPreviousId(id);
+        if (nextTask.isPresent()) {
+            Task presentNextTask = nextTask.get();
+            presentNextTask.moveAfter(task.getPreviousId());
+            taskRepository.save(presentNextTask);
+        }
+
+        taskRepository.save(task.delete());
     }
 
     @PatchMapping("/tasks/{id}/{targetId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void move(@PathVariable Long id, @PathVariable Long targetId) {
         Task taskToMove = taskRepository.findOne(id);
-        Task originalNextTask = taskRepository.findOneByPreviousId(id);
-        Task newNextTask = taskRepository.findOneByPreviousId(targetId);
+        Task originalNextTask = readByPreviousId(id);
+        Task newNextTask = readByPreviousId(targetId);
 
         originalNextTask.moveAfter(taskToMove.getPreviousId());
         taskToMove.moveAfter(newNextTask.getPreviousId());
         newNextTask.moveAfter(taskToMove.getId());
+    }
+
+    private Task readByPreviousId(Long previousId) {
+        return taskRepository.findOneByPreviousId(previousId).orElseThrow(IllegalArgumentException::new);
     }
 }
