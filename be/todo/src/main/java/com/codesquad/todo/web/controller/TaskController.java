@@ -4,6 +4,7 @@ import com.codesquad.todo.web.domain.Task;
 import com.codesquad.todo.web.domain.User;
 import com.codesquad.todo.web.service.TaskService;
 import com.codesquad.todo.web.service.UserService;
+import com.codesquad.todo.web.service.dto.TaskDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,8 +27,8 @@ public class TaskController {
     public ResponseEntity<Map<String, Object>> createTask(@PathVariable Long columnId, String taskTitle, String taskContent) {
         Map<String, Object> responseMap = new HashMap<>();
         User user = userService.findUser(1L);
-        Task task = taskService.createTask(user, columnId, taskTitle, taskContent);
-        responseMap.put("task", task);
+        TaskDto taskDto = taskService.createTask(user, columnId, taskTitle, taskContent);
+        responseMap.put("task", taskDto);
         return ResponseEntity.ok(responseMap);
     }
 

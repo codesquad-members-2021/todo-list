@@ -1,6 +1,7 @@
 package com.codesquad.todo.web.service;
 
 import com.codesquad.todo.web.domain.*;
+import com.codesquad.todo.web.service.dto.TaskDto;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -11,7 +12,7 @@ public class TaskService {
         this.userRepository = userRepository;
     }
 
-    public Task createTask(User user, Long columnId, String taskTitle, String taskContent) {
+    public TaskDto createTask(User user, Long columnId, String taskTitle, String taskContent) {
         Column column = user.findColumnById(columnId);
         column.addTask(taskTitle, taskContent);
 
@@ -20,7 +21,8 @@ public class TaskService {
 
         user = userRepository.save(user);
         column = user.findColumnById(columnId);
-        return column.lastTask();
+        Task task = column.lastTask();
+        return new TaskDto(task, user.getName());
     }
 
     public void removeTask(User user, Long columnId, Long taskId) {

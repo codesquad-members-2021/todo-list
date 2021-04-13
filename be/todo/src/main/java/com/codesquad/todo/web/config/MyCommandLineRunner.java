@@ -28,7 +28,7 @@ public class MyCommandLineRunner implements CommandLineRunner {
     }
 
     private User createTestData() {
-        User user = new User("asdf", "asdf", "1234", "image");
+        User user = new User("라쿤오톰", "raccoonAutumn", "1234", "image");
 
         Column todoColumn = new Column("TODO");
         todoColumn.addTask("title1", "content1");

@@ -10,10 +10,10 @@ public class TodoLogDto {
     private String authorName;
     private LocalDateTime createdDateTime;
 
-    public TodoLogDto(TodoLog todoLog) {
+    public TodoLogDto(TodoLog todoLog, String authorName) {
         this.id = todoLog.getId();
         this.action = todoLog.getAction();
-        this.authorName = "";
+        this.authorName = authorName;
         this.createdDateTime = todoLog.getCreatedDateTime();
     }
 

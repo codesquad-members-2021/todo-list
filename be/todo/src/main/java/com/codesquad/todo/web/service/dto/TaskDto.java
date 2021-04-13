@@ -15,6 +15,7 @@ public class TaskDto {
         this.id = task.getId();
         this.taskTitle = task.getTaskTitle();
         this.taskContent = task.getTaskContent();
+        this.authorName = authorName;
         this.createdDateTime = task.getCreatedDateTime();
     }
 
