@@ -27,4 +27,11 @@ class ToDoTableViewDataSource : NSObject, UITableViewDataSource {
         }
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            cardManager.remove(states: .ToDo, at: indexPath.section)
+            tableView.reloadData()
+        }
+    }
 }
