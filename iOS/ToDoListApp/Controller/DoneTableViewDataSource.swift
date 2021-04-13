@@ -9,14 +9,14 @@ import Foundation
 import UIKit
 
 class DoneTableViewDataSource: NSObject, UITableViewDataSource {
-    var delegate: CardManageDelegate?
+    var cardManager = CardManager.shared
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return delegate!.count(states: .Done)
+        return cardManager.count(states: .Done)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -25,7 +25,7 @@ class DoneTableViewDataSource: NSObject, UITableViewDataSource {
             return UITableViewCell()
         }
         
-        delegate!.setCell(states: .Done, index: indexPath.section) { card in
+        cardManager.setCell(states: .Done, index: indexPath.section) { card in
             cell.title.text = card.title
             cell.contents.text = card.body
             cell.author.text = card.author
