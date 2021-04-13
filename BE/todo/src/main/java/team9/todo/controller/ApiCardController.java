@@ -5,61 +5,84 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import team9.todo.domain.ApiResult;
 import team9.todo.domain.Card;
+import team9.todo.domain.User;
 import team9.todo.domain.enums.CardColumn;
-import team9.todo.repository.CardRepository;
+import team9.todo.service.CardService;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
+
+import static team9.todo.utils.HttpSessionUtils.getUser;
 
 @RestController
 @RequestMapping("/api/cards")
 public class ApiCardController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-    private final CardRepository cardRepository;
+    private final CardService cardService;
 
     @Autowired
-    public ApiCardController(CardRepository cardRepository) {
-        this.cardRepository = cardRepository;
+    public ApiCardController(CardService cardService) {
+        this.cardService = cardService;
     }
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    public Card create(Card card, HttpSession httpSession) {
+    public ApiResult<Card> create(Card card, HttpSession httpSession) {
         logger.debug("card 생성 요청: {}, {}, {}", card.getColumnType(), card.getTitle(), card.getContent());
-        card.setUser(1);
-        return cardRepository.save(card);
+        User user = getUser(httpSession);
+        card.setUser(user.getId());
+
+        return ApiResult.succeed(cardService.create(card, user));
     }
 
     @GetMapping("/todo")
-    public List<Card> getTodo(@PathVariable int column, HttpSession httpSession) {
-        logger.debug("{}의 카드 목록 요청", column);
-        return cardRepository.findAllByUserAndColumnType(1, CardColumn.TODO.name());
+    public ApiResult<List<Card>> getTodo(HttpSession httpSession) {
+        logger.debug("{}의 카드 목록 요청", CardColumn.TODO.name());
+        User user = getUser(httpSession);
+
+        return ApiResult.succeed(cardService.getList(CardColumn.TODO, user));
     }
+
     @GetMapping("/doing")
-    public List<Card> getDoing(@PathVariable int column, HttpSession httpSession) {
-        logger.debug("{}의 카드 목록 요청", column);
-        return cardRepository.findAllByUserAndColumnType(1, CardColumn.DOING.name());
+    public ApiResult<List<Card>> getDoing(HttpSession httpSession) {
+        logger.debug("{}의 카드 목록 요청", CardColumn.DOING.name());
+        User user = getUser(httpSession);
+
+        return ApiResult.succeed(cardService.getList(CardColumn.DOING, user));
     }
+
     @GetMapping("/done")
-    public List<Card> getDone(@PathVariable int column, HttpSession httpSession) {
-        logger.debug("{}의 카드 목록 요청", column);
-        return cardRepository.findAllByUserAndColumnType(1, CardColumn.DONE.name());
+    public ApiResult<List<Card>> getDone(HttpSession httpSession) {
+        logger.debug("{}의 카드 목록 요청", CardColumn.DONE.name());
+        User user = getUser(httpSession);
+
+        return ApiResult.succeed(cardService.getList(CardColumn.DONE, user));
     }
 
-    @PutMapping("/{columnId}")
-    public Card update(@PathVariable long columnId, Card card, HttpSession httpSession) {
-        logger.debug("{}번 카드의 내용 수정 요청", columnId);
-        Card toUpdate = cardRepository.findById(columnId).get();
+    @PutMapping("/{cardId}")
+    public ApiResult<Card> update(@PathVariable long cardId, String title, String content, double priority, HttpSession httpSession) {
+        logger.debug("{}번 카드의 내용 수정 요청", cardId);
+        User user = getUser(httpSession);
 
-        toUpdate.update(card);
-        return cardRepository.save(toUpdate);
+        return ApiResult.succeed(cardService.update(cardId, title, content, priority, user));
     }
 
-    @DeleteMapping("/{columnId}")
+    @PutMapping("/move/{cardId}")
+    public ApiResult<Card> move(@PathVariable long cardId, CardColumn to, HttpSession httpSession) {
+        logger.debug("{}번 카드 {}로 이동 요청", cardId, to.name());
+        User user = getUser(httpSession);
+
+        return ApiResult.succeed(cardService.move(cardId, to, user));
+    }
+
+    @DeleteMapping("/{cardId}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable long columnId, HttpSession httpSession) {
-        logger.debug("{}번 카드의 삭제 요청", columnId);
-        cardRepository.deleteById(columnId);
+    public void delete(@PathVariable long cardId, HttpSession httpSession) {
+        logger.debug("{}번 카드의 삭제 요청", cardId);
+        User user = getUser(httpSession);
+
+        cardService.delete(cardId, user);
     }
 }
