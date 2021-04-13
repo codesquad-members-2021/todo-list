@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import './TodoList.css';
 import Columns from './Columns';
+import styled from 'styled-components';
 
 const TodoStore = () => {
   const [todoData, setToDoData] = useState([]);
@@ -29,10 +29,16 @@ const TodoStore = () => {
   ));
 
   return (
-    <div className="TodoList">
-      <div>{columnLists}</div>
-    </div>
+    <ToDoListWrap>
+      <div className="TodoList">{columnLists}</div>
+    </ToDoListWrap>
   );
 };
 
 export default TodoStore;
+
+const ToDoListWrap = styled.div`
+  .TodoList {
+    margin-top: 30px;
+  }
+`;
