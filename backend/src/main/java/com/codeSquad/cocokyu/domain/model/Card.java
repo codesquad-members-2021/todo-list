@@ -1,6 +1,7 @@
 package com.codeSquad.cocokyu.domain.model;
 
 import com.codeSquad.cocokyu.domain.annotation.ToDoStatusPattern;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Embedded;
 
@@ -20,21 +21,25 @@ public class Card {
     @NotNull
     private String contents;
 
-    private LocalDateTime createDateTime;
-
     @ToDoStatusPattern
     private Status status;
 
+    @JsonIgnore
     @Embedded.Nullable
     private Logs logs = new Logs();
+
+    private double priority;
+
+    private LocalDateTime createDateTime;
 
     protected Card() {
     }
 
-    public Card(String title, String contents, Status status) {
+    public Card(String title, String contents, Status status, double priority) {
         this.title = title;
         this.contents = contents;
         this.status = status;
+        this.priority = priority;
         this.createDateTime = LocalDateTime.now();
         logs.createLog(this);
     }
@@ -44,6 +49,7 @@ public class Card {
         this.title = updateCard.title;
         this.contents = updateCard.contents;
         this.status = updateCard.status;
+        this.priority = updateCard.priority;
     }
 
     public void delete() {
@@ -71,6 +77,13 @@ public class Card {
         return createDateTime;
     }
 
+    public double getPriority() {
+        return priority;
+    }
+
+    public Logs getLogs() {
+        return logs;
+    }
 
     public enum Status {
         TODO,
