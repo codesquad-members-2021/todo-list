@@ -40,6 +40,12 @@ public class Task {
         updatedDateTime = LocalDateTime.now();
     }
 
+    public void update(Task newTask) {
+        taskTitle = newTask.taskTitle;
+        taskContent = newTask.taskContent;
+        updatedDateTime = LocalDateTime.now();
+    }
+
     public Long getId() {
         return id;
     }

@@ -1,7 +1,7 @@
 package com.codesquad.todo.web.controller;
 
 import com.codesquad.todo.web.domain.*;
-import com.codesquad.todo.web.exceptions.ColumnNotFoundException;
+import com.codesquad.todo.web.exceptions.TaskNotFoundException;
 import com.codesquad.todo.web.exceptions.UserNotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,9 +14,11 @@ import java.util.Map;
 public class TaskController {
 
     private final UserRepository userRepository;
+    private final TaskRepository taskRepository;
 
-    public TaskController(UserRepository userRepository) {
+    public TaskController(UserRepository userRepository, TaskRepository taskRepository) {
         this.userRepository = userRepository;
+        this.taskRepository = taskRepository;
     }
 
     @PostMapping
@@ -38,6 +40,13 @@ public class TaskController {
         Column column = user.findColumnById(columnId);
         column.removeTaskById(taskId);
         userRepository.save(user);
+    }
+
+    @PutMapping("/{taskId}")
+    public void updateTask(@PathVariable Long columnId, @PathVariable Long taskId, Task newTask) {
+        Task foundTask = taskRepository.findById(taskId).orElseThrow(TaskNotFoundException::new);
+        foundTask.update(newTask);
+        taskRepository.save(foundTask);
     }
 
 }
