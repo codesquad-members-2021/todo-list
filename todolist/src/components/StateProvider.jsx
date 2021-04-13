@@ -3,6 +3,10 @@ import NavBar from "./navBar/NavBar";
 import Column from "./column/Column";
 
 function StateProvider(props) {
+  const [modalMode, setModalMode] = useState(false);
+
+  const toggleModal = () => setModalMode(!modalMode);
+
   const [log, setLog] = useState([
     {
       cardTitle: "HTML/CSS 공부하기",
@@ -24,7 +28,7 @@ function StateProvider(props) {
   return (
     <>
       <NavBar log={log} />
-      <Column onLog={handleLog} />
+      <Column onLog={handleLog} onToggleModal={toggleModal} />
     </>
   );
 }
