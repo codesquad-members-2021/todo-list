@@ -50,8 +50,15 @@ public class TaskController {
     @DeleteMapping("/tasks/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id) {
-        Task task = taskRepository.findOne(id).delete();
-        taskRepository.save(task);
+        Task task = taskRepository.findOne(id);
+        Optional<Task> nextTask = taskRepository.findOneByPreviousId(id);
+        if (nextTask.isPresent()) {
+            Task presentNextTask = nextTask.get();
+            presentNextTask.moveAfter(task.getPreviousId());
+            taskRepository.save(presentNextTask);
+        }
+
+        taskRepository.save(task.delete());
     }
 
     @PatchMapping("/tasks/{id}/{targetId}")
