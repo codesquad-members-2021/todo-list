@@ -4,14 +4,13 @@ import Icon from '../utilComponent/Icon.js'
 
 const HeaderStyle = styled.header`
     .header{
-        padding: 0 50px;
+        padding: 30px 50px;
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
     .header > h1 {
         font-size: 25px;
-        font-weight: 400;
     }`
 
 const HeaderTitle = function ({ handleClick }) {

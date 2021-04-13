@@ -4,6 +4,7 @@ import styled from 'styled-components'
 const IconButton = styled.svg`
     height: 15px;
     width: 15px;
+    cursor: pointer;
     path {
         fill: ${props => props.type === 'bars' ? '#222' : '#BDBDBD'};
     }
