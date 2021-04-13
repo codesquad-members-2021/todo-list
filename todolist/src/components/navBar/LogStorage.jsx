@@ -16,7 +16,7 @@ from{
 }to{
   transform: translateX(1150px)
 }`;
-
+// 초기 : width 0
 const LogStorageBlock = styled.div`
   position: absolute;
   width: 452px;
@@ -54,8 +54,6 @@ function LogStorage({ clicked, logs, appear, setLogViewState }) {
   const handleXbtnClick = () => {
     setLogViewState(false);
   };
-  console.log(clicked);
-  console.log(appear);
   return (
     <>
       {clicked && (
