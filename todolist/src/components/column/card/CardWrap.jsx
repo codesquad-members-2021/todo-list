@@ -1,19 +1,13 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Card from "./Card";
-import styled from "styled-components";
+// import styled from "styled-components";
 import CardForm from "./CardForm.jsx";
-
-const CardContiner = styled.li`
-  background-color: #fff;
-  border: 1px solid #0075de;
-  border-radius: 5px;
-  margin-top: 1em;
-  padding: 1em;
-`;
+import CardContainer from "./CardContainer.style";
 
 function CardWrap(props) {
   const { card, onDelete, onUpdate } = props;
   const [editMode, setEditMode] = useState(false);
+  const cardContainer = useRef();
 
   const handleSubmit = ({ id, title, content }) => {
     onUpdate({ id, title, content });
@@ -26,13 +20,13 @@ function CardWrap(props) {
   };
 
   return (
-    <CardContiner onDoubleClick={handleEdit}>
+    <CardContainer onDoubleClick={handleEdit} ref={cardContainer}>
       {editMode ? (
         <CardForm card={card} onSubmit={handleSubmit} onCancel={handleEdit} />
       ) : (
-        <Card card={card} onDelete={onDelete} />
+        <Card card={card} onDelete={onDelete} cardContainer={cardContainer} />
       )}
-    </CardContiner>
+    </CardContainer>
   );
 }
 

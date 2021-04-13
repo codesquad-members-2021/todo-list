@@ -2,8 +2,6 @@ import styled, { css } from "styled-components";
 import { BUTTON_TYPE } from "./constant.js";
 
 const StyledButton = styled.button`
-  width: 32px;
-  height: 32px;
   outline: none;
   border: none;
   background: none;
