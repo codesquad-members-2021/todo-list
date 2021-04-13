@@ -11,6 +11,12 @@ public class Card {
     String content;
     LocalDateTime createdTime;
 
+    public Card(String title, String content, LocalDateTime createdTime) {
+        this.title = title;
+        this.content = content;
+        this.createdTime = createdTime;
+    }
+
     public Long getId() {
         return id;
     }

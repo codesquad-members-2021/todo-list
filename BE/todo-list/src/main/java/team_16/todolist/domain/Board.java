@@ -10,7 +10,7 @@ public class Board {
 
     @Id
     private Long id;
-    
+
     public String title;
     private Set<Card> cards = new HashSet<>();
 
@@ -30,17 +30,8 @@ public class Board {
         this.cards = cards;
     }
 
-    public Board(Long id, String title, Set<Card> cards) {
-        this.id = id;
-        this.title = title;
-        this.cards = cards;
-    }
-
     public Board(String title) {
         this.title = title;
-    }
-
-    public Board() {
     }
 
     public Card addCard(String title, String content) {
@@ -51,10 +42,8 @@ public class Board {
     }
 
     private Card createCard(String title, String content) {
-        Card card = new Card();
-        card.title = title;
-        card.content = content;
-        card.createdTime = LocalDateTime.now();
+        Card card = new Card(title, content, LocalDateTime.now());
+
         return card;
     }
 
@@ -63,8 +52,8 @@ public class Board {
     }
 
     public void deleteCard(Long cardId) {
-        for(Card card : cards) {
-            if(card.getId() == cardId) {
+        for (Card card : cards) {
+            if (card.getId() == cardId) {
                 cards.remove(card);
             }
         }

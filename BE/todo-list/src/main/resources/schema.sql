@@ -1,4 +1,5 @@
-
+drop table card;
+drop table board;
 create table if not exists board (
     id bigint auto_increment primary key ,
     title varchar (50)
