@@ -52,14 +52,5 @@ public class Card {
         return this;
     }
 
-    @Override
-    public String toString() {
-        return "Card{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", content='" + content + '\'' +
-                ", create=" + createdTime +
-                '}';
-    }
 
 }
