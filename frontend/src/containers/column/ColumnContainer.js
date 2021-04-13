@@ -4,7 +4,7 @@ import CardInput from '../../components/main/CardInput';
 import Column from '../../components/main/Column';
 
 //prettier-ignore
-const ColumnContainer = ({ title, list }) => {
+const ColumnContainer = ({ columnId, title, list }) => {
     const [cardList, setCardList] = useState(list);
     const [renderedList, setRenderedList] = useState();
 
@@ -17,7 +17,7 @@ const ColumnContainer = ({ title, list }) => {
         : <li key={index}><Card {...v} /></li>
     };
 
-    const plusEvent = () => setCardList(() => [{ isInput: true, title: '', body: '' }, ...cardList,]);
+    const plusEvent = () => setCardList(() => [{ isInput: true, title: '', body: '', columnId:columnId }, ...cardList,]);
 
     return (
         <Column title={title} cardList={renderedList} plusEvent={plusEvent} />

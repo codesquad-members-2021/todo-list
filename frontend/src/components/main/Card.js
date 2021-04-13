@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React from 'react';
 import styled, { css } from 'styled-components';
 import ColumnDeleteButton from './partial/ColumnDeleteButton'
@@ -47,14 +48,17 @@ const CardAuthor = styled.p`
     color: var(--author-text-color);
 `;
 //prettier-ignore
-const Card = ({ title, body, index, setCardList }) => {
-    const deleteCard = () => setCardList((cardList) => cardList.filter((_, i) => i !== index));
+const Card = ({ title, body, index, setCardList, columnId, cardId, previousCardId }) => {
+    const deleteCard = () => {
+        setCardList((cardList) => cardList.filter((_, i) => i !== index))
+        axios.delete(`api/columns/${columnId}/cards/${cardId}`)
+    }
 
     const editCard = () => {
         setCardList((cardList) => {
             const left = cardList.slice(0, index);
             const right = cardList.slice(index + 1);
-            return left.concat({ title, body, isInput: true }, right);
+            return left.concat({ title, body, isInput: true, previousCardId, cardId, columnId }, right);
         });
     };
 

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import HeaderTemplate from '../../components/header/HeaderTemplate';
 
-const HeaderContainer = (/* {...props} */) => {
+
+const HeaderContainer = () => {
     const [activityHide, setActivityHide] = useState(true);
     const [activityDatas] = useState([
         {
