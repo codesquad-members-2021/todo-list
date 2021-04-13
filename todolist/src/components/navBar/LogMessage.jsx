@@ -1,6 +1,4 @@
 function LogMessage({ log }) {
-  console.log(log);
-
   let message = null;
   if (log.modeType === "add")
     message = `<strong>${log.columnTitle}</strong>에 <strong><${log.cardTitle}></strong>를 <strong>등록</strong>하였습니다.`;
