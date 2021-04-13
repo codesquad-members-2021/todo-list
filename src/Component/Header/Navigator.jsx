@@ -7,7 +7,7 @@ const NavigatorBlock = styled.div`
   top: 0;
   right: 0;
   transform: ${({ toggle }) =>
-    toggle === 0 ? 'translateX(+20rem)' : 'translateX(0)'};
+    toggle ? 'translateX(+20rem)' : 'translateX(0)'};
   width: 25%;
   height: 100%;
   background: white;
