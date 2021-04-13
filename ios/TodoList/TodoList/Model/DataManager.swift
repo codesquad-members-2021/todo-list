@@ -7,8 +7,6 @@
 
 import Foundation
 
-
-
 class DataManager {
     static func requestGet(url: String, completionHandler: @escaping (Bool, ToDoList) -> Void) {
         guard let url = URL(string: url) else {
@@ -33,6 +31,7 @@ class DataManager {
                     print("Error: HTTP request failed")
                     return
                 }
+            
                 guard let output = try? JSONDecoder().decode(ToDoList.self, from: data) else {
                     print("Error: JSON Data Parsing failed")
                     return
@@ -43,7 +42,6 @@ class DataManager {
     }
 
     static func requestPost(url: String, parameter: [String: Any], completionHandler: @escaping (Bool, Any) -> Void) {
-        
         guard let url = URL(string: url) else {
             print("Error: cannot create URL")
             return
@@ -64,10 +62,11 @@ class DataManager {
         // create dataTask using the session object to send data to the server
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard error == nil else {
-                print("Error: error calling GET")
+                print("Error: error calling POST")
                 print(error!)
                 return
             }
+            
             guard let data = data else {
                 print("Error: Did not receive data")
                 return
@@ -82,13 +81,13 @@ class DataManager {
         }.resume()
     }
 
-    static func requestDelete(url: String, id: String, completionHandler: @escaping (Bool, Any) -> Void) {
+    static func requestDelete(url: String, id: Int, completionHandler: @escaping (Bool, Any) -> Void) {
         guard var url = URL(string: url) else {
             print("Error: cannot create URL")
             return
         }
         
-        url.appendPathComponent(id)
+        url.appendPathComponent(String(id))
         
         var request = URLRequest(url: url)
         request.httpMethod = "DELETE"

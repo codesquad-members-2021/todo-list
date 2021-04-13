@@ -8,5 +8,5 @@
 import Foundation
 
 class Constants {
-    public static let url = "https://fc14a707-47df-4e09-9fb0-84045a2d8469.mock.pstmn.io/todos"
+    public static let url = "http://ec2-54-180-87-91.ap-northeast-2.compute.amazonaws.com:8080/todos"
 }
