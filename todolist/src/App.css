@@ -19,26 +19,26 @@ ul {
   color: #bdbdbd;
 }
 
-input {
+/* input {
   border: none;
   width: 276px;
   height: 23px;
-}
+} */
 
 .card-input-title::placeholder {
   font-weight: bold;
   font-size: 16px;
 }
 
-.card-btn-section {
+/* .card-btn-section {
   display: flex;
   margin-top: 1em;
-}
+} */
 
-.card-input-section {
+/* .card-input-section {
   display: flex;
   flex-direction: column;
-}
+} */
 
 .btn {
   padding: 10px;
@@ -50,15 +50,15 @@ input {
   margin: 0px 4px;
 }
 
-.edit-btn {
+/* .edit-btn {
   background: #0075de !important;
   color: #fff;
-}
+} */
 
-.enroll-btn {
+/* .enroll-btn {
   background: #86c6ff;
   color: rgba(255, 255, 255, 0.4);
-}
+} */
 
 .logStorage.appear {
   right: 0px;

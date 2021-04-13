@@ -1,54 +1,41 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { HiOutlinePlusSm } from "react-icons/hi";
 import CardForm from "./card/CardForm";
 import CardList from "./card/CardList";
+import CardContainer from "./card/CardContainer.style";
+import IconButton from "../utils/IconButton";
 
 const ColumnContainer = styled.section`
   width: 308px;
   margin-right: 1em;
 `;
 
-const ColumnTitle = styled.div`
-  position: static;
+const ColumnMenu = styled.div`
   height: 26px;
   left: 0px;
   top: 0px;
   font-weight: bold;
   font-size: 18px;
   line-height: 26px;
-
-  /* identical to box height */
   display: flex;
   justify-content: space-between;
-
-  /* Black */
-  color: #010101;
-  border: 1px solid #bdbdbd;
-
-  /* Inside Auto Layout */
-  flex: none;
-  order: 0;
-  flex-grow: 0;
   margin: 0px 8px;
 `;
 
+const ColumnTitle = styled.span`
+  display: flex;
+`;
+
 const ColumnCount = styled.div`
-  display: inline-block;
   width: 26px;
   height: 26px;
   border-radius: 50%;
-
   font-weight: bold;
   font-size: 14px;
   line-height: 25px;
   text-align: center;
-
-  /* Black */
   color: #010101;
   background: #bdbdbd;
-
-  /* Inside Auto Layout */
   margin: 0px 10px;
 `;
 
@@ -103,12 +90,20 @@ function Column(props) {
 
   return (
     <ColumnContainer>
-      <header>
-        <ColumnTitle>해야할 일</ColumnTitle>
-        <ColumnCount>{cards.length}</ColumnCount>
-        <HiOutlinePlusSm onClick={() => setEnrollMode(!enrollMode)}></HiOutlinePlusSm>
-      </header>
-      {enrollMode ? <CardForm onSubmit={handleCreate} onCancel={handleCancel} onLog={onLog} /> : ""}
+      <ColumnMenu>
+        <ColumnTitle>
+          <div>해야할 일</div>
+          <ColumnCount>{cards.length}</ColumnCount>
+        </ColumnTitle>
+        <IconButton cb={() => setEnrollMode(!enrollMode)} type="add" />
+      </ColumnMenu>
+      {enrollMode ? (
+        <CardContainer>
+          <CardForm onSubmit={handleCreate} onCancel={handleCancel} onLog={onLog} />
+        </CardContainer>
+      ) : (
+        ""
+      )}
       <CardList cards={cards} onDelete={handleDelete} onUpdate={handleUpdate} />
     </ColumnContainer>
   );

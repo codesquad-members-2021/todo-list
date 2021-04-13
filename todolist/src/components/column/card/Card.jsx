@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-// import { HiX } from "react-icons/hi";
 import IconButton from "../../utils/IconButton";
 
 const CardTitle = styled.div`
@@ -20,15 +19,28 @@ const CardContent = styled.span`
   over-flow: hidden;
 `;
 
+const CardItem = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const CardSection = styled.span`
+  display: flex;
+  flex-direction: column;
+`;
+
 function Card(props) {
   const { card, onDelete } = props;
   return (
-    <div className="card">
-      <CardTitle className="card-title">{card.title}</CardTitle>
-      <CardContent className="card-content">{card.content}</CardContent>
-      <IconButton type="delete" cb={() => onDelete(card)}></IconButton>
-      {/* <HiX className="button-delete" onClick={() => onDelete(card)}></HiX> */}
-    </div>
+    <CardItem>
+      <CardSection>
+        <CardTitle className="card-title">{card.title}</CardTitle>
+        <CardContent className="card-content">{card.content}</CardContent>
+      </CardSection>
+      <CardSection>
+        <IconButton type="delete" cb={() => onDelete(card)}></IconButton>
+      </CardSection>
+    </CardItem>
   );
 }
 
