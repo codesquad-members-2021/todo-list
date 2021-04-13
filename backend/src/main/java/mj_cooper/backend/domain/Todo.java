@@ -9,17 +9,15 @@ public class Todo {
 
     @Id
     private Long id;
-
+    private int vertical;
     private String title;
-
-    private LocalDateTime createdDate;
+    private String contents;
 
     public Todo() {
     }
 
-    public Todo(String title, LocalDateTime createdDate) {
+    public Todo(String title) {
         this.title = title;
-        this.createdDate = createdDate;
     }
 
     public Long getId() {
@@ -30,8 +28,8 @@ public class Todo {
         return title;
     }
 
-    public LocalDateTime getCreatedDate() {
-        return createdDate;
+    public String getContents() {
+        return contents;
     }
 
     public void setId(Long id) {
@@ -42,16 +40,16 @@ public class Todo {
         this.title = title;
     }
 
-    public void setCreatedDate(LocalDateTime createdDate) {
-        this.createdDate = createdDate;
+    public void setContents(String contents) {
+        this.contents = contents;
     }
 
     @Override
     public String toString() {
         return "Todo{" +
                 "id=" + id +
+                ", column=" + vertical +
                 ", title='" + title + '\'' +
-                ", createdDate=" + createdDate +
                 '}';
     }
 }
