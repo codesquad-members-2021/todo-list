@@ -71,4 +71,13 @@ public class ColumnService {
         column.removeCard(cardId);
         columnRepository.save(column);
     }
+
+    public CardInfo updateCard(Long columnId, Long cardId, UpdateCardParameter updateCardInfo) {
+        Column column = columnRepository.findById(columnId).orElseThrow(() -> new RuntimeException("Not Found"));
+        column.checkCardByPreviousId(updateCardInfo.getPreviousCardId(), cardId);
+        Card oldCard = cardRepository.findById(cardId).orElseThrow(() -> new RuntimeException("Not Found"));
+        oldCard.update(Card.of(updateCardInfo.getTitle(), updateCardInfo.getBody()));
+        cardRepository.save(oldCard);
+        return new CardInfo(columnId, cardId, updateCardInfo.getPreviousCardId(), updateCardInfo.getTitle(), updateCardInfo.getBody());
+    }
 }

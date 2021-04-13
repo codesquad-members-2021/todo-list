@@ -2,6 +2,8 @@ package com.team13.todolist.controller;
 
 import com.team13.todolist.model.AddCardParameter;
 import com.team13.todolist.model.Card;
+import com.team13.todolist.model.CardInfo;
+import com.team13.todolist.model.UpdateCardParameter;
 import com.team13.todolist.service.ColumnService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,6 +47,15 @@ public class ColumnController {
     ) {
         columnService.removeCard(columnId, cardId);
         return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/{columnId}/cards/{cardId}")
+    public ResponseEntity<?> updateCard(
+            @PathVariable("columnId") Long columnId,
+            @PathVariable("cardId") Long cardId,
+            @RequestBody UpdateCardParameter updateCardInfo
+            ) {
+        return ResponseEntity.ok(responseBody("card", columnService.updateCard(columnId, cardId, updateCardInfo)));
     }
 
     private Map<String, Object> responseBody(String rootName, Object body) {

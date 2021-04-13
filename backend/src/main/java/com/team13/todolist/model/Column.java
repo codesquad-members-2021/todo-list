@@ -76,4 +76,11 @@ public class Column {
             throw new RuntimeException("Not Found");
         }
     }
+
+    public void checkCardByPreviousId(Long previousCardId, Long cardId) {
+        CardRef cardRef = cards.get(previousCardId);
+        if (cardRef == null || !cardId.equals(cardRef.getCardId())) {
+            throw new RuntimeException("Not Found");
+        }
+    }
 }
