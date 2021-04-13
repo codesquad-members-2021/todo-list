@@ -20,7 +20,8 @@ const NoteInfoStyle = styled.div`
     margin-right: 1rem;
 `;
 
-const Note = () => {
+const Note = ({ noteList }) => {
+    console.log("노트안의 노트리스트", noteList);
     return (
         <NoteStyle>
             <NoteProfilePic/>
