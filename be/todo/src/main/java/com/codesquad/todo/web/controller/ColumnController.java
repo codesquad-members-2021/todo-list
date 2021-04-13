@@ -1,8 +1,7 @@
 package com.codesquad.todo.web.controller;
 
 import com.codesquad.todo.web.domain.User;
-import com.codesquad.todo.web.domain.UserRepository;
-import com.codesquad.todo.web.exceptions.UserNotFoundException;
+import com.codesquad.todo.web.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,16 +14,16 @@ import java.util.Map;
 @RequestMapping("/api/columns")
 public class ColumnController {
 
-    private final UserRepository userRepository;
+    private final UserService userService;
 
-    public ColumnController(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public ColumnController(UserService userService) {
+        this.userService = userService;
     }
 
     @GetMapping
     public ResponseEntity<Map<String, Object>> showColumnList() {
         Map<String, Object> responseMap = new HashMap<>();
-        User user = userRepository.findById(1L).orElseThrow(UserNotFoundException::new);
+        User user = userService.findUser(1L);
         responseMap.put("columns", user.getColumnList());
         return ResponseEntity.ok(responseMap);
     }
