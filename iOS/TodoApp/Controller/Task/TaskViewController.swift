@@ -23,7 +23,7 @@ class TaskViewController: UIViewController {
             }
         }
     }
-    private func updateTaskCountLabel() {
+    func updateTaskCountLabel() {
         let count = taskStackManager.arrayCount()
         taskCountLabel.text = "\(count[column!])"
         taskTableView.reloadData()
@@ -61,13 +61,14 @@ extension TaskViewController {
 extension TaskViewController {
     func addNotificationObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(insertTask(_:)), name: .addTask, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(drawTaskCard(_:)), name: .setupTask, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(drawTaskCard(_:)), name: .requestSetupTask, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(sendRemovedData(_:)), name: .requestRemoveTask, object: nil)
     }
     
     @objc func drawTaskCard(_ notification: Notification) {
         let card = notification.userInfo?["taskCard"] as! TaskCard
         let status = card.status
-        taskStackManager.tasks[status].append(taskCard: card)
+        taskStackManager.append(status, taskCard: card)
         updateTaskCountLabel()
     }
     
@@ -75,10 +76,16 @@ extension TaskViewController {
         let (status, title, content) = (notification.userInfo?["column"] as? Int ?? 0,
                                         notification.userInfo?["title"] as? String ?? "",
                                         notification.userInfo?["content"] as? String ?? "")
-        let id = taskStackManager.totalCount()
-        let card = TaskCard(id: id, title: title, content: content, createdTime: Date(), status: status, author: "user1")
-        taskStackManager.tasks[status].append(taskCard: card)
+        let id = taskStackManager.totalCount() + 1
+        let card = TaskCard(id: id, title: title, content: content, createdTime: "\(Date())", status: status, author: "user1")
+        taskStackManager.append(status, taskCard: card)
         updateTaskCountLabel()
+        NetworkManager.insertedDataPost(httpMethod: HTTPMethod.post, data: card)
+    }
+    
+    @objc func sendRemovedData(_ notification: Notification) {
+        let removedData = notification.userInfo?["removedData"] as! TaskCard
+        NetworkManager.changedDataPost(httpMethod: HTTPMethod.delete, data: removedData)
     }
 }
 

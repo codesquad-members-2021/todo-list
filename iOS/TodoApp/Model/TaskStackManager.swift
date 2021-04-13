@@ -27,14 +27,11 @@ class TaskStackManager {
     
     func insert(_ status: Int, _ taskCard: TaskCard, at index: Int) {
         tasks[status].insert(taskCard, at: index)
-        NotificationCenter.default.post(name: .addTaskCard, object: self, userInfo: ["addData":taskCard])
-        NetworkManager.updateData()
     }
     
     func remove(_ status: Int, at index: Int) {
         let removedData = tasks[status].remove(at: index)
-        NotificationCenter.default.post(name: .removeTask, object: self, userInfo: ["removedData":removedData])
-        NetworkManager.updateData()
+        NotificationCenter.default.post(name: .requestRemoveTask, object: self, userInfo: ["removedData":removedData])
     }
     
     func arrayCount() -> [Int] {

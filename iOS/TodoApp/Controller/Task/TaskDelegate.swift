@@ -8,6 +8,7 @@ extension TaskViewController: UITableViewDelegate {
             taskStackManager.remove(column!, at: indexPath.row)
             // delete the table view row
             tableView.deleteRows(at: [indexPath], with: .fade)
+            updateTaskCountLabel()
         }
     }
 }

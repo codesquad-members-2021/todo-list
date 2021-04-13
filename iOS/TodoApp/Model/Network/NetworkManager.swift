@@ -54,12 +54,12 @@ class NetworkManager {
                     let id = task["id"] as! Int
                     let title = task["title"] as! String
                     let content = task["description"] as! String
-                    let createdTime = task["createdTime"] as! Date
+                    let createdAt = task["createdAt"] as! String
                     let status = task["status"] as! Int - 1
                     let author = task["author"] as! String
                     
-                    let taskCard = TaskCard(id: "\(id)", title: title, content: content, createdTime: createdTime, status: status, author: author)
-                    NotificationCenter.default.post(name: .setupTask, object: self, userInfo: ["taskCard": taskCard])
+                    let taskCard = TaskCard(id: id, title: title, content: content, createdTime: createdAt, status: status, author: author)
+                    NotificationCenter.default.post(name: .requestSetupTask, object: self, userInfo: ["taskCard": taskCard])
                 })
             } catch let error as NSError {
                 print(error.localizedDescription)
@@ -67,17 +67,9 @@ class NetworkManager {
         }
     }
     
-    static func updateData() {
-        NotificationCenter.default.addObserver(self, selector: #selector(sendRemovedData(_:)), name: .removeTask, object: nil)
-    }
-    
-    @objc func sendRemovedData(_ notification: Notification) {
-        let removedData = notification.userInfo?["removedData"] as! TaskCard
-        NetworkManager.dataPost(httpMethod: HTTPMethod.delete, data: removedData)
-    }
-    
-    static func dataPost(httpMethod: String, data: TaskCard) {
-        let url = URL(string: "http://3.36.217.168:8080/works/{id}")
+    static func changedDataPost(httpMethod: String, data: TaskCard) {
+        let id = data.id
+        let url = URL(string: "http://3.36.217.168:8080/works/\(id)")
         let body = try? JSONEncoder().encode(data)
         var request = URLRequest(url: url!)
         request.httpMethod = httpMethod
@@ -85,7 +77,22 @@ class NetworkManager {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            print(response)
+            if let error = error {
+                print(error)
+                return
+            }
+        }
+        task.resume()
+    }
+    static func insertedDataPost(httpMethod: String, data: TaskCard) {
+        let url = URL(string: "http://3.36.217.168:8080/works")
+        let body = try? JSONEncoder().encode(data)
+        var request = URLRequest(url: url!)
+        request.httpMethod = httpMethod
+        request.httpBody = body
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 print(error)
                 return

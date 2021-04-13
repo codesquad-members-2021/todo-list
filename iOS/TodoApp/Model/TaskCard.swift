@@ -5,7 +5,7 @@ struct TaskCard: Codable {
     var id: Int
     var title: String
     var content: String
-    var createdTime: Date
+    var createdTime: String
     var status: Int
     var author: String
 }
