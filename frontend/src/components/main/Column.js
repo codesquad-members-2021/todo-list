@@ -52,7 +52,7 @@ const Column = ({ title, cardList, plusEvent }) => {
         <ColumnWrapper>
             <ColumnHeader>
                 <ColumnHeaderTitle>{title}</ColumnHeaderTitle>
-                <ColumnHeaderCount>{cardList && cardList.length}</ColumnHeaderCount>
+                <ColumnHeaderCount>{cardList?.length}</ColumnHeaderCount>
                 <ColumnHeaderButtons>
                     <ColumnPlusButton onClick={plusEvent} />
                     <ColumnDeleteButton />

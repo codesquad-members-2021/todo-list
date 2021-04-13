@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Header from '../../components/header/Header';
 import Activity from '../../components/header/Activity';
 
-const HeaderContainer = (/* {...props} */) => {
+const HeaderContainer = () => {
     const [activityHide, setActivityHide] = useState(true);
     const [activityDatas, setActivityDatas] = useState([
         {
@@ -18,21 +18,6 @@ const HeaderContainer = (/* {...props} */) => {
                 '해야할 일에 HTML/CSS공부하기를 등록하였습니다.',
         },
     ]);
-
-    /*
-    useEffect(() => {
-        // 추후 데이터처리..
-        const logTemp = {
-            id,
-            author: `seong ${id}`,
-            content:
-                '해야할 일에 HTML/CSS공부하기를 등록하였습니다.',
-        };
-        console.log(id);
-        setLogDatas(logDatas.concat(logTemp));
-
-    }, [id, logDatas]);
-    */
 
     const onClickForLogVisible = ({ target }) => {
         const closestMenuBtn = target.closest('button');

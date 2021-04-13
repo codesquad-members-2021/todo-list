@@ -18,7 +18,6 @@ const App = () => {
         <StyledAppWrapper>
             <HeaderContainer />
             <MainContainer />
-            {/* <Column title="Column title" list={list} /> */}
         </StyledAppWrapper>
     );
 };
