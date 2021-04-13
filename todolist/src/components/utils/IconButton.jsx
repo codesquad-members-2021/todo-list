@@ -21,6 +21,7 @@ const StyledButton = styled.button`
       `;
   }}
 `;
+
 export default function IconButton({ cb, type, size }) {
   return (
     <StyledButton size={size} onClick={cb}>
