@@ -2,20 +2,7 @@ import React, { useState } from "react";
 import ColumnContainer from '../column/ColumnContainer';
 import Main from "../../components/main/Main";
 
-const MainContainer = ({ /* ...props */ }) => {
-    // const [list, setList] = useState([
-    //     {
-    //         title: '대충제목',
-    //         body: '대충내용',
-    //         author: 'web',
-    //     },
-    //     {
-    //         title: '제목',
-    //         body: '대충ㅇㅇㅇㅇㅇㅇㅇㅇㅇ내용',
-    //         author: 'web',
-    //     },
-    // ]);
-
+const MainContainer = () => {
     const [columnData, setColumnData] = useState([
         {
             title: "대충 칼럼 제목 1 (성 천재)",
@@ -69,9 +56,6 @@ const MainContainer = ({ /* ...props */ }) => {
 
     return (
         <Main>{columns}</Main>
-        // 
-        // <ColumnContainer title="Column title" list={list} />
-        // <ColumnContainer title="Column title" list={list} />
     );
 };
 

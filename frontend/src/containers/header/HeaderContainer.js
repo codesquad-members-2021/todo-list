@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import Header from '../../components/header/Header';
-import Activity from '../../components/header/Activity';
+import React, { useState } from 'react';
+import HeaderTemplate from '../../components/header/HeaderTemplate';
 
 const HeaderContainer = (/* {...props} */) => {
     const [activityHide, setActivityHide] = useState(true);
-    const [activityDatas, setActivityDatas] = useState([
+    const [activityDatas] = useState([
         {
             id: 1,
             author: 'sam',
@@ -19,21 +18,6 @@ const HeaderContainer = (/* {...props} */) => {
         },
     ]);
 
-    /*
-    useEffect(() => {
-        // 추후 데이터처리..
-        const logTemp = {
-            id,
-            author: `seong ${id}`,
-            content:
-                '해야할 일에 HTML/CSS공부하기를 등록하였습니다.',
-        };
-        console.log(id);
-        setLogDatas(logDatas.concat(logTemp));
-
-    }, [id, logDatas]);
-    */
-
     const onClickForLogVisible = ({ target }) => {
         const closestMenuBtn = target.closest('button');
         if (!closestMenuBtn) return;
@@ -41,17 +25,12 @@ const HeaderContainer = (/* {...props} */) => {
     };
 
     return (
-        <>
-            <Header
-                title={'TO-DO LIST'}
-                onClickForLogVisible={onClickForLogVisible}
-            />
-            <Activity
-                activityHide={activityHide}
-                activityDatas={activityDatas}
-                onClickForLogVisible={onClickForLogVisible}
-            />
-        </>
+        <HeaderTemplate
+            title={'TO-DO LIST'}
+            onClickForLogVisible={onClickForLogVisible}
+            activityHide={activityHide}
+            activityDatas={activityDatas}
+        />
     );
 };
 
