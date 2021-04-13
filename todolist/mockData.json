@@ -12,58 +12,54 @@
     "Beemo",
     "Json"
   ],
-
   "column": [
     {
       "id": 1,
       "columnTitle": "해야할 일",
       "cards": [
         {
-          "id": "card_1",
           "cardTitle": "js공부",
-          "cardContents": ["this공부", "closure공부", "재귀공부"]
+          "cardContents": "this공부\nclosure공부\n재귀공부"
         },
         {
-          "id": "card_2",
           "cardTitle": "git공부",
-          "cardContents": ["merge공부", "push공부", "pull공부"]
+          "cardContents": "merge공부\npush공부\npull공부"
+        },
+        {
+          "cardTitle": "test",
+          "cardContents": "test1\ntest2\ntest3"
         }
       ]
     },
     {
-      "id": 2,
       "columnTitle": "하고있는 일",
       "cards": [
         {
-          "id": "card_1",
           "cardTitle": "react공부",
-          "cardContents": ["useState공부", "useEffect공부", "hooks공부"]
+          "cardContents": "useState공부\nuseEffect공부\nhooks공부"
         }
-      ]
+      ],
+      "id": 2
     },
     {
       "id": 3,
       "columnTitle": "완료한 일",
       "cards": [
         {
-          "id": "card_1",
           "cardTitle": "js공부",
-          "cardContents": ["this공부", "closure공부", "재귀공부"]
+          "cardContents": "this공부\nclosure공부\n재귀공부"
         },
         {
-          "id": "card_2",
           "cardTitle": "git공부",
-          "cardContents": ["merge공부", "push공부", "pull공부"]
+          "cardContents": "merge공부\npush공부\npull공부"
         },
         {
-          "id": "card_3",
           "cardTitle": "react공부",
-          "cardContents": ["useState공부", "useEffect공부", "hooks공부"]
+          "cardContents": "useState공부\nuseEffect공부\nhooks공부"
         }
       ]
     }
   ],
-
   "log": [
     {
       "id": 1,

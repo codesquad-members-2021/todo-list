@@ -3,23 +3,22 @@ import ModifyCard from "./modifyCard/modifyCard.jsx";
 import StaticCard from "./staticCard/staticCard.jsx";
 // import DeleteModal from "./deleteModal/deleteModal.jsx";
 
-const ColumnBody = ({ modifyCardFlag, columnTitle, cards, user }) => {
+const ColumnBody = (props) => {
   let modifyCard;
-  console.log(columnTitle);
 
-  modifyCardFlag
-    ? (modifyCard = <ModifyCard cardTitle={cards.title} />)
+  props.modifyCardFlag
+    ? (modifyCard = <ModifyCard props={props} />)
     : (modifyCard = null);
 
   return (
     <>
       {modifyCard}
-      {cards.map(({ cardTitle, cardContents }, index) => (
+      {props.cards.map(({ cardTitle, cardContents }, index) => (
         <StaticCard
           key={index}
           cardTitle={cardTitle}
           cardContents={cardContents}
-          user={user}
+          user={props.user}
         />
       ))}
     </>

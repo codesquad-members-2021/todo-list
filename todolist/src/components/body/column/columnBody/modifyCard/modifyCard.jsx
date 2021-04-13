@@ -1,31 +1,34 @@
-import React, { useState } from "react";
+import React from "react";
 import InputTitle from "./inputTitle.jsx";
 import InputContents from "./inputContents.jsx";
 import ModifyCardCancelButton from "./modifyCardCancelButton.jsx";
 import RegistButton from "./registButton.jsx";
-import { postData } from "../../../../../utils/axios.js";
+import ButtonWrapper from "./buttonWrapper.style.jsx";
+import ModifyCardDiv from "./modifyCard.style.jsx";
 
-const ModifyCard = () => {
-  const [buttonFlag, setButtonFlag] = useState(true);
-
-  const handleButtonFlag = ({ target: { value } }) => {
-    setButtonFlag(false);
-  };
-
-  const postCardData = ({ target }) => {
-    // const url = `http://localhost:3002/column?columnTitle=${"ds"}`;
-    // postData();
-    // console.log("posted!");
-    console.log(target.parentNode.parentNode.parentNode);
-  };
-
+const ModifyCard = ({ props }) => {
   return (
-    <div className="modify-card">
-      <InputTitle handleButtonFlag={handleButtonFlag} />
-      <InputContents handleButtonFlag={handleButtonFlag} />
-      <ModifyCardCancelButton />
-      <RegistButton postCardData={postCardData} buttonFlag={buttonFlag} />
-    </div>
+    <ModifyCardDiv className="modify-card">
+      <InputTitle
+        handleChangeTItle={props.handleChangeTItle}
+        handleButtonFlag={props.handleButtonFlag}
+      />
+      <InputContents
+        handleChangeContents={props.handleChangeContents}
+        handleButtonFlag={props.handleButtonFlag}
+      />
+      <ButtonWrapper>
+        <ModifyCardCancelButton
+          id={props.id}
+          handleAddButtonClick={props.handleAddButtonClick}
+        />
+        <RegistButton
+          id={props.id}
+          buttonFlag={props.buttonFlag}
+          postCardData={props.postCardData}
+        />
+      </ButtonWrapper>
+    </ModifyCardDiv>
   );
 };
 
