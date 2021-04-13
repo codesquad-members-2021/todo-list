@@ -1,15 +1,10 @@
 package com.codesquad.todo.web.config;
 
-import com.codesquad.todo.web.domain.Column;
-import com.codesquad.todo.web.domain.User;
-import com.codesquad.todo.web.domain.UserRepository;
+import com.codesquad.todo.web.domain.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Component
 public class MyCommandLineRunner implements CommandLineRunner {
@@ -23,20 +18,18 @@ public class MyCommandLineRunner implements CommandLineRunner {
     @Override
     public void run(String... args) {
         logger.debug("MyCommandLineRunner called!");
-        User user = createUser();
+        createUser();
+
+    }
+
+    private void createUser() {
+        User user = createTestData();
         userRepository.save(user);
     }
 
-    private User createUser() {
+    private User createTestData() {
         User user = new User("asdf", "asdf", "1234", "image");
-        for (Column column : createColumnList()) {
-            user.addColumn(column);
-        }
-        return user;
-    }
 
-    private List<Column> createColumnList() {
-        List<Column> columnList = new ArrayList<>();
         Column todoColumn = new Column("TODO");
         todoColumn.addTask("title1", "content1");
         todoColumn.addTask("title2", "content2");
@@ -49,11 +42,17 @@ public class MyCommandLineRunner implements CommandLineRunner {
 
         Column doneColumn = new Column("DONE");
         doneColumn.addTask("title7", "content7");
-        doneColumn.addTask("title8", "content8");
+        Task task = new Task("title8", "content8");
+        doneColumn.addTask(task);
 
-        columnList.add(todoColumn);
-        columnList.add(inProgressColumn);
-        columnList.add(doneColumn);
-        return columnList;
+        user.addColumn(todoColumn);
+        user.addColumn(inProgressColumn);
+        user.addColumn(doneColumn);
+
+        user.addTodoLog(TodoLog.buildCreateTodoLog(todoColumn.getColumnTitle(), task.getTaskTitle()));
+        user.addTodoLog(TodoLog.buildRemoveTodoLog(todoColumn.getColumnTitle(), task.getTaskTitle()));
+        user.addTodoLog(TodoLog.buildCreateTodoLog(todoColumn.getColumnTitle(), task.getTaskTitle()));
+        user.addTodoLog(TodoLog.buildMoveTodoLog(doneColumn.getColumnTitle(), todoColumn.getColumnTitle(), task.getTaskTitle()));
+        return user;
     }
 }
