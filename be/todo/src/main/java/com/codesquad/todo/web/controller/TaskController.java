@@ -49,4 +49,12 @@ public class TaskController {
         taskRepository.save(foundTask);
     }
 
+    @PutMapping("/{taskId}/move")
+    public void moveTask(@PathVariable Long columnId, @PathVariable Long taskId,
+                         Long nextColumnId, int newTaskPosition) {
+        User user = userRepository.findById(1L).orElseThrow(UserNotFoundException::new);
+        user.moveTask(columnId, nextColumnId, taskId, newTaskPosition);
+        userRepository.save(user);
+    }
+
 }
