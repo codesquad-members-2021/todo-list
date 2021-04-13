@@ -15,22 +15,54 @@ class MainViewController: UIViewController {
     private let doingDataSource = DoingDataSource()
     private let doneDataSource = DoneDataSource()
     
+    private let doDelegate = DoDelegate()
+    private let doingDelegate = DoingDelegate()
+    private let doneDelegate = DoneDelegate()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         activityTrailingConstraint.constant -= activityView.frame.width
+        setDelegateHandler()
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    func setDelegateHandler() {
+        guard let storyboard = storyboard else { return }
         
+        doDelegate.handler = { title, contents in
+            guard let vc = Router.shared.route(storyboard, title: title, contents: contents) else {
+                return
+            }
+            self.present(vc, animated: true, completion: nil)
+        }
+        
+        doingDelegate.handler = { title, contents in
+            guard let vc = Router.shared.route(storyboard, title: title, contents: contents) else {
+                return
+            }
+            self.present(vc, animated: true, completion: nil)
+        }
+        
+        doneDelegate.handler = { title, contents in
+            guard let vc = Router.shared.route(storyboard, title: title, contents: contents) else {
+                return
+            }
+            self.present(vc, animated: true, completion: nil)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let vc = segue.destination as? TaskViewController else { return }
         switch segue.identifier {
         case "ToDo":
             vc.dataSource = doDataSource
+            vc.delegate = doDelegate
         case "Doing":
             vc.dataSource = doingDataSource
+            vc.delegate = doingDelegate
         case "Done":
             vc.dataSource = doneDataSource
+            vc.delegate = doneDelegate
         default:
             print("break")
             break

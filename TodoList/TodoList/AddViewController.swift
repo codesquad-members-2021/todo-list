@@ -70,7 +70,7 @@ class AddViewController: UIViewController {
         guard let data = encodeTask() else {
             return
         }
-        DoingUseCase().postTask(body: data) { (result) in
+        UseCase().postTask(body: data) { (result) in
         }
     }
     

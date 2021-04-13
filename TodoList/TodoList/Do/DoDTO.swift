@@ -8,6 +8,8 @@
 import Foundation
 
 class DoDTO {
+    static let shared = DoDTO()
+    
     private var tasks: [Task]
     
     init() {
