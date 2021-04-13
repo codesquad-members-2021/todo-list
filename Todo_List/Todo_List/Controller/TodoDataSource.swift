@@ -45,6 +45,12 @@ class TodoDataSource: NSObject, UITableViewDataSource {
         self.todoCards.removeCard(at: sourceIndexPath)
         self.todoCards.insertCard(item: cell, at: destinationIndexPath)
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            
+        }
+    }
 }
 
 
