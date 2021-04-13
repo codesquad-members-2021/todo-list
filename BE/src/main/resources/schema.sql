@@ -30,14 +30,14 @@ DROP TABLE IF EXISTS `todolist`.`work`;
 CREATE TABLE IF NOT EXISTS `todolist`.`work` (
     `id` INT AUTO_INCREMENT,
     `title` VARCHAR(255) NOT NULL,
-    `description` VARCHAR(255) NOT NULL,
-    `created_time` DATETIME NOT NULL,
+    `content` VARCHAR(255) NOT NULL,
+    `created_at` DATETIME NOT NULL,
     `status` INT NOT NULL,
-    `author` INT NOT NULL,
+    `author_id` INT NOT NULL,
     PRIMARY KEY (`id`),
-    INDEX `fk_work_user_idx` (`author` ASC) VISIBLE,
+    INDEX `fk_work_user_idx` (`author_id` ASC) VISIBLE,
     CONSTRAINT `fk_work_user`
-    FOREIGN KEY (`author`)
+    FOREIGN KEY (`author_id`)
     REFERENCES `todolist`.`user` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
@@ -48,13 +48,13 @@ CREATE TABLE IF NOT EXISTS `todolist`.`work` (
 DROP TABLE IF EXISTS `todolist`.`timeline`;
 CREATE TABLE IF NOT EXISTS `todolist`.`timeline` (
     `id` INT AUTO_INCREMENT,
-    `description` VARCHAR(255) NOT NULL,
-    `created_time` DATETIME NOT NULL,
-    `author` INT NOT NULL,
+    `content` VARCHAR(255) NOT NULL,
+    `created_at` DATETIME NOT NULL,
+    `author_id` INT NOT NULL,
     PRIMARY KEY (`id`),
-    INDEX `fk_timeline_user_idx` (`author` ASC) VISIBLE,
+    INDEX `fk_timeline_user_idx` (`author_id` ASC) VISIBLE,
     CONSTRAINT `fk_timeline_user`
-    FOREIGN KEY (`author`)
+    FOREIGN KEY (`author_id`)
     REFERENCES `todolist`.`user` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)

@@ -11,11 +11,13 @@ import com.example.todolist.exception.IllegalUserAccessException;
 import com.example.todolist.web.dto.*;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.example.todolist.web.utils.TimelineDescription.makeTimelineDescription;
-import static com.example.todolist.web.utils.TimelineDescription.moveDescription;
+import static com.example.todolist.web.dto.ResponseWorkDto.buildResponseWorkDto;
+import static com.example.todolist.web.utils.TimelineContent.makeTimelineContent;
+import static com.example.todolist.web.utils.TimelineContent.moveContent;
 
 @Service
 public class WorkService {
@@ -29,9 +31,9 @@ public class WorkService {
     }
 
     public List<ResponseWorkDto> getWorks(User sessionUser) {
-        return workRepository.findAllByAuthor(sessionUser.getId()).stream()
+        return workRepository.findAllByAuthorId(sessionUser.getId()).stream()
                 .filter(Work::isNotDeleted)
-                .map(work -> new ResponseWorkDto(work, sessionUser))
+                .map(work -> buildResponseWorkDto(work, sessionUser))
                 .collect(Collectors.toList());
     }
 
@@ -39,22 +41,22 @@ public class WorkService {
         Work work = workDto.toEntity();
         work.save(sessionUser);
         Work saveWork = workRepository.save(work);
-        saveTimeline(work, makeTimelineDescription(work, "save"));
-        return new ResponseWorkDto(saveWork, sessionUser);
+        saveTimeline(work, makeTimelineContent(work, "save"));
+        return buildResponseWorkDto(saveWork, sessionUser);
     }
 
     public ResponseWorkDto update(Long id, RequestUpdateWorkDto workDto, User sessionUser) {
         Work work = verifyWork(id, sessionUser);
         work.update(workDto.toEntity());
         workRepository.save(work);
-        saveTimeline(work, makeTimelineDescription(work, "update"));
-        return new ResponseWorkDto(work, sessionUser);
+        saveTimeline(work, makeTimelineContent(work, "update"));
+        return buildResponseWorkDto(work, sessionUser);
     }
 
     public void delete(Long id, User sessionUser) {
         Work work = verifyWork(id, sessionUser);
         work.delete();
-        saveTimeline(work, makeTimelineDescription(work, "delete"));
+        saveTimeline(work, makeTimelineContent(work, "delete"));
         workRepository.save(work);
     }
 
@@ -62,12 +64,16 @@ public class WorkService {
         Work work = verifyWork(id, sessionUser);
         work.move(workDto.toEntity());
         workRepository.save(work);
-        saveTimeline(work, moveDescription(work, workDto));
-        return new ResponseWorkDto(work, sessionUser);
+        saveTimeline(work, moveContent(work, workDto));
+        return buildResponseWorkDto(work, sessionUser);
     }
 
-    public void saveTimeline(Work work, String description) {
-        timelineRepository.save(new Timeline(description, work.getAuthor()));
+    public void saveTimeline(Work work, String content) {
+        timelineRepository.save(Timeline.builder()
+                .content(content)
+                .authorId(work.getAuthorId())
+                .createdAt(LocalDateTime.now())
+                .build());
     }
 
     private Work verifyWork(Long id, User sessionUser) {
