@@ -4,17 +4,14 @@
             "color": "#333",
             "bg_color": "#ffffff",
             "title": "해야 할 일",
-            "state": 1,
             "todoItems": [
                 {
                     "title": "설계하기",
-                    "content": "스키마 및 모델링 토론",
-                    "state": 1
+                    "content": "스키마 및 모델링 토론"
                 },
                 {
                     "title": "정리하기",
-                    "content": "Wiki 사용!",
-                    "state": 1
+                    "content": "Wiki 사용!"
                 }
             ]
         },
@@ -22,7 +19,6 @@
             "color": "#333",
             "bg_color": "red",
             "title": "first todo",
-            "state": "3",
             "todoItems": []
         }
     ],
