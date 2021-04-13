@@ -1,5 +1,6 @@
 package com.codeSquad.cocokyu.domain;
 
+import com.codeSquad.cocokyu.domain.dto.CardDto;
 import com.codeSquad.cocokyu.domain.dto.CardList;
 import com.codeSquad.cocokyu.domain.dto.LogList;
 import com.codeSquad.cocokyu.domain.model.Card;
@@ -30,15 +31,16 @@ public class CardController {
     }
 
     @PostMapping("/todos")
-    public String create(@Valid Card card) {
+    public String create(@RequestBody @Valid CardDto cardDto) {
+        Card card = new Card(cardDto);
         cardService.write(card);
         //TODO : Response 객체 생성
         return "success";
     }
 
     @PutMapping("/todos/{id}")
-    public String update(@PathVariable Long id, @Valid Card updateCard) {
-        cardService.modify(id, updateCard);
+    public String update(@PathVariable Long id, @RequestBody @Valid CardDto cardDto) {
+        cardService.modify(id, cardDto);
         return "success";
     }
 

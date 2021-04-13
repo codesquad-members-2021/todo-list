@@ -1,5 +1,6 @@
 package com.codeSquad.cocokyu.domain;
 
+import com.codeSquad.cocokyu.domain.dto.CardDto;
 import com.codeSquad.cocokyu.domain.dto.CardList;
 import com.codeSquad.cocokyu.domain.dto.LogList;
 import com.codeSquad.cocokyu.domain.model.Card;
@@ -41,9 +42,9 @@ public class CardService {
     }
 
     @Transactional
-    public void modify(Long id, Card updateCard) {
+    public void modify(Long id, CardDto updateCardDto) {
         Card card = findById(id);
-        card.modify(updateCard);
+        card.modify(updateCardDto);
         cardRepository.save(card);
     }
 
