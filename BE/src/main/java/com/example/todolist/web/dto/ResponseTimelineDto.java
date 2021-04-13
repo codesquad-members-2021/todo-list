@@ -2,14 +2,18 @@ package com.example.todolist.web.dto;
 
 import com.example.todolist.domain.timeline.Timeline;
 import com.example.todolist.domain.user.User;
+import lombok.Getter;
+import lombok.ToString;
 
 import java.time.LocalDateTime;
 
+@ToString
+@Getter
 public class ResponseTimelineDto {
 
     private Long id;
 
-    private String description;
+    private String content;
 
     private LocalDateTime createdAt;
 
@@ -19,35 +23,9 @@ public class ResponseTimelineDto {
 
     public ResponseTimelineDto(Timeline timeline, User user) {
         this.id = timeline.getId();
-        this.description = timeline.getDescription();
+        this.content = timeline.getContent();
         this.createdAt = timeline.getCreatedAt();
         this.author = user.getUserId();
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    @Override
-    public String toString() {
-        return "ResponseTimelineDto{" +
-                "id=" + id +
-                ", description='" + description + '\'' +
-                ", createdAt=" + createdAt +
-                ", author='" + author + '\'' +
-                '}';
     }
 
 }
