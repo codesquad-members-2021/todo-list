@@ -2,15 +2,11 @@ import { useState } from 'react';
 import CardLists from './CardLists';
 import Form from './Form';
 import styled from 'styled-components';
-import Icon from '../atoms/ColumnHeaderIcons';
+import Icon from '../atoms/Icons';
 
 const Column = ({ data: { columns } }) => {
   const [columnData, setColumnData] = useState(columns);
   const [currentID, setCurrentID] = useState(null);
-  const [inputs, setInputs] = useState({
-    title: '',
-    content: '',
-  });
 
   const handleClick = (clickedID) => {
     return () => {
@@ -35,11 +31,9 @@ const Column = ({ data: { columns } }) => {
     setCurrentID(null);
   };
 
-  const onChange = ({ target }) => {
-    setInputs({
-      ...inputs,
-      [target.name]: target.value,
-    });
+  const checkInputValue = ({ title, content }, callbackSetInput) => {
+    if (title.length > 0 || content.length > 0) callbackSetInput(true);
+    else callbackSetInput(false);
   };
 
   const columnList = columnData.map((column) => {
@@ -68,12 +62,10 @@ const Column = ({ data: { columns } }) => {
                 addCard={addCard}
                 offDisplay={offDisplay}
                 column={column}
-                onChange={onChange}
-                inputs={inputs}
-                setInputs={setInputs}
+                checkInputValue={checkInputValue}
               />
             )}
-            <CardLists cards={cards} />
+            <CardLists cards={cards} checkInputValue={checkInputValue} />
           </div>
         </ul>
       </section>
