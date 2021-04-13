@@ -3,9 +3,11 @@ import EmojiStyle from './emoji.style';
 
 const Emoji = ({ emoji }) => {
   return (
-    <EmojiStyle className="emoji-section">
-      <span className="emoji">{emoji}</span>
-    </EmojiStyle>
+    <div className="emoji-section">
+      <EmojiStyle className="emoji">
+        {emoji}
+      </EmojiStyle>
+    </div>
   );
 };
 

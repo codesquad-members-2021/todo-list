@@ -3,13 +3,13 @@ import HeaderTitle from './headerTitle.jsx';
 import ShowLogButton from './showLogButton.jsx';
 import styles from './header.module.css';
 
-const Header = () => {
+const Header = ({renderLoghandler}) => {
   return (
     <section className="header">
-      <div className={styles.headerContainer}>
-        <HeaderTitle />
-        <ShowLogButton />
-      </div>
+      <HeaderStyle className={styles.headerContainer}>
+        <HeaderTitle  />
+        <ShowLogButton renderLoghandler={renderLoghandler} />
+      </HeaderStyle>
     </section>
   );
 };

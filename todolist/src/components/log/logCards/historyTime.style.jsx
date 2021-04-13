@@ -10,7 +10,9 @@ const HistoryTimeStyle = styled.div`
 
   color: #828282;
 
-  margin: 8px 0px;
+  flex: none;
+  order: 2;
+  flex-grow: 0;
 `;
 
 export default HistoryTimeStyle;

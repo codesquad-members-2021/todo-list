@@ -5,34 +5,26 @@ import { getData } from '../../utils/axios.js';
 import LogStyle from './log.style';
 import LogCardsWrapper from './logCardsWrapper.style';
 
-const Log = () => {
+const Log = ( { handleLogRender }) => {
   const [logCards, setLogCards] = useState([]);
-  const [time, setTime] = useState();
 
   const getLogData = () => {
     getData('http://localhost:3002/log') //
       .then(res => setLogCards(res.data));
   };
 
-  const getDate = () => {
-    const today = new Date();
-    const time = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()} ${today.getHours()}:${today.getMinutes()}`;
-    setTime(time);
-  };
-
   useEffect(() => {
     getLogData();
-    getDate();
   }, []);
 
   return (
     <LogStyle className="log">
-      <LogHeader />
-      <LogCardsWrapper>
-        {logCards.map((logData, index) => (
-          <LogCards key={index} logData={logData} time={time} />
-        ))}
-      </LogCardsWrapper>
+      <LogHeader handleLogRender={ handleLogRender } />
+        <LogCardsWrapper>
+      {logCards.map((logData, index) => (
+        <LogCards key={index} logData={logData} />
+      ))}
+        </LogCardsWrapper>
     </LogStyle>
   );
 };

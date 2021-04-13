@@ -10,7 +10,9 @@ const LogContentsStyle = styled.div`
 
   color: #010101;
 
-  margin: 8px 0px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
 `;
 
 export default LogContentsStyle;
