@@ -10,6 +10,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 @RestController
 @RequestMapping("/verticals/{verticalId}/todos")
 public class TodoController {
@@ -29,9 +35,12 @@ public class TodoController {
         Gson gson = new Gson();
         JsonParser parser = new JsonParser();
 
+        Map<String, List<Todo>> response = new HashMap<>();
+        response.put("todos", vertical.getTodos());
+
         JsonObject object = new JsonObject();
         object.addProperty("status", "success");
-        object.add("todos", parser.parse(gson.toJson(vertical.getTodos())));
+        object.add("data", parser.parse(gson.toJson(response)));
 
         return gson.toJson(object);
     }

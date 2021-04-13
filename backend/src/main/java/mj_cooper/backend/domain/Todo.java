@@ -11,6 +11,7 @@ public class Todo {
     private Long id;
     private int vertical;
     private String title;
+    private String contents;
 
     public Todo() {
     }
@@ -27,12 +28,20 @@ public class Todo {
         return title;
     }
 
+    public String getContents() {
+        return contents;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public void setContents(String contents) {
+        this.contents = contents;
     }
 
     @Override

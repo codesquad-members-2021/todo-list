@@ -7,7 +7,8 @@ CREATE TABLE IF NOT EXISTS todo(
     id int auto_increment primary key,
     vertical int references vertical(id),
     vertical_key int,
-    title varchar(64)
+    title varchar(64),
+    contents longtext
 );
 
 CREATE TABLE IF NOT EXISTS vertical(
