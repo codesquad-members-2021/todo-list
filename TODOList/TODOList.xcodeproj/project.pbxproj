@@ -28,8 +28,8 @@
 		22AE4A7A261D847B0081AA19 /* AppearViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AE4A79261D847B0081AA19 /* AppearViewModel.swift */; };
 		22AE4A82261D97CF0081AA19 /* Obserable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AE4A81261D97CF0081AA19 /* Obserable.swift */; };
 		22B0CD96262421770080950B /* CardFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B0CD95262421770080950B /* CardFactory.swift */; };
-		22B205692621193F001F7200 /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B205682621193F001F7200 /* HistoryCell.swift */; };
-		22B205742621E63B001F7200 /* HistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22B205732621E63A001F7200 /* HistoryCell.xib */; };
+		22B3D8A826256057000CDAF2 /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B3D8A626256057000CDAF2 /* HistoryCell.swift */; };
+		22B3D8A926256057000CDAF2 /* HistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22B3D8A726256057000CDAF2 /* HistoryCell.xib */; };
 		B35B4427261D73D500FD5E83 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35B4426261D73D500FD5E83 /* Networking.swift */; };
 		B35B442A261D78DA00FD5E83 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35B4429261D78DA00FD5E83 /* DataManager.swift */; };
 		B35B4435261D969C00FD5E83 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35B4434261D969C00FD5E83 /* SessionManager.swift */; };
@@ -59,8 +59,8 @@
 		22AE4A79261D847B0081AA19 /* AppearViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearViewModel.swift; sourceTree = "<group>"; };
 		22AE4A81261D97CF0081AA19 /* Obserable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Obserable.swift; sourceTree = "<group>"; };
 		22B0CD95262421770080950B /* CardFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFactory.swift; sourceTree = "<group>"; };
-		22B205682621193F001F7200 /* HistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
-		22B205732621E63A001F7200 /* HistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryCell.xib; sourceTree = "<group>"; };
+		22B3D8A626256057000CDAF2 /* HistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
+		22B3D8A726256057000CDAF2 /* HistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryCell.xib; sourceTree = "<group>"; };
 		B35B4426261D73D500FD5E83 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		B35B4429261D78DA00FD5E83 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		B35B4434261D969C00FD5E83 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
@@ -91,8 +91,8 @@
 				22657156261F237000E455FA /* ObservingTextField.swift */,
 				22657159261F2F5500E455FA /* SubmitButton.swift */,
 				22560CFD261C58D800E2B80D /* SectionCell.swift */,
-				22B205682621193F001F7200 /* HistoryCell.swift */,
-				22B205732621E63A001F7200 /* HistoryCell.xib */,
+				22B3D8A626256057000CDAF2 /* HistoryCell.swift */,
+				22B3D8A726256057000CDAF2 /* HistoryCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -250,7 +250,7 @@
 			files = (
 				22560CE9261C311400E2B80D /* LaunchScreen.storyboard in Resources */,
 				22560CE6261C311400E2B80D /* Assets.xcassets in Resources */,
-				22B205742621E63B001F7200 /* HistoryCell.xib in Resources */,
+				22B3D8A926256057000CDAF2 /* HistoryCell.xib in Resources */,
 				22560CE4261C310F00E2B80D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -275,11 +275,11 @@
 				220E7CD72622832B00B07364 /* CardsNetworkCenter.swift in Sources */,
 				22560CDD261C310F00E2B80D /* AppDelegate.swift in Sources */,
 				22A41EED261C91B200248CAF /* SectionViewDataSource.swift in Sources */,
-				22B205692621193F001F7200 /* HistoryCell.swift in Sources */,
 				22560CF9261C557200E2B80D /* SectionViewController.swift in Sources */,
 				22560CFE261C58D800E2B80D /* SectionCell.swift in Sources */,
 				22560CDF261C310F00E2B80D /* SceneDelegate.swift in Sources */,
 				2265715A261F2F5500E455FA /* SubmitButton.swift in Sources */,
+				22B3D8A826256057000CDAF2 /* HistoryCell.swift in Sources */,
 				22AE4A7A261D847B0081AA19 /* AppearViewModel.swift in Sources */,
 				2231ACB62624966700D3AC04 /* SectionViewDelegate.swift in Sources */,
 				B35B4435261D969C00FD5E83 /* SessionManager.swift in Sources */,

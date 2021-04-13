@@ -29,29 +29,27 @@ class MainViewController: UIViewController {
         self.menuView.frame.size.height = self.view.frame.height
         self.menuView.frame.origin.x = self.view.frame.maxX
         
-        
         var tableView = UITableView()
         tableView = UITableView(frame: CGRect(x: 40, y: 60, width: self.view.frame.width * 0.35 - 60, height: self.view.frame.height))
         tableView.separatorStyle = .none
         tableView.allowsSelection = false
+        
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 500
         
         tableView.dataSource = self
-        
-        let nibName = UINib(nibName: "HistoryCell", bundle: nil)
-        tableView.register(nibName, forCellReuseIdentifier: HistoryCell.identifier)
-        
+        tableView.delegate = self
         
         self.menuView.addSubview(tableView)
+        
+        let nibName = UINib(nibName: "HistoryCell", bundle: nil)
+        tableView.register(nibName, forCellReuseIdentifier: "historyCell")
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.topAnchor.constraint(equalTo: self.menuView.topAnchor, constant: 60).isActive = true
         tableView.bottomAnchor.constraint(equalTo: self.menuView.bottomAnchor, constant: 0).isActive = true
         tableView.leadingAnchor.constraint(equalTo: self.menuView.leadingAnchor, constant: 40).isActive = true
         tableView.trailingAnchor.constraint(equalTo: self.menuView.trailingAnchor, constant: 40).isActive = true
-        
-        
         
         guard let largeBold = UIImage(systemName: "xmark") else { return }
         self.closeButton = UIButton(frame: CGRect(x: self.menuView.frame.width - 50.75, y: 30.75, width: 40, height: 40))
@@ -60,8 +58,6 @@ class MainViewController: UIViewController {
         self.closeButton.addTarget(self, action: #selector(closeMenuView), for: .touchUpInside)
         self.view.addSubview(self.menuView)
         self.menuView.addSubview(self.closeButton)
-        
-        
     }
     
     
@@ -91,18 +87,17 @@ class MainViewController: UIViewController {
     }
 }
 
-extension MainViewController: UITableViewDataSource {
+extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: HistoryCell.identifier, for: indexPath) as? HistoryCell else { return HistoryCell() }
-        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "historyCell", for: indexPath) as? HistoryCell else { return HistoryCell() }
+        cell.contents.text = "안녕하세요 반갑습니다.안녕하세요 반갑습니다.안녕하세요 반갑습니다.안녕하세요 반갑습니다."
         cell.contents.sizeToFit()
         return cell
     }
-
 }
 
 
