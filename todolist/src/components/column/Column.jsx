@@ -7,7 +7,7 @@ import Button from "../utils/Button";
 
 const ColumnContainer = styled.section`
   width: 308px;
-  margin-right: 1em;
+  margin-right: 2em;
 `;
 
 const ColumnMenu = styled.div`
@@ -39,16 +39,9 @@ const ColumnCount = styled.div`
   margin: 0px 10px;
 `;
 
-function Column(props) {
-  // 임시 컬럼
-  const [cards, setCards] = useState([
-    {
-      id: 1,
-      title: "임시 카드",
-      content: "임시 내용",
-    },
-  ]);
-  const { onLog } = props;
+function Column({ onLog, column }) {
+  const { title, items } = column;
+  const [cards, setCards] = useState(items);
 
   const [enrollMode, setEnrollMode] = useState(false);
 
@@ -92,7 +85,7 @@ function Column(props) {
     <ColumnContainer>
       <ColumnMenu>
         <ColumnTitle>
-          <div>해야할 일</div>
+          <div>{title}</div>
           <ColumnCount>{cards.length}</ColumnCount>
         </ColumnTitle>
         <Button onClick={() => setEnrollMode(!enrollMode)} type="add" />
