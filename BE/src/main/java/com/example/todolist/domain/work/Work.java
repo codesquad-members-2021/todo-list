@@ -1,10 +1,14 @@
 package com.example.todolist.domain.work;
 
 import com.example.todolist.domain.user.User;
+import lombok.Getter;
+import lombok.ToString;
 import org.springframework.data.annotation.Id;
 
 import java.time.LocalDateTime;
 
+@ToString
+@Getter
 public class Work {
 
     @Id
@@ -12,7 +16,7 @@ public class Work {
 
     private String title;
 
-    private String description;
+    private String content;
 
     private LocalDateTime createdAt;
 
@@ -22,16 +26,16 @@ public class Work {
 
     public Work() {}
 
-    public Work(String title, String description, int status) {
+    public Work(String title, String content, int status) {
         this.title = title;
-        this.description = description;
+        this.content = content;
         this.createdAt = LocalDateTime.now();
         this.status = status;
     }
 
-    public Work(String title, String description) {
+    public Work(String title, String content) {
         this.title = title;
-        this.description = description;
+        this.content = content;
     }
 
     public Work(int status) {
@@ -44,7 +48,7 @@ public class Work {
 
     public void update(Work work) {
         this.title = work.title;
-        this.description = work.description;
+        this.content = work.content;
     }
 
     public void delete() {
@@ -61,42 +65,6 @@ public class Work {
 
     public boolean isNotDeleted() {
         return this.status != 0;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public int getStatus() {
-        return status;
-    }
-
-    public Long getAuthorId() {
-        return authorId;
-    }
-
-    @Override
-    public String toString() {
-        return "Work{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", createdAt=" + createdAt +
-                ", status=" + status +
-                ", authorId=" + authorId +
-                '}';
     }
 
 }

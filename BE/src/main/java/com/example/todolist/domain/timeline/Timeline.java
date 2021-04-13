@@ -1,15 +1,19 @@
 package com.example.todolist.domain.timeline;
 
+import lombok.Getter;
+import lombok.ToString;
 import org.springframework.data.annotation.Id;
 
 import java.time.LocalDateTime;
 
+@ToString
+@Getter
 public class Timeline {
 
     @Id
     private Long id;
 
-    private String description;
+    private String content;
 
     private LocalDateTime createdAt;
 
@@ -17,36 +21,10 @@ public class Timeline {
 
     public Timeline() {}
 
-    public Timeline(String description, Long authorId) {
-        this.description = description;
+    public Timeline(String content, Long authorId) {
+        this.content = content;
         this.createdAt = LocalDateTime.now();
         this.authorId = authorId;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public Long getAuthorId() {
-        return authorId;
-    }
-
-    @Override
-    public String toString() {
-        return "Timeline{" +
-                "id=" + id +
-                ", description='" + description + '\'' +
-                ", createdAt=" + createdAt +
-                ", authorId=" + authorId +
-                '}';
     }
 
 }
