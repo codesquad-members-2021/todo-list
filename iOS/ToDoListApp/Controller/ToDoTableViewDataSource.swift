@@ -30,7 +30,8 @@ class ToDoTableViewDataSource : NSObject, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            cardManager.remove(states: .ToDo, at: indexPath.section)
+            let index = tableView.numberOfSections - indexPath.section - 1
+            cardManager.remove(states: .ToDo, at: index)
             tableView.reloadData()
         }
     }
