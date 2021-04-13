@@ -1,11 +1,10 @@
-import React from 'react';
-import CardTitle from './cardTitle.jsx';
-import CardContents from './cardContents.jsx';
-import CardAuthor from './cardAuthor.jsx';
-import CardDeleteButton from './cardDeleteButton.jsx';
-import StaticCardStyle from './staticCard.style';
-import CardTextWrapper from './cardTextWrapper.style';
-import ModifyCardCancelButton from './modifyCardCancelButton';
+import React from "react";
+import CardTitle from "./cardTitle.jsx";
+import CardContents from "./cardContents.jsx";
+import CardAuthor from "./cardAuthor.jsx";
+import CardDeleteButton from "./cardDeleteButton.jsx";
+import StaticCardStyle from "./staticCard.style";
+import CardTextWrapper from "./cardTextWrapper.style";
 
 const StaticCard = ({ cardTitle, cardContents, user }) => {
   return (
