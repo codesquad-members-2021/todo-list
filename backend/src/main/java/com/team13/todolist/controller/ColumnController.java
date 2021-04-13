@@ -38,6 +38,15 @@ public class ColumnController {
         return ResponseEntity.ok(responseBody("card", columnService.addCard(columnId, Card.of(card.getTitle(), card.getBody()))));
     }
 
+    @DeleteMapping("/{columnId}/cards/{cardId}")
+    public ResponseEntity<?> removeCard(
+            @PathVariable("columnId") Long columnId,
+            @PathVariable("cardId") Long cardId
+    ) {
+        columnService.removeCard(columnId, cardId);
+        return ResponseEntity.noContent().build();
+    }
+
     private Map<String, Object> responseBody(String rootName, Object body) {
         Map<String, Object> responseBody = new HashMap<>();
         responseBody.put(rootName, body);
