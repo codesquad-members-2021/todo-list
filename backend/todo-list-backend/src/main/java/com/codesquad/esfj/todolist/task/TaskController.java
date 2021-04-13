@@ -31,7 +31,7 @@ public class TaskController {
     @PostMapping("/tasks")
     @ResponseStatus(HttpStatus.CREATED)
     public Long create(@RequestBody Task task) {
-        Task topTask = taskRepository.findOneByPreviousId(Task.TOP_PREVIOUS_ID).orElseThrow(IllegalArgumentException::new);
+        Task topTask = readByPreviousId(Task.TOP_PREVIOUS_ID);
         long id = taskRepository.save(task).getId();
 
         topTask.moveAfter(id);
@@ -65,11 +65,15 @@ public class TaskController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void move(@PathVariable Long id, @PathVariable Long targetId) {
         Task taskToMove = taskRepository.findOne(id);
-        Task originalNextTask = taskRepository.findOneByPreviousId(id).orElseThrow(IllegalArgumentException::new);
-        Task newNextTask = taskRepository.findOneByPreviousId(targetId).orElseThrow(IllegalArgumentException::new);
+        Task originalNextTask = readByPreviousId(id);
+        Task newNextTask = readByPreviousId(targetId);
 
         originalNextTask.moveAfter(taskToMove.getPreviousId());
         taskToMove.moveAfter(newNextTask.getPreviousId());
         newNextTask.moveAfter(taskToMove.getId());
+    }
+
+    private Task readByPreviousId(Long previousId) {
+        return taskRepository.findOneByPreviousId(previousId).orElseThrow(IllegalArgumentException::new);
     }
 }
