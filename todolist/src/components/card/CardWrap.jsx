@@ -13,19 +13,27 @@ const CardContiner = styled.li`
 
 function CardWrap(props) {
   const { card, onDelete, onUpdate } = props;
-  const [edit, setEdit] = useState(false);
+  const [editMode, setEditMode] = useState(false);
 
   const handleSubmit = ({ id, title, content }) => {
     onUpdate({ id, title, content });
-    setEdit(!edit);
+    setEditMode(!editMode);
   };
 
   const handleEdit = (e) => {
     e.preventDefault();
-    setEdit(!edit);
+    setEditMode(!editMode);
   };
 
-  return <CardContiner onDoubleClick={handleEdit}>{edit ? <CardForm card={card} onSubmit={handleSubmit} onCancel={handleEdit} /> : <Card card={card} onDelete={onDelete} />}</CardContiner>;
+  return (
+    <CardContiner onDoubleClick={handleEdit}>
+      {editMode ? (
+        <CardForm card={card} onSubmit={handleSubmit} onCancel={handleEdit} />
+      ) : (
+        <Card card={card} onDelete={onDelete} />
+      )}
+    </CardContiner>
+  );
 }
 
 export default CardWrap;

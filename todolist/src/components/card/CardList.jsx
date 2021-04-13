@@ -61,21 +61,32 @@ function Column(props) {
       content: "임시 내용",
     },
   ]);
+  const { onLog } = props;
 
-  const [enroll, setEnroll] = useState(false);
+  const [enrollMode, setEnrollMode] = useState(false);
 
   const handleCreate = (card) => {
-    setEnroll(!enroll);
+    setEnrollMode(!enrollMode);
     setCards(cards.concat(card));
+    onLog({
+      cardTitle: card.title,
+      columnTitle: "하고 있는 일",
+      modeType: "add",
+    });
   };
 
   const handleCancel = (e) => {
     e.preventDefault();
-    setEnroll(!enroll);
+    setEnrollMode(!enrollMode);
   };
 
   const handleDelete = (target) => {
     setCards(cards.filter((e) => e.id !== target.id));
+    onLog({
+      cardTitle: target.title,
+      columnTitle: "하고 있는 일",
+      modeType: "delete",
+    });
   };
 
   const handleUpdate = ({ id, title, content }) => {
@@ -83,6 +94,11 @@ function Column(props) {
     card.title = title;
     card.content = content;
     setCards(cards);
+    onLog({
+      cardTitle: title,
+      columnTitle: "하고 있는 일",
+      modeType: "update",
+    });
   };
 
   return (
@@ -90,9 +106,9 @@ function Column(props) {
       <header>
         <ColumnTitle>해야할 일</ColumnTitle>
         <ColumnCount>{cards.length}</ColumnCount>
-        <HiOutlinePlusSm onClick={() => setEnroll(!enroll)}></HiOutlinePlusSm>
+        <HiOutlinePlusSm onClick={() => setEnrollMode(!enrollMode)}></HiOutlinePlusSm>
       </header>
-      {enroll ? <CardForm onSubmit={handleCreate} onCancel={handleCancel} /> : ""}
+      {enrollMode ? <CardForm onSubmit={handleCreate} onCancel={handleCancel} onLog={onLog} /> : ""}
       <CardList cards={cards} onDelete={handleDelete} onUpdate={handleUpdate} />
     </ColumnContainer>
   );

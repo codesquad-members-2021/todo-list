@@ -13,8 +13,20 @@ function CardForm(props) {
   return (
     <form action="">
       <div className="card-input-section">
-        <input className="card-input-title" type="text" placeholder="title" value={title} onChange={(e) => setTitle(e.target.value)} />
-        <textarea cols="30" rows="10" placeholder="content" onChange={(e) => setContent(e.target.value)} defaultValue={content}></textarea>
+        <input
+          className="card-input-title"
+          type="text"
+          placeholder="title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <textarea
+          cols="30"
+          rows="10"
+          placeholder="content"
+          onChange={(e) => setContent(e.target.value)}
+          defaultValue={content}
+        ></textarea>
       </div>
       <div className="card-btn-section">
         <button className="btn cancel-btn" onClick={props.onCancel}>

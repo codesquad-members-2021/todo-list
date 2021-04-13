@@ -1,7 +1,8 @@
 import "./App.css";
 import { createGlobalStyle } from "styled-components";
-import NavBar from "./components/navBar/NavBar";
-import { Column } from "./components/card/CardList.jsx";
+// import NavBar from "./components/navBar/NavBar";
+// import { Column } from "./components/card/CardList.jsx";
+import StateProvider from "./components/StateProvider";
 const GlobalStyle = createGlobalStyle`
   body{
     background: #e9ecef;
@@ -11,12 +12,13 @@ const GlobalStyle = createGlobalStyle`
     font-style: normal;
   }
 `;
+
 function App() {
   return (
     <>
       <GlobalStyle />
-      <NavBar />
-      <Column />
+      {/* <NavBar /> */}
+      <StateProvider />
     </>
   );
 }

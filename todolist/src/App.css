@@ -59,3 +59,8 @@ input {
   background: #86c6ff;
   color: rgba(255, 255, 255, 0.4);
 }
+
+.logStorage.appear {
+  right: 0px;
+  transition: all 0.5s;
+}
