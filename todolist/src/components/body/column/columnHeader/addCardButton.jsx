@@ -23,11 +23,11 @@ const AddCardBtn = styled(addCardBtn)`
   }
 `;
 
-const AddCardButton = ({ id, handleCardAddedColumn }) => {
+const AddCardButton = ({ id, handleAddButtonClick }) => {
   return (
     <div className="add-card-button-section">
       <AddCardBtn
-        onClick={handleCardAddedColumn}
+        onClick={handleAddButtonClick}
         id={id}
         className="add-card-button"
       />

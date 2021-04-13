@@ -1,15 +1,19 @@
 import React from "react";
+import { InputTitleSection, InputTitleTextarea } from "./inputTitle.style.jsx";
 
-const InputTitle = ({ handleButtonFlag }) => {
+const InputTitle = ({ handleChangeTItle, handleButtonFlag }) => {
   return (
-    <div className="input-title-section">
-      <input
-        onChange={handleButtonFlag}
+    <InputTitleSection className="input-title-section">
+      <InputTitleTextarea
+        onKeyUp={(e) => {
+          handleButtonFlag(e);
+          handleChangeTItle(e);
+        }}
         className="input-title"
         type="text"
         placeholder="제목을 입력하세요"
-      ></input>
-    </div>
+      ></InputTitleTextarea>
+    </InputTitleSection>
   );
 };
 

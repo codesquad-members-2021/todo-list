@@ -1,10 +1,11 @@
-import React from 'react';
-import CardContentsStyle from './cardContents.style';
+import React from "react";
+import CardContentsStyle from "./cardContents.style";
 
 const CardContents = ({ cardContents }) => {
+  const cardContentsArr = cardContents.split("\n");
   return (
     <CardContentsStyle className="card-contents-section">
-      {cardContents.map((content, index) => (
+      {cardContentsArr.map((content, index) => (
         <div key={index} className="content">
           - {content}
         </div>

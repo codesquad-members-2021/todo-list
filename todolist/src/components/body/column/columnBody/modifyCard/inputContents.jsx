@@ -1,15 +1,22 @@
 import React from "react";
+import {
+  InputContentsSection,
+  InputContentsTextarea,
+} from "./inputContents.style.jsx";
 
-const InputContents = ({ handleButtonFlag }) => {
+const InputContents = ({ handleChangeContents, handleButtonFlag }) => {
   return (
-    <div className="input-contents-section">
-      <textarea
-        onChange={handleButtonFlag}
+    <InputContentsSection className="input-contents-section">
+      <InputContentsTextarea
+        onKeyUp={(e) => {
+          handleButtonFlag(e);
+          handleChangeContents(e);
+        }}
         className="input-contents"
         type="text"
         placeholder="내용을 입력하세요"
-      ></textarea>
-    </div>
+      ></InputContentsTextarea>
+    </InputContentsSection>
   );
 };
 
