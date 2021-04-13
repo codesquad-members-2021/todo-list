@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
@@ -27,11 +28,10 @@ public class TaskRepository {
         return tasks.get(id);
     }
 
-    public Task findOneByPreviousId(long previousId) {
+    public Optional<Task> findOneByPreviousId(long previousId) {
         return tasks.values().stream()
                 .filter(task -> task.getPreviousId().equals(previousId))
-                .findAny()
-                .orElseThrow(IllegalStateException::new);
+                .findAny();
     }
 
     public Task save(Task newTask) {
