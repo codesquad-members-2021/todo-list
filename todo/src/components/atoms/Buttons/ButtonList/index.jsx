@@ -7,18 +7,10 @@ import MediumButton from "../MediumButton";
 import PlusButtonImg from "../../../../images/plusButton.svg";
 import CloseButtonImg from "../../../../images/closeButton.svg";
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 const Div = styled.div`
   padding: 10px 45px 0px 45px;
 `;
 const ButtonList = ({ isIcon, ...props }) => {
-=======
-const ButtonList = ({ isIcon, toggleActions }) => {
->>>>>>> 7f8ab88 (Feat: 취소버튼 클릭시 토글되는 ClickEvent 추가 fix #11)
-=======
-const ButtonList = ({ isIcon, toggleActions, patchClickHandler }) => {
->>>>>>> 8dffbdf (Feat: patch 테스트)
   const plusButton = (
     <SmallButton onClick={props.addTodo}>
       <Image id="plusBtn" src={PlusButtonImg} _width="23px" />
@@ -26,16 +18,21 @@ const ButtonList = ({ isIcon, toggleActions, patchClickHandler }) => {
   );
   const closeButton = (
     <SmallButton>
-      <Image id="closeBtn" src={CloseButtonImg} _width="20px" />
+      <Image
+        id="closeBtn"
+        src={CloseButtonImg}
+        _width="20px"
+        _disabled={props.is}
+      />
     </SmallButton>
   );
   const cancelButtons = (
-    <MediumButton _background="#fff" _color="#3c4243" onClick={() => toggleActions.toggle()}>
+    <MediumButton _background="#fff" _color="#3c4243" onClick={props.cancel}>
       취소
     </MediumButton>
   );
   const enrollButtons = (
-    <MediumButton _background="#62afb7" _color="white" onClick={() => patchClickHandler()}>
+    <MediumButton _background="#62afb7" _color="white" disabled>
       등록
     </MediumButton>
   );
