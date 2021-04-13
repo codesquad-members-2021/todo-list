@@ -18,9 +18,12 @@ class TodoTableViewController: UIViewController {
     private var todoDataSource = TodoDataSource()
     
     
+    // MARK:- Method
+    
     func setting() {
         tableView.delegate = tableViewDelegate
         tableView.register(UINib(nibName: TodoCell.identifier, bundle: nil), forCellReuseIdentifier: TodoCell.identifier)
+        setObserver()
         
     }
     
@@ -34,9 +37,6 @@ class TodoTableViewController: UIViewController {
         cardNumLabel.text = "\(tableView.numberOfRows(inSection: 0))"
     }
     
-    func reloadData() {
-        tableView.reloadData()
-    }
     
     @IBAction func addCardButtonTouched(_ sender: UIButton) {
         let modalView = ModalViewController(nibName: "ModalViewController", bundle: nil, todoDataSource.todoCards)
@@ -45,4 +45,11 @@ class TodoTableViewController: UIViewController {
         
     }
     
+    private func setObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NSNotification.Name(rawValue: "addCard"), object: nil)
+    }
+    
+    @objc func reloadData(_ notification: Notification) {
+        self.tableView.reloadData()
+    }
 }

@@ -28,7 +28,6 @@ class ModalViewController: UIViewController {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-//        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
@@ -36,7 +35,9 @@ class ModalViewController: UIViewController {
         setTextView()
     }
     
-    func setTextView() {
+    //MARK:- Method
+    
+    private func setTextView() {
         setPlaceHolder(titleTextView, titleDelegate, text: titlePlaceHolder, .lightGray)
         setPlaceHolder(contentTextView, contentDelegate, text: contentPlaceHolder, .lightGray)
     }

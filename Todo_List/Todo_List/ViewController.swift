@@ -52,22 +52,12 @@ class ViewController: UIViewController {
         setVC(self.todoViewController, data: self.cardManager.getCards(type: .todo), name: .todo)
         setVC(self.doingViewController, data: self.cardManager.getCards(type: .doing), name: .doing)
         setVC(self.doneViewController, data: self.cardManager.getCards(type: .done), name: .done)
-        setObserver()
     }
     
     private func setVC(_ viewController: TodoTableViewController?, data: TodoCardsManageable, name: Column) {
         viewController?.getData(with: data)
         viewController?.setting()
         viewController?.setHeader(columnName: name.rawValue)
-    }
-    
-    func setObserver() {
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NSNotification.Name(rawValue: "addCard"), object: nil)
-    }
-    
-    @objc func reloadData(_ notification: Notification) {
-        print("reloadData")
-        self.todoViewController?.reloadData()
     }
     
     

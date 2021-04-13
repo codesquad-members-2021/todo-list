@@ -15,7 +15,6 @@ enum DoType {
 
 protocol CardManageable {
     func getCards(type: DoType) -> TodoCardsManageable
-    func addCard(type: DoType, card: TodoCard)
 }
 
 
@@ -43,14 +42,5 @@ class CardManager: CardManageable {
     func getCards(type: DoType) -> TodoCardsManageable {
         return self.doType[type] ?? TodoCards()
     }
-    
-    func addCard(type: DoType, card: TodoCard) {
-        self.doType[type]?.addCard(with: card)
-//        let userInfo: [String: TodoCardsManageable] = ["doType": ]
-        
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "addCard"), object: nil)
-    }
-    
-    
     
 }
