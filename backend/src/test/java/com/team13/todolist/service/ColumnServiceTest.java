@@ -11,6 +11,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -90,7 +92,7 @@ class ColumnServiceTest {
         columnService.addCard(doneColumn.getId(), Card.of("노트북 설치", "리눅스 민트"));
 
         List<ColumnInfo> columns = columnService.getColumns();
-        softly.assertThat(columns).hasSize(2);
+        softly.assertThat(columns).hasSize(5);
     }
 
     @Test
@@ -101,6 +103,7 @@ class ColumnServiceTest {
         columnService.addCard(column.getId(), Card.of("AWS 공부", "호눅스 강의"));
 
         columnService.removeCard(column.getId(), cardInfo.getCardId());
+        ApplicationContext context = new ClassPathXmlApplicationContext("config.xml", Object.class);
 
         ColumnInfo columnInfo = columnService.getColumn(column.getId());
         softly.assertThat(columnInfo.getCards()).hasSize(2);
