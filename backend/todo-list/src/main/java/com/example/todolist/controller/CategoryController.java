@@ -1,10 +1,7 @@
 package com.example.todolist.controller;
 
 import com.example.todolist.ApiResponse;
-import com.example.todolist.domain.User;
-import com.example.todolist.dto.CardDto;
-import com.example.todolist.dto.CategoryDto;
-import com.example.todolist.dto.HistoryDto;
+import com.example.todolist.dto.*;
 import com.example.todolist.repository.UserRepository;
 import com.example.todolist.service.CardService;
 import com.example.todolist.service.HistoryService;
@@ -14,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
@@ -31,10 +27,6 @@ public class CategoryController {
         this.historyService = historyService;
     }
 
-    public User getUserFromToken(HttpServletRequest request) {
-        return (User) request.getAttribute("user");
-    }
-
     @GetMapping
     public ResponseEntity<ApiResponse> home() {
         List<CardDto> todo = cardService.cardDtoTodoList();
@@ -45,5 +37,4 @@ public class CategoryController {
         ApiResponse apiResponse = new ApiResponse(columns, historyDtoList);
         return new ResponseEntity<>(apiResponse, HttpStatus.OK);
     }
-
 }

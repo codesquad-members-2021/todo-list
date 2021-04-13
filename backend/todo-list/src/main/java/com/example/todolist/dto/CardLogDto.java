@@ -1,9 +1,6 @@
 package com.example.todolist.dto;
 
-import com.example.todolist.domain.Card;
 import com.example.todolist.domain.User;
-
-import java.time.LocalDateTime;
 
 public class CardLogDto {
     private User user;
