@@ -40,13 +40,13 @@ public class TimelineContent {
         return contentBuilder.toString();
     }
 
-    public static String getStatus(int status) {
+    public static String getStatus(Status status) {
         switch(status) {
-            case 1 :
+            case TODO :
                 return  TODO;
-            case 2 :
+            case DOING :
                 return DOING;
-            case 3 :
+            case DONE :
                 return  DONE;
             default :
                 return "";

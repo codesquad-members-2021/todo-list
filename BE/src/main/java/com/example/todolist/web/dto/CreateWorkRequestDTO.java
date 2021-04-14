@@ -3,6 +3,7 @@ package com.example.todolist.web.dto;
 import com.example.todolist.domain.work.Work;
 import com.example.todolist.exception.EntityRelatedException;
 import com.example.todolist.exception.ErrorMessage;
+import com.example.todolist.web.utils.Status;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -21,7 +22,7 @@ public class CreateWorkRequestDTO {
         return Work.builder()
                 .title(title)
                 .content(content)
-                .status(status)
+                .status(Status.makeStatusByCode(status))
                 .createdAt(LocalDateTime.now())
                 .build();
     }

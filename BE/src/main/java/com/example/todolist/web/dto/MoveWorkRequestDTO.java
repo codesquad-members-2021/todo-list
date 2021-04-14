@@ -3,6 +3,7 @@ package com.example.todolist.web.dto;
 import com.example.todolist.domain.work.Work;
 import com.example.todolist.exception.EntityRelatedException;
 import com.example.todolist.exception.ErrorMessage;
+import com.example.todolist.web.utils.Status;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -15,7 +16,7 @@ public class MoveWorkRequestDTO {
     public Work toEntity() {
         verifyDTO();
         return Work.builder()
-                .status(status)
+                .status(Status.makeStatusByCode(status))
                 .build();
     }
 

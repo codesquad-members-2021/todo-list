@@ -1,6 +1,7 @@
 package com.example.todolist.domain.work;
 
 import com.example.todolist.domain.user.User;
+import com.example.todolist.web.utils.Status;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 
@@ -19,7 +20,7 @@ public class Work {
     private String title;
     private String content;
     private LocalDateTime createdAt;
-    private int status;
+    private Status status;
     private Long authorId;
 
     public void saveAuthorId(User sessionUser) {
@@ -32,10 +33,10 @@ public class Work {
     }
 
     public void delete() {
-        this.status = 0;
+        this.status = Status.DELETED;
     }
 
-    public void move(int status) {
+    public void move(Status status) {
         this.status = status;
     }
 
@@ -44,7 +45,7 @@ public class Work {
     }
 
     public boolean isNotDeleted() {
-        return this.status != 0;
+        return this.status != Status.DELETED;
     }
 
 }
