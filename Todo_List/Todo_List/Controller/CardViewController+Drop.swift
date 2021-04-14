@@ -26,24 +26,22 @@ extension CardViewController : UITableViewDropDelegate {
         
         /*선택된 카드를 삭제하기 위한 싱글톤 객체호출*/
         let cardManager = CardManager.shared
-        self.board.remove(at: cardManager.indexPathSection, type: Board.CardType(rawValue: cardManager.getBoardType()!.rawValue)!)
+        self.board.remove(at: cardManager.indexPathSection, type: cardManager.getBoardType())
         
         for item in coordinator.items {
             item.dragItem.itemProvider.loadObject(ofClass: Card.self, completionHandler: { (card, error) in
-                if let card = card as? Card {
-                    
-                    DispatchQueue.main.async { 
-                        switch tableView {
-                        case self.todo :
-                            self.board.append(with: card, type: .todo, at: destinationIndexPath.section)
-                        case self.doing :
-                            self.board.append(with: card, type: .doing, at: destinationIndexPath.section)
-                        case self.done :
-                            self.board.append(with: card, type: .done, at: destinationIndexPath.section)
-                        default:
-                            break
-                        }
-                    }
+                guard let card = card as? Card else {
+                    return
+                }
+                switch tableView {
+                case self.todo :
+                    self.board.append(with: card, type: .todo, at: destinationIndexPath.section)
+                case self.doing :
+                    self.board.append(with: card, type: .doing, at: destinationIndexPath.section)
+                case self.done :
+                    self.board.append(with: card, type: .done, at: destinationIndexPath.section)
+                default:
+                    break
                 }
             })
         }

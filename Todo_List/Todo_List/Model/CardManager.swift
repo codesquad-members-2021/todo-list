@@ -11,19 +11,19 @@ import Foundation
 class CardManager {
     static let shared = CardManager()
     
-    var boardType : Int
+    var boardType : Board.CardType
     var indexPathSection : Int
     
     private init() {
-        boardType = -1
+        boardType = .todo
         indexPathSection = -1
     }
     
-    func setCard(type : Int, index : Int) {
+    func setCard(type : Board.CardType, index : Int) {
         boardType = type
         indexPathSection = index
     }
-    func getBoardType() -> Int {
+    func getBoardType() -> Board.CardType {
         return boardType
     }
     func getIndexPathSection() -> Int {
