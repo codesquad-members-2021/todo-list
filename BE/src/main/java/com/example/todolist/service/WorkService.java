@@ -15,12 +15,16 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.example.todolist.web.dto.ResponseWorkDto.buildResponseWorkDto;
+import static com.example.todolist.web.dto.WorkResponseDTO.buildResponseWorkDto;
 import static com.example.todolist.web.utils.TimelineContent.makeTimelineContent;
 import static com.example.todolist.web.utils.TimelineContent.moveContent;
 
 @Service
 public class WorkService {
+
+    private final static String SAVE = "save";
+    private final static String UPDATE = "update";
+    private final static String DELETE = "delete";
 
     private final WorkRepository workRepository;
     private final TimelineRepository timelineRepository;
@@ -30,39 +34,39 @@ public class WorkService {
         this.timelineRepository = timelineRepository;
     }
 
-    public List<ResponseWorkDto> getWorks(User sessionUser) {
+    public List<WorkResponseDTO> getWorks(User sessionUser) {
         return workRepository.findAllByAuthorId(sessionUser.getId()).stream()
                 .filter(Work::isNotDeleted)
                 .map(work -> buildResponseWorkDto(work, sessionUser))
                 .collect(Collectors.toList());
     }
 
-    public ResponseWorkDto save(RequestCreateWorkDto workDto, User sessionUser) {
+    public WorkResponseDTO save(CreateWorkRequestDTO workDto, User sessionUser) {
         Work work = workDto.toEntity();
-        work.save(sessionUser);
+        work.saveAuthorId(sessionUser);
         Work saveWork = workRepository.save(work);
-        saveTimeline(work, makeTimelineContent(work, "save"));
+        saveTimeline(work, makeTimelineContent(work, SAVE));
         return buildResponseWorkDto(saveWork, sessionUser);
     }
 
-    public ResponseWorkDto update(Long id, RequestUpdateWorkDto workDto, User sessionUser) {
-        Work work = verifyWork(id, sessionUser);
+    public WorkResponseDTO update(Long id, UpdateWorkRequestDTO workDto, User sessionUser) {
+        Work work = getVerifiedWork(id, sessionUser);
         work.update(workDto.toEntity());
         workRepository.save(work);
-        saveTimeline(work, makeTimelineContent(work, "update"));
+        saveTimeline(work, makeTimelineContent(work, UPDATE));
         return buildResponseWorkDto(work, sessionUser);
     }
 
     public void delete(Long id, User sessionUser) {
-        Work work = verifyWork(id, sessionUser);
+        Work work = getVerifiedWork(id, sessionUser);
         work.delete();
-        saveTimeline(work, makeTimelineContent(work, "delete"));
+        saveTimeline(work, makeTimelineContent(work, DELETE));
         workRepository.save(work);
     }
 
-    public ResponseWorkDto move(Long id, RequestMoveWorkDto workDto, User sessionUser) {
-        Work work = verifyWork(id, sessionUser);
-        work.move(workDto.toEntity());
+    public WorkResponseDTO move(Long id, MoveWorkRequestDTO workDto, User sessionUser) {
+        Work work = getVerifiedWork(id, sessionUser);
+        work.move(workDto.toEntity().getStatus());
         workRepository.save(work);
         saveTimeline(work, moveContent(work, workDto));
         return buildResponseWorkDto(work, sessionUser);
@@ -76,7 +80,7 @@ public class WorkService {
                 .build());
     }
 
-    private Work verifyWork(Long id, User sessionUser) {
+    private Work getVerifiedWork(Long id, User sessionUser) {
         Work work = workRepository.findById(id).orElseThrow(
                 () -> new EntityRelatedException(ErrorMessage.ENTITY_NOT_FOUND));
         if (!work.matchAuthor(sessionUser)) {

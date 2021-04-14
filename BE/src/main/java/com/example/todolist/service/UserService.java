@@ -4,12 +4,12 @@ import com.example.todolist.domain.user.User;
 import com.example.todolist.domain.user.UserRepository;
 import com.example.todolist.exception.ErrorMessage;
 import com.example.todolist.exception.UserAccountException;
-import com.example.todolist.web.dto.RequestLoginUserDto;
-import com.example.todolist.web.dto.RequestSignInUserDto;
-import com.example.todolist.web.dto.ResponseUserDto;
+import com.example.todolist.web.dto.LoginUserRequestDTO;
+import com.example.todolist.web.dto.SignInUserRequestDTO;
+import com.example.todolist.web.dto.UserResponseDTO;
 import org.springframework.stereotype.Service;
 
-import static com.example.todolist.web.dto.ResponseUserDto.buildResponseUserDto;
+import static com.example.todolist.web.dto.UserResponseDTO.buildResponseUserDto;
 
 @Service
 public class UserService {
@@ -20,7 +20,7 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public ResponseUserDto signIn(RequestSignInUserDto requestUserDto) {
+    public UserResponseDTO signIn(SignInUserRequestDTO requestUserDto) {
         User user = requestUserDto.toEntity();
         if (userRepository.findByUserId(user.getUserId()).isPresent()) {
             throw new UserAccountException(ErrorMessage.DUPLICATED_ID);
@@ -29,7 +29,7 @@ public class UserService {
         return buildResponseUserDto(user);
     }
 
-    public User login(RequestLoginUserDto userDto) {
+    public User login(LoginUserRequestDTO userDto) {
         User user = userDto.toEntity();
         return userRepository.findByUserIdAndPassword(user.getUserId(), user.getPassword()).orElseThrow(
                 () -> new UserAccountException(ErrorMessage.LOGIN_FAILED));

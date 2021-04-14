@@ -2,11 +2,13 @@ package com.example.todolist.service;
 
 import com.example.todolist.domain.timeline.TimelineRepository;
 import com.example.todolist.domain.user.User;
-import com.example.todolist.web.dto.ResponseTimelineDto;
+import com.example.todolist.web.dto.TimelineResponseDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static com.example.todolist.web.dto.TimelineResponseDTO.buildTimelineResponseDTO;
 
 @Service
 public class TimelineService {
@@ -17,9 +19,9 @@ public class TimelineService {
         this.timelineRepository = timelineRepository;
     }
 
-    public List<ResponseTimelineDto> getTimelines(User sessionUser) {
+    public List<TimelineResponseDTO> getTimelines(User sessionUser) {
         return timelineRepository.findAllByAuthorId(sessionUser.getId()).stream()
-                .map(timeline -> new ResponseTimelineDto(timeline, sessionUser))
+                .map(timeline -> buildTimelineResponseDTO(timeline, sessionUser))
                 .collect(Collectors.toList());
     }
 
