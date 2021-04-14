@@ -8,9 +8,9 @@ const NoteTimeStyle = styled.div`
 `;
 
 const NoteTimeRecord = ({ time }) => {
-    const initialTime = `${time}`;
+
     return (
-        <NoteTimeStyle>1분 전</NoteTimeStyle>
+        <NoteTimeStyle>{time}분 전</NoteTimeStyle>
     )
 }
 

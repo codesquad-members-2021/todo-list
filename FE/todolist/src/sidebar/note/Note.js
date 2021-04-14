@@ -20,16 +20,21 @@ const NoteInfoStyle = styled.div`
     margin-right: 1rem;
 `;
 
-const Note = () => {
+const Note = ({ noteList }) => {
+    console.log("노트안의 노트리스트", noteList);
     return (
-        <NoteStyle>
-            <NoteProfilePic/>
-            <NoteInfoStyle>
-                <NoteAuthor/>
-                <NoteBody/>
-                <NoteTimeRecord value={{ time: "1분"}}/>
-            </NoteInfoStyle>
-        </NoteStyle>
+        <ul>
+            {noteList.map(({ createDateTime, ...rest }) => (
+                <NoteStyle key={rest.id}>
+                    <NoteProfilePic />
+                    <NoteInfoStyle>
+                        <NoteAuthor />
+                        <NoteBody noteData={rest}/>
+                        <NoteTimeRecord time={createDateTime}/>
+                    </NoteInfoStyle>
+                </NoteStyle>
+            ))}
+        </ul>
     )
 }
 
