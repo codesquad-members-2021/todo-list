@@ -1,61 +1,116 @@
 package mj_cooper.backend.Controller;
 
+import com.google.gson.*;
+import mj_cooper.backend.domain.User;
+import mj_cooper.backend.domain.Vertical;
 import mj_cooper.backend.domain.Todo;
-import mj_cooper.backend.repository.TodoRepository;
+import mj_cooper.backend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.Map;
 
 @RestController
-@RequestMapping("/api/todos")
+@RequestMapping("/verticals/{verticalId}/todos")
 public class TodoController {
 
     @Autowired
-    TodoRepository todoRepository;
+    UserRepository userRepository;
 
     public TodoController() {
-
     }
 
     @GetMapping
-    public List<Todo> getAllTodos() {
-        return (List<Todo>) todoRepository.findAll();
+    public String getAllTodos(@PathVariable(value = "verticalId") final Long verticalId) {
+        User user = userRepository.findById(1L).get();
+        Vertical vertical = user.getVertical(verticalId);
+
+        // Json 변환 로직
+        Gson gson = new Gson();
+        JsonParser parser = new JsonParser();
+
+        Map<String, List<Todo>> response = new HashMap<>();
+        response.put("todos", vertical.getTodos());
+
+        JsonObject object = new JsonObject();
+        object.addProperty("status", "success");
+        object.add("data", parser.parse(gson.toJson(response)));
+
+        return gson.toJson(object);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Todo> getTodoById(@PathVariable(value = "id") final Long todoId){
-        Todo todo = todoRepository.findById(todoId)
-                .orElseThrow(() -> new NoSuchElementException("Todo not available for Id : " + todoId));
+    @GetMapping("/{todoId}")
+    public ResponseEntity<String> getTodoById(@PathVariable(value = "verticalId") final Long verticalId,
+                                            @PathVariable(value = "todoId") final Long todoId) {
 
-        return ResponseEntity.ok().body(todo);
+        User user = userRepository.findById(1L).get();
+        Vertical vertical = user.getVertical(verticalId);
+
+        // Json 변환 로직
+        Gson gson = new Gson();
+        JsonParser parser = new JsonParser();
+
+        Map<String, Todo> response = new HashMap<>();
+        response.put("todo", vertical.getTodo(todoId));
+
+        JsonObject object = new JsonObject();
+        object.addProperty("status", "success");
+        object.add("data", parser.parse(gson.toJson(response)));
+
+        return ResponseEntity.ok().body(gson.toJson(object));
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void createTodo(@RequestBody Todo todo){
-        todoRepository.save(todo);
+    public String createTodo(@RequestBody Todo todo, @PathVariable(value = "verticalId") final Long verticalId) {
+
+        User user = userRepository.findById(1L).get();
+        Vertical vertical = user.getVertical(verticalId);
+
+        vertical.addTodo(todo);
+
+        return userRepository.save(user).toString();
+
+//        // Json 변환 로직
+//        Gson gson = new Gson();
+//        JsonParser parser = new JsonParser();
+//
+//        Map<String, Todo> response = new HashMap<>();
+//        response.put("todo", vertical.getTodo(todo));
+//
+//        JsonObject object = new JsonObject();
+//        object.addProperty("status", "success");
+//        object.add("data", parser.parse(gson.toJson(response)));
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/{todoId}")
     @ResponseStatus(HttpStatus.OK)
-    public void updateTodo(@PathVariable(value = "id") final Long todoId, @RequestBody final Todo todo){
-        Todo foundTodo = todoRepository.findById(todoId)
-                .orElseThrow( () -> new NoSuchElementException("Todo not available for Id : " + todoId));
+    public void updateTodo(@RequestBody final Todo todo,
+                           @PathVariable(value = "verticalId") final Long verticalId,
+                           @PathVariable(value = "todoId") final Long todoId) {
+
+        User user = userRepository.findById(1L).get();
+        Vertical vertical = user.getVertical(verticalId);
+        Todo foundTodo = vertical.getTodo(todoId);
 
         foundTodo.setTitle(todo.getTitle());
-        todoRepository.save(foundTodo);
+
+        userRepository.save(user);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{todoId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteTodo(@PathVariable(value = "id") final Long todoId){
-        Todo todo = todoRepository.findById(todoId)
-                .orElseThrow( () -> new NoSuchElementException("Todo not available for Id : " + todoId));
+    public void deleteTodo(@PathVariable(value = "verticalId") final Long verticalId,
+                           @PathVariable(value = "todoId") final Long todoId) {
 
-        todoRepository.delete(todo);
+        User user = userRepository.findById(1L).get();
+        Vertical vertical = user.getVertical(verticalId);
+        vertical.deleteTodo(todoId);
+
+        userRepository.save(user);
     }
 }
