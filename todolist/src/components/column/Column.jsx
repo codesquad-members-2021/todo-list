@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import CardForm from "./card/CardForm";
 import CardList from "./card/CardList";
@@ -39,15 +39,32 @@ const ColumnCount = styled.div`
   margin: 0px 10px;
 `;
 
-function Column({ onLog, column }) {
-  const { title, items } = column;
-  const [cards, setCards] = useState(items);
-
+function Column({ onLog, col, columns, setItemsOfColumn }) {
+  const { title, items } = col;
+  // const [cards, setCards] = useState(items);
   const [enrollMode, setEnrollMode] = useState(false);
+  const [column, setColumn] = useState(col);
+
+  console.log(column);
+
+  useEffect(() => {
+    setItemsOfColumn(column);
+    fetch("http://localhost:4000/setData", {
+      method: "post",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(columns),
+    });
+  }, [column]);
 
   const handleCreate = (card) => {
     setEnrollMode(!enrollMode);
-    setCards(cards.concat(card));
+    // setCards(cards.concat(card));
+    // column.items = cards;
+    setColumn({ ...column, items: items.concat(card) });
+    // console.log(column);
+    // 변경된 column값을 전달해야 함
     onLog({
       cardTitle: card.title,
       columnTitle: "하고 있는 일",
@@ -61,7 +78,8 @@ function Column({ onLog, column }) {
   };
 
   const handleDelete = (target) => {
-    setCards(cards.filter((e) => e.id !== target.id));
+    // setCards(cards.filter((e) => e.id !== target.id));
+    setColumn({ ...column, items: items.filter((e) => e.id !== target.id) });
     onLog({
       cardTitle: target.title,
       columnTitle: "하고 있는 일",
@@ -70,10 +88,11 @@ function Column({ onLog, column }) {
   };
 
   const handleUpdate = ({ id, title, content }) => {
-    const card = cards.find((e) => e.id === id);
+    const card = items.find((e) => e.id === id);
     card.title = title;
     card.content = content;
-    setCards(cards);
+    setColumn({ ...column, items });
+    // setCards(cards);
     onLog({
       cardTitle: title,
       columnTitle: "하고 있는 일",
@@ -86,22 +105,18 @@ function Column({ onLog, column }) {
       <ColumnMenu>
         <ColumnTitle>
           <div>{title}</div>
-          <ColumnCount>{cards.length}</ColumnCount>
+          <ColumnCount>{items.length}</ColumnCount>
         </ColumnTitle>
         <Button onClick={() => setEnrollMode(!enrollMode)} type="add" />
       </ColumnMenu>
       {enrollMode ? (
         <CardContainer>
-          <CardForm
-            onSubmit={handleCreate}
-            onCancel={handleCancel}
-            onLog={onLog}
-          />
+          <CardForm onSubmit={handleCreate} onCancel={handleCancel} onLog={onLog} />
         </CardContainer>
       ) : (
         ""
       )}
-      <CardList cards={cards} onDelete={handleDelete} onUpdate={handleUpdate} />
+      <CardList cards={items} onDelete={handleDelete} onUpdate={handleUpdate} />
     </ColumnContainer>
   );
 }

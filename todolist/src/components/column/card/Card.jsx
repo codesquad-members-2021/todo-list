@@ -64,10 +64,7 @@ const ModalQuestion = styled.div`
 function Card(props) {
   const { card, onDelete, cardContainer } = props;
   const [modalMode, setModalMode] = useState(false);
-  // const [deleteHoverMode, setDeleteHoverMode] = useState(false);
   const askToDelete = () => setModalMode(!modalMode);
-  // const hover = () => setDeleteHoverMode(!deleteHoverMode);
-  // const cardItem = useRef();
 
   return (
     <>
@@ -94,12 +91,8 @@ function Card(props) {
         <CardSection>
           {/* <CardWrap onMouseOver={() => console.log("over")}> */}
           <div
-            onMouseOver={() =>
-              (cardContainer.current.style.backgroundColor = "red")
-            }
-            onMouseOut={() =>
-              (cardContainer.current.style.backgroundColor = "white")
-            }
+            onMouseOver={() => (cardContainer.current.style.backgroundColor = "red")}
+            onMouseOut={() => (cardContainer.current.style.backgroundColor = "white")}
           >
             <Button type="delete" onClick={askToDelete} />
             {/* 왜 여기선 이벤트 등록이 안돼죠???? 왜?  */}
