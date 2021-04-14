@@ -2,7 +2,7 @@ package com.codesquad.todo.web.controller;
 
 import com.codesquad.todo.web.domain.TodoUser;
 import com.codesquad.todo.web.service.TodoLogService;
-import com.codesquad.todo.web.service.UserService;
+import com.codesquad.todo.web.service.TodoUserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,18 +17,18 @@ import java.util.Map;
 public class TodoLogController {
 
     private final TodoLogService todoLogService;
-    private final UserService userService;
+    private final TodoUserService todoUserService;
 
-    public TodoLogController(TodoLogService todoLogService, UserService userService) {
+    public TodoLogController(TodoLogService todoLogService, TodoUserService todoUserService) {
         this.todoLogService = todoLogService;
-        this.userService = userService;
+        this.todoUserService = todoUserService;
     }
 
     @CrossOrigin
     @GetMapping
     public ResponseEntity<Map<String, Object>> showTodoLogList() {
         Map<String, Object> responseMap = new HashMap<>();
-        TodoUser todoUser = userService.findUser(1L);
+        TodoUser todoUser = todoUserService.findUser(1L);
         responseMap.put("todoLogs", todoLogService.showTodoLogList(todoUser));
         return ResponseEntity.ok(responseMap);
     }

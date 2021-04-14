@@ -12,10 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class ColumnService {
+public class TodoColumnService {
     private final UserRepository userRepository;
 
-    public ColumnService(UserRepository userRepository) {
+    public TodoColumnService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 

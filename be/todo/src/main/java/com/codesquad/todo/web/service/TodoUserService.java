@@ -6,10 +6,10 @@ import com.codesquad.todo.web.exceptions.UserNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserService {
+public class TodoUserService {
     private final UserRepository userRepository;
 
-    public UserService(UserRepository userRepository) {
+    public TodoUserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 

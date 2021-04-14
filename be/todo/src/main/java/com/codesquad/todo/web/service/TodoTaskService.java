@@ -5,10 +5,10 @@ import com.codesquad.todo.web.service.dto.TaskDto;
 import org.springframework.stereotype.Service;
 
 @Service
-public class TaskService {
+public class TodoTaskService {
     private final UserRepository userRepository;
 
-    public TaskService(UserRepository userRepository) {
+    public TodoTaskService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
