@@ -15,9 +15,7 @@ extension CardViewController : UITableViewDropDelegate {
     }
     
     func tableView(_ tableView: UITableView, performDropWith coordinator: UITableViewDropCoordinator) {
-        
         let destinationIndexPath: IndexPath
-        
         
         if let indexPath = coordinator.destinationIndexPath {
             destinationIndexPath = IndexPath(row: 0, section: indexPath.section)
@@ -27,8 +25,8 @@ extension CardViewController : UITableViewDropDelegate {
         }
         
         /*선택된 카드를 삭제하기 위한 싱글톤 객체호출*/
-        let cm = CardManager.shared
-        self.board.remove(at: cm.indexPathSection, type: Board.CardType(rawValue: cm.getBoardType())!)
+        let cardManager = CardManager.shared
+        self.board.remove(at: cardManager.indexPathSection, type: Board.CardType(rawValue: cardManager.getBoardType()!.rawValue)!)
         
         for item in coordinator.items {
             item.dragItem.itemProvider.loadObject(ofClass: Card.self, completionHandler: { (card, error) in

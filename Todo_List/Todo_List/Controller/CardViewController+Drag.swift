@@ -13,19 +13,18 @@ extension CardViewController : UITableViewDragDelegate {
     
     func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
         var cardInfo = Card()
-        
-        let cm = CardManager.shared
+        let cardManager = CardManager.shared
         
         switch tableView {
                 
         case todo:
-            cm.setCard(type: 0, index: indexPath.section)
+            cardManager.setCard(type: Board.CardType(rawValue: Board.CardType.todo.rawValue)!, index: indexPath.section)
             cardInfo = board.todoList.items[indexPath.section]
         case doing:
-            cm.setCard(type: 1, index: indexPath.section)
+            cardManager.setCard(type: Board.CardType(rawValue: Board.CardType.doing.rawValue)!, index: indexPath.section)
             cardInfo = board.doingList.items[indexPath.section]
         case done:
-            cm.setCard(type: 2, index: indexPath.section)
+            cardManager.setCard(type: Board.CardType(rawValue: Board.CardType.done.rawValue)!, index: indexPath.section)
             cardInfo = board.doneList.items[indexPath.section]
         default:
             break
