@@ -1,2 +1,7 @@
 # todo-list
-그룹프로젝트 #1
+todo-list 7팀
+
+#Member
+* IOS: Hong, 만사
+* BE: Yeon, Bat
+
