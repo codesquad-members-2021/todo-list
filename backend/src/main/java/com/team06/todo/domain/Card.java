@@ -1,9 +1,12 @@
 package com.team06.todo.domain;
 
+import com.team06.todo.dto.CardCreateRequestDto;
+import com.team06.todo.dto.CardMoveRequestDto;
+import com.team06.todo.dto.CardUpdateRequestDto;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 
 import java.time.LocalDateTime;
-import java.util.HashMap;
 import java.util.Objects;
 
 public class Card {
@@ -12,17 +15,19 @@ public class Card {
 
     private String title;
     private String contents;
-    private ColumnType columnType;
+    // colunmType 할 일(0), 하는 중(1), 마친 일(2)
+    private int columnType;
+
+    @CreatedDate
     private LocalDateTime createdDateTime;
 
     public Card() {
     }
 
-    public Card(HashMap<String, String> cardInfo) {
-        this.title = cardInfo.get("title");
-        this.contents = cardInfo.get("contents");
-        this.columnType = ColumnType.valueOf(cardInfo.get("column_type"));
-        this.createdDateTime = LocalDateTime.now();
+    public Card(CardCreateRequestDto cardCreateRequestDto){
+        this.title = cardCreateRequestDto.getTitle();
+        this.contents = cardCreateRequestDto.getContents();
+        this.columnType = cardCreateRequestDto.getColumnType();
     }
 
     public Long getId() {
@@ -37,7 +42,7 @@ public class Card {
         return contents;
     }
 
-    public ColumnType getColumnType() {
+    public int getColumnType() {
         return columnType;
     }
 
@@ -45,13 +50,13 @@ public class Card {
         return createdDateTime;
     }
 
-    public void update(HashMap<String, String> cardInfo) {
-        this.title = cardInfo.get("title");
-        this.contents = cardInfo.get("contents");
+    public void update(CardUpdateRequestDto cardUpdateRequestDto) {
+        this.title = cardUpdateRequestDto.getTitle();
+        this.contents = cardUpdateRequestDto.getContents();
     }
 
-    public void move(HashMap<String, String> cardInfo) {
-        this.columnType = ColumnType.valueOf(cardInfo.get("column_type"));
+    public void move(CardMoveRequestDto cardMoveRequestDto) {
+        this.columnType = cardMoveRequestDto.getColumnType();
     }
 
     @Override

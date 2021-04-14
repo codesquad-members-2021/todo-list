@@ -3,13 +3,13 @@ package com.team06.todo.service;
 import com.team06.todo.domain.Action;
 import com.team06.todo.domain.ActionType;
 import com.team06.todo.domain.Card;
-import com.team06.todo.domain.ColumnType;
-import com.team06.todo.dto.ActionsResponseDto;
+import com.team06.todo.dto.ActionsResponse;
+import com.team06.todo.dto.ActionResponseDto;
 import com.team06.todo.repository.ActionsRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ActionsService {
@@ -24,7 +24,7 @@ public class ActionsService {
         actionsRepository.save(new Action(card.getTitle(), ActionType.ADD));
     }
 
-    public void move(Card card, ColumnType columnFrom, ColumnType columnTo) {
+    public void move(Card card, int columnFrom, int columnTo) {
         actionsRepository.save(new Action(card.getTitle(), columnFrom, columnTo, ActionType.MOVE));
     }
 
@@ -32,13 +32,11 @@ public class ActionsService {
         actionsRepository.save(new Action(card.getTitle(), ActionType.UPDATE));
     }
 
-    public List<ActionsResponseDto> show() {
+    public ActionsResponse show() {
         List<Action> actions = (List<Action>) actionsRepository.findAll();
-        List<ActionsResponseDto> actionsResponseDtos = new ArrayList<>();
-        for (Action action : actions) {
-            actionsResponseDtos.add(new ActionsResponseDto(action));
-        }
-        return actionsResponseDtos;
+        return new ActionsResponse(actions.stream()
+                .map(ActionResponseDto::from)
+                .collect(Collectors.toList()));
     }
 
     public void delete(Card card) {
