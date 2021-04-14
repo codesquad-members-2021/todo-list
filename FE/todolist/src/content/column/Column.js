@@ -4,7 +4,7 @@ import Card from '../card/Card'
 
 const ColumnStyle = styled.div`
     width: 308px;
-    border: 1px solid red;
+    margin-right: 16px;
 `
 
 const Column = ({columnData}) => {
