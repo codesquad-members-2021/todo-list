@@ -40,6 +40,14 @@ class CardsDataSource: NSObject, UITableViewDataSource {
         return cell
     }
     
+    func dragItems(for indexPath: IndexPath) -> [UIDragItem] {
+        let card = cards[indexPath.section]
+        let itemProvider = NSItemProvider(object: card)
+        let dragItem = UIDragItem(itemProvider: itemProvider)
+        dragItem.localObject = card
+        return [dragItem]
+    }
+    
     func insert(_ card: Card, at index: Int) {
         cards.insert(card, at: index)
     }
@@ -47,6 +55,13 @@ class CardsDataSource: NSObject, UITableViewDataSource {
     func registerCard(title: String, notes: String) {
         let newCard = Card(title: title, notes: notes, category: cards.first?.category ?? "")
         cards.insert(newCard, at: 0)
+    }
+    
+    func moveCard(at sourceIndex: Int, to destinationIndex: Int) {
+        guard sourceIndex != destinationIndex else { return }
+        let card = cards[sourceIndex]
+        cards.remove(at: sourceIndex)
+        cards.insert(card, at: destinationIndex)
     }
     
     func deleteCard(at index: Int) {

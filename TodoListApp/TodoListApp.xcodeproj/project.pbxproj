@@ -33,6 +33,7 @@
 		E437533C26255F160093E80F /* PopupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E437533A26255F160093E80F /* PopupViewController.xib */; };
 		E43753862627087D0093E80F /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43753852627087D0093E80F /* ListViewController.swift */; };
 		E437538E26270C210093E80F /* CardsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E437538D26270C210093E80F /* CardsDataSource.swift */; };
+		E43753BF26271F000093E80F /* CacheDragCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43753BE26271F000093E80F /* CacheDragCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 		E437533A26255F160093E80F /* PopupViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopupViewController.xib; sourceTree = "<group>"; };
 		E43753852627087D0093E80F /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		E437538D26270C210093E80F /* CardsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsDataSource.swift; sourceTree = "<group>"; };
+		E43753BE26271F000093E80F /* CacheDragCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheDragCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +181,7 @@
 				E4207A98261C7C0C0054BCB0 /* NetworkManager.swift */,
 				E4207B25261EB7EA0054BCB0 /* TodoData.swift */,
 				E437538D26270C210093E80F /* CardsDataSource.swift */,
+				E43753BE26271F000093E80F /* CacheDragCoordinator.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -356,6 +359,7 @@
 				E4207A8A261C7AF50054BCB0 /* Activity.swift in Sources */,
 				E4207A0A261C57210054BCB0 /* AppDelegate.swift in Sources */,
 				E437533B26255F160093E80F /* PopupViewController.swift in Sources */,
+				E43753BF26271F000093E80F /* CacheDragCoordinator.swift in Sources */,
 				E4207B26261EB7EA0054BCB0 /* TodoData.swift in Sources */,
 				E4207A0C261C57210054BCB0 /* SceneDelegate.swift in Sources */,
 				E4207A69261C788A0054BCB0 /* Card.swift in Sources */,
