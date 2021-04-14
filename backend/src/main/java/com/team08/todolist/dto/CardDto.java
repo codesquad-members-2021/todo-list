@@ -54,8 +54,12 @@ public class CardDto {
         return columnId;
     }
 
-    public Card toEntity(){
-           return new Card(null, "woody", title, content, createdDateTime, isApp, columnId, position);
+    public Card toEntity() {
+        return new Card(null, "woody", title, content, createdDateTime, isApp, columnId, position);
+    }
+
+    public static CardDto of(Card card) {
+        return new CardDto(card.getCid(), card.getTitle(), card.getContent(), card.getIsapp(), card.getDate(), card.getPos(), card.getColumnid());
     }
 
     @Override

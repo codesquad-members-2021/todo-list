@@ -2,33 +2,48 @@ package com.team08.todolist.model;
 
 import org.springframework.data.annotation.Id;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 public class Column {
     @Id
-    private Long id;
+    private Long columnid;
     private String title;
-    private Integer position;
+    private Integer pos;
     private Integer count;
+    private Set<Card> cards = new HashSet<>();
 
-    public Column(Long id, String title, Integer position, Integer count) {
-        this.id = id;
+    public Column(Long columnid, String title, Integer pos, Integer count, Set<Card> cards) {
+        this.columnid = columnid;
         this.title = title;
-        this.position = position;
+        this.pos = pos;
         this.count = count;
+        this.cards = cards;
     }
 
-    public Long getId() {
-        return id;
+    public Long getColumnid() {
+        return columnid;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public Integer getPosition() {
-        return position;
+    public Integer getPos() {
+        return pos;
     }
 
     public Integer getCount() {
         return count;
+    }
+
+    public Set<Card> getCards() {
+        return cards;
+    }
+
+    public void addCard(Card card) {
+        cards.add(card);
     }
 }

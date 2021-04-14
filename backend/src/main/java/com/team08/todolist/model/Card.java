@@ -7,28 +7,28 @@ import java.time.LocalDateTime;
 
 public class Card {
     @Id
-    private Long id;
+    private Long cid;
     private String author;
     private String title;
     private String content;
-    private LocalDateTime createdDateTime;
-    private boolean isApp;
-    private Long columnId;
-    private Integer position;
+    private LocalDateTime date;
+    private boolean isapp;
+    private Long columnid;
+    private Integer pos;
 
-    public Card(Long id, String author, String title, String content, LocalDateTime createdDateTime, boolean isApp, Long columnId, Integer position) {
-        this.id = id;
+    public Card(Long cid, String author, String title, String content, LocalDateTime date, boolean isapp, Long columnid, Integer pos) {
+        this.cid = cid;
         this.author = author;
         this.title = title;
         this.content = content;
-        this.createdDateTime = createdDateTime;
-        this.isApp = isApp;
-        this.columnId = columnId;
-        this.position = position;
+        this.date = date;
+        this.isapp = isapp;
+        this.columnid = columnid;
+        this.pos = pos;
     }
 
-    public Long getId() {
-        return id;
+    public Long getCid() {
+        return cid;
     }
 
     public String getAuthor() {
@@ -43,19 +43,33 @@ public class Card {
         return content;
     }
 
-    public String getCreatedDateTime() {
-        return DateTimeUtils.formatByPattern(createdDateTime);
+    public String getDate() {
+        return DateTimeUtils.formatByPattern(date);
     }
 
-    public boolean getIsApp() {
-        return isApp;
+    public boolean getIsapp() {
+        return isapp;
     }
 
-    public Long getColumnId() {
-        return columnId;
+    public Long getColumnid() {
+        return columnid;
     }
 
-    public Integer getPosition() {
-        return position;
+    public Integer getPos() {
+        return pos;
+    }
+    
+    @Override
+    public String toString() {
+        return "Card{" +
+                "cid=" + cid +
+                ", author='" + author + '\'' +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", date=" + date +
+                ", isapp=" + isapp +
+                ", columnid=" + columnid +
+                ", pos=" + pos +
+                '}';
     }
 }
