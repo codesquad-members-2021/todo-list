@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import Card from '../../components/main/Card';
-import CardInput from '../../components/main/CardInput';
-import Column from '../../components/main/Column';
+import Column from '../../../components/main/column/Column';
+import CardContainer from "./card/CardContainer";
+import CardInputContainer from "./card/CardInputContainer";
 
 //prettier-ignore
 const ColumnContainer = ({ columnId, title, list }) => {
@@ -12,9 +12,9 @@ const ColumnContainer = ({ columnId, title, list }) => {
 
     const render = (v, index) => {
         v = {...v, index, setCardList}
-        return v.isInput 
-        ? <li key={index}><CardInput {...v} /></li>
-        : <li key={index}><Card {...v} /></li>
+        return v.isInput
+            ? <li key={index}><CardInputContainer {...v} /></li>
+            : <li key={index}><CardContainer {...v} /></li>
     };
 
     const plusEvent = () => setCardList(() => [{ isInput: true, title: '', body: '', columnId:columnId }, ...cardList,]);

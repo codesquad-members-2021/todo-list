@@ -32,7 +32,7 @@ const StyledCloseWrapper = styled.div`
     padding-right: 50px;
 `;
 
-const Activity = ({ activityHide, activityDatas, onClickForLogVisible }) => {
+const Activity = ({ activityHide, /* activityDatas, */  onClickForLogVisible }) => {
     return (
         <StyledActivity activityHide={activityHide}>
             <StyledCloseWrapper>

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import ColumnDeleteButton from './partial/ColumnDeleteButton';
-import ColumnPlusButton from './partial/ColumnPlusButton';
+import ColumnDeleteButton from './ColumnDeleteButton';
+import ColumnPlusButton from './ColumnPlusButton';
 
 const ColumnWrapper = styled.div`
     margin: 0 15px;
@@ -9,7 +9,7 @@ const ColumnWrapper = styled.div`
 `;
 
 const ColumnHeader = styled.div`
-    width: 332px;
+    width: 334px;
     display: flex;
     justify-content: flex-start;
     align-items: center;

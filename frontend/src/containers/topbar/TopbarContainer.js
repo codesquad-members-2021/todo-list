@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import HeaderTemplate from '../../components/header/HeaderTemplate';
+import TopbarTemplate from '../../components/topbar/TopbarTemplate';
 
 
-const HeaderContainer = () => {
+const TopbarContainer = () => {
     const [activityHide, setActivityHide] = useState(true);
     // 데이터용 State 필요
 
@@ -13,7 +13,7 @@ const HeaderContainer = () => {
     };
 
     return (
-        <HeaderTemplate
+        <TopbarTemplate
             title={'TO-DO LIST'}
             onClickForLogVisible={onClickForLogVisible}
             activityHide={activityHide}
@@ -21,4 +21,4 @@ const HeaderContainer = () => {
     );
 };
 
-export default HeaderContainer;
+export default TopbarContainer;

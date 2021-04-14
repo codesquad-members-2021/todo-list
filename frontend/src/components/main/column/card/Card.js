@@ -1,7 +1,6 @@
-import axios from 'axios';
-import React, { useState } from 'react';
+import React from 'react';
 import styled, { css } from 'styled-components';
-import ColumnDeleteButton from './partial/ColumnDeleteButton';
+import ColumnDeleteButton from '../ColumnDeleteButton';
 // import PopupModal from '../../components/common/PopupModal';
 
 const StyledCard = styled.div`
@@ -18,6 +17,7 @@ const StyledCard = styled.div`
               `
             : css`
                   background-color: var(--background-color);
+                  border: 1px solid var(--background-color);
               `};
 
     width: 300px;
@@ -59,32 +59,25 @@ const CardAuthor = styled.p`
 
     color: var(--author-text-color);
 `;
-//prettier-ignore
-const Card = ({ title, body, index, setCardList, columnId, cardId, previousCardId }) => {
-    const [isCardDelHover, setIsCardDelHover] = useState(false);
 
-    const deleteCard = () => {
-        setCardList((cardList) => cardList.filter((_, i) => i !== index))
-        axios.delete(`api/columns/${columnId}/cards/${cardId}`)
-    }
-
-    const editCard = () => {
-        setCardList((cardList) => {
-            const left = cardList.slice(0, index);
-            const right = cardList.slice(index + 1);
-            return left.concat({ title, body, isInput: true, previousCardId, cardId, columnId }, right);
-        });
-    };
-
-    const onMouseEnterHandler = () => setIsCardDelHover(true);
-    const onMouseLeaveHandler = () => setIsCardDelHover(false);
+const Card = ({ data, isCardDelHover, onEvents }) => {
+    const { title, body } = data;
+    const {
+        onClickDeleteCardHandler,
+        onDoubleClickEditCardHandler,
+        onMouseEnterHandler,
+        onMouseLeaveHandler,
+    } = onEvents;
 
     return (
-        <StyledCard onDoubleClick={editCard} isCardDelHover={isCardDelHover}>
+        <StyledCard
+            onDoubleClick={onDoubleClickEditCardHandler}
+            isCardDelHover={isCardDelHover}
+        >
             <CardTitle>
                 <span className="title">{title}</span>
                 <ColumnDeleteButton
-                    onClick={deleteCard}
+                    onClick={onClickDeleteCardHandler}
                     onMouseEnter={onMouseEnterHandler}
                     onMouseLeave={onMouseLeaveHandler}
                 />

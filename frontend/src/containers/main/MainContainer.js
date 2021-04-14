@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import ColumnContainer from '../column/ColumnContainer';
+import ColumnContainer from './column/ColumnContainer';
 import Main from '../../components/main/Main';
 
 
