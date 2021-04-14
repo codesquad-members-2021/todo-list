@@ -39,25 +39,19 @@ class MainViewController: UIViewController {
     }
     
     private func loadData() {
-        let card1 = Card(id: 1, title: "test", contents: "testtest", createDateTime: "dddd", status: "dddd")
-        let card2 = Card(id: 2, title: "test", contents: "testtest", createDateTime: "dddd", status: "dddd")
-        let card3 = Card(id: 3, title: "test", contents: "testtest", createDateTime: "dddd", status: "dddd")
-        
-        willDoCardManager.configure(cardList: [card1, card2, card3], categoryID: "1")
-        doingCardManager.configure(cardList: [card1, card2], categoryID: "2")
-        doneCardManager.configure(cardList: [card1], categoryID: "3")
-//        DataTaskManager.request(completion: { (result) in
-//            DispatchQueue.global().async {
-//                switch result {
-//                case .success(let data):
-//                    self.cardManagers[0].update(cardList: data.todo)
-//                    self.cardManagers[1].update(cardList: data.doing)
-//                    self.cardManagers[2].update(cardList: data.done)
-//                case.failure(let error):
-//                    print(error.localizedDescription)
-//                }
-//            }
-//        })
+
+        DataTaskManager.request(completion: { (result) in
+            DispatchQueue.global().async {
+                switch result {
+                case .success(let data):
+                    self.willDoCardManager.configure(cardList: data[0].todos, categoryID: data[0].id)
+                    self.doingCardManager.configure(cardList: data[1].todos, categoryID: data[1].id)
+                    self.doneCardManager.configure(cardList: data[2].todos, categoryID: data[2].id)
+                case.failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+        })
     }
     
     private func patch() {

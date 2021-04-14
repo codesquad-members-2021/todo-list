@@ -17,7 +17,7 @@ protocol CardAddable {
 
 class CardManager {
     
-    private var categoryID: String?
+    private var categoryID: Int?
     private var cardList: [Card]?
     
     init() {
@@ -26,7 +26,7 @@ class CardManager {
     }
     
     //MARK: - CRUD Methods
-    func configure(cardList: [Card], categoryID: String) {
+    func configure(cardList: [Card], categoryID: Int) {
         self.categoryID = categoryID
         self.cardList = cardList
         
@@ -73,7 +73,7 @@ extension CardManager: CardAddable {
     func newCard(withTitle title: String, contents: String) -> Card? {
         guard let categoryID = self.categoryID else { return nil }
         
-        let newCard = Card(id: Int(categoryID)!, title: title, contents: contents, createDateTime: "", status: "")
-        return newCard
+//        let newCard = Card(id: Int(categoryID)!, title: title, contents: contents, createDateTime: "", status: "")
+        return nil
     }
 }

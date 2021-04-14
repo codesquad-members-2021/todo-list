@@ -93,7 +93,9 @@ class ToDoViewController: UIViewController {
     
     @objc func didRecieveTestNotification(_ notification: Notification) {
         guard let count = notification.userInfo?["count"] as? Int else { return }
-        badgeLabel.text = "\(count)"
-        cardTableView.reloadData()
+        DispatchQueue.main.async {
+            self.badgeLabel.text = "\(count)"
+            self.cardTableView.reloadData()
+        }
     }
 }

@@ -9,14 +9,19 @@ import Foundation
 
 struct Card: Codable {
     let id: Int
+    let vertical: Int
     let title: String
     let contents: String
-    let createDateTime: String
-    let status: String
 }
 
 struct CardList: Codable {
-    let todo: [Card]
-    let doing: [Card]
-    let done: [Card]
+    let id: Int
+    let status: String
+    let todos: [Card]
 }
+
+//struct CardLists: Codable {
+//    let id: Int
+//    let status: String
+//    let todos: [CardList]
+//}
