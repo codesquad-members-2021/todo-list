@@ -14,19 +14,17 @@ const Div = styled.div`
 
 function App() {
   const [isOpen, isOpenActions] = useToggle(false);
-  const [todos, setTodos] = useState([]);
   const [histories, setHistories] = useState([]);
 
   useEffect(() => {
-    loadItems(setTodos, "/todos");
     loadItems(setHistories, '/logs');
   }, [])
 
   return (
     <Div>
-      <HistoryList  {...{ isOpen, isOpenActions, histories }} />
-      <Header isOpenActions={isOpenActions} />
-      <TodoListWrap {...{ todos, setTodos, setHistories }} ></TodoListWrap>
+      <HistoryList {...{ isOpen, isOpenActions, histories }} />
+      <Header {...{ isOpenActions }} />
+      <TodoListWrap {...{ setHistories }} />
     </Div>
   );
 }

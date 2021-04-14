@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState, useEffect, memo } from "react";
 import TodoListColumn from "../../organisms/TodoListColumn";
 import styled from "styled-components";
+import loadItems from '../../../serviceUtils/loadItems';
 
 const Wrap = styled.div`
   display: flex;
@@ -11,7 +12,13 @@ const Wrap = styled.div`
   border-radius: 10px;
 `;
 
-const TodoContent = ({ setHistories, todos, setTodos }) => {
+const TodoListWrap = ({ setHistories }) => {
+  const [todos, setTodos] = useState([]);
+
+  useEffect(() => {
+    loadItems(setTodos, "/todos");
+  }, [])
+
   return (
     <Wrap>
       {todos.map(({ columnId, columnName, items }) => {
@@ -23,4 +30,4 @@ const TodoContent = ({ setHistories, todos, setTodos }) => {
   );
 };
 
-export default TodoContent;
+export default memo(TodoListWrap);

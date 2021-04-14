@@ -19,7 +19,6 @@ const TodoSwitch = ({
   let isPatch = true; //추가인지 수정인지를 알 수있는 flag를 enrollClickHandler에 전달하기 위함
   let template;
   if (isInput) {
-    console.log("todoSwitch", columnId);
     template = (
       <TodoListInput
         {...{
@@ -36,7 +35,6 @@ const TodoSwitch = ({
       />
     );
   } else if (isClicked) {
-    console.log("todoSwitch", columnId); //undefined
     isPatch = false;
     template = (
       <TodoListInput

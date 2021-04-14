@@ -20,13 +20,10 @@ const TodoListItem = ({ columnId, id, title, content, author }) => {
   const ToItem = useRef();
   const [todos, setTodos] = useState();
   const clickClose = (e) => {
-    console.log("closeclick");
   };
 
   const deleteClickHandler = async () => {
     const response = await axios.delete(`/todos?columnId=${columnId}&id=${id}`);
-    console.log("delete 는", response);
-    console.log("delete 는", response.data);
     setTodos(response.data);
   };
 

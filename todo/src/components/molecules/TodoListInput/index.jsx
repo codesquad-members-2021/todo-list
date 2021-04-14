@@ -43,8 +43,9 @@ const TodoListInput = ({
     const currentTitle = titleRef.current.value;
     const currentContent = contentRef.current.value;
     let response;
-
+    let action;
     if (isPatch) {
+      action = "수정";
       response = await axios.patch("/todos", {
         columnId,
         id,
@@ -52,23 +53,24 @@ const TodoListInput = ({
         content: currentContent,
       });
     } else {
+      action = "등록"
       response = await axios.put(
         `/todos?columnId=${columnId}&title=${currentTitle}&content=${currentContent}&author=${"Beemo"}` //
       );
     }
 
-    setHistories(histories => {
-      const newHistory = {
-        index: histories[histories.length - 1].index + 1,
-        action: "수정",
-        currentColumn: columnName,
-        currentTitle,
-        currentContent,
-        prevTitle: title,
-        user: "Beemo",
-      };
-      return histories.concat(newHistory);
-    });
+    const newHistory = {
+      action,
+      currentColumn: columnName,
+      prevTitle: title,
+      currentTitle,
+      currentContent,
+      user: "Beemo",
+    };
+
+    const responseHistory = await axios.post('/logs', newHistory);
+    setHistories(() => responseHistory.data);
+
     setTodos(() => response.data);
   };
 

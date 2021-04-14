@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from "styled-components";
 import SmallButton from '../../atoms/Buttons/SmallButton';
 import Image from '../../atoms/Image';
@@ -6,6 +6,7 @@ import closeButton from '../../../images/closeButton.svg';
 import HistoryItem from '../../molecules/HistoryItem';
 
 const WrapDiv = styled.div`
+  overflow:auto;
   position: absolute;
   width: 450px;
   height: 100%;
@@ -32,8 +33,8 @@ const HistoryList = ({ histories, isOpenActions, isOpen }) => {
         </SmallButton>
       </ButtonDiv>
       <div>
-        {histories.map(({ index, ...itemObject }) =>
-          <HistoryItem key={index} itemObject={itemObject} />
+        {histories.map(({ id, ...itemObject }) =>
+          (<HistoryItem key={id} itemObject={itemObject} />)
         )}
       </div>
     </WrapDiv>

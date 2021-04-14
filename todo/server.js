@@ -40,6 +40,13 @@ server.put("/todos", (req, res) => {
   res.send(db.get("todos").value());
 });
 
+server.post("/logs", (req, res) => {
+  db.get("logs")
+    .push({ id: shortid.generate(), ...req.body })
+    .write();
+  res.send(db.get("logs").value());
+})
+
 server.delete("/todos", (req, res) => {
   const { columnId, id } = req.query;
   db.get("todos")

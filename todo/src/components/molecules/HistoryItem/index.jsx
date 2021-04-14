@@ -23,9 +23,7 @@ const TextDiv = styled.div`
 const HistoryItem = (props) => {
 
   const { user, userImage, prevTitle, currentTitle,
-    action, prevColumn, currentColumn, Date } = props;
-
-  console.log(props)
+    action, prevColumn, currentColumn, Date } = props.itemObject;
 
   return (<WrapDiv>
     <ImgDiv>
@@ -33,7 +31,7 @@ const HistoryItem = (props) => {
     </ImgDiv>
     <TextDiv>
       <div><Span>@Jake</Span></div>
-      <div><Span>해야할 일에 HTML/CSS 공부하기를 등록하였습니다</Span></div>
+      <div><Span>{prevTitle}를 {action}하였습니다</Span></div>
       <div><Span _fontColor="#777777">1분 전</Span></div>
     </TextDiv>
   </WrapDiv>);

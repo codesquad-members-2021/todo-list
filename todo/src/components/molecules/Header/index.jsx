@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import Span from "../../atoms/Span";
 import SmallButton from "../../atoms/Buttons/SmallButton";
 import Image from "../../atoms/Image";
@@ -23,4 +23,4 @@ const Header = ({ isOpenActions }) => {
   );
 };
 
-export default Header;
+export default memo(Header);
