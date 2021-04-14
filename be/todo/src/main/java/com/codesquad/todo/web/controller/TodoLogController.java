@@ -1,6 +1,6 @@
 package com.codesquad.todo.web.controller;
 
-import com.codesquad.todo.web.domain.User;
+import com.codesquad.todo.web.domain.TodoUser;
 import com.codesquad.todo.web.service.TodoLogService;
 import com.codesquad.todo.web.service.UserService;
 import org.springframework.http.ResponseEntity;
@@ -28,8 +28,8 @@ public class TodoLogController {
     @GetMapping
     public ResponseEntity<Map<String, Object>> showTodoLogList() {
         Map<String, Object> responseMap = new HashMap<>();
-        User user = userService.findUser(1L);
-        responseMap.put("todoLogs", todoLogService.showTodoLogList(user));
+        TodoUser todoUser = userService.findUser(1L);
+        responseMap.put("todoLogs", todoLogService.showTodoLogList(todoUser));
         return ResponseEntity.ok(responseMap);
     }
 }

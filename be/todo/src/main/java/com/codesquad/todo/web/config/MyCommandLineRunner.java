@@ -22,36 +22,36 @@ public class MyCommandLineRunner implements CommandLineRunner {
     }
 
     private void createUser() {
-        User user = createTestData();
-        userRepository.save(user);
+        TodoUser todoUser = createTestData();
+        userRepository.save(todoUser);
     }
 
-    private User createTestData() {
-        User user = new User("라쿤오톰", "raccoonAutumn", "1234", "image");
+    private TodoUser createTestData() {
+        TodoUser todoUser = new TodoUser("라쿤오톰", "raccoonAutumn", "1234", "image");
 
-        Column todoColumn = new Column("TODO");
+        TodoColumn todoColumn = new TodoColumn("TODO");
         todoColumn.addTask("title1", "content1");
         todoColumn.addTask("title2", "content2");
         todoColumn.addTask("title3", "content3");
         todoColumn.addTask("title4", "content4");
 
-        Column inProgressColumn = new Column("IN_PROGRESS");
-        inProgressColumn.addTask("title5", "content5");
-        inProgressColumn.addTask("title6", "content6");
+        TodoColumn inProgressTodoColumn = new TodoColumn("IN_PROGRESS");
+        inProgressTodoColumn.addTask("title5", "content5");
+        inProgressTodoColumn.addTask("title6", "content6");
 
-        Column doneColumn = new Column("DONE");
-        doneColumn.addTask("title7", "content7");
-        Task task = new Task("title8", "content8");
-        doneColumn.addTask(task);
+        TodoColumn doneTodoColumn = new TodoColumn("DONE");
+        doneTodoColumn.addTask("title7", "content7");
+        TodoTask todoTask = new TodoTask("title8", "content8");
+        doneTodoColumn.addTask(todoTask);
 
-        user.addColumn(todoColumn);
-        user.addColumn(inProgressColumn);
-        user.addColumn(doneColumn);
+        todoUser.addColumn(todoColumn);
+        todoUser.addColumn(inProgressTodoColumn);
+        todoUser.addColumn(doneTodoColumn);
 
-        user.addTodoLog(TodoLog.buildCreateTodoLog(todoColumn.getColumnTitle(), task.getTaskTitle()));
-        user.addTodoLog(TodoLog.buildRemoveTodoLog(todoColumn.getColumnTitle(), task.getTaskTitle()));
-        user.addTodoLog(TodoLog.buildCreateTodoLog(todoColumn.getColumnTitle(), task.getTaskTitle()));
-        user.addTodoLog(TodoLog.buildMoveTodoLog(doneColumn.getColumnTitle(), todoColumn.getColumnTitle(), task.getTaskTitle()));
-        return user;
+        todoUser.addTodoLog(TodoLog.buildCreateTodoLog(todoColumn.getColumnTitle(), todoTask.getTaskTitle()));
+        todoUser.addTodoLog(TodoLog.buildRemoveTodoLog(todoColumn.getColumnTitle(), todoTask.getTaskTitle()));
+        todoUser.addTodoLog(TodoLog.buildCreateTodoLog(todoColumn.getColumnTitle(), todoTask.getTaskTitle()));
+        todoUser.addTodoLog(TodoLog.buildMoveTodoLog(doneTodoColumn.getColumnTitle(), todoColumn.getColumnTitle(), todoTask.getTaskTitle()));
+        return todoUser;
     }
 }

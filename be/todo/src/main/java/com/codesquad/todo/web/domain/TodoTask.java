@@ -2,12 +2,14 @@ package com.codesquad.todo.web.domain;
 
 import com.codesquad.todo.web.exceptions.InvalidEntityDetectedException;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
 
 import java.time.LocalDateTime;
 
 import static com.codesquad.todo.web.util.VerifyUtil.isEmpty;
 
-public class Task {
+@Table("TODO_TASK")
+public class TodoTask {
     @Id
     private Long id;
     private String taskTitle;
@@ -15,14 +17,14 @@ public class Task {
     private LocalDateTime createdDateTime;
     private LocalDateTime updatedDateTime;
 
-    public Task(String taskTitle, String taskContent) {
+    public TodoTask(String taskTitle, String taskContent) {
         this.taskTitle = taskTitle;
         this.taskContent = taskContent;
         this.createdDateTime = LocalDateTime.now();
         this.updatedDateTime = null;
     }
 
-    protected Task() {
+    protected TodoTask() {
     }
 
     public void verifyTaskEntityIsNotEmpty() {
@@ -35,12 +37,12 @@ public class Task {
         return id.equals(taskId);
     }
 
-    public boolean isSameTitle(Task task) {
-        return taskTitle.equals(task.taskTitle);
+    public boolean isSameTitle(TodoTask todoTask) {
+        return taskTitle.equals(todoTask.taskTitle);
     }
 
-    public boolean isSameContent(Task task) {
-        return taskContent.equals(task.taskContent);
+    public boolean isSameContent(TodoTask todoTask) {
+        return taskContent.equals(todoTask.taskContent);
     }
 
     public void update(String newTitle, String newContent) {
@@ -49,9 +51,9 @@ public class Task {
         updatedDateTime = LocalDateTime.now();
     }
 
-    public void update(Task newTask) {
-        taskTitle = newTask.taskTitle;
-        taskContent = newTask.taskContent;
+    public void update(TodoTask newTodoTask) {
+        taskTitle = newTodoTask.taskTitle;
+        taskContent = newTodoTask.taskContent;
         updatedDateTime = LocalDateTime.now();
     }
 

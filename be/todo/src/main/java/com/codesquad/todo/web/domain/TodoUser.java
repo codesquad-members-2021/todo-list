@@ -2,24 +2,26 @@ package com.codesquad.todo.web.domain;
 
 import com.codesquad.todo.web.exceptions.ColumnNotFoundException;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class User {
+@Table("TODO_USER")
+public class TodoUser {
     @Id
     private Long id;
     private String name;
     private String userId;
     private String password;
     private String profileImage;
-    private List<Column> columnList = new ArrayList<>();
+    private List<TodoColumn> todoColumnList = new ArrayList<>();
     private List<TodoLog> todoLogList = new ArrayList<>();
 
-    protected User() {
+    protected TodoUser() {
     }
 
-    public User(String name, String userId, String password, String profileImage) {
+    public TodoUser(String name, String userId, String password, String profileImage) {
         this.name = name;
         this.userId = userId;
         this.password = password;
@@ -27,28 +29,28 @@ public class User {
     }
 
     public void addColumn(String columnTitle) {
-        addColumn(new Column(columnTitle));
+        addColumn(new TodoColumn(columnTitle));
 
     }
 
-    public void addColumn(Column column) {
-        columnList.add(column);
+    public void addColumn(TodoColumn todoColumn) {
+        todoColumnList.add(todoColumn);
 
     }
 
-    public Column findColumnById(Long id) {
-        return columnList.stream()
+    public TodoColumn findColumnById(Long id) {
+        return todoColumnList.stream()
                 .filter(column -> column.isSameId(id)).findFirst()
                 .orElseThrow(ColumnNotFoundException::new);
     }
 
     public void moveTask(Long prevColumnId, Long nextColumnId, Long taskId, int newTaskPosition) {
-        Column prevColumn = findColumnById(prevColumnId);
-        Task task = prevColumn.popTask(taskId);
-        Column nextColumn = findColumnById(nextColumnId);
-        nextColumn.addTaskAt(newTaskPosition, task);
+        TodoColumn prevTodoColumn = findColumnById(prevColumnId);
+        TodoTask todoTask = prevTodoColumn.popTask(taskId);
+        TodoColumn nextTodoColumn = findColumnById(nextColumnId);
+        nextTodoColumn.addTaskAt(newTaskPosition, todoTask);
 
-        TodoLog todoLog = TodoLog.buildMoveTodoLog(prevColumn.getColumnTitle(), nextColumn.getColumnTitle(), task.getTaskTitle());
+        TodoLog todoLog = TodoLog.buildMoveTodoLog(prevTodoColumn.getColumnTitle(), nextTodoColumn.getColumnTitle(), todoTask.getTaskTitle());
         addTodoLog(todoLog);
     }
 
@@ -92,12 +94,12 @@ public class User {
         this.profileImage = profileImage;
     }
 
-    public List<Column> getColumnList() {
-        return columnList;
+    public List<TodoColumn> getColumnList() {
+        return todoColumnList;
     }
 
-    public void setColumnList(List<Column> columnList) {
-        this.columnList = columnList;
+    public void setColumnList(List<TodoColumn> todoColumnList) {
+        this.todoColumnList = todoColumnList;
     }
 
     public List<TodoLog> getTodoLogList() {
@@ -116,7 +118,7 @@ public class User {
                 ", userId='" + userId + '\'' +
                 ", password='" + password + '\'' +
                 ", profileImage='" + profileImage + '\'' +
-                ", columnList=" + columnList +
+                ", columnList=" + todoColumnList +
                 ", todoLogList=" + todoLogList +
                 '}';
     }

@@ -2,7 +2,7 @@ package com.codesquad.todo.web.service;
 
 import com.codesquad.todo.web.domain.TodoLog;
 import com.codesquad.todo.web.domain.TodoLogRepository;
-import com.codesquad.todo.web.domain.User;
+import com.codesquad.todo.web.domain.TodoUser;
 import com.codesquad.todo.web.service.dto.TodoLogDto;
 import org.springframework.stereotype.Service;
 
@@ -17,11 +17,11 @@ public class TodoLogService {
         this.todoLogRepository = todoLogRepository;
     }
 
-    public List<TodoLogDto> showTodoLogList(User user) {
-        List<TodoLog> todoLogList = todoLogRepository.findFiveTodoLogByUser(user.getId());
+    public List<TodoLogDto> showTodoLogList(TodoUser todoUser) {
+        List<TodoLog> todoLogList = todoLogRepository.findFiveTodoLogByUser(todoUser.getId());
         List<TodoLogDto> todoLogDtoList = new ArrayList<>();
         for (TodoLog todoLog : todoLogList) {
-            todoLogDtoList.add(new TodoLogDto(todoLog, user.getName()));
+            todoLogDtoList.add(new TodoLogDto(todoLog, todoUser.getName()));
         }
         return todoLogDtoList;
     }

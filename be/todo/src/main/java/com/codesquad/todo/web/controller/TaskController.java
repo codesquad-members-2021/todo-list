@@ -1,7 +1,7 @@
 package com.codesquad.todo.web.controller;
 
-import com.codesquad.todo.web.domain.Task;
-import com.codesquad.todo.web.domain.User;
+import com.codesquad.todo.web.domain.TodoTask;
+import com.codesquad.todo.web.domain.TodoUser;
 import com.codesquad.todo.web.service.TaskService;
 import com.codesquad.todo.web.service.UserService;
 import com.codesquad.todo.web.service.dto.TaskDto;
@@ -27,8 +27,8 @@ public class TaskController {
     @PostMapping
     public ResponseEntity<Map<String, Object>> createTask(@PathVariable Long columnId, String taskTitle, String taskContent) {
         Map<String, Object> responseMap = new HashMap<>();
-        User user = userService.findUser(1L);
-        TaskDto taskDto = taskService.createTask(user, columnId, taskTitle, taskContent);
+        TodoUser todoUser = userService.findUser(1L);
+        TaskDto taskDto = taskService.createTask(todoUser, columnId, taskTitle, taskContent);
         responseMap.put("task", taskDto);
         return ResponseEntity.ok(responseMap);
     }
@@ -36,23 +36,23 @@ public class TaskController {
     @CrossOrigin
     @DeleteMapping("/{taskId}")
     public void removeTask(@PathVariable Long columnId, @PathVariable Long taskId) {
-        User user = userService.findUser(1L);
-        taskService.removeTask(user, columnId, taskId);
+        TodoUser todoUser = userService.findUser(1L);
+        taskService.removeTask(todoUser, columnId, taskId);
     }
 
     @CrossOrigin
     @PutMapping("/{taskId}")
-    public void updateTask(@PathVariable Long columnId, @PathVariable Long taskId, Task newTask) {
-        User user = userService.findUser(1L);
-        taskService.updateTask(user, columnId, taskId, newTask);
+    public void updateTask(@PathVariable Long columnId, @PathVariable Long taskId, TodoTask newTodoTask) {
+        TodoUser todoUser = userService.findUser(1L);
+        taskService.updateTask(todoUser, columnId, taskId, newTodoTask);
     }
 
     @CrossOrigin
     @PutMapping("/{taskId}/move")
     public void moveTask(@PathVariable Long columnId, @PathVariable Long taskId,
                          Long nextColumnId, int newTaskPosition) {
-        User user = userService.findUser(1L);
-        taskService.moveTask(user, columnId, nextColumnId, taskId, newTaskPosition);
+        TodoUser todoUser = userService.findUser(1L);
+        taskService.moveTask(todoUser, columnId, nextColumnId, taskId, newTaskPosition);
     }
 
 }

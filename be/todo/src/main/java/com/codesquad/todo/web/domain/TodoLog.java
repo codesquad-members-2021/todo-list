@@ -1,9 +1,11 @@
 package com.codesquad.todo.web.domain;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
 
 import java.time.LocalDateTime;
 
+@Table("TODO_LOG")
 public class TodoLog {
     @Id
     private Long id;

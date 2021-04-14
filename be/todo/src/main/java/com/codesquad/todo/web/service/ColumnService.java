@@ -1,8 +1,8 @@
 package com.codesquad.todo.web.service;
 
-import com.codesquad.todo.web.domain.Column;
-import com.codesquad.todo.web.domain.Task;
-import com.codesquad.todo.web.domain.User;
+import com.codesquad.todo.web.domain.TodoColumn;
+import com.codesquad.todo.web.domain.TodoTask;
+import com.codesquad.todo.web.domain.TodoUser;
 import com.codesquad.todo.web.domain.UserRepository;
 import com.codesquad.todo.web.service.dto.ColumnDto;
 import com.codesquad.todo.web.service.dto.TaskDto;
@@ -19,14 +19,14 @@ public class ColumnService {
         this.userRepository = userRepository;
     }
 
-    public List<ColumnDto> showColumnList(User user) {
-        List<Column> columnList = user.getColumnList();
+    public List<ColumnDto> showColumnList(TodoUser todoUser) {
+        List<TodoColumn> todoColumnList = todoUser.getColumnList();
         List<ColumnDto> columnDtoList = new ArrayList<>();
 
-        for (Column column : columnList) {
-            ColumnDto columnDto = new ColumnDto(column);
-            for (Task task : column.getTaskList()) {
-                columnDto.addTaskDto(new TaskDto(task, user.getName()));
+        for (TodoColumn todoColumn : todoColumnList) {
+            ColumnDto columnDto = new ColumnDto(todoColumn);
+            for (TodoTask todoTask : todoColumn.getTaskList()) {
+                columnDto.addTaskDto(new TaskDto(todoTask, todoUser.getName()));
             }
             columnDtoList.add(columnDto);
         }

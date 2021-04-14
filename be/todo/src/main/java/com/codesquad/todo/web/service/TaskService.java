@@ -12,39 +12,39 @@ public class TaskService {
         this.userRepository = userRepository;
     }
 
-    public TaskDto createTask(User user, Long columnId, String taskTitle, String taskContent) {
-        Column column = user.findColumnById(columnId);
-        column.addTask(taskTitle, taskContent);
+    public TaskDto createTask(TodoUser todoUser, Long columnId, String taskTitle, String taskContent) {
+        TodoColumn todoColumn = todoUser.findColumnById(columnId);
+        todoColumn.addTask(taskTitle, taskContent);
 
-        TodoLog todoLog = TodoLog.buildCreateTodoLog(column.getColumnTitle(), taskTitle);
-        user.addTodoLog(todoLog);
+        TodoLog todoLog = TodoLog.buildCreateTodoLog(todoColumn.getColumnTitle(), taskTitle);
+        todoUser.addTodoLog(todoLog);
 
-        user = userRepository.save(user);
-        column = user.findColumnById(columnId);
-        Task task = column.lastTask();
-        return new TaskDto(task, user.getName());
+        todoUser = userRepository.save(todoUser);
+        todoColumn = todoUser.findColumnById(columnId);
+        TodoTask todoTask = todoColumn.lastTask();
+        return new TaskDto(todoTask, todoUser.getName());
     }
 
-    public void removeTask(User user, Long columnId, Long taskId) {
-        Column column = user.findColumnById(columnId);
-        Task removedTask = column.popTask(taskId);
-        TodoLog todoLog = TodoLog.buildRemoveTodoLog(column.getColumnTitle(), removedTask.getTaskTitle());
-        user.addTodoLog(todoLog);
-        userRepository.save(user);
+    public void removeTask(TodoUser todoUser, Long columnId, Long taskId) {
+        TodoColumn todoColumn = todoUser.findColumnById(columnId);
+        TodoTask removedTodoTask = todoColumn.popTask(taskId);
+        TodoLog todoLog = TodoLog.buildRemoveTodoLog(todoColumn.getColumnTitle(), removedTodoTask.getTaskTitle());
+        todoUser.addTodoLog(todoLog);
+        userRepository.save(todoUser);
     }
 
-    public void updateTask(User user, Long columnId, Long taskId, Task newTask) {
-        newTask.verifyTaskEntityIsNotEmpty();
-        Column column = user.findColumnById(columnId);
-        Task foundTask = column.findTaskById(taskId);
-        foundTask.update(newTask);
-        TodoLog todoLog = TodoLog.buildUpdateTodoLog(column.getColumnTitle(), foundTask.getTaskTitle());
-        user.addTodoLog(todoLog);
-        userRepository.save(user);
+    public void updateTask(TodoUser todoUser, Long columnId, Long taskId, TodoTask newTodoTask) {
+        newTodoTask.verifyTaskEntityIsNotEmpty();
+        TodoColumn todoColumn = todoUser.findColumnById(columnId);
+        TodoTask foundTodoTask = todoColumn.findTaskById(taskId);
+        foundTodoTask.update(newTodoTask);
+        TodoLog todoLog = TodoLog.buildUpdateTodoLog(todoColumn.getColumnTitle(), foundTodoTask.getTaskTitle());
+        todoUser.addTodoLog(todoLog);
+        userRepository.save(todoUser);
     }
 
-    public void moveTask(User user, Long columnId, Long nextColumnId, Long taskId, int newTaskPosition) {
-        user.moveTask(columnId, nextColumnId, taskId, newTaskPosition);
-        userRepository.save(user);
+    public void moveTask(TodoUser todoUser, Long columnId, Long nextColumnId, Long taskId, int newTaskPosition) {
+        todoUser.moveTask(columnId, nextColumnId, taskId, newTaskPosition);
+        userRepository.save(todoUser);
     }
 }

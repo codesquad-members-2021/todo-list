@@ -1,6 +1,6 @@
 package com.codesquad.todo.web.service.dto;
 
-import com.codesquad.todo.web.domain.Task;
+import com.codesquad.todo.web.domain.TodoTask;
 
 import java.time.LocalDateTime;
 
@@ -11,12 +11,12 @@ public class TaskDto {
     private String authorName;
     private LocalDateTime createdDateTime;
 
-    public TaskDto(Task task, String authorName) {
-        this.id = task.getId();
-        this.taskTitle = task.getTaskTitle();
-        this.taskContent = task.getTaskContent();
+    public TaskDto(TodoTask todoTask, String authorName) {
+        this.id = todoTask.getId();
+        this.taskTitle = todoTask.getTaskTitle();
+        this.taskContent = todoTask.getTaskContent();
         this.authorName = authorName;
-        this.createdDateTime = task.getCreatedDateTime();
+        this.createdDateTime = todoTask.getCreatedDateTime();
     }
 
     public long getId() {
