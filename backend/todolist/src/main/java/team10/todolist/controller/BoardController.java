@@ -42,4 +42,8 @@ public class BoardController {
         return boardService.readByCategory(Category.DONE);
     }
 
+    @GetMapping("/{id}")
+    public Board readBoard(@PathVariable Long id) {
+        return boardService.findBoardById(id);
+    }
 }

@@ -31,4 +31,9 @@ public class BoardService {
     public List<Board> readByCategory(Category category) {
         return boardRepository.findByCategory(category.name());
     }
+
+    public Board findBoardById(Long id){
+        return boardRepository.findById(id).orElseThrow(NullPointerException::new);
+    }
+
 }
