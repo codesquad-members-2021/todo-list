@@ -28,6 +28,17 @@ class CardViewController: UIViewController {
         setNotificationCenter()
         registerNib()
         configureTextField()
+        
+        DispatchQueue.main.async {
+            CardAPIClient().loadAllCards(completion: { [weak self] result in
+                switch result {
+                case .success(let cards) :
+                    self?.board.doingList.list = cards
+                    self?.reloadBoard()
+                case .failure(let error) : print(error)
+                }
+            })
+        }
     }
     
     @IBAction func didTouchAddButton(_ sender: UIButton) {
@@ -60,9 +71,11 @@ extension CardViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(reloadBoard), name: Board.DoneListChanged, object: board)
     }
     @objc func reloadBoard(){
-        self.todo.reloadData()
-        self.doing.reloadData()
-        self.done.reloadData()
+        DispatchQueue.main.async {
+            self.todo.reloadData()
+            self.doing.reloadData()
+            self.done.reloadData()
+        }
     }
 }
 // MARK: - Register Nib and Configuration
