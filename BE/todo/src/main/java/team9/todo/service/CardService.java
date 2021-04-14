@@ -10,7 +10,6 @@ import team9.todo.domain.History;
 import team9.todo.domain.User;
 import team9.todo.domain.enums.CardColumn;
 import team9.todo.domain.enums.HistoryAction;
-import team9.todo.exception.NotAuthorizedException;
 import team9.todo.exception.NotFoundException;
 import team9.todo.repository.CardRepository;
 import team9.todo.repository.HistoryRepository;
@@ -132,9 +131,7 @@ public class CardService {
 
     private Card getCard(long cardId, User user) {
         Card card = cardRepository.findByIdAndDeletedFalse(cardId).orElseThrow(NotFoundException::new);
-        if (card.getUser() != user.getId()) {
-            throw new NotAuthorizedException();
-        }
+        card.validateOwner(user.getId());
         return card;
     }
 }

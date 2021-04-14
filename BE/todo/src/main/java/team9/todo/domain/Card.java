@@ -2,6 +2,7 @@ package team9.todo.domain;
 
 import org.springframework.data.annotation.Id;
 import team9.todo.domain.enums.CardColumn;
+import team9.todo.exception.NotAuthorizedException;
 
 public class Card {
     public static final double PRIORITY_STEP = 1.0;
@@ -88,5 +89,11 @@ public class Card {
     public void update(String title, String content) {
         this.title = title;
         this.content = content;
+    }
+
+    public void validateOwner(Long user) {
+        if (this.user != user) {
+            throw new NotAuthorizedException();
+        }
     }
 }
