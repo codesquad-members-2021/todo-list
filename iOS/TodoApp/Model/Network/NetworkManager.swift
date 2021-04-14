@@ -77,6 +77,7 @@ class NetworkManager {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            print(response)
             if let error = error {
                 print(error)
                 return

@@ -41,4 +41,10 @@ class TaskStackManager {
     func totalCount() -> Int {
         return arrayCount().reduce(0, +)
     }
+    
+    func move(_ status: Int, at index: Int){
+        let movedData = tasks[status].remove(at: index)
+        tasks[StatusValue.done].append(taskCard: movedData)
+        NotificationCenter.default.post(name: .requestMoveTask, object: self, userInfo: ["movedData": movedData])
+    }
 }
