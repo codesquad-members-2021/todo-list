@@ -1,60 +1,98 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import CreateTodo from "./CreateTodo";
-import TodoColumnHead from "./TodoColumnHead";
-import TodoItem from "./TodoItem";
+import React, { useState } from 'react'
+import styled from 'styled-components'
+import CreateTodo from './CreateTodo'
+import TodoColumnHead from './TodoColumnHead'
+import TodoItem from './TodoItem'
+import {
+  useTodoState,
+  useTodoDispatch,
+  useHistoyDispatch,
+  useTodoUserNameContext
+} from '../Context'
 
-const TodoColumnBlock = styled.div``;
-const TodoItemsBlock = styled.div``;
+const TodoColumnBlock = styled.div``
+const TodoItemsBlock = styled.div``
 
-const TodoColumn = ({title, todoItems}) => {
-  const [toggle, setToggle] = useState(false);
-  const [todos, setTodos] = useState(todoItems);
-  const [count, setCount] = useState(todoItems.length);
+const TodoColumn = ({ title, todoItems, index }) => {
+  const [toggle, setToggle] = useState(false)
+  const [todos, setTodos] = useState(todoItems)
+  const [count, setCount] = useState(todoItems.length)
   const [inputs, setInputs] = useState({
-    title: "",
-    content: ""
-  });
+    title: '',
+    content: ''
+  })
 
-  const onClick = () => setToggle(!toggle);
+  const onClick = () => setToggle(!toggle)
+  const dispatch = useTodoDispatch()
+  const hisDispatch = useHistoyDispatch()
+  const state = useTodoState()
+  const name = useTodoUserNameContext()
   const onSubmit = () => {
-    setTodos([...todos, {...inputs}]);
-    setCount(count + 1);
-    setInputs({title: "", content: ""});
-    setToggle(!toggle);
+    setCount(count + 1)
+    setInputs({ title: '', content: '' })
+    setToggle(!toggle)
+    dispatch({ type: 'UPDATEITEM', idx: index, item: { ...inputs } })
+    hisDispatch({
+      type: 'CREATE',
+      history: {
+        text: `<b>${{ ...inputs }.title}</b> 을(를) <b>${
+          state[index].title
+        }</b>에 <b>생성</b>하였습니다.`,
+        time: new Date().toUTCString()
+      }
+    })
   }
   const onCancel = () => {
-    setToggle(!toggle);
-    setInputs({title: "", content: ""});
+    setToggle(!toggle)
+    setInputs({ title: '', content: '' })
   }
   const onChange = ({ target }) => {
-    setInputs({...inputs, [target.name] : target.value});
+    setInputs({ ...inputs, [target.name]: target.value })
   }
   const onAllRemove = () => {
-    setTodos([]);
-    setCount(0);
+    setTodos([])
+    setCount(0)
   }
-  const onRemove = (index) => {
-    setTodos(todos.filter((v, i) => i !== index));
-    setCount(count - 1);
+  const onRemove = index => {
+    setTodos(todos.filter((v, i) => i !== index))
+    setCount(count - 1)
   }
   const onTodoItemChange = (e, index) => {
-    setTodos(todos.map((v, i) => {
-      e.preventDefault();
-      if(i === index) v[e.target.name] = e.target.value;
-      return v;
-    }));
-  } 
-  const TodoItems = todos.map((v, index) => <TodoItem {...v} index={index} onChange={onTodoItemChange} onRemove={onRemove} key={index}/>); 
+    setTodos(
+      todos.map((v, i) => {
+        if (i === index) v[e.target.name] = e.target.value
+        return v
+      })
+    )
+  }
+  const TodoItems = todoItems.map((v, index) => (
+    <TodoItem
+      {...v}
+      index={index}
+      onChange={onTodoItemChange}
+      onRemove={onRemove}
+      key={index}
+    />
+  ))
   return (
     <TodoColumnBlock>
-      <TodoColumnHead toggle={toggle} onClick={onClick} onAllRemove={onAllRemove} count={count} title={title}></TodoColumnHead>
-      <CreateTodo inputs={inputs} onChange={onChange} onCancel={onCancel} onSubmit={onSubmit} toggle={toggle}></CreateTodo>
-      <TodoItemsBlock>
-        {TodoItems}
-      </TodoItemsBlock>
+      <TodoColumnHead
+        toggle={toggle}
+        onClick={onClick}
+        onAllRemove={onAllRemove}
+        count={count}
+        title={title}
+      ></TodoColumnHead>
+      <CreateTodo
+        inputs={inputs}
+        onChange={onChange}
+        onCancel={onCancel}
+        onSubmit={onSubmit}
+        toggle={toggle}
+      ></CreateTodo>
+      <TodoItemsBlock>{TodoItems}</TodoItemsBlock>
     </TodoColumnBlock>
   )
 }
 
-export default TodoColumn;
+export default TodoColumn

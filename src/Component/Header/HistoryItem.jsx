@@ -1,7 +1,7 @@
 // import Button from '../Button'
 // import { FaTimes } from 'react-icons/fa'
 import styled from 'styled-components'
-
+import { useTodoUserNameContext } from '../Context'
 const HistoryItemBlock = styled.li`
   margin-top: 1rem;
   border: 1px solid black;
@@ -40,7 +40,7 @@ export default function HistoryItem ({ author, text, time, profile }) {
     <HistoryItemBlock>
       <HistoryItemProfileBlock>{profile}</HistoryItemProfileBlock>
       <HistoryItemTextBlock>
-        <Id>@{author}</Id>
+        <Id>@{useTodoUserNameContext().current}</Id>
         <Contents dangerouslySetInnerHTML={{ __html: text }}></Contents>
         <Time>{time}</Time>
       </HistoryItemTextBlock>
