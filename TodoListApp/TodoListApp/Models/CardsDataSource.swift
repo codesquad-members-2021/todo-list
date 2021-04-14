@@ -40,15 +40,6 @@ class CardsDataSource: NSObject, UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let deleteAction = UIContextualAction(style: .destructive, title: "삭제") { (action, view, success) in
-            self.cards.remove(at: indexPath.section)
-        }
-        let config = UISwipeActionsConfiguration(actions: [deleteAction])
-        config.performsFirstActionWithFullSwipe = false
-        return config
-    }
-    
     func insert(_ card: Card, at index: Int) {
         cards.insert(card, at: index)
     }
@@ -56,5 +47,9 @@ class CardsDataSource: NSObject, UITableViewDataSource {
     func registerCard(title: String, notes: String) {
         let newCard = Card(title: title, notes: notes, category: cards.first?.category ?? "")
         cards.insert(newCard, at: 0)
+    }
+    
+    func deleteCard(at index: Int) {
+        cards.remove(at: index)
     }
 }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ListViewController: UIViewController, ListViewControllerProtocol, PopupViewDelegate {
+class ListViewController: UIViewController, ListViewControllerProtocol, PopupViewDelegate, UITableViewDelegate {
     @IBOutlet weak var headerView: ListHeaderView!
     @IBOutlet weak var cardTableView: UITableView!
     private var cardsDataSource = CardsDataSource(cards: [])
@@ -20,6 +20,7 @@ class ListViewController: UIViewController, ListViewControllerProtocol, PopupVie
         headerView.badgeButton.layer.cornerRadius = headerView.frame.size.height / 2
         
         cardTableView.dataSource = cardsDataSource
+        cardTableView.delegate = self
         cardTableView.register(CardCell.nib(), forCellReuseIdentifier: CardCell.identifier)
         cardTableView.sectionFooterHeight = 0.0
         
@@ -56,5 +57,16 @@ class ListViewController: UIViewController, ListViewControllerProtocol, PopupVie
     
     func updateBadgeCount() {
         headerView.badgeButton.setTitle("\(cardsDataSource.cardsCount)", for: .normal)
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: "삭제") { (action, view, success) in
+            self.cardsDataSource.deleteCard(at: indexPath.section)
+            tableView.deleteSections(NSIndexSet(index: indexPath.section) as IndexSet, with: .automatic)
+            self.updateBadgeCount()
+        }
+        let config = UISwipeActionsConfiguration(actions: [deleteAction])
+        config.performsFirstActionWithFullSwipe = false
+        return config
     }
 }
