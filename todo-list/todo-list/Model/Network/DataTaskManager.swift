@@ -11,8 +11,8 @@ class DataTaskManager {
     
     static let session = URLSession(configuration: .default)
     
-    static func request(completion: @escaping (Result<[CardList], Error>) -> Void) {
-        session.dataTask(with: RequestManager.get(url: "http://ec2-13-124-220-184.ap-northeast-2.compute.amazonaws.com:8080/verticals")) { data, response, error in
+    static func get(completion: @escaping (Result<[CardList], Error>) -> Void) {
+        session.dataTask(with: RequestManager.getRequest()) { data, response, error in
             if let data = data {
                 guard let cardList = ParsingManager.decodeData(type: [CardList].self, data: data) else { return }
                 completion(.success(cardList))
@@ -20,5 +20,18 @@ class DataTaskManager {
                 completion(.failure(error?.localizedDescription as! Error))
             }
         }.resume()
+    }
+    
+    static func post(category: Int, data: Data) {
+        guard let encodingData = ParsingManager.encodeData(data: data) else { return }
+        session.dataTask(with: RequestManager.postRequest(category: category, data: encodingData)).resume()
+    }
+    
+    static func put(category: Int, cardID: Int, data: Data) {
+        session.dataTask(with: RequestManager.putRequest(category: category, cardID: cardID, data: data)).resume()
+    }
+
+    static func delete(category: Int, cardID: Int) {
+        session.dataTask(with: RequestManager.deleteRequest(category: category, cardID: cardID)).resume()
     }
 }
