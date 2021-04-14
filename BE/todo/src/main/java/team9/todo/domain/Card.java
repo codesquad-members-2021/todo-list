@@ -21,7 +21,8 @@ public class Card {
 
     private boolean deleted;
 
-    public Card(String title, String content, double priority, CardColumn columnType) {
+    public Card(Long user, String title, String content, double priority, CardColumn columnType) {
+        this.user = user;
         this.title = title;
         this.content = content;
         this.priority = priority;
