@@ -1,10 +1,10 @@
 package com.example.todolist.web;
 
 import com.example.todolist.service.WorkService;
-import com.example.todolist.web.dto.RequestCreateWorkDto;
-import com.example.todolist.web.dto.RequestMoveWorkDto;
-import com.example.todolist.web.dto.RequestUpdateWorkDto;
-import com.example.todolist.web.dto.ResponseWorkDto;
+import com.example.todolist.web.dto.CreateWorkRequestDTO;
+import com.example.todolist.web.dto.MoveWorkRequestDTO;
+import com.example.todolist.web.dto.UpdateWorkRequestDTO;
+import com.example.todolist.web.dto.WorkResponseDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
@@ -25,19 +25,19 @@ public class WorkController {
     }
 
     @GetMapping("/works")
-    public List<ResponseWorkDto> showWorks(HttpSession session) {
+    public List<WorkResponseDTO> showWorks(HttpSession session) {
         logger.info("work 리스트 요청");
         return workService.getWorks(getUserFromSession(session));
     }
 
     @PostMapping("/works")
-    public ResponseWorkDto createWork(@RequestBody RequestCreateWorkDto workDto, HttpSession session) {
+    public WorkResponseDTO createWork(@RequestBody CreateWorkRequestDTO workDto, HttpSession session) {
         logger.info("work 생성 요청");
         return workService.save(workDto, getUserFromSession(session));
     }
 
     @PutMapping("/works/{id}")
-    public ResponseWorkDto updateWork(@PathVariable Long id, @RequestBody RequestUpdateWorkDto workDto, HttpSession session) {
+    public WorkResponseDTO updateWork(@PathVariable Long id, @RequestBody UpdateWorkRequestDTO workDto, HttpSession session) {
         logger.info("work 수정 요청");
         return workService.update(id, workDto, getUserFromSession(session));
     }
@@ -49,7 +49,7 @@ public class WorkController {
     }
 
     @PostMapping("/works/{id}")
-    public ResponseWorkDto moveWork(@PathVariable Long id, @RequestBody RequestMoveWorkDto workDto, HttpSession session) {
+    public WorkResponseDTO moveWork(@PathVariable Long id, @RequestBody MoveWorkRequestDTO workDto, HttpSession session) {
         logger.info("work 이동 요청");
         return workService.move(id, workDto, getUserFromSession(session));
     }
