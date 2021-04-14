@@ -43,4 +43,10 @@ public class BoardService {
         return true;
     }
 
+    public Board update(Long id, BoardDto boardDto){
+        Board board = findBoardById(id);
+        board.update(boardDto);
+        boardRepository.save(board);
+        return board;
+    }
 }

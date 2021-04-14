@@ -56,6 +56,17 @@ public class Board {
         isDeleted = 1;
     }
 
+    public void update(BoardDto boardDto){
+        this.title = boardDto.getTitle();
+        this.category = boardDto.getCategory();
+        this.contents = boardDto.getContents();
+        this.dateTime = LocalDateTime.now();
+    }
+
+    public void delete(){
+        isDeleted = 1;
+    }
+
     @Override
     public String toString() {
         return "Card{" +
