@@ -31,10 +31,16 @@ public class CardService {
         this.historyRepository = historyRepository;
     }
 
+    private double getNextPriority(CardColumn cardColumn, User user) {
+        double maxPriority = cardRepository.findMaxPriority(user.getId(), cardColumn).orElse(0.0);
+        return maxPriority + PRIORITY_STEP;
+    }
+
     @Transactional
     public Card create(String title, String content, CardColumn cardColumn, User user) {
         logger.debug("card 생성 요청: {}, {}, {}", cardColumn, title, content);
-        double priority = cardRepository.findMaxPriority(user.getId(), cardColumn) + PRIORITY_STEP;
+
+        double priority = getNextPriority(cardColumn, user);
         Card card = new Card(user.getId(), title, content, priority, cardColumn);
         Card saved = cardRepository.save(card);
 

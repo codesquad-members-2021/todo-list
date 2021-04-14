@@ -22,5 +22,5 @@ public interface CardRepository extends CrudRepository<Card, Long> {
     @Query("SELECT `priority` FROM `card` " +
             "WHERE `user` = user AND `column_type` = :cardColumn AND `deleted` = 0 " +
             "ORDER BY `priority` desc limit 1")
-    public Double findMaxPriority(Long user, CardColumn cardColumn);
+    public Optional<Double> findMaxPriority(Long user, CardColumn cardColumn);
 }
