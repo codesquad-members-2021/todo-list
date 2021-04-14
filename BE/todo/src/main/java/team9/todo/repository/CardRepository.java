@@ -20,7 +20,7 @@ public interface CardRepository extends CrudRepository<Card, Long> {
     public void softDeleteById(Long cardId);
 
     @Query("SELECT `priority` FROM `card` " +
-            "WHERE `user` = user AND `column_type` = :cardColumn AND `deleted` = 0 " +
+            "WHERE `user` = :user AND `column_type` = :cardColumn AND `deleted` = 0 " +
             "ORDER BY `priority` desc limit 1")
     public Optional<Double> findMaxPriority(Long user, CardColumn cardColumn);
 }
