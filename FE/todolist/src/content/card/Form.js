@@ -4,12 +4,16 @@ import CardInput from './CardInput'
 import CardButton from './CardButton'
 // import Icon from '../../utilComponent/Icon.js'
 
-const CardStyle = styled.div`
+const FormStyle = styled.div`
     background: #fff;
     box-sizing: border-box;
     width: 308px;
     padding: 16px;
     border-radius: 6px;
+    input:disabled {
+        background: #fff;
+        color: #333;
+    }
 `
 
 const Form = () => {
@@ -21,6 +25,8 @@ const Form = () => {
     const setInputState = (e) => {
         e.preventDefault();
         setInputs({ title: newTodo.title, content: newTodo.content })
+        contentInput.current.disabled = true;
+        titleInput.current.disabled = true;
     }
 
     const titleInput = useRef();
@@ -32,10 +38,10 @@ const Form = () => {
     }, [inputs])
 
     return (
-        <CardStyle>
+        <FormStyle>
             <CardInput titleInput={titleInput} contentInput={contentInput} onChange={onChange}/>
             <CardButton resetInputState={resetInputState} setInputState={setInputState} />
-        </CardStyle>
+        </FormStyle>
     )
 }
 export default Form;

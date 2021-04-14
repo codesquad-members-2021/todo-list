@@ -25,12 +25,16 @@ const CardInput = ({titleInput, contentInput, onChange}) => {
         <InputContainer>
             <form action="">
                 <input 
+                    type="text"
+                    autoComplete = "off"
                     placeholder="제목을 입력하세요" 
                     name="title"
                     ref={titleInput}
                     onChange={onChange}
                 />
                 <input 
+                    type="textarea"
+                    autoComplete = "off"
                     placeholder="내용을 입력하세요" 
                     name="content"
                     ref={contentInput}
