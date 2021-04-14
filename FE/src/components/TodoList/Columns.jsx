@@ -3,6 +3,7 @@ import CardLists from './CardLists';
 import Form from './Form';
 import styled from 'styled-components';
 import Icon from '../atoms/Icons';
+import AddBtn from '../atoms/AddBtn';
 
 const Column = ({ data: { columns } }) => {
   const [columnData, setColumnData] = useState(columns);
@@ -30,6 +31,10 @@ const Column = ({ data: { columns } }) => {
   const offDisplay = () => {
     setCurrentID(null);
   };
+  
+  const addColumn = () => {
+    setColumnData([...columnData, {id: ++columnData.length, title: prompt("칼럼 이름을 입력하세요"), cards:[]}]);
+  }
 
   const checkInputValue = ({ title, content }, callbackSetInput) => {
     if (title.length > 0 || content.length > 0) callbackSetInput(true);
@@ -72,7 +77,7 @@ const Column = ({ data: { columns } }) => {
     );
   });
 
-  return <ColumnContainer>{columnList}</ColumnContainer>;
+  return <ColumnContainer>{columnList}<div onClick={addColumn}><AddBtn/></div></ColumnContainer>;
 };
 
 export default Column;
