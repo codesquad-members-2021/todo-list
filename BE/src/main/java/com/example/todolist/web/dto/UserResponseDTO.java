@@ -15,7 +15,7 @@ public class UserResponseDTO {
     private String name;
     private String email;
 
-    public static UserResponseDTO buildResponseUserDTO(User user) {
+    public static UserResponseDTO buildUserResponseDTO(User user) {
         return UserResponseDTO.builder()
                 .id(user.getId())
                 .userId(user.getUserId())

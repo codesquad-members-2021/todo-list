@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.example.todolist.web.dto.WorkResponseDTO.buildResponseWorkDTO;
+import static com.example.todolist.web.dto.WorkResponseDTO.buildWorkResponseDTO;
 import static com.example.todolist.web.utils.TimelineContent.makeTimelineContent;
 import static com.example.todolist.web.utils.TimelineContent.moveContent;
 
@@ -37,7 +37,7 @@ public class WorkService {
     public List<WorkResponseDTO> getWorks(User sessionUser) {
         return workRepository.findAllByAuthorId(sessionUser.getId()).stream()
                 .filter(Work::isNotDeleted)
-                .map(work -> buildResponseWorkDTO(work, sessionUser))
+                .map(work -> buildWorkResponseDTO(work, sessionUser))
                 .collect(Collectors.toList());
     }
 
@@ -46,7 +46,7 @@ public class WorkService {
         work.saveAuthorId(sessionUser);
         Work saveWork = workRepository.save(work);
         saveTimeline(work, makeTimelineContent(work, SAVE));
-        return buildResponseWorkDTO(saveWork, sessionUser);
+        return buildWorkResponseDTO(saveWork, sessionUser);
     }
 
     public WorkResponseDTO update(Long id, UpdateWorkRequestDTO workDTO, User sessionUser) {
@@ -54,7 +54,7 @@ public class WorkService {
         work.update(workDTO.toEntity());
         workRepository.save(work);
         saveTimeline(work, makeTimelineContent(work, UPDATE));
-        return buildResponseWorkDTO(work, sessionUser);
+        return buildWorkResponseDTO(work, sessionUser);
     }
 
     public void delete(Long id, User sessionUser) {
@@ -69,7 +69,7 @@ public class WorkService {
         work.move(workDTO.toEntity().getStatus());
         workRepository.save(work);
         saveTimeline(work, moveContent(work, workDTO));
-        return buildResponseWorkDTO(work, sessionUser);
+        return buildWorkResponseDTO(work, sessionUser);
     }
 
     public void saveTimeline(Work work, String content) {

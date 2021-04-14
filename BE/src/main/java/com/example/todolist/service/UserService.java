@@ -9,7 +9,7 @@ import com.example.todolist.web.dto.SignInUserRequestDTO;
 import com.example.todolist.web.dto.UserResponseDTO;
 import org.springframework.stereotype.Service;
 
-import static com.example.todolist.web.dto.UserResponseDTO.buildResponseUserDTO;
+import static com.example.todolist.web.dto.UserResponseDTO.buildUserResponseDTO;
 
 @Service
 public class UserService {
@@ -26,7 +26,7 @@ public class UserService {
             throw new UserAccountException(ErrorMessage.DUPLICATED_ID);
         }
         userRepository.save(user);
-        return buildResponseUserDTO(user);
+        return buildUserResponseDTO(user);
     }
 
     public User login(LoginUserRequestDTO userDTO) {

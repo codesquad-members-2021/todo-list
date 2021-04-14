@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 
+import static com.example.todolist.web.dto.UserResponseDTO.buildUserResponseDTO;
 import static com.example.todolist.web.utils.HttpSessionUtils.USER_SESSION_KEY;
 
 
@@ -36,7 +37,7 @@ public class UserController {
         logger.info("로그인 요청");
         User user = userService.login(userDTO);
         session.setAttribute(USER_SESSION_KEY, user);
-        return UserResponseDTO.buildResponseUserDTO(user);
+        return buildUserResponseDTO(user);
     }
 
     @GetMapping("/logout")
