@@ -15,9 +15,11 @@ import java.util.List;
 public class CardService {
 
     private final CardRepository cardRepository;
+    private final LogRepository logRepository;
 
-    public CardService(CardRepository cardRepository) {
+    public CardService(CardRepository cardRepository, LogRepository logRepository) {
         this.cardRepository = cardRepository;
+        this.logRepository = logRepository;
     }
 
     @Transactional
@@ -32,7 +34,7 @@ public class CardService {
     }
 
     public LogList logList() {
-        List<Log> logs = cardRepository.findAllLog();
+        List<Log> logs = logRepository.findAllLog();
         LogList logList = new LogList(logs);
         return logList;
     }
