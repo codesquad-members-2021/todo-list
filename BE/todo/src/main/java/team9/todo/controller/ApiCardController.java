@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import team9.todo.domain.ApiResult;
 import team9.todo.domain.Card;
+import team9.todo.domain.DTO.Card.RequestCreateDTO;
 import team9.todo.domain.DTO.Card.RequestMoveDTO;
 import team9.todo.domain.DTO.Card.RequestUpdateDTO;
 import team9.todo.domain.User;
@@ -31,12 +32,11 @@ public class ApiCardController {
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    public ApiResult<Card> create(@RequestBody Card card, HttpSession httpSession) {
+    public ApiResult<Card> create(@RequestBody RequestCreateDTO card, HttpSession httpSession) {
         logger.debug("card 생성 요청: {}, {}, {}", card.getColumnType(), card.getTitle(), card.getContent());
         User user = getUser(httpSession);
-        card.setUser(user.getId());
 
-        return ApiResult.succeed(cardService.create(card, user));
+        return ApiResult.succeed(cardService.create(card.getTitle(), card.getContent(), card.getColumnType(), user));
     }
 
     @GetMapping("/todo")

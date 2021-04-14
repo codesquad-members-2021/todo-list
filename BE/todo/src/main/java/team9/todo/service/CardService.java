@@ -32,9 +32,10 @@ public class CardService {
     }
 
     @Transactional
-    public Card create(Card card, User user) {
-        logger.debug("card 생성 요청: {}, {}, {}", card.getColumnType(), card.getTitle(), card.getContent());
-        card.setUser(user.getId());
+    public Card create(String title, String content, CardColumn cardColumn, User user) {
+        logger.debug("card 생성 요청: {}, {}, {}", cardColumn, title, content);
+        double priority = cardRepository.findMaxPriority(user.getId(), cardColumn) + PRIORITY_STEP;
+        Card card = new Card(user.getId(), title, content, priority, cardColumn);
         Card saved = cardRepository.save(card);
 
         historyRepository.save(new History(saved.getId(), HistoryAction.ADD, null, saved.getColumnType()));
