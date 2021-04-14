@@ -8,14 +8,27 @@
 import Foundation
 
 class JSONParser {
-    //TODO: - Back end와 협의해 return 타입 수정 필요
-    //TODO: - JSONSerialization 대신 JSONDecoder 이용
-    func parseJSON(_ userData: Data) -> [String]? {
+    static func parse(_ todoData: Data) -> [Card]? {
+        let decoder = JSONDecoder()
         do {
-            guard let jsonObject = try JSONSerialization.jsonObject(with: userData) as? [String] else {
-                return nil
+            let decodedData = try decoder.decode([TodoData].self, from: todoData)
+            let cards = decodedData.map { (todoData) -> Card in
+                let title = todoData.title
+                let notes = todoData.contents
+                var category = ""
+                switch (todoData.todo, todoData.doing, todoData.done) {
+                case (true, false, false):
+                    category = "todo"
+                case (false, true, false):
+                    category = "doing"
+                case (false, false, true):
+                    category = "done"
+                default:
+                    category = "error"
+                }
+                return Card(title: title, notes: notes, category: category)
             }
-            return jsonObject
+            return cards
         } catch {
             print(error.localizedDescription)
             return nil

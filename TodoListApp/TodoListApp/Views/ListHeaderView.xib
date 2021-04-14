@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ListHeaderView" customModule="TodoListApp" customModuleProvider="target">
+            <connections>
+                <outlet property="addButton" destination="3kr-h7-C4G" id="Z1G-Q5-lRK"/>
+                <outlet property="badgeButton" destination="hf8-J3-goD" id="MSY-Lv-9Al"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="ijL-x1-ydE"/>
+                <outlet property="titleLabel" destination="OcE-qD-Zx6" id="0dh-Ei-mkA"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="98"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OcE-qD-Zx6">
+                    <rect key="frame" x="19" y="0.0" width="47" height="98"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3kr-h7-C4G">
+                    <rect key="frame" x="382" y="42.5" width="13" height="13"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="13" id="YRY-b1-yOa"/>
+                        <constraint firstAttribute="width" constant="13" id="fI5-QR-OAc"/>
+                    </constraints>
+                    <state key="normal" image="addCardButton"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hf8-J3-goD">
+                    <rect key="frame" x="74" y="0.0" width="47" height="98"/>
+                    <color key="backgroundColor" name="badgeBackgroundGray"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                    <state key="normal" title="Button"/>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <constraints>
+                <constraint firstItem="hf8-J3-goD" firstAttribute="leading" secondItem="OcE-qD-Zx6" secondAttribute="trailing" constant="8" id="3yi-gS-OsB"/>
+                <constraint firstAttribute="trailing" secondItem="3kr-h7-C4G" secondAttribute="trailing" constant="19" id="CVN-t0-hhg"/>
+                <constraint firstItem="OcE-qD-Zx6" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="JWb-GP-4In"/>
+                <constraint firstAttribute="bottom" secondItem="OcE-qD-Zx6" secondAttribute="bottom" id="MsJ-GC-AX5"/>
+                <constraint firstAttribute="bottom" secondItem="hf8-J3-goD" secondAttribute="bottom" id="cPe-28-hN0"/>
+                <constraint firstItem="3kr-h7-C4G" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="etg-D9-17D"/>
+                <constraint firstItem="OcE-qD-Zx6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="19" id="gKT-I7-NYo"/>
+                <constraint firstItem="hf8-J3-goD" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="j1P-1i-Bfh"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="125" y="-94"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="addCardButton" width="14" height="14"/>
+        <namedColor name="badgeBackgroundGray">
+            <color red="0.74099999666213989" green="0.74099999666213989" blue="0.74099999666213989" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
