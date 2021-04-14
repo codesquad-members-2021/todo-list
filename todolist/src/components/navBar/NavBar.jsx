@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { HiMenu } from "react-icons/hi";
+
 import { useState } from "react";
 import LogStorage from "./LogStorage";
 import Button from "../utils/Button";
@@ -25,6 +25,7 @@ const TitleBlock = styled.div`
   line-height: 46px;
   color: #010101;
 `;
+
 const LogBtnBlock = styled.div`
   width: 34px;
   height: 22px;
@@ -32,7 +33,6 @@ const LogBtnBlock = styled.div`
   right: 84px;
   top: 40px;
 `;
-
 function NavBar(props) {
   const { logs } = props;
   const [clicked, setClickState] = useState(false);
@@ -46,7 +46,8 @@ function NavBar(props) {
       <NavBlock>
         <TitleBlock>TO-DO LIST</TitleBlock>
         <LogBtnBlock>
-          <Button type="menu" onClick={handleLogBtnClick} size="150" />
+          <Button type="menu" onClick={handleLogBtnClick} size="bigSize" />
+          {/* <HiMenu className="icon" onClick={handleLogBtnClick} /> */}
         </LogBtnBlock>
       </NavBlock>
 

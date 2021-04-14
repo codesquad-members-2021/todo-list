@@ -12,7 +12,6 @@ const LogBlock = styled.div`
   height: 137px;
   left: 0px;
   top: 0px;
-
   background: #ffffff;
   flex: none;
   order: 0;
@@ -21,21 +20,23 @@ const LogBlock = styled.div`
 `;
 
 const UserImg = styled.div`
-  width: 30px;
-  height: 30px;
+  width: 60px;
+  height: 35px;
   background-image: url(${crong});
   background-size: cover;
   border-radius: 50%;
   margin-right: 10px;
+  display: block;
 `;
 
-function LogCommit({ logs }) {
+function LogCommit({ appear, logs }) {
   console.log(logs);
   return (
     <>
       {logs.map((log, index) => (
         <LogBlock key={index}>
           <UserImg />@ Crong
+          <br></br>
           <LogMessage log={log}></LogMessage>
         </LogBlock>
       ))}
