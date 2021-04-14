@@ -20,13 +20,16 @@ class ToDoTableViewDataSource: NSObject, UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        cardManager.cardList?.count ?? 0
+        cardManager.count() ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath) as! ToDoTableViewCell
-        cell.titleLabel.text = cardManager.cardList?[indexPath.section].title
-        cell.contentLabel.text = cardManager.cardList?[indexPath.section].contents
+        
+        guard let card = cardManager.cardAt(index: indexPath.section) else { return cell }
+        
+        cell.titleLabel.text = card.title
+        cell.contentLabel.text = card.contents
         return cell
     }
 }

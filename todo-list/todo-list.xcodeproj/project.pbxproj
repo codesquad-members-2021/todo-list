@@ -24,6 +24,7 @@
 		BDD9DB4D261D7A0E00718566 /* ToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD9DB4C261D7A0E00718566 /* ToDoViewController.swift */; };
 		BDD9DB64261D97B300718566 /* ToDoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD9DB62261D97B300718566 /* ToDoTableViewCell.swift */; };
 		BDD9DB65261D97B300718566 /* ToDoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDD9DB63261D97B300718566 /* ToDoTableViewCell.xib */; };
+		E409010F2626B85E0041B34D /* CardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409010E2626B85E0041B34D /* CardManager.swift */; };
 		E47346D6261EA2240055DD0A /* AddToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47346D4261EA2240055DD0A /* AddToDoViewController.swift */; };
 		E47346D7261EA2240055DD0A /* AddToDoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E47346D5261EA2240055DD0A /* AddToDoViewController.xib */; };
 		E47346E8261ED8DD0055DD0A /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47346E6261ED8DD0055DD0A /* SideMenuViewController.swift */; };
@@ -74,6 +75,7 @@
 		BDD9DB4C261D7A0E00718566 /* ToDoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoViewController.swift; sourceTree = "<group>"; };
 		BDD9DB62261D97B300718566 /* ToDoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewCell.swift; sourceTree = "<group>"; };
 		BDD9DB63261D97B300718566 /* ToDoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ToDoTableViewCell.xib; sourceTree = "<group>"; };
+		E409010E2626B85E0041B34D /* CardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardManager.swift; sourceTree = "<group>"; };
 		E47346D4261EA2240055DD0A /* AddToDoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToDoViewController.swift; sourceTree = "<group>"; };
 		E47346D5261EA2240055DD0A /* AddToDoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddToDoViewController.xib; sourceTree = "<group>"; };
 		E47346E6261ED8DD0055DD0A /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				BD511A3C26230D3500BE3C94 /* Card.swift */,
+				E409010E2626B85E0041B34D /* CardManager.swift */,
 			);
 			path = Card;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 			files = (
 				BD794AC32620212E00C03DF4 /* RequestManager.swift in Sources */,
 				E47346F1261EE5700055DD0A /* SideMenuTransitionDelegate.swift in Sources */,
+				E409010F2626B85E0041B34D /* CardManager.swift in Sources */,
 				BDD9DB64261D97B300718566 /* ToDoTableViewCell.swift in Sources */,
 				BD511A8126240EBC00BE3C94 /* ToDoTableViewDataSource.swift in Sources */,
 				E48D392026242801002E469E /* CardMargin.swift in Sources */,

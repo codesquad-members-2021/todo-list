@@ -20,17 +20,3 @@ struct CardList: Codable {
     let doing: [Card]
     let done: [Card]
 }
-
-
-class CardManager {
-    
-    var cardList: [Card]?
-    
-    init() {
-        self.cardList = nil
-    }
-    
-    func update(cardList: [Card]) {
-        self.cardList = cardList
-    }
-}

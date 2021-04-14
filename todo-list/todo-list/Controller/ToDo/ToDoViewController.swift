@@ -14,42 +14,24 @@ class ToDoViewController: UIViewController {
     @IBOutlet weak var badgeLabel: UILabel!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var cardTableView: UITableView!
-    private var toDoDelegate = ToDoTableViewDelegate()
-    private var willDoDataSource: ToDoTableViewDataSource!
-    private var doingDataSource: ToDoTableViewDataSource!
-    private var doneDataSource: ToDoTableViewDataSource!
-
-    var segueInfo: String?
     
-    var willDocardManager = CardManager()
-    var doingCardManager = CardManager()
-    var doneCardManager = CardManager()
+    private var toDoDelegate: ToDoTableViewDelegate!
+    private var toDoDataSource: ToDoTableViewDataSource!
 
-    
+    var tableTitle: String!
+    var cardManager: CardManager!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        initializeDataSource()
-        
-        setDelegateAndDataSource()
-        let nibName = UINib(nibName: "ToDoTableViewCell", bundle: .none)
-        cardTableView.register(nibName, forCellReuseIdentifier: "tableCell")
+ 
         configureHeaderView()
-        loadData()
+        setDelegateAndDataSource()
+        setXib()
+        setNotification()
+    }
         
-        cardTableView.register(CardMargin.self, forHeaderFooterViewReuseIdentifier: "cardMargin")
-    }
-    
-    @objc func didRecieveTestNotification(_ notification: Notification) {
-        if segueInfo == SegueIdentifier.WillDo.rawValue {
-            guard let userInfo = notification.userInfo?["TodoCount"] else { return }
-            print(userInfo)
-            badgeLabel.text = userInfo as? String
-        }
-    }
-    
     @IBAction func addButtonTouched(_ sender: Any) {
-        let addToDoVC = AddToDoViewController(nibName: "AddToDoViewController", bundle: .none)
+        let addToDoVC = AddToDoViewController(nibName: "AddToDoViewController", bundle: .none, cardAdder: cardManager)
         addToDoVC.modalPresentationStyle = .formSheet
         addToDoVC.preferredContentSize = CGSize(width: 400, height: 175)
         self.present(addToDoVC, animated: true, completion: nil)
@@ -62,16 +44,11 @@ class ToDoViewController: UIViewController {
     }
     
     private func updateHeaderViewLabel() {
-        if segueInfo == SegueIdentifier.WillDo.rawValue {
-            titleLabel.text = "해야할 일"
-        } else if segueInfo == SegueIdentifier.Doing.rawValue {
-            titleLabel.text = "하고 있는 일"
-        } else if segueInfo == SegueIdentifier.Done.rawValue {
-            titleLabel.text = "완료한 일"
-        }
+        titleLabel.text = tableTitle
     }
     
     private func setBadgeViewRadius() {
+        //badgeView.swift 만들어서 init 시 자동으로 설정하게 바꾸는 게 좋을듯
         let radius = badgeView.bounds.height * 0.5
         badgeView.layer.cornerRadius = radius
     }
@@ -79,43 +56,44 @@ class ToDoViewController: UIViewController {
     
     //MARK: - DataSource Method
     private func setDelegateAndDataSource() {
+        toDoDelegate = ToDoTableViewDelegate()
         cardTableView.delegate = toDoDelegate
-        if segueInfo == SegueIdentifier.WillDo.rawValue {
-            cardTableView.dataSource = willDoDataSource
-        } else if segueInfo == SegueIdentifier.Doing.rawValue {
-            cardTableView.dataSource = doingDataSource
-        } else if segueInfo == SegueIdentifier.Done.rawValue {
-            cardTableView.dataSource = doneDataSource
-        }
-    }
-    private func initializeDataSource() {
-        willDoDataSource = ToDoTableViewDataSource(cardManager: willDocardManager)
-        doingDataSource = ToDoTableViewDataSource(cardManager: doingCardManager)
-        doneDataSource = ToDoTableViewDataSource(cardManager: doneCardManager)
+        
+        toDoDataSource = ToDoTableViewDataSource(cardManager: cardManager)
+        cardTableView.dataSource = toDoDataSource
+
     }
     
-    //MARK: - LoadData Method
-    private func loadData() {
-        DataTaskManager.request(completion: { (result) in
-            DispatchQueue.global().async {
-                switch result {
-                case .success(let data):
-                    self.willDocardManager.update(cardList: data.todo)
-                    self.doingCardManager.update(cardList: data.doing)
-                    self.doneCardManager.update(cardList: data.done)
-                    DispatchQueue.main.async { [weak self] in
-                        self?.cardTableView.reloadData()
-                    }
-                case.failure(let error):
-                    print(error.localizedDescription)
-                }
-            }
-        })
+    //MARK: - Xib Setting
+    private func setXib() {
+        setCell()
+        setMarginCell()
+    }
+    
+    private func setCell() {
+        let nibName = UINib(nibName: "ToDoTableViewCell", bundle: .none)
+        cardTableView.register(nibName, forCellReuseIdentifier: "tableCell")
+    }
+    
+    private func setMarginCell() {
+        cardTableView.register(CardMargin.self, forHeaderFooterViewReuseIdentifier: "cardMargin")
+    }
+    
+    //MARK: - Notification Setting
+    private func setNotification() {
+        setCountNoti()
+    }
+    
+    private func setCountNoti() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(didRecieveTestNotification(_:)),
+                                               name: CardManager.NotiKeys.countChanged,
+                                               object: cardManager.self)
+    }
+    
+    @objc func didRecieveTestNotification(_ notification: Notification) {
+        guard let count = notification.userInfo?["count"] as? Int else { return }
+        badgeLabel.text = "\(count)"
+        cardTableView.reloadData()
     }
 }
-
-extension ToDoViewController: UITableViewDelegate {
-    
-}
-
-
