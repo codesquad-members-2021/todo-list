@@ -22,19 +22,19 @@ class Board {
     var doingList = Cards()
     var doneList = Cards()
     
-    func apepnd(with card : Card, type : Board.CardType) {
+    func append(with card : Card, type : Board.CardType, at position : Int = 0) {
         DispatchQueue.global().async {
             CardAPIClient().createCard(with: card)
         }
         switch type {
         case .todo:
-            todoList.append(with: card)
+            todoList.append(with: card, at: position)
             NotificationCenter.default.post(name: Board.TodoListChanged, object: self)
         case .doing:
-            doingList.append(with: card)
+            doingList.append(with: card, at: position)
             NotificationCenter.default.post(name: Board.DoingListChanged, object: self)
         case .done:
-            doneList.append(with: card)
+            doneList.append(with: card, at: position)
             NotificationCenter.default.post(name: Board.DoneListChanged, object: self)
         }
     }

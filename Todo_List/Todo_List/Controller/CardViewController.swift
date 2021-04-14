@@ -71,7 +71,6 @@ extension CardViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(reloadBoard), name: Board.TodoListChanged, object: board)
         NotificationCenter.default.addObserver(self, selector: #selector(reloadBoard), name: Board.DoingListChanged, object: board)
         NotificationCenter.default.addObserver(self, selector: #selector(reloadBoard), name: Board.DoneListChanged, object: board)
-//        NotificationCenter.default.addObserver(self, selector: #selector(setCardInfo), name: Card.PickedCard, object: Card)
     }
     @objc func reloadBoard(){
         DispatchQueue.main.async {

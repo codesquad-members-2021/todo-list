@@ -32,10 +32,11 @@ extension CardViewController {
     }
 }
 extension CardViewController : UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return CardViewConstant.numberOfRowsInSection //각 섹션에는 한개의 row만 존재한다.
+        return CardViewConstant.numberOfRowsInSection
     }
-    /*섹션의 수를 늘리는 프로토콜*/
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         var count = 0
         switch tableView {
@@ -54,19 +55,14 @@ extension CardViewController : UITableViewDelegate, UITableViewDataSource {
         return count
     }
     
-    /*섹션의 헤더섹션 배경색을 바꾸는 법.*/
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        (view as! UITableViewHeaderFooterView).contentView.backgroundColor = #colorLiteral(red: 0.968627451, green: 0.968627451, blue: 0.9607843137, alpha: 1)
+        return (view as! UITableViewHeaderFooterView).contentView.backgroundColor = #colorLiteral(red: 0.968627451, green: 0.968627451, blue: 0.9607843137, alpha: 1)
     }
     
-    
-    /*섹션의 헤더섹션 사이즈를 늘리는 방법.*/
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return CardViewConstant.heightForHeaderInSection
     }
-    
-    
-    
+            
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CardCell") as! CardCell
         
@@ -88,6 +84,7 @@ extension CardViewController : UITableViewDelegate, UITableViewDataSource {
         return cell
         
     }
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
      
 //        editingStyle == .delete
@@ -104,26 +101,4 @@ extension CardViewController : UITableViewDelegate, UITableViewDataSource {
     }
     
     
-    /*원치 않는 row값을 재 조정해주는 함수. moveSection 앱 크래쉬를 막기위한 함수.*/
-//    func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
-//        
-////        print("numberOFSection = ",numberOfSections(in: tableView))
-//        print("proposedDestinationIndexPath=",proposedDestinationIndexPath)
-//        //앱 설계상 1 Section 1 Row이기에 row가 1이면 0으로 바꾸어 앱 크래쉬를 막아준다.
-////        if proposedDestinationIndexPath.row == 1 {
-////            let proposedIndexPath = IndexPath(row: 0, section: proposedDestinationIndexPath.section)
-////
-////            return proposedIndexPath
-////        }
-//        return proposedDestinationIndexPath
-//        
-//    }
-    
-    /*각 테이블 내부에서 섹션을 변경할수 있는 프로토콜
-     이 프로토콜이 없어도 Drag&Drop으로 움직여지지만 새로운 값으로 바꾸는 위험이 있다.
-     */
-//    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-//        tableView.moveSection(sourceIndexPath.section, toSection: destinationIndexPath.section)
-//
-//    }
 }
