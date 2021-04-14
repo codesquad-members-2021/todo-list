@@ -6,7 +6,7 @@ const TEXT_DEFAULT = `
     height: 40px;
     border-radius: 6px;
     margin: 0px 4px;`;
-    
+
 export const BUTTON_STYLE = {
   cancel: css`
     ${TEXT_DEFAULT}
@@ -14,6 +14,11 @@ export const BUTTON_STYLE = {
     color: black;
   `,
   enroll: css`
+    ${TEXT_DEFAULT}
+    background: #0075de;
+    color: white;
+  `,
+  edit: css`
     ${TEXT_DEFAULT}
     background: #0075de;
     color: white;
@@ -34,4 +39,5 @@ export const BUTTON_TYPE = {
   menu: <MdMenu />,
   cancel: "취소",
   enroll: "등록",
+  edit: "수정",
 };

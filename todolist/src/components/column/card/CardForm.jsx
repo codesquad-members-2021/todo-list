@@ -20,16 +20,14 @@ const CardFormContent = styled.textarea`
   width: auto;
 `;
 
-function CardForm(props) {
-  const { card } = props;
+function CardForm({ card, editMode, onSubmit, onCancel }) {
   const [title, setTitle] = useState(card ? card.title : "");
   const [content, setContent] = useState(card ? card.content : "");
 
-  const onSubmit = (e) => {
+  const handelOnSubmit = (e) => {
     e.preventDefault();
-    props.onSubmit({ id: card ? card.id : Date.now(), title, content });
+    onSubmit({ id: card ? card.id : Date.now(), title, content });
   };
-
   return (
     <form action="">
       <CardFormSection>
@@ -46,12 +44,13 @@ function CardForm(props) {
         ></CardFormContent>
       </CardFormSection>
       <CardButtonSection>
-        <Button type="cancel" onClick={props.onCancel}>
+        <Button type="cancel" onClick={onCancel}>
           취소
         </Button>
-        <Button type="enroll" onClick={onSubmit}>
-          등록
-        </Button>
+        <Button
+          type={editMode ? "edit" : "enroll"}
+          onClick={handelOnSubmit}
+        ></Button>
       </CardButtonSection>
     </form>
   );

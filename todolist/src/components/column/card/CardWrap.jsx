@@ -22,7 +22,12 @@ function CardWrap(props) {
   return (
     <CardContainer onDoubleClick={handleEdit} ref={cardContainer}>
       {editMode ? (
-        <CardForm card={card} onSubmit={handleSubmit} onCancel={handleEdit} />
+        <CardForm
+          editMode={editMode}
+          card={card}
+          onSubmit={handleSubmit}
+          onCancel={handleEdit}
+        />
       ) : (
         <Card card={card} onDelete={onDelete} cardContainer={cardContainer} />
       )}
