@@ -34,19 +34,19 @@ public class CardController {
     @PostMapping("/todos")
     public ResponseEntity<Message> create(@RequestBody @Valid CardDto cardDto) {
         Card card = new Card(cardDto);
-        cardService.write(card);
+        cardService.createCard(card);
         return new ResponseEntity<>(Message.of(), HttpStatus.CREATED);
     }
 
     @PutMapping("/todos/{id}")
     public HttpEntity<Message> update(@PathVariable Long id, @RequestBody @Valid CardDto cardDto) {
-        cardService.modify(id, cardDto);
+        cardService.fixCard(id, cardDto);
         return new ResponseEntity<>(Message.of(), HttpStatus.OK);
     }
 
     @DeleteMapping("/todos/{id}")
     public HttpEntity<Message> delete(@PathVariable Long id) {
-        cardService.delete(id);
+        cardService.deleteCard(id);
         return new ResponseEntity<>(Message.of(), HttpStatus.OK);
     }
 

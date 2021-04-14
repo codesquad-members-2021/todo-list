@@ -23,7 +23,7 @@ public class CardService {
     }
 
     @Transactional
-    public void write(Card card) {
+    public void createCard(Card card) {
         cardRepository.save(card);
     }
 
@@ -44,14 +44,14 @@ public class CardService {
     }
 
     @Transactional
-    public void modify(Long id, CardDto updateCardDto) {
+    public void fixCard(Long id, CardDto updateCardDto) {
         Card card = findById(id);
         card.modify(updateCardDto);
         cardRepository.save(card);
     }
 
     @Transactional
-    public void delete(Long id) {
+    public void deleteCard(Long id) {
         Card card = findById(id);
         card.delete();
         cardRepository.save(card);
