@@ -2,7 +2,7 @@ package com.example.todolist.service;
 
 import com.example.todolist.domain.Card;
 import com.example.todolist.domain.User;
-import com.example.todolist.dto.CardDto;
+import com.example.todolist.dto.CardDTO;
 import com.example.todolist.repository.CardRepository;
 import com.example.todolist.repository.UserRepository;
 import org.springframework.stereotype.Service;
@@ -20,26 +20,26 @@ public class CardService {
         this.userRepository = userRepository;
     }
 
-    public List<CardDto> cardDtoTodoList() {
+    public List<CardDTO> cardDtoTodoList() {
         List<Card> cards = cardRepository.findAllByStatus("todo");
         return cardDtoList(cards);
     }
 
-    public List<CardDto> cardDtoDoingList() {
+    public List<CardDTO> cardDtoDoingList() {
         List<Card> cards = cardRepository.findAllByStatus("doing");
         return cardDtoList(cards);
     }
 
-    public List<CardDto> cardDtoDoneList() {
+    public List<CardDTO> cardDtoDoneList() {
         List<Card> cards = cardRepository.findAllByStatus("done");
         return cardDtoList(cards);
     }
 
-    private List<CardDto> cardDtoList(List<Card> cards) {
-        List<CardDto> result = new ArrayList<>();
+    private List<CardDTO> cardDtoList(List<Card> cards) {
+        List<CardDTO> result = new ArrayList<>();
         for (Card card : cards) {
             User user = userRepository.findById(card.getUserId()).orElseThrow(RuntimeException::new);
-            CardDto cardDto = new CardDto(user, card.getTitle(), card.getContents(), card.getPostTime());
+            CardDTO cardDto = new CardDTO(user, card.getTitle(), card.getContents(), card.getPostTime());
             result.add(cardDto);
         }
         return result;

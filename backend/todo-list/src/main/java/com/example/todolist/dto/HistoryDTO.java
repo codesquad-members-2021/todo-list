@@ -5,10 +5,10 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.time.LocalDateTime;
 
-public class HistoryDto {
+public class HistoryDTO {
     public static final String DATETIME_FORMAT = "yyyy-MM-dd HH:mm";
 
-    private CardLogDto card;
+    private CardLogDTO card;
     private String action;
     private String preStatus;
     private String currStatus;
@@ -16,7 +16,7 @@ public class HistoryDto {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATETIME_FORMAT, timezone = "Asia/Seoul")
     private LocalDateTime actionTime;
 
-    public HistoryDto(CardLogDto card, String action, String preStatus, String currStatus, LocalDateTime actionTime) {
+    public HistoryDTO(CardLogDTO card, String action, String preStatus, String currStatus, LocalDateTime actionTime) {
         this.card = card;
         this.action = action;
         this.preStatus = preStatus;
@@ -24,7 +24,7 @@ public class HistoryDto {
         this.actionTime = actionTime;
     }
 
-    public CardLogDto getCard() {
+    public CardLogDTO getCard() {
         return card;
     }
 

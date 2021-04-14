@@ -2,11 +2,11 @@ package com.example.todolist.dto;
 
 import com.example.todolist.domain.User;
 
-public class CardLogDto {
+public class CardLogDTO {
     private User user;
     private String title;
 
-    public CardLogDto(User user, String title) {
+    public CardLogDTO(User user, String title) {
         this.user = user;
         this.title = title;
     }

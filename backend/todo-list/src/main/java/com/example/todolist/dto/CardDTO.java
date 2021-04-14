@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import java.time.LocalDateTime;
 
 
-public class CardDto {
+public class CardDTO {
     public static final String DATETIME_FORMAT = "yyyy-MM-dd HH:mm";
 
     private User user;
@@ -19,7 +19,7 @@ public class CardDto {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATETIME_FORMAT, timezone = "Asia/Seoul")
     private LocalDateTime postTime;
 
-    public CardDto(User user, String title, String contents, LocalDateTime postTime) {
+    public CardDTO(User user, String title, String contents, LocalDateTime postTime) {
         this.user = user;
         this.title = title;
         this.contents = contents;

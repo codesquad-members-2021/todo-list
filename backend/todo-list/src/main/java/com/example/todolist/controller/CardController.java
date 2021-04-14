@@ -1,14 +1,13 @@
 package com.example.todolist.controller;
 
 
+import com.example.todolist.CustomResolver;
 import com.example.todolist.domain.*;
 import com.example.todolist.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 
 @RestController
@@ -26,13 +25,13 @@ public class CardController {
         this.cardLogRepository = cardLogRepository;
     }
 
-    public String getUserNameFromToken(HttpServletRequest request) {
-        return (String) request.getAttribute("name");
-    }
+//    public String getUserNameFromToken(HttpServletRequest request) {
+//        return (String) request.getAttribute("name");
+//    }
+
 
     @PostMapping
-    public ResponseEntity<Card> create(@RequestBody HashMap<String, String> cardInfo, HttpServletRequest request) {
-        String userName = getUserNameFromToken(request);
+    public ResponseEntity<Card> create(@RequestBody HashMap<String, String> cardInfo, @CustomResolver String userName) {
         User user = userRepository.findByName(userName);
         Card card = new Card(user, cardInfo.get("title"), cardInfo.get("contents"), cardInfo.get("status"));
         cardRepository.save(card);
@@ -42,9 +41,8 @@ public class CardController {
     }
 
     @PutMapping("/{id}/edit")
-    public ResponseEntity<Card> update(HttpServletRequest request, @PathVariable Long id, @RequestBody HashMap<String, String> newCardInfo) {
+    public ResponseEntity<Card> update(@PathVariable Long id, @RequestBody HashMap<String, String> newCardInfo, @CustomResolver String userName) {
         Card card = cardRepository.findById(id).orElseThrow(RuntimeException::new);
-        String userName = getUserNameFromToken(request);
         User user = userRepository.findByName(userName);
         if (!card.getUserId().equals(user.getUserId())) {
             throw new RuntimeException("수정 권한이 없습니다.");
@@ -57,9 +55,8 @@ public class CardController {
     }
 
     @PutMapping("/{id}/status")
-    public ResponseEntity<Card> move(HttpServletRequest request, @PathVariable Long id, @RequestBody HashMap<String, String> newCardInfo) {
+    public ResponseEntity<Card> move( @PathVariable Long id, @RequestBody HashMap<String, String> newCardInfo,@CustomResolver String userName) {
         Card card = cardRepository.findById(id).orElseThrow(RuntimeException::new);
-        String userName = getUserNameFromToken(request);
         User user = userRepository.findByName(userName);
         if (!card.getUserId().equals(user.getUserId())) {
             throw new RuntimeException("수정 권한이 없습니다.");
@@ -73,9 +70,8 @@ public class CardController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Card> delete(@PathVariable Long id, HttpServletRequest request) {
+    public ResponseEntity<Card> delete(@PathVariable Long id,@CustomResolver String userName) {
         Card card = cardRepository.findById(id).orElseThrow(RuntimeException::new);
-        String userName = getUserNameFromToken(request);
         User user = userRepository.findByName(userName);
         if (!card.getUserId().equals(user.getUserId())) {
             throw new RuntimeException("삭제 권한이 없습니다.");
