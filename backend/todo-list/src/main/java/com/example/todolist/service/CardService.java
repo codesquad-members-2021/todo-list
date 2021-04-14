@@ -20,6 +20,14 @@ public class CardService {
         this.userRepository = userRepository;
     }
 
+    public void save(Card card) {
+        cardRepository.save(card);
+    }
+
+    public Card findCardById(Long id) {
+        return cardRepository.findById(id).orElseThrow(RuntimeException::new);
+    }
+
     public List<CardDTO> cardDtoTodoList() {
         List<Card> cards = cardRepository.findAllByStatus("todo");
         return cardDtoList(cards);

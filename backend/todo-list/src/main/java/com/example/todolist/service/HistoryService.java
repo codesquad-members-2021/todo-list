@@ -27,6 +27,10 @@ public class HistoryService {
         this.userRepository = userRepository;
     }
 
+    public void save(History history) {
+        historyRepository.save(history);
+    }
+
     public List<HistoryDTO> historyList() {
         List<History> historyList = historyRepository.findHistoryList();
         return historyDtoList(historyList);

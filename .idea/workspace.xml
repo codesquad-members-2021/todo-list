@@ -5,22 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="af93a8a2-2eed-469e-a744-7ac329506fe2" name="Default Changelist" comment="fix: jwt 인증 관련 에러 해결, 세션 인증 방식을 토큰 인증으로 변경">
-      <change afterPath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/CustomHandlerMethodArgumentResolver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/CustomResolver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/WebConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/controller/CardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/controller/CardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/controller/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/dto/CardDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/dto/CardDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/dto/CardLogDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/dto/CardLogDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/dto/CategoryDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/dto/CategoryDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/dto/HistoryDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/dto/HistoryDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/service/CardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/service/CardService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/service/HistoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/service/HistoryService.java" afterDir="false" />
     </list>
     <list id="e789658e-71ba-41fc-810c-115e6323bee0" name="Changes by yunhyeji" comment="">
       <change beforePath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/controller/CardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/controller/CardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/service/HistoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/service/HistoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/service/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,25 +77,23 @@
   <component name="LineStatusTrackerManager">
     <file path="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/controller/CardController.java">
       <ranges>
-        <range start1="3" end1="3" start2="3" end2="4" changelist="af93a8a2-2eed-469e-a744-7ac329506fe2" />
-        <range start1="9" end1="11" start2="10" end2="10" changelist="af93a8a2-2eed-469e-a744-7ac329506fe2" />
-        <range start1="28" end1="31" start2="27" end2="31" changelist="af93a8a2-2eed-469e-a744-7ac329506fe2" />
-        <range start1="33" end1="35" start2="33" end2="34" changelist="e789658e-71ba-41fc-810c-115e6323bee0" />
-        <range start1="44" end1="45" start2="43" end2="44" changelist="e789658e-71ba-41fc-810c-115e6323bee0" />
-        <range start1="46" end1="47" start2="45" end2="45" changelist="e789658e-71ba-41fc-810c-115e6323bee0" />
-        <range start1="59" end1="60" start2="57" end2="58" changelist="e789658e-71ba-41fc-810c-115e6323bee0" />
-        <range start1="61" end1="62" start2="59" end2="59" changelist="e789658e-71ba-41fc-810c-115e6323bee0" />
-        <range start1="75" end1="76" start2="72" end2="73" changelist="e789658e-71ba-41fc-810c-115e6323bee0" />
-        <range start1="77" end1="78" start2="74" end2="74" changelist="e789658e-71ba-41fc-810c-115e6323bee0" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/service/HistoryService.java">
-      <ranges>
-        <range start1="5" end1="7" start2="5" end2="7" changelist="af93a8a2-2eed-469e-a744-7ac329506fe2" />
-        <range start1="29" end1="30" start2="29" end2="30" changelist="af93a8a2-2eed-469e-a744-7ac329506fe2" />
-        <range start1="31" end1="32" start2="31" end2="31" changelist="e789658e-71ba-41fc-810c-115e6323bee0" />
-        <range start1="35" end1="37" start2="34" end2="36" changelist="af93a8a2-2eed-469e-a744-7ac329506fe2" />
-        <range start1="40" end1="42" start2="39" end2="41" changelist="af93a8a2-2eed-469e-a744-7ac329506fe2" />
+        <range start1="5" end1="6" start2="5" end2="8" changelist="af93a8a2-2eed-469e-a744-7ac329506fe2" />
+        <range start1="10" end1="10" start2="12" end2="13" changelist="af93a8a2-2eed-469e-a744-7ac329506fe2" />
+        <range start1="16" end1="19" start2="19" end2="22" changelist="af93a8a2-2eed-469e-a744-7ac329506fe2" />
+        <range start1="21" end1="25" start2="24" end2="28" changelist="af93a8a2-2eed-469e-a744-7ac329506fe2" />
+        <range start1="27" end1="32" start2="30" end2="30" changelist="af93a8a2-2eed-469e-a744-7ac329506fe2" />
+        <range start1="34" end1="35" start2="32" end2="33" changelist="e789658e-71ba-41fc-810c-115e6323bee0" />
+        <range start1="36" end1="37" start2="34" end2="35" changelist="af93a8a2-2eed-469e-a744-7ac329506fe2" />
+        <range start1="38" end1="39" start2="36" end2="37" changelist="e789658e-71ba-41fc-810c-115e6323bee0" />
+        <range start1="44" end1="46" start2="42" end2="44" changelist="af93a8a2-2eed-469e-a744-7ac329506fe2" />
+        <range start1="50" end1="51" start2="48" end2="49" changelist="af93a8a2-2eed-469e-a744-7ac329506fe2" />
+        <range start1="52" end1="53" start2="50" end2="51" changelist="af93a8a2-2eed-469e-a744-7ac329506fe2" />
+        <range start1="57" end1="60" start2="55" end2="58" changelist="af93a8a2-2eed-469e-a744-7ac329506fe2" />
+        <range start1="65" end1="66" start2="63" end2="64" changelist="af93a8a2-2eed-469e-a744-7ac329506fe2" />
+        <range start1="67" end1="68" start2="65" end2="66" changelist="e789658e-71ba-41fc-810c-115e6323bee0" />
+        <range start1="72" end1="75" start2="70" end2="73" changelist="af93a8a2-2eed-469e-a744-7ac329506fe2" />
+        <range start1="80" end1="82" start2="78" end2="80" changelist="af93a8a2-2eed-469e-a744-7ac329506fe2" />
+        <range start1="84" end1="85" start2="82" end2="82" changelist="af93a8a2-2eed-469e-a744-7ac329506fe2" />
       </ranges>
     </file>
   </component>
@@ -220,7 +210,7 @@
       <workItem from="1618280186150" duration="4000" />
       <workItem from="1618290325006" duration="14957000" />
       <workItem from="1618315761832" duration="18680000" />
-      <workItem from="1618380170882" duration="13153000" />
+      <workItem from="1618380170882" duration="14898000" />
     </task>
     <task id="LOCAL-00001" summary="bug: jwt 인증 관련 오류 발생">
       <created>1617898549211</created>
