@@ -4,9 +4,7 @@ import UIKit
 class TaskViewController: UIViewController {
 
     var column: Int?
-    let taskStackManager = TaskStackManager.sharedInstance()
-    var selectedCell: TaskCell!
-    var selectedIndexPath: IndexPath!
+    let taskStackManager = TaskStackManager()
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var taskCountLabel: UILabel!
@@ -16,10 +14,6 @@ class TaskViewController: UIViewController {
         super.viewDidLoad()
         setupSubViews()
         addNotificationObserver()
-        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(longTouched(_:)))
-        longPressGesture.minimumPressDuration = 0.3
-        longPressGesture.isEnabled = true
-        taskTableView.addGestureRecognizer(longPressGesture)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -53,7 +47,7 @@ extension TaskViewController {
     }
     
     private func setupTaskCountLable() {
-        taskCountLabel.layer.cornerRadius = taskCountLabel.layer.bounds.width / 2.25
+        taskCountLabel.layer.cornerRadius = taskCountLabel.layer.frame.width / 2
         taskCountLabel.layer.masksToBounds = true
     }
     
@@ -69,7 +63,6 @@ extension TaskViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(insertTask(_:)), name: .addTask, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(drawTaskCard(_:)), name: .requestSetupTask, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(sendRemovedData(_:)), name: .requestRemoveTask, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(sendMovedData(_:)), name: .requestMoveTask, object: nil)
     }
     
     @objc func drawTaskCard(_ notification: Notification) {
@@ -80,33 +73,30 @@ extension TaskViewController {
     }
     
     @objc func insertTask(_ notification: Notification) {
-        print("insertTask")
         let (status, title, content) = (notification.userInfo?["column"] as? Int ?? 0,
                                         notification.userInfo?["title"] as? String ?? "",
                                         notification.userInfo?["content"] as? String ?? "")
         let id = taskStackManager.totalCount() + 1
         let card = TaskCard(id: id, title: title, content: content, createdAt: "\(Date())", status: status, author: "user1")
-        if column == card.status {
-            print("append")
-            taskStackManager.append(status, taskCard: card)
-            dump(taskStackManager.tasks)
-            updateTaskCountLabel()
-            NetworkManager.insertedDataPost(httpMethod: HTTPMethod.post, data: card)
-        }
+        taskStackManager.append(status, taskCard: card)
+        updateTaskCountLabel()
+        NetworkManager.insertedDataPost(httpMethod: HTTPMethod.post, data: card)
+        dump(taskStackManager)
     }
     
     @objc func sendRemovedData(_ notification: Notification) {
         let removedData = notification.userInfo?["removedData"] as! TaskCard
-        updateTaskCountLabel()
-        if column == removedData.status {
         NetworkManager.changedDataPost(httpMethod: HTTPMethod.delete, data: removedData)
-        }
-    }
-    
-    @objc func sendMovedData(_ notification: Notification) {
-        let movedData = notification.userInfo?["movedData"] as! TaskCard
-        updateTaskCountLabel()
-        NetworkManager.changedDataPost(httpMethod: HTTPMethod.post, data: movedData)
     }
 }
-   
+
+/*
+ 첫번째 Plus Button
+ Optional([AnyHashable("id"): 0, AnyHashable("title"): "111", AnyHashable("content"): "222"])
+ 
+ 두번째 Plus Button
+ Optional([AnyHashable("title"): "222", AnyHashable("content"): "333", AnyHashable("id"): 1])
+ 
+ 세번째 Plus Button
+ Optional([AnyHashable("id"): 2, AnyHashable("title"): "333", AnyHashable("content"): "444"])
+ */

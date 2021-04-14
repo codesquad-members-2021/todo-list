@@ -9,12 +9,6 @@ class TaskStackManager {
         }
     }
     
-    static var stackManager = TaskStackManager()
-    
-    static func sharedInstance() -> TaskStackManager {
-        return stackManager
-    }
-    
     init(){
         tasks = [TaskStack(), TaskStack(), TaskStack()]
     }
@@ -46,12 +40,5 @@ class TaskStackManager {
     
     func totalCount() -> Int {
         return arrayCount().reduce(0, +)
-    }
-    
-    func move(_ status: Int, at index: Int){
-        var movedData = tasks[status].remove(at: index)
-        movedData.status = StatusValue.done
-        tasks[StatusValue.done].append(taskCard: movedData)
-        NotificationCenter.default.post(name: .requestMoveTask, object: self, userInfo: ["movedData": movedData])
     }
 }
