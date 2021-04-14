@@ -5,7 +5,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.*;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 @RestController
 public class TaskController {
@@ -19,8 +21,13 @@ public class TaskController {
     }
 
     @GetMapping("/tasks")
-    public List<Task> readAll() {
-        return taskRepository.findAllByNotDeleted();
+    public Map<String, List<TaskDTO.Response>> readAll(@RequestParam Optional<String> taskType) {
+        if (taskType.isPresent()) {
+            List<Task> tasks = taskRepository.findAllByNotDeletedAndTaskType(taskType.get());
+            return TaskDTO.groupingByType(tasks);
+        }
+
+        return TaskDTO.groupingByType(taskRepository.findAllByNotDeleted());
     }
 
     @GetMapping("/tasks/{id}")

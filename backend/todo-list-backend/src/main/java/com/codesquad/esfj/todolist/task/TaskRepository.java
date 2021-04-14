@@ -16,11 +16,19 @@ public class TaskRepository {
         task.moveAfter(2L);
         put(1L, task);
         put(2L, task2);
+        put(3L, new Task(3L, "title2", "content2", "writer2", "done"));
     }};
 
     public List<Task> findAllByNotDeleted() {
         return tasks.values().stream()
                 .filter(task -> !task.isDeleted())
+                .collect(Collectors.toList());
+    }
+
+    public List<Task> findAllByNotDeletedAndTaskType(String taskType) {
+        return tasks.values().stream()
+                .filter(task -> !task.isDeleted())
+                .filter(task -> task.getTaskType().equals(taskType))
                 .collect(Collectors.toList());
     }
 
