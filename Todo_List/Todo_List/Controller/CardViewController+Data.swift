@@ -73,11 +73,11 @@ extension CardViewController : UITableViewDelegate, UITableViewDataSource {
         var card : Card
         switch tableView {
         case todo:
-            card = board.todoList[indexPath.section]
+            card = board.todoList.items[indexPath.section]
         case doing:
-            card = board.doingList[indexPath.section]
+            card = board.doingList.items[indexPath.section]
         case done:
-            card = board.doneList[indexPath.section]
+            card = board.doneList.items[indexPath.section]
         default:
             return cell
         }
@@ -89,7 +89,8 @@ extension CardViewController : UITableViewDelegate, UITableViewDataSource {
         
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
+     
+//        editingStyle == .delete
         switch tableView {
         case todo:
             board.remove(at: indexPath.section, type: .todo)

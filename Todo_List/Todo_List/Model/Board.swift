@@ -18,34 +18,41 @@ class Board {
         case doing
         case done
     }
-    var todoList = [Card]()
-    var doingList = [Card]()
-    var doneList = [Card]()
+    var todoList = Cards()
+    var doingList = Cards()
+    var doneList = Cards()
     
-    func append(with card : Card, type : Board.CardType, at position : Int) {
+    func apepnd(with card : Card, type : Board.CardType) {
+        DispatchQueue.global().async {
+            CardAPIClient().createCard(with: card)
+        }
         switch type {
-        case .todo:            
-            todoList.insert(card, at: position) //insert가 defualt로 0이 되어 있어서 이 부분을 변경해야 할지도 모르겠다.
+        case .todo:
+            todoList.append(with: card)
             NotificationCenter.default.post(name: Board.TodoListChanged, object: self)
         case .doing:
-            doingList.insert(card, at: position)
+            doingList.append(with: card)
             NotificationCenter.default.post(name: Board.DoingListChanged, object: self)
         case .done:
-            doneList.insert(card, at: position)
+            doneList.append(with: card)
             NotificationCenter.default.post(name: Board.DoneListChanged, object: self)
         }
     }
     func remove(at index: Int, type : Board.CardType){
+        let result : Card
         switch type {
         case .todo:
-            todoList.remove(at: index)
+            result = todoList.remove(at: index)
             NotificationCenter.default.post(name: Board.TodoListChanged, object: self)
         case .doing:
-            doingList.remove(at: index)
+            result = doingList.remove(at: index)
             NotificationCenter.default.post(name: Board.DoingListChanged, object: self)
         case .done:
-            doneList.remove(at: index)
+            result = doneList.remove(at: index)
             NotificationCenter.default.post(name: Board.DoneListChanged, object: self)
+        }
+        DispatchQueue.global().async {
+            CardAPIClient().deleteCard(with: result.id)
         }
     }
 }

@@ -55,7 +55,11 @@ final class Card : NSObject, NSItemProviderWriting, NSItemProviderReading, Codab
     var title : String
     var content : String
     var writer : String
-    var create : Date?
+//    var create : Date?
+    
+    var deleted : Bool?
+    var previousId : Int?
+    
     
     init(title : String, content: String, writer : String){
         self.title = title

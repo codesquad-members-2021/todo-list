@@ -22,13 +22,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="제목을 입력하세요." textAlignment="natural" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="BrR-uC-Dkv">
-                                <rect key="frame" x="16" y="52.5" width="368" height="24"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="제목을 입력하세요." textAlignment="natural" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="BrR-uC-Dkv">
+                                <rect key="frame" x="16" y="52.5" width="368" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="내용을 입력하세요." textAlignment="natural" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="JUp-gR-r9B">
-                                <rect key="frame" x="16" y="84.5" width="368" height="24"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="내용을 입력하세요." textAlignment="natural" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="JUp-gR-r9B">
+                                <rect key="frame" x="16" y="76.5" width="368" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -79,8 +79,10 @@
                     </view>
                     <size key="freeformSize" width="400" height="175"/>
                     <connections>
+                        <outlet property="cancelButton" destination="Kmr-nz-5cL" id="hO4-EH-tDu"/>
                         <outlet property="cardContent" destination="JUp-gR-r9B" id="rUi-dl-deV"/>
                         <outlet property="cardTitle" destination="BrR-uC-Dkv" id="Jz0-Hg-upn"/>
+                        <outlet property="enrollButton" destination="0KV-vY-ajs" id="U6P-Wg-g3Z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0FR-Ru-GIY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
