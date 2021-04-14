@@ -9,15 +9,18 @@ const ColumnStyle = styled.div`
     margin-right: 16px;
 `
 
-const Column = ({columnData}) => {
-    const [addClicked, setAddClicked] = useState(false)
+const Column = ({initialColumn}) => {
+    const [isAddBtnClicked, setIsAddBtnClicked] = useState(false)
+    const [columnData, setColumnData] = useState(initialColumn)
 
+    const handleClickAddBtn = () => setIsAddBtnClicked(!isAddBtnClicked)
+    
     return (
         <div>
             <ColumnStyle>
-                <ColumnTitle columnData={columnData} addClicked={addClicked} setAddClicked={setAddClicked}/>
-                {addClicked && <Form setAddClicked={setAddClicked} />}
-                {columnData.cardList.map(card => <Card key={card.id} data={card} />)}
+                <ColumnTitle columnData={columnData} handleClickAddBtn={handleClickAddBtn}/>
+                {isAddBtnClicked && <Form setIsAddBtnClicked={setIsAddBtnClicked} columnData={columnData} setColumnData={setColumnData} />}
+                {columnData.cardList.map((card, i) => <Card key={Date.now() + i} data={card} />)}
             </ColumnStyle>
         </div>
     )
