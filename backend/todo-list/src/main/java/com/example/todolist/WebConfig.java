@@ -19,7 +19,8 @@ public class WebConfig implements WebMvcConfigurer {
 
     private final String[] EXCLUDED_PATH_LIST = {
             "/users/**",
-            "/users/login/**"
+            "/users/login/**",
+            "/"
     };
 
     @Override

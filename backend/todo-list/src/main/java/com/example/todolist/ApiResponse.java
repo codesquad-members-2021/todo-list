@@ -8,10 +8,12 @@ import java.util.List;
 public class ApiResponse {
     CategoryDto columns;
     List<HistoryDto> history;
+    String jwtToken;
 
-    public ApiResponse(CategoryDto columns, List<HistoryDto> history) {
+    public ApiResponse(CategoryDto columns, List<HistoryDto> history, String jwtToken) {
         this.columns = columns;
         this.history = history;
+        this.jwtToken = jwtToken;
     }
 
     public CategoryDto getColumns() {
@@ -20,6 +22,10 @@ public class ApiResponse {
 
     public List<HistoryDto> getHistory() {
         return history;
+    }
+
+    public String getJwtToken() {
+        return jwtToken;
     }
 
     @Override
