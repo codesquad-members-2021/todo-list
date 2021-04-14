@@ -50,3 +50,5 @@ class PopUpViewController: UIViewController {
         }
     }
 }
+
+//FIXME: Fetch data 위치 고치기

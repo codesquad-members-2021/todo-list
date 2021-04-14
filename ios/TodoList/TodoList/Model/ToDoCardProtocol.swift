@@ -10,7 +10,7 @@ import Foundation
 protocol ToDoCardProtocol {
     var list: [ToDoItem] {get set}
     func insertCard(newCard: ToDoItem, at order: Int)
-    func deleteCard(at index: Int)
+//    func deleteCard(at index: Int)
     func moveCard(at sourceIndex: Int, to destinationIndex: Int)
 //    func amendCard(with newTitle: String, at index: Int)
 }
