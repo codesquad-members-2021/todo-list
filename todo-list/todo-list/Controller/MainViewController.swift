@@ -40,7 +40,7 @@ class MainViewController: UIViewController {
     
     private func loadData() {
 
-        DataTaskManager.request(completion: { (result) in
+        DataTaskManager.get(completion: { (result) in
             DispatchQueue.global().async {
                 switch result {
                 case .success(let data):
