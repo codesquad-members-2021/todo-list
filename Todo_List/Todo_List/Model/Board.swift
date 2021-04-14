@@ -28,13 +28,13 @@ class Board {
         }
         switch type {
         case .todo:
-            todoList.apepnd(with: card)
+            todoList.append(with: card)
             NotificationCenter.default.post(name: Board.TodoListChanged, object: self)
         case .doing:
-            doingList.apepnd(with: card)
+            doingList.append(with: card)
             NotificationCenter.default.post(name: Board.DoingListChanged, object: self)
         case .done:
-            doneList.apepnd(with: card)
+            doneList.append(with: card)
             NotificationCenter.default.post(name: Board.DoneListChanged, object: self)
         }
     }

@@ -14,8 +14,8 @@ class Cards : Codable {
         get { return list.count }
     }
     
-    func apepnd(with card : Card) {
-        list.insert(card, at: 0)
+    func append(with card : Card, at position : Int = 0) {
+        list.insert(card, at: position)
     }
     
     func remove(at index : Int) -> Card {
