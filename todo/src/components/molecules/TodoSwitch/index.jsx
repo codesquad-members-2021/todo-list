@@ -13,15 +13,45 @@ const TodoSwitch = ({
   toggleActions,
   setTodos,
   setHistories,
-  columnName
+  columnName,
 }) => {
   const [isInput, toggleActions2] = useToggle(false);
-
+  let isPatch = true; //추가인지 수정인지를 알 수있는 flag를 enrollClickHandler에 전달하기 위함
   let template;
-  if (isInput || isClicked) {
+  if (isInput) {
+    console.log("todoSwitch", columnId);
     template = (
       <TodoListInput
-        {...{ setTodos, columnName, columnId, id, title, content, toggleActions2, toggleActions, setHistories }}
+        {...{
+          columnId,
+          id,
+          title,
+          content,
+          toggleActions2,
+          toggleActions,
+          isPatch,
+          setTodos,
+          setHistories,
+        }}
+      />
+    );
+  } else if (isClicked) {
+    console.log("todoSwitch", columnId); //undefined
+    isPatch = false;
+    template = (
+      <TodoListInput
+        {...{
+          setTodos,
+          columnName,
+          columnId,
+          id,
+          title,
+          content,
+          toggleActions2,
+          toggleActions,
+          setHistories,
+          isPatch,
+        }}
       />
     );
   } else {

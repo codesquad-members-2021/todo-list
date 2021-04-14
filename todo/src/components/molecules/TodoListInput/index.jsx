@@ -28,7 +28,8 @@ const TodoListInput = ({
   toggleActions,
   columnName,
   setTodos,
-  setHistories
+  setHistories,
+  isPatch,
 }) => {
   const [titleValue, setTitle] = useState(title);
   const [contentValue, setContent] = useState(content);
@@ -38,27 +39,36 @@ const TodoListInput = ({
     setState(target.value);
   };
 
-  const patchClickHandler = async () => {
+  const enrollClickHandler = async isPatch => {
     const currentTitle = titleRef.current.value;
     const currentContent = contentRef.current.value;
-    const response = await axios.patch(
-      '/todos',
-      { columnId, id, title: currentTitle, content: currentContent }
-    );
+    let response;
 
+    if (isPatch) {
+      response = await axios.patch("/todos", {
+        columnId,
+        id,
+        title: currentTitle,
+        content: currentContent,
+      });
+    } else {
+      response = await axios.put(
+        `/todos?columnId=${columnId}&title=${currentTitle}&content=${currentContent}&author=${"데이지"}` //
+      );
+    }
 
     setHistories(histories => {
       const newHistory = {
         index: histories[histories.length - 1].index + 1,
-        action: '수정',
+        action: "수정",
         currentColumn: columnName,
         currentTitle,
         currentContent,
         prevTitle: title,
-        user: 'Beemo'
-      }
-      return histories.concat(newHistory)
-    })
+        user: "Beemo",
+      };
+      return histories.concat(newHistory);
+    });
     setTodos(() => response.data);
   };
 
@@ -69,18 +79,20 @@ const TodoListInput = ({
       </SmallButton>
       <TitleInput
         placeholder="제목을 적어주세요"
-        onChange={(e) => onChange(setTitle, e)}
-        value={titleValue}
-        titleRef={titleRef}
+        onChange={e => onChange(setTitle, e)}
+        value={titleValue || ""}
+        titleRef={titleRef || ""}
       />
       <ContentInput
         placeholder="내용을 적어주세요"
-        onChange={(e) => onChange(setContent, e)}
-        value={contentValue}
-        contentRef={contentRef}
+        onChange={e => onChange(setContent, e)}
+        value={contentValue || ""}
+        contentRef={contentRef || ""}
       />
 
-      <ButtonList {...{ toggleActions2, patchClickHandler, toggleActions }} />
+      <ButtonList
+        {...{ toggleActions2, enrollClickHandler, toggleActions, isPatch }}
+      />
     </Div>
   );
 };

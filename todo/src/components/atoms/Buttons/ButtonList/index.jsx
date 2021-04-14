@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import Span from "../../Span";
 import Image from "../../Image";
 import SmallButton from "../SmallButton";
 import MediumButton from "../MediumButton";
@@ -14,11 +13,12 @@ const ButtonList = ({
   isIcon,
   toggleActions2,
   toggleActions,
-  patchClickHandler,
+  enrollClickHandler,
+  isPatch,
   ...props
 }) => {
   const plusButton = (
-    <SmallButton onClick={props.addTodo}>
+    <SmallButton onClick={props.addTodo} columnId={props.columnId}>
       <Image id="plusBtn" src={PlusButtonImg} _width="23px" />
     </SmallButton>
   );
@@ -44,7 +44,7 @@ const ButtonList = ({
       _background="#62afb7"
       _color="white"
       onClick={async () => {
-        await patchClickHandler();
+        await enrollClickHandler(isPatch);
         toggleActions2.toggle();
       }}
     >

@@ -1,4 +1,6 @@
 // server.js
+const shortid = require("shortid");
+
 const jsonServer = require("json-server");
 const server = jsonServer.create();
 const router = jsonServer.router("db.json");
@@ -14,14 +16,27 @@ server.use(middlewares);
 server.use(jsonServer.bodyParser);
 // Add custom routes before JSON Server router
 
-server.patch('/todos', (req, res) => {
+server.patch("/todos", (req, res) => {
   const { columnId, id, title, content } = req.body;
   db.get("todos")
     .find(e => e.columnId === Number(columnId))
-    .get('items')
+    .get("items")
     .find(e => e.id === Number(id))
-    .assign({ title: title, content: content }).write();
+    .assign({ title: title, content: content })
+    .write();
 
+  res.send(db.get("todos").value());
+});
+
+server.put("/todos", (req, res) => {
+  const { columnId, title, content, author } = req.query; //id 어떻게 할당?
+  console.log(columnId, title, content);
+  const test = db
+    .get("todos")
+    .find(e => e.columnId === Number(columnId))
+    .get("items")
+    .push({ id: shortid.generate(), title, content, author })
+    .write();
   res.send(db.get("todos").value());
 });
 

@@ -7,39 +7,75 @@ const Div = styled.div`
   margin: 5px;
 `;
 
-const TodoListColumn = ({ setTodos, columnId, columnName, items, setHistories }) => {
+const TodoListColumn = ({
+  setTodos,
+  columnId,
+  columnName,
+  items,
+  setHistories,
+}) => {
   const [isClicked, toggleActions] = useToggle(false);
-
   let template;
-
   if (!isClicked) {
     template = (
       <Div>
-        <TodoTitle addTodo={toggleActions.toggle} itemCount={items.length}>
+        <TodoTitle
+          addTodo={toggleActions.toggle}
+          itemCount={items.length}
+          columnId={columnId}
+        >
           {columnName}
         </TodoTitle>
         {items.map(({ id, title, content, author }) => {
           return (
             <TodoSwitch
               key={id}
-              {...{ setTodos, columnName, columnId, id, title, content, author, setHistories }}
+              {...{
+                setTodos,
+                columnName,
+                columnId,
+                id,
+                title,
+                content,
+                author,
+                setHistories,
+              }}
             ></TodoSwitch>
           );
         })}
       </Div>
     );
   } else {
+    console.log("TodoListColumn", columnId);
     template = (
       <Div>
         <TodoTitle addTodo={toggleActions.toggle} itemCount={items.length}>
           {columnName}
         </TodoTitle>
-        <TodoSwitch {...{ isClicked, columnName, toggleActions, setTodos, setHistories }} />
+        <TodoSwitch
+          {...{
+            columnId,
+            isClicked,
+            columnName,
+            toggleActions,
+            setTodos,
+            setHistories,
+          }}
+        />
         {items.map(({ id, title, content, author }) => {
           return (
             <TodoSwitch
               key={id}
-              {...{ setTodos, columnName, columnId, id, title, content, author, setHistories }}
+              {...{
+                setTodos,
+                columnName,
+                columnId,
+                id,
+                title,
+                content,
+                author,
+                setHistories,
+              }}
             ></TodoSwitch>
           );
         })}

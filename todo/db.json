@@ -6,15 +6,33 @@
       "items": [
         {
           "id": 1,
-          "title": "GitHub 공부하기fsfsㅂㅂㅂ",
-          "content": "add, commit 공부하기dffddf11",
+          "title": "공부 테스트",
+          "content": "공부",
           "author": "Beemo"
         },
         {
           "id": 2,
           "title": "1111",
-          "content": "2323eeqweqw",
+          "content": "2323eeqweqw??",
           "author": "Daisy"
+        },
+        {
+          "id": "qt-fMdrVT",
+          "title": "ㅔㅔㅔ",
+          "content": "ㅔㅔㅔ",
+          "author": "데이지"
+        },
+        {
+          "id": "CNOajk9uG",
+          "title": "dd",
+          "content": "dd",
+          "author": "데이지"
+        },
+        {
+          "id": "dWHHZsnbp",
+          "title": "되나ehl",
+          "content": "ㄸㄷ",
+          "author": "데이지"
         }
       ]
     },
@@ -34,9 +52,7 @@
           "content": "34433423523ㅡㅓㅎㅎ",
           "author": "Tami"
         }
-      ],
-      "title": "데이지",
-      "content": "타미"
+      ]
     },
     {
       "columnId": 3,
