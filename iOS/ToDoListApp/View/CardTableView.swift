@@ -12,7 +12,6 @@ class CardTableView: UITableView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         configureCell()
-//        self.tableHeaderView = headerView
     }
     
     func configureCell() {

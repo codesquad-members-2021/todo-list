@@ -48,6 +48,17 @@ class CardManager: CardManageDelegate {
         self.cardDic[states]!.remove(at: index)
         NotificationCenter.default.post(name: CardManager.changeCardCount, object: self)
     }
+    
+    func insert(at index: Int, card: Card) {
+        self.cardDic[card.states]?.insert(card, at: index)
+    }
+    
+    func getCard(states: States, at index: Int) -> Card {
+        guard let cards = cardDic[states] else {
+            return Card(title: "", body: "", author: "", states: .InProgress)
+        }
+        return cards[index]
+    }
 }
 
 extension CardManager {
