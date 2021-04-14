@@ -1,8 +1,13 @@
-# todo-list practice
+## json-team (팀 21)
 
-## 개요
+[Luke](https://github.com/reminderclock)
 
-[벨로퍼트 모던 리액트](https://react.vlpt.us/)의 1 ~ 3장을 학습하며, 3장의 멋진 투두리스트를 각자만들기.  
-시연 후 서로 코드 리뷰를 진행!
+[Eamon](https://github.com/eamon3481)
 
-마지막으로 학습한 내용에 대해 통합적인 문서 작성
+[Json](https://github.com/kowoohyuk)
+
+### [API](https://github.com/kowoohyuk/codesquad-api)
+
+### [Issue 전략](https://github.com/kowoohyuk/todo-list/wiki/Issue-%EC%A0%84%EB%9E%B5)
+
+### [협업 Rule](https://github.com/kowoohyuk/todo-list/wiki/Rule)
