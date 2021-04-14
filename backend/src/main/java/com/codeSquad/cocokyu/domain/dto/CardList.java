@@ -10,11 +10,11 @@ public class CardList {
     private List<Card> doing = new ArrayList<>();
     private List<Card> done = new ArrayList<>();
 
-    public CardList(Iterable<Card> cards) {
+    public CardList(List<Card> cards) {
         divide(cards);
     }
 
-    private void divide(Iterable<Card> cards) {
+    private void divide(List<Card> cards) {
         for (Card card : cards) {
             sort(card);
         }
