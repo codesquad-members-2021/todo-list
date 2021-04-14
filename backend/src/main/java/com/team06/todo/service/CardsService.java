@@ -23,23 +23,8 @@ public class CardsService {
         Card card = new Card(cardCreateRequestDto);
         cardsRepository.save(card);
         actionsService.save(card);
-        return new CardResponseDto.Builder()
-                .id(card.getId())
-                .title(card.getTitle())
-                .contents(card.getContents())
-                .columnType(card.getColumnType())
-                .createdDateTime(card.getCreatedDateTime())
-                .build();
+        return CardResponseDto.from(card);
     }
-
-//    public CardsResponse show() {
-//        List<Card> cards = (List<Card>) cardsRepository.findAll();
-//        List<CardResponseDto> cardResponseDtos = new ArrayList<>();
-//        for (Card card : cards) {
-//            cardResponseDtos.add(new CardResponseDto(card));
-//        }
-//        return new CardsResponse(cardResponseDtos);
-//    }
 
     public CardsResponse show() {
         List<Card> cards = (List<Card>) cardsRepository.findAll();

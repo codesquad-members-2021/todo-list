@@ -1,14 +1,11 @@
 package com.team06.todo.controller;
 
-import com.team06.todo.domain.Card;
 import com.team06.todo.dto.*;
 import com.team06.todo.service.CardsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.HashMap;
 
 @RequestMapping("/api/cards")
 @RestController

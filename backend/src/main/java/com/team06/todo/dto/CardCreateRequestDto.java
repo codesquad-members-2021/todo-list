@@ -9,11 +9,11 @@ public class CardCreateRequestDto {
     }
 
     public String getTitle() {
-        return title;
+        return this.title;
     }
 
     public String getContents() {
-        return contents;
+        return this.contents;
     }
 
     public int getColumnType() {

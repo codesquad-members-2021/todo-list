@@ -8,7 +8,6 @@ import com.team06.todo.dto.ActionResponseDto;
 import com.team06.todo.repository.ActionsRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -35,11 +34,9 @@ public class ActionsService {
 
     public ActionsResponse show() {
         List<Action> actions = (List<Action>) actionsRepository.findAll();
-//        List<ActionResponseDto> actionResponseDtos = new ArrayList<>();
-//        for (Action action : actions) {
-//            actionResponseDtos.add(new ActionResponseDto(action));
-//        }
-        return new ActionsResponse(actions.stream().map(ActionResponseDto::from).collect(Collectors.toList()));
+        return new ActionsResponse(actions.stream()
+                .map(ActionResponseDto::from)
+                .collect(Collectors.toList()));
     }
 
     public void delete(Card card) {
