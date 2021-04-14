@@ -80,8 +80,10 @@ extension TaskViewController {
         let card = TaskCard(id: id, title: title, content: content, createdAt: "\(Date())", status: status, author: "user1")
         taskStackManager.append(status, taskCard: card)
         updateTaskCountLabel()
-        NetworkManager.insertedDataPost(httpMethod: HTTPMethod.post, data: card)
-        dump(taskStackManager)
+        // server로 한번만 보내도록~ 지금 3번 보내고 있습니다~
+        if column == card.status {
+            NetworkManager.insertedDataPost(httpMethod: HTTPMethod.post, data: card)
+        }
     }
     
     @objc func sendRemovedData(_ notification: Notification) {

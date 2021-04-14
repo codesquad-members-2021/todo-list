@@ -30,7 +30,6 @@ class NewTaskViewController: UIViewController {
 //MARK: -@Action
 extension NewTaskViewController {
     @IBAction func cancelButtonTouched(_ sender: Any) {
-        
         dismiss(animated: true, completion: nil)
     }
     
