@@ -46,7 +46,7 @@
         "id": 6,
         "action": "MOVE",
         "card_title": "React 공부하기",
-        "time": "2021-04-13 23:40:00",
+        "time": "2021-04-13T23:40:00",
         "previousBoard": "doing",
         "currentBoard": "done"
       }

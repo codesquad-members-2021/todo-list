@@ -40,6 +40,7 @@ const LogCard = ({ data: { logs }, userID }) => {
             <span>{Math.floor(diff / 1440)}일 전</span>
           </>
         );
+        else return null;
     };
 
     return (
