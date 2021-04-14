@@ -25,7 +25,7 @@ public class BoardService {
     }
 
     public List<Board> readAll() {
-        return boardRepository.findAll();
+        return boardRepository.findAllNotDeleted();
     }
 
     public List<Board> readByCategory(Category category) {
