@@ -7,8 +7,15 @@
 
 import Foundation
 
-struct Card: Codable {
+struct Card: Codable{
     let id: Int
+    let vertical: Int
+    let title: String
+    let contents: String
+    let flag: Float
+}
+
+struct AddCard: Codable {
     let vertical: Int
     let title: String
     let contents: String
@@ -19,9 +26,3 @@ struct CardList: Codable {
     let status: String
     let todos: [Card]
 }
-
-//struct CardLists: Codable {
-//    let id: Int
-//    let status: String
-//    let todos: [CardList]
-//}
