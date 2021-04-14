@@ -27,7 +27,7 @@ public class BoardController {
         return boardService.getBoards();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id}/cards")
     public Set<Card> getCardsByBoardId(@PathVariable Long id) {
 
         return boardService.getCardsByBoardId(id);

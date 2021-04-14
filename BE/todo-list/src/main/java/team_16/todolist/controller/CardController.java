@@ -11,11 +11,9 @@ import team_16.todolist.service.LogService;
 public class CardController {
 
     private final BoardService boardService;
-    private final LogService logService;
 
-    public CardController(BoardService boardService, LogService logService) {
+    public CardController(BoardService boardService) {
         this.boardService = boardService;
-        this.logService = logService;
     }
 
     /*
@@ -25,27 +23,23 @@ public class CardController {
     @PostMapping
     public Card createdCard(@PathVariable Long boardId, String title, String content) {
         Card createdCard = boardService.createCard(boardId, title, content);
-        logService.createLog(Log.Action.ADD, createdCard.getId(), boardId);
 
         return createdCard;
     }
 
     @PutMapping("/{cardId}")
     public Card updateCard(@PathVariable Long boardId, @PathVariable Long cardId, String title, String content) {
-        logService.createLog(Log.Action.UPDATE, cardId, boardId);
 
         return boardService.updateCard(boardId, cardId, title, content);
     }
 
     @PutMapping("/{cardId}/move/{moveBoardId}")
     public void moveCard(@PathVariable Long boardId, @PathVariable Long cardId, @PathVariable Long moveBoardId) {
-        logService.createLogByPreviousBoardId(Log.Action.MOVE, cardId, boardId, moveBoardId);
         boardService.moveBoard(boardId, moveBoardId, cardId);
     }
 
     @DeleteMapping("/{cardId}")
     public void deleteCard(@PathVariable Long boardId, @PathVariable Long cardId) {
-        logService.createLog(Log.Action.REMOVE, cardId, boardId);
         boardService.deleteCard(boardId, cardId);
     }
 
