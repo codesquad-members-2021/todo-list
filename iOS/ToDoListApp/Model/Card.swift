@@ -23,3 +23,14 @@ class Card {
         self.states = states
     }
 }
+
+struct DraggedCard {
+    var cardInfo: Card
+    var index: Int
+}
+
+struct ReverseIndex {
+    static func get(with index:Int, total: Int) -> Int {
+        return total - 1 - index
+    }
+}

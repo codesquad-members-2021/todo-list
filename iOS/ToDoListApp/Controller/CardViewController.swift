@@ -20,29 +20,47 @@ class CardViewController: UIViewController ,CardDelegate {
     private var cardManager = CardManager.shared
     
     private var tableViewDelegate = ToDoTableViewDelegate()
-    private var toDoTableViewDataSource = ToDoTableViewDataSource(identifier: .ToDo)
-    private var inProgressViewDataSource = ToDoTableViewDataSource(identifier: .InProgress)
-    private var doneViewDataSource = ToDoTableViewDataSource(identifier: .Done)
     
+    private var toDoTableViewDataSource = ToDoTableViewDataSource(identifier: .ToDo)
+    private var toDoTableViewDragDropDelegate = ToDoTableViewDragDropDelegate(identifier: .ToDo)
+    
+    private var inProgressViewDataSource = ToDoTableViewDataSource(identifier: .InProgress)
+    private var inProgressViewDragDropDelegate = ToDoTableViewDragDropDelegate(identifier: .InProgress)
+    
+    private var doneViewDataSource = ToDoTableViewDataSource(identifier: .Done)
+    private var doneViewDragDropDelegate = ToDoTableViewDragDropDelegate(identifier: .Done)
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NotificationCenter.default.addObserver(self, selector: #selector(changeBadge), name: CardManager.changeCardCount, object: cardManager)
-        
+        configureNotification()
         configureDelegate()
         configureBadge()
+    }
+    
+    func configureNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(changeBadge), name: CardManager.changeCardCount, object: cardManager)
+        NotificationCenter.default.addObserver(self, selector: #selector(cardMove), name: CardManager.cardMove, object: cardManager)
     }
     
     func configureDelegate() {
         toDoTableView.delegate = tableViewDelegate
         toDoTableView.dataSource = toDoTableViewDataSource
+        toDoTableView.dragDelegate = toDoTableViewDragDropDelegate
+        toDoTableView.dropDelegate = toDoTableViewDragDropDelegate
+        toDoTableView.dragInteractionEnabled = true
         
         inProgressTableView.delegate = tableViewDelegate
         inProgressTableView.dataSource = inProgressViewDataSource
+        inProgressTableView.dragDelegate = inProgressViewDragDropDelegate
+        inProgressTableView.dropDelegate = inProgressViewDragDropDelegate
+        inProgressTableView.dragInteractionEnabled = true
         
         doneTableView.delegate = tableViewDelegate
         doneTableView.dataSource = doneViewDataSource
+        doneTableView.dragDelegate = doneViewDragDropDelegate
+        doneTableView.dropDelegate = doneViewDragDropDelegate
+        doneTableView.dragInteractionEnabled = true
     }
 
     func configureBadge() {
@@ -91,8 +109,29 @@ class CardViewController: UIViewController ,CardDelegate {
     
     //MARK: objc 처리
     @objc func changeBadge(notification: Notification) {
-        self.todoBadge.label.text = "\(cardManager.count(states: .ToDo))"
-        self.inProgressBadge.label.text  = "\(cardManager.count(states: .InProgress))"
-        self.doneBadge.label.text  = "\(cardManager.count(states: .Done))"
+        guard let states = notification.userInfo?[NotificationUserInfoKey.sourceStates] as? States else { return }
+        
+        switch states {
+        case .ToDo:
+            self.todoBadge.label.text = "\(cardManager.count(states: .ToDo))"
+        case .InProgress:
+            self.inProgressBadge.label.text  = "\(cardManager.count(states: .InProgress))"
+        case .Done:
+            self.doneBadge.label.text  = "\(cardManager.count(states: .Done))"
+        }
+    }
+    
+    @objc func cardMove(notification: Notification) {
+        guard let states = notification.userInfo?[NotificationUserInfoKey.sourceStates] as? States else { return }
+        
+        switch states {
+        case .ToDo:
+            toDoTableView.reloadData()
+        case .InProgress:
+            inProgressTableView.reloadData()
+        case .Done:
+            doneTableView.reloadData()
+        }
+         
     }
 }

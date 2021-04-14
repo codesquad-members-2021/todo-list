@@ -1,5 +1,5 @@
 //
-//  States.swift
+//  Uitility.swift
 //  ToDoListApp
 //
 //  Created by 지북 on 2021/04/08.
@@ -13,3 +13,6 @@ enum States: String {
     case Done = "Done"
 }
 
+enum NotificationUserInfoKey {
+    static let sourceStates = "sourceStates"
+}
