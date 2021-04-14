@@ -10,6 +10,7 @@ import java.util.List;
 public interface HistoryRepository extends CrudRepository<History, Long> {
     @Query("SELECT `card`.`title` as `card_title`, `history`.`action` as `action`, `history`.`DATE` as `date`, `history`.`from` as `from`, `history`.`to` as `to` FROM `history` " +
             "INNER JOIN `card` ON `history`.`CARD` = `card`.`ID` " +
-            "INNER JOIN `user` ON `card`.`USER` = `user`.`ID` AND `user`.`ID` = :userId")  //m :userId는 인자로 들어온 userId가 들어감
+            "INNER JOIN `user` ON `card`.`USER` = `user`.`ID` AND `user`.`ID` = :userId " +
+            "ORDER BY `date` DESC")  //m :userId는 인자로 들어온 userId가 들어감
     public List<HistoryWithCardTitle> findAllByUserId(Long userId);
 }
