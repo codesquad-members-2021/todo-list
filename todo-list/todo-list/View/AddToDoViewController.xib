@@ -52,6 +52,9 @@
                     <state key="normal" title="취소">
                         <color key="titleColor" red="0.50980392159999999" green="0.50980392159999999" blue="0.50980392159999999" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
+                    <connections>
+                        <action selector="cancelButtonTouched:" destination="-1" eventType="touchUpInside" id="STy-WW-UOw"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WGv-7E-XzB">
                     <rect key="frame" x="276" y="119" width="108" height="40"/>
@@ -64,6 +67,9 @@
                     <state key="normal" title="등록">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
+                    <connections>
+                        <action selector="addButtonTouched:" destination="-1" eventType="touchUpInside" id="hso-ng-Grp"/>
+                    </connections>
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="Ioz-uc-onn"/>
