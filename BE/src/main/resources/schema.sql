@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `todolist`.`work` (
     `title` VARCHAR(255) NOT NULL,
     `content` VARCHAR(255) NOT NULL,
     `created_at` DATETIME NOT NULL,
-    `status` INT NOT NULL,
+    `status` VARCHAR(64) NOT NULL,
     `author_id` INT NOT NULL,
     PRIMARY KEY (`id`),
     INDEX `fk_work_user_idx` (`author_id` ASC) VISIBLE,
