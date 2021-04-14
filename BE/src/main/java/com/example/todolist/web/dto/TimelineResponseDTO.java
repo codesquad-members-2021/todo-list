@@ -18,13 +18,6 @@ public class TimelineResponseDTO {
     private LocalDateTime createdAt;
     private String author;
 
-    public TimelineResponseDTO(Timeline timeline, User user) {
-        this.id = timeline.getId();
-        this.content = timeline.getContent();
-        this.createdAt = timeline.getCreatedAt();
-        this.author = user.getUserId();
-    }
-
     public static TimelineResponseDTO buildTimelineResponseDTO(Timeline timeline, User user) {
         return TimelineResponseDTO.builder()
                 .id(timeline.getId())

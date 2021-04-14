@@ -32,11 +32,11 @@ public class TimelineContent {
         return contentBuilder.toString();
     }
 
-    public static String moveContent(Work work, MoveWorkRequestDTO workDto) {
+    public static String moveContent(Work work, MoveWorkRequestDTO workDTO) {
         StringBuilder contentBuilder = new StringBuilder();
         contentBuilder.append(verifyJongsung(work.getTitle(), "을", "를"));
         contentBuilder.append(" " + getStatus(work.getStatus()) + "에서 ");
-        contentBuilder.append(getStatus(workDto.toEntity().getStatus()) + "로 " + MOVE);
+        contentBuilder.append(getStatus(workDTO.toEntity().getStatus()) + "로 " + MOVE);
         return contentBuilder.toString();
     }
 

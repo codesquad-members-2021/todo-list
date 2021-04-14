@@ -20,7 +20,7 @@ public class WorkResponseDTO {
     private int status;
     private String author;
 
-    public static WorkResponseDTO buildResponseWorkDto(Work work, User user) {
+    public static WorkResponseDTO buildResponseWorkDTO(Work work, User user) {
         return WorkResponseDTO.builder()
                 .id(work.getId())
                 .title(work.getTitle())

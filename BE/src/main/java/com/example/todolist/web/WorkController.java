@@ -31,15 +31,15 @@ public class WorkController {
     }
 
     @PostMapping("/works")
-    public WorkResponseDTO createWork(@RequestBody CreateWorkRequestDTO workDto, HttpSession session) {
+    public WorkResponseDTO createWork(@RequestBody CreateWorkRequestDTO workDTO, HttpSession session) {
         logger.info("work 생성 요청");
-        return workService.save(workDto, getUserFromSession(session));
+        return workService.save(workDTO, getUserFromSession(session));
     }
 
     @PutMapping("/works/{id}")
-    public WorkResponseDTO updateWork(@PathVariable Long id, @RequestBody UpdateWorkRequestDTO workDto, HttpSession session) {
+    public WorkResponseDTO updateWork(@PathVariable Long id, @RequestBody UpdateWorkRequestDTO workDTO, HttpSession session) {
         logger.info("work 수정 요청");
-        return workService.update(id, workDto, getUserFromSession(session));
+        return workService.update(id, workDTO, getUserFromSession(session));
     }
 
     @DeleteMapping("/works/{id}")
@@ -49,9 +49,9 @@ public class WorkController {
     }
 
     @PostMapping("/works/{id}")
-    public WorkResponseDTO moveWork(@PathVariable Long id, @RequestBody MoveWorkRequestDTO workDto, HttpSession session) {
+    public WorkResponseDTO moveWork(@PathVariable Long id, @RequestBody MoveWorkRequestDTO workDTO, HttpSession session) {
         logger.info("work 이동 요청");
-        return workService.move(id, workDto, getUserFromSession(session));
+        return workService.move(id, workDTO, getUserFromSession(session));
     }
 
 }

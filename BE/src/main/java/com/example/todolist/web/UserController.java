@@ -26,17 +26,17 @@ public class UserController {
     }
 
     @PostMapping("/signIn")
-    public UserResponseDTO signIn(@RequestBody SignInUserRequestDTO requestUserDto) {
+    public UserResponseDTO signIn(@RequestBody SignInUserRequestDTO userDTO) {
         logger.info("회원가입 요청");
-        return userService.signIn(requestUserDto);
+        return userService.signIn(userDTO);
     }
 
     @PostMapping("/login")
-    public UserResponseDTO login(@RequestBody LoginUserRequestDTO requestUserDto, HttpSession session) {
+    public UserResponseDTO login(@RequestBody LoginUserRequestDTO userDTO, HttpSession session) {
         logger.info("로그인 요청");
-        User user = userService.login(requestUserDto);
+        User user = userService.login(userDTO);
         session.setAttribute(USER_SESSION_KEY, user);
-        return UserResponseDTO.buildResponseUserDto(user);
+        return UserResponseDTO.buildResponseUserDTO(user);
     }
 
     @GetMapping("/logout")
