@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { HiMenu } from "react-icons/hi";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import LogStorage from "./LogStorage";
+import Button from "../utils/Button";
 
 const NavBlock = styled.div`
   width: 1440px;
@@ -17,18 +18,13 @@ const TitleBlock = styled.div`
   height: 46px;
   left: 80px;
   top: 33px;
-
   font-family: Noto Sans KR;
   font-style: normal;
   font-weight: normal;
   font-size: 32px;
   line-height: 46px;
-
-  /* Black */
-
   color: #010101;
 `;
-
 const LogBtnBlock = styled.div`
   width: 34px;
   height: 22px;
@@ -37,24 +33,29 @@ const LogBtnBlock = styled.div`
   top: 40px;
 `;
 
-function NavBar() {
-  const LogStorageDom = useRef();
+function NavBar(props) {
+  const { logs } = props;
+  const [clicked, setClickState] = useState(false);
   const [appear, setLogViewState] = useState(false);
-
   const handleLogBtnClick = () => {
-    setLogViewState(true); //바로 값이 바뀌지는 않는다.
-    // if (appear) LogStorageDom.current.classList.add("appear");
+    setLogViewState(true);
+    setClickState(true);
   };
-
   return (
     <>
       <NavBlock>
         <TitleBlock>TO-DO LIST</TitleBlock>
         <LogBtnBlock>
-          <HiMenu className="icon" onClick={handleLogBtnClick} />
+          <Button type="menu" onClick={handleLogBtnClick} size="150" />
         </LogBtnBlock>
       </NavBlock>
-      {appear && <LogStorage logDom={LogStorageDom}></LogStorage>}
+
+      <LogStorage
+        logs={logs}
+        clicked={clicked}
+        appear={appear}
+        setLogViewState={setLogViewState}
+      ></LogStorage>
     </>
   );
 }

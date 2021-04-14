@@ -1,3 +1,8 @@
-# todo-list
+# d-dela-mi 
 
-2주 동안 잘 해봅시다! 
+## 팀원
+
+- DD
+- Adela
+- Junami
+## [더 나은 협업을 위해 진행한 것들](https://github.com/codesqurd-master-DD/todo-list/wiki)
