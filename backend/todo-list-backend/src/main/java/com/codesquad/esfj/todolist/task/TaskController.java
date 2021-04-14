@@ -77,16 +77,16 @@ public class TaskController {
         Optional<Task> originalNextTask = taskRepository.findOneByPreviousId(id);
         Task newNextTask = readByPreviousId(targetId);
 
+        taskToMove.moveAfter(newNextTask);
+        taskRepository.save(taskToMove);
+
+        newNextTask.moveAfter(taskToMove.getId());
+        taskRepository.save(newNextTask);
+
         if (originalNextTask.isPresent()) {
             originalNextTask.get().moveAfter(taskToMove);
             taskRepository.save(originalNextTask.get());
         }
-
-        taskToMove.moveAfter(newNextTask);
-        taskRepository.save(taskToMove);
-
-        newNextTask.moveAfter(taskToMove);
-        taskRepository.save(newNextTask);
     }
 
     private Task readByPreviousId(Long previousId) {
