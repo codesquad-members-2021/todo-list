@@ -32,16 +32,13 @@ const IconStyle = styled.div`
     justify-content: space-between;
 `
 
-const ColumnTitle = ({columnData, addClicked, setAddClicked}) => {
-    const onClick = () => {
-        setAddClicked(!addClicked)
-    }
+const ColumnTitle = ({columnData, handleClickAddBtn}) => {
 
     return (
         <ColumnTitleStyle>
             <span className="title__span">{columnData.name}</span>
             <div className="title__count">{columnData.cardList.length}</div>
-            <IconStyle onClick={onClick}>
+            <IconStyle  onClick={handleClickAddBtn}>
                 <Icon type={ "plus" }/>
                 <Icon type={ "close" }/>
             </IconStyle>
