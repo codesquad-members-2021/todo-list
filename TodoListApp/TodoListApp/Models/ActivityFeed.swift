@@ -13,8 +13,4 @@ class ActivityFeed {
     init(userActions: [Activity]) {
         self.userActions = userActions
     }
-    
-    func add(_ activity: Activity) {
-        userActions.append(activity)
-    }
 }

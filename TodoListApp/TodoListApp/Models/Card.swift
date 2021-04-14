@@ -19,12 +19,4 @@ class Card {
         self.createdAt = Date()
         self.category = category
     }
-    
-    func replaceTitle(with newTitle: String) {
-        title = newTitle
-    }
-    
-    func replaceDescription(with newDescription: String) {
-        description = newDescription
-    }
 }
