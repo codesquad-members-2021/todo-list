@@ -14,7 +14,7 @@ public class ActionsResponse {
         }
     }
 
-    public List<ActionResponseDto> getActionsResponse() {
+    public List<ActionResponseDto> getActions() {
         return Collections.unmodifiableList(actionsResponse);
     }
 }

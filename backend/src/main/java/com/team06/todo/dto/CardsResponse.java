@@ -14,7 +14,7 @@ public class CardsResponse {
         }
     }
 
-    public List<CardResponseDto> getCardsResponse() {
+    public List<CardResponseDto> getCards() {
         return Collections.unmodifiableList(cardsResponse);
     }
 }
