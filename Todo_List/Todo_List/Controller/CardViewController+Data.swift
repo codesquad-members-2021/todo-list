@@ -12,19 +12,31 @@ extension CardViewController {
     func setUpDelegate(){
         todo.delegate = self
         todo.dataSource = self
+        todo.dragDelegate = self
+        todo.dropDelegate = self
+        todo.dragInteractionEnabled = true
+        todo.allowsSelectionDuringEditing = true
         
         doing.delegate = self
         doing.dataSource = self
+        doing.dragDelegate = self
+        doing.dropDelegate = self
+        doing.dragInteractionEnabled = true
         
         done.delegate = self
         done.dataSource = self
+        done.dragDelegate = self
+        done.dropDelegate = self
+        done.dragInteractionEnabled = true
+        
     }
 }
 extension CardViewController : UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return CardViewConstant.numberOfRowsInSection //각 섹션에는 한개의 row만 존재한다.
+        return CardViewConstant.numberOfRowsInSection
     }
-    /*섹션의 수를 늘리는 프로토콜*/
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         var count = 0
         switch tableView {
@@ -43,17 +55,14 @@ extension CardViewController : UITableViewDelegate, UITableViewDataSource {
         return count
     }
     
-    /*섹션의 헤더섹션 배경색을 바꾸는 법.*/
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        (view as! UITableViewHeaderFooterView).contentView.backgroundColor = #colorLiteral(red: 0.968627451, green: 0.968627451, blue: 0.9607843137, alpha: 1)
+        return (view as! UITableViewHeaderFooterView).contentView.backgroundColor = #colorLiteral(red: 0.968627451, green: 0.968627451, blue: 0.9607843137, alpha: 1)
     }
     
-    /*섹션의 헤더섹션 사이즈를 늘리는 방법.*/
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return CardViewConstant.heightForHeaderInSection
     }
-    
-    
+            
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CardCell") as! CardCell
         
@@ -75,21 +84,21 @@ extension CardViewController : UITableViewDelegate, UITableViewDataSource {
         return cell
         
     }
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
      
 //        editingStyle == .delete
         switch tableView {
         case todo:
             board.remove(at: indexPath.section, type: .todo)
-            todo.deleteSections([indexPath.section], with: .fade)
         case doing:
             board.remove(at: indexPath.section, type: .doing)
-            doing.deleteSections([indexPath.section], with: .fade)
         case done:
             board.remove(at: indexPath.section, type: .done)
-            done.deleteSections([indexPath.section], with: .fade)
         default:
             return
         }
     }
+    
+    
 }

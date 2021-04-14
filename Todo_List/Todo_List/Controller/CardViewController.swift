@@ -9,6 +9,7 @@ import UIKit
 
 class CardViewController: UIViewController {
     
+    
     @IBOutlet weak var todo: UITableView!
     @IBOutlet weak var doing: UITableView!
     @IBOutlet weak var done: UITableView!
@@ -51,7 +52,7 @@ class CardViewController: UIViewController {
             return
         }
         viewController.setHandler(handler: { [weak self] card in
-            self?.board.apepnd(with: card, type: cardType)
+            self?.board.append(with: card, type: cardType, at: 0)
         })
     }
     func createModalViewController() -> ModalViewController{
@@ -65,6 +66,7 @@ class CardViewController: UIViewController {
 }
 // MARK: - Notification Fucntion
 extension CardViewController {
+    
     func setNotificationCenter(){
         NotificationCenter.default.addObserver(self, selector: #selector(reloadBoard), name: Board.TodoListChanged, object: board)
         NotificationCenter.default.addObserver(self, selector: #selector(reloadBoard), name: Board.DoingListChanged, object: board)
@@ -76,6 +78,9 @@ extension CardViewController {
             self.doing.reloadData()
             self.done.reloadData()
         }
+    }
+    @objc func setCardInfo(_ d : Notification){
+        
     }
 }
 // MARK: - Register Nib and Configuration
