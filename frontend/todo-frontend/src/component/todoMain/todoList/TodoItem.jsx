@@ -1,12 +1,12 @@
-import React, { useRef, useState } from 'react';
-import DeleteBtn from '../../atom/DeleteBtn.jsx';
-import styled from 'styled-components';
-import Input from '../../atom/Input.jsx';
-import { ConfirmBtn, CancelBtn } from '../../atom/Button.jsx';
+import React, { useRef, useState } from "react";
+import DeleteBtn from "../../atom/DeleteBtn.jsx";
+import styled from "styled-components";
+import Input from "../../atom/Input.jsx";
+import { ConfirmBtn, CancelBtn } from "../../atom/Button.jsx";
 
 export const TodoCard = styled.div`
   display: flex;
-  flex-direction: ${(props) => (props.flexDir === 'column' ? 'column' : 'row')};
+  flex-direction: ${(props) => (props.flexDir === "column" ? "column" : "row")};
   align-items: flex-start;
   padding: 16px;
   width: 308px;
@@ -33,11 +33,19 @@ const TodoCardContent = styled.div`
   font-size: 0.8rem;
 `;
 
-const TodoItem = ({ todoCard: { id, title, content }, deleteTodoItem, editTodoItem }) => {
+const TodoItem = ({
+  columnId,
+  todoCard,
+  todoCard: { id, title, content },
+  deleteTodoItem,
+  editTodoItem,
+  getDropCardInfo,
+}) => {
   const [isEditing, setIsEditing] = useState(false);
   const [inputTitle, setInputTitle] = useState(title);
   const [inputContent, setInputContent] = useState(content);
   const [isDisabled, setIsDisabled] = useState(false);
+  const [isDraged, setIsDraged] = useState(false);
 
   const inputTitleRef = useRef();
   const inputContentRef = useRef();
@@ -60,37 +68,64 @@ const TodoItem = ({ todoCard: { id, title, content }, deleteTodoItem, editTodoIt
   };
 
   const handleChange = () => {
-    if (inputTitleRef.current.value && inputContentRef.current.value) setIsDisabled(false);
+    if (inputTitleRef.current.value && inputContentRef.current.value)
+      setIsDisabled(false);
     else setIsDisabled(true);
+  };
+
+  const handleDragOver = (e) => {
+    e.preventDefault();
+    e.dataTransfer.setData(
+      "dropCardData",
+      JSON.stringify({ beforeColumnId: columnId, ...todoCard })
+    );
+  };
+
+  const handleDragStart = (e) => {
+    setIsDraged(true);
+    e.dataTransfer.setData(
+      "cardData",
+      JSON.stringify({ beforeColumnId: columnId, ...todoCard })
+    );
   };
 
   if (isEditing) {
     return (
-      <TodoCard flexDir='column'>
+      <TodoCard flexDir="column">
         <Input
           defaultValue={inputTitle}
-          placeholder='제목을 입력하세요'
-          name='title'
+          placeholder="제목을 입력하세요"
+          name="title"
           handleChange={handleChange}
           inputRef={inputTitleRef}
         ></Input>
         <Input
           defaultValue={inputContent}
-          placeholder='내용을 입력하세요'
-          name='content'
+          placeholder="내용을 입력하세요"
+          name="content"
           handleChange={handleChange}
           inputRef={inputContentRef}
         ></Input>
 
         <TodoCardBtnWrapper>
-          <ConfirmBtn value='수정' handleClick={editItem} disabled={isDisabled} />
-          <CancelBtn value='취소' handleClick={toggleEditForm} />
+          <ConfirmBtn
+            value="수정"
+            handleClick={editItem}
+            disabled={isDisabled}
+          />
+          <CancelBtn value="취소" handleClick={toggleEditForm} />
         </TodoCardBtnWrapper>
       </TodoCard>
     );
   } else {
     return (
-      <TodoCard onDoubleClick={toggleEditForm} flexDir='row'>
+      <TodoCard
+        draggable="true"
+        onDoubleClick={toggleEditForm}
+        flexDir="row"
+        onDragOver={handleDragOver}
+        onDragStart={handleDragStart}
+      >
         <div>
           <TodoCardTitle>{title}</TodoCardTitle>
           <TodoCardContent>{content}</TodoCardContent>
