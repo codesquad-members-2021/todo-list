@@ -55,7 +55,7 @@ const CardAuthor = styled.p`
     color: var(--author-text-color);
 `;
 //prettier-ignore
-const Card = ({ title, body, index, setCardList, columnId, cardId, previousCardId, isZanSang}) => {
+const Card = ({ title, body, index, columnId, cardId, previousCardId, isZanSang, setColumnData}) => {
     const [x, setX] = useState()
     const [y, setY] = useState()
     const [left, setLeft] = useState(0)
@@ -63,16 +63,28 @@ const Card = ({ title, body, index, setCardList, columnId, cardId, previousCardI
     const [isDown, setDown] = useState(false)
 
     const deleteCard = () => {
-        setCardList((cardList) => cardList.filter((_, i) => i !== index))
+        // setCardList((cardList) => cardList.filter((_, i) => i !== index))
+        setColumnData((data)=>{
+            const newData = [...data]
+            newData[columnId-1].cards = newData[columnId-1].cards.filter((_, i) => i !== index)
+            return newData
+        })
         axios.delete(`api/columns/${columnId}/cards/${cardId}`)
     }
 
     const editCard = () => {
-        setCardList((cardList) => {
-            const left = cardList.slice(0, index);
-            const right = cardList.slice(index + 1);
-            return left.concat({ title, body, isInput: true, previousCardId, cardId, columnId }, right);
-        });
+        // setCardList((cardList) => {
+        //     const left = cardList.slice(0, index);
+        //     const right = cardList.slice(index + 1);
+        //     return left.concat({ title, body, isInput: true, previousCardId, cardId, columnId }, right);
+        // });
+        setColumnData((data)=>{
+            const newData = [...data]
+            const left = newData[columnId-1].cards.slice(0, index);
+            const right = newData[columnId-1].cards.slice(index + 1);
+            newData[columnId-1].cards = left.concat({ title, body, isInput: true, previousCardId, cardId, columnId }, right);
+            return newData
+        })
     };
 
     
@@ -86,6 +98,13 @@ const Card = ({ title, body, index, setCardList, columnId, cardId, previousCardI
         //     const right = cardList.slice(index+1);
         //     return left.concat({title, body, index, columnId, setCardList, cardId, previousCardId, isZanSang:true}, right);
         // });
+        // setColumnData((data)=>{
+        //     const newData = [...data]
+        //     const left = newData[columnId-1].cards.slice(0, index);
+        //     const right = newData[columnId-1].cards.slice(index + 1);
+        //     newData[columnId-1].cards = left.concat({ title, body, isZanSang: true, previousCardId, cardId, columnId }, right);
+        //     return newData
+        // })
     }
 
     const [moveX, setMoveX] = useState(0)
@@ -119,21 +138,29 @@ const Card = ({ title, body, index, setCardList, columnId, cardId, previousCardI
         //     return !v.isZanSang ? v : {...v, isZanSang:false}
         // }))
         //위부분 return은 axios.put으로 새로받아온 카드로
-        // const card = {title, body, columnId, previousCardId, cardId}
-        // const targetColumn = moveX + card.columnId
-        // const targetIndex = moveY + card.index
+        const card = {title, body, columnId, previousCardId, cardId}
+        let targetColumn = moveX + columnId
+        let targetIndex = moveY + index
+        targetIndex = targetIndex > 0 ? targetIndex : 0
+        targetColumn = targetColumn > 0 ? targetColumn : 0
+        console.log(targetIndex)
+        // setColumnData((data)=>{
+        //     const newData = [...data]
+        //     // newData[columnId-1].cards = newData[columnId-1].cards.filter((_, i) => i !== index)
+        //     const left = newData[targetColumn-1].cards.slice(0,targetIndex)
+        //     const right = newData[targetColumn-1].cards.slice(targetIndex)
+        //     newData[targetColumn-1].cards = left.concat(card, right)
+        //     return newData
+        // })
+
+
         // setColumnData((data)=>{
         //     return [...data].map((v,i)=>{
-        //         console.log(i)
-        //         console.log(targetColumn)
         //         if(i!==targetColumn) return v
         //         const left = v.cards.slice(0, targetIndex);
         //         const right = v.cards.slice(targetIndex);
         //         const card2 = left.concat(card, right)
-        //         console.log(v.cards)
-        //         console.log(card2)
         //         return {columnId:v.columnId, name:v.name, cards:card2};
-
         //     })
         // })
 
@@ -141,7 +168,7 @@ const Card = ({ title, body, index, setCardList, columnId, cardId, previousCardI
 
 
     return (
-        <CardWrapper top={top} left={left} isDown={isDown} isZanSang={isZanSang} onMouseDown={mouseDownHandler} onDoubleClick={editCard} onMouseMove={mouseMoveHandler} onMouseUp={mouseUpHandler}>
+        <CardWrapper top={top} left={left} isDown={isDown} isZanSang={isZanSang} onDoubleClick={editCard}>
             <CardTitle>
                 <span className="title">{title}</span>
                 <ColumnDeleteButton onClick={deleteCard} />
