@@ -39,4 +39,23 @@ class ToDoTableViewDelegate: NSObject, UITableViewDelegate {
         let actionConfiguration = UISwipeActionsConfiguration(actions: [deleteAction])
         return actionConfiguration
     }
+    
+    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+            return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { suggestedActions in
+                
+                let share = UIAction(title: "완료한 일로 이동") { action in
+                }
+                
+                let rename = UIAction(title: "수정하기") { [weak self] action in
+                    guard let cell = tableView.cellForRow(at: indexPath) as? ToDoTableViewCell else { return }
+                    guard let title = cell.titleLabel.text, let contents = cell.contentLabel.text else { return }
+
+                }
+                
+                let delete = UIAction(title: "삭제하기", attributes: .destructive) { action in
+                }
+                
+                return UIMenu(title: "", children: [share, rename, delete])
+            }
+        }
 }

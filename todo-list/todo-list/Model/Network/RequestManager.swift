@@ -8,7 +8,7 @@
 import Foundation
 
 class RequestManager {
-    static let urlString = "http://ec2-13-124-220-184.ap-northeast-2.compute.amazonaws.com:8080/verticals"
+    static let urlString = "http://ec2-13-124-220-184.ap-northeast-2.compute.amazonaws.com:8080/categories"
     //GET
     static func getRequest() -> URLRequest {
         guard let url = URL(string: urlString) else {

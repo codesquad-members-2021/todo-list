@@ -12,7 +12,7 @@ struct Card: Codable{
     let vertical: Int
     let title: String
     let contents: String
-    //let flag: Float
+    let flag: Float
 }
 
 struct AddCard: Codable {
