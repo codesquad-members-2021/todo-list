@@ -12,10 +12,13 @@ class AddToDoViewController: UIViewController {
     @IBOutlet weak var cardTitleLabel: UILabel!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var contentTextField: UITextField!
-    @IBOutlet weak var cancelButton: UIButton!
-    @IBOutlet weak var completeButton: UIButton!
+    @IBOutlet weak var completeButton: CompleteButton!
+    
+    private var titleTextFieldDelegate: AddToDoTextFieldDelegate?
+    private var contentTextFieldDelegate: AddToDoTextFieldDelegate?
     
     private let cardAdder: CardAddable?
+    private let validators: [String: InputValidable] = ["title": TitleValidator(), "content": ContentsValidator()]
     
     init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, cardAdder: CardAddable) {
         self.cardAdder = cardAdder
@@ -29,23 +32,41 @@ class AddToDoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setCornerRadius(for: cancelButton)
-        setCornerRadius(for: completeButton)
+        setTextFieldDelegates()
+        configureObservers()
     }
     
-    private func setCornerRadius(for button: UIButton) {
-        let radius = button.bounds.height * 0.1
-        button.layer.cornerRadius = radius
+    //MARK: - Settings
+    private func setTextFieldDelegates() {
+        titleTextFieldDelegate = AddToDoTextFieldDelegate(validator: validators["title"]!)
+        contentTextFieldDelegate = AddToDoTextFieldDelegate(validator: validators["content"]!)
+        
+        titleTextField.delegate = titleTextFieldDelegate
+        contentTextField.delegate = contentTextFieldDelegate
+    }
+    
+    private func configureObservers() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(updateButtonState(_:)),
+                                               name: AddToDoTextFieldDelegate.NotiKeys.validateDone,
+                                               object: nil)
+    }
+    
+    @objc private func updateButtonState(_ notification: Notification) {
+        let totalCount = validators.count
+        let validateCount = validators.values.compactMap{ $0.validatedText() }.count
+        totalCount == validateCount ? completeButton.enable() : completeButton.disable()
     }
     
     //MARK: - Button Actions
     @IBAction func addButtonTouched(_ sender: Any) {
         guard let cardAdder = self.cardAdder,
               let title = titleTextField.text,
-              let contents = contentTextField.text,
-              let newCard = cardAdder.newCard(withTitle: title, contents: contents) else { return }
+              let contents = contentTextField.text else { return }
         
-        cardAdder.add(card: newCard)
+        let newCard = cardAdder.newCard(withTitle: title, contents: contents)
+        print(newCard)
+        //newCard를 main으로 노티 보내서 네트워크에 올리는 동작 필요
         dismiss(animated: true, completion: nil)
     }
     

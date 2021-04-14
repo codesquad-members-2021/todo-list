@@ -10,7 +10,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddToDoViewController" customModule="todo_list" customModuleProvider="target">
             <connections>
-                <outlet property="cancelButton" destination="q7T-oZ-Fso" id="eXH-lX-2hh"/>
                 <outlet property="cardTitleLabel" destination="v1m-2H-pZ7" id="Du2-ZJ-mDz"/>
                 <outlet property="completeButton" destination="WGv-7E-XzB" id="cul-me-miO"/>
                 <outlet property="contentTextField" destination="paU-IL-oeE" id="akS-gh-WZr"/>
@@ -41,7 +40,7 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q7T-oZ-Fso">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q7T-oZ-Fso" customClass="CancelButton" customModule="todo_list" customModuleProvider="target">
                     <rect key="frame" x="160" y="119" width="108" height="40"/>
                     <color key="backgroundColor" red="0.87843137250000003" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
@@ -56,7 +55,7 @@
                         <action selector="cancelButtonTouched:" destination="-1" eventType="touchUpInside" id="STy-WW-UOw"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WGv-7E-XzB">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WGv-7E-XzB" customClass="CompleteButton" customModule="todo_list" customModuleProvider="target">
                     <rect key="frame" x="276" y="119" width="108" height="40"/>
                     <color key="backgroundColor" red="0.0" green="0.45882352939999999" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>

@@ -11,7 +11,7 @@ protocol CardAddable {
     
     func add(card: Card)
     
-    func newCard(withTitle title: String, contents: String) -> Card?
+    func newCard(withTitle title: String, contents: String) -> AddCard?
     
 }
 
@@ -70,10 +70,10 @@ extension CardManager: CardAddable {
         postCountChange()
     }
     
-    func newCard(withTitle title: String, contents: String) -> Card? {
+    func newCard(withTitle title: String, contents: String) -> AddCard? {
         guard let categoryID = self.categoryID else { return nil }
         
-//        let newCard = Card(id: Int(categoryID)!, title: title, contents: contents, createDateTime: "", status: "")
-        return nil
+        let newCard = AddCard(vertical: categoryID, title: title, contents: contents)
+        return newCard
     }
 }
