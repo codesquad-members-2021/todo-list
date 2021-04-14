@@ -4,6 +4,8 @@ import org.springframework.data.annotation.Id;
 import team9.todo.domain.enums.CardColumn;
 
 public class Card {
+    public static final double PRIORITY_STEP = 1.0;
+
     @Id
     private Long id;
 

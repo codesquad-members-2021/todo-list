@@ -17,6 +17,8 @@ import team9.todo.repository.HistoryRepository;
 
 import java.util.List;
 
+import static team9.todo.domain.Card.PRIORITY_STEP;
+
 @Service
 public class CardService {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -47,7 +49,7 @@ public class CardService {
     @Transactional
     public Card update(long cardId, String title, String content, User user) {
         logger.debug("{}번 카드의 내용 수정 요청", cardId);
-        Card card = getCard(cardId,user);
+        Card card = getCard(cardId, user);
         card.update(title, content);
         Card saved = cardRepository.save(card);
 
@@ -58,10 +60,10 @@ public class CardService {
     private double renderPos(Card prevCard, Card nextCard) {
         double priority = 0.0;
         if (prevCard == null && nextCard != null) {
-            priority = nextCard.getPriority() - 1;
+            priority = nextCard.getPriority() - PRIORITY_STEP;
         }
         if (prevCard != null && nextCard == null) {
-            priority = prevCard.getPriority() + 1;
+            priority = prevCard.getPriority() + PRIORITY_STEP;
         }
         if (prevCard != null && nextCard != null) {
             priority = (prevCard.getPriority() + nextCard.getPriority()) / 2;
@@ -90,10 +92,10 @@ public class CardService {
         Card nextCard = null;
 
         if (prevCardId != null) {
-            prevCard = getCard(prevCardId,user);
+            prevCard = getCard(prevCardId, user);
         }
         if (nextCardId != null) {
-            nextCard = getCard(nextCardId,user);
+            nextCard = getCard(nextCardId, user);
         }
 
         CardColumn to = getCommonColumn(prevCard, nextCard);
@@ -101,7 +103,7 @@ public class CardService {
 
         logger.debug("{}번 카드 {}로 이동 요청", cardId, to);
 
-        Card card = getCard(cardId,user);
+        Card card = getCard(cardId, user);
 
         CardColumn from = card.getColumnType();
         card.setColumnType(to);
@@ -121,7 +123,7 @@ public class CardService {
         historyRepository.save(new History(card.getId(), HistoryAction.REMOVE, card.getColumnType(), null));
     }
 
-    private Card getCard(long cardId, User user){
+    private Card getCard(long cardId, User user) {
         Card card = cardRepository.findByIdAndDeletedFalse(cardId).orElseThrow(NotFoundException::new);
         if (card.getUser() != user.getId()) {
             throw new NotAuthorizedException();
