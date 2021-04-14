@@ -195,6 +195,12 @@
           "title": "tyty",
           "content": "tytyty",
           "author": "Beemo"
+        },
+        {
+          "id": "z06LdcZhP",
+          "title": "dfdf",
+          "content": "dfdf",
+          "author": "Beemo"
         }
       ]
     },
@@ -359,6 +365,14 @@
       "currentColumn": "비동기 공부하기",
       "currentTitle": "werwer",
       "currentContent": "werwer",
+      "user": "Beemo"
+    },
+    {
+      "id": "XxNv3mRQvU",
+      "action": "등록",
+      "currentColumn": "해야할 일",
+      "currentTitle": "dfdf",
+      "currentContent": "dfdf",
       "user": "Beemo"
     }
   ]

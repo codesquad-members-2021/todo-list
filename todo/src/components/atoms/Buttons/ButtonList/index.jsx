@@ -15,6 +15,7 @@ const ButtonList = ({
   toggleActions,
   enrollClickHandler,
   isPatch,
+  isAbleToEnroll,
   ...props
 }) => {
   const plusButton = (
@@ -48,6 +49,7 @@ const ButtonList = ({
         if (toggleActions) return toggleActions.toggle();
         toggleActions2.toggle();
       }}
+      disabled={isAbleToEnroll}
     >
       등록
     </MediumButton>

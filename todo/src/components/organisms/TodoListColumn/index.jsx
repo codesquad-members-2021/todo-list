@@ -46,7 +46,6 @@ const TodoListColumn = ({
       </Div>
     );
   } else {
-    console.log("TodoListColumn", columnId);
     template = (
       <Div>
         <TodoTitle addTodo={toggleActions.toggle} itemCount={items.length}>

@@ -33,9 +33,13 @@ const TodoListInput = ({
 }) => {
   const [titleValue, setTitle] = useState(title);
   const [contentValue, setContent] = useState(content);
+  const [isAbleToEnroll, setEnroll] = useState(true);
+
   const titleRef = useRef(null);
   const contentRef = useRef(null);
+
   const onChange = (setState, { target }) => {
+    setEnroll(false);
     setState(target.value);
   };
 
@@ -53,9 +57,9 @@ const TodoListInput = ({
         content: currentContent,
       });
     } else {
-      action = "등록"
+      action = "등록";
       response = await axios.put(
-        `/todos?columnId=${columnId}&title=${currentTitle}&content=${currentContent}&author=${"Beemo"}` //
+        `/todos?columnId=${columnId}&title=${currentTitle}&content=${currentContent}&author=${"Beemo"}`
       );
     }
 
@@ -68,7 +72,7 @@ const TodoListInput = ({
       user: "Beemo",
     };
 
-    const responseHistory = await axios.post('/logs', newHistory);
+    const responseHistory = await axios.post("/logs", newHistory);
     setHistories(() => responseHistory.data);
 
     setTodos(() => response.data);
@@ -93,7 +97,13 @@ const TodoListInput = ({
       />
 
       <ButtonList
-        {...{ toggleActions2, enrollClickHandler, toggleActions, isPatch }}
+        {...{
+          toggleActions2,
+          enrollClickHandler,
+          toggleActions,
+          isPatch,
+          isAbleToEnroll,
+        }}
       />
     </Div>
   );
