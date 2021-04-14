@@ -6,49 +6,49 @@
         "id": 1,
         "action": "MOVE",
         "card_title": "HTML/CSS 공부하기",
-        "time": "2021-02-01 21:50:45",
-        "prevBoard": "todo",
-        "currBoard": "progress"
+        "time": "2021-02-01T21:50:45",
+        "previousBoard": "todo",
+        "currentBoard": "doing"
       },
       {
         "id": 2,
         "action": "ADD",
         "card_title": "GitHub 공부하기",
-        "time": "2021-02-01 21:56:18",
-        "prevBoard": null,
-        "currBoard": null
+        "time": "2021-02-01T21:56:18",
+        "previousBoard": null,
+        "currentBoard": null
       },
       {
         "id": 3,
         "action": "DELETE",
         "card_title": "GitHub 공부하기",
-        "time": "2021-02-01 19:21:32",
-        "prevBoard": null,
-        "currBoard": null
+        "time": "2021-02-01T19:21:32",
+        "previousBoard": null,
+        "currentBoard": null
       },
       {
         "id": 4,
         "action": "MODIFY",
         "card_title": "HTML/CSS 공부하기",
-        "time": "2021-02-01 03:05:03",
-        "prevBoard": null,
-        "currBoard": null
+        "time": "2021-02-01T03:05:03",
+        "previousBoard": null,
+        "currentBoard": null
       },
       {
         "id": 5,
         "action": "MODIFY",
         "card_title": "HTML/CSS 공부하기",
-        "time": "2021-04-13 22:25:00",
-        "prevBoard": null,
-        "currBoard": null
+        "time": "2021-04-13T22:25:00",
+        "previousBoard": null,
+        "currentBoard": null
       },
       {
         "id": 6,
         "action": "MOVE",
         "card_title": "React 공부하기",
         "time": "2021-04-13 23:40:00",
-        "prevBoard": "todo",
-        "currBoard": "done"
+        "previousBoard": "todo",
+        "currentBoard": "done"
       }
     ]
   }

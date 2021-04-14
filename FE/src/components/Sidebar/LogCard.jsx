@@ -3,14 +3,14 @@ import { LogContainer, LogCardContainer } from './sidebarStyle';
 
 const LogCard = ({ data: { logs }, userID }) => {
   const log = logs.map((log) => {
-    const { id, card_title, action, time, prevBoard, currBoard } = log;
+    const { id, card_title, action, time, previousBoard, currentBoard } = log;
 
-    const ActionPrint = ({ prevBoard, currBoard }) => {
-      if (prevBoard && currBoard)
+    const ActionPrint = ({ previousBoard, currentBoard }) => {
+      if (previousBoard && currentBoard)
         return (
           <span>
-            <span className="move">{prevBoard}</span>에서{' '}
-            <span className="move">{currBoard}</span>로
+            <span className="move">{previousBoard}</span>에서{' '}
+            <span className="move">{currentBoard}</span>로
           </span>
         );
       else return <></>;
@@ -50,7 +50,10 @@ const LogCard = ({ data: { logs }, userID }) => {
           <span>
             <span className="title">{card_title}</span>를
           </span>
-          <ActionPrint prevBoard={prevBoard} currBoard={currBoard} />
+          <ActionPrint
+            previousBoard={previousBoard}
+            currentBoard={currentBoard}
+          />
           <span>
             <span className="action">{action}</span>하였습니다.
           </span>
