@@ -7,12 +7,17 @@
 
 import UIKit
 
+protocol PopupViewDelegate {
+    func registerButtonPressed(title: String, notes: String)
+}
+
 class PopupViewController: UIViewController {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var descriptionTextField: UITextField!
-
+    var delegate: PopupViewDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,6 +27,11 @@ class PopupViewController: UIViewController {
         cancelButton.layer.cornerRadius = 6.0
         registerButton.layer.masksToBounds = true
         registerButton.layer.cornerRadius = 6.0
+    }
+    
+    @IBAction func registerButtonPressed(_ sender: UIButton) {
+        delegate?.registerButtonPressed(title: titleTextField.text ?? "", notes: descriptionTextField.text ?? "")
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func cancelButtonPressed(_ sender: UIButton) {

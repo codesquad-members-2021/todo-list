@@ -52,4 +52,9 @@ class CardsDataSource: NSObject, UITableViewDataSource {
     func insert(_ card: Card, at index: Int) {
         cards.insert(card, at: index)
     }
+    
+    func registerCard(title: String, notes: String) {
+        let newCard = Card(title: title, notes: notes, category: cards.first?.category ?? "")
+        cards.insert(newCard, at: 0)
+    }
 }

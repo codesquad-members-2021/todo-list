@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ListViewController: UIViewController, ListViewControllerProtocol {
+class ListViewController: UIViewController, ListViewControllerProtocol, PopupViewDelegate {
     @IBOutlet weak var headerView: ListHeaderView!
     @IBOutlet weak var cardTableView: UITableView!
     private var cardsDataSource = CardsDataSource(cards: [])
@@ -39,11 +39,17 @@ class ListViewController: UIViewController, ListViewControllerProtocol {
         cardTableView.reloadData()
     }
     
+    func registerButtonPressed(title: String, notes: String) {
+        cardsDataSource.registerCard(title: title, notes: notes)
+        refreshTableView()
+    }
+    
     @objc func showPopupViewController() {
         let popupVC = PopupViewController(nibName: "PopupViewController", bundle: nil)
         popupVC.modalPresentationStyle = .formSheet
         popupVC.modalTransitionStyle = .coverVertical
         popupVC.preferredContentSize = CGSize(width: 400.0, height: 175.0)
+        popupVC.delegate = self
         self.present(popupVC, animated: true, completion: nil)
     }
 }
