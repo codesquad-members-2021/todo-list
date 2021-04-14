@@ -53,7 +53,7 @@ const TodoListInput = ({
       });
     } else {
       response = await axios.put(
-        `/todos?columnId=${columnId}&title=${currentTitle}&content=${currentContent}&author=${"데이지"}` //
+        `/todos?columnId=${columnId}&title=${currentTitle}&content=${currentContent}&author=${"Beemo"}` //
       );
     }
 

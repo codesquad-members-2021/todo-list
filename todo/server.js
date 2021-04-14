@@ -19,9 +19,9 @@ server.use(jsonServer.bodyParser);
 server.patch("/todos", (req, res) => {
   const { columnId, id, title, content } = req.body;
   db.get("todos")
-    .find((e) => e.columnId === Number(columnId))
+    .find(e => e.columnId === Number(columnId))
     .get("items")
-    .find((e) => e.id === Number(id))
+    .find(e => e.id === id)
     .assign({ title: title, content: content })
     .write();
 
@@ -33,7 +33,7 @@ server.put("/todos", (req, res) => {
   console.log(columnId, title, content);
   const test = db
     .get("todos")
-    .find((e) => e.columnId === Number(columnId))
+    .find(e => e.columnId === Number(columnId))
     .get("items")
     .push({ id: shortid.generate(), title, content, author })
     .write();
@@ -43,9 +43,9 @@ server.put("/todos", (req, res) => {
 server.delete("/todos", (req, res) => {
   const { columnId, id } = req.query;
   db.get("todos")
-    .find((e) => e.columnId === Number(columnId))
+    .find(e => e.columnId === Number(columnId))
     .get("items")
-    .remove((e) => e.id === Number(id))
+    .remove(e => e.id === id)
     .write();
   res.send(db.get("todos").value());
   // lowdb를 사용해서 db.json에서 completed: true인 todo를 제거

@@ -45,6 +45,7 @@ const ButtonList = ({
       _color="white"
       onClick={async () => {
         await enrollClickHandler(isPatch);
+        if (toggleActions) return toggleActions.toggle();
         toggleActions2.toggle();
       }}
     >
