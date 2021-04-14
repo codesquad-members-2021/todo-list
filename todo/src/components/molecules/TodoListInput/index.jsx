@@ -9,15 +9,24 @@ import styled from "styled-components";
 import axios from "axios";
 
 const Div = styled.div`
-  position: relative; 
-  width: 308px; 
+  position: relative;
+  width: 308px;
   padding: 16px;
   margin: 16px;
-  background: #fff; 
+  background: #fff;
+  border: 2px solid #000;
   border-radius: 5px;
+  cursor: pointer;
 `;
 
-const TodoListInput = ({ columnId, id, title, content, toggleActions2, toggleActions }) => {
+const TodoListInput = ({
+  columnId,
+  id,
+  title,
+  content,
+  toggleActions2,
+  toggleActions,
+}) => {
   const [titleValue, setTitle] = useState(title);
   const [contentValue, setContent] = useState(content);
   const titleRef = useRef(null);
@@ -42,13 +51,13 @@ const TodoListInput = ({ columnId, id, title, content, toggleActions2, toggleAct
       </SmallButton>
       <TitleInput
         placeholder="제목을 적어주세요"
-        onChange={e => onChange(setTitle, e)}
+        onChange={(e) => onChange(setTitle, e)}
         value={titleValue}
         titleRef={titleRef}
       />
       <ContentInput
         placeholder="내용을 적어주세요"
-        onChange={e => onChange(setContent, e)}
+        onChange={(e) => onChange(setContent, e)}
         value={contentValue}
         contentRef={contentRef}
       />

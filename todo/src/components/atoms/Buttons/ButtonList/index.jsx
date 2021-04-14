@@ -10,7 +10,13 @@ import CloseButtonImg from "../../../../images/closeButton.svg";
 const Div = styled.div`
   padding: 10px 45px 0px 45px;
 `;
-const ButtonList = ({ isIcon, toggleActions2, toggleActions, patchClickHandler, ...props }) => {
+const ButtonList = ({
+  isIcon,
+  toggleActions2,
+  toggleActions,
+  patchClickHandler,
+  ...props
+}) => {
   const plusButton = (
     <SmallButton onClick={props.addTodo}>
       <Image id="plusBtn" src={PlusButtonImg} _width="23px" />
@@ -18,25 +24,27 @@ const ButtonList = ({ isIcon, toggleActions2, toggleActions, patchClickHandler, 
   );
   const closeButton = (
     <SmallButton>
-      <Image
-        id="closeBtn"
-        src={CloseButtonImg}
-        _width="20px"
-        _disabled={props.is}
-      />
+      <Image id="closeBtn" src={CloseButtonImg} _width="20px" />
     </SmallButton>
   );
   const cancelButtons = (
-    <MediumButton _background="#fff" _color="#3c4243" onClick={() => {
-      if (toggleActions) return toggleActions.toggle();
-      toggleActions2.toggle();
-
-    }}>
+    <MediumButton
+      _background="#fff"
+      _color="#3c4243"
+      onClick={() => {
+        if (toggleActions) return toggleActions.toggle();
+        toggleActions2.toggle();
+      }}
+    >
       취소
-    </MediumButton >
+    </MediumButton>
   );
   const enrollButtons = (
-    <MediumButton _background="#62afb7" _color="white" onClick={() => patchClickHandler()} disabled>
+    <MediumButton
+      _background="#62afb7"
+      _color="white"
+      onClick={() => patchClickHandler()}
+    >
       등록
     </MediumButton>
   );

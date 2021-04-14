@@ -15,7 +15,9 @@ const TodoListColumn = ({ columnId, columnName, items }) => {
   if (!isClicked) {
     template = (
       <Div>
-        <TodoTitle addTodo={toggleActions.toggle}>{columnName}</TodoTitle>
+        <TodoTitle addTodo={toggleActions.toggle} itemCount={items.length}>
+          {columnName}
+        </TodoTitle>
         {items.map(({ id, title, content, author }) => {
           return (
             <TodoSwitch
@@ -29,7 +31,9 @@ const TodoListColumn = ({ columnId, columnName, items }) => {
   } else {
     template = (
       <Div>
-        <TodoTitle addTodo={toggleActions.toggle}>{columnName}</TodoTitle>
+        <TodoTitle addTodo={toggleActions.toggle} itemCount={items.length}>
+          {columnName}
+        </TodoTitle>
         <TodoSwitch isClicked={isClicked} toggleActions={toggleActions} />
         {items.map(({ id, title, content, author }) => {
           return (
