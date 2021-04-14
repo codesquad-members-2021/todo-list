@@ -1,6 +1,6 @@
 package com.codeSquad.cocokyu.domain.dto;
 
-import com.codeSquad.cocokyu.domain.model.Card.Status;
+import com.codeSquad.cocokyu.domain.model.Status;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;

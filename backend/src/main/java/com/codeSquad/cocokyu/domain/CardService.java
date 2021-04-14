@@ -28,7 +28,7 @@ public class CardService {
     }
 
     public CardList sortedList() {
-        Iterable<Card> cards = cardRepository.findByCardToNotDeleted();
+        List<Card> cards = cardRepository.findByCardToNotDeleted();
         CardList cardList = new CardList(cards);
         return cardList;
     }

@@ -5,7 +5,7 @@ import javax.validation.ConstraintValidatorContext;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class TODoStatusPatternValidator implements ConstraintValidator<ToDoStatusPattern, Enum<?>> {
+public class ToDoStatusPatternValidator implements ConstraintValidator<ToDoStatusPattern, Enum<?>> {
     private Pattern pattern = Pattern.compile("TODO|DOING|DONE|DELETED");
 
     @Override
