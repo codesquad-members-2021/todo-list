@@ -10,7 +10,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 @Target({FIELD})
 @Retention(RUNTIME)
-@Constraint(validatedBy = TODoStatusPatternValidator.class)
+@Constraint(validatedBy = ToDoStatusPatternValidator.class)
 public @interface ToDoStatusPattern {
 
     String message() default "must match \"{regexp}\"";
