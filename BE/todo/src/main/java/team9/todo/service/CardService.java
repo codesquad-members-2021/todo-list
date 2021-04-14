@@ -45,28 +45,71 @@ public class CardService {
     }
 
     @Transactional
-    public Card update(long cardId, String title, String content, double priority, User user) {
+    public Card update(long cardId, String title, String content, User user) {
         logger.debug("{}번 카드의 내용 수정 요청", cardId);
         Card card = cardRepository.findByIdAndDeletedFalse(cardId).orElseThrow(() -> new NotFoundException());
-        if (card.getUser() != user.getId()) {
-            throw new NotAuthorizedException();
-        }
-        card.update(title, content, priority);
+        validateUser(card, user);
+        card.update(title, content);
         Card saved = cardRepository.save(card);
 
         historyRepository.save(new History(saved.getId(), HistoryAction.UPDATE, null, null));
         return saved;
     }
 
-    @Transactional
-    public Card move(long cardId, CardColumn to, User user) {
-        logger.debug("{}번 카드 {}로 이동 요청", cardId, to);
-        Card card = cardRepository.findByIdAndDeletedFalse(cardId).orElseThrow(() -> new NotFoundException());
-        if (card.getUser() != user.getId()) {
-            throw new NotAuthorizedException();
+    private double renderPos(Card prevCard, Card nextCard) {
+        double priority = 0.0;
+        if (prevCard == null && nextCard != null) {
+            priority = nextCard.getPriority() - 1;
         }
+        if (prevCard != null && nextCard == null) {
+            priority = prevCard.getPriority() + 1;
+        }
+        if (prevCard != null && nextCard != null) {
+            priority = (prevCard.getPriority() + nextCard.getPriority()) / 2;
+        }
+        return priority;
+    }
+
+    private CardColumn getCommonColumn(Card prevCard, Card nextCard) {
+        if (prevCard != null && nextCard != null) {
+            if (prevCard.getColumnType() != nextCard.getColumnType()) {
+                throw new NotFoundException(); // 커스텀 예외 나중에 추가
+            }
+        }
+        if (prevCard != null) {
+            return prevCard.getColumnType();
+        } else if (nextCard != null) {
+            return nextCard.getColumnType();
+        }
+
+        return null;
+    }
+
+    @Transactional
+    public Card move(long cardId, Long prevCardId, Long nextCardId, User user) {
+        Card prevCard = null;
+        Card nextCard = null;
+
+        if (prevCardId != null) {
+            prevCard = cardRepository.findById(prevCardId).orElseThrow(NotFoundException::new);
+            validateUser(prevCard,user);
+        }
+        if (nextCardId != null) {
+            nextCard = cardRepository.findById(nextCardId).orElseThrow(NotFoundException::new);
+            validateUser(nextCard,user);
+        }
+
+        CardColumn to = getCommonColumn(prevCard, nextCard);
+        double priority = renderPos(prevCard, nextCard);
+
+        logger.debug("{}번 카드 {}로 이동 요청", cardId, to);
+
+        Card card = cardRepository.findByIdAndDeletedFalse(cardId).orElseThrow(NotFoundException::new);
+        validateUser(card, user);
+
         CardColumn from = card.getColumnType();
         card.setColumnType(to);
+        card.setPriority(priority);
         Card saved = cardRepository.save(card);
 
         historyRepository.save(new History(saved.getId(), HistoryAction.MOVE, from, to));
@@ -76,12 +119,16 @@ public class CardService {
     @Transactional
     public void delete(long cardId, User user) {
         logger.debug("{}번 카드의 삭제 요청", cardId);
-        Card card = cardRepository.findByIdAndDeletedFalse(cardId).orElseThrow(() -> new NotFoundException());
-        if (card.getUser() != user.getId()) {
-            throw new NotAuthorizedException();
-        }
+        Card card = cardRepository.findByIdAndDeletedFalse(cardId).orElseThrow(NotFoundException::new);
+        validateUser(card, user);
         cardRepository.softDeleteById(cardId);
 
         historyRepository.save(new History(card.getId(), HistoryAction.REMOVE, card.getColumnType(), null));
+    }
+
+    private void validateUser(Card card, User user){
+        if (card.getUser() != user.getId()) {
+            throw new NotAuthorizedException();
+        }
     }
 }
