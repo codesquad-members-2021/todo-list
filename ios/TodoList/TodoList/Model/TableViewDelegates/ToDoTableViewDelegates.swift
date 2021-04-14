@@ -21,10 +21,6 @@ class ToDoTableViewDelegates: NSObject, ToDoCardProtocol {
         self.list.insert(newCard, at: order)
     }
     
-    func deleteCard(at index: Int) {
-        self.list.remove(at: index)
-    }
-    
     func moveCard(at sourceIndex: Int, to destinationIndex: Int) {
         guard sourceIndex != destinationIndex else { return }
         
@@ -79,7 +75,13 @@ extension ToDoTableViewDelegates: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .normal, title: "삭제", handler: { action, view, completionHaldler in
-            self.deleteCard(at: indexPath.row)
+//            self.deleteCard(at: indexPath.row)
+            let cardToBeDeleted = self.list[indexPath.row]
+            let id = cardToBeDeleted.id
+            DataManager.requestDelete(url: Constants.url, id: id) { (success, responseJSON) in
+                print("Delete completed")
+                self.fetchCards()
+            }
             completionHaldler(true)
         })
         deleteAction.backgroundColor = .systemRed
