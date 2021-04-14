@@ -5,14 +5,8 @@ class TaskStackManager {
     // todo, in progress, done
     var tasks: [TaskStack] {
         didSet {
-//            NotificationCenter.default.post
+            //NotificationCenter.default.post(name: .updateTasksStatus, object: self)
         }
-    }
-    
-    static var stackManager = TaskStackManager()
-    
-    static func sharedInstance() -> TaskStackManager {
-        return stackManager
     }
     
     init(){
@@ -49,9 +43,10 @@ class TaskStackManager {
     }
     
     func move(_ status: Int, at index: Int){
-        var movedData = tasks[status].remove(at: index)
+            var movedData = tasks[status].remove(at: index)
         movedData.status = StatusValue.done
-        tasks[StatusValue.done].append(taskCard: movedData)
+            tasks[StatusValue.done].append(taskCard: movedData)
         NotificationCenter.default.post(name: .requestMoveTask, object: self, userInfo: ["movedData": movedData])
+        
     }
 }
