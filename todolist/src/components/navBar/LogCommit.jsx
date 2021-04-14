@@ -20,8 +20,8 @@ const LogBlock = styled.div`
 `;
 
 const UserImg = styled.div`
-  width: 60px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
   background-image: url(${crong});
   background-size: cover;
   border-radius: 50%;

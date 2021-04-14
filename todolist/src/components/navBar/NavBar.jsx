@@ -47,7 +47,6 @@ function NavBar(props) {
         <TitleBlock>TO-DO LIST</TitleBlock>
         <LogBtnBlock>
           <Button type="menu" onClick={handleLogBtnClick} size="bigSize" />
-          {/* <HiMenu className="icon" onClick={handleLogBtnClick} /> */}
         </LogBtnBlock>
       </NavBlock>
 
