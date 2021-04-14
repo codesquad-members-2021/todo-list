@@ -25,16 +25,28 @@ public class BoardService {
     }
 
     public List<Board> readAll() {
-        return iterableToList(boardRepository.findAll());
+        return boardRepository.findAllNotDeleted();
     }
 
     public List<Board> readByCategory(Category category) {
-        return iterableToList(boardRepository.findByCategory(category.name()));
+        return boardRepository.findByCategory(category.name());
     }
 
-    private List<Board> iterableToList(Iterable<Board> iterable) {
-        List<Board> boards = new ArrayList<>();
-        iterable.forEach(boards::add);
-        return boards;
+    public Board findBoardById(Long id){
+        return boardRepository.findById(id).orElseThrow(NullPointerException::new);
+    }
+
+    public boolean delete(Long id){
+        Board board = findBoardById(id);
+        board.delete();
+        boardRepository.save(board);
+        return true;
+    }
+
+    public Board update(Long id, BoardDto boardDto){
+        Board board = findBoardById(id);
+        board.update(boardDto);
+        boardRepository.save(board);
+        return board;
     }
 }

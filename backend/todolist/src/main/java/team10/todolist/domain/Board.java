@@ -2,6 +2,7 @@ package team10.todolist.domain;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
+import team10.todolist.dto.BoardDto;
 
 import java.time.LocalDateTime;
 
@@ -16,7 +17,7 @@ public class Board {
     @Column(value = "date_time")
     private LocalDateTime dateTime;
     @Column(value = "is_deleted")
-    private int isDeleted = 1;
+    private int isDeleted = 0;
 
     protected Board() {
     }
@@ -50,6 +51,17 @@ public class Board {
 
     public int getIsDeleted() {
         return isDeleted;
+    }
+
+    public void delete(){
+        isDeleted = 1;
+    }
+
+    public void update(BoardDto boardDto){
+        this.title = boardDto.getTitle();
+        this.category = boardDto.getCategory();
+        this.contents = boardDto.getContents();
+        this.dateTime = LocalDateTime.now();
     }
 
     @Override
