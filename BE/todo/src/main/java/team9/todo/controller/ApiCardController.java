@@ -75,7 +75,7 @@ public class ApiCardController {
     public ApiResult<Card> move(@PathVariable long cardId, @RequestBody RequestMoveDTO requestMoveDTO, HttpSession httpSession) {
         User user = getUser(httpSession);
 
-        return ApiResult.succeed(cardService.move(cardId, requestMoveDTO.getPrevCardId(), requestMoveDTO.getNextCardId(), user));
+        return ApiResult.succeed(cardService.move(cardId, requestMoveDTO.getPrevCardId(), requestMoveDTO.getNextCardId(), requestMoveDTO.getTo(), user));
     }
 
 

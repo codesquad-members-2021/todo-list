@@ -77,37 +77,25 @@ public class CardService {
         return priority;
     }
 
-    private CardColumn getCommonColumn(Card prevCard, Card nextCard) {
-        if (prevCard != null && nextCard != null) {
-            if (prevCard.getColumnType() != nextCard.getColumnType()) {
-                throw new NotFoundException(); // 커스텀 예외 나중에 추가
-            }
-        }
-        if (prevCard != null) {
-            return prevCard.getColumnType();
-        } else if (nextCard != null) {
-            return nextCard.getColumnType();
-        }
-
-        return null;
-    }
-
     @Transactional
-    public Card move(long cardId, Long prevCardId, Long nextCardId, User user) {
+    public Card move(long cardId, Long prevCardId, Long nextCardId, CardColumn to, User user) {
         Card prevCard = null;
         Card nextCard = null;
-
         if (prevCardId != null) {
             prevCard = getCard(prevCardId, user);
+            prevCard.validateColumn(to);
         }
         if (nextCardId != null) {
             nextCard = getCard(nextCardId, user);
+            nextCard.validateColumn(to);
         }
 
-        CardColumn to = getCommonColumn(prevCard, nextCard);
         double priority = renderPos(prevCard, nextCard);
+        if (prevCard == null && nextCard == null) {
+            priority = getNextPriority(to, user);
+        }
 
-        logger.debug("{}번 카드 {}로 이동 요청", cardId, to);
+        logger.debug("{}번 카드 {}로 이동 요청, 계산된 priority=", cardId, to, priority);
 
         Card card = getCard(cardId, user);
 
@@ -116,7 +104,9 @@ public class CardService {
         card.setPriority(priority);
         Card saved = cardRepository.save(card);
 
-        historyRepository.save(new History(saved.getId(), HistoryAction.MOVE, from, to));
+        if (from != to) {
+            historyRepository.save(new History(saved.getId(), HistoryAction.MOVE, from, to));
+        }
         return saved;
     }
 
