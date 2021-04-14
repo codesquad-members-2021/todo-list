@@ -60,11 +60,11 @@ extension CardViewController : UITableViewDelegate, UITableViewDataSource {
         var card : Card
         switch tableView {
         case todo:
-            card = board.todoList.list[indexPath.section]
+            card = board.todoList.items[indexPath.section]
         case doing:
-            card = board.doingList.list[indexPath.section]
+            card = board.doingList.items[indexPath.section]
         case done:
-            card = board.doneList.list[indexPath.section]
+            card = board.doneList.items[indexPath.section]
         default:
             return cell
         }

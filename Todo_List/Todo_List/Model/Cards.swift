@@ -8,17 +8,17 @@
 import Foundation
 
 class Cards : Codable {
-    var list = [Card]()
+    var items = [Card]()
     
     var count : Int {
-        get { return list.count }
+        get { return items.count }
     }
     
     func append(with card : Card, at position : Int = 0) {
-        list.insert(card, at: position)
+        items.insert(card, at: position)
     }
     
     func remove(at index : Int) -> Card {
-        return list.remove(at: index)
+        return items.remove(at: index)
     }
 }

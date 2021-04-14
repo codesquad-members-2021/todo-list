@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Card : Codable {
+class Card : Codable {
     
     var id : Int?
     var title : String
@@ -24,7 +24,7 @@ struct Card : Codable {
         self.content = content
         self.writer = writer
     }
-    init(){
+    convenience init(){
         self.init(title : "iOS",
                   content: "implements plus button with jackson in codesquad. test code for content line. Am I right?",
                   writer : "elly")

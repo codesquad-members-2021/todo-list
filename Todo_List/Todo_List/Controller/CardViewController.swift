@@ -33,7 +33,7 @@ class CardViewController: UIViewController {
             CardAPIClient().loadAllCards(completion: { [weak self] result in
                 switch result {
                 case .success(let cards) :
-                    self?.board.doingList.list = cards
+                    self?.board.doingList.items = cards
                     self?.reloadBoard()
                 case .failure(let error) : print(error)
                 }
