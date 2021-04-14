@@ -1,5 +1,6 @@
 package com.codesquad.todo.web.domain;
 
+import com.codesquad.todo.web.exceptions.InvalidEntityDetectedException;
 import com.codesquad.todo.web.exceptions.TaskNotFoundException;
 import com.codesquad.todo.web.service.dto.TaskDto;
 import org.springframework.data.annotation.Id;
@@ -19,6 +20,12 @@ public class Column {
     }
 
     protected Column() {
+    }
+
+    public void verifyColumnEntityIsNotEmpty() {
+        if (columnTitle == null || columnTitle.isEmpty()) {
+            throw new InvalidEntityDetectedException(InvalidEntityDetectedException.COLUMN_TITLE_IS_NULL);
+        }
     }
 
     public int sizeOfTaskList() {
@@ -49,7 +56,9 @@ public class Column {
     }
 
     public void addTask(String taskTitle, String taskContent) {
-        addTask(new Task(taskTitle, taskContent));
+        Task task = new Task(taskTitle, taskContent);
+        task.verifyTaskEntityIsNotEmpty();
+        addTask(task);
     }
 
     public Task popTask(Long id) {

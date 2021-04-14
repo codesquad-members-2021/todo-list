@@ -1,6 +1,5 @@
 package com.codesquad.todo.web.domain;
 
-import com.codesquad.todo.web.TodoLogActionCommand;
 import org.springframework.data.annotation.Id;
 
 import java.time.LocalDateTime;

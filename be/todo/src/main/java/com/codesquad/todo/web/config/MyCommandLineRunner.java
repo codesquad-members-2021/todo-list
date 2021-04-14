@@ -19,7 +19,6 @@ public class MyCommandLineRunner implements CommandLineRunner {
     public void run(String... args) {
         logger.debug("MyCommandLineRunner called!");
         createUser();
-
     }
 
     private void createUser() {

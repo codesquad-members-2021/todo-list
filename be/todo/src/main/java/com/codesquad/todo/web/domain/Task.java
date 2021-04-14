@@ -1,8 +1,11 @@
 package com.codesquad.todo.web.domain;
 
+import com.codesquad.todo.web.exceptions.InvalidEntityDetectedException;
 import org.springframework.data.annotation.Id;
 
 import java.time.LocalDateTime;
+
+import static com.codesquad.todo.web.util.VerifyUtil.isEmpty;
 
 public class Task {
     @Id
@@ -20,6 +23,12 @@ public class Task {
     }
 
     protected Task() {
+    }
+
+    public void verifyTaskEntityIsNotEmpty() {
+        if (isEmpty(taskTitle) || isEmpty(taskContent)) {
+            throw new InvalidEntityDetectedException(InvalidEntityDetectedException.TASK_IS_NULL);
+        }
     }
 
     public boolean isSameId(Long taskId) {

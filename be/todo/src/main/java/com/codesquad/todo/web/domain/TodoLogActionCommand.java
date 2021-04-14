@@ -1,4 +1,4 @@
-package com.codesquad.todo.web;
+package com.codesquad.todo.web.domain;
 
 public enum TodoLogActionCommand {
     ADD("add", 2),

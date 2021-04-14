@@ -16,7 +16,6 @@ public class User {
     private List<Column> columnList = new ArrayList<>();
     private List<TodoLog> todoLogList = new ArrayList<>();
 
-
     protected User() {
     }
 

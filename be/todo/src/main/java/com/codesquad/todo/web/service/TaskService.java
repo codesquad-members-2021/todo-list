@@ -34,6 +34,7 @@ public class TaskService {
     }
 
     public void updateTask(User user, Long columnId, Long taskId, Task newTask) {
+        newTask.verifyTaskEntityIsNotEmpty();
         Column column = user.findColumnById(columnId);
         Task foundTask = column.findTaskById(taskId);
         foundTask.update(newTask);
