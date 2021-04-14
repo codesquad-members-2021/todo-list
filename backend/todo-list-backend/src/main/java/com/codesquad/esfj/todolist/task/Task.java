@@ -15,12 +15,19 @@ public class Task {
 
     public Task(Long id, String title, String content, String writer, String taskType) {
         this.id = id;
+
+        if (!StringUtils.hasText(title)) {
+            throw new IllegalArgumentException("Title is null or empty");
+        }
+
         this.title = title;
         this.content = content;
         this.writer = writer;
+
         if (!StringUtils.hasText(taskType)) {
             throw new IllegalArgumentException("Task type is null or empty");
         }
+
         this.taskType = taskType;
     }
 
