@@ -17,16 +17,12 @@ public class Work {
     private Long id;
 
     private String title;
-
     private String content;
-
     private LocalDateTime createdAt;
-
     private int status;
-
     private Long authorId;
 
-    public void save(User sessionUser) {
+    public void saveAuthorId(User sessionUser) {
         this.authorId = sessionUser.getId();
     }
 
@@ -39,8 +35,8 @@ public class Work {
         this.status = 0;
     }
 
-    public void move(Work work) {
-        this.status = work.status;
+    public void move(int status) {
+        this.status = status;
     }
 
     public boolean matchAuthor(User sessionUser) {
