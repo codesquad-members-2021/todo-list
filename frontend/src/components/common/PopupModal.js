@@ -56,14 +56,14 @@ const ModalButtons = styled.div`
     }
 `;
 
-const PopupModal = ({isVisible}) => {
+const PopupModal = ({isVisible, cancelClickHandler, confirmClickHandler}) => {
     return (
         <StyledPopupModal isVisible={isVisible}>
             <Modal>
                 <Message>선택한 카드를 삭제할까요?</Message>
                 <ModalButtons>
-                    <NormalButton>취소</NormalButton>
-                    <AccentButton isAble>삭제</AccentButton>
+                    <NormalButton clickHandler={cancelClickHandler}>취소</NormalButton>
+                    <AccentButton clickHandler={confirmClickHandler} isAble>삭제</AccentButton>
                 </ModalButtons>
             </Modal>
         </StyledPopupModal>

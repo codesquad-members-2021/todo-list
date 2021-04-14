@@ -38,8 +38,8 @@ const CardInputButtons = styled.div`
 `;
 
 //prettier-ignore
-const CardInput = ({ states, onEvents }) => {
-    const { inputTitle, inputBody, isAble } = states;
+const CardInput = ({ data, onEvents }) => {
+    const { title, body, inputTitle, inputBody, isAble } = data;
     const { addCard, deleteCard, changeTitle, changeBody } = onEvents;
 
     return (
@@ -57,7 +57,7 @@ const CardInput = ({ states, onEvents }) => {
             <CardInputButtons>
                 <NormalButton clickHandler={deleteCard}>취소</NormalButton>
                 <AccentButton clickHandler={addCard} isAble={isAble}>
-                    {inputTitle.length * inputBody.length ? '수정' : '등록'}
+                    {title.length * body.length ? '수정' : '등록'}
                 </AccentButton>
             </CardInputButtons>
         </StyledCardInput>

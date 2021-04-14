@@ -24,12 +24,12 @@ const CardInputContainer = ({ title, body, index, setCardList, columnId, cardId,
     const changeTitle = ({ target }) => setTitle(() => target.value);
     const changeBody = ({ target }) => setBody(() => target.value);
 
-    const states = { inputTitle, inputBody, isAble };
+    const data = { title, body, inputTitle, inputBody, isAble };
     const onEvents = {
         addCard, deleteCard, changeTitle, changeBody
     };
 
-    return (<CardInput states={states} onEvents={onEvents} />)
+    return (<CardInput data={data} onEvents={onEvents} />)
 };
 
 export default CardInputContainer;
