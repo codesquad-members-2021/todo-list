@@ -54,7 +54,7 @@ public class TodoColumn {
     }
 
     public void addTask(TodoTask todoTask) {
-        todoTaskList.add(todoTask);
+        todoTaskList.add(0, todoTask);
     }
 
     public void addTask(String taskTitle, String taskContent) {
