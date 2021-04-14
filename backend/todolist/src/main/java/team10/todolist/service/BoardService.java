@@ -36,4 +36,11 @@ public class BoardService {
         return boardRepository.findById(id).orElseThrow(NullPointerException::new);
     }
 
+    public boolean delete(Long id){
+        Board board = findBoardById(id);
+        board.delete();
+        boardRepository.save(board);
+        return true;
+    }
+
 }
