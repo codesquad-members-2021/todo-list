@@ -57,15 +57,15 @@ extension ModalViewController : UITextFieldDelegate {
         guard let title = cardTitle.text,
               let content = cardTitle.text
         else {
-            return false
+            return true
         }
         if title.isEmpty || content.isEmpty {
-            return false
+            return true
         }
-        return true
+        return false
     }
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        if isEmpty() {
+        if !isEmpty() {
             enrollButton.isEnabled = true
             enrollButton.backgroundColor = UIColor(named: "blue")
         }
