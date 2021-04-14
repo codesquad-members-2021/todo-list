@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import TodoList from "./todoList/TodoList";
-import styled from "styled-components";
-import todoListService from "../../service/todoListService.js";
+import React, { useState, useEffect } from 'react';
+import TodoList from './todoList/TodoList';
+import styled from 'styled-components';
+import todoListService from '../../service/todoListService.js';
 
 const StyledTodoMain = styled.div`
   display: flex;
@@ -11,9 +11,13 @@ const StyledTodoMain = styled.div`
 const TodoMain = ({ postLogs }) => {
   const [todoColumns, setTodoColumns] = useState({});
 
-  useEffect(() => {
-    const todoListData = todoListService.getTodoList();
+  const getInitTodoData = async () => {
+    const todoListData = await todoListService.getTodoList();
     setTodoColumns(todoListData.todoData);
+  };
+
+  useEffect(() => {
+    getInitTodoData();
   }, []);
 
   const deleteTodoColumn = (id) => {
@@ -24,11 +28,7 @@ const TodoMain = ({ postLogs }) => {
   };
 
   const todoColumneList = Object.values(todoColumns).map((data) => (
-    <TodoList
-      data={data}
-      deleteTodoColumn={deleteTodoColumn}
-      postLogs={postLogs}
-    />
+    <TodoList data={data} deleteTodoColumn={deleteTodoColumn} postLogs={postLogs} />
   ));
 
   return <StyledTodoMain>{todoColumneList}</StyledTodoMain>;

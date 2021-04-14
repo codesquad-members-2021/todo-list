@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
-import TodoItem from "./TodoItem";
-import TodoListForm from "./TodoListForm";
-import DeleteBtn from "../../atom/DeleteBtn.jsx";
-import styled from "styled-components";
-import todoListService from "../../../service/todoListService.js";
+import React, { useState, useEffect } from 'react';
+import TodoItem from './TodoItem';
+import TodoListForm from './TodoListForm';
+import DeleteBtn from '../../atom/DeleteBtn.jsx';
+import styled from 'styled-components';
+import todoListService from '../../../service/todoListService.js';
+import useTodoHook from '../../../hook/todoHook';
 
 const StyledTodoList = styled.div`
   width: 308px;
@@ -48,49 +49,49 @@ const CircleNumber = styled.span`
   float: right;
 `;
 
-const TodoList = ({
-  data: { id, title, todoCards },
-  deleteTodoColumn,
-  postLogs,
-}) => {
+const LoadingPage = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+`;
+
+const TodoList = ({ data: { id, title, todoCards }, deleteTodoColumn, postLogs }) => {
   const [todos, setTodos] = useState(todoCards);
+  const [loading, postTodos, deleteTodos, putTodos] = useTodoHook(setTodos);
   const [formSelected, setFormSelected] = useState(false);
 
-  // useEffect(() => {
-  //   todoListService.postTodoList(todos, id);
-  // }, [todos]);
-
-  const addTodoItem = (cardId, todoCard) => {
+  const addTodoItem = async (cardId, todoCard) => {
     const { title: itemTitle, date: itemDate } = todoCard;
     postLogs({
       columnTitle: title,
       itemTitle: itemTitle,
       date: itemDate,
-      action: "add",
+      action: 'add',
     });
-    todoListService.postTodoList(id, { [cardId]: todoCard });
-    setTodos((todos) => ({ ...todos, [cardId]: todoCard }));
+    postTodos(id, cardId, todoCard);
   };
 
-  const deleteTodoItem = (cardId) => {
+  const deleteTodoItem = async (cardId) => {
     const newLog = getLogData(cardId);
-    postLogs({ ...newLog, action: "delete" });
-    todoListService.deleteTodoList(id, cardId);
-    setTodos((todos) => {
-      delete todos[cardId];
-      return { ...todos };
-    });
+    postLogs({ ...newLog, action: 'delete' });
+    deleteTodos(id, cardId);
   };
 
-  const editTodoItem = (cardId, newTodo) => {
+  const editTodoItem = async (cardId, newTodo) => {
     const newLog = getLogData(cardId);
     postLogs({
       ...newLog,
-      action: "update",
+      action: 'update',
       changedTitle: newTodo.title,
     });
-    todoListService.updateTodoList(id, cardId, { [cardId]: newTodo });
-    setTodos((todos) => ({ ...todos, [cardId]: newTodo }));
+    putTodos(id, cardId, newTodo);
   };
 
   const getLogData = (cardId) => {
@@ -103,46 +104,40 @@ const TodoList = ({
   };
 
   const todoCardList = Object.values(todos).map((card) => (
-    <TodoItem
-      todoCard={card}
-      deleteTodoItem={deleteTodoItem}
-      editTodoItem={editTodoItem}
-    />
+    <TodoItem todoCard={card} deleteTodoItem={deleteTodoItem} editTodoItem={editTodoItem} />
   ));
 
   const toggleForm = () => {
     setFormSelected((formSelected) => !formSelected);
   };
-
   return (
-    <StyledTodoList>
-      <TodoTitleDiv>
-        <div>
-          <Title>{title}</Title>
-          <CircleNumber>{Object.values(todos).length}</CircleNumber>
-        </div>
-        <div>
-          <AddButton
-            onClick={toggleForm}
-            width="14"
-            height="14"
-            viewBox="0 0 14 14"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path d="M0.105709 7.53033L0.105709 6.46967H6.46967V0.105713H7.53033V6.46967H13.8943V7.53033H7.53033V13.8943H6.46967V7.53033H0.105709Z" />
-          </AddButton>
-          <DeleteBtn deleteFn={() => deleteTodoColumn(id)} />
-        </div>
-      </TodoTitleDiv>
+    <>
+      {loading && <LoadingPage>loading...</LoadingPage>}
+      <StyledTodoList>
+        <TodoTitleDiv>
+          <div>
+            <Title>{title}</Title>
+            <CircleNumber>{Object.values(todos).length}</CircleNumber>
+          </div>
+          <div>
+            <AddButton
+              onClick={toggleForm}
+              width='14'
+              height='14'
+              viewBox='0 0 14 14'
+              fill='none'
+              xmlns='http://www.w3.org/2000/svg'
+            >
+              <path d='M0.105709 7.53033L0.105709 6.46967H6.46967V0.105713H7.53033V6.46967H13.8943V7.53033H7.53033V13.8943H6.46967V7.53033H0.105709Z' />
+            </AddButton>
+            <DeleteBtn deleteFn={() => deleteTodoColumn(id)} />
+          </div>
+        </TodoTitleDiv>
 
-      {formSelected ? (
-        <TodoListForm addTodoItem={addTodoItem} toggleForm={toggleForm} />
-      ) : (
-        <></>
-      )}
-      <div>{todoCardList}</div>
-    </StyledTodoList>
+        {formSelected ? <TodoListForm addTodoItem={addTodoItem} toggleForm={toggleForm} /> : <></>}
+        <div>{todoCardList}</div>
+      </StyledTodoList>
+    </>
   );
 };
 

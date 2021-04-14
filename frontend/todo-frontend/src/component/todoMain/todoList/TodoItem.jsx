@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import DeleteBtn from "../../atom/DeleteBtn.jsx";
-import styled from "styled-components";
-import Input from "../../atom/Input.jsx";
-import { ConfirmBtn, CancelBtn } from "../../atom/Button.jsx";
+import React, { useRef, useState } from 'react';
+import DeleteBtn from '../../atom/DeleteBtn.jsx';
+import styled from 'styled-components';
+import Input from '../../atom/Input.jsx';
+import { ConfirmBtn, CancelBtn } from '../../atom/Button.jsx';
 
 export const TodoCard = styled.div`
   display: flex;
-  flex-direction: ${(props) => (props.flexDir === "column" ? "column" : "row")};
+  flex-direction: ${(props) => (props.flexDir === 'column' ? 'column' : 'row')};
   align-items: flex-start;
   padding: 16px;
   width: 308px;
@@ -33,15 +33,14 @@ const TodoCardContent = styled.div`
   font-size: 0.8rem;
 `;
 
-const TodoItem = ({
-  todoCard: { id, title, content },
-  deleteTodoItem,
-  editTodoItem,
-}) => {
+const TodoItem = ({ todoCard: { id, title, content }, deleteTodoItem, editTodoItem }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [inputTitle, setInputTitle] = useState(title);
   const [inputContent, setInputContent] = useState(content);
   const [isDisabled, setIsDisabled] = useState(false);
+
+  const inputTitleRef = useRef();
+  const inputContentRef = useRef();
 
   const toggleEditForm = () => {
     setInputTitle(title);
@@ -52,54 +51,46 @@ const TodoItem = ({
   const editItem = () => {
     const newTodo = {
       id,
-      title: inputTitle,
-      content: inputContent,
+      title: inputTitleRef.current.value,
+      content: inputContentRef.current.value,
       date: Date.now(),
     };
     editTodoItem(id, newTodo);
     toggleEditForm();
   };
 
-  const onChangeTitle = (e) => {
-    setInputTitle(e.target.value);
-    if (!e.target.value) setIsDisabled(true);
-    else setIsDisabled(false);
-  };
-  const onChangeContent = (e) => {
-    setInputContent(e.target.value);
-    if (!e.target.value) setIsDisabled(true);
-    else setIsDisabled(false);
+  const handleChange = () => {
+    if (inputTitleRef.current.value && inputContentRef.current.value) setIsDisabled(false);
+    else setIsDisabled(true);
   };
 
   if (isEditing) {
     return (
-      <TodoCard flexDir="column">
+      <TodoCard flexDir='column'>
         <Input
           defaultValue={inputTitle}
-          handleChange={onChangeTitle}
-          placeholder="제목을 입력하세요"
-          name="title"
+          placeholder='제목을 입력하세요'
+          name='title'
+          handleChange={handleChange}
+          inputRef={inputTitleRef}
         ></Input>
         <Input
           defaultValue={inputContent}
-          handleChange={onChangeContent}
-          placeholder="내용을 입력하세요"
-          name="content"
+          placeholder='내용을 입력하세요'
+          name='content'
+          handleChange={handleChange}
+          inputRef={inputContentRef}
         ></Input>
 
         <TodoCardBtnWrapper>
-          <ConfirmBtn
-            value="수정"
-            handleClick={editItem}
-            disabled={isDisabled}
-          />
-          <CancelBtn value="취소" handleClick={toggleEditForm} />
+          <ConfirmBtn value='수정' handleClick={editItem} disabled={isDisabled} />
+          <CancelBtn value='취소' handleClick={toggleEditForm} />
         </TodoCardBtnWrapper>
       </TodoCard>
     );
   } else {
     return (
-      <TodoCard onDoubleClick={toggleEditForm} flexDir="row">
+      <TodoCard onDoubleClick={toggleEditForm} flexDir='row'>
         <div>
           <TodoCardTitle>{title}</TodoCardTitle>
           <TodoCardContent>{content}</TodoCardContent>
