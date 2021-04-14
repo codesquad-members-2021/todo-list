@@ -9,6 +9,7 @@ import com.example.todolist.exception.EntityRelatedException;
 import com.example.todolist.exception.ErrorMessage;
 import com.example.todolist.exception.IllegalUserAccessException;
 import com.example.todolist.web.dto.*;
+import com.example.todolist.web.utils.Action;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -21,10 +22,6 @@ import static com.example.todolist.web.utils.TimelineContent.moveContent;
 
 @Service
 public class WorkService {
-
-    private final static String SAVE = "save";
-    private final static String UPDATE = "update";
-    private final static String DELETE = "delete";
 
     private final WorkRepository workRepository;
     private final TimelineRepository timelineRepository;
@@ -45,7 +42,7 @@ public class WorkService {
         Work work = workDTO.toEntity();
         work.saveAuthorId(sessionUser);
         Work saveWork = workRepository.save(work);
-        saveTimeline(work, makeTimelineContent(work, SAVE));
+        saveTimeline(work, makeTimelineContent(work, Action.SAVE));
         return buildWorkResponseDTO(saveWork, sessionUser);
     }
 
@@ -53,14 +50,14 @@ public class WorkService {
         Work work = getVerifiedWork(id, sessionUser);
         work.update(workDTO.toEntity());
         workRepository.save(work);
-        saveTimeline(work, makeTimelineContent(work, UPDATE));
+        saveTimeline(work, makeTimelineContent(work, Action.UPDATE));
         return buildWorkResponseDTO(work, sessionUser);
     }
 
     public void delete(Long id, User sessionUser) {
         Work work = getVerifiedWork(id, sessionUser);
         work.delete();
-        saveTimeline(work, makeTimelineContent(work, DELETE));
+        saveTimeline(work, makeTimelineContent(work, Action.DELETE));
         workRepository.save(work);
     }
 

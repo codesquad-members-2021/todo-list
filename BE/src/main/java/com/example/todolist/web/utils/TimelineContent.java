@@ -5,30 +5,17 @@ import com.example.todolist.web.dto.MoveWorkRequestDTO;
 
 public class TimelineContent {
 
-    final static String SAVE = " 등록하였습니다.";
-    final static String UPDATE = " 수하였습니다.";
-    final static String DELETE = " 삭제하였습니다.";
-    final static String MOVE = " 이동하였습니다.";
+
     final static String TODO = "해야할 일";
     final static String DOING = "하고 있는 일";
     final static String DONE = "완료한 일";
 
 
-    public static String makeTimelineContent(Work work, String method) {
+    public static String makeTimelineContent(Work work, Action action) {
         StringBuilder contentBuilder = new StringBuilder();
         contentBuilder.append(getStatus(work.getStatus()) + "에 ");
         contentBuilder.append(verifyJongsung(work.getTitle(), "을", "를"));
-
-
-        switch(method) {
-            case "save" :
-                contentBuilder.append(SAVE);
-            case "update" :
-                contentBuilder.append(UPDATE);
-            case "delete" :
-                contentBuilder.append(DELETE);
-        }
-
+        contentBuilder.append(action.getValue());
         return contentBuilder.toString();
     }
 
@@ -36,7 +23,7 @@ public class TimelineContent {
         StringBuilder contentBuilder = new StringBuilder();
         contentBuilder.append(verifyJongsung(work.getTitle(), "을", "를"));
         contentBuilder.append(" " + getStatus(work.getStatus()) + "에서 ");
-        contentBuilder.append(getStatus(workDTO.toEntity().getStatus()) + "로 " + MOVE);
+        contentBuilder.append(getStatus(workDTO.toEntity().getStatus()) + "로" + Action.MOVE.getValue());
         return contentBuilder.toString();
     }
 
