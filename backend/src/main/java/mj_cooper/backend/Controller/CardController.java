@@ -71,12 +71,9 @@ public class CardController {
         Gson gson = new Gson();
         JsonParser parser = new JsonParser();
 
-        Map<String, List<Card>> response = new HashMap<>();
-        response.put("cards", category.getTodos());
-
         JsonObject object = new JsonObject();
         object.addProperty("status", "success");
-        object.add("data", parser.parse(gson.toJson(response)));
+        object.add("data", parser.parse(gson.toJson(category.getTodos())));
 
         return gson.toJson(object);
     }

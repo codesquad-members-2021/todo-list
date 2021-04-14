@@ -42,12 +42,9 @@ public class CategoryController {
         Gson gson = new Gson();
         JsonParser parser = new JsonParser();
 
-        Map<String, List<Category>> response = new HashMap<>();
-        response.put("categories", user.getCategories());
-
         JsonObject object = new JsonObject();
         object.addProperty("status", "success");
-        object.add("data", parser.parse(gson.toJson(response)));
+        object.add("data", parser.parse(gson.toJson(user.getCategories())));
 
         return gson.toJson(object);
     }
