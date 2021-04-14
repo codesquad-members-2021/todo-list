@@ -19,12 +19,10 @@ class CardViewController: UIViewController ,CardDelegate {
     
     private var cardManager = CardManager.shared
     
-    private var todoDataSource = ToDoTableViewDataSource()
-    private var todoDelegate = ToDoTableViewDelegate()
-    private var inProgressDataSource = InProgressTableViewDataSource()
-    private var inProgressDelegate = InProgressTableViewDelegate()
-    private var doneDataSource = DoneTableViewDataSource()
-    private var doneDelegate = DoneTableViewDelegate()
+    private var tableViewDelegate = ToDoTableViewDelegate()
+    private var toDoTableViewDataSource = ToDoTableViewDataSource(identifier: .ToDo)
+    private var inProgressViewDataSource = ToDoTableViewDataSource(identifier: .InProgress)
+    private var doneViewDataSource = ToDoTableViewDataSource(identifier: .Done)
     
     
     override func viewDidLoad() {
@@ -37,15 +35,14 @@ class CardViewController: UIViewController ,CardDelegate {
     }
     
     func configureDelegate() {
-        toDoTableView.delegate = todoDelegate
-        toDoTableView.dataSource = todoDataSource
+        toDoTableView.delegate = tableViewDelegate
+        toDoTableView.dataSource = toDoTableViewDataSource
         
-        inProgressTableView.delegate = inProgressDelegate
-        inProgressTableView.dataSource = inProgressDataSource
+        inProgressTableView.delegate = tableViewDelegate
+        inProgressTableView.dataSource = inProgressViewDataSource
         
-        
-        doneTableView.delegate = doneDelegate
-        doneTableView.dataSource = doneDataSource
+        doneTableView.delegate = tableViewDelegate
+        doneTableView.dataSource = doneViewDataSource
     }
 
     func configureBadge() {

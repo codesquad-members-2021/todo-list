@@ -29,10 +29,6 @@
 		FFC6197A261EEB1A0033D622 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC61977261EEB1A0033D622 /* Card.swift */; };
 		FFC6197B261EEB1A0033D622 /* CardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC61978261EEB1A0033D622 /* CardManager.swift */; };
 		FFC6197C261EEB1A0033D622 /* States.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC61979261EEB1A0033D622 /* States.swift */; };
-		FFC619A4261EF4A60033D622 /* DoneTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC619A0261EF4A60033D622 /* DoneTableViewDataSource.swift */; };
-		FFC619A5261EF4A60033D622 /* DoneTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC619A1261EF4A60033D622 /* DoneTableViewDelegate.swift */; };
-		FFC619A6261EF4A60033D622 /* InProgressTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC619A2261EF4A60033D622 /* InProgressTableViewDataSource.swift */; };
-		FFC619A7261EF4A60033D622 /* InProgressTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC619A3261EF4A60033D622 /* InProgressTableViewDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,10 +56,6 @@
 		FFC61977261EEB1A0033D622 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		FFC61978261EEB1A0033D622 /* CardManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardManager.swift; sourceTree = "<group>"; };
 		FFC61979261EEB1A0033D622 /* States.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = States.swift; sourceTree = "<group>"; };
-		FFC619A0261EF4A60033D622 /* DoneTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoneTableViewDataSource.swift; sourceTree = "<group>"; };
-		FFC619A1261EF4A60033D622 /* DoneTableViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoneTableViewDelegate.swift; sourceTree = "<group>"; };
-		FFC619A2261EF4A60033D622 /* InProgressTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InProgressTableViewDataSource.swift; sourceTree = "<group>"; };
-		FFC619A3261EF4A60033D622 /* InProgressTableViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InProgressTableViewDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,8 +88,6 @@
 		FFC61934261D4ED20033D622 /* ToDoListApp */ = {
 			isa = PBXGroup;
 			children = (
-				FFC61935261D4ED20033D622 /* AppDelegate.swift */,
-				FFC61937261D4ED20033D622 /* SceneDelegate.swift */,
 				FFC6193B261D4ED20033D622 /* Main.storyboard */,
 				FFC6193E261D4ED60033D622 /* Assets.xcassets */,
 				FFC61940261D4ED60033D622 /* LaunchScreen.storyboard */,
@@ -113,8 +103,12 @@
 			isa = PBXGroup;
 			children = (
 				FFC61977261EEB1A0033D622 /* Card.swift */,
-				FFC61978261EEB1A0033D622 /* CardManager.swift */,
 				FFC61979261EEB1A0033D622 /* States.swift */,
+				CEA19A142624828F008B270E /* CardMaker.swift */,
+				CEA19A112624136D008B270E /* SizeManager.swift */,
+				CEA19A1726249A19008B270E /* ButtonManager.swift */,
+				FFC61978261EEB1A0033D622 /* CardManager.swift */,
+				CE9A2B1C261E9A600097A940 /* ToDoTableViewDataSource.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -135,20 +129,22 @@
 			children = (
 				FFC61939261D4ED20033D622 /* ViewController.swift */,
 				CE9A2B29261EDA3B0097A940 /* CardViewController.swift */,
-				CE9A2B1C261E9A600097A940 /* ToDoTableViewDataSource.swift */,
-				CE9A2B1F261E9AFE0097A940 /* ToDoTableViewDelegate.swift */,
-				FFC619A0261EF4A60033D622 /* DoneTableViewDataSource.swift */,
-				FFC619A1261EF4A60033D622 /* DoneTableViewDelegate.swift */,
-				FFC619A2261EF4A60033D622 /* InProgressTableViewDataSource.swift */,
-				FFC619A3261EF4A60033D622 /* InProgressTableViewDelegate.swift */,
-				CEA19A112624136D008B270E /* SizeManager.swift */,
-				CEA19A142624828F008B270E /* CardMaker.swift */,
-				CEA19A1726249A19008B270E /* ButtonManager.swift */,
 				CE9A2B38261EF6CE0097A940 /* ModalViewController.swift */,
+				FFCD3B22262696D000319EE1 /* Delegates */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		FFCD3B22262696D000319EE1 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				FFC61935261D4ED20033D622 /* AppDelegate.swift */,
+				FFC61937261D4ED20033D622 /* SceneDelegate.swift */,
+				CE9A2B1F261E9AFE0097A940 /* ToDoTableViewDelegate.swift */,
 				CEB0D07F26208945002BC69D /* ModalTextViewDelegate.swift */,
 				CEA19A1A2624A56B008B270E /* ModalTextFieldDelegate.swift */,
 			);
-			path = Controller;
+			path = Delegates;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,9 +218,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FFC619A5261EF4A60033D622 /* DoneTableViewDelegate.swift in Sources */,
-				FFC619A6261EF4A60033D622 /* InProgressTableViewDataSource.swift in Sources */,
-				FFC619A7261EF4A60033D622 /* InProgressTableViewDelegate.swift in Sources */,
 				CE9A2B20261E9AFE0097A940 /* ToDoTableViewDelegate.swift in Sources */,
 				CEB0D08026208945002BC69D /* ModalTextViewDelegate.swift in Sources */,
 				CE5ED8A9261D8B9800789822 /* BadgeView.swift in Sources */,
@@ -237,7 +230,6 @@
 				CE9A2B1D261E9A600097A940 /* ToDoTableViewDataSource.swift in Sources */,
 				CE5ED8CC261E003900789822 /* CardCell.swift in Sources */,
 				FFC61936261D4ED20033D622 /* AppDelegate.swift in Sources */,
-				FFC619A4261EF4A60033D622 /* DoneTableViewDataSource.swift in Sources */,
 				CEA19A1B2624A56B008B270E /* ModalTextFieldDelegate.swift in Sources */,
 				CE9A2B2D261EDB6C0097A940 /* CardTableView.swift in Sources */,
 				FFC6197A261EEB1A0033D622 /* Card.swift in Sources */,
