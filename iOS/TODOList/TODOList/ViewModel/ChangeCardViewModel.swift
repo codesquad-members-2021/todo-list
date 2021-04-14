@@ -7,10 +7,16 @@
 
 import Foundation
 
-class ChangeCardViewModel {
+protocol CardInputViewModel {
+    var addCardHandler: ((Card) -> Void)? { get set }
+    func addCard(mode: SectionMode)
+    func deleteCard(card: Card)
+}
+
+class ChangeCardViewModel: CardInputViewModel {
     private(set) var subject: Observable<String>
     private(set) var body: Observable<String>
-    private var cardsNetworkCenter: CardsNetworkCenter
+    private var cardsNetworkCenter: NetworkingCards
     
     var addCardHandler: ((Card) -> Void)?
     
@@ -35,11 +41,6 @@ class ChangeCardViewModel {
     }
     
     func deleteCard(card: Card) {
-        //delete
+        //TODO: - DELETE
     }
-    
-    func modifyCard(card: Card) {
-        //modify
-    }
-    
 }

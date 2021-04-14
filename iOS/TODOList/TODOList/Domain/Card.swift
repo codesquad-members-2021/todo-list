@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import MobileCoreServices
 
 struct Card: Codable {
     var id: Int

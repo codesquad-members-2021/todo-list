@@ -18,31 +18,33 @@ class SectionViewController: UIViewController, DataPassable {
     @IBOutlet weak private var TODOCount: UILabel!
     @IBOutlet weak private var addButton: UIButton!
     private var sectionMode: SectionMode?
-    private var appearViewModel: AppearViewModel!
-    private var changeCardViewModel: ChangeCardViewModel!
+    private var appearViewModel: CardOutputViewModel!
+    private var changeCardViewModel: CardInputViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setTitleText()
-        
         self.sectionViewDataSource.dataSource = self
         self.setTODOTableView()
-        
         guard let sectionMode = sectionMode else { return }
         self.appearViewModel = AppearViewModel(mode: sectionMode)
         self.changeCardViewModel = ChangeCardViewModel()
-        
+        self.initHTTPMethodHandler()
+        self.setTitleText()
+        self.setTODOCount()
+    }
+    
+    private func initHTTPMethodHandler() {
         self.changeCardViewModel.addCardHandler = { card in
             self.appearViewModel.frontEnqueue(card: card)
             DispatchQueue.main.async {
+                self.setTODOCount()
                 self.TODOTableView.reloadData()
             }
         }
         
-        self.appearViewModel.passingDataHandler = { cards in
-            let cards = self.appearViewModel.cards
+        self.appearViewModel.getDataHandler = {
             DispatchQueue.main.async {
-                self.TODOCount.text = "\(cards.count)"
+                self.setTODOCount()
                 self.TODOTableView.reloadData()
             }
         }
@@ -50,6 +52,7 @@ class SectionViewController: UIViewController, DataPassable {
         self.sectionViewDataSource.deleteCard = { card in
             self.changeCardViewModel.deleteCard(card: card)
         }
+        
     }
     
     @IBAction func tapAddButton(_ sender: UIButton) {
@@ -61,6 +64,10 @@ class SectionViewController: UIViewController, DataPassable {
         present(addView, animated: true, completion: nil)
     }
     
+    private func setTODOCount() {
+        self.TODOCount.text = "\(self.appearViewModel.cards.count)"
+    }
+    
     private func setTitleText() {
         guard let mode = self.sectionMode else { return }
         self.sectionTitle.text = mode.sectionTitle
@@ -70,6 +77,7 @@ class SectionViewController: UIViewController, DataPassable {
     private func setTODOTableView() {
         self.TODOTableView.rowHeight = UITableView.automaticDimension
         self.TODOTableView.estimatedRowHeight = 500
+        self.TODOTableView.dragInteractionEnabled = true
     }
     
     func passData() -> [Card]? {
