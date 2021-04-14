@@ -8,7 +8,6 @@ import mj_cooper.backend.domain.Vertical;
 import mj_cooper.backend.service.TodoService;
 import mj_cooper.backend.service.VerticalService;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -21,16 +20,54 @@ public class TodoController {
     private final VerticalService verticalService;
     private final TodoService todoService;
 
-    public TodoController(VerticalService verticalService, TodoService todoService) { //JDBC : TODO 의존성 주입방법 찾아보기
+    public TodoController(VerticalService verticalService, TodoService todoService) {
         this.verticalService = verticalService;
         this.todoService = todoService;
     }
 
     @GetMapping
     public String getAllTodos(@PathVariable(value = "verticalId") final Long verticalId) {
-        Vertical vertical = verticalService.findVertical(verticalId);
+        return parseListToJson(verticalService.findVertical(verticalId));
+    }
 
-        // Json 변환 로직
+    @GetMapping("/{todoId}")
+    public String getTodoById(@PathVariable(value = "verticalId") final Long verticalId,
+                              @PathVariable(value = "todoId") final Long todoId) {
+
+        Vertical vertical = verticalService.findVertical(verticalId);
+        Todo todo = vertical.getTodo(todoId);
+        return parseTodoToJson(todo);
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public String createTodo(@RequestBody Todo todo,
+                             @PathVariable(value = "verticalId") final Long verticalId) {
+
+        Todo foundTodo = todoService.addTodo(1L, verticalId, todo);
+        return parseTodoToJson(foundTodo);
+    }
+
+    @PutMapping("/{todoId}")
+    @ResponseStatus(HttpStatus.OK)
+    public String updateTodo(@RequestBody final Todo todo,
+                           @PathVariable(value = "verticalId") final Long verticalId,
+                           @PathVariable(value = "todoId") final Long todoId) {
+
+        Todo updatedTodo = todoService.updateTodo(1L, verticalId, todoId, todo);
+        return parseTodoToJson(updatedTodo);
+    }
+
+    @DeleteMapping("/{todoId}")
+    @ResponseStatus(HttpStatus.OK)
+    public String deleteTodo(@PathVariable(value = "verticalId") final Long verticalId,
+                           @PathVariable(value = "todoId") final Long todoId) {
+
+        todoService.deleteTodo(1L, verticalId, todoId);
+        return parseTodoToJson(null);
+    }
+
+    public String parseListToJson(Vertical vertical) {
         Gson gson = new Gson();
         JsonParser parser = new JsonParser();
 
@@ -44,44 +81,17 @@ public class TodoController {
         return gson.toJson(object);
     }
 
-    @GetMapping("/{todoId}")
-    public ResponseEntity<String> getTodoById(@PathVariable(value = "verticalId") final Long verticalId,
-                                              @PathVariable(value = "todoId") final Long todoId) {
-        Vertical vertical = verticalService.findVertical(verticalId);
-
-        // Json 변환 로직
+    public String parseTodoToJson(Todo todo) {
         Gson gson = new Gson();
         JsonParser parser = new JsonParser();
 
         Map<String, Todo> response = new HashMap<>();
-        response.put("todo", vertical.getTodo(todoId));
+        response.put("todo", todo);
 
         JsonObject object = new JsonObject();
         object.addProperty("status", "success");
         object.add("data", parser.parse(gson.toJson(response)));
 
-        return ResponseEntity.ok().body(gson.toJson(object));
-    }
-
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public String createTodo(@RequestBody Todo todo,
-                             @PathVariable(value = "verticalId") final Long verticalId) {
-        return todoService.addTodo(1L, verticalId, todo);
-    }
-
-    @PutMapping("/{todoId}")
-    @ResponseStatus(HttpStatus.OK)
-    public void updateTodo(@RequestBody final Todo todo,
-                           @PathVariable(value = "verticalId") final Long verticalId,
-                           @PathVariable(value = "todoId") final Long todoId) {
-        todoService.updateTodo(1L, verticalId, todoId, todo);
-    }
-
-    @DeleteMapping("/{todoId}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteTodo(@PathVariable(value = "verticalId") final Long verticalId,
-                           @PathVariable(value = "todoId") final Long todoId) {
-        todoService.deleteTodo(1L, verticalId, todoId);
-    }
+        return gson.toJson(object);
+    } //TODO Json 공통부분 generic 배워서 리팩토링 해보기
 }

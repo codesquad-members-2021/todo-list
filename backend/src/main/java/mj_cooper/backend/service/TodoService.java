@@ -16,7 +16,7 @@ public class TodoService {
         this.userRepository = userRepository;
     }
 
-    public String addTodo(Long userId, Long verticalId, Todo todo) {
+    public Todo addTodo(Long userId, Long verticalId, Todo todo) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new NoSuchElementException("해당 회원이 존재하지 않습니다."));
 
@@ -24,23 +24,23 @@ public class TodoService {
         vertical.addTodo(todo);
         userRepository.save(user);
 
-        return todo.toString();
+        return todo;
     }
 
-    public void updateTodo(Long userId,
-                           Long verticalId,
-                           Long todoId,
-                           Todo todo) {
+    public Todo updateTodo(Long userId, Long verticalId,
+                           Long todoId, Todo todo) {
         User user = userRepository.findById(userId).get();
         Vertical vertical = user.getVertical(verticalId);
         Todo foundTodo = vertical.getTodo(todoId);
 
         foundTodo.setTitle(todo.getTitle());
-
+        foundTodo.setContents(todo.getContents());
         userRepository.save(user);
+
+        return todo;
     }
 
-    public void deleteTodo(long userId, Long verticalId, Long todoId) {
+    public void deleteTodo(Long userId, Long verticalId, Long todoId) {
         User user = userRepository.findById(userId).get();
         Vertical vertical = user.getVertical(verticalId);
         vertical.deleteTodo(todoId);
