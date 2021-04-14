@@ -5,6 +5,7 @@ class TaskViewController: UIViewController {
 
     var column: Int?
     let taskStackManager = TaskStackManager()
+    var selectedCell: TaskCell!
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var taskCountLabel: UILabel!
@@ -14,6 +15,11 @@ class TaskViewController: UIViewController {
         super.viewDidLoad()
         setupSubViews()
         addNotificationObserver()
+        
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(longTouched(_:)))
+        longPressGesture.minimumPressDuration = 0.3
+        longPressGesture.isEnabled = true
+        taskTableView.addGestureRecognizer(longPressGesture)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -47,7 +53,7 @@ extension TaskViewController {
     }
     
     private func setupTaskCountLable() {
-        taskCountLabel.layer.cornerRadius = taskCountLabel.layer.frame.width / 2
+        taskCountLabel.layer.cornerRadius = taskCountLabel.layer.bounds.width / 2.25
         taskCountLabel.layer.masksToBounds = true
     }
     
@@ -80,7 +86,6 @@ extension TaskViewController {
         let card = TaskCard(id: id, title: title, content: content, createdAt: "\(Date())", status: status, author: "user1")
         taskStackManager.append(status, taskCard: card)
         updateTaskCountLabel()
-        // server로 한번만 보내도록~ 지금 3번 보내고 있습니다~
         if column == card.status {
             NetworkManager.insertedDataPost(httpMethod: HTTPMethod.post, data: card)
         }
@@ -91,14 +96,4 @@ extension TaskViewController {
         NetworkManager.changedDataPost(httpMethod: HTTPMethod.delete, data: removedData)
     }
 }
-
-/*
- 첫번째 Plus Button
- Optional([AnyHashable("id"): 0, AnyHashable("title"): "111", AnyHashable("content"): "222"])
- 
- 두번째 Plus Button
- Optional([AnyHashable("title"): "222", AnyHashable("content"): "333", AnyHashable("id"): 1])
- 
- 세번째 Plus Button
- Optional([AnyHashable("id"): 2, AnyHashable("title"): "333", AnyHashable("content"): "444"])
- */
+   

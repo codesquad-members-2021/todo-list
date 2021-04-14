@@ -11,7 +11,8 @@ extension TaskViewController: UITableViewDataSource {
         
         cell?.titleTextLabel.text = taskCard.title
         cell?.contentTextLabel.text = taskCard.content
-        
+        cell?.iOSLabel.text = taskCard.author
+
         return cell!
     }
 }
