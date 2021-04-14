@@ -1,7 +1,9 @@
 package com.team08.todolist.model;
 
-public class Column {
+import org.springframework.data.annotation.Id;
 
+public class Column {
+    @Id
     private Long id;
     private String title;
     private Integer position;

@@ -1,11 +1,12 @@
 package com.team08.todolist.model;
 
 import com.team08.todolist.DateTimeUtils;
+import org.springframework.data.annotation.Id;
 
 import java.time.LocalDateTime;
 
 public class Card {
-
+    @Id
     private Long id;
     private String author;
     private String title;

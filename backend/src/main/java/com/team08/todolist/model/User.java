@@ -1,7 +1,9 @@
 package com.team08.todolist.model;
 
-public class User {
+import org.springframework.data.annotation.Id;
 
+public class User {
+    @Id
     private String userId;
     private String password;
     private String name;
