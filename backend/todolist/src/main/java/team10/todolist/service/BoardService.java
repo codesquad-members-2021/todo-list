@@ -25,16 +25,10 @@ public class BoardService {
     }
 
     public List<Board> readAll() {
-        return iterableToList(boardRepository.findAll());
+        return boardRepository.findAll();
     }
 
     public List<Board> readByCategory(Category category) {
-        return iterableToList(boardRepository.findByCategory(category.name()));
-    }
-
-    private List<Board> iterableToList(Iterable<Board> iterable) {
-        List<Board> boards = new ArrayList<>();
-        iterable.forEach(boards::add);
-        return boards;
+        return boardRepository.findByCategory(category.name());
     }
 }

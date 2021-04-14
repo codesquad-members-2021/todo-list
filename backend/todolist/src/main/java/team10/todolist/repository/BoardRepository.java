@@ -8,5 +8,6 @@ import java.util.List;
 
 @Repository
 public interface BoardRepository extends CrudRepository<Board,Long> {
-    Iterable<Board> findByCategory(String category);
+    List<Board> findAll();
+    List<Board> findByCategory(String category);
 }
