@@ -1,10 +1,10 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import ColumnAccentButton from './partial/ColumnAccentButton';
-import ColumnNormalButton from './partial/ColumnNormalButton';
+import AccentButton from '../common/AccentButton';
+import NormalButton from '../common/NormalButton';
 
-const CardInputWrapper = styled.div`
+const StyledCardInput = styled.div`
     --background-color: #fff;
     --boxShadow-color: rgba(224, 224, 224, 0.3);
 
@@ -21,7 +21,7 @@ const CardInputWrapper = styled.div`
     justify-content: center;
 `;
 
-const CardInputInput = styled.input`
+const CardInputTag = styled.input`
     width: 100%;
     border: none;
     background-color: transparent;
@@ -62,29 +62,29 @@ const CardInput = ({ title, body, index, setCardList, columnId, cardId, previous
     const changeBody = ({ target }) => setBody(() => target.value);
 
     return (
-        <CardInputWrapper>
-            <CardInputInput
+        <StyledCardInput>
+            <CardInputTag
                 placeholder="제목을 입력하세요"
                 onChange={changeTitle}
                 value={inputTitle}
             />
-            <CardInputInput
+            <CardInputTag
                 placeholder="내용을 입력하세요"
                 onChange={changeBody}
                 value={inputBody}
             />
             <CardInputButtons>
-                <ColumnNormalButton clickHandler={deleteCard}>
+                <NormalButton clickHandler={deleteCard}>
                     취소
-                </ColumnNormalButton>
-                <ColumnAccentButton
+                </NormalButton>
+                <AccentButton
                     clickHandler={addCard}
                     isAble={isAble}
                 >
                     {title.length * body.length ? '수정' : '등록'}
-                </ColumnAccentButton>
+                </AccentButton>
             </CardInputButtons>
-        </CardInputWrapper>
+        </StyledCardInput>
     );
 };
 

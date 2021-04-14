@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { TranslateBtn } from "../../common/StyledModels";
+import { TranslateBtn } from "../../common/CommonStyledComponent";
 
 const StyledActivityCloseButton = styled(TranslateBtn)`
     margin-left: auto;

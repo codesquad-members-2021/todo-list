@@ -1,15 +1,27 @@
 import axios from 'axios';
-import React from 'react';
+import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
-import ColumnDeleteButton from './partial/ColumnDeleteButton'
+import ColumnDeleteButton from './partial/ColumnDeleteButton';
+// import PopupModal from '../../components/common/PopupModal';
 
-const CardWrapper = styled.div`
+const StyledCard = styled.div`
     --background-color: #fff;
     --boxShadow-color: rgba(224, 224, 224, 0.3);
+    --white-red-color: #FFEEEC;
+    --red-color:#FF4343;
+
+    ${(props) =>
+        props.isCardDelHover
+            ? css`
+                  background-color: var(--white-red-color);
+                  border: 1px solid var(--red-color);
+              `
+            : css`
+                  background-color: var(--background-color);
+              `};
 
     width: 300px;
     padding: 16px;
-    background-color: var(--background-color);
     border-radius: 8px;
     box-shadow: 0px 1px 30px var(--boxShadow-color);
     margin: 10px 0;
@@ -49,6 +61,8 @@ const CardAuthor = styled.p`
 `;
 //prettier-ignore
 const Card = ({ title, body, index, setCardList, columnId, cardId, previousCardId }) => {
+    const [isCardDelHover, setIsCardDelHover] = useState(false);
+
     const deleteCard = () => {
         setCardList((cardList) => cardList.filter((_, i) => i !== index))
         axios.delete(`api/columns/${columnId}/cards/${cardId}`)
@@ -62,15 +76,23 @@ const Card = ({ title, body, index, setCardList, columnId, cardId, previousCardI
         });
     };
 
+    const onMouseEnterHandler = () => setIsCardDelHover(true);
+    const onMouseLeaveHandler = () => setIsCardDelHover(false);
+
     return (
-        <CardWrapper onDoubleClick={editCard}>
+        <StyledCard onDoubleClick={editCard} isCardDelHover={isCardDelHover}>
             <CardTitle>
                 <span className="title">{title}</span>
-                <ColumnDeleteButton onClick={deleteCard} />
+                <ColumnDeleteButton
+                    onClick={deleteCard}
+                    onMouseEnter={onMouseEnterHandler}
+                    onMouseLeave={onMouseLeaveHandler}
+                />
+                {/* <PopupModal isVisible /> */}
             </CardTitle>
             <CardContent>{body}</CardContent>
             <CardAuthor>author by web</CardAuthor>
-        </CardWrapper>
+        </StyledCard>
     );
 };
 

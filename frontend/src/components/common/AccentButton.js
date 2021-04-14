@@ -1,8 +1,8 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { TranslateBtn } from '../../common/StyledModels';
+import { TranslateBtn } from "./CommonStyledComponent";
 
-const StyledColumnAccentButton = styled(TranslateBtn)`
+const StyledAccentButton = styled(TranslateBtn)`
     --blue-color: #0075de;
     --dark-blue-color: #00529b;
     --white-color: #fff;
@@ -34,15 +34,15 @@ const StyledColumnAccentButton = styled(TranslateBtn)`
     border-radius: 6px;
 `;
 
-const ColumnAccentButton = ({ children, clickHandler, isAble }) => {
+const AccentButton = ({ children, clickHandler, isAble }) => {
     return (
-        <StyledColumnAccentButton
+        <StyledAccentButton
             onClick={clickHandler && clickHandler}
             isAble={isAble}
         >
             {children}
-        </StyledColumnAccentButton>
+        </StyledAccentButton>
     );
 };
 
-export default ColumnAccentButton;
+export default AccentButton;

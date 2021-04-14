@@ -9,8 +9,8 @@ const ColumnWrapper = styled.div`
 `;
 
 const ColumnHeader = styled.div`
+    width: 332px;
     display: flex;
-    padding: 8px 0;
     justify-content: flex-start;
     align-items: center;
 
