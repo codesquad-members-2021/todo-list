@@ -44,7 +44,7 @@ public class CardService {
 
     public List<Card> getList(CardColumn cardColumn, User user) {
         logger.debug("{}의 카드 목록 요청", cardColumn);
-        return cardRepository.findAllByUserAndColumnTypeAndDeletedFalse(user.getId(), cardColumn.name());
+        return cardRepository.findAllByUserAndColumnTypeAndDeletedFalseOrderByPriority(user.getId(), cardColumn.name());
     }
 
     @Transactional

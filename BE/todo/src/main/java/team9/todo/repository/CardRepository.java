@@ -11,7 +11,7 @@ import java.util.Optional;
 
 public interface CardRepository extends CrudRepository<Card, Long> {
 
-    public List<Card> findAllByUserAndColumnTypeAndDeletedFalse(long user, String columnType);
+    public List<Card> findAllByUserAndColumnTypeAndDeletedFalseOrderByPriority(long user, String columnType);
 
     public Optional<Card> findByIdAndDeletedFalse(Long cardId);
 
