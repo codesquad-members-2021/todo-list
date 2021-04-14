@@ -3,6 +3,7 @@ package com.codesquad.todo.web.domain;
 import com.codesquad.todo.web.exceptions.InvalidEntityDetectedException;
 import com.codesquad.todo.web.exceptions.TaskNotFoundException;
 import com.codesquad.todo.web.service.dto.TaskDto;
+import com.codesquad.todo.web.service.dto.TaskParameterDto;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
@@ -59,8 +60,12 @@ public class TodoColumn {
 
     public void addTask(String taskTitle, String taskContent) {
         TodoTask todoTask = new TodoTask(taskTitle, taskContent);
-        todoTask.verifyTaskEntityIsNotEmpty();
+        //todoTask.verifyTaskEntityIsNotEmpty();
         addTask(todoTask);
+    }
+
+    public void addTask(TaskParameterDto taskParameterDto) {
+        addTask(taskParameterDto.getTaskTitle(), taskParameterDto.getTaskContent());
     }
 
     public TodoTask popTask(Long id) {

@@ -2,7 +2,10 @@ package com.codesquad.todo.web.service;
 
 import com.codesquad.todo.web.domain.*;
 import com.codesquad.todo.web.service.dto.TaskDto;
+import com.codesquad.todo.web.service.dto.TaskParameterDto;
 import org.springframework.stereotype.Service;
+
+import javax.validation.Valid;
 
 @Service
 public class TodoTaskService {
@@ -12,11 +15,11 @@ public class TodoTaskService {
         this.userRepository = userRepository;
     }
 
-    public TaskDto createTask(TodoUser todoUser, Long columnId, String taskTitle, String taskContent) {
+    public TaskDto createTask(TodoUser todoUser, Long columnId, TaskParameterDto taskParameterDto) {
         TodoColumn todoColumn = todoUser.findColumnById(columnId);
-        todoColumn.addTask(taskTitle, taskContent);
+        todoColumn.addTask(taskParameterDto);
 
-        TodoLog todoLog = TodoLog.buildCreateTodoLog(todoColumn.getColumnTitle(), taskTitle);
+        TodoLog todoLog = TodoLog.buildCreateTodoLog(todoColumn.getColumnTitle(), taskParameterDto.getTaskTitle());
         todoUser.addTodoLog(todoLog);
 
         todoUser = userRepository.save(todoUser);
@@ -33,11 +36,10 @@ public class TodoTaskService {
         userRepository.save(todoUser);
     }
 
-    public void updateTask(TodoUser todoUser, Long columnId, Long taskId, TodoTask newTodoTask) {
-        newTodoTask.verifyTaskEntityIsNotEmpty();
+    public void updateTask(TodoUser todoUser, Long columnId, Long taskId, TaskParameterDto taskParameterDto) {
         TodoColumn todoColumn = todoUser.findColumnById(columnId);
         TodoTask foundTodoTask = todoColumn.findTaskById(taskId);
-        foundTodoTask.update(newTodoTask);
+        foundTodoTask.update(taskParameterDto);
         TodoLog todoLog = TodoLog.buildUpdateTodoLog(todoColumn.getColumnTitle(), foundTodoTask.getTaskTitle());
         todoUser.addTodoLog(todoLog);
         userRepository.save(todoUser);

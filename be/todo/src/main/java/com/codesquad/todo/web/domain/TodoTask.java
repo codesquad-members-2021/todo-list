@@ -1,12 +1,10 @@
 package com.codesquad.todo.web.domain;
 
-import com.codesquad.todo.web.exceptions.InvalidEntityDetectedException;
+import com.codesquad.todo.web.service.dto.TaskParameterDto;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
 import java.time.LocalDateTime;
-
-import static com.codesquad.todo.web.util.VerifyUtil.isEmpty;
 
 @Table("TODO_TASK")
 public class TodoTask {
@@ -27,12 +25,6 @@ public class TodoTask {
     protected TodoTask() {
     }
 
-    public void verifyTaskEntityIsNotEmpty() {
-        if (isEmpty(taskTitle) || isEmpty(taskContent)) {
-            throw new InvalidEntityDetectedException(InvalidEntityDetectedException.TASK_IS_NULL);
-        }
-    }
-
     public boolean isSameId(Long taskId) {
         return id.equals(taskId);
     }
@@ -51,9 +43,9 @@ public class TodoTask {
         updatedDateTime = LocalDateTime.now();
     }
 
-    public void update(TodoTask newTodoTask) {
-        taskTitle = newTodoTask.taskTitle;
-        taskContent = newTodoTask.taskContent;
+    public void update(TaskParameterDto taskParameterDto) {
+        taskTitle = taskParameterDto.getTaskTitle();
+        taskContent = taskParameterDto.getTaskContent();
         updatedDateTime = LocalDateTime.now();
     }
 
