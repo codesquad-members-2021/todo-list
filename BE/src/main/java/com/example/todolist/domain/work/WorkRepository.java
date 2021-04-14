@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface WorkRepository extends CrudRepository<Work, Long> {
 
-    List<Work> findAllByAuthorId(Long author);
+    List<Work> findAllByAuthorId(Long authorId);
 
 }
