@@ -24,7 +24,7 @@ const Form = ({ addCard, column, offDisplay }) => {
       author: column.cards.author,
     };
 
-    const cardAdded = [...column.cards, newCard];
+    const cardAdded = [newCard, ...column.cards];
     column.cards = cardAdded;
     nextID.current++;
     addCard(column);
