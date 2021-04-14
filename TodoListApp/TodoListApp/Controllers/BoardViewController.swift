@@ -27,10 +27,13 @@ class BoardViewController: UIViewController {
             self.allCards = cards
             let destinationViewController = segue.destination as! ListViewControllerProtocol
             if segue.identifier == Identifier.goToTodo {
+                destinationViewController.updateViewControllerTitle(with: "해야할 일")
                 destinationViewController.filterCards(of: "todo", from: self.allCards)
             } else if segue.identifier == Identifier.goToDoing {
+                destinationViewController.updateViewControllerTitle(with: "하고 있는 일")
                 destinationViewController.filterCards(of: "doing", from: self.allCards)
             } else if segue.identifier == Identifier.goToDone {
+                destinationViewController.updateViewControllerTitle(with: "완료한 일")
                 destinationViewController.filterCards(of: "done", from: self.allCards)
             }
             DispatchQueue.main.async {

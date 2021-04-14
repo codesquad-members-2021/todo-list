@@ -1,26 +1,25 @@
 //
-//  TodoViewController.swift
+//  ListViewController.swift
 //  TodoListApp
 //
-//  Created by Song on 2021/04/08.
+//  Created by Song on 2021/04/14.
 //
 
 import UIKit
 
-class TodoViewController: UIViewController, ListViewControllerProtocol {
+class ListViewController: UIViewController, ListViewControllerProtocol {
     @IBOutlet weak var headerView: ListHeaderView!
     @IBOutlet weak var cardTableView: UITableView!
     private var cards: [Card] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        headerView.title = "해야할 일"
+        headerView.title = self.title
         headerView.badgeButton.setTitle("\(cards.count)", for: .normal)
         headerView.badgeButton.layer.masksToBounds = true
         headerView.badgeButton.layer.cornerRadius = headerView.frame.size.height / 2
         
         cardTableView.dataSource = self
-        cardTableView.delegate  = self
         cardTableView.register(CardCell.nib(), forCellReuseIdentifier: CardCell.identifier)
         cardTableView.sectionFooterHeight = 0.0
         
@@ -39,19 +38,19 @@ class TodoViewController: UIViewController, ListViewControllerProtocol {
     }
     
     @objc func showPopupViewController() {
-        //let popupVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "AddCardPopupViewController")
-        //popupVC.modalPresentationStyle = .overCurrentContext
-        //popupVC.modalTransitionStyle = .crossDissolve
-        //self.present(popupVC, animated: true, completion: nil)
         let popupVC = PopupViewController(nibName: "PopupViewController", bundle: nil)
         popupVC.modalPresentationStyle = .formSheet
         popupVC.modalTransitionStyle = .coverVertical
         popupVC.preferredContentSize = CGSize(width: 400.0, height: 175.0)
         self.present(popupVC, animated: true, completion: nil)
     }
+    
+    func updateViewControllerTitle(with listName: String) {
+        self.title = listName
+    }
 }
 
-extension TodoViewController: UITableViewDataSource, UITableViewDelegate {
+extension ListViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         return cards.count
     }

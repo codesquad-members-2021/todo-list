@@ -8,6 +8,7 @@
 import Foundation
 
 protocol ListViewControllerProtocol {
+    func updateViewControllerTitle(with title: String)
     func filterCards(of category: String, from allCards: [Card])
     func refreshTableView()
 }
