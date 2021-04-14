@@ -2,27 +2,27 @@ package com.example.todolist.dto;
 
 import java.util.List;
 
-public class CategoryDto {
+public class CategoryDTO {
 
-    private List<CardDto> todo;
-    private List<CardDto> doing;
-    private List<CardDto> done;
+    private List<CardDTO> todo;
+    private List<CardDTO> doing;
+    private List<CardDTO> done;
 
-    public CategoryDto(List<CardDto> todo, List<CardDto> doing, List<CardDto> done) {
+    public CategoryDTO(List<CardDTO> todo, List<CardDTO> doing, List<CardDTO> done) {
         this.todo = todo;
         this.doing = doing;
         this.done = done;
     }
 
-    public List<CardDto> getTodo() {
+    public List<CardDTO> getTodo() {
         return todo;
     }
 
-    public List<CardDto> getDoing() {
+    public List<CardDTO> getDoing() {
         return doing;
     }
 
-    public List<CardDto> getDone() {
+    public List<CardDTO> getDone() {
         return done;
     }
 

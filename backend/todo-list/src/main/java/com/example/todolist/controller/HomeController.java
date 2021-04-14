@@ -51,16 +51,16 @@ public class HomeController {
     @GetMapping("/list")
     public ResponseEntity home(HttpServletResponse response) {
         String jwtToken = login(response);
-        List<CardDto> todo = cardService.cardDtoTodoList();
-        List<CardDto> doing = cardService.cardDtoDoingList();
-        List<CardDto> done = cardService.cardDtoDoneList();
-        CategoryDto list = new CategoryDto(todo, doing, done);
+        List<CardDTO> todo = cardService.cardDtoTodoList();
+        List<CardDTO> doing = cardService.cardDtoDoingList();
+        List<CardDTO> done = cardService.cardDtoDoneList();
+        CategoryDTO list = new CategoryDTO(todo, doing, done);
         return new ResponseEntity(list, HttpStatus.OK);
     }
 
     @GetMapping("/history")
     public ResponseEntity home() {
-        List<HistoryDto> history = historyService.historyList();
+        List<HistoryDTO> history = historyService.historyList();
         return new ResponseEntity(history, HttpStatus.OK);
     }
 }
