@@ -19,6 +19,11 @@ export const BUTTON_STYLE = {
     background: #0075de;
     color: white;
   `,
+  edit: css`
+    ${TEXT_DEFAULT}
+    background: #0075de;
+    color: white;
+  `,
   bigSize: css`
     width: 60px;
     height: 60px;
@@ -35,4 +40,5 @@ export const BUTTON_TYPE = {
   menu: <HiMenu />,
   cancel: "취소",
   enroll: "등록",
+  edit: "수정",
 };

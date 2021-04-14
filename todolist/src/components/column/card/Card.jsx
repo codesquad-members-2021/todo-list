@@ -94,10 +94,14 @@ function Card(props) {
         <CardSection>
           {/* <CardWrap onMouseOver={() => console.log("over")}> */}
           <div
-            onMouseOver={() => (cardContainer.current.style.backgroundColor = "red")}
-            onMouseOut={() => (cardContainer.current.style.backgroundColor = "white")}
+            onMouseOver={() =>
+              (cardContainer.current.style.backgroundColor = "red")
+            }
+            onMouseOut={() =>
+              (cardContainer.current.style.backgroundColor = "white")
+            }
           >
-            <Button type="delete" cb={askToDelete} />
+            <Button type="delete" onClick={askToDelete} />
             {/* 왜 여기선 이벤트 등록이 안돼죠???? 왜?  */}
           </div>
           {/* </CardWrap> */}
