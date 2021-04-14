@@ -1,4 +1,4 @@
-package com.codeSquad.cocokyu.domain;
+package com.codeSquad.cocokyu.domain.model;
 
 public class Message {
     private static final String SUCCESS = "success";

@@ -4,6 +4,7 @@ import com.codeSquad.cocokyu.domain.dto.CardDto;
 import com.codeSquad.cocokyu.domain.dto.CardList;
 import com.codeSquad.cocokyu.domain.dto.LogList;
 import com.codeSquad.cocokyu.domain.model.Card;
+import com.codeSquad.cocokyu.domain.model.Message;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

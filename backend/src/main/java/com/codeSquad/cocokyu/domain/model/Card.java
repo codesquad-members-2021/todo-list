@@ -29,6 +29,7 @@ public class Card {
     private Logs logs = new Logs();
 
 //    private double priority;
+    //TODO : ios와 협의
 
     private LocalDateTime createDateTime;
 
@@ -75,18 +76,8 @@ public class Card {
         return createDateTime;
     }
 
-//    public double getPriority() {
-//        return priority;
-//    }
-
     public Logs getLogs() {
         return logs;
     }
 
-    public enum Status {
-        TODO,
-        DOING,
-        DONE,
-        DELETED
-    }
 }

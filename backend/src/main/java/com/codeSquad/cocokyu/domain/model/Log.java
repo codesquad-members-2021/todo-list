@@ -1,6 +1,5 @@
 package com.codeSquad.cocokyu.domain.model;
 
-import com.codeSquad.cocokyu.domain.model.Card.Status;
 import org.springframework.data.annotation.Id;
 
 import java.time.LocalDateTime;
