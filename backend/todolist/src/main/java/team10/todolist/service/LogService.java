@@ -1,7 +1,12 @@
 package team10.todolist.service;
 
+import org.springframework.stereotype.Service;
+import team10.todolist.domain.Log;
 import team10.todolist.repository.LogRepository;
 
+import java.util.List;
+
+@Service
 public class LogService {
 
     private final LogRepository logRepository;
@@ -11,4 +16,7 @@ public class LogService {
     }
 
 
+    public List<Log> readAll() {
+        return logRepository.findAll();
+    }
 }
