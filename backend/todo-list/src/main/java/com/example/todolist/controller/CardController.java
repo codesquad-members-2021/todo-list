@@ -86,5 +86,6 @@ public class CardController {
         cardRepository.save(card);
         return new ResponseEntity<>(card, HttpStatus.OK);
     }
+
 }
 
