@@ -5,6 +5,7 @@ import team10.todolist.Category;
 import team10.todolist.domain.Board;
 import team10.todolist.dto.BoardDto;
 import team10.todolist.service.BoardService;
+
 import java.util.List;
 
 @RestController
@@ -23,22 +24,22 @@ public class BoardController {
     }
 
     @GetMapping("/lists")
-    public List<Board> readAll(){
+    public List<Board> readAll() {
         return boardService.readAll();
     }
 
     @GetMapping("/todo")
-    public List<Board> readTodos(){
+    public List<Board> readTodos() {
         return boardService.readByCategory(Category.TODO);
     }
 
     @GetMapping("/progress")
-    public List<Board> readProgresses(){
+    public List<Board> readProgresses() {
         return boardService.readByCategory(Category.PROGRESS);
     }
 
     @GetMapping("/done")
-    public List<Board> readDons(){
+    public List<Board> readDons() {
         return boardService.readByCategory(Category.DONE);
     }
 
@@ -48,12 +49,12 @@ public class BoardController {
     }
 
     @DeleteMapping("/lists/{id}")
-    public boolean delete(@PathVariable Long id){
+    public boolean delete(@PathVariable Long id) {
         return boardService.delete(id);
     }
 
     @PutMapping("/lists/{id}")
-    public Board update(@PathVariable Long id, @RequestBody BoardDto boardDto){
+    public Board update(@PathVariable Long id, @RequestBody BoardDto boardDto) {
         return boardService.update(id, boardDto);
     }
 }

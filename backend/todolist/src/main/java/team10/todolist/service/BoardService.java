@@ -6,7 +6,6 @@ import team10.todolist.domain.Board;
 import team10.todolist.dto.BoardDto;
 import team10.todolist.repository.BoardRepository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -32,18 +31,18 @@ public class BoardService {
         return boardRepository.findByCategory(category.name());
     }
 
-    public Board findBoardById(Long id){
+    public Board findBoardById(Long id) {
         return boardRepository.findById(id).orElseThrow(NullPointerException::new);
     }
 
-    public boolean delete(Long id){
+    public boolean delete(Long id) {
         Board board = findBoardById(id);
         board.delete();
         boardRepository.save(board);
         return true;
     }
 
-    public Board update(Long id, BoardDto boardDto){
+    public Board update(Long id, BoardDto boardDto) {
         Board board = findBoardById(id);
         board.update(boardDto);
         boardRepository.save(board);

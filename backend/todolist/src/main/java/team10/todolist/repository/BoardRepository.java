@@ -8,12 +8,13 @@ import team10.todolist.domain.Board;
 import java.util.List;
 
 @Repository
-public interface BoardRepository extends CrudRepository<Board,Long> {
+public interface BoardRepository extends CrudRepository<Board, Long> {
 
     @Query("select * from board where is_deleted like '%0' ")
     List<Board> findAllNotDeleted();
 
     List<Board> findAll();
+
     List<Board> findByCategory(String category);
 
 }
