@@ -51,4 +51,9 @@ public class BoardController {
     public boolean delete(@PathVariable Long id){
         return boardService.delete(id);
     }
+
+    @PutMapping("/lists/{id}")
+    public Board update(@PathVariable Long id, @RequestBody BoardDto boardDto){
+        return boardService.update(id, boardDto);
+    }
 }
