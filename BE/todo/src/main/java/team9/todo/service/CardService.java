@@ -47,8 +47,7 @@ public class CardService {
     @Transactional
     public Card update(long cardId, String title, String content, User user) {
         logger.debug("{}번 카드의 내용 수정 요청", cardId);
-        Card card = cardRepository.findByIdAndDeletedFalse(cardId).orElseThrow(() -> new NotFoundException());
-        validateUser(card, user);
+        Card card = getCard(cardId,user);
         card.update(title, content);
         Card saved = cardRepository.save(card);
 
@@ -91,12 +90,10 @@ public class CardService {
         Card nextCard = null;
 
         if (prevCardId != null) {
-            prevCard = cardRepository.findById(prevCardId).orElseThrow(NotFoundException::new);
-            validateUser(prevCard,user);
+            prevCard = getCard(prevCardId,user);
         }
         if (nextCardId != null) {
-            nextCard = cardRepository.findById(nextCardId).orElseThrow(NotFoundException::new);
-            validateUser(nextCard,user);
+            nextCard = getCard(nextCardId,user);
         }
 
         CardColumn to = getCommonColumn(prevCard, nextCard);
@@ -104,8 +101,7 @@ public class CardService {
 
         logger.debug("{}번 카드 {}로 이동 요청", cardId, to);
 
-        Card card = cardRepository.findByIdAndDeletedFalse(cardId).orElseThrow(NotFoundException::new);
-        validateUser(card, user);
+        Card card = getCard(cardId,user);
 
         CardColumn from = card.getColumnType();
         card.setColumnType(to);
@@ -119,16 +115,17 @@ public class CardService {
     @Transactional
     public void delete(long cardId, User user) {
         logger.debug("{}번 카드의 삭제 요청", cardId);
-        Card card = cardRepository.findByIdAndDeletedFalse(cardId).orElseThrow(NotFoundException::new);
-        validateUser(card, user);
+        Card card = getCard(cardId, user);
         cardRepository.softDeleteById(cardId);
 
         historyRepository.save(new History(card.getId(), HistoryAction.REMOVE, card.getColumnType(), null));
     }
 
-    private void validateUser(Card card, User user){
+    private Card getCard(long cardId, User user){
+        Card card = cardRepository.findByIdAndDeletedFalse(cardId).orElseThrow(NotFoundException::new);
         if (card.getUser() != user.getId()) {
             throw new NotAuthorizedException();
         }
+        return card;
     }
 }
