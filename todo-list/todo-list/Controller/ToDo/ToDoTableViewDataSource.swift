@@ -9,10 +9,10 @@ import UIKit
 
 class ToDoTableViewDataSource: NSObject, UITableViewDataSource {
     
-    var cardManager: CardManager
+    var cardSearcher: CardFindable
     
-    init(cardManager: CardManager) {
-        self.cardManager = cardManager
+    init(cardSearcher: CardFindable) {
+        self.cardSearcher = cardSearcher
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -20,13 +20,13 @@ class ToDoTableViewDataSource: NSObject, UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        cardManager.count() ?? 0
+        cardSearcher.count() ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath) as! ToDoTableViewCell
         
-        guard let card = cardManager.cardAt(index: indexPath.section) else { return cell }
+        guard let card = cardSearcher.cardAt(index: indexPath.section) else { return cell }
         
         cell.titleLabel.text = card.title
         cell.contentLabel.text = card.contents
