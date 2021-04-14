@@ -17,16 +17,19 @@ public class CreateWorkRequestDTO {
     private int status;
 
     public Work toEntity() {
-        if (title == null || content == null || status == 0) {
-            throw new EntityRelatedException(ErrorMessage.ENTITY_NOT_CREATE);
-        }
-
+        verifyDTO();
         return Work.builder()
                 .title(title)
                 .content(content)
                 .status(status)
                 .createdAt(LocalDateTime.now())
                 .build();
+    }
+
+    public void verifyDTO() {
+        if (title == null || content == null || status == 0) {
+            throw new EntityRelatedException(ErrorMessage.ENTITY_NOT_CREATE);
+        }
     }
 
 }

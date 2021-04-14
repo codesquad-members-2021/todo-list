@@ -14,14 +14,16 @@ public class LoginUserRequestDTO {
     private String password;
 
     public User toEntity() {
-        if (userId == null || password == null) {
-            throw new EntityRelatedException(ErrorMessage.ENTITY_NOT_CREATE);
-        }
-
+        verifyDTO();
         return User.builder()
                 .userId(userId)
                 .password(password)
                 .build();
     }
 
+    public void verifyDTO() {
+        if (userId == null || password == null) {
+            throw new EntityRelatedException(ErrorMessage.ENTITY_NOT_CREATE);
+        }
+    }
 }

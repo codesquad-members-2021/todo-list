@@ -14,14 +14,17 @@ public class UpdateWorkRequestDTO {
     private String content;
 
     public Work toEntity() {
-        if (title == null || content == null) {
-            throw new EntityRelatedException(ErrorMessage.ENTITY_NOT_CREATE);
-        }
-
+        verifyDTO();
         return Work.builder()
                 .title(title)
                 .content(content)
                 .build();
+    }
+
+    public void verifyDTO() {
+        if (title == null || content == null) {
+            throw new EntityRelatedException(ErrorMessage.ENTITY_NOT_CREATE);
+        }
     }
 
 }

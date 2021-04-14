@@ -16,16 +16,19 @@ public class SignInUserRequestDTO {
     private String email;
 
     public User toEntity() {
-        if (userId == null || password == null || name == null || email == null) {
-            throw new EntityRelatedException(ErrorMessage.ENTITY_NOT_CREATE);
-        }
-
+        verifyDTO();
         return User.builder()
                 .userId(userId)
                 .password(password)
                 .name(name)
                 .email(email)
                 .build();
+    }
+
+    public void verifyDTO() {
+        if (userId == null || password == null || name == null || email == null) {
+            throw new EntityRelatedException(ErrorMessage.ENTITY_NOT_CREATE);
+        }
     }
 
 }

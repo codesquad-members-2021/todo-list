@@ -13,13 +13,16 @@ public class MoveWorkRequestDTO {
     private int status;
 
     public Work toEntity() {
-        if (status != 1 && status != 2 && status !=3) {
-            throw new EntityRelatedException(ErrorMessage.ENTITY_NOT_CREATE);
-        }
-
+        verifyDTO();
         return Work.builder()
                 .status(status)
                 .build();
+    }
+
+    public void verifyDTO() {
+        if (status != 1 && status != 2 && status !=3) {
+            throw new EntityRelatedException(ErrorMessage.ENTITY_NOT_CREATE);
+        }
     }
 
 }
