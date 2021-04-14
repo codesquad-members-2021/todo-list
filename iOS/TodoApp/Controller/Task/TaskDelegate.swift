@@ -4,9 +4,8 @@ extension TaskViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
         if editingStyle == .delete {
-            // remove the item from the data model
+
             taskStackManager.remove(column!, at: indexPath.row)
-            // delete the table view row
             tableView.deleteRows(at: [indexPath], with: .fade)
             updateTaskCountLabel()
         }
@@ -22,6 +21,7 @@ extension TaskViewController: UIContextMenuInteractionDelegate {
         let touchedPoint = gesture.location(in: taskTableView)
         guard let indexPath = self.taskTableView.indexPathForRow(at: touchedPoint) else { return }
         let cell = self.taskTableView.cellForRow(at: indexPath) as! TaskCell
+        self.selectedIndexPath = indexPath
         self.selectedCell = cell
         cell.becomeFirstResponder()
         let contextMenu = UIContextMenuInteraction(delegate: self)
@@ -41,7 +41,9 @@ extension TaskViewController: UIContextMenuInteractionDelegate {
                 
             }
             let delete = UIAction(title: "Delete", image: UIImage(systemName: "trash"), attributes: .destructive ) { _ in
-                // edit func
+                self.taskStackManager.remove(self.column!, at: self.selectedIndexPath.row)
+                self.taskTableView.deleteRows(at: [self.selectedIndexPath], with: .fade)
+                self.updateTaskCountLabel()
             }
             return UIMenu(children: [edit, moveToDone, delete])
         }

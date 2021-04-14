@@ -46,8 +46,8 @@
             filePath = "Controller/Task/TaskViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
             landmarkName = "TaskViewController"
             landmarkType = "21">
          </BreakpointContent>
@@ -62,8 +62,8 @@
             filePath = "Controller/Task/TaskViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
             landmarkName = "drawTaskCard(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -78,8 +78,8 @@
             filePath = "Controller/Task/TaskViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "11"
-            endingLineNumber = "11"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
             landmarkName = "TaskViewController"
             landmarkType = "3">
             <Locations>
@@ -134,7 +134,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "33E96548-F33B-48FE-B185-888F83CB75C4"
+            uuid = "9A3C7BB2-A105-46DC-9FDE-F1FED0791D95"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -150,22 +150,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "9A3C7BB2-A105-46DC-9FDE-F1FED0791D95"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Controller/Task/TaskDelegate.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "11"
-            endingLineNumber = "11"
-            landmarkName = "tableView(_:commit:forRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "D8104136-DD4B-49CC-AC53-29B6C081A783"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -173,8 +157,8 @@
             filePath = "Controller/Task/TaskViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
             landmarkName = "insertTask(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -189,8 +173,8 @@
             filePath = "Controller/Task/TaskViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
             landmarkName = "insertTask(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -205,8 +189,8 @@
             filePath = "Controller/Task/TaskViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
             landmarkName = "insertTask(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -221,8 +205,8 @@
             filePath = "Controller/Task/TaskViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
             landmarkName = "unknown"
             landmarkType = "0">
          </BreakpointContent>
