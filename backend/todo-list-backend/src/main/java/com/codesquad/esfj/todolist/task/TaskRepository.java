@@ -42,6 +42,12 @@ public class TaskRepository {
                 .findAny();
     }
 
+    public Optional<Task> findOneByPreviousIdAndTaskType(long previousId, String taskType) {
+        return tasks.values().stream()
+                .filter(task -> task.getPreviousId().equals(previousId) && task.getTaskType().equals(taskType))
+                .findAny();
+    }
+
     public Task save(Task newTask) {
         if (newTask.getId() == null) {
             newTask.setId(tasks.size() + 1L);

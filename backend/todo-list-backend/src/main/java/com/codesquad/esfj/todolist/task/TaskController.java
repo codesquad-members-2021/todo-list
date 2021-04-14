@@ -38,11 +38,13 @@ public class TaskController {
     @PostMapping("/tasks")
     @ResponseStatus(HttpStatus.CREATED)
     public Long create(@RequestBody Task task) {
-        Task topTask = readByPreviousId(Task.TOP_PREVIOUS_ID);
+        Optional<Task> topTask = taskRepository.findOneByPreviousIdAndTaskType(Task.TOP_PREVIOUS_ID, task.getTaskType());
         long id = taskRepository.save(task).getId();
 
-        topTask.moveAfter(id);
-        taskRepository.save(topTask);
+        if (topTask.isPresent()) {
+            topTask.get().moveAfter(id);
+            taskRepository.save(topTask.get());
+        }
 
         return id;
     }
@@ -68,16 +70,23 @@ public class TaskController {
         taskRepository.save(task.delete());
     }
 
-    @PatchMapping("/tasks/{id}/{targetId}")
+    @PatchMapping("/tasks/{id}/{targetTaskType}/{targetId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void move(@PathVariable Long id, @PathVariable Long targetId) {
+    public void move(@PathVariable Long id, @PathVariable String targetTaskType, @PathVariable Long targetId) {
         Task taskToMove = taskRepository.findOne(id);
-        Task originalNextTask = readByPreviousId(id);
+        Optional<Task> originalNextTask = taskRepository.findOneByPreviousId(id);
         Task newNextTask = readByPreviousId(targetId);
 
-        originalNextTask.moveAfter(taskToMove.getPreviousId());
-        taskToMove.moveAfter(newNextTask.getPreviousId());
-        newNextTask.moveAfter(taskToMove.getId());
+        if (originalNextTask.isPresent()) {
+            originalNextTask.get().moveAfter(taskToMove);
+            taskRepository.save(originalNextTask.get());
+        }
+
+        taskToMove.moveAfter(newNextTask);
+        taskRepository.save(taskToMove);
+
+        newNextTask.moveAfter(taskToMove);
+        taskRepository.save(newNextTask);
     }
 
     private Task readByPreviousId(Long previousId) {

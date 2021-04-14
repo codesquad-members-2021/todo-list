@@ -60,7 +60,12 @@ public class Task {
     }
 
     public void moveAfter(Long targetId) {
-       previousId = targetId;
+        previousId = targetId;
+    }
+
+    public void moveAfter(Task targetTask) {
+        previousId = targetTask.getPreviousId();
+        taskType = targetTask.getTaskType();
     }
 
     public boolean isDeleted() {
