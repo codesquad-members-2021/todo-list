@@ -9,13 +9,13 @@ import Foundation
 
 class Card {
     var title: String
-    var description: String
+    var notes: String
     let createdAt: Date
     let category: String
     
-    init(title: String, description: String, category: String) {
+    init(title: String, notes: String, category: String) {
         self.title = title
-        self.description = description
+        self.notes = notes
         self.createdAt = Date()
         self.category = category
     }

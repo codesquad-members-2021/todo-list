@@ -14,7 +14,7 @@ class JSONParser {
             let decodedData = try decoder.decode([TodoData].self, from: todoData)
             let cards = decodedData.map { (todoData) -> Card in
                 let title = todoData.title
-                let desc = todoData.contents
+                let notes = todoData.contents
                 var category = ""
                 switch (todoData.todo, todoData.doing, todoData.done) {
                 case (true, false, false):
@@ -26,7 +26,7 @@ class JSONParser {
                 default:
                     category = "error"
                 }
-                return Card(title: title, description: desc, category: category)
+                return Card(title: title, notes: notes, category: category)
             }
             return cards
         } catch {
