@@ -2,11 +2,18 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import ColumnDeleteButton from '../ColumnDeleteButton';
 
-const StyledCard = styled.div`
+const StyledCard = styled.div.attrs(({ top, left, isDown, isZanSang }) => ({
+    style: {
+        transform: `translate(${left}px,${top}px)`,
+        zIndex: isDown ? 1 : 0,
+        position: isDown ? 'absolute' : 'relative',
+        opacity: isZanSang ? 0.5 : 1,
+    },
+}))`
     --background-color: #fff;
     --boxShadow-color: rgba(224, 224, 224, 0.3);
-    --white-red-color: #FFEEEC;
-    --red-color:#FF4343;
+    --white-red-color: #ffeeec;
+    --red-color: #ff4343;
 
     ${(props) =>
         props.isCardDelHover
@@ -31,7 +38,6 @@ const CSSCardCommonStyle = css`
     font-family: Noto Sans KR;
     margin-bottom: 10px;
 `;
-
 
 const CardTitle = styled.p`
     display: flex;
@@ -59,18 +65,29 @@ const CardAuthor = styled.p`
     color: var(--author-text-color);
 `;
 
-const Card = ({ data, isCardDelHover, onEvents }) => {
-    const { title, body } = data;
+const Card = ({ data, flags, onEvents }) => {
+    const { title, body, left, top } = data;
+    const { isDown, isCardDelHover, isZanSang } = flags;
     const {
         onClickDeleteCardHandler,
         onDoubleClickEditCardHandler,
         onMouseEnterHandler,
         onMouseLeaveHandler,
+        mouseMoveHandler,
+        mouseUpHandler,
+        mouseDownHandler
     } = onEvents;
 
     return (
         <StyledCard
+            top={top}
+            left={left}
+            isDown={isDown}
+            isZanSang={isZanSang}
+            onMouseDown={mouseDownHandler}
             onDoubleClick={onDoubleClickEditCardHandler}
+            onMouseMove={mouseMoveHandler}
+            onMouseUp={mouseUpHandler}
             isCardDelHover={isCardDelHover}
         >
             <CardTitle>
