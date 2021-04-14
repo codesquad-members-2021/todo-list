@@ -71,7 +71,7 @@ class DataManager {
                 print("Error: Did not receive data")
                 return
             }
-            
+            print(String(data: data, encoding: .utf8))
             let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
             if let responseJSON = responseJSON as? [String: Any] {
                 print(responseJSON)
@@ -102,6 +102,7 @@ class DataManager {
                 print("Error: Did not receive data")
                 return
             }
+            
             
             guard let response = response as? HTTPURLResponse, (200 ..< 300) ~= response.statusCode else {
                 print("Error: HTTP request failed")

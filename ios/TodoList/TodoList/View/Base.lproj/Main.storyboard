@@ -130,7 +130,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1fQ-hQ-Psl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="461" y="-235"/>
+            <point key="canvasLocation" x="444" y="-525"/>
         </scene>
         <!--Doing View Controller-->
         <scene sceneID="shp-Ix-vR4">
@@ -145,6 +145,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="lz5-yM-O9o"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="186-74-O43" firstAttribute="top" secondItem="gdk-gX-NQ2" secondAttribute="top" id="ELc-0D-bkL"/>
@@ -159,7 +160,85 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xX2-IX-ReC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="462.56281407035175" y="262.58992805755395"/>
+            <point key="canvasLocation" x="444" y="22"/>
+        </scene>
+        <!--Pop Up View Controller-->
+        <scene sceneID="Fe2-zH-Jve">
+            <objects>
+                <viewController storyboardIdentifier="PopUpViewController" id="Lyp-8A-wIa" customClass="PopUpViewController" customModule="TodoList" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gGb-6P-LUT">
+                        <rect key="frame" x="0.0" y="0.0" width="1194" height="834"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2hR-25-Sij">
+                                <rect key="frame" x="447" y="317" width="300" height="200"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="ContentsTextField" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Go-na-xP4">
+                                        <rect key="frame" x="0.0" y="111" width="300" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FoN-Rv-nvF">
+                                        <rect key="frame" x="174" y="162" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="취소"/>
+                                        <connections>
+                                            <action selector="cancelButton:" destination="Lyp-8A-wIa" eventType="touchUpInside" id="qMs-mS-OTa"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xFO-fR-NbI">
+                                        <rect key="frame" x="246" y="162" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="확인"/>
+                                        <connections>
+                                            <action selector="confirmButton:" destination="Lyp-8A-wIa" eventType="touchUpInside" id="T3B-pp-dpl"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="aAg-CR-TtN"/>
+                                    <constraint firstAttribute="width" constant="300" id="kWr-dj-dqr"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prompt" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Frd-Wc-Nt3">
+                                <rect key="frame" x="447" y="345" width="300" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TitleTextField" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2oI-dt-g3E">
+                                <rect key="frame" x="447" y="383" width="300" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="rcf-px-KME"/>
+                        <color key="backgroundColor" systemColor="linkColor"/>
+                        <constraints>
+                            <constraint firstItem="Frd-Wc-Nt3" firstAttribute="centerX" secondItem="2hR-25-Sij" secondAttribute="centerX" id="EMG-E8-FBg"/>
+                            <constraint firstItem="Frd-Wc-Nt3" firstAttribute="trailing" secondItem="2hR-25-Sij" secondAttribute="trailing" id="Pcn-PO-mXj"/>
+                            <constraint firstItem="2oI-dt-g3E" firstAttribute="top" secondItem="Frd-Wc-Nt3" secondAttribute="bottom" constant="8" symbolic="YES" id="Rix-qN-yCU"/>
+                            <constraint firstItem="2hR-25-Sij" firstAttribute="centerX" secondItem="gGb-6P-LUT" secondAttribute="centerX" id="kGE-Q3-aCb"/>
+                            <constraint firstItem="Frd-Wc-Nt3" firstAttribute="leading" secondItem="2hR-25-Sij" secondAttribute="leading" id="p22-U8-Pfo"/>
+                            <constraint firstItem="2oI-dt-g3E" firstAttribute="trailing" secondItem="2hR-25-Sij" secondAttribute="trailing" id="p9A-VX-8va"/>
+                            <constraint firstItem="2oI-dt-g3E" firstAttribute="centerX" secondItem="2hR-25-Sij" secondAttribute="centerX" id="vZe-dR-XOc"/>
+                            <constraint firstItem="Frd-Wc-Nt3" firstAttribute="top" secondItem="2hR-25-Sij" secondAttribute="top" constant="28" id="vaN-gl-GhF"/>
+                            <constraint firstItem="2oI-dt-g3E" firstAttribute="leading" secondItem="2hR-25-Sij" secondAttribute="leading" id="xPe-EP-xOh"/>
+                            <constraint firstItem="2hR-25-Sij" firstAttribute="centerY" secondItem="gGb-6P-LUT" secondAttribute="centerY" id="xuJ-uF-cbt"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="contentsTextField" destination="0Go-na-xP4" id="cm4-HZ-gKr"/>
+                        <outlet property="promptLabel" destination="Frd-Wc-Nt3" id="zMc-6B-y6B"/>
+                        <outlet property="promptView" destination="2hR-25-Sij" id="dgs-WT-i3n"/>
+                        <outlet property="titleTextField" destination="2oI-dt-g3E" id="oQh-Xg-z4X"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hxv-I6-Q3J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="30.653266331658291" y="822.30215827338134"/>
         </scene>
         <!--Done View Controller-->
         <scene sceneID="kXb-w4-lU8">
@@ -174,6 +253,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="vVK-CP-cDn"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="doU-xW-Bhg" firstAttribute="top" secondItem="ZYD-16-4q0" secondAttribute="top" id="Iit-U5-WQB"/>
@@ -188,11 +268,17 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wTX-rv-UTD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="462" y="816"/>
+            <point key="canvasLocation" x="444" y="568"/>
         </scene>
     </scenes>
     <resources>
         <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemGray4Color">
             <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
