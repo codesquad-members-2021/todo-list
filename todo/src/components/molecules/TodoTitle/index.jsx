@@ -16,8 +16,8 @@ const LeftDiv = styled.div`
   display: flex;
   place-items: center;
 `;
-// newInputClickHandler?????
-const TodoTitle = ({ children, itemCount, newInputClickHandler, ...props }) => (
+
+const TodoTitle = ({ children, itemCount, ...props }) => (
   <WrapDiv>
     <LeftDiv>
       <Span _fontSize="20px" _fontWeight="700">
@@ -27,7 +27,6 @@ const TodoTitle = ({ children, itemCount, newInputClickHandler, ...props }) => (
     </LeftDiv>
     <div>
       <ButtonList
-        newInputClickHandler={newInputClickHandler}
         isIcon={"small"}
         addTodo={props.addTodo}
         columnId={props.columnId}
