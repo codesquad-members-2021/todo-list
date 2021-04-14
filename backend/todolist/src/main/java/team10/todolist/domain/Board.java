@@ -53,11 +53,11 @@ public class Board {
         return isDeleted;
     }
 
-    public void delete(){
+    public void delete() {
         isDeleted = 1;
     }
 
-    public void update(BoardDto boardDto){
+    public void update(BoardDto boardDto) {
         this.title = boardDto.getTitle();
         this.category = boardDto.getCategory();
         this.contents = boardDto.getContents();
