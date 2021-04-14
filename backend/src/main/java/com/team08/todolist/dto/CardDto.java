@@ -1,6 +1,7 @@
 package com.team08.todolist.dto;
 
 import com.team08.todolist.DateTimeUtils;
+import com.team08.todolist.model.Card;
 
 import java.time.LocalDateTime;
 
@@ -13,14 +14,16 @@ public class CardDto {
     private boolean isApp;
     private LocalDateTime createdDateTime;
     private Integer position;
+    private Long columnId;
 
-    public CardDto(Long cardId, String title, String content, boolean isApp, String createdTime, Integer position) {
+    public CardDto(Long cardId, String title, String content, boolean isApp, String createdTime, Integer position, Long columnId) {
         this.cardId = cardId;
         this.title = title;
         this.content = content;
         this.isApp = isApp;
         this.createdDateTime = reformatByPattern(createdTime);
         this.position = position;
+        this.columnId = columnId;
     }
 
     public Long getCardId() {
@@ -45,6 +48,14 @@ public class CardDto {
 
     public Integer getPosition() {
         return position;
+    }
+
+    public Long getColumnId() {
+        return columnId;
+    }
+
+    public Card toEntity(){
+           return new Card(null, "woody", title, content, createdDateTime, isApp, columnId, position);
     }
 
     @Override

@@ -28,11 +28,11 @@ public class ApiColumnController {
     public List<CardDto> column(@PathVariable Long columnId) {
         List<CardDto> cards = new ArrayList<>();
         cards.add(new CardDto(1L, "title1",
-                "content1", true, DateTimeUtils.formatByPattern(LocalDateTime.now()), 65535));
+                "content1", true, DateTimeUtils.formatByPattern(LocalDateTime.now()), 65535, 1L));
         cards.add(new CardDto(2L, "title2",
-                "content2", true, DateTimeUtils.formatByPattern(LocalDateTime.now()), 65535 * 2));
+                "content2", true, DateTimeUtils.formatByPattern(LocalDateTime.now()), 65535 * 2, 1L));
         cards.add(new CardDto(3L, "title3",
-                "content3", false, DateTimeUtils.formatByPattern(LocalDateTime.now()), 65535 * 4));
+                "content3", false, DateTimeUtils.formatByPattern(LocalDateTime.now()), 65535, 2L));
         return cards;
     }
 }
