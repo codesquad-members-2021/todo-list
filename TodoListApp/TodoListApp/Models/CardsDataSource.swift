@@ -40,6 +40,14 @@ class CardsDataSource: NSObject, UITableViewDataSource {
         return cell
     }
     
+    func dragItems(for indexPath: IndexPath) -> [UIDragItem] {
+        let card = cards[indexPath.section]
+        let itemProvider = NSItemProvider(object: card)
+        let dragItem = UIDragItem(itemProvider: itemProvider)
+        dragItem.localObject = card
+        return [dragItem]
+    }
+    
     func insert(_ card: Card, at index: Int) {
         cards.insert(card, at: index)
     }

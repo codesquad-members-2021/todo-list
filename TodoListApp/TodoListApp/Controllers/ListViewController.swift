@@ -21,6 +21,8 @@ class ListViewController: UIViewController, ListViewControllerProtocol, PopupVie
         
         cardTableView.dataSource = cardsDataSource
         cardTableView.delegate = self
+        cardTableView.dragDelegate = self
+        
         cardTableView.register(CardCell.nib(), forCellReuseIdentifier: CardCell.identifier)
         cardTableView.sectionFooterHeight = 0.0
         
@@ -68,5 +70,28 @@ class ListViewController: UIViewController, ListViewControllerProtocol, PopupVie
         let config = UISwipeActionsConfiguration(actions: [deleteAction])
         config.performsFirstActionWithFullSwipe = false
         return config
+    }
+}
+
+//MARK: - UITableViewDragDelegate
+extension ListViewController: UITableViewDragDelegate {
+    func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+        let dragCoordinator = CacheDragCoordinator(sourceIndexPath: indexPath)
+        session.localContext = dragCoordinator
+        return cardsDataSource.dragItems(for: indexPath)
+    }
+    
+    func tableView(_ tableView: UITableView, dragSessionDidEnd session: UIDragSession) {
+        guard let dragCoordinator = session.localContext as? CacheDragCoordinator,
+              dragCoordinator.dragCompleted == true,
+              dragCoordinator.isReordering == false else {
+            return
+        }
+        let sourceIndexPath = dragCoordinator.sourceIndexPath
+        tableView.performBatchUpdates({
+            cardsDataSource.deleteCard(at: sourceIndexPath.section)
+            tableView.deleteSections(NSIndexSet(index: sourceIndexPath.section) as IndexSet, with: .automatic)
+        }, completion: nil)
+        updateBadgeCount()
     }
 }
