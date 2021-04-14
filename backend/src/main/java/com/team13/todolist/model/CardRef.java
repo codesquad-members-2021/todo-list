@@ -4,7 +4,7 @@ import org.springframework.data.relational.core.mapping.Table;
 
 import java.util.Objects;
 
-@Table("COLUMN_CARD")
+@Table("column_card")
 public class CardRef {
 
     private Long card;
