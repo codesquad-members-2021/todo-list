@@ -9,8 +9,8 @@ const ColumnTitleStyle = styled.div`
     display: flex;
     position: relative;
     .title__span {
-        font-size: 1.3rem;
-        font-weight: 600;
+        font-size: 1.1rem;
+        font-weight: bold;
     }
     .title__count {
         margin: 0 8px; 
@@ -24,7 +24,7 @@ const ColumnTitleStyle = styled.div`
     }
 `
 const IconStyle = styled.div`
-    width: 40px;
+    width: 46px;
     position: absolute;
     top: 5px;
     right: 8px;
