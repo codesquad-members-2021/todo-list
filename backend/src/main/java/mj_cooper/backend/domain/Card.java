@@ -2,26 +2,24 @@ package mj_cooper.backend.domain;
 
 import org.springframework.data.annotation.Id;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-
-public class Todo {
+public class Card {
 
     @Id
-    private Long id;
-    private int vertical;
+    private Long cardId;
+    private Long category;
     private String title;
     private String contents;
 
-    public Todo() {
+
+    public Card() {
     }
 
-    public Todo(String title) {
+    public Card(String title) {
         this.title = title;
     }
 
-    public Long getId() {
-        return id;
+    public Long getCardId() {
+        return cardId;
     }
 
     public String getTitle() {
@@ -32,8 +30,12 @@ public class Todo {
         return contents;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Long getCategory() {
+        return category;
+    }
+
+    public void setCardId(Long cardId) {
+        this.cardId = cardId;
     }
 
     public void setTitle(String title) {
@@ -44,12 +46,17 @@ public class Todo {
         this.contents = contents;
     }
 
+    public void setCategory(Long category) {
+        this.category = category;
+    }
+
     @Override
     public String toString() {
-        return "Todo{" +
-                "id=" + id +
-                ", column=" + vertical +
+        return "Card{" +
+                "cardId=" + cardId +
+                ", category=" + category +
                 ", title='" + title + '\'' +
+                ", contents='" + contents + '\'' +
                 '}';
     }
 }
