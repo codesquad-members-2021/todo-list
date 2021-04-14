@@ -11,10 +11,10 @@ public class Card {
     String content;
     LocalDateTime createdTime;
 
-    public Card(String title, String content, LocalDateTime createdTime) {
+    public Card(String title, String content) {
         this.title = title;
         this.content = content;
-        this.createdTime = createdTime;
+        this.createdTime = LocalDateTime.now();
     }
 
     public Long getId() {
@@ -45,12 +45,20 @@ public class Card {
         this.createdTime = createdTime;
     }
 
-    public Card updateCard(Card updateCard) {
-        this.title = updateCard.title;
-        this.content = updateCard.content;
+    public Card updateCard(String title, String content) {//card객체를 받는걸로 수
+        this.title = title;
+        this.content = content;
 
         return this;
     }
 
-
+    @Override
+    public String toString() {
+        return "Card{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", createdTime=" + createdTime +
+                '}';
+    }
 }
