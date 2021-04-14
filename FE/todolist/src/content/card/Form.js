@@ -1,7 +1,7 @@
-import {useEffect, useRef, useState} from 'react';
+import { useRef, useState } from 'react';
 import styled from 'styled-components'
-import CardInput from './CardInput'
-import CardButton from './CardButton'
+import FormInput from './FormInput'
+import FormButton from './FormButton'
 // import Icon from '../../utilComponent/Icon.js'
 
 const FormStyle = styled.div`
@@ -9,6 +9,7 @@ const FormStyle = styled.div`
     box-sizing: border-box;
     width: 308px;
     padding: 16px;
+    border: 1px solid #0075DE;
     border-radius: 6px;
     input:disabled {
         background: #fff;
@@ -16,31 +17,29 @@ const FormStyle = styled.div`
     }
 `
 
-const Form = () => {
-    const [inputs, setInputs] = useState({title: '', content: ''})
+const Form = ({ setIsAddBtnClicked, columnData, setColumnData }) => {
     const [newTodo, setNewTodo] = useState({title: '', content: ''})
 
-    const resetInputState = () => setInputs({title: '', content: ''})
+    const resetInputState = () => {
+        FormInputTitle.current.value = ''
+        FormInputContent.current.value = ''
+    }
     const onChange = ({target}) => setNewTodo({ ...newTodo, [target.name]: target.value })
+ 
     const setInputState = (e) => {
         e.preventDefault();
-        setInputs({ title: newTodo.title, content: newTodo.content })
-        contentInput.current.disabled = true;
-        titleInput.current.disabled = true;
+        setIsAddBtnClicked(false)
+        setColumnData({ ...columnData, 
+            cardList : [{...newTodo, author: 'web'}, ...columnData.cardList ]
+        })
     }
-
-    const titleInput = useRef();
-    const contentInput = useRef();
-
-    useEffect(() => {
-        titleInput.current.value = inputs.title;
-        contentInput.current.value = inputs.content;
-    }, [inputs])
+    const FormInputTitle = useRef()
+    const FormInputContent = useRef()
 
     return (
         <FormStyle>
-            <CardInput titleInput={titleInput} contentInput={contentInput} onChange={onChange}/>
-            <CardButton resetInputState={resetInputState} setInputState={setInputState} />
+            <FormInput onChange={onChange} FormInputTitle={FormInputTitle} FormInputContent={FormInputContent}/>
+            <FormButton resetInputState={resetInputState} setInputState={setInputState} />
         </FormStyle>
     )
 }
