@@ -57,6 +57,13 @@ class CardsDataSource: NSObject, UITableViewDataSource {
         cards.insert(newCard, at: 0)
     }
     
+    func moveCard(at sourceIndex: Int, to destinationIndex: Int) {
+        guard sourceIndex != destinationIndex else { return }
+        let card = cards[sourceIndex]
+        cards.remove(at: sourceIndex)
+        cards.insert(card, at: destinationIndex)
+    }
+    
     func deleteCard(at index: Int) {
         cards.remove(at: index)
     }
