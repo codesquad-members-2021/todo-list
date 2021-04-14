@@ -51,17 +51,48 @@ const ButtonList = ({
       등록
     </MediumButton>
   );
-  const currentButton = isIcon ? (
-    <>
-      {plusButton}
-      {closeButton}
-    </>
-  ) : (
-    <>
-      {cancelButtons}
-      {enrollButtons}
-    </>
+  const popCancelButton = (
+    <MediumButton
+      _background="#fff"
+      _color="#3c4243"
+      // onClick={() => patchClickHandler()}
+    >
+      취소
+    </MediumButton>
   );
+  const popEnrollButton = (
+    <MediumButton
+      _background="#62afb7"
+      _color="white"
+      // onClick={() => patchClickHandler()}
+    >
+      확인
+    </MediumButton>
+  );
+  let currentButton;
+  if (isIcon === "small") {
+    currentButton = (
+      <>
+        {plusButton}
+        {closeButton}
+      </>
+    );
+  } else if (isIcon === "popup") {
+    currentButton = (
+      <>
+        {popCancelButton}
+        {popEnrollButton}
+      </>
+    );
+  } else {
+    currentButton = (
+      <>
+        {cancelButtons}
+        {enrollButtons}
+      </>
+    );
+  }
+
   return <Div>{currentButton}</Div>;
 };
 

@@ -57,7 +57,9 @@ const TodoSwitch = ({
   } else {
     template = (
       <div onClick={toggleActions2.toggle}>
-        <TodoListItem {...{ id, title, content, author, setHistories }} />
+        <TodoListItem
+          {...{ columnId, id, title, content, author, setHistories }}
+        />
       </div>
     );
   }

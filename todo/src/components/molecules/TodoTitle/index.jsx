@@ -28,7 +28,7 @@ const TodoTitle = ({ children, itemCount, newInputClickHandler, ...props }) => (
     <div>
       <ButtonList
         newInputClickHandler={newInputClickHandler}
-        isIcon={true}
+        isIcon={"small"}
         addTodo={props.addTodo}
         columnId={props.columnId}
       ></ButtonList>

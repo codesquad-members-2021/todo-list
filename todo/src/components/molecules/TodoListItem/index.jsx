@@ -1,10 +1,10 @@
-import React from "react";
-import { useRef } from "react";
+import React, { useRef, useState } from "react";
 import SmallButton from "../../atoms/Buttons/SmallButton";
 import Image from "../../atoms/Image";
 import Span from "../../atoms/Span";
 import closeButton from "../../../images/closeButton.svg";
 import styled from "styled-components";
+import axios from "axios";
 
 const Div = styled.div`
   position: relative;
@@ -16,11 +16,18 @@ const Div = styled.div`
   border-radius: 5px;
   cursor: pointer;
 `;
-const TodoListItem = ({ title, content, author }) => {
+const TodoListItem = ({ columnId, id, title, content, author }) => {
   const ToItem = useRef();
-
+  const [todos, setTodos] = useState();
   const clickClose = (e) => {
     console.log("closeclick");
+  };
+
+  const deleteClickHandler = async () => {
+    const response = await axios.delete(`/todos?columnId=${columnId}&id=${id}`);
+    console.log("delete 는", response);
+    console.log("delete 는", response.data);
+    setTodos(response.data);
   };
 
   return (
@@ -28,7 +35,10 @@ const TodoListItem = ({ title, content, author }) => {
       <SmallButton
         _position="absolute"
         _right="3px"
-        onClick={clickClose}
+        // onClick={clickClose}
+        onClick={() => {
+          deleteClickHandler();
+        }}
         onMouseOver={() => (
           (ToItem.current.style.backgroundColor = "#ffe7ef"),
           (ToItem.current.style.border = "2px solid #f20553")
