@@ -1,6 +1,8 @@
 # todo-list
 그룹프로젝트 #1
 
+[배포 주소](http://ec2-54-180-109-154.ap-northeast-2.compute.amazonaws.com:8080/)
+
 ## 팀 13 협업 규칙
 
 ### 이슈
@@ -32,92 +34,187 @@
 
 ## api 정리 (Work in Process)
 
+### 기본 객체
+
+#### Card
 ```json
 {
-    "user" : {
-        "id" : 1,
-        "name" : "k"
+    "card": {
+        "columnId": 1,
+        "cardId": 2,
+        "previousCardId": 0,
+        "title": "제목",
+        "body": "내용"
     }
 }
 ```
 
-GET /api/card/:cid
+#### Column
+
+```json
+{
+    "column": {
+        "columnId": 1,
+        "name": "해야 할 일",
+        "cards": [
+            {
+                "columnId": 1,
+                "cardId": 2,
+                "previousCardId": 0,
+                "title": "GitHub 공부하기",
+                "body": "add, commit, push"
+            },
+            {
+                "columnId": 1,
+                "cardId": 1,
+                "previousCardId": 2,
+                "title": "블로그에 포스팅할 것",
+                "body": "GitHub 공부 내용"
+            }
+        ]
+    }
+}
+
+```
+
+### 요청 주소
+
+`GET /api/columns`
+
+모든 칼럼의 정보를 가져옵니다.
+
+```json
+{
+    "columns": [
+        {
+            "columnId": 1,
+            "name": "해야 할 일",
+            "cards": [
+                {
+                    "columnId": 1,
+                    "cardId": 2,
+                    "previousCardId": 0,
+                    "title": "GitHub 공부하기",
+                    "body": "add, commit, push"
+                },
+                {
+                    "columnId": 1,
+                    "cardId": 1,
+                    "previousCardId": 2,
+                    "title": "블로그에 포스팅할 것",
+                    "body": "GitHub 공부 내용"
+                }
+            ]
+        },
+        {
+            "columnId": 2,
+            "name": "하고 있는 일",
+            "cards": [
+                {
+                    "columnId": 2,
+                    "cardId": 3,
+                    "previousCardId": 0,
+                    "title": "HTML/CSS 공부하기",
+                    "body": "input 태그 실습"
+                }
+            ]
+        },
+        {
+            "columnId": 3,
+            "name": "완료된 일",
+            "cards": []
+        }
+    ]
+}
+
+```
+
+`GET /api/columns/:columnId`
+
+하나의 칼럼의 정보를 가져옵니다.
+
+```json
+{
+    "column": {
+        "columnId": 1,
+        "name": "해야 할 일",
+        "cards": [
+            {
+                "columnId": 1,
+                "cardId": 2,
+                "previousCardId": 0,
+                "title": "GitHub 공부하기",
+                "body": "add, commit, push"
+            },
+            {
+                "columnId": 1,
+                "cardId": 1,
+                "previousCardId": 2,
+                "title": "블로그에 포스팅할 것",
+                "body": "GitHub 공부 내용"
+            }
+        ]
+    }
+}
+
+```
+
+`POST /api/columns/:columnId/cards`
+
+해당 칼럼에 카드를 추가합니다.
+
+Request Body
+
 ```json
 {
     "card" : {
-        "id" : 1,
-        "title" : "제목",
-        "body" : "내용",
-        "author" : {
-
-        },
-        "column" : "",
-    },
+        "title" : "추가한 카드 제목",
+        "body" : "추가한 카드 내용"
+    }
 }
+
 ```
 
-column
+Response Body
+
 ```json
 {
-    "column" : {
-        "id" : 1,
-        "name" : "해야할 일",
-    },
+    "card": {
+        "columnId": 1,
+        "cardId": 9,
+        "previousCardId": 0,
+        "title" : "추가한 카드 제목",
+        "body" : "추가한 카드 내용"
+    }
 }
 
 ```
 
-`GET /api/columns`
+`DELETE /api/columns/:columnId/cards/:cardId`
+
+해당하는 칼럼의 카드를 삭제합니다.
+
+`PUT /api/columns/:columnId/cards/:cardId`
+
+카드의 내용을 수정합니다. 현재 카드 내용만 수정됩니다.
+
 ```json
 {
-    "columns" : [
-        {
-            "id" : 1,
-            "name" : "해야할 일"
-        },{
-            "id" : 2,
-            "name" : "하고 있는 일"
-        },{
-            "id" : 3,
-            "name" : "완료한 일"
-        }
-    ]
+    "card": {
+        "columnId": 1,
+        "cardId": 2,
+        "previousCardId": 0,
+        "title": "카드 수정",
+        "body": "카드 수정"
+    }
 }
 
 ```
 
+`GET /api/activities` (Not Working)
 
-`GET /api/cards`
-```json
-{
-    "cards" : [
-        {
-            "id":1,
-            "title":"GitHub 공부하기",
-            "body":"add, commmit, push",
-            "columnId":1
-        },{
-            "id":2,
-            "title":"블로그에 포스팅할 것",
-            "body":"GitHub 공부내용 모던 자바스크립트 1장 공부내용",
-            "columnId":1
-        },{
-            "id":3,
-            "title":"모던 자바스크립트 예제 실습",
-            "body":"1장 예제 내용 실습 후, 커밋까지",
-            "columnId":2
-        },{
-            "id":4,
-            "title":"HTML/CSS 공부하기",
-            "body":"input 태크 실습+노션에 유형 정리",
-            "columnId":2
-        }
-    ]
-}
+활동 내역을 보냅니다.
 
-```
-
-`GET /api/activities`
 ```json
 {
     "activities" : [
