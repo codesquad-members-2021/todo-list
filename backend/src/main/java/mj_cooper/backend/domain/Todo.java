@@ -32,6 +32,10 @@ public class Todo {
         return contents;
     }
 
+    public int getVertical() {
+        return vertical;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }

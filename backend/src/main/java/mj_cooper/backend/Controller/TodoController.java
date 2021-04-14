@@ -1,11 +1,12 @@
 package mj_cooper.backend.Controller;
 
-import com.google.gson.*;
-import mj_cooper.backend.domain.User;
-import mj_cooper.backend.domain.Vertical;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import mj_cooper.backend.domain.Todo;
-import mj_cooper.backend.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import mj_cooper.backend.domain.Vertical;
+import mj_cooper.backend.service.TodoService;
+import mj_cooper.backend.service.VerticalService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,17 +18,17 @@ import java.util.Map;
 @RestController
 @RequestMapping("/verticals/{verticalId}/todos")
 public class TodoController {
+    private final VerticalService verticalService;
+    private final TodoService todoService;
 
-    @Autowired
-    UserRepository userRepository;
-
-    public TodoController() {
+    public TodoController(VerticalService verticalService, TodoService todoService) { //JDBC : TODO 의존성 주입방법 찾아보기
+        this.verticalService = verticalService;
+        this.todoService = todoService;
     }
 
     @GetMapping
     public String getAllTodos(@PathVariable(value = "verticalId") final Long verticalId) {
-        User user = userRepository.findById(1L).get();
-        Vertical vertical = user.getVertical(verticalId);
+        Vertical vertical = verticalService.findVertical(verticalId);
 
         // Json 변환 로직
         Gson gson = new Gson();
@@ -45,10 +46,8 @@ public class TodoController {
 
     @GetMapping("/{todoId}")
     public ResponseEntity<String> getTodoById(@PathVariable(value = "verticalId") final Long verticalId,
-                                            @PathVariable(value = "todoId") final Long todoId) {
-
-        User user = userRepository.findById(1L).get();
-        Vertical vertical = user.getVertical(verticalId);
+                                              @PathVariable(value = "todoId") final Long todoId) {
+        Vertical vertical = verticalService.findVertical(verticalId);
 
         // Json 변환 로직
         Gson gson = new Gson();
@@ -66,25 +65,9 @@ public class TodoController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public String createTodo(@RequestBody Todo todo, @PathVariable(value = "verticalId") final Long verticalId) {
-
-        User user = userRepository.findById(1L).get();
-        Vertical vertical = user.getVertical(verticalId);
-
-        vertical.addTodo(todo);
-
-        return userRepository.save(user).toString();
-
-//        // Json 변환 로직
-//        Gson gson = new Gson();
-//        JsonParser parser = new JsonParser();
-//
-//        Map<String, Todo> response = new HashMap<>();
-//        response.put("todo", vertical.getTodo(todo));
-//
-//        JsonObject object = new JsonObject();
-//        object.addProperty("status", "success");
-//        object.add("data", parser.parse(gson.toJson(response)));
+    public String createTodo(@RequestBody Todo todo,
+                             @PathVariable(value = "verticalId") final Long verticalId) {
+        return todoService.addTodo(1L, verticalId, todo);
     }
 
     @PutMapping("/{todoId}")
@@ -92,25 +75,13 @@ public class TodoController {
     public void updateTodo(@RequestBody final Todo todo,
                            @PathVariable(value = "verticalId") final Long verticalId,
                            @PathVariable(value = "todoId") final Long todoId) {
-
-        User user = userRepository.findById(1L).get();
-        Vertical vertical = user.getVertical(verticalId);
-        Todo foundTodo = vertical.getTodo(todoId);
-
-        foundTodo.setTitle(todo.getTitle());
-
-        userRepository.save(user);
+        todoService.updateTodo(1L, verticalId, todoId, todo);
     }
 
     @DeleteMapping("/{todoId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteTodo(@PathVariable(value = "verticalId") final Long verticalId,
                            @PathVariable(value = "todoId") final Long todoId) {
-
-        User user = userRepository.findById(1L).get();
-        Vertical vertical = user.getVertical(verticalId);
-        vertical.deleteTodo(todoId);
-
-        userRepository.save(user);
+        todoService.deleteTodo(1L, verticalId, todoId);
     }
 }
