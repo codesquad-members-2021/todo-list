@@ -42,6 +42,7 @@ class ListViewController: UIViewController, ListViewControllerProtocol, PopupVie
     func registerButtonPressed(title: String, notes: String) {
         cardsDataSource.registerCard(title: title, notes: notes)
         refreshTableView()
+        updateBadgeCount()
     }
     
     @objc func showPopupViewController() {
@@ -51,5 +52,9 @@ class ListViewController: UIViewController, ListViewControllerProtocol, PopupVie
         popupVC.preferredContentSize = CGSize(width: 400.0, height: 175.0)
         popupVC.delegate = self
         self.present(popupVC, animated: true, completion: nil)
+    }
+    
+    func updateBadgeCount() {
+        headerView.badgeButton.setTitle("\(cardsDataSource.cardsCount)", for: .normal)
     }
 }
