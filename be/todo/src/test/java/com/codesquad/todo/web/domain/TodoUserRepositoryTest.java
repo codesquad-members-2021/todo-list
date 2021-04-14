@@ -1,11 +1,28 @@
 package com.codesquad.todo.web.domain;
 
+import com.codesquad.todo.web.exceptions.ColumnNotFoundException;
+import com.codesquad.todo.web.exceptions.TaskNotFoundException;
+import com.codesquad.todo.web.exceptions.UserNotFoundException;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.jdbc.DataJdbcTest;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJdbcTest
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 class TodoUserRepositoryTest {
 
-/*    private static final Logger logger = LoggerFactory.getLogger(TodoUserRepositoryTest.class);
+    private static final Logger logger = LoggerFactory.getLogger(TodoUserRepositoryTest.class);
 
     @Autowired
     private UserRepository userRepository;
@@ -37,12 +54,11 @@ class TodoUserRepositoryTest {
         return userRepository.save(todoUser);
     }
 
-    private TodoUser createColumns(TodoUser todoUser) {
+    private void createColumns(TodoUser todoUser) {
         todoUser.addColumn("TODO");
         todoUser.addColumn("IN_PROGRESS");
         todoUser.addColumn("DONE");
         userRepository.save(todoUser);
-        return todoUser;
     }
 
     @Test
@@ -170,5 +186,5 @@ class TodoUserRepositoryTest {
         todoTask = taskRepository.findById(taskId).orElseThrow(TaskNotFoundException::new);
         assertThat(todoTask.isSameTitle(expectedTodoTask)).isTrue();
         assertThat(todoTask.isSameContent(expectedTodoTask)).isTrue();
-    }*/
+    }
 }
