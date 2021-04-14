@@ -16,7 +16,7 @@ public class Board {
     @Column(value = "date_time")
     private LocalDateTime dateTime;
     @Column(value = "is_deleted")
-    private int isDeleted = 1;
+    private int isDeleted = 0;
 
     protected Board() {
     }
@@ -50,6 +50,10 @@ public class Board {
 
     public int getIsDeleted() {
         return isDeleted;
+    }
+
+    public void delete(){
+        isDeleted = 1;
     }
 
     @Override
