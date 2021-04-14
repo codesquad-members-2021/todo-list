@@ -26,6 +26,9 @@ const TodoListInput = ({
   content,
   toggleActions2,
   toggleActions,
+  columnName,
+  setTodos,
+  setHistories
 }) => {
   const [titleValue, setTitle] = useState(title);
   const [contentValue, setContent] = useState(content);
@@ -36,12 +39,27 @@ const TodoListInput = ({
   };
 
   const patchClickHandler = async () => {
-    const title = titleRef.current.value;
-    const content = contentRef.current.value;
-    const a = await axios.patch(
-      `/todos?columnId=${columnId}&id=${id}&title=${title}&content=${content}`
+    const currentTitle = titleRef.current.value;
+    const currentContent = contentRef.current.value;
+    const response = await axios.patch(
+      '/todos',
+      { columnId, id, title: currentTitle, content: currentContent }
     );
-    console.log(a);
+
+
+    setHistories(histories => {
+      const newHistory = {
+        index: histories[histories.length - 1].index + 1,
+        action: '수정',
+        currentColumn: columnName,
+        currentTitle,
+        currentContent,
+        prevTitle: title,
+        user: 'Beemo'
+      }
+      return histories.concat(newHistory)
+    })
+    setTodos(() => response.data);
   };
 
   return (

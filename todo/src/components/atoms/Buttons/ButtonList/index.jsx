@@ -43,7 +43,10 @@ const ButtonList = ({
     <MediumButton
       _background="#62afb7"
       _color="white"
-      onClick={() => patchClickHandler()}
+      onClick={async () => {
+        await patchClickHandler();
+        toggleActions2.toggle();
+      }}
     >
       등록
     </MediumButton>

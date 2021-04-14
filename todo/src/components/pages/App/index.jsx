@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import useToggle from "../../../hooks/useToggle";
-import axios from "axios";
 import Header from "../../molecules/Header";
 import HistoryList from "../../organisms/HistoryList";
 import TodoListWrap from "../../templates/TodoListWrap";
+import loadItems from '../../../serviceUtils/loadItems';
 import styled from "styled-components";
 
 const Div = styled.div`
@@ -12,28 +12,21 @@ const Div = styled.div`
   border-radius: 10px;
 `;
 
-const getAxios = async (setState, url) => {
-  const { data } = await axios.get(url);
-  setState(data);
-};
-
 function App() {
   const [isOpen, isOpenActions] = useToggle(false);
   const [todos, setTodos] = useState([]);
+  const [histories, setHistories] = useState([]);
 
   useEffect(() => {
-    getAxios(setTodos, "/todos");
-  }, []);
-
-  useEffect(() => {
-    console.log(todos);
-  }, [todos]);
+    loadItems(setTodos, "/todos");
+    loadItems(setHistories, '/logs');
+  }, [])
 
   return (
     <Div>
-      <HistoryList isOpen={isOpen} isOpenActions={isOpenActions} />
+      <HistoryList  {...{ isOpen, isOpenActions, histories }} />
       <Header isOpenActions={isOpenActions} />
-      <TodoListWrap todos={todos}></TodoListWrap>
+      <TodoListWrap {...{ todos, setTodos, setHistories }} ></TodoListWrap>
     </Div>
   );
 }

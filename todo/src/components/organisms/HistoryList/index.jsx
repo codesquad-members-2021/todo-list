@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from "styled-components";
 import SmallButton from '../../atoms/Buttons/SmallButton';
 import Image from '../../atoms/Image';
@@ -22,7 +22,8 @@ const ButtonDiv = styled.div`
   text-align: end;
 `;
 
-const HistoryList = ({ isOpenActions, isOpen }) => {
+const HistoryList = ({ histories, isOpenActions, isOpen }) => {
+
   return (
     <WrapDiv isOpen={isOpen}>
       <ButtonDiv>
@@ -31,7 +32,9 @@ const HistoryList = ({ isOpenActions, isOpen }) => {
         </SmallButton>
       </ButtonDiv>
       <div>
-        <HistoryItem />
+        {histories.map(({ index, ...itemObject }) =>
+          <HistoryItem key={index} itemObject={itemObject} />
+        )}
       </div>
     </WrapDiv>
   )

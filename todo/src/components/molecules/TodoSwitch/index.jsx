@@ -11,6 +11,9 @@ const TodoSwitch = ({
   content,
   author,
   toggleActions,
+  setTodos,
+  setHistories,
+  columnName
 }) => {
   const [isInput, toggleActions2] = useToggle(false);
 
@@ -18,13 +21,13 @@ const TodoSwitch = ({
   if (isInput || isClicked) {
     template = (
       <TodoListInput
-        {...{ columnId, id, title, content, toggleActions2, toggleActions }}
+        {...{ setTodos, columnName, columnId, id, title, content, toggleActions2, toggleActions, setHistories }}
       />
     );
   } else {
     template = (
       <div onClick={toggleActions2.toggle}>
-        <TodoListItem {...{ id, title, content, author }} />
+        <TodoListItem {...{ id, title, content, author, setHistories }} />
       </div>
     );
   }

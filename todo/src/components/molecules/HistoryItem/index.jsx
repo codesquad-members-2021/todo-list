@@ -20,8 +20,14 @@ const TextDiv = styled.div`
   }
 `;
 
-const HistoryItem = () => (
-  <WrapDiv>
+const HistoryItem = (props) => {
+
+  const { user, userImage, prevTitle, currentTitle,
+    action, prevColumn, currentColumn, Date } = props;
+
+  console.log(props)
+
+  return (<WrapDiv>
     <ImgDiv>
       <Image _width="40px" src={userIcon} />
     </ImgDiv>
@@ -30,8 +36,8 @@ const HistoryItem = () => (
       <div><Span>해야할 일에 HTML/CSS 공부하기를 등록하였습니다</Span></div>
       <div><Span _fontColor="#777777">1분 전</Span></div>
     </TextDiv>
-  </WrapDiv>
-);
+  </WrapDiv>);
+};
 
 
 export default HistoryItem;

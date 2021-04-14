@@ -11,12 +11,12 @@ const Wrap = styled.div`
   border-radius: 10px;
 `;
 
-const TodoContent = ({ todos }) => {
+const TodoContent = ({ setHistories, todos, setTodos }) => {
   return (
     <Wrap>
       {todos.map(({ columnId, columnName, items }) => {
         return (
-          <TodoListColumn key={columnId} {...{ columnId, columnName, items }} />
+          <TodoListColumn key={columnId} {...{ setTodos, columnId, columnName, items, setHistories }} />
         );
       })}
     </Wrap>

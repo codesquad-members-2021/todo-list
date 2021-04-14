@@ -6,14 +6,14 @@
       "items": [
         {
           "id": 1,
-          "title": "GitHub 공부하기",
-          "content": "add, commit 공부하기",
+          "title": "GitHub 공부하기fsfsㅂㅂㅂ",
+          "content": "add, commit 공부하기dffddf11",
           "author": "Beemo"
         },
         {
           "id": 2,
-          "title": "GitHub 공부하기2",
-          "content": "add, commit 공부하기2",
+          "title": "1111",
+          "content": "2323eeqweqw",
           "author": "Daisy"
         }
       ]
@@ -24,14 +24,14 @@
       "items": [
         {
           "id": 3,
-          "title": "비모",
-          "content": "비모2",
+          "title": "ㅂㅂㅂㅂㅂㅂㅂㅂㅂㄷㄷㅂㅂㅂㅂㅂ",
+          "content": "ㅂㅂ",
           "author": "Daisy"
         },
         {
           "id": 4,
-          "title": "비동기 공부하기2",
-          "content": "add, 비동기 공부하기2",
+          "title": "11ㅂㄱㄱㅂ",
+          "content": "34433423523ㅡㅓㅎㅎ",
           "author": "Tami"
         }
       ],
@@ -44,14 +44,14 @@
       "items": [
         {
           "id": 5,
-          "title": "완료한 공부하기",
-          "content": "add, 완료한 공부하기",
+          "title": "완료한 공부하ㅂㅂㅂ",
+          "content": "add, 완료한 공부하기sㅂdfsdfdsffsㅂㅂㄱㄱd",
           "author": "Tami"
         },
         {
           "id": 6,
-          "title": "완료한 공부하기2",
-          "content": "add, 완료한 공부하기2",
+          "title": "완료한 공부하기2qwqw1212",
+          "content": "add, 완료한 공부하기2sdfsdfsfdㄱㄱㄱ",
           "author": "Beemo"
         }
       ]
@@ -62,6 +62,30 @@
       "id": 1,
       "name": "Beemo",
       "role": "Gatekeeper"
+    }
+  ],
+  "logs": [
+    {
+      "index": 1,
+      "user": "BMO",
+      "userImage": "",
+      "prevTitle": "비모",
+      "currentTitle": "데이지",
+      "action": "등록",
+      "prevColumn": "하고 있는 일",
+      "currentColumn": "",
+      "Date": ""
+    },
+    {
+      "index": 2,
+      "user": "Jake",
+      "userImage": "",
+      "prevTitle": "HTML 공부하기",
+      "currentTitle": "CSS 공부하기",
+      "action": "수정",
+      "prevColumn": "하고 있는 일",
+      "currentColumn": "",
+      "Date": ""
     }
   ]
 }
