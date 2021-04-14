@@ -37,7 +37,7 @@ const StyledAccentButton = styled(TranslateBtn)`
 const AccentButton = ({ children, clickHandler, isAble }) => {
     return (
         <StyledAccentButton
-            onClick={clickHandler && clickHandler}
+            onClick={clickHandler}
             isAble={isAble}
         >
             {children}

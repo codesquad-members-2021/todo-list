@@ -24,7 +24,7 @@ const StyledNormalButton = styled(TranslateBtn)`
 
 const NormalButton = ({ children, clickHandler }) => {
     return (
-        <StyledNormalButton onClick={clickHandler && clickHandler}>
+        <StyledNormalButton onClick={clickHandler}>
             {children}
         </StyledNormalButton>
     );

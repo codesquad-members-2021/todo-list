@@ -22,6 +22,7 @@ const StyledActivityItemContent = styled.div`
     flex-grow: 1;
     font-family: Noto Sans KR;
     font-size: 14px;
+    line-height: 18px;
 
     .author, .content {
         margin-bottom: 10px;
@@ -36,48 +37,37 @@ const StyledActivityItemContent = styled.div`
     }
 `;
 
-const ActivityItem = (/*{ logData: { author, content } } */) => {
+const ActivityItem = ({ toColumn, fromColumn, title, action, actionUserId, convertTime }) => {
     return (
-        <>
-        {/* 임시, 데이터 핸들링하게되면 하나만 만들어놓기 */}
         <StyledActivityItemWrapper>
             <StyledActivityItem>
                 <img src="/images/smile.png" alt="smile" height="100%" width="32px" />
 
                 <StyledActivityItemContent>
-                    <div className="author">@이름</div>
-                    <div className="content">
-                        <span className="bold">[컬럼이름]</span>에{" "}
-                        <span className="bold">[카드제목]</span>을{" "}
-                        <span className="bold">[동작-등록]</span>하였습니다.
-                    </div>
-                    <div className="time">
-                        1분 전
-                    </div>
+                    <div className="author">@작성자ID-{actionUserId}</div>
+                        {/* action 등록, 변경, 삭제 */}
+                        {action !== "이동" ? (
+                            <div className="content">
+                                <span className="bold">{toColumn}</span>
+                                {action === '등록'
+                                    ? '에'
+                                    : (action === '변경' || action === '삭제') && '에서'
+                                }{' '}
+                                <span className="bold">{title}</span>을{' '}
+                                <span className="bold">{action}</span>하였습니다.
+                            </div>
+                        ) : (
+                            <div className="content">
+                                <span className="bold">{title}</span>를{" "}
+                                <span className="bold">{fromColumn}</span>에서{" "}
+                                <span className="bold">{toColumn}</span>로{" "}
+                                <span className="bold">{action}</span>하였습니다.
+                            </div>
+                        )}
+                    <div className="time">{convertTime}</div>
                 </StyledActivityItemContent>
             </StyledActivityItem>
         </StyledActivityItemWrapper>
-
-        <StyledActivityItemWrapper>
-            <StyledActivityItem>
-                <img src="/images/smile.png" alt="smile" height="100%" width="32px" />
-
-                <StyledActivityItemContent>
-                    <div className="author">@이름</div>
-                    <div className="content">
-                        <span className="bold">[카드제목]</span>를{" "}
-                        <span className="bold">[컬럼이름1]</span>에서{" "}
-                        <span className="bold">[컬럼이름2]</span>로{" "}
-                        <span className="bold">[동작-이동]</span>하였습니다.
-                    </div>
-                    <div className="time">
-                        1분 전
-                    </div>
-                </StyledActivityItemContent>
-
-            </StyledActivityItem>
-        </StyledActivityItemWrapper>
-        </>
     );
 };
 

@@ -1,7 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import ColumnDeleteButton from '../ColumnDeleteButton';
-// import PopupModal from '../../components/common/PopupModal';
 
 const StyledCard = styled.div`
     --background-color: #fff;
@@ -81,7 +80,6 @@ const Card = ({ data, isCardDelHover, onEvents }) => {
                     onMouseEnter={onMouseEnterHandler}
                     onMouseLeave={onMouseLeaveHandler}
                 />
-                {/* <PopupModal isVisible /> */}
             </CardTitle>
             <CardContent>{body}</CardContent>
             <CardAuthor>author by web</CardAuthor>
