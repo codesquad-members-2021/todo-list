@@ -7,7 +7,12 @@
 
 import Foundation
 
-class CardsNetworkCenter {
+protocol NetworkingCards {
+    func getCards(action: @escaping (Dictionary<Int, [Card]>) -> Void)
+    func postCards(card: Card, action: @escaping (Card) -> Void)
+}
+
+class CardsNetworkCenter: NetworkingCards {
     typealias KindOfCards = Dictionary<Int, [Card]>
     
     let networking: Networking
@@ -30,6 +35,8 @@ class CardsNetworkCenter {
             action(card)
         }
     }
+    
+    //TODO: move(PUT), update(PUT), delete(DELETE) 배포 후 추가 예정
     
     private func manufactureCards(rowCards: [Card]) -> KindOfCards {
         var sortedCards = KindOfCards()
