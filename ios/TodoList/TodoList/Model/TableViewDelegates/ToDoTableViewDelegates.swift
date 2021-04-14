@@ -12,6 +12,7 @@ class ToDoTableViewDelegates: NSObject, ToDoCardProtocol {
     
     var list: [ToDoItem] = [] {
         didSet {
+            print("didSet list")
             NotificationCenter.default.post(name: .didChangeToDoCardsList, object: nil)
         }
     }
@@ -35,6 +36,7 @@ class ToDoTableViewDelegates: NSObject, ToDoCardProtocol {
     public func fetchCards() {
         let urlString = Constants.url
         DataManager.requestGet(url: urlString) { (bool, output) in
+            print("fetched card")
             self.list = output.todo
         }
     }

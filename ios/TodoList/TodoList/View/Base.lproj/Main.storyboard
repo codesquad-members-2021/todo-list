@@ -217,7 +217,6 @@
                         <viewLayoutGuide key="safeArea" id="rcf-px-KME"/>
                         <color key="backgroundColor" systemColor="linkColor"/>
                         <constraints>
-                            <constraint firstItem="Frd-Wc-Nt3" firstAttribute="centerX" secondItem="2hR-25-Sij" secondAttribute="centerX" id="EMG-E8-FBg"/>
                             <constraint firstItem="Frd-Wc-Nt3" firstAttribute="trailing" secondItem="2hR-25-Sij" secondAttribute="trailing" id="Pcn-PO-mXj"/>
                             <constraint firstItem="2oI-dt-g3E" firstAttribute="top" secondItem="Frd-Wc-Nt3" secondAttribute="bottom" constant="8" symbolic="YES" id="Rix-qN-yCU"/>
                             <constraint firstItem="2hR-25-Sij" firstAttribute="centerX" secondItem="gGb-6P-LUT" secondAttribute="centerX" id="kGE-Q3-aCb"/>
