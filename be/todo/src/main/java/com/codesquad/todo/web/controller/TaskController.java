@@ -23,6 +23,7 @@ public class TaskController {
         this.taskService = taskService;
     }
 
+    @CrossOrigin
     @PostMapping
     public ResponseEntity<Map<String, Object>> createTask(@PathVariable Long columnId, String taskTitle, String taskContent) {
         Map<String, Object> responseMap = new HashMap<>();
@@ -32,18 +33,21 @@ public class TaskController {
         return ResponseEntity.ok(responseMap);
     }
 
+    @CrossOrigin
     @DeleteMapping("/{taskId}")
     public void removeTask(@PathVariable Long columnId, @PathVariable Long taskId) {
         User user = userService.findUser(1L);
         taskService.removeTask(user, columnId, taskId);
     }
 
+    @CrossOrigin
     @PutMapping("/{taskId}")
     public void updateTask(@PathVariable Long columnId, @PathVariable Long taskId, Task newTask) {
         User user = userService.findUser(1L);
         taskService.updateTask(user, columnId, taskId, newTask);
     }
 
+    @CrossOrigin
     @PutMapping("/{taskId}/move")
     public void moveTask(@PathVariable Long columnId, @PathVariable Long taskId,
                          Long nextColumnId, int newTaskPosition) {
