@@ -8,5 +8,7 @@
 import Foundation
 
 class Constants {
-    public static let url = "http://ec2-54-180-87-91.ap-northeast-2.compute.amazonaws.com:8080/todos"
+    public static let url = "http://13.124.104.156:8080/todos"
+    public static let popUpVCIdentifier = "PopUpViewController"
+    public static let popUpSegueIdentifier = "PopUpSegue"
 }

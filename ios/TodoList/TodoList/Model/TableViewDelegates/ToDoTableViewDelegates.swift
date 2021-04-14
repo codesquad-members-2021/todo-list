@@ -8,6 +8,8 @@
 import UIKit
 
 class ToDoTableViewDelegates: NSObject, ToDoCardProtocol {
+    var popUpViewProtocol: PopUpViewProtocol?
+    
     var list: [ToDoItem] = [] {
         didSet {
             NotificationCenter.default.post(name: .didChangeToDoCardsList, object: nil)
@@ -57,19 +59,16 @@ extension ToDoTableViewDelegates: UITableViewDataSource {
 extension ToDoTableViewDelegates: UITableViewDelegate {
     func tableView(_ tableView: UITableView,
             viewForHeaderInSection section: Int) -> UIView? {
-       let view = tableView.dequeueReusableHeaderFooterView(withIdentifier:
+        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier:
                    "sectionHeader") as! CustomHeader
-       view.title.text = "해야 할 일"
+        view.title.text = "해야 할 일"
         view.displayCurrentCardNumOnBadge(number: self.list.count)
-        
-        view.button.addAction(UIAction.init(handler: { (touch) in
-            let testCard = ["title": "testnownow", "contents": "ASDF", "status": "TODO"]
-            
-            DataManager.requestPost(url: Constants.url, parameter: testCard) { (bool, toDoList) in
-                print(toDoList)
-            }
-            }), for: .touchUpInside)
+        view.button.addTarget(self, action: #selector(firePopUp), for: .touchUpInside)
        return view
+    }
+    
+    @objc func firePopUp() {
+        self.popUpViewProtocol?.triggerPopUp()
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

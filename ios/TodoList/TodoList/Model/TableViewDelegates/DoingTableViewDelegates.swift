@@ -59,7 +59,7 @@ extension DoingTableViewDelegates: UITableViewDelegate {
             viewForHeaderInSection section: Int) -> UIView? {
        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier:
                    "sectionHeader") as! CustomHeader
-       view.title.text = "진행중인 일"
+        view.title.text = "진행중인 일"
         view.displayCurrentCardNumOnBadge(number: self.list.count)
         view.button.addAction(UIAction.init(handler: { (touch) in
             DataManager.requestDelete(url: Constants.url, id: 2) { (success, output) in
