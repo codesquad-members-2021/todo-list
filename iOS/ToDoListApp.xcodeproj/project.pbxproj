@@ -28,7 +28,8 @@
 		FFC61942261D4ED60033D622 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFC61940261D4ED60033D622 /* LaunchScreen.storyboard */; };
 		FFC6197A261EEB1A0033D622 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC61977261EEB1A0033D622 /* Card.swift */; };
 		FFC6197B261EEB1A0033D622 /* CardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC61978261EEB1A0033D622 /* CardManager.swift */; };
-		FFC6197C261EEB1A0033D622 /* States.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC61979261EEB1A0033D622 /* States.swift */; };
+		FFC6197C261EEB1A0033D622 /* Uitility.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC61979261EEB1A0033D622 /* Uitility.swift */; };
+		FFCD3B2926269AEE00319EE1 /* ToDoTableViewDragDropDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCD3B2826269AEE00319EE1 /* ToDoTableViewDragDropDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,7 +56,8 @@
 		FFC61943261D4ED60033D622 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FFC61977261EEB1A0033D622 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		FFC61978261EEB1A0033D622 /* CardManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardManager.swift; sourceTree = "<group>"; };
-		FFC61979261EEB1A0033D622 /* States.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = States.swift; sourceTree = "<group>"; };
+		FFC61979261EEB1A0033D622 /* Uitility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Uitility.swift; sourceTree = "<group>"; };
+		FFCD3B2826269AEE00319EE1 /* ToDoTableViewDragDropDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewDragDropDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				FFC61977261EEB1A0033D622 /* Card.swift */,
-				FFC61979261EEB1A0033D622 /* States.swift */,
+				FFC61979261EEB1A0033D622 /* Uitility.swift */,
 				CEA19A142624828F008B270E /* CardMaker.swift */,
 				CEA19A112624136D008B270E /* SizeManager.swift */,
 				CEA19A1726249A19008B270E /* ButtonManager.swift */,
@@ -141,6 +143,7 @@
 				FFC61935261D4ED20033D622 /* AppDelegate.swift */,
 				FFC61937261D4ED20033D622 /* SceneDelegate.swift */,
 				CE9A2B1F261E9AFE0097A940 /* ToDoTableViewDelegate.swift */,
+				FFCD3B2826269AEE00319EE1 /* ToDoTableViewDragDropDelegate.swift */,
 				CEB0D07F26208945002BC69D /* ModalTextViewDelegate.swift */,
 				CEA19A1A2624A56B008B270E /* ModalTextFieldDelegate.swift */,
 			);
@@ -225,9 +228,10 @@
 				FFC6193A261D4ED20033D622 /* ViewController.swift in Sources */,
 				CEA19A152624828F008B270E /* CardMaker.swift in Sources */,
 				CE9A2B39261EF6CE0097A940 /* ModalViewController.swift in Sources */,
-				FFC6197C261EEB1A0033D622 /* States.swift in Sources */,
+				FFC6197C261EEB1A0033D622 /* Uitility.swift in Sources */,
 				CEA19A1826249A19008B270E /* ButtonManager.swift in Sources */,
 				CE9A2B1D261E9A600097A940 /* ToDoTableViewDataSource.swift in Sources */,
+				FFCD3B2926269AEE00319EE1 /* ToDoTableViewDragDropDelegate.swift in Sources */,
 				CE5ED8CC261E003900789822 /* CardCell.swift in Sources */,
 				FFC61936261D4ED20033D622 /* AppDelegate.swift in Sources */,
 				CEA19A1B2624A56B008B270E /* ModalTextFieldDelegate.swift in Sources */,
