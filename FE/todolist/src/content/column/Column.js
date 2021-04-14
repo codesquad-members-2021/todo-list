@@ -16,7 +16,7 @@ const Column = ({columnData}) => {
         <div>
             <ColumnStyle>
                 <ColumnTitle columnData={columnData} addClicked={addClicked} setAddClicked={setAddClicked}/>
-                {addClicked && <Form />}
+                {addClicked && <Form setAddClicked={setAddClicked} />}
                 {columnData.cardList.map(card => <Card key={card.id} data={card} />)}
             </ColumnStyle>
         </div>
