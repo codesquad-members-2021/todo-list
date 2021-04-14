@@ -69,8 +69,11 @@ class NetworkManager {
     
     static func changedDataPost(httpMethod: String, data: TaskCard) {
         let id = data.id
+        var syncData = data
+        syncData.status += 1
         let url = URL(string: "http://3.36.217.168:8080/works/\(id)")
-        let body = try? JSONEncoder().encode(data)
+        let body = try? JSONEncoder().encode(syncData)
+        
         var request = URLRequest(url: url!)
         request.httpMethod = httpMethod
         request.httpBody = body

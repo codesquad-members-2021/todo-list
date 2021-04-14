@@ -39,6 +39,9 @@ extension TaskViewController: UIContextMenuInteractionDelegate {
             let moveToDone = UIAction(title: "Move To Done", image: UIImage(systemName: "arrow.right")) { _ in
                 self.taskStackManager.move(self.column!, at: self.selectedIndexPath.row)
                 self.taskTableView.deleteRows(at: [self.selectedIndexPath], with: .top)
+                if(self.column == StatusValue.done){
+                self.taskTableView.insertRows(at: [IndexPath(row: self.taskStackManager.count(StatusValue.done), section: 0)], with: .fade)
+                }
                 self.updateTaskCountLabel()
             }
             let delete = UIAction(title: "Delete", image: UIImage(systemName: "trash"), attributes: .destructive ) { _ in
