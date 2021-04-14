@@ -8,18 +8,15 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ResponseUserDto {
+public class UserResponseDTO {
 
     private Long id;
-
     private String userId;
-
     private String name;
-
     private String email;
 
-    public static ResponseUserDto buildResponseUserDto(User user) {
-        return ResponseUserDto.builder()
+    public static UserResponseDTO buildResponseUserDto(User user) {
+        return UserResponseDTO.builder()
                 .id(user.getId())
                 .userId(user.getUserId())
                 .name(user.getName())

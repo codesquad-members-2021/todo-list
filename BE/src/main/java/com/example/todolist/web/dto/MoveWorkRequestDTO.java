@@ -8,20 +8,17 @@ import lombok.ToString;
 
 @ToString
 @Setter
-public class RequestUpdateWorkDto {
+public class MoveWorkRequestDTO {
 
-    private String title;
-
-    private String content;
+    private int status;
 
     public Work toEntity() {
-        if (title == null || content == null) {
+        if (status != 1 && status != 2 && status !=3) {
             throw new EntityRelatedException(ErrorMessage.ENTITY_NOT_CREATE);
         }
 
         return Work.builder()
-                .title(title)
-                .content(content)
+                .status(status)
                 .build();
     }
 

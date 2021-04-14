@@ -10,12 +10,10 @@ import java.time.LocalDateTime;
 
 @ToString
 @Setter
-public class RequestCreateWorkDto {
+public class CreateWorkRequestDTO {
 
     private String title;
-
     private String content;
-
     private int status;
 
     public Work toEntity() {

@@ -8,14 +8,11 @@ import lombok.ToString;
 
 @ToString(exclude = "password")
 @Setter
-public class RequestSignInUserDto {
+public class SignInUserRequestDTO {
 
     private String userId;
-
     private String password;
-
     private String name;
-
     private String email;
 
     public User toEntity() {

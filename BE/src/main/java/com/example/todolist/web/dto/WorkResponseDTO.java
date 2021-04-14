@@ -11,22 +11,17 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ResponseWorkDto {
+public class WorkResponseDTO {
 
     private Long id;
-
     private String title;
-
     private String content;
-
     private LocalDateTime createdAt;
-
     private int status;
-
     private String author;
 
-    public static ResponseWorkDto buildResponseWorkDto(Work work, User user) {
-        return ResponseWorkDto.builder()
+    public static WorkResponseDTO buildResponseWorkDto(Work work, User user) {
+        return WorkResponseDTO.builder()
                 .id(work.getId())
                 .title(work.getTitle())
                 .content(work.getContent())
