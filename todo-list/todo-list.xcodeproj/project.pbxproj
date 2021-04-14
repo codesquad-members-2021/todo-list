@@ -31,6 +31,9 @@
 		E406DC102626D5BB00361AB8 /* TitleValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E406DC0F2626D5BB00361AB8 /* TitleValidator.swift */; };
 		E406DC152626D5CC00361AB8 /* ContentsValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E406DC142626D5CC00361AB8 /* ContentsValidator.swift */; };
 		E409010F2626B85E0041B34D /* CardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409010E2626B85E0041B34D /* CardManager.swift */; };
+		E416870E2626F887003F6324 /* ToDoTableViewDragDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E416870D2626F887003F6324 /* ToDoTableViewDragDelegate.swift */; };
+		E41687132626F893003F6324 /* ToDoTableViewDropDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41687122626F893003F6324 /* ToDoTableViewDropDelegate.swift */; };
+		E4168718262708ED003F6324 /* Interfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4168717262708ED003F6324 /* Interfaces.swift */; };
 		E47346D6261EA2240055DD0A /* AddToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47346D4261EA2240055DD0A /* AddToDoViewController.swift */; };
 		E47346D7261EA2240055DD0A /* AddToDoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E47346D5261EA2240055DD0A /* AddToDoViewController.xib */; };
 		E47346E8261ED8DD0055DD0A /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47346E6261ED8DD0055DD0A /* SideMenuViewController.swift */; };
@@ -88,6 +91,9 @@
 		E406DC0F2626D5BB00361AB8 /* TitleValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleValidator.swift; sourceTree = "<group>"; };
 		E406DC142626D5CC00361AB8 /* ContentsValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentsValidator.swift; sourceTree = "<group>"; };
 		E409010E2626B85E0041B34D /* CardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardManager.swift; sourceTree = "<group>"; };
+		E416870D2626F887003F6324 /* ToDoTableViewDragDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewDragDelegate.swift; sourceTree = "<group>"; };
+		E41687122626F893003F6324 /* ToDoTableViewDropDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewDropDelegate.swift; sourceTree = "<group>"; };
+		E4168717262708ED003F6324 /* Interfaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interfaces.swift; sourceTree = "<group>"; };
 		E47346D4261EA2240055DD0A /* AddToDoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToDoViewController.swift; sourceTree = "<group>"; };
 		E47346D5261EA2240055DD0A /* AddToDoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddToDoViewController.xib; sourceTree = "<group>"; };
 		E47346E6261ED8DD0055DD0A /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
@@ -128,6 +134,8 @@
 				BDD9DB4C261D7A0E00718566 /* ToDoViewController.swift */,
 				BD511A8026240EBC00BE3C94 /* ToDoTableViewDataSource.swift */,
 				BD8A1C1F26258D1200F59B5B /* ToDoTableViewDelegate.swift */,
+				E416870D2626F887003F6324 /* ToDoTableViewDragDelegate.swift */,
+				E41687122626F893003F6324 /* ToDoTableViewDropDelegate.swift */,
 			);
 			path = ToDo;
 			sourceTree = "<group>";
@@ -154,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				BD511A3C26230D3500BE3C94 /* Card.swift */,
+				E4168717262708ED003F6324 /* Interfaces.swift */,
 				E409010E2626B85E0041B34D /* CardManager.swift */,
 			);
 			path = Card;
@@ -423,6 +432,7 @@
 				E409010F2626B85E0041B34D /* CardManager.swift in Sources */,
 				BDD9DB64261D97B300718566 /* ToDoTableViewCell.swift in Sources */,
 				BD511A8126240EBC00BE3C94 /* ToDoTableViewDataSource.swift in Sources */,
+				E4168718262708ED003F6324 /* Interfaces.swift in Sources */,
 				E48D392026242801002E469E /* CardMargin.swift in Sources */,
 				E406DBFC2626D16A00361AB8 /* CompleteButton.swift in Sources */,
 				BD62EA25261C8F2900E44D80 /* MainViewController.swift in Sources */,
@@ -430,6 +440,7 @@
 				BD794ABE2620211B00C03DF4 /* ParsingManager.swift in Sources */,
 				E47346FC261F2F9C0055DD0A /* SlideAnimation.swift in Sources */,
 				BD511A3D26230D3500BE3C94 /* Card.swift in Sources */,
+				E416870E2626F887003F6324 /* ToDoTableViewDragDelegate.swift in Sources */,
 				E406DBF72626D14F00361AB8 /* CancelButton.swift in Sources */,
 				BD8A1C2026258D1200F59B5B /* ToDoTableViewDelegate.swift in Sources */,
 				BD794AB92620210800C03DF4 /* DataTaskManager.swift in Sources */,
@@ -441,6 +452,7 @@
 				E47346E8261ED8DD0055DD0A /* SideMenuViewController.swift in Sources */,
 				BDD9DB4D261D7A0E00718566 /* ToDoViewController.swift in Sources */,
 				E406DC102626D5BB00361AB8 /* TitleValidator.swift in Sources */,
+				E41687132626F893003F6324 /* ToDoTableViewDropDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

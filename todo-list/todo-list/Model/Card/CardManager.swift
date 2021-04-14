@@ -7,14 +7,6 @@
 
 import Foundation
 
-protocol CardAddable {
-    
-    func add(card: Card)
-    
-    func newCard(withTitle title: String, contents: String) -> AddCard?
-    
-}
-
 class CardManager {
     
     private var categoryID: Int?
@@ -33,16 +25,6 @@ class CardManager {
         postCountChange()
     }
     
-    //MARK: - TableView Datasource Methods
-    func count() -> Int? {
-        return cardList?.count
-    }
-    
-    func cardAt(index: Int) -> Card? {
-        return cardList?[index]
-    }
-    
-    
     //MARK: - Notification
     private func postCountChange() {
         guard let count = count() else { return }
@@ -57,6 +39,18 @@ class CardManager {
     enum NotiKeys {
         static let countChanged = Notification.Name("countChanged")
     }
+}
+
+extension CardManager: CardFindable {
+
+    func count() -> Int? {
+        return cardList?.count
+    }
+    
+    func cardAt(index: Int) -> Card? {
+        return cardList?[index]
+    }
+    
 }
 
 extension CardManager: CardAddable {
