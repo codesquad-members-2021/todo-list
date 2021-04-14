@@ -96,4 +96,10 @@ public class Card {
             throw new NotAuthorizedException();
         }
     }
+
+    public void validateColumn(CardColumn cardColumn) {
+        if (this.columnType != cardColumn) {
+            throw new RuntimeException("이 카드는 " + cardColumn + "이 아니라, " + columnType + "에 속해있습니다.");
+        }
+    }
 }
