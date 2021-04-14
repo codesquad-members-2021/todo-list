@@ -122,4 +122,5 @@ public class CardService {
         flag = (flags.get(index - 2) + flags.get(index - 1)) / 2;
         return flag;
     }
+
 }

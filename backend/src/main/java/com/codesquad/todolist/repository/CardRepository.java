@@ -9,22 +9,22 @@ import java.util.List;
 public interface CardRepository extends CrudRepository<Card, Long> {
 
     @Query("SELECT * FROM CARD WHERE CARD.COLUMN_ID=1 ORDER BY FLAG ASC")
-    public List<Card> findTodoCards();
+    List<Card> findTodoCards();
 
     @Query("SELECT * FROM CARD WHERE CARD.COLUMN_ID=2 ORDER BY FLAG ASC")
-    public List<Card> findDoingCards();
+    List<Card> findDoingCards();
 
     @Query("SELECT * FROM CARD WHERE CARD.COLUMN_ID=3 ORDER BY FLAG ASC")
-    public List<Card> findDoneCards();
+    List<Card> findDoneCards();
 
     @Query("SELECT FLAG FROM CARD WHERE CARD.COLUMN_ID=1 ORDER BY FLAG ASC")
-    public List<Double> findTodoFlags();
+    List<Double> findTodoFlags();
 
     @Query("SELECT FLAG FROM CARD WHERE CARD.COLUMN_ID=2 ORDER BY FLAG ASC")
-    public List<Double> findDoingFlags();
+    List<Double> findDoingFlags();
 
     @Query("SELECT FLAG FROM CARD WHERE CARD.COLUMN_ID=3 ORDER BY FLAG ASC")
-    public List<Double> findDoneFlags();
+    List<Double> findDoneFlags();
 
 }
 

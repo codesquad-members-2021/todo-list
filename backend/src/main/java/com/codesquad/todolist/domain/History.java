@@ -1,10 +1,12 @@
 package com.codesquad.todolist.domain;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+@Table("HISTORY")
 public class History {
     private static final DateTimeFormatter FORMATTER_PATTERN = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
