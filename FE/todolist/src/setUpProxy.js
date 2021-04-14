@@ -7,7 +7,7 @@ const aws = {
 
 module.exports = function (app) {
     app.use(
-        '/',
+        '/projects',
         createProxyMiddleware(aws)
     ),
     app.use(
@@ -19,5 +19,3 @@ module.exports = function (app) {
         createProxyMiddleware(aws)
     )
 };
-
-// app.use('/', index);
