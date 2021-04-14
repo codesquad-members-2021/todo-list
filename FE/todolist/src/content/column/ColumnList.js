@@ -19,7 +19,7 @@ const ColumnList = () => {
     return (
         <ContentStyle>
         <ul className="column__list">
-            {columnsData.map(column => <Column key={column.id} columnData={column} />)}
+            {columnsData.map(column => <Column key={column.id} initialColumn={column} />)}
         </ul>
         </ContentStyle>
     )

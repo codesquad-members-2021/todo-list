@@ -15,9 +15,13 @@ const BtnContainer = styled.div`
         color: #828282;
         cursor: pointer;
     }
+    button:last-child {
+        background: #86C6FF;
+        color:  rgba(255, 255, 255, 0.4);
+    }
 `
 
-const CardButton = ({resetInputState, setInputState}) => {
+const FormButton = ({resetInputState, setInputState}) => {
     return(
             <BtnContainer>
                 <button onClick={resetInputState}>취소</button>
@@ -26,4 +30,4 @@ const CardButton = ({resetInputState, setInputState}) => {
         )      
 }
 
-export default CardButton;
+export default FormButton;

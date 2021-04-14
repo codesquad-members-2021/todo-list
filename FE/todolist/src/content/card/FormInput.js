@@ -8,36 +8,37 @@ const InputContainer = styled.div`
         border: none;
         font-family: Noto Sans KR;
     }
-    input:first-child {
+    .input__title {
         height: 23px;
         line-height: 23px;
+        margin-bottom: 8px;
         font-weight: bold;
         font-size: 16px;
     }
-    input:last-child {
+    .input__content {
         height: 20px;
         line-height: 20px;
         font-size: 14px;
     }
 `
-const CardInput = ({titleInput, contentInput, onChange}) => {
+const FormInput = ({FormInputTitle, FormInputContent, onChange}) => {
     return(
         <InputContainer>
             <form action="">
                 <input 
-                    type="text"
+                    className="input__title"
                     autoComplete = "off"
                     placeholder="제목을 입력하세요" 
                     name="title"
-                    ref={titleInput}
+                    ref={FormInputTitle}
                     onChange={onChange}
                 />
                 <input 
-                    type="textarea"
+                    className="input__content"
                     autoComplete = "off"
-                    placeholder="내용을 입력하세요" 
+                    placeholder="내용을 입력하세요"
                     name="content"
-                    ref={contentInput}
+                    ref={FormInputContent}
                     onChange={onChange}
                 />
             </form>
@@ -45,4 +46,4 @@ const CardInput = ({titleInput, contentInput, onChange}) => {
         )      
 }
 
-export default CardInput;
+export default FormInput;
