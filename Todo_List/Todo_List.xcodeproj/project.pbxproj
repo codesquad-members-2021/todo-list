@@ -12,6 +12,7 @@
 		AE20EF8F2624208E0076FBF0 /* CardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE20EF8E2624208E0076FBF0 /* CardManager.swift */; };
 		AE43FD55261D934700CBD630 /* AddLineSpacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE43FD54261D934700CBD630 /* AddLineSpacing.swift */; };
 		AE43FD5A261DA83F00CBD630 /* TodoCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE43FD59261DA83F00CBD630 /* TodoCards.swift */; };
+		AE9320E7262794C90031FB53 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9320E6262794C90031FB53 /* NetworkManager.swift */; };
 		AEA3CBEC261EE97A005E10F2 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA3CBEA261EE97A005E10F2 /* ModalViewController.swift */; };
 		AEA3CBED261EE97A005E10F2 /* ModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEA3CBEB261EE97A005E10F2 /* ModalViewController.xib */; };
 		AEA3CBF2261EF626005E10F2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA3CBF1261EF626005E10F2 /* User.swift */; };
@@ -55,6 +56,7 @@
 		AE20EF8E2624208E0076FBF0 /* CardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardManager.swift; sourceTree = "<group>"; };
 		AE43FD54261D934700CBD630 /* AddLineSpacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLineSpacing.swift; sourceTree = "<group>"; };
 		AE43FD59261DA83F00CBD630 /* TodoCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCards.swift; sourceTree = "<group>"; };
+		AE9320E6262794C90031FB53 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		AEA3CBEA261EE97A005E10F2 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		AEA3CBEB261EE97A005E10F2 /* ModalViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ModalViewController.xib; sourceTree = "<group>"; };
 		AEA3CBF1261EF626005E10F2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 				AED1D148262598F000A5F239 /* Controller */,
 				AED1D1492625990A00A5F239 /* View */,
 				AED1D1502625994500A5F239 /* ModalView */,
+				AE9320E6262794C90031FB53 /* NetworkManager.swift */,
 				AED1D1542625997100A5F239 /* Etc */,
 			);
 			path = Todo_List;
@@ -363,6 +366,7 @@
 				D4BFB83A261C470700D68297 /* TodoTableViewController.swift in Sources */,
 				D4BFB85D261C4D4A00D68297 /* TodoCell.swift in Sources */,
 				D4BFB804261C448700D68297 /* AppDelegate.swift in Sources */,
+				AE9320E7262794C90031FB53 /* NetworkManager.swift in Sources */,
 				AEA3CBF2261EF626005E10F2 /* User.swift in Sources */,
 				D4BFB84E261C4C8C00D68297 /* TodoDataSource.swift in Sources */,
 				D4BFB806261C448700D68297 /* SceneDelegate.swift in Sources */,
