@@ -63,7 +63,6 @@ const Card = ({ title, body, index, columnId, cardId, previousCardId, isZanSang,
     const [isDown, setDown] = useState(false)
 
     const deleteCard = () => {
-        // setCardList((cardList) => cardList.filter((_, i) => i !== index))
         setColumnData((data)=>{
             const newData = [...data]
             newData[columnId-1].cards = newData[columnId-1].cards.filter((_, i) => i !== index)
@@ -73,11 +72,6 @@ const Card = ({ title, body, index, columnId, cardId, previousCardId, isZanSang,
     }
 
     const editCard = () => {
-        // setCardList((cardList) => {
-        //     const left = cardList.slice(0, index);
-        //     const right = cardList.slice(index + 1);
-        //     return left.concat({ title, body, isInput: true, previousCardId, cardId, columnId }, right);
-        // });
         setColumnData((data)=>{
             const newData = [...data]
             const left = newData[columnId-1].cards.slice(0, index);
@@ -92,34 +86,30 @@ const Card = ({ title, body, index, columnId, cardId, previousCardId, isZanSang,
         if(isZanSang) return
         setX(()=>e.clientX)
         setY(()=>e.clientY)
-        setDown(()=>true)
-        // setCardList((cardList) => {
-        //     const left = cardList.slice(0, index+1);
-        //     const right = cardList.slice(index+1);
-        //     return left.concat({title, body, index, columnId, setCardList, cardId, previousCardId, isZanSang:true}, right);
-        // });
-        // setColumnData((data)=>{
-        //     const newData = [...data]
-        //     const left = newData[columnId-1].cards.slice(0, index);
-        //     const right = newData[columnId-1].cards.slice(index + 1);
-        //     newData[columnId-1].cards = left.concat({ title, body, isZanSang: true, previousCardId, cardId, columnId }, right);
-        //     return newData
-        // })
+        setTimeout(()=>setDown(()=>true),500)
     }
 
     const [moveX, setMoveX] = useState(0)
     const [moveY, setMoveY] = useState(0)
     useEffect(()=>{
-        // if(!isDown) return
-        // setCardList((cardList) => cardList.filter((v) => v.isZanSang !== true))
-        // setCardList((list)=>{
-        //     const targetIndex = moveY + index
-        //     const left = list.slice(0, targetIndex);
-        //     const right = list.slice(targetIndex);
-            
-        //     return left.concat({title, body, index, setCardList, columnId, cardId, previousCardId, isZanSang:true}, right) 
-        // })
-    },[moveY])
+        if(!isDown) return
+        const card = {title, body, columnId, previousCardId, cardId, isZanSang:true}
+        let targetColumn = moveX + columnId
+        let targetIndex = moveY + index
+        targetIndex = targetIndex > 0 ? targetIndex : 0
+        targetColumn = targetColumn > 1 ? targetColumn : 1
+        console.log(targetIndex)
+        setColumnData((data)=>{
+            const newData = [...data.map(v=>{
+                return {columnId:v.columnId, name:v.name, cards:v.cards.filter(({isZanSang})=>!isZanSang)}
+            })]
+            const left = newData[Math.min(targetColumn, newData.length)-1].cards.slice(0,Math.min(targetIndex,newData[targetColumn-1].cards.length))
+            const right = newData[Math.min(targetColumn, newData.length)-1].cards.slice(Math.min(targetIndex,newData[targetColumn-1].cards.length))
+            newData[Math.min(targetColumn, newData.length)-1].cards = left.concat(card, right)
+            return newData
+        })
+        
+    },[moveY, moveX])
 
     const mouseMoveHandler = (e) => {
         if(!isDown) return
@@ -130,45 +120,27 @@ const Card = ({ title, body, index, columnId, cardId, previousCardId, isZanSang,
         setMoveY(()=>Math.floor((e.clientY-y)/104))
     }
     const mouseUpHandler = () => {
+        if(!isDown)return
         setDown(()=>false)
         setLeft(0)
         setTop(0)
-        // setCardList((cardList) => cardList.filter((_, i) => i !== index))
-        // setCardList((cardList) => cardList.map((v) => {
-        //     return !v.isZanSang ? v : {...v, isZanSang:false}
-        // }))
-        //위부분 return은 axios.put으로 새로받아온 카드로
-        const card = {title, body, columnId, previousCardId, cardId}
-        let targetColumn = moveX + columnId
-        let targetIndex = moveY + index
-        targetIndex = targetIndex > 0 ? targetIndex : 0
-        targetColumn = targetColumn > 0 ? targetColumn : 0
-        console.log(targetIndex)
-        // setColumnData((data)=>{
-        //     const newData = [...data]
-        //     // newData[columnId-1].cards = newData[columnId-1].cards.filter((_, i) => i !== index)
-        //     const left = newData[targetColumn-1].cards.slice(0,targetIndex)
-        //     const right = newData[targetColumn-1].cards.slice(targetIndex)
-        //     newData[targetColumn-1].cards = left.concat(card, right)
-        //     return newData
-        // })
-
-
-        // setColumnData((data)=>{
-        //     return [...data].map((v,i)=>{
-        //         if(i!==targetColumn) return v
-        //         const left = v.cards.slice(0, targetIndex);
-        //         const right = v.cards.slice(targetIndex);
-        //         const card2 = left.concat(card, right)
-        //         return {columnId:v.columnId, name:v.name, cards:card2};
-        //     })
-        // })
-
+        setColumnData((data)=>{
+            const newData = [...data]
+            newData[columnId-1].cards = newData[columnId-1].cards.filter((_, i) => i !== index)
+            return newData.map((v)=>{
+                return {columnId:v.columnId, name:v.name, cards:v.cards.map((card)=>{
+                    const newCard = {...card}
+                    if(newCard.isZanSang) newCard.isZanSang = false
+                    console.log(newCard)
+                    return newCard
+                })}
+            })
+        })
     }
 
 
     return (
-        <CardWrapper top={top} left={left} isDown={isDown} isZanSang={isZanSang} onDoubleClick={editCard}>
+        <CardWrapper top={top} left={left} isDown={isDown} isZanSang={isZanSang} onDoubleClick={editCard} onMouseDown={mouseDownHandler} onMouseMove={mouseMoveHandler} onMouseUp={mouseUpHandler}>
             <CardTitle>
                 <span className="title">{title}</span>
                 <ColumnDeleteButton onClick={deleteCard} />
