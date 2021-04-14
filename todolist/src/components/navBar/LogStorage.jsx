@@ -1,13 +1,12 @@
 import styled, { css, keyframes } from "styled-components";
-// import IconButton from "../utils/IconButton";
+import Button from "../utils/Button";
 import LogCommit from "./LogCommit";
-import { HiX } from "react-icons/hi";
 
 const slideOut = keyframes`
 from{
   transform: translateX(1150px)
 }to{
-  transform: translateX(2000px)
+  transform: translateX(2000px)}
 `;
 
 const slideIn = keyframes`
@@ -58,10 +57,7 @@ function LogStorage({ clicked, logs, appear, setLogViewState }) {
     <>
       {clicked && (
         <LogStorageBlock appear={appear}>
-          {/* <IconButton type="delete"></IconButton> */}
-          <IconX onClick={handleXbtnClick}>
-            <HiX></HiX>
-          </IconX>
+          <Button type="delete" onClick={handleXbtnClick} />
           <LogList>
             <LogCommit logs={logs}></LogCommit>
           </LogList>
