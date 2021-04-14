@@ -75,21 +75,27 @@ public class TaskController {
     public void move(@PathVariable Long id, @PathVariable String targetTaskType, @PathVariable Long targetId) {
         Task taskToMove = taskRepository.findOne(id);
         Optional<Task> originalNextTask = taskRepository.findOneByPreviousId(id);
-        Task newNextTask = readByPreviousId(targetId);
-
-        taskToMove.moveAfter(newNextTask);
-        taskRepository.save(taskToMove);
-
-        newNextTask.moveAfter(taskToMove.getId());
-        taskRepository.save(newNextTask);
+        Optional<Task> newNextTask = taskRepository.findOneByPreviousId(targetId);
 
         if (originalNextTask.isPresent()) {
             originalNextTask.get().moveAfter(taskToMove);
             taskRepository.save(originalNextTask.get());
         }
+
+        if (newNextTask.isPresent()) {
+            taskToMove.moveAfter(newNextTask.get());
+            taskRepository.save(taskToMove);
+
+            newNextTask.get().moveAfter(taskToMove.getId());
+            taskRepository.save(newNextTask.get());
+        } else {
+            taskToMove.moveAfter(targetId, targetTaskType);
+            taskRepository.save(taskToMove);
+        }
     }
 
     private Task readByPreviousId(Long previousId) {
-        return taskRepository.findOneByPreviousId(previousId).orElseThrow(IllegalArgumentException::new);
+        return taskRepository.findOneByPreviousId(previousId)
+                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 task. previousId : " + previousId));
     }
 }

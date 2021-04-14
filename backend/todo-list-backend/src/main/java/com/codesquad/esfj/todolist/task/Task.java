@@ -59,14 +59,19 @@ public class Task {
         return taskType;
     }
 
-    public void moveAfter(Long targetId) {
-        previousId = targetId;
+    public void moveAfter(Task targetTask) {
+        moveAfter(targetTask.getPreviousId(), targetTask.getTaskType());
     }
 
-    public void moveAfter(Task targetTask) {
-        previousId = targetTask.getPreviousId();
-        taskType = targetTask.getTaskType();
+    public void moveAfter(Long targetId) {
+        moveAfter(targetId, taskType);
     }
+
+    public void moveAfter(Long targetId, String targetTaskType) {
+        previousId = targetId;
+        taskType = targetTaskType;
+    }
+
 
     public boolean isDeleted() {
         return deleted;
