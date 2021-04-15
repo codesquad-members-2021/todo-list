@@ -10,8 +10,6 @@ import com.codesquad.todoList.repository.ProjectRepository;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -36,14 +34,15 @@ public class ColumnService {
     }
 
     @Transactional
-    public Project addCard(Long columnId, Card card) {
+    public Card addCard(Long columnId, Card card) {
         Project project = projectRepository.findById(1L).orElseThrow(NotFoundProjectException::new);
         Columns columns = columnRepository.findById(columnId).orElseThrow(NotFoundColumnException::new);
+
         columns.addCard(card);
-        updateColumn(columns, project);
 
         saveNote(new Note(), columns, Action.CREATE, card);
-        return projectRepository.save(project);
+        columnRepository.save(columns);
+        return card;
     }
 
     @Transactional

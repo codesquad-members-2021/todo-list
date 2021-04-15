@@ -3,6 +3,7 @@ package com.codesquad.todoList.entity;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.PersistenceConstructor;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
@@ -11,6 +12,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.Objects;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -18,7 +20,7 @@ import java.util.Objects;
 public class Card {
 
     @Id
-    private final Long id;
+    private String id;
 
     @NotBlank(message = "Card 의 제목은 비어 있을 수 없습니다.")
     @Size(max = 50, message = "Card 의 제목은 50자 미만입니다.")
@@ -32,14 +34,17 @@ public class Card {
     @Size(max = 30, message = "작가의 이름은 30자 미만입니다.")
     private String author;
 
+    private Long columns;
+
     @Column(value = "CREATE_DATETIME")
     private LocalDateTime createDateTime = LocalDateTime.now();
 
     @Column(value = "UPDATE_DATETIME")
     private LocalDateTime updateDateTime = LocalDateTime.now();
 
-    public Card(Long id, String title, String content, String author) {
-        this.id = id;
+    @PersistenceConstructor
+    public Card(String title, String content, String author) {
+        this.id = UUID.randomUUID().toString();
         this.title = title;
         this.content = content;
         this.author = author;
@@ -47,7 +52,7 @@ public class Card {
     }
 
     public static Card of(String title, String content, String author) {
-        return new Card(null, title, content, author);
+        return new Card(title, content, author);
     }
 
     public Card update(Card updateCard) {
