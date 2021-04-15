@@ -9,7 +9,7 @@ const ColumnStyle = styled.div`
     margin-right: 16px;
 `
 
-const Column = ({initialColumn}) => {
+const Column = ({ initialColumn, setSidebarLog }) => {
     const [isAddBtnClicked, setIsAddBtnClicked] = useState(false)
     const [columnData, setColumnData] = useState(initialColumn)
 
@@ -19,8 +19,15 @@ const Column = ({initialColumn}) => {
         <div>
             <ColumnStyle>
                 <ColumnTitle columnData={columnData} handleClickAddBtn={handleClickAddBtn}/>
-                {isAddBtnClicked && <Form setIsAddBtnClicked={setIsAddBtnClicked} columnData={columnData} setColumnData={setColumnData} />}
-                {columnData.cardList.map((card, i) => <Card key={Date.now() + i} data={card} />)}
+                {isAddBtnClicked && 
+                    <Form 
+                        setIsAddBtnClicked={setIsAddBtnClicked} 
+                        columnData={columnData} 
+                        setColumnData={setColumnData} 
+                        setSidebarLog={setSidebarLog} 
+                    />}
+                {[...columnData.cardList].reverse().map((card, i) => 
+                    <Card key={Date.now() + i} data={card} />)}
             </ColumnStyle>
         </div>
     )
