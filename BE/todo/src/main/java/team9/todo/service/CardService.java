@@ -94,6 +94,13 @@ public class CardService {
         }
 
         double priority = renderPriority(prevCard, nextCard, to, user);
+        if (checkRebalance(priority, prevCard, nextCard)) {
+            rebalancePriority(to, user);
+
+            prevCard = getCard(prevCardId, user);
+            nextCard = getCard(nextCardId, user);
+            priority = renderPriority(prevCard, nextCard, to, user);
+        }
 
         logger.debug("{}번 카드 {}로 이동 요청, 계산된 priority=", cardId, to, priority);
 
