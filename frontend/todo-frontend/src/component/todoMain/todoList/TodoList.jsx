@@ -84,7 +84,6 @@ const TodoList = ({
     setTodoColumns
   );
   const [formSelected, setFormSelected] = useState(false);
-  const [dragEl, setDragEl] = useState(null);
   const currentColumnDiv = useRef();
 
   useEffect(() => {
@@ -135,83 +134,35 @@ const TodoList = ({
     e.preventDefault();
   };
 
-  const getDragAfterElement = (y) => {
+  const getDragAfterElement = (locationY) => {
     const draggableCards = [...currentColumnDiv.current.children];
-
-    return draggableCards.reduce(
+    const dragAfterElement = draggableCards.reduce(
       (closestCard, child) => {
         const cardBox = child.getBoundingClientRect();
-        const offset = y - cardBox.top - cardBox.height / 2;
-
-        if (offset < 0 && offset > closestCard.offset) {
-          return { offset: offset, element: child };
-        } else {
-          return closestCard;
-        }
+        const offset = locationY - cardBox.top - cardBox.height / 2;
+        if (offset < 0 && offset > closestCard.offset) return { offset: offset, element: child };
+        else return closestCard;
       },
       { offset: Number.NEGATIVE_INFINITY }
     ).element;
+    return dragAfterElement;
   };
 
   const handleDrop = (e) => {
-    const cardData = JSON.parse(e.dataTransfer.getData('cardData'));
-    const { beforeColumnId, ...cData } = cardData;
     e.preventDefault();
+    const selectDragObj = JSON.parse(e.dataTransfer.getData('cardData'));
+    const { beforeColumnId, ...cardData } = selectDragObj;
     const afterElement = getDragAfterElement(e.clientY);
-    if (afterElement && +afterElement.id === cData.id) return;
-    if (afterElement === undefined) {
-      setTodoColumns((todoColumns) => {
-        delete todoColumns[beforeColumnId].todoCards[cData.id];
-        todoColumns[id].todoCards[cData.id] = cData;
-        return { ...todoColumns };
-      });
-      //해당 컬럼에 집어넣기
-      const todoDB = JSON.parse(localStorage.getItem('todos'));
-      const columnCardList = todoDB.todoData[id].todoCards;
-      const deleteColumnCardList = todoDB.todoData[beforeColumnId].todoCards;
-      todoDB.todoData[id].todoCards = {
-        ...columnCardList,
-        [cData.id]: cData,
-      };
-      delete deleteColumnCardList[cardData.id];
-      localStorage.setItem('todos', JSON.stringify({ ...todoDB }));
-    } else {
-      let newTodoCardList;
-      setTodoColumns((todoColumns) => {
-        delete todoColumns[beforeColumnId].todoCards[cData.id];
-        const cardList = todoColumns[id].todoCards;
-        newTodoCardList = addItem(cardList, afterElement.id, cData);
-        console.log(newTodoCardList);
-        todoColumns[id].todoCards = newTodoCardList;
-        return { ...todoColumns };
-      });
-      //LOCALSTORAGE 부분 해야함
-      const todoDB = JSON.parse(localStorage.getItem('todos'));
-      todoDB.todoData[id].todoCards = newTodoCardList;
-      if (id !== beforeColumnId) {
-        const deleteColumnCardList = { ...todoDB.todoData[beforeColumnId].todoCards };
-        delete deleteColumnCardList[cardData.id];
-        todoDB.todoData[beforeColumnId].todoCards = deleteColumnCardList;
-      }
-      localStorage.setItem('todos', JSON.stringify(todoDB));
-    }
-    const beforeColumnTitle = todoColumns[beforeColumnId].title;
+    if (afterElement && +afterElement.id === cardData.id) return;
+
     postLogs({
-      columnTitle: beforeColumnTitle,
-      itemTitle: cData.title,
+      columnTitle: todoColumns[beforeColumnId].title,
+      itemTitle: cardData.title,
       action: 'move',
       date: Date.now(),
       movedColumnTitle: title,
     });
-  };
-
-  const addItem = (cardList, cardId, data) => {
-    const newCardList = {};
-    for (const key in cardList) {
-      if (key === cardId) newCardList[data.id] = { ...data };
-      newCardList[key] = { ...cardList[key] };
-    }
-    return newCardList;
+    moveTodos({ columnId: id, selectDragObj, afterElement });
   };
 
   const todoCardList = Object.values(todos).map((card) => (
@@ -221,7 +172,6 @@ const TodoList = ({
       todoCard={card}
       deleteTodoItem={deleteTodoItem}
       editTodoItem={editTodoItem}
-      setDragEl={setDragEl}
     />
   ));
 

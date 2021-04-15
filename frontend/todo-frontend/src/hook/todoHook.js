@@ -29,16 +29,44 @@ const useTodoHook = (setTodos, setTodoColumns) => {
     setLoading(false);
   };
 
-  const moveTodos = async (beforeColumnId, afterColumnId, cData, targetCardId) => {
-    await todoListService.moveTodoList(beforeColumnId, afterColumnId, cData, targetCardId);
-    // deleteTodos(beforeColumnId);
-    setTodos((todos) => ({ ...todos, [cData.id]: cData }));
+  const moveTodos = async ({ columnId, selectDragObj, afterElement }) => {
     setLoading(true);
+    let movedCardList;
+    if (afterElement === undefined) {
+      movedCardList = moveTodoCardList({ columnId, selectDragObj, afterElement });
+    } else {
+      movedCardList = moveTodoCardList({ columnId, selectDragObj, afterElement });
+    }
+    await todoListService.moveTodoList({ columnId, selectDragObj, movedCardList });
     setLoading(false);
+  };
+  //이동시킨 cardList에 맞게 todoColumns set
+  const moveTodoCardList = ({ columnId, selectDragObj, afterElement }) => {
+    const { beforeColumnId, ...cardData } = selectDragObj;
+    let newCardList;
+
+    setTodoColumns((todoColumns) => {
+      const originCardList = todoColumns[columnId].todoCards;
+      delete todoColumns[beforeColumnId].todoCards[cardData.id];
+      newCardList = afterElement
+        ? getMovedCardList(originCardList, afterElement.id, cardData)
+        : { ...originCardList, [cardData.id]: cardData };
+      todoColumns[columnId].todoCards = newCardList;
+      return { ...todoColumns };
+    });
+    return newCardList;
+  };
+  //이동한 cardList객체 구하는 함수
+  const getMovedCardList = (cardList, cardId, data) => {
+    const newCardList = {};
+    for (const key in cardList) {
+      if (key === cardId) newCardList[data.id] = { ...data };
+      newCardList[key] = { ...cardList[key] };
+    }
+    return newCardList;
   };
 
   return [loading, postTodos, deleteTodos, putTodos, moveTodos];
 };
 
 export default useTodoHook;
-// moveTodoList(beforeColumnId, afterColumId, cardData, targetCardId)
