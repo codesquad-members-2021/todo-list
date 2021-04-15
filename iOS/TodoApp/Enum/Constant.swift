@@ -23,7 +23,6 @@ enum HTTPMethod {
     static let get = "GET"
     static let delete = "DELETE"
     //static let add = "ADD"
-    
 }
 
 //MARK: -Notification.Name

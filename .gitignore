@@ -108,4 +108,18 @@ fabric.properties
 .idea/codestream.xml
 
 # End of https://www.toptal.com/developers/gitignore/api/intellij
+.idea/.gitignore
+.idea/compiler.xml
+.idea/jarRepositories.xml
+.idea/modules.xml
+.idea/todo-list.iml
+.idea/vcs.xml
+.idea/modules/BE.iml
 
+BE/.idea/.gitignore
+BE/.idea/.name
+BE/.idea/compiler.xml
+BE/.idea/jarRepositories.xml
+BE/.idea/misc.xml
+BE/.idea/modules.xml
+BE/.idea/vcs.xml

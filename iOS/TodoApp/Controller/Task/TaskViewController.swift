@@ -16,7 +16,6 @@ class TaskViewController: UIViewController {
         super.viewDidLoad()
         setupSubViews()
         addNotificationObserver()
-        
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(longTouched(_:)))
         longPressGesture.minimumPressDuration = 0.3
         longPressGesture.isEnabled = true
@@ -95,11 +94,17 @@ extension TaskViewController {
     
     @objc func sendRemovedData(_ notification: Notification) {
         let removedData = notification.userInfo?["removedData"] as! TaskCard
+        updateTaskCountLabel()
         NetworkManager.changedDataPost(httpMethod: HTTPMethod.delete, data: removedData)
     }
     
     @objc func sendMovedData(_ notification: Notification) {
-        let movedData = notification.userInfo?["movedData"] as! TaskCard
+        var movedData = notification.userInfo?["movedData"] as! TaskCard
+        if column == StatusValue.done {
+            movedData.status = StatusValue.done
+            taskStackManager.append(StatusValue.done, taskCard: movedData)
+        }
+        updateTaskCountLabel()
         NetworkManager.changedDataPost(httpMethod: HTTPMethod.post, data: movedData)
     }
 }

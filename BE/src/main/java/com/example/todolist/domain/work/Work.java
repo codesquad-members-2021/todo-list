@@ -1,68 +1,56 @@
 package com.example.todolist.domain.work;
 
+import com.example.todolist.domain.user.User;
+import com.example.todolist.web.utils.Status;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 
 import java.time.LocalDateTime;
 
+@ToString
+@Getter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Work {
 
     @Id
     private Long id;
 
     private String title;
+    private String content;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
+    private Status status;
+    private Long authorId;
 
-    private String description;
+    public void saveAuthorId(User sessionUser) {
+        this.authorId = sessionUser.getId();
+        this.updatedAt = LocalDateTime.now();
+    }
 
-    private LocalDateTime createdTime;
+    public void update(Work work) {
+        this.title = work.title;
+        this.content = work.content;
+        this.updatedAt = LocalDateTime.now();
+    }
 
-    private int status;
+    public void delete() {
+        this.status = Status.DELETED;
+        this.updatedAt = LocalDateTime.now();
+    }
 
-    private Long author;
-
-    public Work() {}
-
-    public Work(String title, String description, int status, Long author) {
-        this.title = title;
-        this.description = description;
-        this.createdTime = LocalDateTime.now();
+    public void move(Status status) {
         this.status = status;
-        this.author = author;
+        this.updatedAt = LocalDateTime.now();
     }
 
-    public Long getId() {
-        return id;
+    public boolean matchAuthor(User sessionUser) {
+        return authorId.equals(sessionUser.getId());
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public LocalDateTime getCreatedTime() {
-        return createdTime;
-    }
-
-    public int getStatus() {
-        return status;
-    }
-
-    public Long getAuthor() {
-        return author;
-    }
-
-    @Override
-    public String toString() {
-        return "Work{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", createdTime=" + createdTime +
-                ", status=" + status +
-                ", author=" + author +
-                '}';
+    public boolean isNotDeleted() {
+        return this.status != Status.DELETED;
     }
 
 }
