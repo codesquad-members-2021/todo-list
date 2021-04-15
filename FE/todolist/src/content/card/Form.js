@@ -32,7 +32,7 @@ const Form = ({ setIsAddBtnClicked, columnData, setColumnData, setSidebarLog }) 
         setIsAddBtnClicked(false)
         setColumnData({ ...columnData, cardList : [...columnData.cardList, newCard]})
         postForm(newCard, `/columns/${columnData.id}/cards`)
-        setSidebarLog({title: newTodo.title, action: "CREATE", columnName:columnData.name})
+        setSidebarLog({title: newTodo.title, action: "CREATE", columnName:columnData.name, createDateTime: new Date()})
     }
 
     const FormInputTitle = useRef()
