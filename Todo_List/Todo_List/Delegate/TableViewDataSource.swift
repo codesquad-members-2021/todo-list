@@ -14,11 +14,9 @@ class TableViewDataSource: NSObject, UITableViewDataSource {
     func setCards(with cards: Cards){
         self.cards = cards
     }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         CardViewConstant.numberOfRowsInSection
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CardCell") as! CardCell
         let card = cards.items[indexPath.section]

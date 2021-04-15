@@ -39,9 +39,8 @@ class TableViewDropDelegate: NSObject, UITableViewDropDelegate {
                 else {
                     return
                 }
-                
                 let index : Int
-                
+    
                 // destinationIndexPath.section가 boundary를 넘어간 경우
                 if destinationIndexPath.section >= maxSize {
                     index = maxSize - 1

@@ -18,7 +18,6 @@ class CardAPIClient {
         /*
          Card 클래스는 dataType을 가질 필요가 없으나
          api 요청시 필요한 인자이므로 임시로 객체를 생성
-         백엔드와 논의가 잘 이루어지지 않은 부분
          */
         let target = CardRequest.init(title: card.title,
                                        content: card.content,
