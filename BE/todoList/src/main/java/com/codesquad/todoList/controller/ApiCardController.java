@@ -3,6 +3,7 @@ package com.codesquad.todoList.controller;
 import com.codesquad.todoList.dto.CardInfoDto;
 import com.codesquad.todoList.entity.Card;
 import com.codesquad.todoList.entity.Project;
+import com.codesquad.todoList.repository.CardRepository;
 import com.codesquad.todoList.service.ColumnService;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -23,9 +24,8 @@ public class ApiCardController {
 
     @PostMapping()
     public ResponseEntity<?> addCard(@Validated @RequestBody Card card, @PathVariable Long id, BindingResult bindingResult) {
-        final Project project = columnService.addCard(id, card);
-        final CardInfoDto cardInfoDto = new CardInfoDto(project, id);
-        return ResponseEntity.ok().body(cardInfoDto);
+        final Card saveCard = columnService.addCard(id, card);
+        return ResponseEntity.ok().body(saveCard);
     }
 
 
