@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SideMenuViewController" customModule="todo_list" customModuleProvider="target">
             <connections>
+                <outlet property="sideMenuTableView" destination="Ufw-QE-JJw" id="QkZ-mj-qu4"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -30,15 +31,26 @@
                         <action selector="closeButtonTouched:" destination="-1" eventType="touchUpInside" id="dnu-bK-chY"/>
                     </connections>
                 </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ufw-QE-JJw">
+                    <rect key="frame" x="48" y="80" width="332" height="640"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="332" id="tNA-WM-KvD"/>
+                    </constraints>
+                </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="uFn-Gf-3eg" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="48" id="5PE-3a-GyQ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Ufw-QE-JJw" secondAttribute="trailing" constant="48" id="B9P-mt-U31"/>
+                <constraint firstItem="Ufw-QE-JJw" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="80" id="ICh-eg-lvz"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Ufw-QE-JJw" secondAttribute="bottom" constant="80" id="Mvf-c4-THc"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="uFn-Gf-3eg" secondAttribute="trailing" constant="57" id="kpZ-cc-sbh"/>
+                <constraint firstItem="Ufw-QE-JJw" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="48" id="nKB-ZP-tp7"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-128" y="132"/>
+            <point key="canvasLocation" x="-128.98550724637681" y="131.91964285714286"/>
         </view>
     </objects>
     <resources>

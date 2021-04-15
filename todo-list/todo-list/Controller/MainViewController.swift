@@ -13,13 +13,21 @@ class MainViewController: UIViewController {
     private let doingCardManager = CardManager()
     private let doneCardManager = CardManager()
     
+    private let taskManager = TaskManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
+        
+        //MARK: - test
+        taskManager.addMoveTask(fromCategory: "해야할 일", toCategory: "하고 있는 일", cardTitle: "집에 가자")
+        taskManager.addMoveTask(fromCategory: "해야할 일", toCategory: "하고 있는 일", cardTitle: "집에 가자")
+        taskManager.addMoveTask(fromCategory: "해야할 일", toCategory: "하고 있는 일", cardTitle: "집에 가자")
+        taskManager.addMoveTask(fromCategory: "해야할 일", toCategory: "하고 있는 일", cardTitle: "집에 가자")
     }
 
     @IBAction func sideMenuButtonTouched(_ sender: Any) {
-        let sideMenuVC = SideMenuViewController(nibName: "SideMenuViewController", bundle: .none)
+        let sideMenuVC = SideMenuViewController(nibName: "SideMenuViewController", bundle: .none, taskList: taskManager)
         self.present(sideMenuVC, animated: true, completion: nil)
     }
     

@@ -9,10 +9,16 @@ import UIKit
 
 class SideMenuViewController: UIViewController {
     
-    private var customTransitionDelegate: UIViewControllerTransitioningDelegate
+    @IBOutlet weak var sideMenuTableView: UITableView!
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        self.customTransitionDelegate = SideMenuTransitionDelegate()
+    private var sideMenuTableViewDataSource: UITableViewDataSource?
+    private var sideMenuTableViewDelegate: UITableViewDelegate?
+    private var customTransitionDelegate = SideMenuTransitionDelegate()
+    
+    private let taskManager: TaskManager?
+    
+    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, taskList: TaskManager) {
+        self.taskManager = taskList
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
         modalPresentationStyle = .custom
@@ -20,15 +26,25 @@ class SideMenuViewController: UIViewController {
     }
     
     required init?(coder: NSCoder) {
-        self.customTransitionDelegate = SideMenuTransitionDelegate()
+        self.taskManager = nil
         super.init(coder: coder)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let nibName = UINib(nibName: "SideMenuTableViewCell", bundle: .none)
+        sideMenuTableView.register(nibName, forCellReuseIdentifier: "sideMenuCell")
+        
+        sideMenuTableViewDataSource = SideMenuTableViewDataSource(taskManager: taskManager!)
+        sideMenuTableViewDelegate = SideMenuTableViewDelegate()
+        
+        sideMenuTableView.dataSource = sideMenuTableViewDataSource
+        sideMenuTableView.delegate = sideMenuTableViewDelegate
     }
     
     @IBAction func closeButtonTouched(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    
 }
