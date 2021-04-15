@@ -25,6 +25,7 @@ const NavigatorBlock = styled.div`
   }
 `
 
+
 export default function Navigator ({ toggle, onClick }) {
   return (
     <NavigatorBlock toggle={toggle}>

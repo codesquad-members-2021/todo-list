@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import { TodoProvider } from './Component/Context';
 import Header from "./Component/Header/Header";
 import TodoContainer from "./Component/Todo/TodoContainer";
 
@@ -28,12 +29,12 @@ const GlobalStyle = createGlobalStyle`
 
 function App() {
   return (
-    <>
+    <TodoProvider>
       <GlobalStyle />
       <Header />
       <TodoContainer />
-    </>
-  );
+    </TodoProvider>
+    )
 }
 
 export default App;
