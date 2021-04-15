@@ -39,18 +39,19 @@ const ColumnCount = styled.div`
   margin: 0px 10px;
 `;
 
-function Column({ onLog, column }) {
-  const { title, items } = column;
-  const [cards, setCards] = useState(items);
-
+function Column({ onLog, column, setItemsOfColumn }) {
   const [enrollMode, setEnrollMode] = useState(false);
+  const { columnTitle, items } = column;
 
   const handleCreate = (card) => {
     setEnrollMode(!enrollMode);
-    setCards(cards.concat(card));
+    setItemsOfColumn({
+      ...column,
+      items: items.concat(card),
+    });
     onLog({
-      cardTitle: card.title,
-      columnTitle: "하고 있는 일",
+      cardTitle: card.cardTitle,
+      columnTitle,
       modeType: "add",
     });
   };
@@ -60,23 +61,23 @@ function Column({ onLog, column }) {
     setEnrollMode(!enrollMode);
   };
 
-  const handleDelete = (target) => {
-    setCards(cards.filter((e) => e.id !== target.id));
+  const handleDelete = ({ cardId, cardTitle }) => {
+    setItemsOfColumn({ ...column, items: items.filter((e) => e.cardId !== cardId) });
     onLog({
-      cardTitle: target.title,
-      columnTitle: "하고 있는 일",
+      cardTitle: cardTitle,
+      columnTitle,
       modeType: "delete",
     });
   };
 
-  const handleUpdate = ({ id, title, content }) => {
-    const card = cards.find((e) => e.id === id);
-    card.title = title;
-    card.content = content;
-    setCards(cards);
+  const handleUpdate = ({ cardId, cardTitle, content }) => {
+    const newCards = items.map((card) => {
+      return card.cardId !== cardId ? card : { ...card, cardTitle, content };
+    });
+    setItemsOfColumn({ ...column, items: newCards });
     onLog({
-      cardTitle: title,
-      columnTitle: "하고 있는 일",
+      cardTitle,
+      columnTitle,
       modeType: "update",
     });
   };
@@ -85,23 +86,24 @@ function Column({ onLog, column }) {
     <ColumnContainer>
       <ColumnMenu>
         <ColumnTitle>
-          <div>{title}</div>
-          <ColumnCount>{cards.length}</ColumnCount>
+          <div>{columnTitle}</div>
+          <ColumnCount>{items.length}</ColumnCount>
         </ColumnTitle>
         <Button onClick={() => setEnrollMode(!enrollMode)} type="add" />
       </ColumnMenu>
       {enrollMode ? (
         <CardContainer>
-          <CardForm
-            onSubmit={handleCreate}
-            onCancel={handleCancel}
-            onLog={onLog}
-          />
+          <CardForm onSubmit={handleCreate} onCancel={handleCancel} onLog={onLog} />
         </CardContainer>
       ) : (
         ""
       )}
-      <CardList cards={cards} onDelete={handleDelete} onUpdate={handleUpdate} />
+      {/* {enrollMode && (
+        <CardContainer>
+          <CardForm onSubmit={handleCreate} onCancel={handleCancel} onLog={onLog} />
+        </CardContainer>
+      )} 이렇게 바꾸는거 어떠신지? */}
+      <CardList cards={items} onDelete={handleDelete} onUpdate={handleUpdate} />
     </ColumnContainer>
   );
 }
