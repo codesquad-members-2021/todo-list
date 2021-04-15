@@ -3,7 +3,7 @@ import Card from "./Card";
 // import styled from "styled-components";
 import CardForm from "./CardForm.jsx";
 import CardContainer from "./CardContainer.style";
-
+import { Draggable } from "react-beautiful-dnd";
 function CardWrap(props) {
   const { card, onDelete, onUpdate } = props;
   const [editMode, setEditMode] = useState(false);
@@ -18,15 +18,34 @@ function CardWrap(props) {
     e.preventDefault();
     setEditMode(!editMode);
   };
-
+  const { id, index } = props;
   return (
-    <CardContainer onDoubleClick={handleEdit} ref={cardContainer}>
-      {editMode ? (
-        <CardForm editMode={editMode} card={card} onSubmit={handleSubmit} onCancel={handleEdit} />
-      ) : (
-        <Card card={card} onDelete={onDelete} cardContainer={cardContainer} />
+    <Draggable draggableId={String(id)} index={index}>
+      {(provided) => (
+        <div
+          ref={provided.innerRef}
+          {...provided.draggableProps}
+          {...provided.dragHandleProps}
+        >
+          <CardContainer onDoubleClick={handleEdit} ref={cardContainer}>
+            {editMode ? (
+              <CardForm
+                editMode={editMode}
+                card={card}
+                onSubmit={handleSubmit}
+                onCancel={handleEdit}
+              />
+            ) : (
+              <Card
+                card={card}
+                onDelete={onDelete}
+                cardContainer={cardContainer}
+              />
+            )}
+          </CardContainer>
+        </div>
       )}
-    </CardContainer>
+    </Draggable>
   );
 }
 
