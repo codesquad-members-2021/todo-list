@@ -7,32 +7,32 @@ import java.time.LocalDateTime;
 
 public class History {
     @Id
-    private Long id;
-    private Integer cardId;
+    private Long hid;
+    private Integer cid;
     private String author;
     private String title;
     private String action;
     private String from;
     private String to;
-    private LocalDateTime createdDateTime;
+    private LocalDateTime date;
 
-    public History(Long id, Integer cardId, String author, String title, String action, String from, String to, LocalDateTime createdDateTime) {
-        this.id = id;
-        this.cardId = cardId;
+    public History(Long hid, Integer cid, String author, String title, String action, String from, String to, LocalDateTime date) {
+        this.hid = hid;
+        this.cid = cid;
         this.author = author;
         this.title = title;
         this.action = action;
         this.from = from;
         this.to = to;
-        this.createdDateTime = createdDateTime;
+        this.date = date;
     }
 
-    public Long getId() {
-        return id;
+    public Long getHid() {
+        return hid;
     }
 
-    public Integer getCardId() {
-        return cardId;
+    public Integer getCid() {
+        return cid;
     }
 
     public String getAuthor() {
@@ -55,8 +55,8 @@ public class History {
         return to;
     }
 
-    public String getCreatedDateTime() {
-        return DateTimeUtils.formatByPattern(createdDateTime);
+    public String getDate() {
+        return DateTimeUtils.formatByPattern(date);
     }
 
 }

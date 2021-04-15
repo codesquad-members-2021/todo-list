@@ -1,6 +1,7 @@
 package com.team08.todolist.dto;
 
 import com.team08.todolist.DateTimeUtils;
+import com.team08.todolist.model.History;
 
 import java.time.LocalDateTime;
 
@@ -44,6 +45,10 @@ public class HistoryDto {
 
     public String getTo() {
         return to;
+    }
+
+    public static HistoryDto of(History history) {
+        return new HistoryDto(history.getAuthor(), DateTimeUtils.reformatByPattern(history.getDate()), history.getTitle(), history.getAction(), history.getFrom(), history.getTo());
     }
 }
 
