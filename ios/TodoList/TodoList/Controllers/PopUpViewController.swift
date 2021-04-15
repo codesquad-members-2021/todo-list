@@ -24,7 +24,7 @@ class PopUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        promptView.backgroundColor = .red
+        promptView.backgroundColor = .white
         promptLabel.text = promptMessage
         titleTextField.text = ""
         contentsTextField.text = ""

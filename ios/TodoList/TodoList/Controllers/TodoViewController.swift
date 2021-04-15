@@ -37,7 +37,7 @@ class ToDoViewController: UIViewController {
     func presentPopUp() {
         let popUpVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: Constants.popUpVCIdentifier) as! PopUpViewController
         popUpVC.modalPresentationStyle = .overFullScreen
-        popUpVC.setPromptMessage(message: "해야 할 일 추가")
+        popUpVC.setPromptMessage(message: "뭘 해야 하지?")
         popUpVC.setStatus(status: "TODO")
         popUpVC.abilityToFetchData = self
         self.present(popUpVC, animated: true, completion: nil)

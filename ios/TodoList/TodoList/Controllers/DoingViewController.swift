@@ -36,7 +36,7 @@ class DoingViewController: UIViewController {
     func presentPopUp() {
         let popUpVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: Constants.popUpVCIdentifier) as! PopUpViewController
         popUpVC.modalPresentationStyle = .overFullScreen
-        popUpVC.setPromptMessage(message: "하고 있는 일 추가")
+        popUpVC.setPromptMessage(message: "뭘 하고 있지?")
         popUpVC.setStatus(status: "DOING")
         popUpVC.abilityToFetchData = self
         self.present(popUpVC, animated: true, completion: nil)
