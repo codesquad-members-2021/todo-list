@@ -39,13 +39,11 @@ const TodoItem = ({
   todoCard: { id, title, content },
   deleteTodoItem,
   editTodoItem,
-  setDragEl,
 }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [inputTitle, setInputTitle] = useState(title);
   const [inputContent, setInputContent] = useState(content);
   const [isDisabled, setIsDisabled] = useState(false);
-  const [isDraged, setIsDraged] = useState(false);
 
   const inputTitleRef = useRef();
   const inputContentRef = useRef();
@@ -77,8 +75,6 @@ const TodoItem = ({
   };
 
   const handleDragStart = (e) => {
-    setDragEl({ beforeColumnId: columnId, ...todoCard });
-    setIsDraged(true);
     e.dataTransfer.setData('cardData', JSON.stringify({ beforeColumnId: columnId, ...todoCard }));
   };
 
