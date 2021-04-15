@@ -3,6 +3,8 @@ package com.codesquad.esfj.todolist.task;
 import org.springframework.data.annotation.Id;
 import org.springframework.util.StringUtils;
 
+import java.util.Objects;
+
 public class Task {
     public static final long TOP_PREVIOUS_ID = -1L;
 
@@ -14,6 +16,7 @@ public class Task {
     private boolean deleted;
     private Long previousId = TOP_PREVIOUS_ID;
     private String taskType;
+    private boolean isHead;
 
     public Task(Long id, String title, String content, String writer, String taskType) {
         this.id = id;
@@ -79,6 +82,14 @@ public class Task {
         return deleted;
     }
 
+    public boolean isHead() {
+        return isHead;
+    }
+
+    public void setIsHead(boolean isHead) {
+        this.isHead = isHead;
+    }
+
     public Task update(Task updatedTask) {
         this.title = updatedTask.title;
         this.content = updatedTask.content;
@@ -102,5 +113,18 @@ public class Task {
                 ", previousId=" + previousId +
                 ", taskType='" + taskType + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Task task = (Task) o;
+        return Objects.equals(id, task.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

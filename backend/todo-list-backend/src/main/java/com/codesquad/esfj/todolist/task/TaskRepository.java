@@ -13,10 +13,15 @@ public class TaskRepository {
     private Map<Long, Task> tasks = new ConcurrentHashMap<Long, Task>() {{
         Task task = new Task(1L, "title1", "content1", "writer1", "todo");
         Task task2 = new Task(2L, "title2", "content2", "writer2", "todo");
+        Task task3 = new Task(3L, "title2", "content2", "writer2", "done");
+
         task.moveAfter(2L);
+        task.setIsHead(true);
+        task3.setIsHead(true);
+
         put(1L, task);
         put(2L, task2);
-        put(3L, new Task(3L, "title2", "content2", "writer2", "done"));
+        put(3L, task3);
     }};
 
     public List<Task> findAllByNotDeleted() {
@@ -32,8 +37,8 @@ public class TaskRepository {
                 .collect(Collectors.toList());
     }
 
-    public Task findOne(long id) {
-        return tasks.get(id);
+    public Optional<Task> findOne(long id) {
+        return Optional.ofNullable(tasks.get(id));
     }
 
     public Optional<Task> findOneByPreviousId(long previousId) {

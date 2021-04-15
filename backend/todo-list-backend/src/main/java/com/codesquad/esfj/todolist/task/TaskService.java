@@ -1,13 +1,20 @@
 package com.codesquad.esfj.todolist.task;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class TaskService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private JdbcTaskRepository taskRepository;
 
@@ -36,6 +43,8 @@ public class TaskService {
         if (topTask.isPresent()) {
             topTask.get().moveAfter(id);
             taskRepository.save(topTask.get());
+        } else {
+            setIsHeadIfPresent(task.getId(), true);
         }
 
         return id;
@@ -56,6 +65,8 @@ public class TaskService {
             Task presentNextTask = nextTask.get();
             presentNextTask.moveAfter(task.getPreviousId());
             taskRepository.save(presentNextTask);
+        } else {
+            setIsHeadIfPresent(task.getPreviousId(), true);
         }
 
         taskRepository.save(task.delete());
@@ -63,24 +74,42 @@ public class TaskService {
 
     public void move(long id, String targetTaskType, long targetId) {
         Task taskToMove = taskRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("해당하는 Task가 존재하지 않습니다." + id));;
+                .orElseThrow(() -> new IllegalArgumentException("해당하는 Task가 존재하지 않습니다." + id));
+
         Optional<Task> originalNextTask = taskRepository.findByPreviousId(id);
         Optional<Task> newNextTask = taskRepository.findByPreviousId(targetId);
 
         if (originalNextTask.isPresent()) {
             originalNextTask.get().moveAfterPreviousOf(taskToMove);
             taskRepository.save(originalNextTask.get());
+        } else {
+            setIsHeadIfPresent(taskToMove.getPreviousId(), true);
         }
 
         if (newNextTask.isPresent()) {
             taskToMove.moveAfterPreviousOf(newNextTask.get());
             taskRepository.save(taskToMove);
 
+            setIsHeadIfPresent(taskToMove.getPreviousId(), false);
+
             newNextTask.get().moveAfter(taskToMove.getId());
+
             taskRepository.save(newNextTask.get());
         } else {
             taskToMove.moveAfter(targetId, targetTaskType);
+            taskToMove.setIsHead(true);
+            setIsHeadIfPresent(taskToMove.getPreviousId(), false);
             taskRepository.save(taskToMove);
+        }
+    }
+
+    private void setIsHeadIfPresent(long targetId, boolean isHead) {
+        Optional<Task> task = taskRepository.findById(targetId);
+
+        if (task.isPresent()) {
+            Task presentTask = task.get();
+            presentTask.setIsHead(isHead);
+            taskRepository.save(presentTask);
         }
     }
 }
