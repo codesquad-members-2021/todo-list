@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
-import HeaderContainer from './containers/header/HeaderContainer';
+import TopbarContainer from './containers/topbar/TopbarContainer';
 import MainContainer from './containers/main/MainContainer';
 
 const App = () => {
     return (
         <>
-            <HeaderContainer />
+            <TopbarContainer />
             <MainContainer />
         </>
     );

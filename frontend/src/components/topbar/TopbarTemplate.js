@@ -3,17 +3,17 @@ import styled from 'styled-components';
 import Header from './Header/Header';
 import Activity from './Activity/Activity';
 
-const StyledHeaderTemplate = styled.nav`
+const StyledTopbarTemplate = styled.nav`
     display: flex;
 `;
 
-const HeaderTemplate = ({
+const TopbarTemplate = ({
     title,
     onClickForLogVisible,
     activityHide,
     activityDatas,
 }) => (
-    <StyledHeaderTemplate>
+    <StyledTopbarTemplate>
         <Header
             title={title}
             onClickForLogVisible={onClickForLogVisible}
@@ -23,7 +23,7 @@ const HeaderTemplate = ({
             activityDatas={activityDatas}
             onClickForLogVisible={onClickForLogVisible}
         />
-    </StyledHeaderTemplate>
+    </StyledTopbarTemplate>
 );
 
-export default HeaderTemplate;
+export default TopbarTemplate;

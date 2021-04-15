@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import ColumnContainer from '../column/ColumnContainer';
+import ColumnContainer from './column/ColumnContainer';
 import Main from '../../components/main/Main';
 
 
@@ -14,11 +14,10 @@ const MainContainer = () => {
     useEffect(() => {
         setColumns(() =>
             columnData.map(({ columnId, name, cards }, i) => (
-                <li key={i}><ColumnContainer columnId={columnId} title={name} list={cards}/></li>
+                <li key={i}><ColumnContainer columnId={columnId} title={name} list={cards} setColumnData={setColumnData}/></li>
             )),
         );
     }, [columnData]);
-
 
     return <Main>{columns}</Main>;
 };
