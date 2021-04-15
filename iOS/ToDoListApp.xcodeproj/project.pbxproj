@@ -1,0 +1,446 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CE5ED8A9261D8B9800789822 /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5ED8A8261D8B9800789822 /* BadgeView.swift */; };
+		CE5ED8CC261E003900789822 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5ED8CA261E003900789822 /* CardCell.swift */; };
+		CE5ED8CD261E003900789822 /* CardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE5ED8CB261E003900789822 /* CardCell.xib */; };
+		CE9A2B1D261E9A600097A940 /* ToDoTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9A2B1C261E9A600097A940 /* ToDoTableViewDataSource.swift */; };
+		CE9A2B20261E9AFE0097A940 /* ToDoTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9A2B1F261E9AFE0097A940 /* ToDoTableViewDelegate.swift */; };
+		CE9A2B2A261EDA3B0097A940 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9A2B29261EDA3B0097A940 /* CardViewController.swift */; };
+		CE9A2B2D261EDB6C0097A940 /* CardTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9A2B2C261EDB6C0097A940 /* CardTableView.swift */; };
+		CE9A2B39261EF6CE0097A940 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9A2B38261EF6CE0097A940 /* ModalViewController.swift */; };
+		CEA19A122624136D008B270E /* SizeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA19A112624136D008B270E /* SizeManager.swift */; };
+		CEA19A152624828F008B270E /* CardMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA19A142624828F008B270E /* CardMaker.swift */; };
+		CEA19A1826249A19008B270E /* ButtonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA19A1726249A19008B270E /* ButtonManager.swift */; };
+		CEA19A1B2624A56B008B270E /* ModalTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA19A1A2624A56B008B270E /* ModalTextFieldDelegate.swift */; };
+		CEB0D08026208945002BC69D /* ModalTextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB0D07F26208945002BC69D /* ModalTextViewDelegate.swift */; };
+		FFC61936261D4ED20033D622 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC61935261D4ED20033D622 /* AppDelegate.swift */; };
+		FFC61938261D4ED20033D622 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC61937261D4ED20033D622 /* SceneDelegate.swift */; };
+		FFC6193A261D4ED20033D622 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC61939261D4ED20033D622 /* ViewController.swift */; };
+		FFC6193D261D4ED20033D622 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFC6193B261D4ED20033D622 /* Main.storyboard */; };
+		FFC6193F261D4ED60033D622 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFC6193E261D4ED60033D622 /* Assets.xcassets */; };
+		FFC61942261D4ED60033D622 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFC61940261D4ED60033D622 /* LaunchScreen.storyboard */; };
+		FFC6197A261EEB1A0033D622 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC61977261EEB1A0033D622 /* Card.swift */; };
+		FFC6197B261EEB1A0033D622 /* CardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC61978261EEB1A0033D622 /* CardManager.swift */; };
+		FFC6197C261EEB1A0033D622 /* Uitility.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC61979261EEB1A0033D622 /* Uitility.swift */; };
+		FFCD3B2926269AEE00319EE1 /* ToDoTableViewDragDropDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCD3B2826269AEE00319EE1 /* ToDoTableViewDragDropDelegate.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		CE5ED8A8261D8B9800789822 /* BadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
+		CE5ED8CA261E003900789822 /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
+		CE5ED8CB261E003900789822 /* CardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardCell.xib; sourceTree = "<group>"; };
+		CE9A2B1C261E9A600097A940 /* ToDoTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewDataSource.swift; sourceTree = "<group>"; };
+		CE9A2B1F261E9AFE0097A940 /* ToDoTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewDelegate.swift; sourceTree = "<group>"; };
+		CE9A2B29261EDA3B0097A940 /* CardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
+		CE9A2B2C261EDB6C0097A940 /* CardTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTableView.swift; sourceTree = "<group>"; };
+		CE9A2B38261EF6CE0097A940 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
+		CEA19A112624136D008B270E /* SizeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeManager.swift; sourceTree = "<group>"; };
+		CEA19A142624828F008B270E /* CardMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardMaker.swift; sourceTree = "<group>"; };
+		CEA19A1726249A19008B270E /* ButtonManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonManager.swift; sourceTree = "<group>"; };
+		CEA19A1A2624A56B008B270E /* ModalTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalTextFieldDelegate.swift; sourceTree = "<group>"; };
+		CEB0D07F26208945002BC69D /* ModalTextViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalTextViewDelegate.swift; sourceTree = "<group>"; };
+		FFC61932261D4ED20033D622 /* ToDoListApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoListApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FFC61935261D4ED20033D622 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FFC61937261D4ED20033D622 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		FFC61939261D4ED20033D622 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FFC6193C261D4ED20033D622 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FFC6193E261D4ED60033D622 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FFC61941261D4ED60033D622 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		FFC61943261D4ED60033D622 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FFC61977261EEB1A0033D622 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		FFC61978261EEB1A0033D622 /* CardManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardManager.swift; sourceTree = "<group>"; };
+		FFC61979261EEB1A0033D622 /* Uitility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Uitility.swift; sourceTree = "<group>"; };
+		FFCD3B2826269AEE00319EE1 /* ToDoTableViewDragDropDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewDragDropDelegate.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FFC6192F261D4ED20033D622 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FFC61929261D4ED20033D622 = {
+			isa = PBXGroup;
+			children = (
+				FFC61934261D4ED20033D622 /* ToDoListApp */,
+				FFC61933261D4ED20033D622 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FFC61933261D4ED20033D622 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FFC61932261D4ED20033D622 /* ToDoListApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FFC61934261D4ED20033D622 /* ToDoListApp */ = {
+			isa = PBXGroup;
+			children = (
+				FFC6193B261D4ED20033D622 /* Main.storyboard */,
+				FFC6193E261D4ED60033D622 /* Assets.xcassets */,
+				FFC61940261D4ED60033D622 /* LaunchScreen.storyboard */,
+				FFC61943261D4ED60033D622 /* Info.plist */,
+				FFC61980261EEB620033D622 /* Controller */,
+				FFC6197F261EEB570033D622 /* View */,
+				FFC6197E261EEB4D0033D622 /* Model */,
+			);
+			path = ToDoListApp;
+			sourceTree = "<group>";
+		};
+		FFC6197E261EEB4D0033D622 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FFC61977261EEB1A0033D622 /* Card.swift */,
+				FFC61979261EEB1A0033D622 /* Uitility.swift */,
+				CEA19A142624828F008B270E /* CardMaker.swift */,
+				CEA19A112624136D008B270E /* SizeManager.swift */,
+				CEA19A1726249A19008B270E /* ButtonManager.swift */,
+				FFC61978261EEB1A0033D622 /* CardManager.swift */,
+				CE9A2B1C261E9A600097A940 /* ToDoTableViewDataSource.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FFC6197F261EEB570033D622 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CE9A2B2C261EDB6C0097A940 /* CardTableView.swift */,
+				CE5ED8A8261D8B9800789822 /* BadgeView.swift */,
+				CE5ED8CA261E003900789822 /* CardCell.swift */,
+				CE5ED8CB261E003900789822 /* CardCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FFC61980261EEB620033D622 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FFC61939261D4ED20033D622 /* ViewController.swift */,
+				CE9A2B29261EDA3B0097A940 /* CardViewController.swift */,
+				CE9A2B38261EF6CE0097A940 /* ModalViewController.swift */,
+				FFCD3B22262696D000319EE1 /* Delegates */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		FFCD3B22262696D000319EE1 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				FFC61935261D4ED20033D622 /* AppDelegate.swift */,
+				FFC61937261D4ED20033D622 /* SceneDelegate.swift */,
+				CE9A2B1F261E9AFE0097A940 /* ToDoTableViewDelegate.swift */,
+				FFCD3B2826269AEE00319EE1 /* ToDoTableViewDragDropDelegate.swift */,
+				CEB0D07F26208945002BC69D /* ModalTextViewDelegate.swift */,
+				CEA19A1A2624A56B008B270E /* ModalTextFieldDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FFC61931261D4ED20033D622 /* ToDoListApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FFC61946261D4ED60033D622 /* Build configuration list for PBXNativeTarget "ToDoListApp" */;
+			buildPhases = (
+				FFC6192E261D4ED20033D622 /* Sources */,
+				FFC6192F261D4ED20033D622 /* Frameworks */,
+				FFC61930261D4ED20033D622 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ToDoListApp;
+			productName = ToDoListApp;
+			productReference = FFC61932261D4ED20033D622 /* ToDoListApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FFC6192A261D4ED20033D622 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+				TargetAttributes = {
+					FFC61931261D4ED20033D622 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+				};
+			};
+			buildConfigurationList = FFC6192D261D4ED20033D622 /* Build configuration list for PBXProject "ToDoListApp" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FFC61929261D4ED20033D622;
+			productRefGroup = FFC61933261D4ED20033D622 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FFC61931261D4ED20033D622 /* ToDoListApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FFC61930261D4ED20033D622 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFC61942261D4ED60033D622 /* LaunchScreen.storyboard in Resources */,
+				FFC6193F261D4ED60033D622 /* Assets.xcassets in Resources */,
+				FFC6193D261D4ED20033D622 /* Main.storyboard in Resources */,
+				CE5ED8CD261E003900789822 /* CardCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FFC6192E261D4ED20033D622 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE9A2B20261E9AFE0097A940 /* ToDoTableViewDelegate.swift in Sources */,
+				CEB0D08026208945002BC69D /* ModalTextViewDelegate.swift in Sources */,
+				CE5ED8A9261D8B9800789822 /* BadgeView.swift in Sources */,
+				CEA19A122624136D008B270E /* SizeManager.swift in Sources */,
+				FFC6193A261D4ED20033D622 /* ViewController.swift in Sources */,
+				CEA19A152624828F008B270E /* CardMaker.swift in Sources */,
+				CE9A2B39261EF6CE0097A940 /* ModalViewController.swift in Sources */,
+				FFC6197C261EEB1A0033D622 /* Uitility.swift in Sources */,
+				CEA19A1826249A19008B270E /* ButtonManager.swift in Sources */,
+				CE9A2B1D261E9A600097A940 /* ToDoTableViewDataSource.swift in Sources */,
+				FFCD3B2926269AEE00319EE1 /* ToDoTableViewDragDropDelegate.swift in Sources */,
+				CE5ED8CC261E003900789822 /* CardCell.swift in Sources */,
+				FFC61936261D4ED20033D622 /* AppDelegate.swift in Sources */,
+				CEA19A1B2624A56B008B270E /* ModalTextFieldDelegate.swift in Sources */,
+				CE9A2B2D261EDB6C0097A940 /* CardTableView.swift in Sources */,
+				FFC6197A261EEB1A0033D622 /* Card.swift in Sources */,
+				FFC6197B261EEB1A0033D622 /* CardManager.swift in Sources */,
+				CE9A2B2A261EDA3B0097A940 /* CardViewController.swift in Sources */,
+				FFC61938261D4ED20033D622 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		FFC6193B261D4ED20033D622 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FFC6193C261D4ED20033D622 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		FFC61940261D4ED60033D622 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FFC61941261D4ED60033D622 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FFC61944261D4ED60033D622 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FFC61945261D4ED60033D622 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FFC61947261D4ED60033D622 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B3PWYBKFUK;
+				INFOPLIST_FILE = ToDoListApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Dumba.ToDoListApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FFC61948261D4ED60033D622 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B3PWYBKFUK;
+				INFOPLIST_FILE = ToDoListApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Dumba.ToDoListApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FFC6192D261D4ED20033D622 /* Build configuration list for PBXProject "ToDoListApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FFC61944261D4ED60033D622 /* Debug */,
+				FFC61945261D4ED60033D622 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FFC61946261D4ED60033D622 /* Build configuration list for PBXNativeTarget "ToDoListApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FFC61947261D4ED60033D622 /* Debug */,
+				FFC61948261D4ED60033D622 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FFC6192A261D4ED20033D622 /* Project object */;
+}
