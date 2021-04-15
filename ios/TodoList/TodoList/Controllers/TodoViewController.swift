@@ -22,7 +22,6 @@ class ToDoViewController: UIViewController {
         self.toDoTableViewDelegates.popUpViewProtocol = self
         self.toDoCardTableView.rowHeight = 150
         
-        
         self.toDoCardTableView.register(UINib(nibName: "ToDoCardCell", bundle: nil), forCellReuseIdentifier: "ToDoCardCell")
         toDoCardTableView.register(CustomHeader.self, forHeaderFooterViewReuseIdentifier: "sectionHeader")
         

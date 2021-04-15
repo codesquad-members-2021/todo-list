@@ -50,7 +50,11 @@ class CustomHeader: UITableViewHeaderFooterView {
         contentView.addSubview(button)
         contentView.addSubview(badge)
         contentView.addSubview(title)
-        contentView.backgroundColor = .white
+        contentView.backgroundColor = .clear
+        self.backgroundView = UIView()
+        self.backgroundView!.backgroundColor = .clear
+        contentView.layer.cornerRadius = 30
+        contentView.layer.masksToBounds = true
         
         NSLayoutConstraint.activate([
             title.heightAnchor.constraint(equalToConstant: 30),
