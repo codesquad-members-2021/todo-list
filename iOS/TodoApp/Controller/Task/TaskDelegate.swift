@@ -32,7 +32,10 @@ extension TaskViewController: UIContextMenuInteractionDelegate {
         return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) {_ in
 
             let edit = UIAction(title: StatusInfo.edit, image: UIImage(systemName: "pencil.tip")) { _ in
-                // edit func
+                
+                let editViewController = EditViewController()
+                editViewController.modalPresentationStyle = .overCurrentContext
+                self.present(editViewController, animated: true, completion: nil)
             }
             
             let moveToDone = UIAction(title: StatusInfo.moveToDone, image: UIImage(systemName: "arrow.right")) { _ in

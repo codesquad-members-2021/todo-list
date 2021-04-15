@@ -56,6 +56,8 @@ extension MainViewController {
     }
     @objc func drawHistoryCard(_ notification: Notification) {
         let historyCard = notification.userInfo?["historyCard"] as! HistoryCard
+        dump(historyCard)
+        print(historyCard.historyLog)
         historyStack.append(historyCard: historyCard)
         historyTableView.reloadData()
     }
@@ -71,7 +73,7 @@ extension MainViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: CustomCell.history, for: indexPath) as! HistoryCell
         let index = historyStack.count - indexPath.row - 1
         let historyCard = historyStack.index(at: index)
-        
+        print(historyCard.historyLog)
         cell.historyLogLabel.text = historyCard.historyLog
         cell.userInfoLabel.text = historyCard.author
         cell.timeLabel.text = historyCard.time
