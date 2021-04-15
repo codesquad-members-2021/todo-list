@@ -49,7 +49,7 @@ class TodoTableViewController: UIViewController {
     }
     
     private func setObserver() {
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NSNotification.Name(rawValue: "addCard"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NSNotification.Name(rawValue: "finishNetwork"), object: nil)
     }
     
     @objc func reloadData(_ notification: Notification) {
