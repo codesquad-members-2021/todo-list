@@ -5,6 +5,7 @@ import SmallButton from "../../atoms/Buttons/SmallButton";
 import Image from "../../atoms/Image";
 import closeButton from "../../../images/closeButton.svg";
 import ButtonList from "../../atoms/Buttons/ButtonList";
+import { getFormatDate } from '../../../serviceUtils/dateUtil';
 import styled from "styled-components";
 import axios from "axios";
 
@@ -65,11 +66,12 @@ const TodoListInput = ({
 
     const newHistory = {
       action,
-      currentColumn: columnName,
+      prevColumn: columnName,
+      currentColumn: '이동한컬럼',
       prevTitle: title,
       currentTitle,
-      currentContent,
       user: "Beemo",
+      date: getFormatDate()
     };
 
     const responseHistory = await axios.post("/logs", newHistory);

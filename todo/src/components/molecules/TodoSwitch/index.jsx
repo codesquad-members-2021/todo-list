@@ -33,6 +33,7 @@ const TodoSwitch = ({
           toggleActions,
           isPatch,
           setTodos,
+          columnName,
           setHistories,
         }}
       />

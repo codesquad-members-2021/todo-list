@@ -5,15 +5,15 @@
       "columnName": "해야할 일",
       "items": [
         {
-          "id": "vvZIl_8sd",
-          "title": "비모 관리 ",
-          "content": "비모 연료 충전하기 ",
+          "id": "y1vNTFVyz",
+          "title": "ㄷㄷㄷㄷ",
+          "content": "ㄷㄷ",
           "author": "Beemo"
         },
         {
-          "id": "yYeAr_Ecj",
-          "title": "요리하기",
-          "content": "파스타 만들기",
+          "id": "HrA4T0dY_",
+          "title": "qqee",
+          "content": "qqee",
           "author": "Beemo"
         }
       ]
@@ -23,9 +23,9 @@
       "columnName": "하고 있는 일",
       "items": [
         {
-          "id": "wfk3V23gt",
-          "title": "미션 하기2",
-          "content": "드래그 앤 드롭 만들기 ",
+          "id": "NMCdyUSc9",
+          "title": "ㄷㄷㄷㄷ",
+          "content": "ㄷㄷㄷㄷ",
           "author": "Beemo"
         },
         {
@@ -41,15 +41,9 @@
       "columnName": "완료한 일",
       "items": [
         {
-          "id": "64O5WK41o",
-          "title": "CRUD 구현",
-          "content": "CRUD 구현하기",
-          "author": "데이지"
-        },
-        {
-          "id": "N2Fo29Sd-",
-          "title": "협업하기",
-          "content": "재밌게 코딩하기",
+          "id": "ymR2s6Yo7",
+          "title": "rqq",
+          "content": "qq",
           "author": "Beemo"
         }
       ]
@@ -64,20 +58,62 @@
   ],
   "logs": [
     {
-      "id": "fyOKd8Wrr",
+      "id": "N9QuHSynr",
       "action": "수정",
-      "prevTitle": "ㅂㅈㄷ",
-      "currentTitle": "협업하기",
-      "currentContent": "재밌게 코딩하기",
-      "user": "Beemo"
+      "prevColumn": "하고 있는 일",
+      "currentColumn": "이동한컬럼",
+      "prevTitle": "하고잇는일",
+      "currentTitle": "하고잇는일ㅂㅈㄷㄱ",
+      "user": "Beemo",
+      "date": "2021-04-15 12:26:08"
     },
     {
-      "id": "JRgmBAOb4N",
+      "id": "Js2HAxCsR",
+      "action": "수정",
+      "prevColumn": "하고 있는 일",
+      "currentColumn": "이동한컬럼",
+      "prevTitle": "하고잇는일ㅂㅈㄷㄱ",
+      "currentTitle": "rr",
+      "user": "Beemo",
+      "date": "2021-04-15 12:29:10"
+    },
+    {
+      "id": "FwEl90t0Th",
       "action": "등록",
-      "currentColumn": "하고 있는 일",
-      "currentTitle": "깃 충돌 해결하기",
-      "currentContent": "완료할것",
-      "user": "Beemo"
+      "prevColumn": "해야할 일",
+      "currentColumn": "이동한컬럼",
+      "currentTitle": "qq",
+      "user": "Beemo",
+      "date": "2021-04-15 16:31:32"
+    },
+    {
+      "id": "a9XT1TXgZ",
+      "action": "수정",
+      "prevColumn": "해야할 일",
+      "currentColumn": "이동한컬럼",
+      "prevTitle": "qq",
+      "currentTitle": "qqee",
+      "user": "Beemo",
+      "date": "2021-04-15 16:31:40"
+    },
+    {
+      "id": "nvYdpgTM4I",
+      "action": "등록",
+      "prevColumn": "하고 있는 일",
+      "currentColumn": "이동한컬럼",
+      "currentTitle": "ㄷㄷㄷㄷ",
+      "user": "Beemo",
+      "date": "2021-04-15 16:32:47"
+    },
+    {
+      "id": "4DGcxp4Ni",
+      "action": "수정",
+      "prevColumn": "해야할 일",
+      "currentColumn": "이동한컬럼",
+      "prevTitle": "ㄱㄱㄱ",
+      "currentTitle": "ㅂㅂㅂ",
+      "user": "Beemo",
+      "date": "2021-04-15 16:33:02"
     }
   ]
 }
