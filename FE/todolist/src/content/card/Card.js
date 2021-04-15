@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-// import Icon from '../../utilComponent/Icon.js'
+import Icon from '../../utilComponent/Icon.js'
 
 const CardStyle = styled.div`
     box-sizing: border-box;
@@ -8,7 +8,7 @@ const CardStyle = styled.div`
     margin: 16px 0;
     background: #fff;
     border-radius: 6px;
-    box-shadow: 0px 1px 30px 0px #E0E0E0 30%;
+    position: relative;
 
     input {
         display: block;
@@ -37,22 +37,37 @@ const CardStyle = styled.div`
         color: #bdbdbd;
     }
 `
+const CardContainer = styled.div`
+    position: relative;
+`
+const IconStyle = styled.div`
+    width: 15px;
+    position: absolute;
+    z-index: 1;
+    top: 16px;
+    right: 16px;
+    &:hover + div {
+        background: #FFEEEC;
+        border: 1px solid #FF4343;
+        padding: 15px;
+        input {
+            background: #FFEEEC;
+        }
+    }
+`
 
 const Card = ({data}) => {
     return(
-        <CardStyle>
-            <input 
-                type="text"
-                disabled
-                value={data.title}
-            />
-            <input
-                type="textarea"
-                disabled
-                value={data.content}
-            />
-            <div className="card__author"><span>author by {data.author}</span></div>
-        </CardStyle>
+        <CardContainer>
+            <IconStyle>
+                <Icon type= { "close" } />
+            </IconStyle>
+            <CardStyle>
+                <input type="text" disabled value={data.title} />
+                <input type="textarea " disabled value={data.content} />
+                <div className="card__author"><span>author by {data.author}</span></div>
+            </CardStyle>
+        </CardContainer>
     )
 }
 
