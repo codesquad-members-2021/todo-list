@@ -5,7 +5,6 @@ DROP TABLE IF EXISTS user;
 
 CREATE TABLE IF NOT EXISTS card(
     card_id int auto_increment primary key,
-    order_num double,
     category int references category(category_id),
     category_key int,
     title varchar(64),

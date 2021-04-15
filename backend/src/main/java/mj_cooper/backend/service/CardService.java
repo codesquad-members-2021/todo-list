@@ -29,10 +29,6 @@ public class CardService {
         category.addTodo(card);
         userRepository.save(user);
 
-        // cardId에 매칭되는 orderNum 생성 및 저장
-        card.setOrderNum(card.getCardId().doubleValue());
-        userRepository.save(user);
-
         return card;
     }
 
