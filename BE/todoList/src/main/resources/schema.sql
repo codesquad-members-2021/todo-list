@@ -18,7 +18,7 @@ CREATE TABLE COLUMNS (
 );
 
 CREATE TABLE CARD (
-    ID varchar(500) primary key,
+    ID varchar(36) primary key,
     TITLE varchar(50) not null,
     CONTENT varchar(500) not null,
     AUTHOR varchar(30) not null,
