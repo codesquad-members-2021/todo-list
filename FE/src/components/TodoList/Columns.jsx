@@ -5,12 +5,11 @@ import styled from 'styled-components';
 import Icon from '../atoms/Icons';
 import PopUp from '../atoms/PopUp';
 
-const Column = ({ data: { columns } }) => {
-  const [columnData, setColumnData] = useState(columns);
+const Column = ({ todoData }) => {
+  const [columnData, setColumnData] = useState(todoData);
   const [currentID, setCurrentID] = useState(null);
   const [isDeleteBtnClicked, SetIsDeleteBtnClicked] = useState(false);
   const [newColumns, setNewColumns] = useState([]);
-
   const handleClick = (clickedID) => {
     return () => {
       if (currentID !== clickedID) setCurrentID(clickedID);
