@@ -9,7 +9,7 @@ const BoardBlock = styled.div`
   background: tan;
 `;
 
-const tempData = [
+const mockData = [
   {
     columnId: 12314,
     columnTitle: "해야할 일",
@@ -26,40 +26,19 @@ const tempData = [
       },
     ],
   },
-  {
-    columnId: 211234,
-    columnTitle: "하는 중",
-    items: [
-      {
-        cardId: 30756,
-        cardTitle: "board 작성 중",
-        content: "board를 작성하고 있습니다.",
-      },
-    ],
-  },
-  {
-    columnId: 36431,
-    columnTitle: "끝난거~",
-    items: [
-      {
-        cardId: 4516864,
-        cardTitle: "던던",
-        content: "더러더러더더던",
-      },
-      {
-        cardId: 223575,
-        cardTitle: "임시 카드",
-        content: "임시 내용2",
-      },
-    ],
-  },
 ];
 
 export default function Board({ onLog }) {
-  const [columns, setColumns] = useState(tempData);
+  const [columns, setColumns] = useState([]);
 
-  useEffect(() => {
-    fetch(URL.DB, {
+  useEffect(async () => {
+    if (columns.length === 0) {
+      const data = await fetch(URL.getDB);
+      const json = await data.json();
+      setColumns((json[0].columnList.length && json[0].columnList) || mockData);
+      return;
+    }
+    await fetch(URL.setDB, {
       method: "post",
       headers: {
         "Content-type": "application/json",

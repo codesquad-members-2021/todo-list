@@ -3,7 +3,8 @@ import { MdAdd } from "react-icons/md";
 import { HiX, HiMenu } from "react-icons/hi";
 
 export const URL = {
-  DB: "http://localhost:3000/setData",
+  setDB: "http://localhost:3000/setData",
+  getDB: "http://localhost:3000/getData",
 };
 
 const TEXT_DEFAULT = `
