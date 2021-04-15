@@ -13,11 +13,6 @@ import java.util.List;
 
 @Service
 public class TodoColumnService {
-    private final UserRepository userRepository;
-
-    public TodoColumnService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
 
     public List<ColumnDto> showColumnList(TodoUser todoUser) {
         List<TodoColumn> todoColumnList = todoUser.getColumnList();
