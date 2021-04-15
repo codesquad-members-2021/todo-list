@@ -3,8 +3,8 @@ import { MdAdd } from "react-icons/md";
 import { HiX, HiMenu } from "react-icons/hi";
 
 export const URL = {
-  setDB: "http://localhost:3000/setData",
-  getDB: "http://localhost:3000/getData",
+  setDB: "http://localhost:4000/setData",
+  getDB: "http://localhost:4000/getData",
 };
 
 const TEXT_DEFAULT = `
@@ -39,8 +39,7 @@ export const BUTTON_STYLE = {
     color: white;
   `,
   navBtn: css`
-    width: 35px;
-    height: 35px;
+    font-size: 35px;
   `,
 };
 

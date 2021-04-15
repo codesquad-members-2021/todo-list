@@ -2,6 +2,24 @@ import styled, { css, keyframes } from "styled-components";
 import Button from "../utils/Button";
 import LogCommit from "./LogCommit";
 
+function LogStorage({ clicked, logs, appear, setLogViewState }) {
+  const handleXbtnClick = () => {
+    setLogViewState(false);
+  };
+  return (
+    <>
+      {clicked && (
+        <LogStorageBlock appear={appear}>
+          <ButtonWrapper>
+            <Button type="delete" onClick={handleXbtnClick} />
+          </ButtonWrapper>
+          <LogCommit appear={appear} logs={logs}></LogCommit>
+        </LogStorageBlock>
+      )}
+    </>
+  );
+}
+
 const slideOut = keyframes`
 from{
   transform: translateX(0px);
@@ -57,21 +75,4 @@ const ButtonWrapper = styled.div`
   margin-left: 72%;
 `;
 
-function LogStorage({ clicked, logs, appear, setLogViewState }) {
-  const handleXbtnClick = () => {
-    setLogViewState(false);
-  };
-  return (
-    <>
-      {clicked && (
-        <LogStorageBlock appear={appear}>
-          <ButtonWrapper>
-            <Button type="delete" onClick={handleXbtnClick} />
-          </ButtonWrapper>
-          <LogCommit appear={appear} logs={logs}></LogCommit>
-        </LogStorageBlock>
-      )}
-    </>
-  );
-}
 export default LogStorage;

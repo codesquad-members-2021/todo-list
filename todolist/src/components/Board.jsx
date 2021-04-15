@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Button from "./utils/Button";
 import { URL } from "./utils/constant";
 import { DragDropContext } from "react-beautiful-dnd";
+
 const BoardBlock = styled.div`
   display: flex;
 `;
@@ -31,12 +32,14 @@ export default function Board({ onLog }) {
   const [columns, setColumns] = useState([]);
 
   useEffect(async () => {
-    const data = await fetch(URL.getDB);
-    const json = await data.json();
-    setColumns((json[0].columnList.length && json[0].columnList) || mockData);
-  }, []);
+    if (columns.length === 0) {
+      const data = await fetch(URL.getDB);
+      const json = await data.json();
+      console.log(json);
+      setColumns(json[0].columnList.length && json[0].columnList);
+      return;
+    }
 
-  useEffect(async () => {
     await fetch(URL.setDB, {
       method: "post",
       headers: {
@@ -60,6 +63,7 @@ export default function Board({ onLog }) {
     target.items = [...column.items];
     setColumns([...columns]);
   };
+
   const onDragEnd = (result) => {
     if (!result.destination) return;
     const { droppableId: beforeColumnId, index: beforeIndex } = result.source;
