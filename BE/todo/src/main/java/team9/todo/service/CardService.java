@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import team9.todo.domain.Card;
+import team9.todo.domain.DTO.Card.ResponseDTO;
 import team9.todo.domain.History;
 import team9.todo.domain.User;
 import team9.todo.domain.enums.CardColumn;
@@ -81,7 +82,7 @@ public class CardService {
     }
 
     @Transactional
-    public Card move(long cardId, Long prevCardId, Long nextCardId, CardColumn to, User user) {
+    public ResponseDTO move(long cardId, Long prevCardId, Long nextCardId, CardColumn to, User user) {
         Card prevCard = null;
         Card nextCard = null;
         if (prevCardId != null) {
@@ -94,7 +95,8 @@ public class CardService {
         }
 
         double priority = renderPriority(prevCard, nextCard, to, user);
-        if (checkRebalance(priority, prevCard, nextCard)) {
+        boolean rebalanced;
+        if (rebalanced = checkRebalance(priority, prevCard, nextCard)) {
             rebalancePriority(to, user);
 
             prevCard = getCard(prevCardId, user);
@@ -114,7 +116,7 @@ public class CardService {
         if (from != to) {
             historyRepository.save(new History(saved.getId(), HistoryAction.MOVE, from, to));
         }
-        return saved;
+        return ResponseDTO.of(saved, rebalanced);
     }
 
     @Transactional

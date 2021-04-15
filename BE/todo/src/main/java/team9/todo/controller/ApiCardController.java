@@ -10,6 +10,7 @@ import team9.todo.domain.Card;
 import team9.todo.domain.DTO.Card.RequestCreateDTO;
 import team9.todo.domain.DTO.Card.RequestMoveDTO;
 import team9.todo.domain.DTO.Card.RequestUpdateDTO;
+import team9.todo.domain.DTO.Card.ResponseDTO;
 import team9.todo.domain.User;
 import team9.todo.domain.enums.CardColumn;
 import team9.todo.service.CardService;
@@ -72,7 +73,7 @@ public class ApiCardController {
     }
 
     @PutMapping("/move/{cardId}")
-    public ApiResult<Card> move(@PathVariable long cardId, @RequestBody RequestMoveDTO requestMoveDTO, HttpSession httpSession) {
+    public ApiResult<ResponseDTO> move(@PathVariable long cardId, @RequestBody RequestMoveDTO requestMoveDTO, HttpSession httpSession) {
         User user = getUser(httpSession);
 
         return ApiResult.succeed(cardService.move(cardId, requestMoveDTO.getPrevCardId(), requestMoveDTO.getNextCardId(), requestMoveDTO.getTo(), user));
