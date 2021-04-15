@@ -17,7 +17,8 @@ class DataTaskManager {
                 guard let cardList = ParsingManager.decodeData(type: CardData.self, data: data) else { return }
                 completion(.success(cardList))
             } else {
-                completion(.failure(error?.localizedDescription as! Error))
+                guard let error = error?.localizedDescription as? Error else { return }
+                completion(.failure(error))
             }
         }.resume()
     }
@@ -30,8 +31,8 @@ class DataTaskManager {
                 guard let card = ParsingManager.decodeData(type: PostCard.self, data: data) else { return }
                 completion(.success(card))
             }else{
-                print(response.statusCode)
-                completion(.failure(error?.localizedDescription as! Error))
+                guard let error = error?.localizedDescription as? Error else { return }
+                completion(.failure(error))
             }
         }.resume()
     }
@@ -42,8 +43,8 @@ class DataTaskManager {
             if (200 ..< 299) ~= response.statusCode {
                 completion(.success(true))
             }else{
-                print(response.statusCode)
-                completion(.failure(error?.localizedDescription as! Error))
+                guard let error = error?.localizedDescription as? Error else { return }
+                completion(.failure(error))
             }
         }.resume()
     }
@@ -55,8 +56,8 @@ class DataTaskManager {
                 let deleteCardInfo = DeleteCard(cardId: cardID, category: category)
                 completion(.success(deleteCardInfo))
             }else{
-                print(response.statusCode)
-                completion(.failure(error?.localizedDescription as! Error))
+                guard let error = error?.localizedDescription as? Error else { return }
+                completion(.failure(error))
             }
         }.resume()
     }

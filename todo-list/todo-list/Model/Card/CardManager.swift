@@ -35,11 +35,9 @@ class CardManager {
         postCountChange()
     }
 
-    func delete(cardOf ID: Int) {
-        if let idx = index(of: ID) {
-            self.cardList?.remove(at: idx)
-            postCountChange()
-        }
+    func delete(cardAtPosition position: Int) {
+        self.cardList?.remove(at: position - 1)
+        postCountChange()
     }
     
     func index(of cardID: Int) -> Int? {

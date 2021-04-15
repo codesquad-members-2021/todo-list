@@ -87,11 +87,11 @@ class MainViewController: UIViewController {
                 switch result {
                 case .success(let data):
                     if category == 1 {
-                        self.willDoCardManager.delete(cardOf:cardID)
+                        self.willDoCardManager.delete(cardAtPosition: cardID)
                     }else if category == 2 {
-                        self.doingCardManager.delete(cardOf: cardID)
+                        self.doingCardManager.delete(cardAtPosition: cardID)
                     }else{
-                        self.doneCardManager.delete(cardOf: cardID)
+                        self.doneCardManager.delete(cardAtPosition: cardID)
                     }
                 case .failure(let error):
                     print(error.localizedDescription)
