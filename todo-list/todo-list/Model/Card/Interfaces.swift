@@ -9,9 +9,7 @@ import Foundation
 
 protocol CardAddable {
     
-    func add(card: Card)
-    
-    func newCard(withTitle title: String, contents: String) -> AddCard?
+    func newCard(withTitle title: String, contents: String) 
     
 }
 
@@ -20,5 +18,19 @@ protocol CardFindable {
     func count() -> Int?
     
     func cardAt(index: Int) -> Card?
+    
+}
+
+protocol CardDeletable {
+    
+    func delete(cardAt index: Int)
+    
+}
+
+protocol CardMovable {
+    
+    func move(card: Card, toIndex: Int)
+    
+    func moveToDone(card: Card, toIndex: Int)
     
 }

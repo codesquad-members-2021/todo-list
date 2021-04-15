@@ -9,9 +9,9 @@ import UIKit
 
 class ToDoTableViewDropDelegate: NSObject, UITableViewDropDelegate {
     
-    private let cardSearcher: CardFindable
+    private let cardSearcher: CardFindable & CardMovable
     
-    init(cardSearcher: CardFindable) {
+    init(cardSearcher: CardFindable & CardMovable) {
         self.cardSearcher = cardSearcher
     }
     
@@ -31,10 +31,8 @@ class ToDoTableViewDropDelegate: NSObject, UITableViewDropDelegate {
             if let cardInString = items[0] as? String,
                let cardInData = cardInString.data(using: .utf8),
                let card = ParsingManager.decodeData(type: Card.self, data: cardInData) {
-                //원래 카드: card
-                //옮기려는 인덱스: destinationIndex
-                //를 MainVC에 보내서 네트워크 전송하면 됨
-                print(card, destinationIndex)
+                
+                self.cardSearcher.move(card: card, toIndex: destinationIndex)
             }
         }
     }

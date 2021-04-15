@@ -12,7 +12,7 @@ class TitleValidator: InputValidable {
     private var title: String?
     
     func isValidated(input: String) -> Bool {
-        if input.count > 1 {
+        if input.count >= 1 {
             self.title = input
             return true
         } else {

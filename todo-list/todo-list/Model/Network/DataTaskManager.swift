@@ -11,27 +11,54 @@ class DataTaskManager {
     
     static let session = URLSession(configuration: .default)
     
-    static func get(completion: @escaping (Result<[CardList], Error>) -> Void) {
+    static func get(completion: @escaping (Result<CardData, Error>) -> Void) {
         session.dataTask(with: RequestManager.getRequest()) { data, response, error in
             if let data = data {
-                guard let cardList = ParsingManager.decodeData(type: [CardList].self, data: data) else { return }
+                guard let cardList = ParsingManager.decodeData(type: CardData.self, data: data) else { return }
                 completion(.success(cardList))
             } else {
-                completion(.failure(error?.localizedDescription as! Error))
+                guard let error = error?.localizedDescription as? Error else { return }
+                completion(.failure(error))
             }
         }.resume()
     }
     
-    static func post(category: Int, data: Data) {
+    static func post(category: Int, data: AddCard, completion: @escaping (Result<PostCard, Error>) -> Void) {
         guard let encodingData = ParsingManager.encodeData(data: data) else { return }
-        session.dataTask(with: RequestManager.postRequest(category: category, data: encodingData)).resume()
+        session.dataTask(with: RequestManager.postRequest(category: category, data: encodingData)) { (data, response, error) in
+            guard let response = response as? HTTPURLResponse, let data = data else { return }
+            if (200 ..< 299) ~= response.statusCode {
+                guard let card = ParsingManager.decodeData(type: PostCard.self, data: data) else { return }
+                completion(.success(card))
+            }else{
+                guard let error = error?.localizedDescription as? Error else { return }
+                completion(.failure(error))
+            }
+        }.resume()
     }
     
-    static func put(category: Int, cardID: Int, data: Data) {
-        session.dataTask(with: RequestManager.putRequest(category: category, cardID: cardID, data: data)).resume()
+    static func dragAndDropPut(startCartegoryID: Int, startCardIndex: Int, endCartegoryID: Int, endCardIndex: Int, completion: @escaping (Result<Bool, Error>) -> Void) {
+        session.dataTask(with: RequestManager.dragAndDropPutRequest(startCartegoryID: startCartegoryID, startCardIndex: startCardIndex, endCartegoryID: endCartegoryID, endCardIndex: endCardIndex)) {(_, response, error) in
+            guard let response = response as? HTTPURLResponse else { return }
+            if (200 ..< 299) ~= response.statusCode {
+                completion(.success(true))
+            }else{
+                guard let error = error?.localizedDescription as? Error else { return }
+                completion(.failure(error))
+            }
+        }.resume()
     }
 
-    static func delete(category: Int, cardID: Int) {
-        session.dataTask(with: RequestManager.deleteRequest(category: category, cardID: cardID)).resume()
+    static func delete(category: Int, cardID: Int, completion: @escaping (Result<DeleteCard, Error>) -> Void) {
+        session.dataTask(with: RequestManager.deleteRequest(category: category, cardID: cardID)) { (_, response, error) in
+            guard let response = response as? HTTPURLResponse else { return }
+            if (200 ..< 299) ~= response.statusCode {
+                let deleteCardInfo = DeleteCard(cardId: cardID, category: category)
+                completion(.success(deleteCardInfo))
+            }else{
+                guard let error = error?.localizedDescription as? Error else { return }
+                completion(.failure(error))
+            }
+        }.resume()
     }
 }
