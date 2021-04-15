@@ -3,7 +3,6 @@ import TodoItem from './TodoItem';
 import TodoListForm from './TodoListForm';
 import DeleteBtn from '../../atom/DeleteBtn.jsx';
 import styled from 'styled-components';
-import todoListService from '../../../service/todoListService.js';
 import useTodoHook from '../../../hook/todoHook';
 
 const StyledTodoList = styled.div`
@@ -196,6 +195,14 @@ const TodoList = ({
       }
       localStorage.setItem('todos', JSON.stringify(todoDB));
     }
+    const beforeColumnTitle = todoColumns[beforeColumnId].title;
+    postLogs({
+      columnTitle: beforeColumnTitle,
+      itemTitle: cData.title,
+      action: 'move',
+      date: Date.now(),
+      movedColumnTitle: title,
+    });
   };
 
   const addItem = (cardList, cardId, data) => {
