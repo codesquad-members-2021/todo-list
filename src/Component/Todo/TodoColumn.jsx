@@ -33,13 +33,10 @@ const TodoColumn = ({ title, todoItems, index }) => {
     setToggle(!toggle)
     dispatch({ type: 'UPDATEITEM', idx: index, item: { ...inputs } })
     hisDispatch({
-      type: 'CREATE',
-      history: {
-        text: `<b>${{ ...inputs }.title}</b> 을(를) <b>${
-          state[index].title
-        }</b>에 <b>생성</b>하였습니다.`,
-        time: new Date().toUTCString()
-      }
+      type: '생성',
+      itemTitle: { ...inputs }.title,
+      columnTitle: state[index].title,
+      time: new Date().toUTCString()
     })
   }
   const onCancel = () => {
@@ -56,6 +53,13 @@ const TodoColumn = ({ title, todoItems, index }) => {
   }
   const onRemove = itemIndex => {
     dispatch({ type: 'REMOVEITEM', idx: index, itemIdx: itemIndex })
+    hisDispatch({
+      type: 'REMOVE',
+      title: '설계하기',
+      itemTitle: state[index].todoItems[itemIndex].title,
+      columnTitle: state[index].title,
+      time: new Date().toUTCString()
+    })
     setCount(count - 1)
   }
 

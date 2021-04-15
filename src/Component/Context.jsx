@@ -11,8 +11,21 @@ if (localStorage.getItem('historyList')) {
 
 function historyReducer (state, action) {
   switch (action.type) {
-    case 'CREATE':
-      return state.concat(action.history)
+    case '생성':
+      return state.concat({
+        text: `<b>${action.itemTitle}</b> 을(를) <b>${action.columnTitle}</b>에 <b>${action.type}</b>하였습니다.`,
+        time: action.time
+      })
+    case 'REMOVE':
+      return state.concat({
+        text: `<b>${action.itemTitle}</b> 을(를) <b>${action.columnTitle}</b>에 <b>${action.type}</b>하였습니다.`,
+        time: action.time
+      })
+    case 'RESET':
+      return state.concat({
+        text: `<b>${action.itemTitle}</b> 을(를) <b>${action.columnTitle}</b>에 <b>${action.type}</b>하였습니다.`,
+        time: action.time
+      })
     default:
       throw new Error(`Unhandled action type: ${action.type}`)
   }
@@ -33,12 +46,18 @@ function todoReducer (state, action) {
         index === action.idx
           ? {
               ...todoColum,
-              todoItems: todoColum.todoItems.filter((v, i) => i !== action.itemIdx)
+              todoItems: todoColum.todoItems.filter(
+                (v, i) => i !== action.itemIdx
+              )
             }
           : todoColum
       )
     case 'REMOVE':
       return state.filter((todoColum, index) => index !== action.idx)
+    case 'RESETITEM':
+      return state.map((todoColum, index) =>
+        index === action.idx ? { ...todoColum, todoItems: [] } : todoColum
+      )
     default:
       throw new Error(`Unhandled action type: ${action.type}`)
   }
