@@ -24,8 +24,8 @@ class TodoDataSource: NSObject, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TodoCell.identifier, for: indexPath) as? TodoCell else { return UITableViewCell() }
         
         cell.titleLabel.text = todoCards[indexPath.row].title
-                cell.contentLabel.text = todoCards[indexPath.row].contents
-                cell.contentLabel.addLineSpacing()
+        cell.contentLabel.text = todoCards[indexPath.row].contents
+        cell.contentLabel.addLineSpacing()
         
         return cell
     }

@@ -55,7 +55,7 @@ class NetworkManager {
     private func perfomRequest<T:Decodable>(urlString: String, httpMethod: HttpMethod, json: Data? = nil, dataType: T.Type, completion: @escaping (Result<Any,NetworkError>) -> Void) {
         
         guard let url = URL(string: urlString) else { completion(.failure(.BadURL)); return }
-        let request = createRequest(url: url, httpMethod: httpMethod)
+        let request = createRequest(url: url, httpMethod: httpMethod, json: json)
         
         URLSession.shared.dataTask(with: request) {data, response, error in
             DispatchQueue.main.async {
@@ -83,7 +83,9 @@ class NetworkManager {
         request.httpMethod = httpMethod.rawValue
         request.httpBody = json
 //        request.setValue("jwtToken", forHTTPHeaderField: jwtToken)
-        
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+                if json != nil {
+                    request.setValue(String(json!.count), forHTTPHeaderField: "Content-Length") }
         return request
     }
     
