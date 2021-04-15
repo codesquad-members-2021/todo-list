@@ -26,6 +26,7 @@ public class CardService {
 
         Category category = user.getCategory(categoryId);
 
+        card.setCategory(categoryId);
         category.addTodo(card);
         userRepository.save(user);
 
@@ -41,7 +42,7 @@ public class CardService {
 
         foundCard.setTitle(card.getTitle());
         foundCard.setContents(card.getContents());
-        foundCard.setCategory(card.getCategory());
+        foundCard.setCategory(categoryId);
 
         userRepository.save(user);
 

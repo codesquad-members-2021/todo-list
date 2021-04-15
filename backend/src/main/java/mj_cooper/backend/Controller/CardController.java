@@ -87,6 +87,7 @@ public class CardController {
     }
 
     public String parseTodoToJson(Card card) {
+        System.out.println("card in parsing " + card.toString());
         Gson gson = new Gson();
         JsonParser parser = new JsonParser();
 
