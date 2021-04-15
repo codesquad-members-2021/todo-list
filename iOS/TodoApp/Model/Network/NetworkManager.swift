@@ -28,7 +28,7 @@ class NetworkManager {
                     let object = try JSONSerialization.jsonObject(with: data!, options: []) as? NSDictionary
                     guard let jsonObject = object else { return }
                     print(jsonObject)
-                    self.fetchData()
+                    self.fetchTaskData()
                 } catch let error as NSError {
                     print(error.localizedDescription)
                 }
@@ -37,7 +37,7 @@ class NetworkManager {
         task.resume()
     }
 
-    static func fetchData() {
+    static func fetchTaskData() {
         let url = URL(string: "http://3.36.217.168:8080/works")
         var request = URLRequest(url: url!)
         request.httpMethod = HTTPMethod.get
@@ -114,6 +114,57 @@ class NetworkManager {
             }
         }
         task.resume()
+    }
+    
+    static func fetchHistoryData() {
+        let url = URL(string: "http://3.36.217.168:8080/timelines")
+        var request = URLRequest(url: url!)
+        request.httpMethod = HTTPMethod.get
+                
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            print(response)
+            if let error = error {
+                print(error)
+                return
+            }
+            DispatchQueue.main.async() {
+                do {
+                    let object = try JSONSerialization.jsonObject(with: data!, options: []) as? NSArray
+                    guard let jsonObject = object else { return }
+                    jsonObject.forEach { parse in
+                        let task = parse as! [String:Any]
+                        let historyLog = task["content"] as! String
+                        let createdAt = task["createdAt"] as! String
+                        let time = extractDate(createdAt)
+                        let author = task["author"] as! String
+                        let historyCard = HistoryCard(author: author, historyLog: historyLog, time: time)
+                        NotificationCenter.default.post(name: .addHistory, object: self, userInfo: ["historyCard": historyCard])
+                    }
+                } catch let error as NSError {
+                    print(error)
+                }
+            }
+        }
+        task.resume()
+        }
+    
+    static func extractDate(_ createdAt: String) -> String {
+        let syncDate = createdAt.replacingOccurrences(of: "T", with: " ")
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let date = dateFormatter.date(from: syncDate)
+        let calender = Calendar.current
+        let year = calender.component(.year, from: date!)
+        let month = calender.component(.month, from: date!)
+        let day = calender.component(.day, from: date!)
+        let hour = calender.component(.hour, from: date!)
+        let minute = calender.component(.minute, from: date!)
+        
+        if calender.isDateInToday(date!) {
+            return "오늘 \(hour):\(minute)"
+        } else {
+            return "\(year).\(month).\(day)"
+        }
     }
 }
 

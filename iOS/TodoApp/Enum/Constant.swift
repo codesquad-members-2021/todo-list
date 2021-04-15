@@ -23,6 +23,7 @@ enum TitleList {
 
 enum CustomCell {
     static let task = "TaskCell"
+    static let history = "HistoryCell"
 }
 
 enum HTTPMethod {
@@ -35,6 +36,7 @@ enum HTTPMethod {
 //MARK: -Notification.Name
 extension Notification.Name {
     static let addTask = Notification.Name("addTask")
+    static let addHistory = Notification.Name("addHistory")
     static let requestSetupTask = Notification.Name("requestSetupTask")
     static let requestRemoveTask  = Notification.Name("requestRemoveTask")
     static let requestAddTask = Notification.Name("requestAddTask")
