@@ -34,6 +34,13 @@
 		E416870E2626F887003F6324 /* ToDoTableViewDragDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E416870D2626F887003F6324 /* ToDoTableViewDragDelegate.swift */; };
 		E41687132626F893003F6324 /* ToDoTableViewDropDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41687122626F893003F6324 /* ToDoTableViewDropDelegate.swift */; };
 		E4168718262708ED003F6324 /* Interfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4168717262708ED003F6324 /* Interfaces.swift */; };
+		E416872B2627120C003F6324 /* SideMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41687292627120C003F6324 /* SideMenuTableViewCell.swift */; };
+		E416872C2627120C003F6324 /* SideMenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E416872A2627120C003F6324 /* SideMenuTableViewCell.xib */; };
+		E416873926271838003F6324 /* SideMenuTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E416873826271838003F6324 /* SideMenuTableViewDataSource.swift */; };
+		E416874126271A3B003F6324 /* SideMenuTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E416874026271A3B003F6324 /* SideMenuTableViewDelegate.swift */; };
+		E416874726271B0A003F6324 /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E416874626271B0A003F6324 /* TaskManager.swift */; };
+		E41687522627CFB0003F6324 /* TimeMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41687512627CFB0003F6324 /* TimeMaker.swift */; };
+		E41687572627D0EE003F6324 /* SideMenuInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41687562627D0EE003F6324 /* SideMenuInterfaces.swift */; };
 		E47346D6261EA2240055DD0A /* AddToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47346D4261EA2240055DD0A /* AddToDoViewController.swift */; };
 		E47346D7261EA2240055DD0A /* AddToDoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E47346D5261EA2240055DD0A /* AddToDoViewController.xib */; };
 		E47346E8261ED8DD0055DD0A /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47346E6261ED8DD0055DD0A /* SideMenuViewController.swift */; };
@@ -94,6 +101,13 @@
 		E416870D2626F887003F6324 /* ToDoTableViewDragDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewDragDelegate.swift; sourceTree = "<group>"; };
 		E41687122626F893003F6324 /* ToDoTableViewDropDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewDropDelegate.swift; sourceTree = "<group>"; };
 		E4168717262708ED003F6324 /* Interfaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interfaces.swift; sourceTree = "<group>"; };
+		E41687292627120C003F6324 /* SideMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewCell.swift; sourceTree = "<group>"; };
+		E416872A2627120C003F6324 /* SideMenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuTableViewCell.xib; sourceTree = "<group>"; };
+		E416873826271838003F6324 /* SideMenuTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewDataSource.swift; sourceTree = "<group>"; };
+		E416874026271A3B003F6324 /* SideMenuTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewDelegate.swift; sourceTree = "<group>"; };
+		E416874626271B0A003F6324 /* TaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
+		E41687512627CFB0003F6324 /* TimeMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeMaker.swift; sourceTree = "<group>"; };
+		E41687562627D0EE003F6324 /* SideMenuInterfaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuInterfaces.swift; sourceTree = "<group>"; };
 		E47346D4261EA2240055DD0A /* AddToDoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToDoViewController.swift; sourceTree = "<group>"; };
 		E47346D5261EA2240055DD0A /* AddToDoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddToDoViewController.xib; sourceTree = "<group>"; };
 		E47346E6261ED8DD0055DD0A /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
@@ -145,6 +159,8 @@
 			children = (
 				E47346F0261EE5700055DD0A /* SideMenuTransitionDelegate.swift */,
 				E47346E6261ED8DD0055DD0A /* SideMenuViewController.swift */,
+				E416873826271838003F6324 /* SideMenuTableViewDataSource.swift */,
+				E416874026271A3B003F6324 /* SideMenuTableViewDelegate.swift */,
 			);
 			path = SideMenu;
 			sourceTree = "<group>";
@@ -222,6 +238,7 @@
 		BD794A9E26201F5A00C03DF4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E416874526271AF2003F6324 /* SideMenu */,
 				BD511AD62624827700BE3C94 /* Card */,
 				E406DC092626D4CE00361AB8 /* CardValidate */,
 				BD794AAF262020A400C03DF4 /* Network */,
@@ -270,17 +287,37 @@
 			path = CardValidate;
 			sourceTree = "<group>";
 		};
+		E416872526270FDA003F6324 /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				E47346FB261F2F9C0055DD0A /* SlideAnimation.swift */,
+				E47346E7261ED8DD0055DD0A /* SideMenuViewController.xib */,
+				E41687292627120C003F6324 /* SideMenuTableViewCell.swift */,
+				E416872A2627120C003F6324 /* SideMenuTableViewCell.xib */,
+			);
+			path = SideMenu;
+			sourceTree = "<group>";
+		};
+		E416874526271AF2003F6324 /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				E41687562627D0EE003F6324 /* SideMenuInterfaces.swift */,
+				E416874626271B0A003F6324 /* TaskManager.swift */,
+				E41687512627CFB0003F6324 /* TimeMaker.swift */,
+			);
+			path = SideMenu;
+			sourceTree = "<group>";
+		};
 		E4734700261FF9A40055DD0A /* View */ = {
 			isa = PBXGroup;
 			children = (
-				E406DC002626D16F00361AB8 /* AddCard */,
 				BD62EA26261C8F2900E44D80 /* Main.storyboard */,
+				E406DC002626D16F00361AB8 /* AddCard */,
 				BDD9DB62261D97B300718566 /* ToDoTableViewCell.swift */,
 				BDD9DB63261D97B300718566 /* ToDoTableViewCell.xib */,
-				E47346E7261ED8DD0055DD0A /* SideMenuViewController.xib */,
-				E47346FB261F2F9C0055DD0A /* SlideAnimation.swift */,
-				BD62EA2B261C8F2A00E44D80 /* LaunchScreen.storyboard */,
 				E48D391F26242801002E469E /* CardMargin.swift */,
+				E416872526270FDA003F6324 /* SideMenu */,
+				BD62EA2B261C8F2A00E44D80 /* LaunchScreen.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -399,6 +436,7 @@
 			files = (
 				E47346D7261EA2240055DD0A /* AddToDoViewController.xib in Resources */,
 				BD62EA2D261C8F2A00E44D80 /* LaunchScreen.storyboard in Resources */,
+				E416872C2627120C003F6324 /* SideMenuTableViewCell.xib in Resources */,
 				E47346E9261ED8DD0055DD0A /* SideMenuViewController.xib in Resources */,
 				BD62EA2A261C8F2A00E44D80 /* Assets.xcassets in Resources */,
 				BD62EA28261C8F2900E44D80 /* Main.storyboard in Resources */,
@@ -427,12 +465,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E41687522627CFB0003F6324 /* TimeMaker.swift in Sources */,
 				BD794AC32620212E00C03DF4 /* RequestManager.swift in Sources */,
 				E47346F1261EE5700055DD0A /* SideMenuTransitionDelegate.swift in Sources */,
 				E409010F2626B85E0041B34D /* CardManager.swift in Sources */,
 				BDD9DB64261D97B300718566 /* ToDoTableViewCell.swift in Sources */,
 				BD511A8126240EBC00BE3C94 /* ToDoTableViewDataSource.swift in Sources */,
 				E4168718262708ED003F6324 /* Interfaces.swift in Sources */,
+				E416874726271B0A003F6324 /* TaskManager.swift in Sources */,
 				E48D392026242801002E469E /* CardMargin.swift in Sources */,
 				E406DBFC2626D16A00361AB8 /* CompleteButton.swift in Sources */,
 				BD62EA25261C8F2900E44D80 /* MainViewController.swift in Sources */,
@@ -440,12 +480,16 @@
 				BD794ABE2620211B00C03DF4 /* ParsingManager.swift in Sources */,
 				E47346FC261F2F9C0055DD0A /* SlideAnimation.swift in Sources */,
 				BD511A3D26230D3500BE3C94 /* Card.swift in Sources */,
+				E41687572627D0EE003F6324 /* SideMenuInterfaces.swift in Sources */,
 				E416870E2626F887003F6324 /* ToDoTableViewDragDelegate.swift in Sources */,
+				E416874126271A3B003F6324 /* SideMenuTableViewDelegate.swift in Sources */,
 				E406DBF72626D14F00361AB8 /* CancelButton.swift in Sources */,
+				E416872B2627120C003F6324 /* SideMenuTableViewCell.swift in Sources */,
 				BD8A1C2026258D1200F59B5B /* ToDoTableViewDelegate.swift in Sources */,
 				BD794AB92620210800C03DF4 /* DataTaskManager.swift in Sources */,
 				BD62EA23261C8F2900E44D80 /* SceneDelegate.swift in Sources */,
 				E406DC052626D48D00361AB8 /* AddToDoTextFieldDelegate.swift in Sources */,
+				E416873926271838003F6324 /* SideMenuTableViewDataSource.swift in Sources */,
 				E406DC152626D5CC00361AB8 /* ContentsValidator.swift in Sources */,
 				E406DC0B2626D4EE00361AB8 /* Interface.swift in Sources */,
 				E47346D6261EA2240055DD0A /* AddToDoViewController.swift in Sources */,
@@ -629,7 +673,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8KRV7X8GQ6;
+				DEVELOPMENT_TEAM = B3PWYBKFUK;
 				INFOPLIST_FILE = "todo-list/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -648,7 +692,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8KRV7X8GQ6;
+				DEVELOPMENT_TEAM = B3PWYBKFUK;
 				INFOPLIST_FILE = "todo-list/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
