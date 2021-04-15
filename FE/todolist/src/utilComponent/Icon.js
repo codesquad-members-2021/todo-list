@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 
-// #BDBDBD #0075DE #FF4343
 const IconButton = styled.div`
     height: 15px;
     width: 15px;
