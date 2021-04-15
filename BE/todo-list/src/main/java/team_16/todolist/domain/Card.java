@@ -2,14 +2,15 @@ package team_16.todolist.domain;
 
 import org.springframework.data.annotation.Id;
 import java.time.LocalDateTime;
+
 public class Card {
 
     @Id
     private Long id;
 
-    String title;
-    String content;
-    LocalDateTime createdTime;
+    private String title;
+    private String content;
+    private LocalDateTime createdTime;
 
     public Card(String title, String content) {
         this.title = title;

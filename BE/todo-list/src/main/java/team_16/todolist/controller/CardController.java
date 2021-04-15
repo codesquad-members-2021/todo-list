@@ -2,9 +2,7 @@ package team_16.todolist.controller;
 
 import org.springframework.web.bind.annotation.*;
 import team_16.todolist.domain.Card;
-import team_16.todolist.domain.Log;
 import team_16.todolist.service.BoardService;
-import team_16.todolist.service.LogService;
 
 @RestController
 @RequestMapping("/{boardId}/cards")
@@ -16,10 +14,6 @@ public class CardController {
         this.boardService = boardService;
     }
 
-    /*
-    Card객체를 매개변수로 받는것으로 수정 예정입니다.
-    포스트맨 으로 테스트하기위해 title과 content로 받습니
-     */
     @PostMapping
     public Card createdCard(@PathVariable Long boardId, String title, String content) {
         Card createdCard = boardService.createCard(boardId, title, content);
@@ -43,6 +37,4 @@ public class CardController {
         boardService.deleteCard(boardId, cardId);
     }
 
-
 }
-

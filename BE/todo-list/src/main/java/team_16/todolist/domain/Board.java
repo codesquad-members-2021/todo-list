@@ -52,7 +52,6 @@ public class Board {
     }
 
     public void deleteCard(Long cardId) {
-        getCard(cardId);
         cards.remove(getCard(cardId));
     }
 
@@ -62,15 +61,10 @@ public class Board {
     }
 
     public Card getCard(Long cardId) {
-        Optional<Card> findCard = null;
 
-        for (Card card : cards) {
-            if (card.getId() == cardId) {
-                findCard = Optional.of(card);
-            }
-        }
-
-        return findCard.orElseThrow(IllegalArgumentException::new);
+        return cards.stream().
+                filter(card -> card.getId() == cardId).
+                findFirst().orElseThrow(IllegalArgumentException::new);
     }
 
 }

@@ -21,7 +21,8 @@ public class LogService {
     public void createLog(Log.Action action, Long cardId, Long currentBoardId) {
         Board currentBoard = boardRepository.findById(currentBoardId).orElseThrow(IllegalArgumentException::new);
         String cardTitle = currentBoard.getCard(cardId).getTitle();
-        Log log = Log.newLog(action, cardTitle, currentBoard.getTitle());
+
+        Log log = Log.createLog(action, cardTitle, currentBoard.getTitle());
         saveLog(log);
     }
 
@@ -31,7 +32,7 @@ public class LogService {
 
         String cardTitle = previousBoard.getCard(cardId).getTitle();
 
-        Log log = Log.newLogByPreviousBoard(action, cardTitle, currentBoard.getTitle(), previousBoard.getTitle());
+        Log log = Log.createLogByMoveBoard(action, cardTitle, currentBoard.getTitle(), previousBoard.getTitle());
 
         saveLog(log);
 

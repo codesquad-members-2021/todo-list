@@ -11,13 +11,13 @@ team_16/todolist/domain/Board.java
 team_16/todolist/domain/Log.java
  team_16.todolist.domain.Log
  team_16.todolist.domain.Log$Action
-team_16/todolist/controller/LogController.java
- team_16.todolist.controller.LogController
-team_16/todolist/service/LogService.java
- team_16.todolist.service.LogService
 team_16/todolist/service/BoardService.java
  team_16.todolist.service.BoardService
 team_16/todolist/controller/CardController.java
  team_16.todolist.controller.CardController
 team_16/todolist/controller/BoardController.java
  team_16.todolist.controller.BoardController
+team_16/todolist/controller/LogController.java
+ team_16.todolist.controller.LogController
+team_16/todolist/service/LogService.java
+ team_16.todolist.service.LogService

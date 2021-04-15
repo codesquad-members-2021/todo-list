@@ -57,11 +57,11 @@ public class Log {
         this.currentBoard = currentBoard;
     }
 
-    public static Log newLog(Action action, String cardTitle, String currentBoard) {
+    public static Log createLog(Action action, String cardTitle, String currentBoard) {
         return new Log(action, cardTitle, currentBoard);
     }
 
-    public static Log newLogByPreviousBoard(Action action, String cardTitle, String previousBoard, String currentBoard) {
+    public static Log createLogByMoveBoard(Action action, String cardTitle, String previousBoard, String currentBoard) {
         return new Log(action, cardTitle, previousBoard, currentBoard);
     }
 

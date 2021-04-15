@@ -11,6 +11,7 @@ import java.util.Set;
 @RestController
 @RequestMapping("/logs")
 public class LogController {
+
     private final LogService logService;
 
     public LogController(LogService logService) {
@@ -19,7 +20,6 @@ public class LogController {
 
     @GetMapping
     public Set<Log> getLog() {
-
         return logService.findAll();
     }
 }
