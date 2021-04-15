@@ -93,9 +93,4 @@ public class TaskController {
             taskRepository.save(taskToMove);
         }
     }
-
-    private Task readByPreviousId(Long previousId) {
-        return taskRepository.findOneByPreviousId(previousId)
-                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 task. previousId : " + previousId));
-    }
 }
