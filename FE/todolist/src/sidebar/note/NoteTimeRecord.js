@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 const NoteTimeStyle = styled.div`
@@ -7,10 +7,31 @@ const NoteTimeStyle = styled.div`
     color: #909090;
 `;
 
-const NoteTimeRecord = ({ time }) => {
+const NoteTimeRecord = ({ createdTime }) => {
+    const [ timegap, setTimegap ] = useState()
+
+    useEffect(() => {setTimegap(getTimeGap())}, []);
+
+    const getTimeGap = () => {
+        let now = new Date();
+        const recordedTime = new Date(createdTime);
+        const minutes = (((now - recordedTime) / 1000) / 60).toFixed(0);
+        return minutes > 60 ? calculateHourDay(minutes) : minutes;
+    }
+
+    const calculateHourDay = (min) => {
+        let hour = (min / 60).toFixed(0);
+        const minute = min % 60;
+        if (hour > 24) {
+            hour = hour % 24;
+            const day = (hour / 24).toFixed(0);
+            return `${day}일 ${hour}시간 ${minute}`
+        }
+        return `${hour}시간 ${minute}`;
+    }
 
     return (
-        <NoteTimeStyle>{time}분 전</NoteTimeStyle>
+        <NoteTimeStyle>{timegap}분 전</NoteTimeStyle>
     )
 }
 
