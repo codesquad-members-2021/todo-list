@@ -59,10 +59,10 @@ public class BoardService {
     }
 
     private Action checkMoveAction(Board board, BoardDto boardDto){
-        if(board.checkBoardMoveAction(boardDto)){
-            return Action.MOVE;
+        if(board.checkBoardUpdateAction(boardDto)){
+            return Action.UPDATE;
         }
-        return Action.UPDATE;
+        return Action.MOVE;
     }
 
     private void createLog(Board board, Action action){

@@ -64,7 +64,7 @@ public class Board {
         this.dateTime = LocalDateTime.now();
     }
 
-    public boolean checkBoardMoveAction(BoardDto boardDto){
+    public boolean checkBoardUpdateAction(BoardDto boardDto){
         return category.equals(boardDto.getCategory());
     }
 
