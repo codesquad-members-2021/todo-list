@@ -1,6 +1,14 @@
 import Card from './Card';
 
-const CardLists = ({ cards, inputs, onChange, checkInputValue, hasInput }) => {
+const CardLists = ({
+  column,
+  cards,
+  inputs,
+  onChange,
+  checkInputValue,
+  hasInput,
+  deleteCard,
+}) => {
   const cardlists = cards.map((cards) => (
     <Card
       key={cards.id}
@@ -9,6 +17,8 @@ const CardLists = ({ cards, inputs, onChange, checkInputValue, hasInput }) => {
       inputs={inputs}
       checkInputValue={checkInputValue}
       hasInput={hasInput}
+      column={column}
+      deleteCard={deleteCard}
     />
   ));
 

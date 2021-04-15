@@ -27,6 +27,14 @@ const Column = ({ data: { columns } }) => {
     setColumnData(Object.assign(columnData, column));
   };
 
+  const deleteCard = (newColumn) => {
+    const currentColumns = columnData;
+    const updatedColumns = currentColumns.map((curColumn) =>
+      curColumn.id === newColumn.id ? newColumn : curColumn
+    );
+    setColumnData(updatedColumns);
+  };
+
   const offDisplay = () => {
     setCurrentID(null);
   };
@@ -65,7 +73,13 @@ const Column = ({ data: { columns } }) => {
                 checkInputValue={checkInputValue}
               />
             )}
-            <CardLists cards={cards} checkInputValue={checkInputValue} />
+            <CardLists
+              key={id + title}
+              column={column}
+              deleteCard={deleteCard}
+              cards={cards}
+              checkInputValue={checkInputValue}
+            />
           </div>
         </ul>
       </section>

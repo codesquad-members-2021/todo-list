@@ -5,14 +5,14 @@ import { InputTitle, InputContent } from '../atoms/StyledInputs';
 import Icon from '../atoms/Icons';
 import resize from './custom.js';
 
-const Card = ({ cards, checkInputValue }) => {
+const Card = ({ column, cards, checkInputValue, deleteCard }) => {
   const [isEditMode, setIsEditMode] = useState(false);
   const [hasInput, setHasInput] = useState(false);
   const [inputs, setInputs] = useState({
     title: '',
     content: '',
   });
-  const { title, content, author } = cards;
+  const { id, title, content, author } = cards;
   const cardTitle = useRef();
   const cardContent = useRef();
 
@@ -32,6 +32,19 @@ const Card = ({ cards, checkInputValue }) => {
     setIsEditMode(false);
   };
 
+  const handleClickDeleteIcon = (e) => {
+    const newCards = deleteClickedCard(id, column);
+    const newCardList = [...newCards];
+    const newColumn = column;
+    newColumn.cards = newCardList;
+    deleteCard(newColumn);
+  };
+
+  const deleteClickedCard = (id, column) => {
+    const clickedCardID = id;
+    return column.cards.filter((card) => card.id !== clickedCardID);
+  };
+
   const handleCancelBtn = () => {
     cardTitle.current.value = title;
     cardContent.current.value = content;
@@ -45,7 +58,9 @@ const Card = ({ cards, checkInputValue }) => {
   return (
     <CardContainer className="clicked">
       <div className="card__icon">
-        <Icon type={'cancel'} />
+        <button className="icon-btn" onClick={handleClickDeleteIcon}>
+          <Icon type={'cancel'} />
+        </button>
       </div>
       {isEditMode ? (
         <li onDoubleClick={handleClickCard}>
@@ -100,6 +115,12 @@ const CardContainer = styled.div`
   border-radius: 6px;
   border: 0;
   position: relative;
+
+  .icon-btn {
+    border: 0;
+    outline: 0;
+    background: #ffffff;
+  }
 
   .card__icon {
     position: absolute;
