@@ -14,7 +14,7 @@ class ToDoCardCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.contentView.backgroundColor = .red
+        self.backgroundColor = .clear
         self.contentView.layer.cornerRadius = 30
         self.contentView.layer.masksToBounds = true
     }

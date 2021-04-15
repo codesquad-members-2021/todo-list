@@ -61,7 +61,6 @@ extension ToDoTableViewDelegates: UITableViewDataSource {
         cell.titleLabel.text = cards[indexPath.row].title
         cell.contentLabel.text = cards[indexPath.row].contents
         cell.authorLabel.text = "author by \(cards[indexPath.row].id)"
-        
         return cell
     }
 }

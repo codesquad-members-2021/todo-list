@@ -83,6 +83,7 @@ extension DoneTableViewDelegates: UITableViewDelegate {
        view.title.text = "완료한 일"
         view.displayCurrentCardNumOnBadge(number: self.list.count)
         view.button.addTarget(self, action: #selector(firePopUp), for: .touchUpInside)
+        view.backgroundColor = .clear
        return view
     }
     

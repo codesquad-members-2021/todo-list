@@ -14,7 +14,7 @@ enum Segue {
 }
 
 class ViewController: UIViewController {
-    @IBOutlet weak var firstContainver: UIView!
+    @IBOutlet weak var firstContainer: UIView!
     @IBOutlet weak var secondContainer: UIView!
     @IBOutlet weak var thirdContainer: UIView!
     
