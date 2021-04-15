@@ -15,4 +15,6 @@ class TableViewDelegate: NSObject, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return CardViewConstant.heightForHeaderInSection
     }
+    
+    
 }
