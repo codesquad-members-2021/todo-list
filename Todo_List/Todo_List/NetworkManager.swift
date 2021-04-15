@@ -25,6 +25,11 @@ enum HttpMethod: String {
     case delete = "DELETE"
 }
 
+enum EndPoint: String {
+    case home = "http://ec2-3-34-172-226.ap-northeast-2.compute.amazonaws.com:8080/list"
+    case history = "http://ec2-3-34-172-226.ap-northeast-2.compute.amazonaws.com:8080/history"
+    case modify = "http://ec2-3-34-172-226.ap-northeast-2.compute.amazonaws.com:8080/cards"
+}
 
 
 class NetworkManager {

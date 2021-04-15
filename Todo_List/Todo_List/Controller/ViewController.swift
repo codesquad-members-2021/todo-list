@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     private var doingViewController: TodoTableViewController?
     private var doneViewController: TodoTableViewController?
     
-    private var cardManager: CardManageable!
+    private var TodoCards: TodoCards! // ⚠️
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -37,7 +37,6 @@ class ViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        self.cardManager = CardManager()
         setting()
         super.viewDidLoad()
     }
@@ -46,16 +45,20 @@ class ViewController: UIViewController {
     // MARK:- Method
     
     private func setting() {
-        setVC(self.todoViewController, data: self.cardManager.getCards(type: .todo), name: .todo)
-        setVC(self.doingViewController, data: self.cardManager.getCards(type: .doing), name: .doing)
-        setVC(self.doneViewController, data: self.cardManager.getCards(type: .done), name: .done)
+        setVC(self.todoViewController, data: self.TodoCards.todo, name: .todo)
+        setVC(self.doingViewController, data: self.TodoCards.doing, name: .doing)
+        setVC(self.doneViewController, data: self.TodoCards.done, name: .done)
     }
     
-    private func setVC(_ viewController: TodoTableViewController?, data: TodoCardsManageable, name: Column) {
+    private func setVC(_ viewController: TodoTableViewController?, data: [TodoCard], name: Column) {
         viewController?.getData(with: data)
         viewController?.setting()
         viewController?.setHeader(columnName: name.rawValue)
     }
     
-    
+    // noti
+    // noti.observer
+    // 이 시점에서 데이터를 받아서
+    // self.TodoCard = Network 처리
+    //
 }

@@ -15,7 +15,7 @@ class TodoTableViewController: UIViewController {
     @IBOutlet weak var addCardButton: UIButton!
     
     private lazy var tableViewDelegate = TodoDelegate()
-    var todoDataSource = TodoDataSource()
+    var todoDataSource = TodoDataSource(todoCards: [])
         
     
     // MARK:- Method
@@ -30,7 +30,7 @@ class TodoTableViewController: UIViewController {
         
     }
     
-    func getData(with todoCards: TodoCardsManageable) {
+    func getData(with todoCards: [TodoCard]) {
         self.todoDataSource = TodoDataSource(todoCards: todoCards)
         tableView.dataSource = self.todoDataSource
     }
