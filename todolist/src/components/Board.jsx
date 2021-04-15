@@ -2,6 +2,7 @@ import Column from "./column/Column";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 import Button from "./utils/Button";
+import { URL } from "./utils/constant";
 
 const BoardBlock = styled.div`
   display: flex;
@@ -58,7 +59,7 @@ export default function Board({ onLog }) {
   const [columns, setColumns] = useState(tempData);
 
   useEffect(() => {
-    fetch("http://localhost:3000/setData", {
+    fetch(URL.DB, {
       method: "post",
       headers: {
         "Content-type": "application/json",

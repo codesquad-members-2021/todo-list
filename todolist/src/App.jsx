@@ -1,6 +1,7 @@
 import "./App.css";
 import { createGlobalStyle } from "styled-components";
 import StateProvider from "./components/StateProvider";
+
 const GlobalStyle = createGlobalStyle`
   body{
     background: #e9ecef;
