@@ -40,7 +40,7 @@ class TodoDataSource: NSObject, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            NotificationCenter.default.post(name: NSNotification.Name("removeCard"),
+            NotificationCenter.default.post(name: .removeCard,
                                             object: nil,
                                             userInfo: ["cardNum": self.todoCards[indexPath.row].id])
         }
