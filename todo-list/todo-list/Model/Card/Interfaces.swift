@@ -31,4 +31,6 @@ protocol CardMovable {
     
     func move(card: Card, toIndex: Int)
     
+    func moveToDone(card: Card, toIndex: Int)
+    
 }

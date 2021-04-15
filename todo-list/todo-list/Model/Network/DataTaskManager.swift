@@ -36,12 +36,20 @@ class DataTaskManager {
         }.resume()
     }
     
-    static func put(category: Int, cardID: Int, data: Data) {
-        session.dataTask(with: RequestManager.putRequest(category: category, cardID: cardID, data: data)).resume()
+    static func dragAndDropPut(startCartegoryID: Int, startCardIndex: Int, endCartegoryID: Int, endCardIndex: Int, completion: @escaping (Result<Bool, Error>) -> Void) {
+        session.dataTask(with: RequestManager.dragAndDropPutRequest(startCartegoryID: startCartegoryID, startCardIndex: startCardIndex, endCartegoryID: endCartegoryID, endCardIndex: endCardIndex)) {(_, response, error) in
+            guard let response = response as? HTTPURLResponse else { return }
+            if (200 ..< 299) ~= response.statusCode {
+                completion(.success(true))
+            }else{
+                print(response.statusCode)
+                completion(.failure(error?.localizedDescription as! Error))
+            }
+        }.resume()
     }
 
     static func delete(category: Int, cardID: Int, completion: @escaping (Result<DeleteCard, Error>) -> Void) {
-        session.dataTask(with: RequestManager.deleteRequest(category: category, cardID: cardID)) { (data, response, error) in
+        session.dataTask(with: RequestManager.deleteRequest(category: category, cardID: cardID)) { (_, response, error) in
             guard let response = response as? HTTPURLResponse else { return }
             if (200 ..< 299) ~= response.statusCode {
                 let deleteCardInfo = DeleteCard(cardId: cardID, category: category)

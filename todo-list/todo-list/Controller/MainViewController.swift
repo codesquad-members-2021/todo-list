@@ -21,6 +21,7 @@ class MainViewController: UIViewController {
         loadCard()
         NotificationCenter.default.addObserver(self, selector: #selector(postCard), name: CardManager.NotiKeys.addCard, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(deleteCard), name: CardManager.NotiKeys.deleteCard, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(moveCard), name: CardManager.NotiKeys.moveCard, object: nil)
     
     }
 
@@ -99,8 +100,29 @@ class MainViewController: UIViewController {
         })
     }
     
-    private func putCard() {
-        
+    @objc private func moveCard(_ notification: Notification) {
+        guard let card = notification.userInfo?["card"] as? Card else { return }
+        guard let toCategory = notification.userInfo?["toCategory"] as? Int else { return }
+        guard let toIndex = notification.userInfo?["toIndex"] as? Int else { return }
+        var cardIdNum: Int?
+        if card.category == 1 {
+            cardIdNum = willDoCardManager.index(of: card.cardId)
+        }else if card.category == 2 {
+            cardIdNum = doingCardManager.index(of: card.cardId)
+        }else{
+            cardIdNum = doneCardManager.index(of: card.cardId)
+        }
+        guard let startCardIndex = cardIdNum else { return }
+        DataTaskManager.dragAndDropPut(startCartegoryID: card.category, startCardIndex: startCardIndex + 1, endCartegoryID: toCategory, endCardIndex: toIndex + 1, completion: { (result) in
+            DispatchQueue.global().async {
+                switch result {
+                case .success(let data):
+                    self.loadCard()
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+        })
     }
 }
 

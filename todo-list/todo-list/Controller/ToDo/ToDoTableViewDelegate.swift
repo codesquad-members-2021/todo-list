@@ -9,9 +9,10 @@ import UIKit
 
 class ToDoTableViewDelegate: NSObject, UITableViewDelegate {
     
-    private let cardDeletor: CardDeletable
+    private let cardDeletor: CardDeletable & CardMovable & CardFindable
+    private let dataTaskManager = DataTaskManager()
     
-    init(cardDeletor: CardDeletable) {
+    init(cardDeletor: CardDeletable & CardMovable & CardFindable) {
         self.cardDeletor = cardDeletor
     }
     
@@ -38,8 +39,6 @@ class ToDoTableViewDelegate: NSObject, UITableViewDelegate {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
         let deleteAction = UIContextualAction(style: .destructive, title: "delete") { (action, view, completion) in
-            //tableView.deleteRows(at: [indexPath], with: .automatic) - 삭제에 해당하는 네트워크 동작으로 업데이트
-            //category, cardID
             let index = indexPath.section
             self.cardDeletor.delete(cardAt: index)
             completion(true)
@@ -52,16 +51,20 @@ class ToDoTableViewDelegate: NSObject, UITableViewDelegate {
     func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
             return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { suggestedActions in
                 
-                let share = UIAction(title: "완료한 일로 이동") { action in
+                let share = UIAction(title: "완료한 일로 이동") { (action) in
+                    guard let card = self.cardDeletor.cardAt(index: indexPath.section) else { return }
+                    guard let count = self.cardDeletor.count() else { return }
+                    self.cardDeletor.moveToDone(card: card, toIndex: count - 1)
                 }
                 
                 let rename = UIAction(title: "수정하기") { [weak self] action in
                     guard let cell = tableView.cellForRow(at: indexPath) as? ToDoTableViewCell else { return }
                     guard let title = cell.titleLabel.text, let contents = cell.contentLabel.text else { return }
-
                 }
                 
-                let delete = UIAction(title: "삭제하기", attributes: .destructive) { action in
+                let delete = UIAction(title: "삭제하기", attributes: .destructive) { (action) in
+                    let index = indexPath.section
+                    self.cardDeletor.delete(cardAt: index)
                 }
                 
                 return UIMenu(title: "", children: [share, rename, delete])

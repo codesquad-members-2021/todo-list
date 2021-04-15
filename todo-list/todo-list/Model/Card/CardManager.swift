@@ -115,5 +115,10 @@ extension CardManager: CardMovable {
         let userInfo: [String : Any] = ["card": card, "toCategory": categoryID, "toIndex": toIndex]
         NotificationCenter.default.post(name: NotiKeys.moveCard, object: self, userInfo: userInfo)
     }
+    
+    func moveToDone(card: Card, toIndex: Int) {
+        let userInfo: [String : Any] = ["card": card, "toCategory": 3, "toIndex": toIndex]
+        NotificationCenter.default.post(name: NotiKeys.moveCard, object: self, userInfo: userInfo)
+    }
 
 }

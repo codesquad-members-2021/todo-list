@@ -32,7 +32,7 @@ class ToDoTableViewDropDelegate: NSObject, UITableViewDropDelegate {
                let cardInData = cardInString.data(using: .utf8),
                let card = ParsingManager.decodeData(type: Card.self, data: cardInData) {
                 
-                self.cardSearcher.move(card: card, toIndex: destinationIndex + 1)
+                self.cardSearcher.move(card: card, toIndex: destinationIndex)
             }
         }
     }

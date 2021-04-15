@@ -32,7 +32,7 @@ class RequestManager {
     }
     
     //PUT
-    static func putRequest(category: Int, cardID: Int, data: Data) -> URLRequest {
+    static func contextMenuPutRequest(category: Int, cardID: Int, data: Data) -> URLRequest {
         guard let url = URL(string: "\(urlString)/\(category)/cards/\(cardID)") else {
             print("The URL is inappropriate.")
             return URLRequest(url: URL(string: "")!)
@@ -43,6 +43,18 @@ class RequestManager {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         return request
     }
+    
+    static func dragAndDropPutRequest(startCartegoryID: Int, startCardIndex: Int, endCartegoryID: Int, endCardIndex: Int) -> URLRequest {
+        guard let url = URL(string: "\(urlString)/\(startCartegoryID)/cards/\(startCardIndex)/move/\(endCartegoryID)/\(endCardIndex)") else {
+            print("The URL is inappropriate.")
+            return URLRequest(url: URL(string: "")!)
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "PUT"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        return request
+    }
+
     
     
     //delete
