@@ -87,15 +87,13 @@ public class CardController {
     }
 
     public String parseTodoToJson(Card card) {
+        System.out.println("card in parsing " + card.toString());
         Gson gson = new Gson();
         JsonParser parser = new JsonParser();
 
-        Map<String, Card> response = new HashMap<>();
-        response.put("card", card);
-
         JsonObject object = new JsonObject();
         object.addProperty("status", "success");
-        object.add("data", parser.parse(gson.toJson(response)));
+        object.add("data", parser.parse(gson.toJson(card)));
 
         return gson.toJson(object);
     } //TODO Json 공통부분 generic 배워서 리팩토링 해보기
