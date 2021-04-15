@@ -10,6 +10,11 @@ const CardStyle = styled.div`
     border-radius: 6px;
     box-shadow: 0px 1px 30px 0px #E0E0E0 30%;
 
+    &:hover{
+        box-shadow: 0 0 10px rgba(33,33,33,.2);
+        transition: 0.3s;
+    }
+
     input {
         display: block;
         width: 252px;
@@ -39,8 +44,14 @@ const CardStyle = styled.div`
 `
 
 const Card = ({data}) => {
+
+    const handleDragStart = (e) => {
+        console.log(e);
+        console.log(data);
+    }
+
     return(
-        <CardStyle>
+        <CardStyle draggable onDragStart={handleDragStart}>
             <input 
                 type="text"
                 disabled
