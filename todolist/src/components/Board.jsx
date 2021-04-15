@@ -3,10 +3,9 @@ import styled from "styled-components";
 import { useEffect, useState } from "react";
 import Button from "./utils/Button";
 import { URL } from "./utils/constant";
-
+import { DragDropContext } from "react-beautiful-dnd";
 const BoardBlock = styled.div`
   display: flex;
-  background: tan;
 `;
 
 const mockData = [
@@ -61,13 +60,48 @@ export default function Board({ onLog }) {
     target.items = [...column.items];
     setColumns([...columns]);
   };
+  const onDragEnd = (result) => {
+    if (!result.destination) return;
+    const { droppableId: beforeColumnId, index: beforeIndex } = result.source;
+    const {
+      droppableId: afterColumnId,
+      index: afterIndex,
+    } = result.destination;
+
+    let targetItem = {};
+    for (const column of columns) {
+      if (column.columnId === +beforeColumnId) {
+        targetItem = column.items.splice(beforeIndex, 1)[0];
+      }
+    }
+    const newColumns = columns.map((column) => {
+      const newColumn = {
+        ...column,
+        items: [...column.items],
+      };
+      if (column.columnId === +afterColumnId) {
+        console.log("aa");
+        newColumn.items.splice(afterIndex, 0, targetItem);
+      }
+      return newColumn;
+    });
+    console.log(newColumns);
+    setColumns(newColumns);
+  };
 
   return (
-    <BoardBlock>
-      {columns.map((column) => (
-        <Column onLog={onLog} key={column.columnId} column={column} setItemsOfColumn={setItemsOfColumn} />
-      ))}
-      <Button type="add" subType="bigSize" onClick={addColumn} />
-    </BoardBlock>
+    <DragDropContext onDragEnd={onDragEnd}>
+      <BoardBlock>
+        {columns.map((column) => (
+          <Column
+            onLog={onLog}
+            key={column.columnId}
+            column={column}
+            setItemsOfColumn={setItemsOfColumn}
+          />
+        ))}
+        <Button type="add" subType="bigSize" onClick={addColumn} />
+      </BoardBlock>
+    </DragDropContext>
   );
 }

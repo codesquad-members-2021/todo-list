@@ -1,10 +1,10 @@
 import { useState } from "react";
 import styled from "styled-components";
 import CardForm from "./card/CardForm";
-import CardList from "./card/CardList";
+import CardWrap from "./card/CardWrap";
 import CardContainer from "./card/CardContainer.style";
 import Button from "../utils/Button";
-
+import { Droppable } from "react-beautiful-dnd";
 const ColumnContainer = styled.section`
   width: 308px;
   margin-right: 2em;
@@ -38,10 +38,13 @@ const ColumnCount = styled.div`
   background: #bdbdbd;
   margin: 0px 10px;
 `;
+const CardList = {
+  minHeight: 300,
+};
 
 function Column({ onLog, column, setItemsOfColumn }) {
   const [enrollMode, setEnrollMode] = useState(false);
-  const { columnTitle, items } = column;
+  const { columnId, columnTitle, items } = column;
 
   const handleCreate = (card) => {
     setEnrollMode(!enrollMode);
@@ -62,7 +65,10 @@ function Column({ onLog, column, setItemsOfColumn }) {
   };
 
   const handleDelete = ({ cardId, cardTitle }) => {
-    setItemsOfColumn({ ...column, items: items.filter((e) => e.cardId !== cardId) });
+    setItemsOfColumn({
+      ...column,
+      items: items.filter((e) => e.cardId !== cardId),
+    });
     onLog({
       cardTitle: cardTitle,
       columnTitle,
@@ -91,19 +97,35 @@ function Column({ onLog, column, setItemsOfColumn }) {
         </ColumnTitle>
         <Button onClick={() => setEnrollMode(!enrollMode)} type="add" />
       </ColumnMenu>
-      {enrollMode ? (
+      {enrollMode && (
         <CardContainer>
-          <CardForm onSubmit={handleCreate} onCancel={handleCancel} onLog={onLog} />
+          <CardForm
+            onSubmit={handleCreate}
+            onCancel={handleCancel}
+            onLog={onLog}
+          />
         </CardContainer>
-      ) : (
-        ""
       )}
-      {/* {enrollMode && (
-        <CardContainer>
-          <CardForm onSubmit={handleCreate} onCancel={handleCancel} onLog={onLog} />
-        </CardContainer>
-      )} 이렇게 바꾸는거 어떠신지? */}
-      <CardList cards={items} onDelete={handleDelete} onUpdate={handleUpdate} />
+      <Droppable droppableId={String(columnId)}>
+        {(provided) => (
+          <div
+            {...provided.droppableProps}
+            ref={provided.innerRef}
+            style={CardList}
+          >
+            {items.map((card, index) => (
+              <CardWrap
+                key={card.cardId}
+                id={card.cardId}
+                card={card}
+                index={index}
+                onDelete={handleDelete}
+                onUpdate={handleUpdate}
+              />
+            ))}
+          </div>
+        )}
+      </Droppable>
     </ColumnContainer>
   );
 }
