@@ -26,29 +26,18 @@ const HistoryListBlock = styled.ul`
   }
 `
 
-
 let HistoryItems = JSON.parse(localStorage.getItem('historyList')).map(
-  
-  ({  text, time }, i) => (
-    <HistoryItem
-      text={text}
-      time={time}
-      key={i}
-      profile={profile}
-    />
+  ({ text, time }, i) => (
+    <HistoryItem text={text} time={time} key={i} profile={profile} />
   )
 )
 
 export default function HistoryList ({ children }) {
   localStorage.setItem('historyList', JSON.stringify(useHistoyState()))
-  HistoryItems = useHistoyState().reverse().map(
-    ({  text, time }, i) => (
-      <HistoryItem
-        text={text}
-        time={time}
-        key={i}
-        profile={profile}
-      />
+  HistoryItems = useHistoyState()
+    .map(({ text, time }, i) => (
+      <HistoryItem text={text} time={time} key={i} profile={profile} />
     ))
+    .reverse()
   return <HistoryListBlock>{HistoryItems}</HistoryListBlock>
 }
