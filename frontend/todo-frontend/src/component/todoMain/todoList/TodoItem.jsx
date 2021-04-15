@@ -9,7 +9,7 @@ export const TodoCard = styled.div`
   flex-direction: ${(props) => (props.flexDir === 'column' ? 'column' : 'row')};
   align-items: flex-start;
   padding: 16px;
-  width: 308px;
+  width: 288px;
   min-height: 108px;
   background-color: #ffffff;
   margin-bottom: 20px;
@@ -33,11 +33,19 @@ const TodoCardContent = styled.div`
   font-size: 0.8rem;
 `;
 
-const TodoItem = ({ todoCard: { id, title, content }, deleteTodoItem, editTodoItem }) => {
+const TodoItem = ({
+  columnId,
+  todoCard,
+  todoCard: { id, title, content },
+  deleteTodoItem,
+  editTodoItem,
+  setDragEl,
+}) => {
   const [isEditing, setIsEditing] = useState(false);
   const [inputTitle, setInputTitle] = useState(title);
   const [inputContent, setInputContent] = useState(content);
   const [isDisabled, setIsDisabled] = useState(false);
+  const [isDraged, setIsDraged] = useState(false);
 
   const inputTitleRef = useRef();
   const inputContentRef = useRef();
@@ -60,8 +68,18 @@ const TodoItem = ({ todoCard: { id, title, content }, deleteTodoItem, editTodoIt
   };
 
   const handleChange = () => {
-    if (inputTitleRef.current.value && inputContentRef.current.value) setIsDisabled(false);
+    if (inputTitleRef.current.value || inputContentRef.current.value) setIsDisabled(false);
     else setIsDisabled(true);
+  };
+
+  const handleDragOver = (e) => {
+    e.preventDefault();
+  };
+
+  const handleDragStart = (e) => {
+    setDragEl({ beforeColumnId: columnId, ...todoCard });
+    setIsDraged(true);
+    e.dataTransfer.setData('cardData', JSON.stringify({ beforeColumnId: columnId, ...todoCard }));
   };
 
   if (isEditing) {
@@ -90,7 +108,14 @@ const TodoItem = ({ todoCard: { id, title, content }, deleteTodoItem, editTodoIt
     );
   } else {
     return (
-      <TodoCard onDoubleClick={toggleEditForm} flexDir='row'>
+      <TodoCard
+        id={todoCard.id}
+        draggable='true'
+        onDoubleClick={toggleEditForm}
+        flexDir='row'
+        onDragOver={handleDragOver}
+        onDragStart={handleDragStart}
+      >
         <div>
           <TodoCardTitle>{title}</TodoCardTitle>
           <TodoCardContent>{content}</TodoCardContent>

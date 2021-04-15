@@ -1,14 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import TodoItem from './TodoItem';
 import TodoListForm from './TodoListForm';
 import DeleteBtn from '../../atom/DeleteBtn.jsx';
 import styled from 'styled-components';
-import todoListService from '../../../service/todoListService.js';
 import useTodoHook from '../../../hook/todoHook';
 
 const StyledTodoList = styled.div`
   width: 308px;
   margin-right: 20px;
+  .todoCardList {
+    width: 308px;
+    min-height: 700px;
+    background: #d8e3e7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    border-radius: 6px;
+  }
 `;
 
 const TodoTitleDiv = styled.div`
@@ -37,7 +46,7 @@ const Title = styled.span`
 const CircleNumber = styled.span`
   width: 26px;
   height: 26px;
-  background: #aaaaaa;
+  background: #d8e3e7;
   border-radius: 20px;
   padding: 0.5rem;
   font-family: Noto Sans KR;
@@ -62,10 +71,25 @@ const LoadingPage = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
 `;
 
-const TodoList = ({ data: { id, title, todoCards }, deleteTodoColumn, postLogs }) => {
+const TodoList = ({
+  data: { id, title, todoCards },
+  deleteTodoColumn,
+  postLogs,
+  todoColumns,
+  setTodoColumns,
+}) => {
   const [todos, setTodos] = useState(todoCards);
-  const [loading, postTodos, deleteTodos, putTodos] = useTodoHook(setTodos);
+  const [loading, postTodos, deleteTodos, putTodos, moveTodos] = useTodoHook(
+    setTodos,
+    setTodoColumns
+  );
   const [formSelected, setFormSelected] = useState(false);
+  const [dragEl, setDragEl] = useState(null);
+  const currentColumnDiv = useRef();
+
+  useEffect(() => {
+    setTodos(todoCards);
+  }, [todoCards, setTodos]);
 
   const addTodoItem = async (cardId, todoCard) => {
     const { title: itemTitle, date: itemDate } = todoCard;
@@ -103,13 +127,104 @@ const TodoList = ({ data: { id, title, todoCards }, deleteTodoColumn, postLogs }
     return newLog;
   };
 
-  const todoCardList = Object.values(todos).map((card) => (
-    <TodoItem todoCard={card} deleteTodoItem={deleteTodoItem} editTodoItem={editTodoItem} />
-  ));
-
   const toggleForm = () => {
     setFormSelected((formSelected) => !formSelected);
   };
+
+  const handledragOver = (e) => {
+    e.preventDefault();
+  };
+
+  const getDragAfterElement = (y) => {
+    const draggableCards = [...currentColumnDiv.current.children];
+
+    return draggableCards.reduce(
+      (closestCard, child) => {
+        const cardBox = child.getBoundingClientRect();
+        const offset = y - cardBox.top - cardBox.height / 2;
+
+        if (offset < 0 && offset > closestCard.offset) {
+          return { offset: offset, element: child };
+        } else {
+          return closestCard;
+        }
+      },
+      { offset: Number.NEGATIVE_INFINITY }
+    ).element;
+  };
+
+  const handleDrop = (e) => {
+    const cardData = JSON.parse(e.dataTransfer.getData('cardData'));
+    const { beforeColumnId, ...cData } = cardData;
+    e.preventDefault();
+    const afterElement = getDragAfterElement(e.clientY);
+    if (afterElement && +afterElement.id === cData.id) return;
+    if (afterElement === undefined) {
+      setTodoColumns((todoColumns) => {
+        delete todoColumns[beforeColumnId].todoCards[cData.id];
+        todoColumns[id].todoCards[cData.id] = cData;
+        return { ...todoColumns };
+      });
+      //해당 컬럼에 집어넣기
+      const todoDB = JSON.parse(localStorage.getItem('todos'));
+      const columnCardList = todoDB.todoData[id].todoCards;
+      const deleteColumnCardList = todoDB.todoData[beforeColumnId].todoCards;
+      todoDB.todoData[id].todoCards = {
+        ...columnCardList,
+        [cData.id]: cData,
+      };
+      delete deleteColumnCardList[cardData.id];
+      localStorage.setItem('todos', JSON.stringify({ ...todoDB }));
+    } else {
+      let newTodoCardList;
+      setTodoColumns((todoColumns) => {
+        delete todoColumns[beforeColumnId].todoCards[cData.id];
+        const cardList = todoColumns[id].todoCards;
+        newTodoCardList = addItem(cardList, afterElement.id, cData);
+        console.log(newTodoCardList);
+        todoColumns[id].todoCards = newTodoCardList;
+        return { ...todoColumns };
+      });
+      //LOCALSTORAGE 부분 해야함
+      const todoDB = JSON.parse(localStorage.getItem('todos'));
+      todoDB.todoData[id].todoCards = newTodoCardList;
+      if (id !== beforeColumnId) {
+        const deleteColumnCardList = { ...todoDB.todoData[beforeColumnId].todoCards };
+        delete deleteColumnCardList[cardData.id];
+        todoDB.todoData[beforeColumnId].todoCards = deleteColumnCardList;
+      }
+      localStorage.setItem('todos', JSON.stringify(todoDB));
+    }
+    const beforeColumnTitle = todoColumns[beforeColumnId].title;
+    postLogs({
+      columnTitle: beforeColumnTitle,
+      itemTitle: cData.title,
+      action: 'move',
+      date: Date.now(),
+      movedColumnTitle: title,
+    });
+  };
+
+  const addItem = (cardList, cardId, data) => {
+    const newCardList = {};
+    for (const key in cardList) {
+      if (key === cardId) newCardList[data.id] = { ...data };
+      newCardList[key] = { ...cardList[key] };
+    }
+    return newCardList;
+  };
+
+  const todoCardList = Object.values(todos).map((card) => (
+    <TodoItem
+      key={card.id}
+      columnId={id}
+      todoCard={card}
+      deleteTodoItem={deleteTodoItem}
+      editTodoItem={editTodoItem}
+      setDragEl={setDragEl}
+    />
+  ));
+
   return (
     <>
       {loading && <LoadingPage>loading...</LoadingPage>}
@@ -135,7 +250,14 @@ const TodoList = ({ data: { id, title, todoCards }, deleteTodoColumn, postLogs }
         </TodoTitleDiv>
 
         {formSelected ? <TodoListForm addTodoItem={addTodoItem} toggleForm={toggleForm} /> : <></>}
-        <div>{todoCardList}</div>
+        <div
+          className='todoCardList'
+          onDrop={handleDrop}
+          onDragOver={handledragOver}
+          ref={currentColumnDiv}
+        >
+          {todoCardList}
+        </div>
       </StyledTodoList>
     </>
   );
