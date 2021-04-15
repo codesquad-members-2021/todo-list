@@ -1,9 +1,10 @@
 package team10.todolist.service;
 
 import org.springframework.stereotype.Service;
-import sun.rmi.runtime.Log;
+import team10.todolist.Action;
 import team10.todolist.Category;
 import team10.todolist.domain.Board;
+import team10.todolist.domain.Log;
 import team10.todolist.dto.BoardDto;
 import team10.todolist.repository.BoardRepository;
 import team10.todolist.repository.LogRepository;
@@ -23,8 +24,8 @@ public class BoardService {
 
     public boolean create(BoardDto boardDto) {
         Board board = boardDto.toEntity();
-        Log log = 
         boardRepository.save(board);
+        createLog(board,Action.CREATE);
         return true;
     }
 
@@ -44,13 +45,28 @@ public class BoardService {
         Board board = findBoardById(id);
         board.delete();
         boardRepository.save(board);
+        createLog(board,Action.DELETE);
         return true;
     }
 
     public Board update(Long id, BoardDto boardDto) {
         Board board = findBoardById(id);
+        Action action = checkMoveAction(board,boardDto);
         board.update(boardDto);
         boardRepository.save(board);
+        createLog(board,action);
         return board;
+    }
+
+    private Action checkMoveAction(Board board, BoardDto boardDto){
+        if(board.checkBoardMoveAction(boardDto)){
+            return Action.MOVE;
+        }
+        return Action.UPDATE;
+    }
+
+    private void createLog(Board board, Action action){
+        Log log = new Log(board,action);
+        logRepository.save(log);
     }
 }

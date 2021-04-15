@@ -64,6 +64,10 @@ public class Board {
         this.dateTime = LocalDateTime.now();
     }
 
+    public boolean checkBoardMoveAction(BoardDto boardDto){
+        return category.equals(boardDto.getCategory());
+    }
+
     @Override
     public String toString() {
         return "Card{" +
