@@ -10,7 +10,7 @@ public class CardResponseDto {
     private String title;
     private String contents;
     private int columnType;
-    private LocalDateTime createdDateTime;
+    private String createdDateTime;
 
     private CardResponseDto() {
     }
@@ -31,7 +31,7 @@ public class CardResponseDto {
         return columnType;
     }
 
-    public LocalDateTime getCreatedDateTime() {
+    public String getCreatedDateTime() {
         return createdDateTime;
     }
 
@@ -40,7 +40,7 @@ public class CardResponseDto {
         private String title;
         private String contents;
         private int columnType;
-        private LocalDateTime createdDateTime;
+        private String createdDateTime;
 
         public Builder id(Long id) {
             this.id = id;
@@ -62,7 +62,7 @@ public class CardResponseDto {
             return this;
         }
 
-        public Builder createdDateTime(LocalDateTime createdDateTime) {
+        public Builder createdDateTime(String createdDateTime) {
             this.createdDateTime = createdDateTime;
             return this;
         }
