@@ -42,12 +42,11 @@ public class TodoColumn {
                 .orElseThrow(TaskNotFoundException::new);
     }
 
-    public TodoTask lastTask() {
-        TodoTask todoTask = todoTaskList.get(todoTaskList.size() - 1);
-        if (todoTask == null) {
+    public TodoTask firstTask() {
+        if (todoTaskList.size() == 0) {
             throw new TaskNotFoundException();
         }
-        return todoTask;
+        return todoTaskList.get(0);
     }
 
     public void addTaskAt(int index, TodoTask todoTask) {

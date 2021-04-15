@@ -5,8 +5,6 @@ import com.codesquad.todo.web.service.dto.TaskDto;
 import com.codesquad.todo.web.service.dto.TaskParameterDto;
 import org.springframework.stereotype.Service;
 
-import javax.validation.Valid;
-
 @Service
 public class TodoTaskService {
     private final UserRepository userRepository;
@@ -24,7 +22,7 @@ public class TodoTaskService {
 
         todoUser = userRepository.save(todoUser);
         todoColumn = todoUser.findColumnById(columnId);
-        TodoTask todoTask = todoColumn.lastTask();
+        TodoTask todoTask = todoColumn.firstTask();
         return new TaskDto(todoTask, todoUser.getName());
     }
 
