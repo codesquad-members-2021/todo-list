@@ -42,9 +42,8 @@ public class HistoryService {
         for (History history : historyList) {
             Object[] historyInfo = history.historyInfo();
             Card card = cardService.findCardById((Long) historyInfo[0]);
-            Object[] cardInfo = card.cardInfo();
-            User user = userService.findUserById((Long) cardInfo[0]);
-            CardLogDTO cardLogDto = new CardLogDTO(user, (String) cardInfo[1]);
+            User user = userService.findUserById(card.getUserId());
+            CardLogDTO cardLogDto = new CardLogDTO(user, card.getTitle());
             HistoryDTO historyDto = new HistoryDTO(cardLogDto, (String) historyInfo[1], (String) historyInfo[2], (String) historyInfo[3], (LocalDateTime) historyInfo[4]);
             result.add(historyDto);
         }

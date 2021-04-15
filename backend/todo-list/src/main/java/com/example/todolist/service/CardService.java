@@ -42,7 +42,7 @@ public class CardService {
     private void checkPermission(Card card, String userName) {
         User user = userService.findUserByName(userName);
         if (!card.isValidUser(user)) {
-            throw new IllegalUserAccessException("수정 권한이 없습니다.");
+            throw new IllegalUserAccessException();
         }
     }
 
