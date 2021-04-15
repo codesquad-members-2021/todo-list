@@ -12,6 +12,9 @@ class SideMenuViewController: UIViewController {
     @IBAction func sideMenuCloseButtonToggled(_ sender: Any) {
         self.isSideMenuOpen = false
     }
+    @IBOutlet weak var sideMenuTableView: SideMenuTableView!
+    
+    let sideMenuTableViewDelegate = SideMenuTableViewDelegate()
     
     var isSideMenuOpen = false {
         didSet(oldValue) {
@@ -22,7 +25,8 @@ class SideMenuViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.sideMenuTableView.dataSource = sideMenuTableViewDelegate
+        self.sideMenuTableView.register(UINib(nibName: "SideMenuTableViewCell", bundle: nil), forCellReuseIdentifier: "SideMenuTableViewCell")
     }
     
 }

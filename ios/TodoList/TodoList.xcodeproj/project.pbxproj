@@ -37,6 +37,8 @@
 		A0990B3A2628033600DA5B3C /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0990B392628033600DA5B3C /* SideMenuViewController.swift */; };
 		A0990B3F2628138000DA5B3C /* SideMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0990B3D2628138000DA5B3C /* SideMenuTableViewCell.swift */; };
 		A0990B402628138000DA5B3C /* SideMenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0990B3E2628138000DA5B3C /* SideMenuTableViewCell.xib */; };
+		A0990B482628152100DA5B3C /* SideMenuTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0990B472628152100DA5B3C /* SideMenuTableViewDelegate.swift */; };
+		A0990B4E2628187D00DA5B3C /* LogDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0990B4D2628187D00DA5B3C /* LogDataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +83,8 @@
 		A0990B392628033600DA5B3C /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		A0990B3D2628138000DA5B3C /* SideMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewCell.swift; sourceTree = "<group>"; };
 		A0990B3E2628138000DA5B3C /* SideMenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuTableViewCell.xib; sourceTree = "<group>"; };
+		A0990B472628152100DA5B3C /* SideMenuTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewDelegate.swift; sourceTree = "<group>"; };
+		A0990B4D2628187D00DA5B3C /* LogDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogDataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +111,7 @@
 				88D277072625374E0060B75A /* ToDoTableViewDelegates.swift */,
 				88D2770D26253E6D0060B75A /* DoingTableViewDelegates.swift */,
 				88D2771126253FFE0060B75A /* DoneTableViewDelegates.swift */,
+				A0990B472628152100DA5B3C /* SideMenuTableViewDelegate.swift */,
 			);
 			path = TableViewDelegates;
 			sourceTree = "<group>";
@@ -189,6 +194,7 @@
 				88EC8EE8261D4BE6008A4EE5 /* ToDoCardProtocol.swift */,
 				8871A33F2626E3D200528516 /* PopUpViewProtocol.swift */,
 				88D27706262537200060B75A /* TableViewDelegates */,
+				A0990B4D2628187D00DA5B3C /* LogDataModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -321,6 +327,8 @@
 				88EC8F19261EA969008A4EE5 /* ToDoCardCell.swift in Sources */,
 				A0130D7E261C43F20091BBEF /* SceneDelegate.swift in Sources */,
 				880D7EB42626C22E00E37766 /* PopUpViewController.swift in Sources */,
+				A0990B482628152100DA5B3C /* SideMenuTableViewDelegate.swift in Sources */,
+				A0990B4E2628187D00DA5B3C /* LogDataModel.swift in Sources */,
 				A0130D93261C458B0091BBEF /* ToDoDataModel.swift in Sources */,
 				A0990B3F2628138000DA5B3C /* SideMenuTableViewCell.swift in Sources */,
 				A0130D96261C470E0091BBEF /* DataManager.swift in Sources */,
