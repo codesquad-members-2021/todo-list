@@ -32,12 +32,12 @@ export default function Board({ onLog }) {
   const [columns, setColumns] = useState([]);
 
   useEffect(async () => {
-    if (columns.length === 0) {
-      const data = await fetch(URL.getDB);
-      const json = await data.json();
-      setColumns((json[0].columnList.length && json[0].columnList) || mockData);
-      return;
-    }
+    const data = await fetch(URL.getDB);
+    const json = await data.json();
+    setColumns((json[0].columnList.length && json[0].columnList) || mockData);
+  }, []);
+
+  useEffect(async () => {
     await fetch(URL.setDB, {
       method: "post",
       headers: {
