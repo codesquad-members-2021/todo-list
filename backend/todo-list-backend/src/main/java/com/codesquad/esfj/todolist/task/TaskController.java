@@ -30,7 +30,7 @@ public class TaskController {
     }
 
     @GetMapping("/tasks/{id}")
-    public Task readOne(@PathVariable long id) {
+    public TaskDTO.Response readOne(@PathVariable long id) {
         return taskService.readOne(id);
     }
 

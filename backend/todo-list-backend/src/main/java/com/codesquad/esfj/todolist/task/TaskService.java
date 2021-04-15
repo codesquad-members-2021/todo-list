@@ -24,8 +24,8 @@ public class TaskService {
         return TaskDTO.groupingByType(tasks);
     }
 
-    public Task readOne(long id) {
-        return taskRepository.findOne(id);
+    public TaskDTO.Response readOne(long id) {
+        return TaskDTO.response(taskRepository.findOne(id));
     }
 
     public long create(Task task) {

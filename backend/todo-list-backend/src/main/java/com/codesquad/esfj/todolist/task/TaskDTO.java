@@ -13,14 +13,16 @@ public class TaskDTO {
                 .collect(Collectors.groupingBy(Response::getTaskType));
     }
 
+    public static Response response(Task task) {
+        return Response.from(task);
+    }
+
     public static class Response {
         private Long id;
         private String title;
         private String content;
         private String writer;
         private Long previousId;
-
-        @JsonIgnore
         private String taskType;
 
         private Response(Long id, String title, String content, String writer, Long previousId, String taskType) {
