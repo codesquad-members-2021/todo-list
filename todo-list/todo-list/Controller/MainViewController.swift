@@ -59,19 +59,30 @@ class MainViewController: UIViewController {
             }
         })
     }
+    
     @objc private func postCard(_ notification: Notification) {
         guard let card = notification.userInfo?["addCard"] as? AddCard else { return }
         DataTaskManager.post(category: card.category, data: card, completion: { (result) in
             DispatchQueue.global().async {
                 switch result {
                 case .success(let data):
+                    let card = data.data
+                    let title = card.title
+                    
                     if data.data.category == 1 {
-                        self.willDoCardManager.add(card: data.data)
+                        self.willDoCardManager.add(card: card)
+                        self.taskManager.addTask(category: Category.WillDo.rawValue,
+                                                 cardTitle: title, taskStyle: .new)
                     }else if data.data.category == 2 {
-                        self.doingCardManager.add(card: data.data)
+                        self.doingCardManager.add(card: card)
+                        self.taskManager.addTask(category: Category.Doing.rawValue,
+                                                 cardTitle: title, taskStyle: .new)
                     }else{
-                        self.doneCardManager.add(card: data.data)
+                        self.doneCardManager.add(card: card)
+                        self.taskManager.addTask(category: Category.Done.rawValue,
+                                                 cardTitle: title, taskStyle: .new)
                     }
+                    
                 case .failure(let error):
                     print(error.localizedDescription)
                 }
@@ -82,16 +93,21 @@ class MainViewController: UIViewController {
     @objc private func deleteCard(_ notification: Notification) {
         guard let category = notification.userInfo?["category"] as? Int else { return }
         guard let cardID = notification.userInfo?["cardID"] as? Int else { return }
+        guard let title = notification.userInfo?["title"] as? String else { return }
+        
         DataTaskManager.delete(category: category, cardID: cardID, completion: { (result) in
             DispatchQueue.global().async {
                 switch result {
                 case .success(let data):
                     if category == 1 {
                         self.willDoCardManager.delete(cardAtPosition: cardID)
+                        self.taskManager.addTask(category: Category.WillDo.rawValue, cardTitle: title, taskStyle: .delete)
                     }else if category == 2 {
                         self.doingCardManager.delete(cardAtPosition: cardID)
+                        self.taskManager.addTask(category: Category.Doing.rawValue, cardTitle: title, taskStyle: .delete)
                     }else{
                         self.doneCardManager.delete(cardAtPosition: cardID)
+                        self.taskManager.addTask(category: Category.Done.rawValue, cardTitle: title, taskStyle: .delete)
                     }
                 case .failure(let error):
                     print(error.localizedDescription)
@@ -118,6 +134,12 @@ class MainViewController: UIViewController {
                 switch result {
                 case .success(let data):
                     self.loadCard()
+                    
+                    let allCategories = Category.allCases
+                    let startCategory = allCategories[card.category-1].rawValue
+                    let endCategory = allCategories[toCategory-1].rawValue
+                    self.taskManager.addMoveTask(fromCategory: startCategory, toCategory: endCategory,
+                                                 cardTitle: card.title)
                 case .failure(let error):
                     print(error.localizedDescription)
                 }
@@ -130,4 +152,10 @@ enum SegueIdentifier: String {
     case WillDo = "WillDo"
     case Doing = "Doing"
     case Done = "Done"
+}
+
+enum Category: String, CaseIterable {
+    case WillDo = "해야할 일"
+    case Doing = "하고 있는 일"
+    case Done = "완료한 일"
 }
