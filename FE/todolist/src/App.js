@@ -1,5 +1,5 @@
 import './reset.css';
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import HeaderTitle from './header/HeaderTitle';
 import ColumnList from './content/column/ColumnList';
 // import ColumnList from './content/column/ColumnList';
