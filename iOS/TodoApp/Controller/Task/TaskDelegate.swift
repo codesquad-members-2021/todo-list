@@ -32,17 +32,17 @@ extension TaskViewController: UIContextMenuInteractionDelegate {
         
         return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) {_ in
 
-            let edit = UIAction(title: "Edit", image: UIImage(systemName: "pencil.tip")) { _ in
+            let edit = UIAction(title: StatusInfo.edit, image: UIImage(systemName: "pencil.tip")) { _ in
                 // edit func
             }
             
-            let moveToDone = UIAction(title: "Move To Done", image: UIImage(systemName: "arrow.right")) { _ in
+            let moveToDone = UIAction(title: StatusInfo.moveToDone, image: UIImage(systemName: "arrow.right")) { _ in
                 if self.column != StatusValue.done {
                     self.taskStackManager.move(self.column!, at: self.selectedIndexPath.row)
                 }
             }
             
-            let delete = UIAction(title: "Delete", image: UIImage(systemName: "trash"), attributes: .destructive ) { _ in
+            let delete = UIAction(title: StatusInfo.delete, image: UIImage(systemName: "trash"), attributes: .destructive ) { _ in
                 self.taskStackManager.remove(self.column!, at: self.selectedIndexPath.row)
             }
             return UIMenu(children: [edit, moveToDone, delete])

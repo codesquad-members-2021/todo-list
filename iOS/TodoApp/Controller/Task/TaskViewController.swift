@@ -59,7 +59,7 @@ extension TaskViewController {
     
     //Register Xib
     private func registerTaskCell() {
-        taskTableView.register(UINib(nibName: "TaskCell", bundle: nil), forCellReuseIdentifier: "TaskCell")
+        taskTableView.register(UINib(nibName: CustomCell.task, bundle: nil), forCellReuseIdentifier: CustomCell.task)
     }
 }
 

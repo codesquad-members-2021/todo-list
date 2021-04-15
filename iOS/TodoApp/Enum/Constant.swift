@@ -6,6 +6,9 @@ enum StatusInfo {
     static let inProgress = "In Progress"
     static let done = "Done"
     static let addTask = "addTask"
+    static let edit = "Edit"
+    static let moveToDone = "MoveToDone"
+    static let delete = "Delete"
 }
 
 enum StatusValue {
@@ -16,6 +19,10 @@ enum StatusValue {
 
 enum TitleList {
     static let ofStatus = [StatusValue.toDo:StatusInfo.toDo, StatusValue.inProgress:StatusInfo.inProgress, StatusValue.done:StatusInfo.done]
+}
+
+enum CustomCell {
+    static let task = "TaskCell"
 }
 
 enum HTTPMethod {
