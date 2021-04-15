@@ -12,16 +12,38 @@ import MobileCoreServices
  final Class는 더 이상 자식 클래스를 만들 수 없다.
  */
 
-enum CardType : Int {
-    case todo = 0
-    case doing
-    case done
-}
+final class Card : NSObject, NSItemProviderWriting, NSItemProviderReading, Codable, NSCopying {
+        
+    var id : Int?
+    var title : String
+    var content : String
+    var writer : String
 
-final class Card : NSObject, NSItemProviderWriting, NSItemProviderReading, Codable {
+    var previousId : Int?
     
-//    static let PickedCard = Notification.Name("PickedCard")
+    init(id : Int?, title : String, content: String, writer : String){
+        self.id = id
+        self.title = title
+        self.content = content
+        self.writer = writer
+    }
+    init(title : String, content: String, writer : String){
+        self.title = title
+        self.content = content
+        self.writer = writer
+    }
+    convenience override init(){
+        self.init(title : "iOS",
+                  content: "implements plus button with jackson in codesquad. test code for content line. Am I right?",
+                  writer : "elly")
+    }
     
+    func copy(with zone: NSZone? = nil) -> Any {
+        return Card(id: self.id,
+                    title: self.title,
+                    content: self.content,
+                    writer: self.writer)
+    }
     static var writableTypeIdentifiersForItemProvider: [String] {
         return [(kUTTypeData as String)]
     }
@@ -49,28 +71,4 @@ final class Card : NSObject, NSItemProviderWriting, NSItemProviderReading, Codab
         let card = try decoder.decode(Card.self, from: data)
         return card
     }
-    
-    var id : Int?
-    var title : String
-    var content : String
-    var writer : String
-//    var create : Date?
-    
-    var deleted : Bool?
-    var previousId : Int?
-    
-    
-    init(title : String, content: String, writer : String){
-        self.title = title
-        self.content = content
-        self.writer = writer
-    }
-    
-    convenience override init(){
-        self.init(title : "iOS",
-                  content: "implements plus button with jackson in codesquad. test code for content line. Am I right?",
-                  writer : "elly")
-    }
-    
-    
 }

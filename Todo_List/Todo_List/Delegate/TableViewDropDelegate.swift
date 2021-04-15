@@ -8,7 +8,15 @@
 import UIKit
 
 class TableViewDropDelegate: NSObject, UITableViewDropDelegate {
-
+    
+    var cardType : CardType
+    var dataSource : TableViewDataSource?
+    
+    init(withDataSource data : TableViewDataSource, type : CardType){
+        self.dataSource = data
+        self.cardType = type
+    }
+    
     func tableView(_ tableView: UITableView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UITableViewDropProposal {
         return UITableViewDropProposal(operation: .move, intent: .insertAtDestinationIndexPath)
     }
@@ -22,25 +30,16 @@ class TableViewDropDelegate: NSObject, UITableViewDropDelegate {
         } else {
             destinationIndexPath = IndexPath(row: 0, section: tableView.numberOfSections)
         }
-        
-        /*선택된 카드를 삭제하기 위한 싱글톤 객체호출*/
-        let cardManager = CardManager.shared
-        self.board.remove(at: cardManager.indexPathSection, type: cardManager.getBoardType())
-        
         for item in coordinator.items {
             item.dragItem.itemProvider.loadObject(ofClass: Card.self, completionHandler: { (card, error) in
-                guard let card = card as? Card else {
+                guard let card = card as? Card,
+                      let id = card.id,
+                      let nextId = self.dataSource?.cards.items[destinationIndexPath.section].id
+                else {
                     return
                 }
-                switch tableView {
-                case self.todo :
-                    self.board.append(with: card, type: .todo, at: destinationIndexPath.section)
-                case self.doing :
-                    self.board.append(with: card, type: .doing, at: destinationIndexPath.section)
-                case self.done :
-                    self.board.append(with: card, type: .done, at: destinationIndexPath.section)
-                default : break
-                }
+                self.dataSource?.cards.append(with: card)
+                CardAPIClient().patchCard(from: id, type: "\(self.cardType)", to: nextId)
             })
         }
     }

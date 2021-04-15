@@ -18,13 +18,11 @@ class Cards : Codable {
     }
     
     func append(with card : Card, at position : Int = 0) {
-        NotificationCenter.default.post(name: Cards.ListChanged, object : self)
         items.insert(card, at: position)
     }
     
     @discardableResult
     func remove(at index : Int) -> Card {
-        NotificationCenter.default.post(name: Cards.ListChanged, object : self)
         return items.remove(at: index)
     }
 }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1037EDDB26281FC800FDA154 /* CardType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1037EDDA26281FC800FDA154 /* CardType.swift */; };
+		1037EDE026282A5F00FDA154 /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1037EDDF26282A5F00FDA154 /* NetworkResponse.swift */; };
 		103957D62626F88C0068F958 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103957D52626F88C0068F958 /* TableViewDataSource.swift */; };
 		103957E12626FF200068F958 /* TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103957E02626FF200068F958 /* TableViewDelegate.swift */; };
 		103957EF262701B30068F958 /* TableViewDragDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103957EE262701B30068F958 /* TableViewDragDelegate.swift */; };
@@ -19,8 +21,6 @@
 		10C1B3FB261EDE9F00B6BD9E /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C1B3FA261EDE9F00B6BD9E /* Card.swift */; };
 		10C1B409261EFE6900B6BD9E /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C1B408261EFE6900B6BD9E /* ModalViewController.swift */; };
 		10C1B40E261EFEA600B6BD9E /* Modal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10C1B40D261EFEA600B6BD9E /* Modal.storyboard */; };
-		10E6431826201822002D6FE5 /* CardViewController+Drag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E6431726201822002D6FE5 /* CardViewController+Drag.swift */; };
-		10E6431D26201835002D6FE5 /* CardViewController+Drop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E6431C26201835002D6FE5 /* CardViewController+Drop.swift */; };
 		10E6432A26201DD7002D6FE5 /* CardViewConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E6432926201DD7002D6FE5 /* CardViewConstant.swift */; };
 		10FA92EF262425AA0002DBE2 /* CardsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FA92EE262425AA0002DBE2 /* CardsAPI.swift */; };
 		10FA92F726242C620002DBE2 /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FA92F626242C620002DBE2 /* URLSessionProtocol.swift */; };
@@ -56,6 +56,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1037EDDA26281FC800FDA154 /* CardType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardType.swift; sourceTree = "<group>"; };
+		1037EDDF26282A5F00FDA154 /* NetworkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResponse.swift; sourceTree = "<group>"; };
 		103957D52626F88C0068F958 /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 		103957E02626FF200068F958 /* TableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDelegate.swift; sourceTree = "<group>"; };
 		103957EE262701B30068F958 /* TableViewDragDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDragDelegate.swift; sourceTree = "<group>"; };
@@ -68,8 +70,6 @@
 		10C1B3FA261EDE9F00B6BD9E /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		10C1B408261EFE6900B6BD9E /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		10C1B40D261EFEA600B6BD9E /* Modal.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Modal.storyboard; sourceTree = "<group>"; };
-		10E6431726201822002D6FE5 /* CardViewController+Drag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CardViewController+Drag.swift"; sourceTree = "<group>"; };
-		10E6431C26201835002D6FE5 /* CardViewController+Drop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CardViewController+Drop.swift"; sourceTree = "<group>"; };
 		10E6432926201DD7002D6FE5 /* CardViewConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewConstant.swift; sourceTree = "<group>"; };
 		10FA92EE262425AA0002DBE2 /* CardsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsAPI.swift; sourceTree = "<group>"; };
 		10FA92F626242C620002DBE2 /* URLSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol.swift; sourceTree = "<group>"; };
@@ -145,6 +145,7 @@
 				10C1B3FA261EDE9F00B6BD9E /* Card.swift */,
 				10FA93032624461D0002DBE2 /* Cards.swift */,
 				FA3A7ABF2625C73A00A07FAB /* CardManager.swift */,
+				1037EDDA26281FC800FDA154 /* CardType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -157,6 +158,7 @@
 				105DCBB926247F4A008AC441 /* APIError.swift */,
 				10FA92EE262425AA0002DBE2 /* CardsAPI.swift */,
 				10FA92FE262444A90002DBE2 /* CardAPIClient.swift */,
+				1037EDDF26282A5F00FDA154 /* NetworkResponse.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -233,8 +235,6 @@
 				FA41FF07261C4FD2004ECD45 /* ViewController.swift */,
 				10C1B408261EFE6900B6BD9E /* ModalViewController.swift */,
 				107249DA261DC182005B3DD8 /* CardViewController.swift */,
-				10E6431726201822002D6FE5 /* CardViewController+Drag.swift */,
-				10E6431C26201835002D6FE5 /* CardViewController+Drop.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -389,12 +389,12 @@
 				10FA92EF262425AA0002DBE2 /* CardsAPI.swift in Sources */,
 				103957D62626F88C0068F958 /* TableViewDataSource.swift in Sources */,
 				103957E12626FF200068F958 /* TableViewDelegate.swift in Sources */,
-				10E6431D26201835002D6FE5 /* CardViewController+Drop.swift in Sources */,
-				10E6431826201822002D6FE5 /* CardViewController+Drag.swift in Sources */,
 				10FA92FF262444A90002DBE2 /* CardAPIClient.swift in Sources */,
 				107249DB261DC182005B3DD8 /* CardViewController.swift in Sources */,
 				105DCBB526247E31008AC441 /* HTTPMethod.swift in Sources */,
 				10C1B3FB261EDE9F00B6BD9E /* Card.swift in Sources */,
+				1037EDE026282A5F00FDA154 /* NetworkResponse.swift in Sources */,
+				1037EDDB26281FC800FDA154 /* CardType.swift in Sources */,
 				FA41FF04261C4FD2004ECD45 /* AppDelegate.swift in Sources */,
 				10C1B409261EFE6900B6BD9E /* ModalViewController.swift in Sources */,
 				FA41FF06261C4FD2004ECD45 /* SceneDelegate.swift in Sources */,

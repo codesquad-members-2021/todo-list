@@ -13,9 +13,19 @@ class CardAPIClient {
         self.session = session
     }
     
-    func createCard(with card : Card){
+    func createCard(with card : Card, type : String, completion: @escaping (Card) -> Void){
         
-        guard let json = try? JSONEncoder().encode(card) else {
+        /*
+         Card 클래스는 dataType을 가질 필요가 없으나
+         api 요청시 필요한 인자이므로 임시로 객체를 생성
+         백엔드와 논의가 잘 이루어지지 않은 부분
+         */
+        let target = CardResponse.init(title: card.title,
+                                       content: card.content,
+                                       writer: card.writer,
+                                       taskType: type)
+        
+        guard let json = try? JSONEncoder().encode(target) else {
             return
         }
         var request = URLRequest(url: CardAPI.all.url)
@@ -23,23 +33,25 @@ class CardAPIClient {
         
         //HTTP Headers
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("applicatoin/json", forHTTPHeaderField: "Accept")
         request.httpBody = json
         
         let task : URLSessionTask = session
             .dataTask(with: request) { data, urlResponse, error in
-            
                 guard let response = urlResponse as? HTTPURLResponse,
                       (200...399).contains(response.statusCode)
                 else {
                     print(error ?? APIError.unknownError)
                     return
                 }
+                let id = Int(String(data: data!, encoding: .utf8)!)!
+                card.id = id
+                completion(card)
             }
         task.resume()
     }
-    func loadAllCards(completion : @escaping (Result<Cards, Error>) -> Void) {
-        let request = URLRequest(url: CardAPI.all.url)
+    func loadAllCards(completion : @escaping (Result<BoardResponse, Error>) -> Void) {
+        var request = URLRequest(url: CardAPI.all.url)
+        request.httpMethod = HTTPMethod.get.rawValue
         
         let task : URLSessionTask = session
             .dataTask(with: request) { data, urlResponse, error in
@@ -49,27 +61,23 @@ class CardAPIClient {
                     completion(.failure(error ?? APIError.unknownError))
                     return
                 }
-                
                 if let data = data,
-                   let cardResponse = try? JSONDecoder().decode([Card].self, from: data) {
-                    // 임시방편 Return type이 [Card]가 아닌 Cards로 바꾸기
-                    let temp = Cards()
-                    temp.items = cardResponse
-                    completion(.success(temp))
+                   let cardResponse = try? JSONDecoder().decode(BoardResponse.self, from: data) {
+                    completion(.success(cardResponse))
                     return
                 }
                 completion(.failure(APIError.unknownError))
             }
         task.resume()
     }
-    
-    func moveCard(from : Int, to : Int){
+    func patchCard(from : Int, type : String, to : Int){
         let current = String(from)
         let target = String(to)
-        let path = "\(current)" + "/" + "\(target)"
+        let type = String(type)
+        let path = "\(current)" + "/" + "\(type)" + "/" + "\(target)"
         
         var request = URLRequest(url: CardAPI.all.url.appendingPathComponent(path))
-        request.httpMethod = HTTPMethod.fetch.rawValue
+        request.httpMethod = HTTPMethod.patch.rawValue
         
         let task : URLSessionTask = session
             .dataTask(with: request) { data, urlResponse, error in
@@ -83,7 +91,6 @@ class CardAPIClient {
         task.resume()
     }
     func deleteCard(with id : Int?){
-        
         guard let id = id else {
             print(APIError.notIncludeID)
             return
@@ -117,7 +124,7 @@ class CardAPIClient {
         
         let task : URLSessionTask = session
             .dataTask(with: request) { data, urlResponse, error in
-            
+                
                 guard let response = urlResponse as? HTTPURLResponse,
                       (200...399).contains(response.statusCode)
                 else {

@@ -11,20 +11,8 @@ class TableViewDataSource: NSObject, UITableViewDataSource {
     
     var cards = Cards()
     
-    init(with type : CardType){
-        super.init()
-        loadCards(with : type)
-    }
-    func loadCards(with type : CardType){
-        DispatchQueue.main.async {
-            // API완성되면 수정할 것
-            CardAPIClient().loadAllCards(completion: { [weak self] result in
-                switch result {
-                case .success(let cards) : self?.cards = cards
-                case .failure(let error) : print(error)
-                }
-            })
-        }
+    func setCards(with cards: Cards){
+        self.cards = cards
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -43,8 +31,12 @@ class TableViewDataSource: NSObject, UITableViewDataSource {
         return cards.count
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        editingStyle == .delete
-        cards.remove(at: indexPath.section)
+        //        editingStyle == .delete
+        guard let id = cards.items[indexPath.section].id else { return }
+        
+        self.cards.remove(at: indexPath.section)
         tableView.deleteSections([indexPath.section], with: .fade)
+        
+        CardAPIClient().deleteCard(with: id)
     }    
 }
