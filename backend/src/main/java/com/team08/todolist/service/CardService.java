@@ -29,4 +29,11 @@ public class CardService {
     public void delete(Long cardId) {
         cardRepository.deleteById(cardId);
     }
+
+    public void update(Long cardId, CardDto cardToUpdate) {
+        Card card = cardRepository.findById(cardId)
+                .orElseThrow(IllegalArgumentException::new);
+        card.update(cardToUpdate);
+        cardRepository.save(card);
+    }
 }

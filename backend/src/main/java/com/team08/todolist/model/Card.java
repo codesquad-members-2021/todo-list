@@ -1,6 +1,7 @@
 package com.team08.todolist.model;
 
 import com.team08.todolist.DateTimeUtils;
+import com.team08.todolist.dto.CardDto;
 import org.springframework.data.annotation.Id;
 
 import java.time.LocalDateTime;
@@ -58,7 +59,17 @@ public class Card {
     public Integer getPos() {
         return pos;
     }
-    
+
+    public void update(CardDto cardToUpdate) {
+        this.cid = cardToUpdate.getCardId();
+        this.title = cardToUpdate.getTitle();
+        this.content = cardToUpdate.getContent();
+        this.date = DateTimeUtils.reformatByPattern(cardToUpdate.getCreatedTime());
+        this.isapp = cardToUpdate.getIsApp();
+        this.columnid = cardToUpdate.getColumnId();
+        this.pos = cardToUpdate.getPosition();
+    }
+
     @Override
     public String toString() {
         return "Card{" +

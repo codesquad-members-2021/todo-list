@@ -38,6 +38,7 @@ public class ApiCardController {
 
     @PutMapping("/{cardId}")
     public CardDto update(@PathVariable Long cardId, CardDto cardToUpdate) {
+        cardService.update(cardId, cardToUpdate);
         return cardToUpdate;
     }
 
