@@ -62,5 +62,18 @@ class TodoTableViewController: UIViewController {
         cardNumLabel.text = "\(todoDataSource.todoCards.count)"
     }
     
-
+    @objc func removeCard(_ notification: Notification) {
+            guard let dict = notification.userInfo as? [String:Int] else {
+                return
+            }
+            let cardnum = dict["cardnum"]!
+            let card = self.todoDataSource.todoCards[cardnum].id
+            let url = "\(EndPoint.modify.rawValue)/\(card)"
+            print(url)
+            NetworkManager().getSource(urlString: url, httpMethod: .delete, json: nil, dataType: Decode.self) { (data, error) in
+                if error != nil { print(error!) }
+                else {print( data!)}
+            }
+            NetworkHandler.get(urlString: url, dataType: TodoCards.self)
+        }
 }
