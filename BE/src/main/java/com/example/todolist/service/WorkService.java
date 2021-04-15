@@ -9,6 +9,7 @@ import com.example.todolist.exception.IllegalUserAccessException;
 import com.example.todolist.web.dto.*;
 import com.example.todolist.web.utils.Action;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -33,6 +34,7 @@ public class WorkService {
                 .collect(Collectors.toList());
     }
 
+    @Transactional
     public WorkResponseDTO save(CreateWorkRequestDTO workDTO, User sessionUser) {
         Work work = workDTO.toEntity();
         work.saveAuthorId(sessionUser);
@@ -41,6 +43,7 @@ public class WorkService {
         return buildWorkResponseDTO(saveWork, sessionUser);
     }
 
+    @Transactional
     public WorkResponseDTO update(Long id, UpdateWorkRequestDTO workDTO, User sessionUser) {
         Work work = getVerifiedWork(id, sessionUser);
         timelineService.editByAction(work, Action.UPDATE);
@@ -49,6 +52,7 @@ public class WorkService {
         return buildWorkResponseDTO(work, sessionUser);
     }
 
+    @Transactional
     public void delete(Long id, User sessionUser) {
         Work work = getVerifiedWork(id, sessionUser);
         timelineService.editByAction(work, Action.DELETE);
@@ -56,6 +60,7 @@ public class WorkService {
         workRepository.save(work);
     }
 
+    @Transactional
     public WorkResponseDTO move(Long id, MoveWorkRequestDTO workDTO, User sessionUser) {
         Work work = getVerifiedWork(id, sessionUser);
         work.move(workDTO.toEntity().getStatus());
