@@ -16,12 +16,17 @@ public class CardService {
         this.userRepository = userRepository;
     }
 
-    public Card addTodo(Long userId, Long verticalId, Card card) {
+    public Card addCard(Long userId, Long categoryId, Card card) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new NoSuchElementException("해당 회원이 존재하지 않습니다."));
 
-        Category category = user.getCategory(verticalId);
+        Category category = user.getCategory(categoryId);
+
         category.addTodo(card);
+        userRepository.save(user);
+
+        // cardId에 매칭되는 orderNum 생성 및 저장
+        card.setOrderNum(card.getCardId().doubleValue());
         userRepository.save(user);
 
         return card;
