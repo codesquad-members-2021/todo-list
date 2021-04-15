@@ -62,7 +62,7 @@ public class CardController {
                              @PathVariable(value = "cardId") final Long cardId) {
 
         cardService.deleteTodo(1L, categoryId, cardId);
-        return parseTodoToJson(null);
+        return parseEmptyToJson();
     }
 
     @PutMapping("/{cardId}/move/{moveCategory}/{index}")
@@ -87,13 +87,23 @@ public class CardController {
     }
 
     public String parseTodoToJson(Card card) {
-        System.out.println("card in parsing " + card.toString());
         Gson gson = new Gson();
         JsonParser parser = new JsonParser();
 
         JsonObject object = new JsonObject();
         object.addProperty("status", "success");
         object.add("data", parser.parse(gson.toJson(card)));
+
+        return gson.toJson(object);
+    } //TODO Json 공통부분 generic 배워서 리팩토링 해보기
+
+    public String parseEmptyToJson() {
+        Gson gson = new Gson();
+        JsonParser parser = new JsonParser();
+
+        JsonObject object = new JsonObject();
+        object.addProperty("status", "success");
+        object.add("data", parser.parse("{}"));
 
         return gson.toJson(object);
     } //TODO Json 공통부분 generic 배워서 리팩토링 해보기

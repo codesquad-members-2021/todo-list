@@ -52,6 +52,7 @@ public class CardService {
     public void deleteTodo(Long userId, Long categoryId, Long todoId) {
         User user = userRepository.findById(userId).get();
         Category category = user.getCategory(categoryId);
+
         category.deleteTodo(todoId);
 
         userRepository.save(user);

@@ -29,7 +29,7 @@ public class Category {
     }
 
     public void deleteTodo(Long id) {
-        cards.remove(cards.get(Math.toIntExact(id) - 1));
+        cards.remove(Math.toIntExact(id) - 1);
     }
 
     public void setCategoryId(Long categoryId) {
