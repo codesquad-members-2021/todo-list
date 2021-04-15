@@ -9,7 +9,7 @@ public class Card {
     private Long category;
     private String title;
     private String contents;
-
+    private double orderNum;
 
     public Card() {
     }
@@ -34,6 +34,10 @@ public class Card {
         return category;
     }
 
+    public double getOrderNum() {
+        return orderNum;
+    }
+
     public void setCardId(Long cardId) {
         this.cardId = cardId;
     }
@@ -46,8 +50,13 @@ public class Card {
         this.contents = contents;
     }
 
+
     public void setCategory(Long category) {
         this.category = category;
+    }
+
+    public void setOrderNum(double orderNum) {
+        this.orderNum = orderNum;
     }
 
     @Override
@@ -57,6 +66,7 @@ public class Card {
                 ", category=" + category +
                 ", title='" + title + '\'' +
                 ", contents='" + contents + '\'' +
+                ", orderNum=" + orderNum +
                 '}';
     }
 }

@@ -43,8 +43,7 @@ public class CardController {
     @ResponseStatus(HttpStatus.CREATED)
     public String createCard(@RequestBody Card card,
                              @PathVariable(value = "categoryId") final Long categoryId) {
-
-        Card foundCard = cardService.addTodo(1L, categoryId, card);
+        Card foundCard = cardService.addCard(1L, categoryId, card);
         return parseTodoToJson(foundCard);
     }
 

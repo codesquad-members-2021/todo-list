@@ -4,6 +4,7 @@ import org.springframework.data.annotation.Id;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.LongToDoubleFunction;
 
 public class Category {
 
@@ -37,13 +38,11 @@ public class Category {
 
 
     public boolean addTodo(Card card) {
+
+        System.out.println("test in catergory Card: " + card.toString());
         return this.cards.add(card);
     }
-//
-//    public void update(Vertical vertical) {
-//        this.todos = vertical.getTodos();
-//    }
-//
+
     @Override
     public String toString() {
         return "Vertical{" +
