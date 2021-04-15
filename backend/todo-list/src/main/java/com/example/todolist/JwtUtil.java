@@ -12,7 +12,7 @@ import java.util.Date;
 @Component
 public class JwtUtil {
     private String SECRET_KEY = "SECRETKEY";
-    private Date expiredTime = new Date(System.currentTimeMillis() + 60 * 60 * 3 * 1000);
+    private Date expiredTime = new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 3 * 1000);
     private String ISSUER = "test";
 
     public String createToken(String name) {
