@@ -64,6 +64,7 @@ class ViewController: UIViewController {
     
     private func setObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NSNotification.Name(rawValue: "finishNetwork"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(moveCard), name: NSNotification.Name(rawValue: "moveCard"), object: nil)
     }
     
     @objc func reloadData(_ notification: Notification) {
@@ -73,6 +74,18 @@ class ViewController: UIViewController {
             self.todoCards = cards
             setting()
         }
+    }
+    
+    @objc func moveCard(_ notification: Notification) {
+        guard let dict = notification.userInfo as Dictionary? else { return }
+        guard let card = dict["card"] as? TodoCard else { return }
+        guard let status = dict["column"] as? String else { return }
+
+        let moveCard = MoveCard(status: status)
+        let url = "\(EndPoint.modify.rawValue)/\(card.id)/status"
+        
+        NetworkHandler.post(anydata: moveCard, url: url, httpMethod: .put)
+        NetworkHandler.get(urlString: EndPoint.home.rawValue, dataType: TodoCards.self)
     }
 }
 
