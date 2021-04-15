@@ -28,7 +28,8 @@ public class WorkService {
     }
 
     public List<WorkResponseDTO> getWorks(User sessionUser) {
-        return workRepository.findAllByAuthorId(sessionUser.getId()).stream()
+        return workRepository.findAllByAuthorIdOrderByUpdatedAtAsc
+                (sessionUser.getId()).stream()
                 .filter(Work::isNotDeleted)
                 .map(work -> buildWorkResponseDTO(work, sessionUser))
                 .collect(Collectors.toList());
