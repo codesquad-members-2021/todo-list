@@ -89,7 +89,6 @@ class ModalViewController: UIViewController {
         let card = CreateCard(title: titleTextView.text ?? "", contents: contentTextView.text ?? "", status: self.status!)
         
         NetworkHandler.post(anydata: card, url: EndPoint.modify.rawValue, httpMethod: .post)
-        NetworkHandler.get(urlString: EndPoint.home.rawValue, dataType: TodoCards.self)
     }
     
     private func modifyCard(cardNum: Int) {
@@ -97,7 +96,6 @@ class ModalViewController: UIViewController {
         let url = "\(EndPoint.modify.rawValue)/\(cardNum)/edit"
         
         NetworkHandler.post(anydata: modifyCard, url: url, httpMethod: .put)
-        NetworkHandler.get(urlString: EndPoint.home.rawValue, dataType: TodoCards.self)
     }
     
 }

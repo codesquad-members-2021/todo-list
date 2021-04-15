@@ -13,6 +13,9 @@
 		AE9320E7262794C90031FB53 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9320E6262794C90031FB53 /* NetworkManager.swift */; };
 		AEA3CBEC261EE97A005E10F2 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA3CBEA261EE97A005E10F2 /* ModalViewController.swift */; };
 		AEA3CBED261EE97A005E10F2 /* ModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEA3CBEB261EE97A005E10F2 /* ModalViewController.xib */; };
+		AEB62B422628B80700BB4B80 /* NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB62B412628B80700BB4B80 /* NotificationName.swift */; };
+		AEB62B472628B84200BB4B80 /* Coder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB62B462628B84200BB4B80 /* Coder.swift */; };
+		AEB62B502628B8ED00BB4B80 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB62B4F2628B8ED00BB4B80 /* Enum.swift */; };
 		D4BFB804261C448700D68297 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BFB803261C448700D68297 /* AppDelegate.swift */; };
 		D4BFB806261C448700D68297 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BFB805261C448700D68297 /* SceneDelegate.swift */; };
 		D4BFB808261C448700D68297 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BFB807261C448700D68297 /* ViewController.swift */; };
@@ -54,6 +57,9 @@
 		AE9320E6262794C90031FB53 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		AEA3CBEA261EE97A005E10F2 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		AEA3CBEB261EE97A005E10F2 /* ModalViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ModalViewController.xib; sourceTree = "<group>"; };
+		AEB62B412628B80700BB4B80 /* NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationName.swift; sourceTree = "<group>"; };
+		AEB62B462628B84200BB4B80 /* Coder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coder.swift; sourceTree = "<group>"; };
+		AEB62B4F2628B8ED00BB4B80 /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
 		D4BFB800261C448700D68297 /* Todo_List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Todo_List.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4BFB803261C448700D68297 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D4BFB805261C448700D68297 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -102,10 +108,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AEB62B4B2628B88400BB4B80 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				AE9320E6262794C90031FB53 /* NetworkManager.swift */,
+				AEB62B462628B84200BB4B80 /* Coder.swift */,
+				AEB62B4F2628B8ED00BB4B80 /* Enum.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		AED1D143262598C400A5F239 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
 				AE43FD54261D934700CBD630 /* AddLineSpacing.swift */,
+				AEB62B412628B80700BB4B80 /* NotificationName.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -191,7 +208,7 @@
 				AED1D148262598F000A5F239 /* Controller */,
 				AED1D1492625990A00A5F239 /* View */,
 				AED1D1502625994500A5F239 /* ModalView */,
-				AE9320E6262794C90031FB53 /* NetworkManager.swift */,
+				AEB62B4B2628B88400BB4B80 /* Network */,
 				AED1D1542625997100A5F239 /* Etc */,
 			);
 			path = Todo_List;
@@ -350,6 +367,7 @@
 				D4BFB9672620222D00D68297 /* TodoTableViewDragDelegate.swift in Sources */,
 				D4BFB808261C448700D68297 /* ViewController.swift in Sources */,
 				AE43FD55261D934700CBD630 /* AddLineSpacing.swift in Sources */,
+				AEB62B472628B84200BB4B80 /* Coder.swift in Sources */,
 				AE1D84FC261C59BD009D633A /* TodoCard.swift in Sources */,
 				AEA3CBEC261EE97A005E10F2 /* ModalViewController.swift in Sources */,
 				D4BFB96226201F6300D68297 /* TodoTableViewDropDelegate.swift in Sources */,
@@ -359,7 +377,9 @@
 				AE9320E7262794C90031FB53 /* NetworkManager.swift in Sources */,
 				D4BFB84E261C4C8C00D68297 /* TodoDataSource.swift in Sources */,
 				D4BFB806261C448700D68297 /* SceneDelegate.swift in Sources */,
+				AEB62B502628B8ED00BB4B80 /* Enum.swift in Sources */,
 				D4BFB849261C4B8500D68297 /* TodoDelegate.swift in Sources */,
+				AEB62B422628B80700BB4B80 /* NotificationName.swift in Sources */,
 				AE20EF8A26241A6E0076FBF0 /* ModalTextViewDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

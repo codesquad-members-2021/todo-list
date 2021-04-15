@@ -15,7 +15,7 @@ extension TodoTableViewController: UITableViewDropDelegate {
         let dragItem = item.dragItem.localObject as! TodoCard
         
         let userInfo: [String: Any] = ["card": dragItem, "column": self.column ?? ""]
-        NotificationCenter.default.post(name: NSNotification.Name("moveCard"), object: nil, userInfo: userInfo)
+        NotificationCenter.default.post(name: .moveCard, object: nil, userInfo: userInfo)
     }   
 
 }

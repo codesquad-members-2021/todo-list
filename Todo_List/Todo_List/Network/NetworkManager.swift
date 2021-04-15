@@ -7,44 +7,11 @@
 
 import Foundation
 
-enum NetworkError: Int, Error {
-    case DecodeError
-    case EncodeError
-    case BadURL
-    case ResponseFailed
-    case BadRequest = 400 // 문법상 오류로 서버가 요청을 이해하지 못함
-    case NotFound = 404 // 클라이언트가 요청한 문서를 찾지 못한 경우
-    case InvalidFormat = 405// 지원되지 않은 형식으로, 서버가 요청 승인 거부 (content-type 확인 필요 혹은 header miss?)
-    case ServerError = 500 // 서버 내부 오류
-    case Unknown
-}
-
-enum HttpMethod: String {
-    case get = "GET"
-    case post = "POST"
-    case put = "PUT"
-    case delete = "DELETE"
-}
-
-enum EndPoint: String {
-    case home = "http://ec2-3-34-172-226.ap-northeast-2.compute.amazonaws.com:8080/list"
-    case history = "http://ec2-3-34-172-226.ap-northeast-2.compute.amazonaws.com:8080/history"
-    case modify = "http://ec2-3-34-172-226.ap-northeast-2.compute.amazonaws.com:8080/cards"
-}
-
-
 class NetworkHandler {
-    static func get<T:Codable>(urlString: String, dataType: T.Type) {
-        NetworkManager().getSource(urlString: urlString, httpMethod: .get, dataType: T.self) { (cards, error) in
-            let todoCards = cards as! T
-            let userinfo = ["cards": todoCards]
-            NotificationCenter.default.post(name: NSNotification.Name("finishNetwork"), object: nil, userInfo: userinfo)
-        }
-    }
-    
     static func post<T:Codable>(anydata: T, url: String, httpMethod: HttpMethod) {
         NetworkManager().encodeJson(anyData: anydata) { (data, error) in
             NetworkManager().getSource(urlString: url, httpMethod: httpMethod, json: data as? Data, dataType: Decode.self) { (data, error) in
+                NotificationCenter.default.post(name: .finishNetwork, object: nil)
             }
         }
     }
@@ -58,11 +25,9 @@ class NetworkManager {
         perfomRequest(urlString: urlString, httpMethod: httpMethod, json: json, dataType: dataType) { result in
             switch result {
             case .success(let data):
-                print("🎉", data)
                 completion(data, nil)
 
             case .failure(let error):
-                print("🤯", error)
                 completion(nil, error)
             }
         }
@@ -98,9 +63,9 @@ class NetworkManager {
         
         request.httpMethod = httpMethod.rawValue
         request.httpBody = json
-//        request.setValue("jwtToken", forHTTPHeaderField: jwtToken)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         if json != nil { request.setValue(String(json!.count), forHTTPHeaderField: "Content-Length") }
+        
         return request
     }
     
@@ -111,40 +76,8 @@ class NetworkManager {
                 completion(data, nil)
 
             case .failure(let error):
-                print(error)
                 completion(nil, error)
             }
         }
     }
 }
-
-class DecodeManager {
-    
-    // json data, T.type -> result<T.type,error>
-    static func decode<T:Decodable>(json: Data, dataType: T.Type, completion: @escaping (Result<Any,NetworkError>) -> Void) {
-        let decoder = JSONDecoder()
-        guard let data = try? decoder.decode(dataType, from: json) else {
-            completion(.failure(.DecodeError))
-            return
-        }
-        completion(.success(data))
-    }
-    
-
-}
-
-class EncodeManager {
-    
-    static func encode<T:Encodable>(anyData: T, completion: @escaping (Result<Any,NetworkError>) -> Void) {
-        let encoder = JSONEncoder()
-        encoder.outputFormatting = .prettyPrinted
-        
-        guard let data = try? encoder.encode(anyData) else {
-            completion(.failure(.EncodeError))
-            return
-        }
-        completion(.success(data))
-    }
-}
-
-

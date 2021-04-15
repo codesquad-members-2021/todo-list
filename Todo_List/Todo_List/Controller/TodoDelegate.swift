@@ -19,17 +19,17 @@ class TodoDelegate: NSObject, UITableViewDelegate {
         
         return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { (menu) -> UIMenu? in
             let completeAction = UIAction(title: NSLocalizedString("완료한 일로 이동", comment: ""), image: nil) { (action) in
-                NotificationCenter.default.post(name: NSNotification.Name("completeCard"),
+                NotificationCenter.default.post(name: .completeCard,
                                                                 object: nil,
                                                                 userInfo: userInfo)
             }
             let modifyAction = UIAction(title: NSLocalizedString("수정하기", comment: ""), image: nil) { (action) in
-                NotificationCenter.default.post(name: NSNotification.Name("modifyCard"),
+                NotificationCenter.default.post(name: .modifyCard,
                                                                 object: nil,
                                                                 userInfo: userInfo)
             }
             let deleteAction = UIAction(title: NSLocalizedString("삭제하기", comment: ""), image: UIImage(systemName: "trash"), attributes: .destructive) { (action) in
-                NotificationCenter.default.post(name: NSNotification.Name("removeCard"),
+                NotificationCenter.default.post(name: .removeCard,
                                                                 object: nil,
                                                                 userInfo: userInfo)
             }

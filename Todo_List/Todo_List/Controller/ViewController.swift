@@ -38,11 +38,15 @@ class ViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        NetworkHandler.get(urlString: EndPoint.home.rawValue, dataType: TodoCards.self)
+        
         setObserver()
-        setting()
-        let _ = Timer.scheduledTimer(withTimeInterval: 0.6, repeats: true) { (timer) in
-            NetworkHandler.get(urlString: EndPoint.home.rawValue, dataType: TodoCards.self)
+        let _ = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { (timer) in
+            NetworkManager().getSource(urlString: EndPoint.home.rawValue,
+                                       httpMethod: .get,
+                                       dataType: TodoCards.self) { (cards, error) in
+                self.todoCards = cards as! TodoCards
+                self.setting()
+            }
         }
         super.viewDidLoad()
     }
@@ -67,17 +71,18 @@ class ViewController: UIViewController {
     //MARK:- Notification
     
     private func setObserver() {
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NSNotification.Name(rawValue: "finishNetwork"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(moveCard), name: NSNotification.Name(rawValue: "moveCard"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(removeCard), name: NSNotification.Name(rawValue: "removeCard"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(completeCard), name: NSNotification.Name(rawValue: "completeCard"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(modifyCard), name: NSNotification.Name(rawValue: "modifyCard"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: .finishNetwork, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(moveCard), name: .moveCard, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(removeCard), name: .removeCard, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(completeCard), name: .completeCard, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(modifyCard), name: .modifyCard, object: nil)
     }
     
     @objc func reloadData(_ notification: Notification) {
-        guard let dict = notification.userInfo as Dictionary? else { return }
-        if let cards = dict["cards"] as? TodoCards {
-            self.todoCards = cards
+        NetworkManager().getSource(urlString: EndPoint.home.rawValue,
+                                   httpMethod: .get,
+                                   dataType: TodoCards.self) { (cards, error) in
+            self.todoCards = cards as! TodoCards
             self.setting()
         }
     }
@@ -91,7 +96,6 @@ class ViewController: UIViewController {
         let url = "\(EndPoint.modify.rawValue)/\(card.id)/status"
         
         NetworkHandler.post(anydata: moveCard, url: url, httpMethod: .put)
-        NetworkHandler.get(urlString: EndPoint.home.rawValue, dataType: TodoCards.self)
     }
     
     @objc func removeCard(_ notification: Notification) {
@@ -101,7 +105,6 @@ class ViewController: UIViewController {
         let url = "\(EndPoint.modify.rawValue)/\(cardNum)"
         
         NetworkHandler.post(anydata: cardNum, url: url, httpMethod: .delete)
-        NetworkHandler.get(urlString: EndPoint.home.rawValue, dataType: TodoCards.self)
     }
     
     @objc func completeCard(_ notification: Notification) {
@@ -112,7 +115,6 @@ class ViewController: UIViewController {
         let url = "\(EndPoint.modify.rawValue)/\(cardNum)/status"
         
         NetworkHandler.post(anydata: moveCard, url: url, httpMethod: .put)
-        NetworkHandler.get(urlString: EndPoint.home.rawValue, dataType: TodoCards.self)
     }
     
     @objc func modifyCard(_ notification: Notification) {
@@ -124,6 +126,3 @@ class ViewController: UIViewController {
         self.present(modalView, animated: true, completion: nil)  
     }
 }
-
-
-
