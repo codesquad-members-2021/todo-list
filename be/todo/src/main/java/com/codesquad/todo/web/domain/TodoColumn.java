@@ -53,7 +53,6 @@ public class TodoColumn {
 
     public void addTask(String taskTitle, String taskContent) {
         TodoTask todoTask = new TodoTask(taskTitle, taskContent);
-        //todoTask.verifyTaskEntityIsNotEmpty();
         addTask(todoTask);
     }
 
@@ -75,10 +74,6 @@ public class TodoColumn {
     public void removeTaskById(Long id) {
         TodoTask todoTask = findTaskById(id);
         todoTaskList.remove(todoTask);
-    }
-
-    public List<TaskDto> convertTaskListToTaskDtoList() {
-        return todoTaskList.stream().map(task -> new TaskDto(task, "test")).collect(Collectors.toList());
     }
 
     public boolean isSameTitle(TodoColumn todoColumn) {
