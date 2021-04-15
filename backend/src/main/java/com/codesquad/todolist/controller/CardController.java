@@ -2,7 +2,6 @@ package com.codesquad.todolist.controller;
 
 import com.codesquad.todolist.domain.Card;
 import com.codesquad.todolist.service.CardService;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
