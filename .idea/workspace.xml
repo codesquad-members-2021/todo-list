@@ -5,20 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="af93a8a2-2eed-469e-a744-7ac329506fe2" name="Default Changelist" comment="fix: jwt 인증 관련 에러 해결, 세션 인증 방식을 토큰 인증으로 변경">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/controller/CardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/controller/CardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/domain/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/domain/Card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/domain/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/dto/CardDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/dto/CardDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/service/CardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/service/CardService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/todo-list/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/todo-list/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/todo-list/src/main/resources/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/backend/todo-list/src/main/resources/schema.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/common/JwtUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/common/JwtUtil.java" afterDir="false" />
     </list>
-    <list id="e789658e-71ba-41fc-810c-115e6323bee0" name="Changes by yunhyeji" comment="">
-      <change beforePath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/controller/CardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/controller/CardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/domain/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/service/CardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/todo-list/src/main/java/com/example/todolist/service/CardService.java" afterDir="false" />
-    </list>
+    <list id="e789658e-71ba-41fc-810c-115e6323bee0" name="Changes by yunhyeji" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -236,7 +225,7 @@
       <workItem from="1618380170882" duration="15231000" />
       <workItem from="1618449453642" duration="2368000" />
       <workItem from="1618454301381" duration="3348000" />
-      <workItem from="1618464599358" duration="12004000" />
+      <workItem from="1618464599358" duration="12764000" />
     </task>
     <task id="LOCAL-00001" summary="bug: jwt 인증 관련 오류 발생">
       <created>1617898549211</created>
