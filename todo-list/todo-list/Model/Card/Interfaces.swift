@@ -26,3 +26,9 @@ protocol CardDeletable {
     func delete(cardAt index: Int)
     
 }
+
+protocol CardMovable {
+    
+    func move(card: Card, toIndex: Int)
+    
+}

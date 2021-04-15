@@ -36,20 +36,22 @@ class CardManager {
     }
 
     func delete(cardOf ID: Int) {
-        guard let cardList = cardList else { return }
-        
+        if let idx = index(of: ID) {
+            self.cardList?.remove(at: idx)
+            postCountChange()
+        }
+    }
+    
+    func index(of cardID: Int) -> Int? {
+        guard let cardList = cardList else { return nil }
         var targetIdx: Int?
         
         for (idx, card) in cardList.enumerated() {
-            if card.cardId == ID {
+            if card.cardId == cardID {
                 targetIdx = idx
             }
         }
-        
-        if let idx = targetIdx {
-            self.cardList!.remove(at: idx)
-            postCountChange()
-        }
+        return targetIdx
     }
     
     //MARK: - Notification
@@ -67,6 +69,7 @@ class CardManager {
         static let countChanged = Notification.Name("countChanged")
         static let addCard = Notification.Name("addCard")
         static let deleteCard = Notification.Name("deleteCard")
+        static let moveCard = Notification.Name("moveCard")
     }
 }
 
@@ -100,6 +103,17 @@ extension CardManager: CardDeletable {
         
         let userInfo = ["category": categoryID, "cardID": index+1]
         NotificationCenter.default.post(name: NotiKeys.deleteCard, object: self, userInfo: userInfo)
+    }
+
+}
+
+extension CardManager: CardMovable {
+    
+    func move(card: Card, toIndex: Int) {
+        guard let categoryID = categoryID else { return }
+        
+        let userInfo: [String : Any] = ["card": card, "toCategory": categoryID, "toIndex": toIndex]
+        NotificationCenter.default.post(name: NotiKeys.moveCard, object: self, userInfo: userInfo)
     }
 
 }
