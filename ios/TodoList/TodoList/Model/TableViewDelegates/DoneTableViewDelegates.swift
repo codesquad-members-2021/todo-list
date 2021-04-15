@@ -106,7 +106,7 @@ extension DoneTableViewDelegates: UITableViewDelegate {
             }
             completionHaldler(true)
         })
-        deleteAction.backgroundColor = .systemRed
+        deleteAction.backgroundColor = .clear
         return UISwipeActionsConfiguration(actions: [deleteAction])
       }
 }
