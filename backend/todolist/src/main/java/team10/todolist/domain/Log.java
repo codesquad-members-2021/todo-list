@@ -19,7 +19,7 @@ public class Log {
     protected Log(){
     }
 
-    public Log(Board board, Action action){
+    public Log(Board board, Action action) {
         this.title = board.getTitle();
         this.category = board.getCategory();
         this.action = action;
