@@ -10,7 +10,6 @@ import java.time.LocalDateTime;
 public class History {
     @Id
     private Long hid;
-    private Integer cid;
     private String author;
     private String title;
     private String action;
@@ -18,9 +17,8 @@ public class History {
     private String to;
     private LocalDateTime date;
 
-    public History(Long hid, Integer cid, String author, String title, String action, String from, String to, LocalDateTime date) {
+    public History(Long hid, String author, String title, String action, String from, String to, LocalDateTime date) {
         this.hid = hid;
-        this.cid = cid;
         this.author = author;
         this.title = title;
         this.action = action;
@@ -31,10 +29,6 @@ public class History {
 
     public Long getHid() {
         return hid;
-    }
-
-    public Integer getCid() {
-        return cid;
     }
 
     public String getAuthor() {
