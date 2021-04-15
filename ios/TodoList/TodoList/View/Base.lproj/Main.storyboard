@@ -33,6 +33,9 @@
                                         </constraints>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" image="line.horizontal.3" catalog="system"/>
+                                        <connections>
+                                            <action selector="sideMenuButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7dE-tU-Nm6"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -72,12 +75,22 @@
                                     <segue destination="QSG-4X-ba6" kind="embed" identifier="toDoneViewController" id="f1u-EX-OhO"/>
                                 </connections>
                             </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SOH-Te-XqK">
+                                <rect key="frame" x="1215" y="20" width="240" height="794"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="o2Q-1F-1cw"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="QGW-be-V38" kind="embed" id="hOE-RS-8DJ"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemGray4Color"/>
                         <constraints>
                             <constraint firstItem="bRD-Z0-4OP" firstAttribute="leading" secondItem="cXr-0e-A7B" secondAttribute="trailing" constant="50" id="44x-L0-Gdi"/>
                             <constraint firstItem="6sf-Kf-mpX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="6DG-wd-vtY"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="SOH-Te-XqK" secondAttribute="bottom" id="JsW-zd-3rk"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="cXr-0e-A7B" secondAttribute="bottom" constant="100" id="a82-GC-SHH"/>
                             <constraint firstItem="bRD-Z0-4OP" firstAttribute="top" secondItem="br4-h2-am5" secondAttribute="bottom" constant="100" id="aAW-PB-tLx"/>
                             <constraint firstItem="cXr-0e-A7B" firstAttribute="top" secondItem="br4-h2-am5" secondAttribute="bottom" constant="100" id="ana-Rc-tGL"/>
@@ -85,14 +98,17 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="6sf-Kf-mpX" secondAttribute="bottom" constant="100" id="bnM-ke-JMJ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="bRD-Z0-4OP" secondAttribute="bottom" constant="100" id="eGE-s0-Ufs"/>
                             <constraint firstItem="br4-h2-am5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ewS-B8-Hfr"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="SOH-Te-XqK" secondAttribute="trailing" constant="-261" id="n9j-8A-msX"/>
                             <constraint firstItem="cXr-0e-A7B" firstAttribute="leading" secondItem="6sf-Kf-mpX" secondAttribute="trailing" constant="50" id="o5y-5W-cKe"/>
                             <constraint firstItem="br4-h2-am5" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="puA-wp-sNE"/>
                             <constraint firstItem="6sf-Kf-mpX" firstAttribute="top" secondItem="br4-h2-am5" secondAttribute="bottom" constant="100" id="xTj-t3-bon"/>
+                            <constraint firstItem="SOH-Te-XqK" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="xkt-U9-vef"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="firstContainver" destination="6sf-Kf-mpX" id="OIN-OH-tRY"/>
                         <outlet property="secondContainer" destination="cXr-0e-A7B" id="1f0-66-mRW"/>
+                        <outlet property="sideMenuTrailingConstraint" destination="n9j-8A-msX" id="X1d-Xp-kx8"/>
                         <outlet property="thirdContainer" destination="bRD-Z0-4OP" id="XHM-fc-o0E"/>
                     </connections>
                 </viewController>
@@ -280,9 +296,45 @@
             </objects>
             <point key="canvasLocation" x="444" y="568"/>
         </scene>
+        <!--Side Menu View Controller-->
+        <scene sceneID="lDR-9O-Kle">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AUs-1t-uxR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="t6F-Z0-OYq" userLabel="Exit" sceneMemberID="exit"/>
+                <viewController id="QGW-be-V38" customClass="SideMenuViewController" customModule="TodoList" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zE7-Io-S5p">
+                        <rect key="frame" x="0.0" y="0.0" width="240" height="794"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aSB-Hz-ge1">
+                                <rect key="frame" x="0.0" y="53" width="240" height="741"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qa7-4E-Duu">
+                                <rect key="frame" x="186" y="12" width="47" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <state key="normal" title="Button" image="xmark" catalog="system"/>
+                                <connections>
+                                    <action selector="sideMenuCloseButtonToggled:" destination="QGW-be-V38" eventType="touchUpInside" id="1Hm-He-26F"/>
+                                    <action selector="sideMenuCloseButtonToggled:" destination="t6F-Z0-OYq" eventType="touchUpInside" id="FgW-L1-Ja0"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="269.8492462311558" y="-550.35971223021591"/>
+        </scene>
     </scenes>
     <resources>
         <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
+        <image name="xmark" catalog="system" width="128" height="113"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

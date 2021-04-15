@@ -34,6 +34,9 @@
 		A08CBA23261C50E5003A93DD /* ToDoDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0130D92261C458B0091BBEF /* ToDoDataModel.swift */; };
 		A08CBA26261C50E7003A93DD /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0130D95261C470E0091BBEF /* DataManager.swift */; };
 		A08CBA29261C50EA003A93DD /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0130D98261C47A60091BBEF /* JSONParser.swift */; };
+		A0990B3A2628033600DA5B3C /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0990B392628033600DA5B3C /* SideMenuViewController.swift */; };
+		A0990B3F2628138000DA5B3C /* SideMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0990B3D2628138000DA5B3C /* SideMenuTableViewCell.swift */; };
+		A0990B402628138000DA5B3C /* SideMenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0990B3E2628138000DA5B3C /* SideMenuTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +78,9 @@
 		A08CBA17261C5042003A93DD /* TodoListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodoListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A08CBA19261C5043003A93DD /* TodoListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListTests.swift; sourceTree = "<group>"; };
 		A08CBA1B261C5043003A93DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A0990B392628033600DA5B3C /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
+		A0990B3D2628138000DA5B3C /* SideMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewCell.swift; sourceTree = "<group>"; };
+		A0990B3E2628138000DA5B3C /* SideMenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +128,7 @@
 				88EC8F0B261EA607008A4EE5 /* DoingViewController.swift */,
 				88EC8F12261EA651008A4EE5 /* DoneViewController.swift */,
 				880D7EB32626C22E00E37766 /* PopUpViewController.swift */,
+				A0990B392628033600DA5B3C /* SideMenuViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -133,6 +140,8 @@
 				88D276FA2621B1B60060B75A /* CustomHeader.swift */,
 				88EC8F17261EA969008A4EE5 /* ToDoCardCell.swift */,
 				88EC8F18261EA969008A4EE5 /* ToDoCardCell.xib */,
+				A0990B3D2628138000DA5B3C /* SideMenuTableViewCell.swift */,
+				A0990B3E2628138000DA5B3C /* SideMenuTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -274,6 +283,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0130D88261C43F30091BBEF /* LaunchScreen.storyboard in Resources */,
+				A0990B402628138000DA5B3C /* SideMenuTableViewCell.xib in Resources */,
 				88EC8F1A261EA969008A4EE5 /* ToDoCardCell.xib in Resources */,
 				A0130D85261C43F30091BBEF /* Assets.xcassets in Resources */,
 				A0130D83261C43F20091BBEF /* Main.storyboard in Resources */,
@@ -302,6 +312,7 @@
 				A0130D80261C43F20091BBEF /* ViewController.swift in Sources */,
 				88D277082625374E0060B75A /* ToDoTableViewDelegates.swift in Sources */,
 				8871A3402626E3D200528516 /* PopUpViewProtocol.swift in Sources */,
+				A0990B3A2628033600DA5B3C /* SideMenuViewController.swift in Sources */,
 				A0130D7C261C43F20091BBEF /* AppDelegate.swift in Sources */,
 				88EC8F2426200095008A4EE5 /* Constants.swift in Sources */,
 				88D2771226253FFE0060B75A /* DoneTableViewDelegates.swift in Sources */,
@@ -311,6 +322,7 @@
 				A0130D7E261C43F20091BBEF /* SceneDelegate.swift in Sources */,
 				880D7EB42626C22E00E37766 /* PopUpViewController.swift in Sources */,
 				A0130D93261C458B0091BBEF /* ToDoDataModel.swift in Sources */,
+				A0990B3F2628138000DA5B3C /* SideMenuTableViewCell.swift in Sources */,
 				A0130D96261C470E0091BBEF /* DataManager.swift in Sources */,
 				88EC8F0C261EA607008A4EE5 /* DoingViewController.swift in Sources */,
 			);
