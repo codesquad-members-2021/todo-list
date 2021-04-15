@@ -14,7 +14,7 @@ class TodoTableViewController: UIViewController {
     @IBOutlet weak var cardNumLabel: UILabel!
     @IBOutlet weak var addCardButton: UIButton!
     
-    private var column : String!
+    private (set)var column : String!
     private lazy var tableViewDelegate = TodoDelegate()
     var todoDataSource = TodoDataSource(todoCards: [])
         
@@ -39,7 +39,6 @@ class TodoTableViewController: UIViewController {
     
     func setHeader(columnName: String) {
         columnNameLabel.text = columnName
-        cardNumLabel.text = "\(tableView.numberOfRows(inSection: 0))"
     }
     
     
@@ -56,10 +55,23 @@ class TodoTableViewController: UIViewController {
     
     private func setObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NSNotification.Name(rawValue: "finishNetwork"), object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NSNotification.Name(rawValue: "createCard"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(moveCard), name: NSNotification.Name(rawValue: "moveCard"), object: nil)
     }
     
     @objc func reloadData(_ notification: Notification) {
         self.tableView.reloadData()
+        cardNumLabel.text = "\(todoDataSource.todoCards.count)"
+    }
+    
+    @objc func moveCard(_ notification: Notification) {
+        guard let dict = notification.userInfo as Dictionary? else { return }
+        guard let card = dict["card"] as? TodoCard else { return }
+        guard let status = dict["column"] as? String else { return }
+
+        let moveCard = MoveCard(status: status)
+        let url = "\(EndPoint.modify.rawValue)/\(card.id)/status"
+        
+        NetworkHandler.post(anydata: moveCard, url: url, httpMethod: .put)
+        NetworkHandler.get(urlString: EndPoint.home.rawValue, dataType: TodoCards.self)
     }
 }

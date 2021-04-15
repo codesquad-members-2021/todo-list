@@ -77,12 +77,4 @@ class ViewController: UIViewController {
 }
 
 
-class NetworkHandler {
-    static func get<T:Codable>(urlString: String, dataType: T.Type) {
-        NetworkManager().getSource(urlString: EndPoint.home.rawValue, httpMethod: .get, dataType: TodoCards.self) { (cards, error) in
-            let todoCards = cards as! TodoCards
-            let userinfo = ["cards": todoCards]
-            NotificationCenter.default.post(name: NSNotification.Name("finishNetwork"), object: nil, userInfo: userinfo)
-        }
-    }
-}
+
