@@ -5,15 +5,15 @@
       "columnName": "해야할 일",
       "items": [
         {
-          "id": "y1vNTFVyz",
-          "title": "ㄷㄷㄷㄷ",
-          "content": "ㄷㄷ",
+          "id": "XS827jY__",
+          "title": "ㅂㅂㅂ",
+          "content": "ㅂㅂ",
           "author": "Beemo"
         },
         {
-          "id": "HrA4T0dY_",
-          "title": "qqee",
-          "content": "qqee",
+          "id": "sOwK7qXuD",
+          "title": "ㄱㄱㄷㄱ",
+          "content": "ㄷㄱㄷㄱㄷ",
           "author": "Beemo"
         }
       ]
@@ -23,15 +23,15 @@
       "columnName": "하고 있는 일",
       "items": [
         {
-          "id": "NMCdyUSc9",
-          "title": "ㄷㄷㄷㄷ",
-          "content": "ㄷㄷㄷㄷ",
-          "author": "Beemo"
-        },
-        {
           "id": "W0WXj_sIs",
           "title": "깃 충돌 해결하기",
           "content": "완료할것",
+          "author": "Beemo"
+        },
+        {
+          "id": "QMNx_i9TP",
+          "title": "ㅈㄷㄱㅈㄷㄱ",
+          "content": "ㅈㄷㄱㅈㄷㄱ",
           "author": "Beemo"
         }
       ]
@@ -66,54 +66,6 @@
       "currentTitle": "하고잇는일ㅂㅈㄷㄱ",
       "user": "Beemo",
       "date": "2021-04-15 12:26:08"
-    },
-    {
-      "id": "Js2HAxCsR",
-      "action": "수정",
-      "prevColumn": "하고 있는 일",
-      "currentColumn": "이동한컬럼",
-      "prevTitle": "하고잇는일ㅂㅈㄷㄱ",
-      "currentTitle": "rr",
-      "user": "Beemo",
-      "date": "2021-04-15 12:29:10"
-    },
-    {
-      "id": "FwEl90t0Th",
-      "action": "등록",
-      "prevColumn": "해야할 일",
-      "currentColumn": "이동한컬럼",
-      "currentTitle": "qq",
-      "user": "Beemo",
-      "date": "2021-04-15 16:31:32"
-    },
-    {
-      "id": "a9XT1TXgZ",
-      "action": "수정",
-      "prevColumn": "해야할 일",
-      "currentColumn": "이동한컬럼",
-      "prevTitle": "qq",
-      "currentTitle": "qqee",
-      "user": "Beemo",
-      "date": "2021-04-15 16:31:40"
-    },
-    {
-      "id": "nvYdpgTM4I",
-      "action": "등록",
-      "prevColumn": "하고 있는 일",
-      "currentColumn": "이동한컬럼",
-      "currentTitle": "ㄷㄷㄷㄷ",
-      "user": "Beemo",
-      "date": "2021-04-15 16:32:47"
-    },
-    {
-      "id": "4DGcxp4Ni",
-      "action": "수정",
-      "prevColumn": "해야할 일",
-      "currentColumn": "이동한컬럼",
-      "prevTitle": "ㄱㄱㄱ",
-      "currentTitle": "ㅂㅂㅂ",
-      "user": "Beemo",
-      "date": "2021-04-15 16:33:02"
     }
   ]
 }
