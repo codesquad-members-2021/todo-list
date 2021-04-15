@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import team9.todo.domain.Card;
+import team9.todo.domain.DTO.Card.ResponseDTO;
 import team9.todo.domain.History;
 import team9.todo.domain.User;
 import team9.todo.domain.enums.CardColumn;
@@ -63,7 +64,7 @@ public class CardService {
         return saved;
     }
 
-    private double renderPos(Card prevCard, Card nextCard) {
+    private double renderPriority(Card prevCard, Card nextCard, CardColumn cardColumn, User user) {
         double priority = 0.0;
         if (prevCard == null && nextCard != null) {
             priority = nextCard.getPriority() - PRIORITY_STEP;
@@ -74,11 +75,14 @@ public class CardService {
         if (prevCard != null && nextCard != null) {
             priority = (prevCard.getPriority() + nextCard.getPriority()) / 2;
         }
+        if (prevCard == null && nextCard == null) {
+            priority = getNextPriority(cardColumn, user);
+        }
         return priority;
     }
 
     @Transactional
-    public Card move(long cardId, Long prevCardId, Long nextCardId, CardColumn to, User user) {
+    public ResponseDTO move(long cardId, Long prevCardId, Long nextCardId, CardColumn to, User user) {
         Card prevCard = null;
         Card nextCard = null;
         if (prevCardId != null) {
@@ -90,9 +94,14 @@ public class CardService {
             nextCard.validateColumn(to);
         }
 
-        double priority = renderPos(prevCard, nextCard);
-        if (prevCard == null && nextCard == null) {
-            priority = getNextPriority(to, user);
+        double priority = renderPriority(prevCard, nextCard, to, user);
+        boolean rebalanced;
+        if (rebalanced = checkRebalance(priority, prevCard, nextCard)) {
+            rebalancePriority(to, user);
+
+            prevCard = getCard(prevCardId, user);
+            nextCard = getCard(nextCardId, user);
+            priority = renderPriority(prevCard, nextCard, to, user);
         }
 
         logger.debug("{}번 카드 {}로 이동 요청, 계산된 priority=", cardId, to, priority);
@@ -107,7 +116,7 @@ public class CardService {
         if (from != to) {
             historyRepository.save(new History(saved.getId(), HistoryAction.MOVE, from, to));
         }
-        return saved;
+        return ResponseDTO.of(saved, rebalanced);
     }
 
     @Transactional
@@ -123,5 +132,25 @@ public class CardService {
         Card card = cardRepository.findByIdAndDeletedFalse(cardId).orElseThrow(NotFoundException::new);
         card.validateOwner(user.getId());
         return card;
+    }
+
+    private boolean checkRebalance(double renderedPriority, Card prevCard, Card nextCard) {
+        if (prevCard != null && renderedPriority == prevCard.getPriority()) {
+            return true;
+        }
+        if (nextCard != null && renderedPriority == nextCard.getPriority()) {
+            return true;
+        }
+        return false;
+    }
+
+    private void rebalancePriority(CardColumn cardColumn, User user) {
+        List<Card> cards = getList(cardColumn, user);
+        double priority = 0.0;
+        for (Card card : cards) {
+            priority += PRIORITY_STEP;
+            card.setPriority(priority);
+        }
+        cardRepository.saveAll(cards);
     }
 }
