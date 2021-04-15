@@ -37,8 +37,6 @@ class ToDoViewController: UIViewController {
     func presentPopUp() {
         let popUpVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: Constants.popUpVCIdentifier) as! PopUpViewController
         popUpVC.modalPresentationStyle = .overFullScreen
-        //UIAction 한 번 터치하면 두번 클릭되는 에러가 있었다.
-        //modal presentaion Style fullscreen으로 하니 백그라운드가 돌아가면서 프레젠트됨. overFullScreen으로 하니 해결
         popUpVC.setPromptMessage(message: "해야 할 일 추가")
         popUpVC.setStatus(status: "TODO")
         popUpVC.abilityToFetchData = self
@@ -48,7 +46,6 @@ class ToDoViewController: UIViewController {
 
 extension ToDoViewController: PopUpViewProtocol {
     func triggerPopUp() {
-        print("\\pop up triggered\\")
         presentPopUp()
     }
 }

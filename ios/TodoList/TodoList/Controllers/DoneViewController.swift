@@ -18,6 +18,7 @@ class DoneViewController: UIViewController {
         
         self.doneCardTableView.dataSource = doneTableViewDelegates
         self.doneCardTableView.delegate = doneTableViewDelegates
+        self.doneTableViewDelegates.popUpViewProtocol = self
         self.doneCardTableView.rowHeight = 150
         
         self.doneCardTableView.register(UINib(nibName: "ToDoCardCell", bundle: nil), forCellReuseIdentifier: "ToDoCardCell")
@@ -30,5 +31,26 @@ class DoneViewController: UIViewController {
         DispatchQueue.main.async {
             self.doneCardTableView.reloadData()
         }
+    }
+    
+    func presentPopUp() {
+        let popUpVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: Constants.popUpVCIdentifier) as! PopUpViewController
+        popUpVC.modalPresentationStyle = .overFullScreen
+        popUpVC.setPromptMessage(message: "완료한 일 추가")
+        popUpVC.setStatus(status: "DONE")
+        popUpVC.abilityToFetchData = self
+        self.present(popUpVC, animated: true, completion: nil)
+    }
+}
+
+extension DoneViewController: PopUpViewProtocol {
+    func triggerPopUp() {
+        presentPopUp()
+    }
+}
+
+extension DoneViewController: AbilityToFetchData {
+    func fetchData() {
+        self.doneTableViewDelegates.fetchCards()
     }
 }

@@ -8,6 +8,8 @@
 import UIKit
 
 class DoingTableViewDelegates: NSObject, ToDoCardProtocol {
+    var popUpViewProtocol: PopUpViewProtocol?
+    
     var list: [ToDoItem] = [] {
         didSet {
             NotificationCenter.default.post(name: .didChangeDoingCardsList, object: nil)
@@ -61,12 +63,12 @@ extension DoingTableViewDelegates: UITableViewDelegate {
                    "sectionHeader") as! CustomHeader
         view.title.text = "진행중인 일"
         view.displayCurrentCardNumOnBadge(number: self.list.count)
-        view.button.addAction(UIAction.init(handler: { (touch) in
-            DataManager.requestDelete(url: Constants.url, id: 2) { (success, output) in
-                print(output)
-            }
-        }), for: .touchUpInside)
+        view.button.addTarget(self, action: #selector(firePopUp), for: .touchUpInside)
        return view
+    }
+    
+    @objc func firePopUp() {
+        self.popUpViewProtocol?.triggerPopUp()
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -75,7 +77,13 @@ extension DoingTableViewDelegates: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .normal, title: "삭제", handler: { action, view, completionHaldler in
-            self.deleteCard(at: indexPath.row)
+//            self.deleteCard(at: indexPath.row)
+            let cardToBeDeleted = self.list[indexPath.row]
+            let id = cardToBeDeleted.id
+            DataManager.requestDelete(url: Constants.url, id: id) { (success, responseJSON) in
+                print("Delete completed")
+                self.fetchCards()
+            }
             completionHaldler(true)
         })
         deleteAction.backgroundColor = .systemRed
