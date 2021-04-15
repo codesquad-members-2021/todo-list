@@ -1,5 +1,6 @@
 // import Button from '../Button'
 // import { FaTimes } from 'react-icons/fa'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { useTodoUserNameContext } from '../Context'
 const HistoryItemBlock = styled.li`
@@ -36,13 +37,22 @@ const Time = styled.div`
 `
 
 export default function HistoryItem ({ author, text, time, profile }) {
+  const [stateTime, SetTime] = useState(new Date() - new Date(time))
+  useEffect(() => {
+    const interval = setInterval(() => {
+      SetTime(Math.ceil((new Date() - new Date(time)) / 600000))
+      console.log('This will run every second!')
+    }, 1000)
+    return () => clearInterval(interval)
+  }, [time])
+
   return (
     <HistoryItemBlock>
       <HistoryItemProfileBlock>{profile}</HistoryItemProfileBlock>
       <HistoryItemTextBlock>
         <Id>@{useTodoUserNameContext().current}</Id>
         <Contents dangerouslySetInnerHTML={{ __html: text }}></Contents>
-        <Time>{time}</Time>
+        <Time>{stateTime + '분 전'}</Time>
       </HistoryItemTextBlock>
     </HistoryItemBlock>
   )
