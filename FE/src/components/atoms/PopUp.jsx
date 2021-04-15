@@ -51,6 +51,7 @@ const StyledPopUp = styled.div`
     padding: 1rem;
     font-size: 2rem;
     color: #d63030;
+    text-align: center;
   }
 
   .warning-btns {

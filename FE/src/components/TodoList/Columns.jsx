@@ -10,8 +10,6 @@ const Column = ({ data: { columns } }) => {
   const [currentID, setCurrentID] = useState(null);
   const [isDeleteBtnClicked, SetIsDeleteBtnClicked] = useState(false);
   const [newColumns, setNewColumns] = useState([]);
-  console.log(newColumns);
-  console.log(columnData);
 
   const handleClick = (clickedID) => {
     return () => {
