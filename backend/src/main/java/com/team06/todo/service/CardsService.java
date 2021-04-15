@@ -21,7 +21,7 @@ public class CardsService {
 
     public CardResponseDto save(CardCreateRequestDto cardCreateRequestDto) {
         Card card = new Card(cardCreateRequestDto);
-        cardsRepository.save(card);
+        Card card2 = cardsRepository.save(card);
         actionsService.save(card);
         return CardResponseDto.from(card);
     }
