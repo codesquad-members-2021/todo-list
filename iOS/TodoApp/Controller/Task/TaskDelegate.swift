@@ -26,7 +26,6 @@ extension TaskViewController: UIContextMenuInteractionDelegate {
         cell.becomeFirstResponder()
         let contextMenu = UIContextMenuInteraction(delegate: self)
         cell.addInteraction(contextMenu)
-        
     }
     
     func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
@@ -38,8 +37,9 @@ extension TaskViewController: UIContextMenuInteractionDelegate {
             }
             
             let moveToDone = UIAction(title: "Move To Done", image: UIImage(systemName: "arrow.right")) { _ in
-                self.taskStackManager.move(self.column!, at: self.selectedIndexPath.row)
-                //NotificationCenter.default.post(name: .updateTasksStatus, object: self)
+                if self.column != StatusValue.done {
+                    self.taskStackManager.move(self.column!, at: self.selectedIndexPath.row)
+                }
             }
             
             let delete = UIAction(title: "Delete", image: UIImage(systemName: "trash"), attributes: .destructive ) { _ in
