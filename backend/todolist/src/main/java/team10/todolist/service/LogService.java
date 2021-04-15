@@ -15,8 +15,11 @@ public class LogService {
         this.logRepository = logRepository;
     }
 
-
     public List<Log> readAll() {
         return logRepository.findAll();
+    }
+
+    public List<Log> readUptoLimitNumber(int limitNum){
+        return logRepository.findByDateTimeAndSort(limitNum);
     }
 }
