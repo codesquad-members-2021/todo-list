@@ -20,7 +20,8 @@ class ViewController: UIViewController {
     private var doingViewController: TodoTableViewController?
     private var doneViewController: TodoTableViewController?
     
-    private var cardManager: CardManageable!
+    private var todoCards = TodoCards() // ⚠️
+    private var networkManager = NetworkManager()
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -37,7 +38,8 @@ class ViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        self.cardManager = CardManager()
+        NetworkHandler.get(urlString: EndPoint.home.rawValue, dataType: TodoCards.self)
+        setObserver()
         setting()
         super.viewDidLoad()
     }
@@ -46,16 +48,41 @@ class ViewController: UIViewController {
     // MARK:- Method
     
     private func setting() {
-        setVC(self.todoViewController, data: self.cardManager.getCards(type: .todo), name: .todo)
-        setVC(self.doingViewController, data: self.cardManager.getCards(type: .doing), name: .doing)
-        setVC(self.doneViewController, data: self.cardManager.getCards(type: .done), name: .done)
+        setVC(self.todoViewController, data: self.todoCards.todo, name: .todo, column: "todo")
+        setVC(self.doingViewController, data: self.todoCards.doing, name: .doing, column: "doing")
+        setVC(self.doneViewController, data: self.todoCards.done, name: .done, column: "done")
     }
     
-    private func setVC(_ viewController: TodoTableViewController?, data: TodoCardsManageable, name: Column) {
-        viewController?.getData(with: data)
+    private func setVC(_ viewController: TodoTableViewController?, data: [TodoCard], name: Column, column: String) {
+        viewController?.getData(with: data, column: column)
         viewController?.setting()
         viewController?.setHeader(columnName: name.rawValue)
     }
     
     
+    //MARK:- Notification
+    
+    private func setObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NSNotification.Name(rawValue: "finishNetwork"), object: nil)
+    }
+    
+    @objc func reloadData(_ notification: Notification) {
+        
+        guard let dict = notification.userInfo as Dictionary? else { return }
+        if let cards = dict["cards"] as? TodoCards {
+            self.todoCards = cards
+            setting()
+        }
+    }
+}
+
+
+class NetworkHandler {
+    static func get<T:Codable>(urlString: String, dataType: T.Type) {
+        NetworkManager().getSource(urlString: EndPoint.home.rawValue, httpMethod: .get, dataType: TodoCards.self) { (cards, error) in
+            let todoCards = cards as! TodoCards
+            let userinfo = ["cards": todoCards]
+            NotificationCenter.default.post(name: NSNotification.Name("finishNetwork"), object: nil, userInfo: userinfo)
+        }
+    }
 }

@@ -31,10 +31,11 @@ extension TodoTableViewController: UITableViewDropDelegate {
         let dragItem = item.dragItem.localObject as! DragItem
         let data = dragItem.dataSource
         
-        let card = data.todoCards.getCard(at: dragItem.indexPath)
-
-        self.todoDataSource.todoCards.insertCard(item: card, at: destinationIndexPath) // 도착지 데이터 추가
-        data.todoCards.removeCard(at: dragItem.indexPath) // 출발지 데이터 삭제
+        //noti
+//        let card = data.todoCards.getCard(at: dragItem.indexPath)
+//
+//        self.todoDataSource.todoCards.insertCard(item: card, at: destinationIndexPath) // 도착지 데이터 추가
+//        data.todoCards.removeCard(at: dragItem.indexPath) // 출발지 데이터 삭제
         
         dragItem.tableView.deleteRows(at: [dragItem.indexPath], with: .automatic) // 출발지 테이블 셀 삭제
         tableView.insertRows(at: [destinationIndexPath], with: .automatic) // 도착지 테이블 셀 추가

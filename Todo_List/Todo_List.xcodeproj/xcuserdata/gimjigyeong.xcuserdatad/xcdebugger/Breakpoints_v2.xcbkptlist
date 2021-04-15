@@ -3,4 +3,70 @@
    uuid = "CBCE1C80-8AD6-4B74-952C-A0367C45DE8B"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "254DFAFD-EB14-45A2-8550-77008D7E17C9"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Todo_List/ModalView/ModalViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "registerButtonTouched(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "254DFAFD-EB14-45A2-8550-77008D7E17C9 - 76260d8ad0395541"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Any&gt;, Swift.Optional&lt;Todo_List.NetworkError&gt;) -&gt; () in Todo_List.ModalViewController.registerButtonTouched(__C.UIButton) -&gt; ()"
+                  moduleName = "Todo_List"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gimjigyeong/Desktop/Developer/masters/todo-list/Todo_List/Todo_List/ModalView/ModalViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "63"
+                  endingLineNumber = "63"
+                  offsetFromSymbolStart = "90">
+               </Location>
+               <Location
+                  uuid = "254DFAFD-EB14-45A2-8550-77008D7E17C9 - f95e72d8e49a914f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Any&gt;, Swift.Optional&lt;Todo_List.NetworkError&gt;) -&gt; () in closure #1 (Swift.Optional&lt;Any&gt;, Swift.Optional&lt;Todo_List.NetworkError&gt;) -&gt; () in Todo_List.ModalViewController.registerButtonTouched(__C.UIButton) -&gt; ()"
+                  moduleName = "Todo_List"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gimjigyeong/Desktop/Developer/masters/todo-list/Todo_List/Todo_List/ModalView/ModalViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "64"
+                  endingLineNumber = "64"
+                  offsetFromSymbolStart = "76">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8434A373-BABE-4AC5-8A23-D09E1DE99734"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Todo_List/NetworkManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "perfomRequest(urlString:httpMethod:json:dataType:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
