@@ -45,7 +45,6 @@ class NetworkHandler {
     static func post<T:Codable>(anydata: T, url: String, httpMethod: HttpMethod) {
         NetworkManager().encodeJson(anyData: anydata) { (data, error) in
             NetworkManager().getSource(urlString: url, httpMethod: httpMethod, json: data as? Data, dataType: Decode.self) { (data, error) in
-                NotificationCenter.default.post(name: NSNotification.Name("finishNetwork"), object: nil)
             }
         }
     }

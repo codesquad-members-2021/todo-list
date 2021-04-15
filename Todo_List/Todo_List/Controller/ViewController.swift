@@ -41,6 +41,9 @@ class ViewController: UIViewController {
         NetworkHandler.get(urlString: EndPoint.home.rawValue, dataType: TodoCards.self)
         setObserver()
         setting()
+        let _ = Timer.scheduledTimer(withTimeInterval: 0.6, repeats: true) { (timer) in
+            NetworkHandler.get(urlString: EndPoint.home.rawValue, dataType: TodoCards.self)
+        }
         super.viewDidLoad()
     }
     
@@ -54,9 +57,10 @@ class ViewController: UIViewController {
     }
     
     private func setVC(_ viewController: TodoTableViewController?, data: [TodoCard], name: Column, column: String) {
-        viewController?.getData(with: data, column: column)
+        viewController?.setData(with: data, column: column)
         viewController?.setting()
         viewController?.setHeader(columnName: name.rawValue)
+        viewController?.reload()
     }
     
     
@@ -70,11 +74,10 @@ class ViewController: UIViewController {
     }
     
     @objc func reloadData(_ notification: Notification) {
-        
         guard let dict = notification.userInfo as Dictionary? else { return }
         if let cards = dict["cards"] as? TodoCards {
             self.todoCards = cards
-            setting()
+            self.setting()
         }
     }
     
