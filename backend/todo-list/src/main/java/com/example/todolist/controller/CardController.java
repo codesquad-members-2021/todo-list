@@ -55,8 +55,8 @@ public class CardController {
     }
 
     @PutMapping("/{id}/status")
-    public ResponseEntity<Card> move(@PathVariable Long id, @RequestBody Card newCardInfo, @CustomResolver String userName) {
-        Card card = cardService.findVerifiedCardById(id, userName);
+    public ResponseEntity<Card> move(@PathVariable Long id, @RequestBody Card newCardInfo) {
+        Card card = cardService.findCardById(id);
         String preStatus = card.getStatus();
         card.updateStatus(newCardInfo);
         cardService.save(card);
