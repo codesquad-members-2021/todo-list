@@ -32,7 +32,8 @@ public class CardController {
     }
 
     @PostMapping("/todos")
-    public ResponseEntity<Message> create(@RequestBody @Valid Card card) {
+    public ResponseEntity<Message> create(@RequestBody @Valid CardDto cardDto) {
+        Card card = new Card(cardDto);
         cardService.createCard(card);
         return new ResponseEntity<>(Message.of(), HttpStatus.CREATED);
     }
