@@ -13,13 +13,36 @@ struct Task {
     let time: Date
 }
 
-
 class TaskManager {
 
     private var list = [Task]()
+    private let nicknames = ["@Aiden", "@Cooper", "@Lollo", "@MJ"]
     
-    func add(task: Task) {
+    enum Style: String {
+        case new = "추가"
+        case edit = "수정"
+        case move = "이동"
+        case delete = "삭제"
+    }
+    
+    func addMoveTask(fromCategory: String, toCategory: String, cardTitle: String) {
+        let taskStyle = Style.move.rawValue
+        let content = "%\(cardTitle)%을(를) %\(fromCategory)%에서 %\(toCategory)%로 %\(taskStyle)%했습니다."
+        let task = makeTask(of: content)
         list.append(task)
+    }
+    
+    func addTask(category: String, cardTitle: String, taskStyle: Style) {
+        let content = "%\(category)%의 %\(cardTitle)%을(를) %\(taskStyle.rawValue)%했습니다."
+        let task = makeTask(of: content)
+        list.append(task)
+    }
+    
+    private func makeTask(of content: String) -> Task {
+        let nickname = nicknames[count() % 4]
+        let time = Date()
+        let task = Task(nickname: nickname, content: content, time: time)
+        return task
     }
 }
 

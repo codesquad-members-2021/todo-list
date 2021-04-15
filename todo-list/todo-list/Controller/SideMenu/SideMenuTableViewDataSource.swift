@@ -9,9 +9,9 @@ import UIKit
 
 class SideMenuTableViewDataSource: NSObject, UITableViewDataSource {
     
-    private let taskManager: TaskManager
+    private let taskManager: TaskFinddable
     
-    init(taskManager: TaskManager) {
+    init(taskManager: TaskFinddable) {
         self.taskManager = taskManager
     }
     
@@ -22,10 +22,12 @@ class SideMenuTableViewDataSource: NSObject, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "sideMenuCell", for: indexPath) as! SideMenuTableViewCell
         
-        let task = taskManager.taskAt(index: indexPath.row)
+        let idx = taskManager.count() - indexPath.row - 1
+        let task = taskManager.taskAt(index: idx)
         
         cell.nicknameLabel.text = task.nickname
-        cell.taskLabel.text = task.content
+        let content = NSMutableAttributedString().makeString(of: task.content, separator: "%")
+        cell.taskLabel.attributedText = content
         cell.timeLabel.text = TimeMaker.timeStringFrom(date: task.time)
         
         return cell

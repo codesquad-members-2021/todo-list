@@ -41,6 +41,7 @@
 		E416874726271B0A003F6324 /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E416874626271B0A003F6324 /* TaskManager.swift */; };
 		E41687522627CFB0003F6324 /* TimeMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41687512627CFB0003F6324 /* TimeMaker.swift */; };
 		E41687572627D0EE003F6324 /* SideMenuInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41687562627D0EE003F6324 /* SideMenuInterfaces.swift */; };
+		E416876D2627F846003F6324 /* LabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E416876C2627F846003F6324 /* LabelStyle.swift */; };
 		E47346D6261EA2240055DD0A /* AddToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47346D4261EA2240055DD0A /* AddToDoViewController.swift */; };
 		E47346D7261EA2240055DD0A /* AddToDoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E47346D5261EA2240055DD0A /* AddToDoViewController.xib */; };
 		E47346E8261ED8DD0055DD0A /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47346E6261ED8DD0055DD0A /* SideMenuViewController.swift */; };
@@ -108,6 +109,7 @@
 		E416874626271B0A003F6324 /* TaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
 		E41687512627CFB0003F6324 /* TimeMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeMaker.swift; sourceTree = "<group>"; };
 		E41687562627D0EE003F6324 /* SideMenuInterfaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuInterfaces.swift; sourceTree = "<group>"; };
+		E416876C2627F846003F6324 /* LabelStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelStyle.swift; sourceTree = "<group>"; };
 		E47346D4261EA2240055DD0A /* AddToDoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToDoViewController.swift; sourceTree = "<group>"; };
 		E47346D5261EA2240055DD0A /* AddToDoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddToDoViewController.xib; sourceTree = "<group>"; };
 		E47346E6261ED8DD0055DD0A /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 		E416872526270FDA003F6324 /* SideMenu */ = {
 			isa = PBXGroup;
 			children = (
+				E416876C2627F846003F6324 /* LabelStyle.swift */,
 				E47346FB261F2F9C0055DD0A /* SlideAnimation.swift */,
 				E47346E7261ED8DD0055DD0A /* SideMenuViewController.xib */,
 				E41687292627120C003F6324 /* SideMenuTableViewCell.swift */,
@@ -484,6 +487,7 @@
 				E416870E2626F887003F6324 /* ToDoTableViewDragDelegate.swift in Sources */,
 				E416874126271A3B003F6324 /* SideMenuTableViewDelegate.swift in Sources */,
 				E406DBF72626D14F00361AB8 /* CancelButton.swift in Sources */,
+				E416876D2627F846003F6324 /* LabelStyle.swift in Sources */,
 				E416872B2627120C003F6324 /* SideMenuTableViewCell.swift in Sources */,
 				BD8A1C2026258D1200F59B5B /* ToDoTableViewDelegate.swift in Sources */,
 				BD794AB92620210800C03DF4 /* DataTaskManager.swift in Sources */,
