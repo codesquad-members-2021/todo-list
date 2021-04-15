@@ -1,7 +1,6 @@
 import styled, { css, keyframes } from "styled-components";
 import Button from "../utils/Button";
 import LogCommit from "./LogCommit";
-// import { HiX } from "react-icons/hi";
 
 const slideOut = keyframes`
 from{
@@ -24,8 +23,7 @@ const LogStorageBlock = styled.div`
   top: 0px;
   right: 0px;
   background: #ffffff;
-  box-shadow: 0px 0px 4px rgba(204, 204, 204, 0.5),
-    0px 2px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 0px 4px rgba(204, 204, 204, 0.5), 0px 2px 4px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(4px);
   animation-name: ${slideOut};
   animation-duration: 0.8s;
@@ -38,16 +36,6 @@ const LogStorageBlock = styled.div`
     `};
 `;
 
-// const IconX = styled.div`
-//   margin-top: 50px;
-//   margin-left: 80%;
-//   ${(props) =>
-//     props.appear &&
-//     css`
-//       display: block;
-//     `};
-// `;
-
 function LogStorage({ clicked, logs, appear, setLogViewState }) {
   const handleXbtnClick = () => {
     setLogViewState(false);
@@ -57,10 +45,6 @@ function LogStorage({ clicked, logs, appear, setLogViewState }) {
       {clicked && (
         <LogStorageBlock appear={appear}>
           <Button type="delete" onClick={handleXbtnClick} />
-          {/* <IconX appear={appear} onClick={handleXbtnClick}>
-            <HiX></HiX>
-          </IconX> */}
-
           <LogCommit appear={appear} logs={logs}></LogCommit>
         </LogStorageBlock>
       )}

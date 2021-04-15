@@ -11,31 +11,7 @@ ul {
   color: #0075de;
 }
 
-.icon-add-close {
-  color: #bdbdbd;
-}
-
+.icon-add-close,
 .icon-delete {
   color: #bdbdbd;
 }
-
-
-.card-input-title::placeholder {
-  font-weight: bold;
-  font-size: 16px;
-}
-
-
-
-.btn {
-  padding: 10px;
-  width: 134px;
-  height: 40px;
-  background: #e0e0e0;
-  border-radius: 6px;
-  border: none;
-  margin: 0px 4px;
-}
-
-
-

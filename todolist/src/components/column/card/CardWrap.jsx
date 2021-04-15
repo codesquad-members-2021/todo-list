@@ -9,8 +9,8 @@ function CardWrap(props) {
   const [editMode, setEditMode] = useState(false);
   const cardContainer = useRef();
 
-  const handleSubmit = ({ id, title, content }) => {
-    onUpdate({ id, title, content });
+  const handleSubmit = ({ cardId, cardTitle, content }) => {
+    onUpdate({ cardId, cardTitle, content });
     setEditMode(!editMode);
   };
 
@@ -22,12 +22,7 @@ function CardWrap(props) {
   return (
     <CardContainer onDoubleClick={handleEdit} ref={cardContainer}>
       {editMode ? (
-        <CardForm
-          editMode={editMode}
-          card={card}
-          onSubmit={handleSubmit}
-          onCancel={handleEdit}
-        />
+        <CardForm editMode={editMode} card={card} onSubmit={handleSubmit} onCancel={handleEdit} />
       ) : (
         <Card card={card} onDelete={onDelete} cardContainer={cardContainer} />
       )}

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-
 import { useState } from "react";
 import LogStorage from "./LogStorage";
 import Button from "../utils/Button";
@@ -50,12 +49,7 @@ function NavBar(props) {
         </LogBtnBlock>
       </NavBlock>
 
-      <LogStorage
-        logs={logs}
-        clicked={clicked}
-        appear={appear}
-        setLogViewState={setLogViewState}
-      ></LogStorage>
+      <LogStorage logs={logs} clicked={clicked} appear={appear} setLogViewState={setLogViewState}></LogStorage>
     </>
   );
 }
