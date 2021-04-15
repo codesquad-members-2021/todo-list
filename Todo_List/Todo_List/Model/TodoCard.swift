@@ -22,33 +22,9 @@ struct TodoCard: Codable {
 
 //GET
 class TodoCards: Codable {
-    var todo: [TodoCard]
-    var doing: [TodoCard]
-    var done: [TodoCard]
-    
-    init() {
-        self.todo = []
-        self.doing = []
-        self.done = []
-        
-        loadNetwork()
-    }
-    
-    func loadNetwork() {
-        NetworkManager().perfomRequest(urlString: EndPoint.home.rawValue, httpMethod: .get, dataType: TodoCards.self) { [self] (result) in
-            switch result {
-            case .success(let data):
-                let todoCards = data as? TodoCards
-                self.todo = todoCards!.todo
-                self.doing = todoCards!.doing
-                self.done = todoCards!.done
-                print("🥲", self.todo)
-                NotificationCenter.default.post(name: NSNotification.Name("finishNetwork"), object: nil)
-            case .failure(let error):
-                print(error)
-            }
-        }
-    }
+    var todo: [TodoCard] = []
+    var doing: [TodoCard] = []
+    var done: [TodoCard] = []
 }
 
 //POST
