@@ -59,7 +59,7 @@ public class Task {
         return taskType;
     }
 
-    public void moveAfter(Task targetTask) {
+    public void moveAfterPreviousOf(Task targetTask) {
         moveAfter(targetTask.getPreviousId(), targetTask.getTaskType());
     }
 

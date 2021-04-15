@@ -78,12 +78,12 @@ public class TaskController {
         Optional<Task> newNextTask = taskRepository.findOneByPreviousId(targetId);
 
         if (originalNextTask.isPresent()) {
-            originalNextTask.get().moveAfter(taskToMove);
+            originalNextTask.get().moveAfterPreviousOf(taskToMove);
             taskRepository.save(originalNextTask.get());
         }
 
         if (newNextTask.isPresent()) {
-            taskToMove.moveAfter(newNextTask.get());
+            taskToMove.moveAfterPreviousOf(newNextTask.get());
             taskRepository.save(taskToMove);
 
             newNextTask.get().moveAfter(taskToMove.getId());
