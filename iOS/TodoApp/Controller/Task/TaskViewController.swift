@@ -11,6 +11,11 @@ class TaskViewController: UIViewController {
     @IBOutlet weak var taskCountLabel: UILabel!
     @IBOutlet weak var taskTableView: UITableView!
     
+    @IBAction func shuffleButtom(_ sender: Any) { // shuffle 기능은 서버에 저장되지 않습니다.
+        taskStackManager.shuffle(column!)
+        taskTableView.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSubViews()

@@ -46,6 +46,9 @@ class TaskStackManager {
         movedData.status = StatusValue.done
             tasks[StatusValue.done].append(taskCard: movedData)
         NotificationCenter.default.post(name: .requestMoveTask, object: self, userInfo: ["movedData": movedData])
-        
+    }
+    
+    func shuffle(_ status: Int) {
+        tasks[status].shuffle()
     }
 }

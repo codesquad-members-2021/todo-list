@@ -33,4 +33,8 @@ class TaskStack {
     func remove(at index: Int) -> TaskCard {
         return taskCards.remove(at: index)
     }
+    
+    func shuffle() {
+        taskCards.shuffle()
+    }
 }
