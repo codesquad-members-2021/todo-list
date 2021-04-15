@@ -33,9 +33,26 @@ enum EndPoint: String {
 }
 
 
+class NetworkHandler {
+    static func get<T:Codable>(urlString: String, dataType: T.Type) {
+        NetworkManager().getSource(urlString: urlString, httpMethod: .get, dataType: T.self) { (cards, error) in
+            let todoCards = cards as! T
+            let userinfo = ["cards": todoCards]
+            NotificationCenter.default.post(name: NSNotification.Name("finishNetwork"), object: nil, userInfo: userinfo)
+        }
+    }
+    
+    static func post<T:Codable>(anydata: T, url: String, httpMethod: HttpMethod) {
+        NetworkManager().encodeJson(anyData: anydata) { (data, error) in
+            NetworkManager().getSource(urlString: url, httpMethod: httpMethod, json: data as? Data, dataType: Decode.self) { (data, error) in
+                NotificationCenter.default.post(name: NSNotification.Name("finishNetwork"), object: nil)
+            }
+        }
+    }
+}
+
+
 class NetworkManager {
-    private let decoder = DecodeManager()
-    private let encoder = EncodeManager()
     
     func getSource<T:Decodable>(urlString: String, httpMethod: HttpMethod, json: Data? = nil, dataType: T.Type, completion: @escaping (Any?,NetworkError?) -> Void) {
         
@@ -46,7 +63,7 @@ class NetworkManager {
                 completion(data, nil)
 
             case .failure(let error):
-                print(error)
+                print("🤯", error)
                 completion(nil, error)
             }
         }
@@ -66,7 +83,7 @@ class NetworkManager {
                 
                 switch httpResponse.statusCode {
                 case 200:
-                    self.decoder.decode(json: data, dataType: dataType) { completion($0) }
+                    DecodeManager.decode(json: data, dataType: dataType) { completion($0) }
                 case 400, 404, 405, 500:
                     completion(.failure(NetworkError(rawValue: httpResponse.statusCode) ?? .Unknown))
                 default:
@@ -84,13 +101,12 @@ class NetworkManager {
         request.httpBody = json
 //        request.setValue("jwtToken", forHTTPHeaderField: jwtToken)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-                if json != nil {
-                    request.setValue(String(json!.count), forHTTPHeaderField: "Content-Length") }
+        if json != nil { request.setValue(String(json!.count), forHTTPHeaderField: "Content-Length") }
         return request
     }
     
     func encodeJson<T:Encodable>(anyData: T, completion: @escaping (Any?,NetworkError?) -> Void) {
-        encoder.encode(anyData: anyData) { (result) in
+        EncodeManager.encode(anyData: anyData) { (result) in
             switch result {
             case .success(let data):
                 completion(data, nil)
@@ -106,7 +122,7 @@ class NetworkManager {
 class DecodeManager {
     
     // json data, T.type -> result<T.type,error>
-    func decode<T:Decodable>(json: Data, dataType: T.Type, completion: @escaping (Result<Any,NetworkError>) -> Void) {
+    static func decode<T:Decodable>(json: Data, dataType: T.Type, completion: @escaping (Result<Any,NetworkError>) -> Void) {
         let decoder = JSONDecoder()
         guard let data = try? decoder.decode(dataType, from: json) else {
             completion(.failure(.DecodeError))
@@ -120,7 +136,7 @@ class DecodeManager {
 
 class EncodeManager {
     
-    func encode<T:Encodable>(anyData: T, completion: @escaping (Result<Any,NetworkError>) -> Void) {
+    static func encode<T:Encodable>(anyData: T, completion: @escaping (Result<Any,NetworkError>) -> Void) {
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
         
@@ -131,3 +147,5 @@ class EncodeManager {
         completion(.success(data))
     }
 }
+
+

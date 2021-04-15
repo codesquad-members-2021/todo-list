@@ -59,13 +59,9 @@ class ModalViewController: UIViewController {
     
     @IBAction func registerButtonTouched(_ sender: UIButton) {
         let card = CreateCard(title: titleTextView.text ?? "", contents: contentTextView.text ?? "", status: self.status)
-        NetworkManager().encodeJson(anyData: card) { (data, error) in
-            NetworkManager().getSource(urlString: EndPoint.modify.rawValue, httpMethod: .post, json: data as? Data, dataType: Decode.self) { (data, error) in
-                if error != nil { print("🔥",error!) }
-                else {print( data!)}
-            }
-        }
-        NetworkHandler.get(urlString: EndPoint.modify.rawValue, dataType: TodoCards.self)
+        
+        NetworkHandler.post(anydata: card, url: EndPoint.modify.rawValue, httpMethod: .post)
+        NetworkHandler.get(urlString: EndPoint.home.rawValue, dataType: TodoCards.self)
         
         dismiss(animated: true, completion: nil)
     }
