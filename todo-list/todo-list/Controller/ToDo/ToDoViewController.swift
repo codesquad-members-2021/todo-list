@@ -58,7 +58,7 @@ class ToDoViewController: UIViewController {
     
     //MARK: - DataSource Method
     private func setDelegateAndDataSource() {
-        toDoDelegate = ToDoTableViewDelegate()
+        toDoDelegate = ToDoTableViewDelegate(cardDeletor: cardManager)
         cardTableView.delegate = toDoDelegate
         
         toDoDataSource = ToDoTableViewDataSource(cardSearcher: cardManager)

@@ -26,6 +26,32 @@ class CardManager {
         postCountChange()
     }
     
+    func add(card: Card) {
+        if cardList != nil {
+            cardList?.append(card)
+        } else {
+            cardList = [card]
+        }
+        postCountChange()
+    }
+
+    func delete(cardOf ID: Int) {
+        guard let cardList = cardList else { return }
+        
+        var targetIdx: Int?
+        
+        for (idx, card) in cardList.enumerated() {
+            if card.cardId == ID {
+                targetIdx = idx
+            }
+        }
+        
+        if let idx = targetIdx {
+            self.cardList!.remove(at: idx)
+            postCountChange()
+        }
+    }
+    
     //MARK: - Notification
     private func postCountChange() {
         guard let count = count() else { return }
@@ -57,19 +83,6 @@ extension CardManager: CardFindable {
 }
 
 extension CardManager: CardAddable {
-   
-    func add(card: Card) {
-        if cardList != nil {
-            cardList?.append(card)
-        } else {
-            cardList = [card]
-        }
-        postCountChange()
-    }
-    func delete(cardID: Int) {
-        cardList?.remove(at: cardID + 1)
-        NotificationCenter.default.post(name: NotiKeys.deleteCard, object: self, userInfo: ["deleteCard": newCard])
-    }
     
     func newCard(withTitle title: String, contents: String) {
         guard let categoryID = self.categoryID else { return }
@@ -77,4 +90,18 @@ extension CardManager: CardAddable {
         let newCard = AddCard(category: categoryID, title: title, contents: contents)
         NotificationCenter.default.post(name: NotiKeys.addCard, object: self, userInfo: ["addCard": newCard])
     }
+    
+}
+
+extension CardManager: CardDeletable {
+    
+    func delete(cardAt index: Int) {
+        guard let cardList = cardList else { return }
+        
+        let targetCard = cardList[index]
+        let userInfo = ["category": targetCard.category, "cardID": targetCard.cardId]
+        
+        NotificationCenter.default.post(name: NotiKeys.deleteCard, object: self, userInfo: userInfo)
+    }
+
 }

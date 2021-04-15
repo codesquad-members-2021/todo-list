@@ -9,6 +9,12 @@ import UIKit
 
 class ToDoTableViewDelegate: NSObject, UITableViewDelegate {
     
+    private let cardDeletor: CardDeletable
+    
+    init(cardDeletor: CardDeletable) {
+        self.cardDeletor = cardDeletor
+    }
+    
     let cardMargin = CGFloat(8)
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -33,6 +39,9 @@ class ToDoTableViewDelegate: NSObject, UITableViewDelegate {
         
         let deleteAction = UIContextualAction(style: .destructive, title: "delete") { (action, view, completion) in
             //tableView.deleteRows(at: [indexPath], with: .automatic) - 삭제에 해당하는 네트워크 동작으로 업데이트
+            //category, cardID
+            let index = indexPath.section
+            self.cardDeletor.delete(cardAt: index)
             completion(true)
         }
         
