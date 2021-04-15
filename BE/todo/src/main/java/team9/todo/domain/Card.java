@@ -2,8 +2,11 @@ package team9.todo.domain;
 
 import org.springframework.data.annotation.Id;
 import team9.todo.domain.enums.CardColumn;
+import team9.todo.exception.NotAuthorizedException;
 
 public class Card {
+    public static final double PRIORITY_STEP = 1.0;
+
     @Id
     private Long id;
 
@@ -19,7 +22,8 @@ public class Card {
 
     private boolean deleted;
 
-    public Card(String title, String content, double priority, CardColumn columnType) {
+    public Card(Long user, String title, String content, double priority, CardColumn columnType) {
+        this.user = user;
         this.title = title;
         this.content = content;
         this.priority = priority;
@@ -82,9 +86,20 @@ public class Card {
         this.deleted = deleted;
     }
 
-    public void update(String title, String content, double priority) {
+    public void update(String title, String content) {
         this.title = title;
         this.content = content;
-        this.priority = priority;
+    }
+
+    public void validateOwner(Long user) {
+        if (this.user != user) {
+            throw new NotAuthorizedException();
+        }
+    }
+
+    public void validateColumn(CardColumn cardColumn) {
+        if (this.columnType != cardColumn) {
+            throw new RuntimeException(id + " 카드는 " + cardColumn + "이 아니라, " + columnType + "에 속해있습니다.");
+        }
     }
 }

@@ -6,23 +6,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import team9.todo.domain.HistoryWithCardTitle;
 import team9.todo.domain.User;
-import team9.todo.repository.HistoryWithCardTitleRepository;
+import team9.todo.repository.HistoryRepository;
 
 import java.util.List;
 
 @Service
 public class HistoryService {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-    private final HistoryWithCardTitleRepository historyWithCardTitleRepository;
+    private final HistoryRepository historyRepository;
 
     @Autowired
-    public HistoryService(HistoryWithCardTitleRepository historyWithCardTitleRepository) {
-        this.historyWithCardTitleRepository = historyWithCardTitleRepository;
+    public HistoryService(HistoryRepository historyRepository) {
+        this.historyRepository = historyRepository;
     }
 
     public List<HistoryWithCardTitle> getHistoryOfUser(User user) {
         logger.debug("history 목록 요청");
-        List<HistoryWithCardTitle> historyList = historyWithCardTitleRepository.findAllByUserId(user.getId());
+        List<HistoryWithCardTitle> historyList = historyRepository.findAllByUserId(user.getId());
         return historyList;
     }
 }

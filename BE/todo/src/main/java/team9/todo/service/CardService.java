@@ -10,12 +10,13 @@ import team9.todo.domain.History;
 import team9.todo.domain.User;
 import team9.todo.domain.enums.CardColumn;
 import team9.todo.domain.enums.HistoryAction;
-import team9.todo.exception.NotAuthorizedException;
 import team9.todo.exception.NotFoundException;
 import team9.todo.repository.CardRepository;
 import team9.todo.repository.HistoryRepository;
 
 import java.util.List;
+
+import static team9.todo.domain.Card.PRIORITY_STEP;
 
 @Service
 public class CardService {
@@ -29,10 +30,17 @@ public class CardService {
         this.historyRepository = historyRepository;
     }
 
+    private double getNextPriority(CardColumn cardColumn, User user) {
+        double maxPriority = cardRepository.findMaxPriority(user.getId(), cardColumn).orElse(0.0);
+        return maxPriority + PRIORITY_STEP;
+    }
+
     @Transactional
-    public Card create(Card card, User user) {
-        logger.debug("card 생성 요청: {}, {}, {}", card.getColumnType(), card.getTitle(), card.getContent());
-        card.setUser(user.getId());
+    public Card create(String title, String content, CardColumn cardColumn, User user) {
+        logger.debug("card 생성 요청: {}, {}, {}", cardColumn, title, content);
+
+        double priority = getNextPriority(cardColumn, user);
+        Card card = new Card(user.getId(), title, content, priority, cardColumn);
         Card saved = cardRepository.save(card);
 
         historyRepository.save(new History(saved.getId(), HistoryAction.ADD, null, saved.getColumnType()));
@@ -41,47 +49,79 @@ public class CardService {
 
     public List<Card> getList(CardColumn cardColumn, User user) {
         logger.debug("{}의 카드 목록 요청", cardColumn);
-        return cardRepository.findAllByUserAndColumnTypeAndDeletedFalse(user.getId(), cardColumn.name());
+        return cardRepository.findAllByUserAndColumnTypeAndDeletedFalseOrderByPriority(user.getId(), cardColumn.name());
     }
 
     @Transactional
-    public Card update(long cardId, String title, String content, double priority, User user) {
+    public Card update(long cardId, String title, String content, User user) {
         logger.debug("{}번 카드의 내용 수정 요청", cardId);
-        Card card = cardRepository.findByIdAndDeletedFalse(cardId).orElseThrow(() -> new NotFoundException());
-        if (card.getUser() != user.getId()) {
-            throw new NotAuthorizedException();
-        }
-        card.update(title, content, priority);
+        Card card = getCard(cardId, user);
+        card.update(title, content);
         Card saved = cardRepository.save(card);
 
         historyRepository.save(new History(saved.getId(), HistoryAction.UPDATE, null, null));
         return saved;
     }
 
-    @Transactional
-    public Card move(long cardId, CardColumn to, User user) {
-        logger.debug("{}번 카드 {}로 이동 요청", cardId, to);
-        Card card = cardRepository.findByIdAndDeletedFalse(cardId).orElseThrow(() -> new NotFoundException());
-        if (card.getUser() != user.getId()) {
-            throw new NotAuthorizedException();
+    private double renderPos(Card prevCard, Card nextCard) {
+        double priority = 0.0;
+        if (prevCard == null && nextCard != null) {
+            priority = nextCard.getPriority() - PRIORITY_STEP;
         }
+        if (prevCard != null && nextCard == null) {
+            priority = prevCard.getPriority() + PRIORITY_STEP;
+        }
+        if (prevCard != null && nextCard != null) {
+            priority = (prevCard.getPriority() + nextCard.getPriority()) / 2;
+        }
+        return priority;
+    }
+
+    @Transactional
+    public Card move(long cardId, Long prevCardId, Long nextCardId, CardColumn to, User user) {
+        Card prevCard = null;
+        Card nextCard = null;
+        if (prevCardId != null) {
+            prevCard = getCard(prevCardId, user);
+            prevCard.validateColumn(to);
+        }
+        if (nextCardId != null) {
+            nextCard = getCard(nextCardId, user);
+            nextCard.validateColumn(to);
+        }
+
+        double priority = renderPos(prevCard, nextCard);
+        if (prevCard == null && nextCard == null) {
+            priority = getNextPriority(to, user);
+        }
+
+        logger.debug("{}번 카드 {}로 이동 요청, 계산된 priority=", cardId, to, priority);
+
+        Card card = getCard(cardId, user);
+
         CardColumn from = card.getColumnType();
         card.setColumnType(to);
+        card.setPriority(priority);
         Card saved = cardRepository.save(card);
 
-        historyRepository.save(new History(saved.getId(), HistoryAction.MOVE, from, to));
+        if (from != to) {
+            historyRepository.save(new History(saved.getId(), HistoryAction.MOVE, from, to));
+        }
         return saved;
     }
 
     @Transactional
     public void delete(long cardId, User user) {
         logger.debug("{}번 카드의 삭제 요청", cardId);
-        Card card = cardRepository.findByIdAndDeletedFalse(cardId).orElseThrow(() -> new NotFoundException());
-        if (card.getUser() != user.getId()) {
-            throw new NotAuthorizedException();
-        }
+        Card card = getCard(cardId, user);
         cardRepository.softDeleteById(cardId);
 
         historyRepository.save(new History(card.getId(), HistoryAction.REMOVE, card.getColumnType(), null));
+    }
+
+    private Card getCard(long cardId, User user) {
+        Card card = cardRepository.findByIdAndDeletedFalse(cardId).orElseThrow(NotFoundException::new);
+        card.validateOwner(user.getId());
+        return card;
     }
 }

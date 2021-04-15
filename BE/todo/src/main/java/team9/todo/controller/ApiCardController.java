@@ -7,6 +7,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import team9.todo.domain.ApiResult;
 import team9.todo.domain.Card;
+import team9.todo.domain.DTO.Card.RequestCreateDTO;
+import team9.todo.domain.DTO.Card.RequestMoveDTO;
+import team9.todo.domain.DTO.Card.RequestUpdateDTO;
 import team9.todo.domain.User;
 import team9.todo.domain.enums.CardColumn;
 import team9.todo.service.CardService;
@@ -29,12 +32,11 @@ public class ApiCardController {
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    public ApiResult<Card> create(Card card, HttpSession httpSession) {
+    public ApiResult<Card> create(@RequestBody RequestCreateDTO card, HttpSession httpSession) {
         logger.debug("card 생성 요청: {}, {}, {}", card.getColumnType(), card.getTitle(), card.getContent());
         User user = getUser(httpSession);
-        card.setUser(user.getId());
 
-        return ApiResult.succeed(cardService.create(card, user));
+        return ApiResult.succeed(cardService.create(card.getTitle(), card.getContent(), card.getColumnType(), user));
     }
 
     @GetMapping("/todo")
@@ -62,20 +64,20 @@ public class ApiCardController {
     }
 
     @PutMapping("/{cardId}")
-    public ApiResult<Card> update(@PathVariable long cardId, String title, String content, double priority, HttpSession httpSession) {
+    public ApiResult<Card> update(@PathVariable long cardId, @RequestBody RequestUpdateDTO requestUpdateDTO, HttpSession httpSession) {
         logger.debug("{}번 카드의 내용 수정 요청", cardId);
         User user = getUser(httpSession);
 
-        return ApiResult.succeed(cardService.update(cardId, title, content, priority, user));
+        return ApiResult.succeed(cardService.update(cardId, requestUpdateDTO.getTitle(), requestUpdateDTO.getContent(), user));
     }
 
     @PutMapping("/move/{cardId}")
-    public ApiResult<Card> move(@PathVariable long cardId, CardColumn to, HttpSession httpSession) {
-        logger.debug("{}번 카드 {}로 이동 요청", cardId, to.name());
+    public ApiResult<Card> move(@PathVariable long cardId, @RequestBody RequestMoveDTO requestMoveDTO, HttpSession httpSession) {
         User user = getUser(httpSession);
 
-        return ApiResult.succeed(cardService.move(cardId, to, user));
+        return ApiResult.succeed(cardService.move(cardId, requestMoveDTO.getPrevCardId(), requestMoveDTO.getNextCardId(), requestMoveDTO.getTo(), user));
     }
+
 
     @DeleteMapping("/{cardId}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
