@@ -43,6 +43,7 @@ public class ApiCardController {
 
     @DeleteMapping("/{cardId}")
     public String delete(@PathVariable Long cardId) {
+        cardService.delete(cardId);
         return cardId + " card is deleted";
     }
 }
