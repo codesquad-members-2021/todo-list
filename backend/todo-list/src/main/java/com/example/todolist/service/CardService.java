@@ -65,8 +65,8 @@ public class CardService {
         List<CardDTO> result = new ArrayList<>();
         for (Card card : cards) {
             Object[] cardInfo = card.cardInfo();
-            User user = userService.findUserById((Long) cardInfo[0]);
-            CardDTO cardDto = new CardDTO(user, (String) cardInfo[1], (String) cardInfo[2], (LocalDateTime) cardInfo[3]);
+            User user = userService.findUserById((Long) cardInfo[1]);
+            CardDTO cardDto = new CardDTO((Long) cardInfo[0], user, (String) cardInfo[2], (String) cardInfo[3], (LocalDateTime) cardInfo[4]);
             result.add(cardDto);
         }
         return result;

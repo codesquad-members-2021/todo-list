@@ -10,6 +10,8 @@ import java.time.LocalDateTime;
 public class CardDTO {
     public static final String DATETIME_FORMAT = "yyyy-MM-dd HH:mm";
 
+    private Long id;
+
     private User user;
 
     private String title;
@@ -19,7 +21,8 @@ public class CardDTO {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATETIME_FORMAT, timezone = "Asia/Seoul")
     private LocalDateTime postTime;
 
-    public CardDTO(User user, String title, String contents, LocalDateTime postTime) {
+    public CardDTO(Long id, User user, String title, String contents, LocalDateTime postTime) {
+        this.id = id;
         this.user = user;
         this.title = title;
         this.contents = contents;
@@ -44,6 +47,10 @@ public class CardDTO {
 
     public LocalDateTime getPostTime() {
         return postTime;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     @Override
