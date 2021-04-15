@@ -33,7 +33,7 @@ function todoReducer (state, action) {
         index === action.idx
           ? {
               ...todoColum,
-              todoItems: todoColum.todoItems.filter((v, i) => i !== action.idx)
+              todoItems: todoColum.todoItems.filter((v, i) => i !== action.itemIdx)
             }
           : todoColum
       )

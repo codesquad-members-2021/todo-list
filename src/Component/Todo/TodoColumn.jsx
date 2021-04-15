@@ -51,12 +51,14 @@ const TodoColumn = ({ title, todoItems, index }) => {
   }
   const onAllRemove = () => {
     setTodos([])
+    dispatch({ type: 'RESETITEM', idx: index })
     setCount(0)
   }
-  const onRemove = index => {
-    setTodos(todos.filter((v, i) => i !== index))
+  const onRemove = itemIndex => {
+    dispatch({ type: 'REMOVEITEM', idx: index, itemIdx: itemIndex })
     setCount(count - 1)
   }
+
   const onTodoItemChange = (e, index) => {
     setTodos(
       todos.map((v, i) => {
@@ -65,6 +67,7 @@ const TodoColumn = ({ title, todoItems, index }) => {
       })
     )
   }
+
   const TodoItems = todoItems.map((v, index) => (
     <TodoItem
       {...v}
