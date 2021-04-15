@@ -53,14 +53,14 @@ const Content = styled.textarea`
 `;
 
 const TodoItem = ({ title, content, index, onChange, onRemove }) => {
-  const [inputs, setInputs] = useState({
-    title,
-    content
-  });
+  // const [inputs, setInputs] = useState({
+  //   title,
+  //   content
+  // });
   const [toggle, setToggle] = useState(false);
   const onToggle = () => setToggle(!toggle);
   const onTextChange = inputs => {
-    setInputs(inputs);
+    // setInputs(inputs);
     onChange(inputs, index);
     onToggle();
   }
@@ -69,8 +69,8 @@ const TodoItem = ({ title, content, index, onChange, onRemove }) => {
       <Button onClick={onToggle}><FaPencilAlt/></Button>
       <Button onClick={() => onRemove(index)}><FaTimes/></Button>
       <TodoItemContent toggle={toggle}>
-        <Title name="title" value={inputs.title} readOnly/>
-        <Content name="content" value={inputs.content} readOnly/>
+        <Title name="title" value={title} readOnly/>
+        <Content name="content" value={content} readOnly/>
       </TodoItemContent>
       <EditTodo toggle={toggle} onToggle={onToggle} title={title} content={content} onTextChange={onTextChange}/>
     </TodoItemBlock>
