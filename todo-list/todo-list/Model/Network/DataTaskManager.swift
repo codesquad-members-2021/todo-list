@@ -11,10 +11,10 @@ class DataTaskManager {
     
     static let session = URLSession(configuration: .default)
     
-    static func get(completion: @escaping (Result<[CardList], Error>) -> Void) {
+    static func get(completion: @escaping (Result<CardData, Error>) -> Void) {
         session.dataTask(with: RequestManager.getRequest()) { data, response, error in
             if let data = data {
-                guard let cardList = ParsingManager.decodeData(type: [CardList].self, data: data) else { return }
+                guard let cardList = ParsingManager.decodeData(type: CardData.self, data: data) else { return }
                 completion(.success(cardList))
             } else {
                 completion(.failure(error?.localizedDescription as! Error))
@@ -22,7 +22,7 @@ class DataTaskManager {
         }.resume()
     }
     
-    static func post(category: Int, data: Data) {
+    static func post(category: Int, data: AddCard) {
         guard let encodingData = ParsingManager.encodeData(data: data) else { return }
         session.dataTask(with: RequestManager.postRequest(category: category, data: encodingData)).resume()
     }

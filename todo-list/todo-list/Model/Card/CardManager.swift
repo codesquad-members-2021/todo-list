@@ -11,7 +11,7 @@ protocol CardAddable {
     
     func add(card: Card)
     
-    func newCard(withTitle title: String, contents: String) -> AddCard?
+    func newCard(withTitle title: String, contents: String) 
     
 }
 
@@ -56,6 +56,7 @@ class CardManager {
     
     enum NotiKeys {
         static let countChanged = Notification.Name("countChanged")
+        static let addCard = Notification.Name("addCard")
     }
 }
 
@@ -70,10 +71,10 @@ extension CardManager: CardAddable {
         postCountChange()
     }
     
-    func newCard(withTitle title: String, contents: String) -> AddCard? {
-        guard let categoryID = self.categoryID else { return nil }
+    func newCard(withTitle title: String, contents: String) {
+        guard let categoryID = self.categoryID else { return }
         
-        let newCard = AddCard(vertical: categoryID, title: title, contents: contents)
-        return newCard
+        let newCard = AddCard(category: categoryID, title: title, contents: contents)
+        NotificationCenter.default.post(name: NotiKeys.addCard, object: self, userInfo: ["addCard": newCard])
     }
 }

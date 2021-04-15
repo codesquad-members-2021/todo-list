@@ -15,7 +15,8 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadData()
+        loadCard()
+        NotificationCenter.default.addObserver(self, selector: #selector(postCard), name: CardManager.NotiKeys.addCard, object: nil)
     }
 
     @IBAction func sideMenuButtonTouched(_ sender: Any) {
@@ -38,31 +39,30 @@ class MainViewController: UIViewController {
         }
     }
     
-    private func loadData() {
-
+    private func loadCard() {
         DataTaskManager.get(completion: { (result) in
             DispatchQueue.global().async {
                 switch result {
                 case .success(let data):
-                    self.willDoCardManager.configure(cardList: data[0].todos, categoryID: data[0].id)
-                    self.doingCardManager.configure(cardList: data[1].todos, categoryID: data[1].id)
-                    self.doneCardManager.configure(cardList: data[2].todos, categoryID: data[2].id)
+                    self.willDoCardManager.configure(cardList: data.data[0].cards, categoryID: data.data[0].categoryId)
+                    self.doingCardManager.configure(cardList: data.data[1].cards, categoryID: data.data[1].categoryId)
+                    self.doneCardManager.configure(cardList: data.data[2].cards, categoryID: data.data[2].categoryId)
                 case.failure(let error):
                     print(error.localizedDescription)
                 }
             }
         })
     }
+    @objc private func postCard(_ notification: Notification) {
+        guard let card = notification.userInfo?["addCard"] as? AddCard else { return }
+        DataTaskManager.post(category: card.category, data: card)
+    }
     
-    private func patch() {
+    private func deleteCard() {
         
     }
     
-    private func delete() {
-        
-    }
-    
-    private func put() {
+    private func putCard() {
         
     }
 }
