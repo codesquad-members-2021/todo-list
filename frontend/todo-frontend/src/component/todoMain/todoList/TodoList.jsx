@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import TodoItem from "./TodoItem";
 import TodoListForm from "./TodoListForm";
 import DeleteBtn from "../../atom/DeleteBtn.jsx";
@@ -10,8 +10,14 @@ const StyledTodoList = styled.div`
   width: 308px;
   margin-right: 20px;
   .todoCardList {
+    width: 308px;
     min-height: 700px;
-    background: #f7c6c6;
+    background: #d8e3e7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    border-radius: 6px;
   }
 `;
 
@@ -41,7 +47,7 @@ const Title = styled.span`
 const CircleNumber = styled.span`
   width: 26px;
   height: 26px;
-  background: #aaaaaa;
+  background: #d8e3e7;
   border-radius: 20px;
   padding: 0.5rem;
   font-family: Noto Sans KR;
@@ -70,10 +76,20 @@ const TodoList = ({
   data: { id, title, todoCards },
   deleteTodoColumn,
   postLogs,
+  todoColumns,
+  setTodoColumns,
 }) => {
   const [todos, setTodos] = useState(todoCards);
-  const [loading, postTodos, deleteTodos, putTodos] = useTodoHook(setTodos);
+  const [loading, postTodos, deleteTodos, putTodos, moveTodos] = useTodoHook(
+    setTodos
+  );
   const [formSelected, setFormSelected] = useState(false);
+  const [dragEl, setDragEl] = useState(null);
+  const currentColumnDiv = useRef();
+
+  useEffect(() => {
+    setTodos(todoCards);
+  }, [todoCards, setTodos]);
 
   const addTodoItem = async (cardId, todoCard) => {
     const { title: itemTitle, date: itemDate } = todoCard;
@@ -118,6 +134,7 @@ const TodoList = ({
       todoCard={card}
       deleteTodoItem={deleteTodoItem}
       editTodoItem={editTodoItem}
+      setDragEl={setDragEl}
     />
   ));
 
@@ -129,14 +146,77 @@ const TodoList = ({
     e.preventDefault();
   };
 
-  const handleDrop = (e) => {
-    e.preventDefault();
-    const cardData = e.dataTransfer.getData("cardData");
-    const dropCardData = e.dataTransfer.getData("dropCardData");
-    console.log("cardData", cardData);
-    console.log("dropCardData", dropCardData);
+  const getDragAfterElement = (y) => {
+    const draggableCards = [...currentColumnDiv.current.children];
+
+    return draggableCards.reduce(
+      (closestCard, child) => {
+        const cardBox = child.getBoundingClientRect();
+        const offset = y - cardBox.top - cardBox.height / 2;
+        console.log(offset);
+        if (offset < 0 && offset > closestCard.offset) {
+          return { offset: offset, element: child };
+        } else {
+          return closestCard;
+        }
+      },
+      { offset: Number.NEGATIVE_INFINITY }
+    ).element;
   };
 
+  const handleDrop = (e) => {
+    const cardData = JSON.parse(e.dataTransfer.getData("cardData"));
+    const { beforeColumnId, ...cData } = cardData;
+    console.log(cardData);
+    e.preventDefault();
+    const afterElement = getDragAfterElement(e.clientY);
+    console.log(afterElement);
+
+    if (afterElement === undefined) {
+      setTodoColumns((todoColumns) => {
+        delete todoColumns[beforeColumnId].todoCards[cData.id];
+        todoColumns[id].todoCards[cData.id] = cData;
+        return { ...todoColumns };
+      });
+      //해당 컬럼에 집어넣기
+      const todoDB = JSON.parse(localStorage.getItem("todos"));
+      const columnCardList = todoDB.todoData[id].todoCards;
+      const deleteColumnCardList = todoDB.todoData[beforeColumnId].todoCards;
+      todoDB.todoData[id].todoCards = {
+        ...columnCardList,
+        [cData.id]: cData,
+      };
+      delete deleteColumnCardList[cardData.id];
+      localStorage.setItem("todos", JSON.stringify({ ...todoDB }));
+    } else {
+      let newTodoCardList;
+      setTodoColumns((todoColumns) => {
+        delete todoColumns[beforeColumnId].todoCards[cData.id];
+        const cardList = todoColumns[id].todoCards;
+        newTodoCardList = addItem(cardList, afterElement.id, cData);
+        todoColumns[id].todoCards = newTodoCardList;
+        return { ...todoColumns };
+      });
+
+      //LOCALSTORAGE 부분 해야함
+      const todoDB = JSON.parse(localStorage.getItem("todos"));
+      todoDB.todoData[id].todoCards = newTodoCardList;
+      const deleteColumnCardList = todoDB.todoData[beforeColumnId].todoCards;
+      delete deleteColumnCardList[cardData.id];
+      localStorage.setItem("todos", JSON.stringify(todoDB));
+    }
+  };
+
+  const addItem = (cardList, cardId, data) => {
+    const newCardList = {};
+    for (const key in cardList) {
+      if (key === cardId) newCardList[data.id] = data;
+      newCardList[key] = cardList[key];
+    }
+    return newCardList;
+  };
+
+  console.log(todoColumns);
   return (
     <>
       {loading && <LoadingPage>loading...</LoadingPage>}
@@ -170,6 +250,7 @@ const TodoList = ({
           className="todoCardList"
           onDrop={handleDrop}
           onDragOver={handledragOver}
+          ref={currentColumnDiv}
         >
           {todoCardList}
         </div>

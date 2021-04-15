@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import todoListService from '../service/todoListService';
+import { useState } from "react";
+import todoListService from "../service/todoListService";
 
 const useTodoHook = (setTodos) => {
   const [loading, setLoading] = useState(false);
@@ -26,7 +26,26 @@ const useTodoHook = (setTodos) => {
     setLoading(false);
   };
 
-  return [loading, postTodos, deleteTodos, putTodos];
+  const moveTodos = async (
+    beforeColumnId,
+    afterColumnId,
+    cData,
+    targetCardId
+  ) => {
+    await todoListService.moveTodoList(
+      beforeColumnId,
+      afterColumnId,
+      cData,
+      targetCardId
+    );
+    // deleteTodos(beforeColumnId);
+    setTodos((todos) => ({ ...todos, [cData.id]: cData }));
+    setLoading(true);
+    setLoading(false);
+  };
+
+  return [loading, postTodos, deleteTodos, putTodos, moveTodos];
 };
 
 export default useTodoHook;
+// moveTodoList(beforeColumnId, afterColumId, cardData, targetCardId)

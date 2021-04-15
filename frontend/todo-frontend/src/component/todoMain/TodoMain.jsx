@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import TodoList from './todoList/TodoList';
-import styled from 'styled-components';
-import todoListService from '../../service/todoListService.js';
+import React, { useState, useEffect, useRef } from "react";
+import TodoList from "./todoList/TodoList";
+import styled from "styled-components";
+import todoListService from "../../service/todoListService.js";
 
 const StyledTodoMain = styled.div`
   display: flex;
@@ -28,7 +28,14 @@ const TodoMain = ({ postLogs }) => {
   };
 
   const todoColumneList = Object.values(todoColumns).map((data) => (
-    <TodoList data={data} deleteTodoColumn={deleteTodoColumn} postLogs={postLogs} />
+    <TodoList
+      key={data.id}
+      data={data}
+      deleteTodoColumn={deleteTodoColumn}
+      postLogs={postLogs}
+      todoColumns={todoColumns}
+      setTodoColumns={setTodoColumns}
+    />
   ));
 
   return <StyledTodoMain>{todoColumneList}</StyledTodoMain>;

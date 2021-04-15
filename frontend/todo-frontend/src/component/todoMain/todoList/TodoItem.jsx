@@ -9,7 +9,7 @@ export const TodoCard = styled.div`
   flex-direction: ${(props) => (props.flexDir === "column" ? "column" : "row")};
   align-items: flex-start;
   padding: 16px;
-  width: 308px;
+  width: 288px;
   min-height: 108px;
   background-color: #ffffff;
   margin-bottom: 20px;
@@ -39,7 +39,7 @@ const TodoItem = ({
   todoCard: { id, title, content },
   deleteTodoItem,
   editTodoItem,
-  getDropCardInfo,
+  setDragEl,
 }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [inputTitle, setInputTitle] = useState(title);
@@ -75,14 +75,11 @@ const TodoItem = ({
 
   const handleDragOver = (e) => {
     e.preventDefault();
-    e.dataTransfer.setData(
-      "dropCardData",
-      JSON.stringify({ beforeColumnId: columnId, ...todoCard })
-    );
   };
 
   const handleDragStart = (e) => {
     setIsDraged(true);
+    setDragEl(e.target);
     e.dataTransfer.setData(
       "cardData",
       JSON.stringify({ beforeColumnId: columnId, ...todoCard })
@@ -120,6 +117,7 @@ const TodoItem = ({
   } else {
     return (
       <TodoCard
+        id={todoCard.id}
         draggable="true"
         onDoubleClick={toggleEditForm}
         flexDir="row"
