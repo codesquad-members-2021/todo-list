@@ -8,9 +8,15 @@ import UIKit
 
 class ModalViewController: UIViewController {
 
+    enum Mode: String {
+        case register = "새로운 카드 추가"
+        case modify = "카드 수정"
+    }
+    
     @IBOutlet var modalViewTitleLable: UILabel!
     @IBOutlet var titleTextView: UITextView!
     @IBOutlet var contentTextView: UITextView!
+    @IBOutlet weak var requestButton = UIButton()
     
     let titlePlaceHolder = "제목을 입력하세요"
     let contentPlaceHolder = "내용을 입력하세요"
@@ -18,23 +24,32 @@ class ModalViewController: UIViewController {
     private lazy var titleDelegate = ModalDelegate(placeHolder: titlePlaceHolder)
     private lazy var contentDelegate = ModalDelegate(placeHolder: contentPlaceHolder)
     
-    private var cards: [TodoCard]!
-    private let status: String!
+    private let mode: Mode!
+    private let status: String?
+    private let cardId: Int?
     
-    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?,_ cards: [TodoCard], status: String) {
-        self.cards = cards
+    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, mode: Mode, status: String?, cardId: Int?) {
+        self.mode = mode
         self.status = status
+        self.cardId = cardId
+        self.modalViewTitleLable = UILabel()
+        
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
     required init?(coder: NSCoder) {
-        self.status = "" //⚠️
+        self.mode = .none
+        self.status = ""
+        self.cardId = 0
         super.init(coder: coder)
     }
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        self.modalViewTitleLable.text = mode.rawValue
+        self.requestButton?.setTitle(mode == .register ? "등록" : "수정", for: .normal)
         setTextView()
+
+        super.viewDidLoad()
     }
     
     //MARK:- Method
@@ -58,13 +73,32 @@ class ModalViewController: UIViewController {
     }
     
     @IBAction func registerButtonTouched(_ sender: UIButton) {
-        let card = CreateCard(title: titleTextView.text ?? "", contents: contentTextView.text ?? "", status: self.status)
-        
-        NetworkHandler.post(anydata: card, url: EndPoint.modify.rawValue, httpMethod: .post)
-        NetworkHandler.get(urlString: EndPoint.home.rawValue, dataType: TodoCards.self)
+        switch self.mode {
+        case .modify:
+            modifyCard(cardNum: self.cardId!)
+        case .register:
+            self.registerCard()
+        default:
+            break
+        }
         
         dismiss(animated: true, completion: nil)
     }
 
+    private func registerCard() {
+        let card = CreateCard(title: titleTextView.text ?? "", contents: contentTextView.text ?? "", status: self.status!)
+        
+        NetworkHandler.post(anydata: card, url: EndPoint.modify.rawValue, httpMethod: .post)
+        NetworkHandler.get(urlString: EndPoint.home.rawValue, dataType: TodoCards.self)
+    }
+    
+    private func modifyCard(cardNum: Int) {
+        let modifyCard = ModifyCard(title: titleTextView.text ?? "", contents: contentTextView.text ?? "")
+        let url = "\(EndPoint.modify.rawValue)/\(cardNum)/edit"
+        
+        NetworkHandler.post(anydata: modifyCard, url: url, httpMethod: .put)
+        NetworkHandler.get(urlString: EndPoint.home.rawValue, dataType: TodoCards.self)
+    }
+    
 }
 

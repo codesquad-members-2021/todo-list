@@ -12,6 +12,7 @@
             <connections>
                 <outlet property="contentTextView" destination="fJ4-Jp-rR5" id="cfb-Ba-Bos"/>
                 <outlet property="modalViewTitleLable" destination="MXs-wP-BRg" id="33B-kJ-jw5"/>
+                <outlet property="requestButton" destination="36C-iH-p72" id="3ea-G4-I1E"/>
                 <outlet property="titleTextView" destination="yiC-6Z-COA" id="xZi-bk-ksx"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

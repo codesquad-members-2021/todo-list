@@ -30,6 +30,11 @@ struct MoveCard: Codable {
     var status: String
 }
 
+struct ModifyCard: Codable {
+    var title: String
+    var contents: String
+}
+
 //GET
 class TodoCards: Codable {
     var todo: [TodoCard] = []
