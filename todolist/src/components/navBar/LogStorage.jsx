@@ -52,6 +52,10 @@ const LogStorageBlock = styled.div`
     box-shadow: inset 0px 0px 5px white;
   }
 `;
+const ButtonWrapper = styled.div`
+  margin-top: 45px;
+  margin-left: 72%;
+`;
 
 function LogStorage({ clicked, logs, appear, setLogViewState }) {
   const handleXbtnClick = () => {
@@ -61,7 +65,9 @@ function LogStorage({ clicked, logs, appear, setLogViewState }) {
     <>
       {clicked && (
         <LogStorageBlock appear={appear}>
-          <Button type="delete" onClick={handleXbtnClick} />
+          <ButtonWrapper>
+            <Button type="delete" onClick={handleXbtnClick} />
+          </ButtonWrapper>
           <LogCommit appear={appear} logs={logs}></LogCommit>
         </LogStorageBlock>
       )}

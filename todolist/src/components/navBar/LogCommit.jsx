@@ -8,15 +8,15 @@ function LogCommit({ logs }) {
     console.log(passedTime);
     if (passedTime < 3) return "방금 전";
     if (3 < passedTime && passedTime < 60) return `${passedTime}초 전`;
-    else if (60 <= passedTime && passedTime < 3600)
+    if (60 <= passedTime && passedTime < 3600)
       return `${Math.floor(passedTime / 60)}분 전`;
-    else if (3600 <= passedTime && passedTime < 86400)
+    if (3600 <= passedTime && passedTime < 86400)
       return `${passedTime / 3600}시간 전`;
     else return "";
   };
 
   logs = [...logs].reverse();
-  console.log(logs);
+
   return (
     <>
       {logs.map(
@@ -26,14 +26,17 @@ function LogCommit({ logs }) {
               <User>
                 <UserImg />@ Crong
               </User>
-              <LogMessage log={log}></LogMessage>
-              <Time>{timeChecking(log.publishedTime)}</Time>
+              <LogMessageBlock>
+                <LogMessage log={log}></LogMessage>
+                <Time>{timeChecking(log.publishedTime)}</Time>
+              </LogMessageBlock>
             </LogBlock>
           )
       )}
     </>
   );
 }
+
 const LogBlock = styled.div`
   padding: 16px;
   position: static;
@@ -45,7 +48,10 @@ const LogBlock = styled.div`
   flex: none;
   order: 0;
   flex-grow: 0;
-  margin: auto auto;
+  margin-left: 30px;
+`;
+const LogMessageBlock = styled.div`
+  margin-left: 45px;
 `;
 const User = styled.div`
   display: flex;
