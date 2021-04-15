@@ -1,7 +1,7 @@
 package com.example.todolist.controller;
 
 
-import com.example.todolist.CustomResolver;
+import com.example.todolist.common.CustomResolver;
 import com.example.todolist.domain.*;
 import com.example.todolist.service.CardService;
 import com.example.todolist.service.HistoryService;
@@ -40,11 +40,7 @@ public class CardController {
 
     @PutMapping("/{id}/edit")
     public ResponseEntity<Card> update(@PathVariable Long id, @RequestBody HashMap<String, String> newCardInfo, @CustomResolver String userName) {
-        Card card = cardService.findCardById(id);
-        User user = userService.findUserByName(userName);
-        if (!card.getUserId().equals(user.getUserId())) {
-            throw new RuntimeException("수정 권한이 없습니다.");
-        }
+        Card card = cardService.findVerifiedCardById(id, userName);
         card.update(newCardInfo.get("title"), newCardInfo.get("contents"));
         cardService.save(card);
         History log = new History(card, "update");
@@ -54,11 +50,7 @@ public class CardController {
 
     @PutMapping("/{id}/status")
     public ResponseEntity<Card> move(@PathVariable Long id, @RequestBody HashMap<String, String> newCardInfo, @CustomResolver String userName) {
-        Card card = cardService.findCardById(id);
-        User user = userService.findUserByName(userName);
-        if (!card.getUserId().equals(user.getUserId())) {
-            throw new RuntimeException("수정 권한이 없습니다.");
-        }
+        Card card = cardService.findVerifiedCardById(id, userName);
         String preStatus = card.getStatus();
         card.update(newCardInfo.get("status"));
         cardService.save(card);
@@ -69,11 +61,7 @@ public class CardController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Card> delete(@PathVariable Long id, @CustomResolver String userName) {
-        Card card = cardService.findCardById(id);
-        User user = userService.findUserByName(userName);
-        if (!card.getUserId().equals(user.getUserId())) {
-            throw new RuntimeException("삭제 권한이 없습니다.");
-        }
+        Card card = cardService.findVerifiedCardById(id, userName);
         History log = new History(card, "remove");
         card.delete();
         historyService.save(log);

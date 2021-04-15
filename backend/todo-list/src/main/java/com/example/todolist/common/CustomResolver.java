@@ -1,4 +1,4 @@
-package com.example.todolist;
+package com.example.todolist.common;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

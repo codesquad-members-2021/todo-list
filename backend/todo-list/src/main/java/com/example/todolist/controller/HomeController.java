@@ -1,7 +1,7 @@
 package com.example.todolist.controller;
 
 
-import com.example.todolist.JwtUtil;
+import com.example.todolist.common.JwtUtil;
 import com.example.todolist.domain.User;
 import com.example.todolist.dto.*;
 import com.example.todolist.repository.UserRepository;

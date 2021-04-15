@@ -1,6 +1,8 @@
 package com.example.todolist;
 
 
+import com.example.todolist.common.CustomHandlerMethodArgumentResolver;
+import com.example.todolist.common.JwtAuthInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -29,8 +31,6 @@ public class WebConfig implements WebMvcConfigurer {
     }
 
     private final String[] EXCLUDED_PATH_LIST = {
-            "/users/**",
-            "/users/login/**",
             "/list",
             "/history"
     };
