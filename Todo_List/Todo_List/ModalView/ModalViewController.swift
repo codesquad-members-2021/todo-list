@@ -18,9 +18,9 @@ class ModalViewController: UIViewController {
     private lazy var titleDelegate = ModalDelegate(placeHolder: titlePlaceHolder)
     private lazy var contentDelegate = ModalDelegate(placeHolder: contentPlaceHolder)
     
-    private var cards: TodoCardsManageable!
+    private var cards: [TodoCard]!
     
-    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?,_ cards: TodoCardsManageable) {
+    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?,_ cards: [TodoCard]) {
         self.cards = cards
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
@@ -37,7 +37,7 @@ class ModalViewController: UIViewController {
     //MARK:- Method
     
     private func setTextView() {
-        setPlaceHolder(titleTextView, titleDelegate, text: titlePlaceHolder, .lightGray)
+        setPlaceHolder(   titleTextView, titleDelegate, text: titlePlaceHolder, .lightGray)
         setPlaceHolder(contentTextView, contentDelegate, text: contentPlaceHolder, .lightGray)
     }
     
@@ -55,8 +55,9 @@ class ModalViewController: UIViewController {
     }
     
     @IBAction func registerButtonTouched(_ sender: UIButton) {
-        let card = TodoCard(title: titleTextView.text ?? "", content: contentTextView.text ?? "", postTime: "\(Date())", user: User())
-        self.cards.addCard(with: card)
+        //noti
+//        let card = TodoCard(title: titleTextView.text ?? "", content: contentTextView.text ?? "", postTime: "\(Date())", user: User())
+//        self.cards.addCard(with: card)
         dismiss(animated: true, completion: nil)
     }
     
