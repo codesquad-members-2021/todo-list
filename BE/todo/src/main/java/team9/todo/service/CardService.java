@@ -63,7 +63,7 @@ public class CardService {
         return saved;
     }
 
-    private double renderPos(Card prevCard, Card nextCard) {
+    private double renderPriority(Card prevCard, Card nextCard, CardColumn cardColumn, User user) {
         double priority = 0.0;
         if (prevCard == null && nextCard != null) {
             priority = nextCard.getPriority() - PRIORITY_STEP;
@@ -73,6 +73,9 @@ public class CardService {
         }
         if (prevCard != null && nextCard != null) {
             priority = (prevCard.getPriority() + nextCard.getPriority()) / 2;
+        }
+        if (prevCard == null && nextCard == null) {
+            priority = getNextPriority(cardColumn, user);
         }
         return priority;
     }
@@ -90,10 +93,7 @@ public class CardService {
             nextCard.validateColumn(to);
         }
 
-        double priority = renderPos(prevCard, nextCard);
-        if (prevCard == null && nextCard == null) {
-            priority = getNextPriority(to, user);
-        }
+        double priority = renderPriority(prevCard, nextCard, to, user);
 
         logger.debug("{}번 카드 {}로 이동 요청, 계산된 priority=", cardId, to, priority);
 
