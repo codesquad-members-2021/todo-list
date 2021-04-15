@@ -20,6 +20,7 @@ class MainViewController: UIViewController {
 
         loadCard()
         NotificationCenter.default.addObserver(self, selector: #selector(postCard), name: CardManager.NotiKeys.addCard, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(deleteCard), name: CardManager.NotiKeys.deleteCard, object: nil)
     
     }
 
@@ -77,25 +78,26 @@ class MainViewController: UIViewController {
         })
     }
     
-//    private func deleteCard() {
-//        guard let card = notification.userInfo?["addCard"] as? AddCard else { return }
-//        DataTaskManager.delete(category: card.category, cardID: <#T##Int#>, completion: { (result) in
-//            DispatchQueue.global().async {
-//                switch result {
-//                case .success(let data):
-//                    if data.data.category == 1 {
-//                        self.willDoCardManager.delete(cardID: <#T##Int#>)
-//                    }else if data.data.category == 2 {
-//                        self.doingCardManager.delete(cardID: <#T##Int#>)
-//                    }else{
-//                        self.doneCardManager.delete(cardID: <#T##Int#>)
-//                    }
-//                case .failure(let error):
-//                    print(error.localizedDescription)
-//                }
-//            }
-//        })
-//    }
+    @objc private func deleteCard(_ notification: Notification) {
+        guard let category = notification.userInfo?["category"] as? Int else { return }
+        guard let cardID = notification.userInfo?["cardID"] as? Int else { return }
+        DataTaskManager.delete(category: category, cardID: cardID, completion: { (result) in
+            DispatchQueue.global().async {
+                switch result {
+                case .success(let data):
+                    if category == 1 {
+                        self.willDoCardManager.delete(cardOf:cardID)
+                    }else if category == 2 {
+                        self.doingCardManager.delete(cardOf: cardID)
+                    }else{
+                        self.doneCardManager.delete(cardOf: cardID)
+                    }
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+        })
+    }
     
     private func putCard() {
         

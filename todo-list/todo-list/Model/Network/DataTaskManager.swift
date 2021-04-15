@@ -42,9 +42,9 @@ class DataTaskManager {
 
     static func delete(category: Int, cardID: Int, completion: @escaping (Result<DeleteCard, Error>) -> Void) {
         session.dataTask(with: RequestManager.deleteRequest(category: category, cardID: cardID)) { (data, response, error) in
-            guard let response = response as? HTTPURLResponse, let data = data else { return }
+            guard let response = response as? HTTPURLResponse else { return }
             if (200 ..< 299) ~= response.statusCode {
-                guard let deleteCardInfo = ParsingManager.decodeData(type: DeleteCard.self, data: data) else { return }
+                let deleteCardInfo = DeleteCard(cardId: cardID, category: category)
                 completion(.success(deleteCardInfo))
             }else{
                 print(response.statusCode)
