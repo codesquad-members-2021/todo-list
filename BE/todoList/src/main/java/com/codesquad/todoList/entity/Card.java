@@ -32,6 +32,8 @@ public class Card {
     @Size(max = 30, message = "작가의 이름은 30자 미만입니다.")
     private String author;
 
+    private Long columns;
+
     @Column(value = "CREATE_DATETIME")
     private LocalDateTime createDateTime = LocalDateTime.now();
 

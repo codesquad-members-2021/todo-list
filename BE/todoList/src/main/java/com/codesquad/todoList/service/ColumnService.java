@@ -41,11 +41,9 @@ public class ColumnService {
     public Card addCard(Long columnId, Card card) {
         Project project = projectRepository.findById(1L).orElseThrow(NotFoundProjectException::new);
         Columns columns = columnRepository.findById(columnId).orElseThrow(NotFoundColumnException::new);
+        card.setColumns(columnId);
         Card saveCard = cardRepository.save(card);
-        columns.addCard(saveCard);
-        updateColumn(columns, project);
-
-        saveNote(new Note(), columns, Action.CREATE, saveCard);
+        saveNote(new Note(), columns, Action.CREATE, card);
         return saveCard;
     }
 
