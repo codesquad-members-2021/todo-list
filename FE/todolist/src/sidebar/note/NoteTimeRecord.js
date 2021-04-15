@@ -7,10 +7,20 @@ const NoteTimeStyle = styled.div`
     color: #909090;
 `;
 
-const NoteTimeRecord = ({ createdTime }) => {
+const NoteTimeRecord = ({ createdTime, isOpen }) => {
     const [ timegap, setTimegap ] = useState()
 
-    useEffect(() => {setTimegap(getTimeGap())}, []);
+    const interval = setTimeout(() => {
+        if(isOpen) {
+            setTimegap(getTimeGap())
+        }
+    }, 1000);
+
+    useEffect(() => {
+        if (!isOpen) {
+            clearInterval(interval);
+        }
+    }, [isOpen]);
 
     const getTimeGap = () => {
         let now = new Date();
