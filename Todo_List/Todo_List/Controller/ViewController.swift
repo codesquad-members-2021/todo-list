@@ -66,6 +66,7 @@ class ViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NSNotification.Name(rawValue: "finishNetwork"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(moveCard), name: NSNotification.Name(rawValue: "moveCard"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(removeCard), name: NSNotification.Name(rawValue: "removeCard"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(completeCard), name: NSNotification.Name(rawValue: "completeCard"), object: nil)
     }
     
     @objc func reloadData(_ notification: Notification) {
@@ -96,6 +97,17 @@ class ViewController: UIViewController {
         let url = "\(EndPoint.modify.rawValue)/\(cardNum)"
         
         NetworkHandler.post(anydata: cardNum, url: url, httpMethod: .delete)
+        NetworkHandler.get(urlString: EndPoint.home.rawValue, dataType: TodoCards.self)
+    }
+    
+    @objc func completeCard(_ notification: Notification) {
+        guard let dict = notification.userInfo as Dictionary? else { return }
+        guard let cardNum = dict["cardNum"] as? Int else { return }
+        
+        let moveCard = MoveCard(status: "done")
+        let url = "\(EndPoint.modify.rawValue)/\(cardNum)/status"
+        
+        NetworkHandler.post(anydata: moveCard, url: url, httpMethod: .put)
         NetworkHandler.get(urlString: EndPoint.home.rawValue, dataType: TodoCards.self)
     }
 }
