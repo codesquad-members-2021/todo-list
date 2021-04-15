@@ -59,7 +59,22 @@ class MainViewController: UIViewController {
     }
     @objc private func postCard(_ notification: Notification) {
         guard let card = notification.userInfo?["addCard"] as? AddCard else { return }
-        DataTaskManager.post(category: card.category, data: card)
+        DataTaskManager.post(category: card.category, data: card, completion: { (result) in
+            DispatchQueue.global().async {
+                switch result {
+                case .success(let data):
+                    if data.data.category == 1 {
+                        self.willDoCardManager.add(card: data.data)
+                    }else if data.data.category == 2 {
+                        self.doingCardManager.add(card: data.data)
+                    }else{
+                        self.doneCardManager.add(card: data.data)
+                    }
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+        })
     }
     
     private func deleteCard() {

@@ -22,16 +22,34 @@ class DataTaskManager {
         }.resume()
     }
     
-    static func post(category: Int, data: AddCard) {
+    static func post(category: Int, data: AddCard, completion: @escaping (Result<PostCard, Error>) -> Void) {
         guard let encodingData = ParsingManager.encodeData(data: data) else { return }
-        session.dataTask(with: RequestManager.postRequest(category: category, data: encodingData)).resume()
+        session.dataTask(with: RequestManager.postRequest(category: category, data: encodingData)) { (data, response, error) in
+            guard let response = response as? HTTPURLResponse, let data = data else { return }
+            if (200 ..< 299) ~= response.statusCode {
+                guard let card = ParsingManager.decodeData(type: PostCard.self, data: data) else { return }
+                completion(.success(card))
+            }else{
+                print(response.statusCode)
+                completion(.failure(error?.localizedDescription as! Error))
+            }
+        }.resume()
     }
     
     static func put(category: Int, cardID: Int, data: Data) {
         session.dataTask(with: RequestManager.putRequest(category: category, cardID: cardID, data: data)).resume()
     }
 
-    static func delete(category: Int, cardID: Int) {
-        session.dataTask(with: RequestManager.deleteRequest(category: category, cardID: cardID)).resume()
+    static func delete(category: Int, cardID: Int, completion: @escaping (Result<Card, Error>) -> Void) {
+        session.dataTask(with: RequestManager.deleteRequest(category: category, cardID: cardID)) { (data, response, error) in
+            guard let response = response as? HTTPURLResponse, let data = data else { return }
+            if (200 ..< 299) ~= response.statusCode {
+                guard let card = ParsingManager.decodeData(type: Card.self, data: data) else { return }
+                completion(.success(card))
+            }else{
+                print(response.statusCode)
+                completion(.failure(error?.localizedDescription as! Error))
+            }
+        }
     }
 }

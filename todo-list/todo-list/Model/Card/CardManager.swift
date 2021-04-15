@@ -40,6 +40,7 @@ class CardManager {
     enum NotiKeys {
         static let countChanged = Notification.Name("countChanged")
         static let addCard = Notification.Name("addCard")
+        static let deleteCard = Notification.Name("deleteCard")
     }
 }
 
@@ -56,7 +57,7 @@ extension CardManager: CardFindable {
 }
 
 extension CardManager: CardAddable {
-    
+   
     func add(card: Card) {
         if cardList != nil {
             cardList?.append(card)
@@ -64,6 +65,10 @@ extension CardManager: CardAddable {
             cardList = [card]
         }
         postCountChange()
+    }
+    func delete(cardID: Int) {
+        cardList?.remove(at: cardID + 1)
+        NotificationCenter.default.post(name: NotiKeys.deleteCard, object: self, userInfo: ["deleteCard": newCard])
     }
     
     func newCard(withTitle title: String, contents: String) {

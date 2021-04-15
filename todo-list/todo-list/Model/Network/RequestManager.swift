@@ -20,7 +20,7 @@ class RequestManager {
         
     //POST
     static func postRequest(category: Int, data: Data) -> URLRequest {
-        guard let url = URL(string: "\(urlString)/\(category)/todos") else {
+        guard let url = URL(string: "\(urlString)/\(category)/cards") else {
             print("The URL is inappropriate.")
             return URLRequest(url: URL(string: "")!)
         }
@@ -33,7 +33,7 @@ class RequestManager {
     
     //PUT
     static func putRequest(category: Int, cardID: Int, data: Data) -> URLRequest {
-        guard let url = URL(string: "\(urlString)/\(category)/todos/\(cardID)") else {
+        guard let url = URL(string: "\(urlString)/\(category)/cards/\(cardID)") else {
             print("The URL is inappropriate.")
             return URLRequest(url: URL(string: "")!)
         }
@@ -47,7 +47,7 @@ class RequestManager {
     
     //delete
     static func deleteRequest(category: Int, cardID: Int) -> URLRequest {
-        guard let url = URL(string: "\(urlString)/\(category)/todos/\(cardID)") else {
+        guard let url = URL(string: "\(urlString)/\(category)/cards/\(cardID)") else {
             print("The URL is inappropriate.")
             return URLRequest(url: URL(string: "")!)
         }

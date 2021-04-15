@@ -7,16 +7,25 @@
 
 import Foundation
 
-struct Card: Codable{
+struct Card: Codable, Equatable {
     let cardId: Int
     let category: Int
     let title: String
     let contents: String
+    
+    static func ==(lhs: Card, rhs: Card) -> Bool{
+        return lhs.cardId == rhs.cardId
+    }
 }
 
 struct CardList: Codable {
     let categoryId: Int
     let cards: [Card]
+}
+
+struct PostCard: Codable {
+    let status: String
+    let data: Card
 }
 
 struct CardData: Codable {
