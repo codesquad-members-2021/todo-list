@@ -15,6 +15,8 @@ const SidebarStyle = styled.aside`
         background-color: #fff;
         padding: 2rem;
         transition: 0.5s;
+        overflow-y: scroll;
+        scroll-behavior: smooth;
 `;
 
 const IconBox = styled.div`
