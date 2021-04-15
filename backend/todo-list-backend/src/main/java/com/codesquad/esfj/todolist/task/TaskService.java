@@ -81,7 +81,7 @@ public class TaskService {
                 .orElseThrow(() -> new IllegalArgumentException("해당하는 Task가 존재하지 않습니다." + id));
 
         Optional<Task> originalNextTask = taskRepository.findByPreviousId(id);
-        Optional<Task> newNextTask = taskRepository.findByPreviousId(targetId);
+        Optional<Task> newNextTask = taskRepository.findByPreviousIdAndTaskType(targetId, targetTaskType);
 
         if (originalNextTask.isPresent()) {
             originalNextTask.get().moveAfterPreviousOf(taskToMove);
