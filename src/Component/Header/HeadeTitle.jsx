@@ -12,24 +12,44 @@ const HeadTitleBlock = styled.div`
   align-items: center;
   justify-content: space-between;
   font-family: Noto Sans KR;
-  font-size: 32px;
-  line-height: 46px;
+  font-size: 2rem;
   padding: 0 5rem;
   box-sizing: border-box;
+  span {
+    display: flex;
+    button {
+      padding: 0.5rem;
+      margin-left: 3rem;
+      border: 1px solid #333;
+      background: #fff;
+      font-size: 1rem;
+      transition: transform 0.15s linear, box-shadow 0.15s linear;
+      box-shadow: 2px 2px 2px #333;
+      &:active {
+        transform: translate(1px, 1px);
+        box-shadow: 1px 1px 1px #333;
+      }
+    }
+  }
 `
 
-export default function HeadTitle ({ children }) {
+export default function HeadTitle ({ children, onPopupToggleButtonClick }) {
   const [toggle, setToggle] = useState(false);
-
   const onClick = () => setToggle(!toggle);
 
   return (
     <HeadTitleBlock>
-      <span>Json-Luke-mon To-do List</span>
+      <span>
+        Json-Luke-mon To-do List
+        <Button onClick={onPopupToggleButtonClick}>
+          닉네임 변경
+        </Button>
+      </span>
       <Button onClick={onClick}>
         <FaChevronLeft />
       </Button>
       <Navigator toggle={toggle} onClick={onClick} />
+
     </HeadTitleBlock>
   )
 }
