@@ -1,6 +1,6 @@
 package com.team08.todolist.model;
 
-import com.team08.todolist.DateTimeUtils;
+import com.team08.todolist.util.DateTimeUtils;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 

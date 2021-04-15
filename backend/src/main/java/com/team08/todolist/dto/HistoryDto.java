@@ -1,6 +1,6 @@
 package com.team08.todolist.dto;
 
-import com.team08.todolist.DateTimeUtils;
+import com.team08.todolist.util.DateTimeUtils;
 import com.team08.todolist.model.History;
 
 import java.time.LocalDateTime;

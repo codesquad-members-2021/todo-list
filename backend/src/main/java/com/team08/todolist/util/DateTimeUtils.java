@@ -1,4 +1,4 @@
-package com.team08.todolist;
+package com.team08.todolist.util;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -9,6 +9,7 @@ public class DateTimeUtils {
     public static String formatByPattern(LocalDateTime localDateTime) {
         return localDateTime.format(formatter);
     }
+
     public static LocalDateTime reformatByPattern(String localDateTime) {
         return LocalDateTime.parse(localDateTime, formatter);
     }

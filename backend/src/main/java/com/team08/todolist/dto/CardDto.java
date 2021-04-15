@@ -1,11 +1,11 @@
 package com.team08.todolist.dto;
 
-import com.team08.todolist.DateTimeUtils;
+import com.team08.todolist.util.DateTimeUtils;
 import com.team08.todolist.model.Card;
 
 import java.time.LocalDateTime;
 
-import static com.team08.todolist.DateTimeUtils.reformatByPattern;
+import static com.team08.todolist.util.DateTimeUtils.reformatByPattern;
 
 public class CardDto {
     private Long cardId;
