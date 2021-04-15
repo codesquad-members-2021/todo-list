@@ -19,6 +19,11 @@ struct TodoCard: Codable {
     var user: User
 }
 
+struct CreateCard: Codable {
+    var title: String
+    var contents: String
+    var status: String
+}
 
 //GET
 class TodoCards: Codable {
@@ -28,7 +33,7 @@ class TodoCards: Codable {
 }
 
 //POST
-struct decode {
+struct Decode: Codable {
     var id: Int
     var userId: Int
     var title: String

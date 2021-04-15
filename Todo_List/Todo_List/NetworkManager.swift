@@ -9,6 +9,7 @@ import Foundation
 
 enum NetworkError: Int, Error {
     case DecodeError
+    case EncodeError
     case BadURL
     case ResponseFailed
     case BadRequest = 400 // 문법상 오류로 서버가 요청을 이해하지 못함
@@ -34,6 +35,7 @@ enum EndPoint: String {
 
 class NetworkManager {
     private let decoder = DecodeManager()
+    private let encoder = EncodeManager()
     
     func getSource<T:Decodable>(urlString: String, httpMethod: HttpMethod, json: Data? = nil, dataType: T.Type, completion: @escaping (Any?,NetworkError?) -> Void) {
         
@@ -50,7 +52,7 @@ class NetworkManager {
         }
     }
     
-    func perfomRequest<T:Decodable>(urlString: String, httpMethod: HttpMethod, json: Data? = nil, dataType: T.Type, completion: @escaping (Result<Any,NetworkError>) -> Void) {
+    private func perfomRequest<T:Decodable>(urlString: String, httpMethod: HttpMethod, json: Data? = nil, dataType: T.Type, completion: @escaping (Result<Any,NetworkError>) -> Void) {
         
         guard let url = URL(string: urlString) else { completion(.failure(.BadURL)); return }
         let request = createRequest(url: url, httpMethod: httpMethod)
@@ -84,6 +86,19 @@ class NetworkManager {
         
         return request
     }
+    
+    func encodeJson<T:Encodable>(anyData: T, completion: @escaping (Any?,NetworkError?) -> Void) {
+        encoder.encode(anyData: anyData) { (result) in
+            switch result {
+            case .success(let data):
+                completion(data, nil)
+
+            case .failure(let error):
+                print(error)
+                completion(nil, error)
+            }
+        }
+    }
 }
 
 class DecodeManager {
@@ -98,4 +113,19 @@ class DecodeManager {
         completion(.success(data))
     }
     
+
+}
+
+class EncodeManager {
+    
+    func encode<T:Encodable>(anyData: T, completion: @escaping (Result<Any,NetworkError>) -> Void) {
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = .prettyPrinted
+        
+        guard let data = try? encoder.encode(anyData) else {
+            completion(.failure(.EncodeError))
+            return
+        }
+        completion(.success(data))
+    }
 }
