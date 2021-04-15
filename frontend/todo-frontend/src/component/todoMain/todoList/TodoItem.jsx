@@ -78,8 +78,8 @@ const TodoItem = ({
   };
 
   const handleDragStart = (e) => {
+    setDragEl({ beforeColumnId: columnId, ...todoCard });
     setIsDraged(true);
-    setDragEl(e.target);
     e.dataTransfer.setData(
       "cardData",
       JSON.stringify({ beforeColumnId: columnId, ...todoCard })

@@ -54,7 +54,7 @@ const todoListService = {
   },
 };
 
-const addItem = (cardList, columnId, cardId, data) => {
+const addItem = (cardList, cardId, data) => {
   const newCardList = {};
   for (const key in cardList) {
     if (key === cardId) newCardList[data.id] = data;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import TodoItem from "./TodoItem";
 import TodoListForm from "./TodoListForm";
 import DeleteBtn from "../../atom/DeleteBtn.jsx";
@@ -127,17 +127,6 @@ const TodoList = ({
     return newLog;
   };
 
-  const todoCardList = Object.values(todos).map((card) => (
-    <TodoItem
-      key={card.id}
-      columnId={id}
-      todoCard={card}
-      deleteTodoItem={deleteTodoItem}
-      editTodoItem={editTodoItem}
-      setDragEl={setDragEl}
-    />
-  ));
-
   const toggleForm = () => {
     setFormSelected((formSelected) => !formSelected);
   };
@@ -153,7 +142,7 @@ const TodoList = ({
       (closestCard, child) => {
         const cardBox = child.getBoundingClientRect();
         const offset = y - cardBox.top - cardBox.height / 2;
-        console.log(offset);
+
         if (offset < 0 && offset > closestCard.offset) {
           return { offset: offset, element: child };
         } else {
@@ -167,11 +156,8 @@ const TodoList = ({
   const handleDrop = (e) => {
     const cardData = JSON.parse(e.dataTransfer.getData("cardData"));
     const { beforeColumnId, ...cData } = cardData;
-    console.log(cardData);
     e.preventDefault();
     const afterElement = getDragAfterElement(e.clientY);
-    console.log(afterElement);
-
     if (afterElement === undefined) {
       setTodoColumns((todoColumns) => {
         delete todoColumns[beforeColumnId].todoCards[cData.id];
@@ -197,7 +183,6 @@ const TodoList = ({
         todoColumns[id].todoCards = newTodoCardList;
         return { ...todoColumns };
       });
-
       //LOCALSTORAGE 부분 해야함
       const todoDB = JSON.parse(localStorage.getItem("todos"));
       todoDB.todoData[id].todoCards = newTodoCardList;
@@ -205,6 +190,7 @@ const TodoList = ({
       delete deleteColumnCardList[cardData.id];
       localStorage.setItem("todos", JSON.stringify(todoDB));
     }
+    setDragEl("드래그 끝났다!");
   };
 
   const addItem = (cardList, cardId, data) => {
@@ -216,7 +202,17 @@ const TodoList = ({
     return newCardList;
   };
 
-  console.log(todoColumns);
+  const todoCardList = Object.values(todos).map((card) => (
+    <TodoItem
+      key={card.id}
+      columnId={id}
+      todoCard={card}
+      deleteTodoItem={deleteTodoItem}
+      editTodoItem={editTodoItem}
+      setDragEl={setDragEl}
+    />
+  ));
+
   return (
     <>
       {loading && <LoadingPage>loading...</LoadingPage>}
