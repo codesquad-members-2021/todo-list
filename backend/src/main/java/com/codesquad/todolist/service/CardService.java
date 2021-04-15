@@ -22,41 +22,18 @@ public class CardService {
     }
 
     public List<Card> viewCardByColumnId(Long columnId) {
-        if (columnId == 1) {
-            return cardRepository.findTodoCards();
-        }
-        if (columnId == 2) {
-            return cardRepository.findDoingCards();
-        }
-        if (columnId == 3) {
-            return cardRepository.findDoneCards();
-        }
-        return null;
+        return cardRepository.findCardsByColumnId(columnId);
     }
 
     public Card create(Long columnId, String title, String contents) {
         double flag = 10;
-        if (columnId == 1) {
-            List<Double> flags = new ArrayList<>(cardRepository.findTodoFlags());
-            if (flags.size() > 0) {
-                flag = flags.get(flags.size() - 1) + 10;
-            }
-        }
-        if (columnId == 2) {
-            List<Double> flags = new ArrayList<>(cardRepository.findDoingFlags());
-            if (flags.size() > 0) {
-                flag = flags.get(flags.size() - 1) + 10;
-            }
-        }
-        if (columnId == 3) {
-            List<Double> flags = new ArrayList<>(cardRepository.findDoneFlags());
-            if (flags.size() > 0) {
-                flag = flags.get(flags.size() - 1) + 10;
-            }
+        List<Double> flags = new ArrayList<>(cardRepository.findFlagsByColumnId(columnId));
+        if (flags.size() > 0) {
+            flag = flags.get(flags.size() - 1) + 10;
         }
         Card card = new Card(title, contents, columnId, flag);
         cardRepository.save(card);
-        createHistory(Action.ADD.toString(), title, columnId, null);
+        createHistory(Action.ADD, title, columnId, 0L);
         return card;
     }
 
@@ -64,45 +41,45 @@ public class CardService {
         Card card = findCard(id);
         card.update(title, contents);
         cardRepository.save(card);
-        createHistory(Action.UPDATE.toString(), title, card.getColumnId(), null);
+        createHistory(Action.UPDATE, title, card.getColumnId(), 0L);
         return card;
     }
 
     public void delete(Long id) {
         Card card = findCard(id);
         cardRepository.delete(card);
-        createHistory(Action.REMOVE.toString(), card.getTitle(), card.getColumnId(), null);
+        createHistory(Action.REMOVE, card.getTitle(), card.getColumnId(), 0L);
     }
 
     public Card move(Long id, Long toColumnId, int index) {
         Card card = findCard(id);
         Long fromColumnId = card.getColumnId();
         double flag = 0;
-        if (toColumnId == 1) {
-            List<Double> flags = new ArrayList<>(cardRepository.findTodoFlags());
-            flag = updateFlag(flags, index);
-        }
-        if (toColumnId == 2) {
-            List<Double> flags = new ArrayList<>(cardRepository.findTodoFlags());
-            flag = updateFlag(flags, index);
-        }
-        if (toColumnId == 3) {
-            List<Double> flags = new ArrayList<>(cardRepository.findTodoFlags());
-            flag = updateFlag(flags, index);
-        }
+        List<Double> flags = new ArrayList<>(cardRepository.findFlagsByColumnId(toColumnId));
+        flag = updateFlag(flags, index);
         card.move(toColumnId, flag);
         cardRepository.save(card);
-        createHistory(Action.MOVE.toString(), card.getTitle(), fromColumnId, toColumnId);
+        createHistory(Action.MOVE, card.getTitle(), fromColumnId, toColumnId);
         return card;
     }
 
-    private void createHistory(String action, String title, Long fromColumnId, Long toColumnId) {
-        History history = new History(action, title, fromColumnId, toColumnId);
+    public void nullCheck(String title, String contents) {
+        if (title == null || title.trim().length() == 0) {
+            throw new NullPointerException("title can't be null");
+        }
+        if (contents == null || contents.trim().length() == 0) {
+            throw new NullPointerException("contents can't be null");
+        }
+    }
+
+    private void createHistory(Action action, String title, Long fromColumnId, Long toColumnId) {
+        History history = History.createHistory(action, title, fromColumnId, toColumnId);
         historyRepository.save(history);
     }
 
     private Card findCard(Long id) {
-        return cardRepository.findById(id).orElse(null);
+        return cardRepository.findById(id).orElseThrow(
+                () -> new IllegalArgumentException());
     }
 
     private Double updateFlag(List<Double> flags, int index) {

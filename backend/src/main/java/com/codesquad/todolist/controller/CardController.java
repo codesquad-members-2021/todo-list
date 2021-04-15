@@ -28,7 +28,7 @@ public class CardController {
     @PostMapping("/{columnId}")
     public ResponseEntity create(@PathVariable Long columnId, @RequestParam(value = "title") String title,
                                  @RequestParam(value = "contents") String contents) {
-
+        cardService.nullCheck(title, contents);
         Card card = cardService.create(columnId, title, contents);
         return new ResponseEntity(card, HttpStatus.OK);
     }
@@ -36,7 +36,7 @@ public class CardController {
     @PutMapping("/{id}")
     public ResponseEntity update(@PathVariable Long id, @RequestParam(value = "title") String title,
                                  @RequestParam(value = "contents") String contents) {
-
+        cardService.nullCheck(title, contents);
         Card card = cardService.update(id, title, contents);
         return new ResponseEntity(card, HttpStatus.OK);
     }

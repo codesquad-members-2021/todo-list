@@ -13,25 +13,29 @@ public class History {
     @Id
     private Long id;
 
-    private String action;
+    private Action action;
     private String title;
     private Long fromColumnId;
     private Long toColumnId;
     private LocalDateTime createdTime;
 
-    public History(String action, String title, Long fromColumnId, Long toColumnId) {
-        this.action = action;
-        this.title = title;
-        this.fromColumnId = fromColumnId;
-        this.toColumnId = toColumnId;
-        this.createdTime = LocalDateTime.now();
+    public History() {}
+
+    public static History createHistory(Action action, String title, Long fromColumnId, Long toColumnId) {
+        History history = new History();
+        history.action = action;
+        history.title = title;
+        history.fromColumnId = fromColumnId;
+        history.toColumnId = toColumnId;
+        history.createdTime = LocalDateTime.now();
+        return history;
     }
 
     public Long getId() {
         return id;
     }
 
-    public String getAction() {
+    public Action getAction() {
         return action;
     }
 
