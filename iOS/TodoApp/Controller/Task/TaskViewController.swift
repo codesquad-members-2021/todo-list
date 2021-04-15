@@ -99,12 +99,15 @@ extension TaskViewController {
     
     @objc func sendMovedData(_ notification: Notification) {
         var movedData = notification.userInfo?["movedData"] as! TaskCard
+        let tmp = movedData.status
         if column == StatusValue.done {
             movedData.status = StatusValue.done
             taskStackManager.append(StatusValue.done, taskCard: movedData)
         }
         updateTaskCountLabel()
-        NetworkManager.changedDataPost(httpMethod: HTTPMethod.post, data: movedData)
+        if column == tmp {
+            NetworkManager.changedDataPost(httpMethod: HTTPMethod.post, data: movedData)
+        }
     }
 }
    

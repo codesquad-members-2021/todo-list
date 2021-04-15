@@ -1,29 +1,24 @@
-//
-//  EditViewController.swift
-//  TodoApp
-//
 //  Created by 김지선 on 2021/04/15.
-//
-
 import UIKit
 
 class EditViewController: UIViewController {
-
+    
+    private var editTaskView = EditView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.red
-        // Do any additional setup after loading the view.
+        setupMainView()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func setupMainView() {
+        view.backgroundColor = UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 0.4)
+        view.addSubview(editTaskView)
+        editTaskView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        editTaskView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
-    */
-
+    
+    func setUpInfo(titleText: String, contentText: String) {
+        editTaskView.titleTextField.text = titleText
+        editTaskView.contentTextField.text = contentText
+    }
 }
