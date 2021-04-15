@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 import Icon from '../../utilComponent/Icon.js'
+import { deleteCard } from '../httpUtils'
+import { createNote } from '../util'
 
 const CardStyle = styled.div`
     box-sizing: border-box;
@@ -9,6 +11,7 @@ const CardStyle = styled.div`
     background: #fff;
     border-radius: 6px;
     position: relative;
+    box-shadow: 0px 1px 30px 0px #E0E0E04D;
 
     input {
         display: block;
@@ -19,13 +22,13 @@ const CardStyle = styled.div`
         border: none;
         background: #fff;
     }
-    input[type="text"] {
+    .card__title {
         height: 23px;
         font-size: 1rem;
         font-weight: 700;
         line-height: 23px;
     }
-    input[type="textarea"] {
+    .card__content {
         font-size: 0.87rem;
         line-height: 20px;
     }
@@ -56,16 +59,24 @@ const IconStyle = styled.div`
     }
 `
 
-const Card = ({data}) => {
+const Card = ({cardData, columnData, setColumnData, setSidebarLog}) => {
+    const removeCard = () => {
+        const newCardList = columnData.cardList.filter(v => v.id !== cardData.id)
+        setColumnData({ ...columnData, cardList : newCardList})
+        deleteCard(`/columns/${columnData.id}/cards/${cardData.id}`)
+        const note = createNote(cardData.title, "DELETE", columnData.name)
+        setSidebarLog(note)
+    }
+
     return(
         <CardContainer>
-            <IconStyle>
+            <IconStyle onClick={removeCard}>
                 <Icon type= { "close" } />
             </IconStyle>
             <CardStyle>
-                <input type="text" disabled value={data.title} />
-                <input type="textarea " disabled value={data.content} />
-                <div className="card__author"><span>author by {data.author}</span></div>
+                <input className="card__title" disabled value={cardData.title} />
+                <input className="card__content" disabled value={cardData.content} />
+                <div className="card__author"><span>author by {cardData.author}</span></div>
             </CardStyle>
         </CardContainer>
     )
