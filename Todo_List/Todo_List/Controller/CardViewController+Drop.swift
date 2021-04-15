@@ -7,6 +7,7 @@
 
 import UIKit
 
+/*
 extension CardViewController : UITableViewDropDelegate {
     
     /*테이블 이동 시 handling a drop in a table view. */
@@ -40,10 +41,10 @@ extension CardViewController : UITableViewDropDelegate {
                     self.board.append(with: card, type: .doing, at: destinationIndexPath.section)
                 case self.done :
                     self.board.append(with: card, type: .done, at: destinationIndexPath.section)
-                default:
-                    break
+                default : break
                 }
             })
         }
     }
 }
+*/

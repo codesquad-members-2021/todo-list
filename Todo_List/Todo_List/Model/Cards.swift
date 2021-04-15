@@ -8,6 +8,9 @@
 import Foundation
 
 class Cards : Codable {
+    
+    static let ListChanged = Notification.Name("ListChanged")
+    
     var items = [Card]()
     
     var count : Int {
@@ -15,10 +18,13 @@ class Cards : Codable {
     }
     
     func append(with card : Card, at position : Int = 0) {
+        NotificationCenter.default.post(name: Cards.ListChanged, object : self)
         items.insert(card, at: position)
     }
     
+    @discardableResult
     func remove(at index : Int) -> Card {
+        NotificationCenter.default.post(name: Cards.ListChanged, object : self)
         return items.remove(at: index)
     }
 }

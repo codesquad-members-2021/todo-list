@@ -11,7 +11,7 @@ import Foundation
 class CardManager {
     static let shared = CardManager()
     
-    var boardType : Board.CardType
+    var boardType : CardType
     var indexPathSection : Int
     
     private init() {
@@ -19,11 +19,11 @@ class CardManager {
         indexPathSection = -1
     }
     
-    func setCard(type : Board.CardType, index : Int) {
+    func setCard(type : CardType, index : Int) {
         boardType = type
         indexPathSection = index
     }
-    func getBoardType() -> Board.CardType {
+    func getBoardType() -> CardType {
         return boardType
     }
     func getIndexPathSection() -> Int {

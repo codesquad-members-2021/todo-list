@@ -38,7 +38,7 @@ class CardAPIClient {
             }
         task.resume()
     }
-    func loadAllCards(completion : @escaping (Result<[Card], Error>) -> Void) {
+    func loadAllCards(completion : @escaping (Result<Cards, Error>) -> Void) {
         let request = URLRequest(url: CardAPI.all.url)
         
         let task : URLSessionTask = session
@@ -52,7 +52,10 @@ class CardAPIClient {
                 
                 if let data = data,
                    let cardResponse = try? JSONDecoder().decode([Card].self, from: data) {
-                    completion(.success(cardResponse))
+                    // 임시방편 Return type이 [Card]가 아닌 Cards로 바꾸기
+                    let temp = Cards()
+                    temp.items = cardResponse
+                    completion(.success(temp))
                     return
                 }
                 completion(.failure(APIError.unknownError))

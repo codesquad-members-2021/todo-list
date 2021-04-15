@@ -20,26 +20,36 @@ class CardViewController: UIViewController {
     
     @IBOutlet var addButtons : [UIButton]!
     
-    var board = Board()
+    var todoTableViewDataSource : TableViewDataSource?
+    var doingTableViewDataSource : TableViewDataSource?
+    var doneTableViewDataSource : TableViewDataSource?
+    
+    var todoTableViewDelegate : TableViewDelegate?
+    var doingTableViewDelegate : TableViewDelegate?
+    var doneTableViewDelegate : TableViewDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setUpDelegate()
+        self.todoTableViewDataSource = TableViewDataSource(with: .todo)
+        self.doingTableViewDataSource = TableViewDataSource(with: .doing)
+        self.doneTableViewDataSource = TableViewDataSource(with: .done)
+        
+        self.todo.dataSource = self.todoTableViewDataSource
+        self.doing.dataSource = self.doingTableViewDataSource
+        self.done.dataSource = self.doneTableViewDataSource
+        
+        self.todoTableViewDelegate = TableViewDelegate()
+        self.doingTableViewDelegate = TableViewDelegate()
+        self.doneTableViewDelegate = TableViewDelegate()
+        
+        self.todo.delegate = self.todoTableViewDelegate
+        self.doing.delegate = self.doingTableViewDelegate
+        self.done.delegate = self.doneTableViewDelegate
+        
         setNotificationCenter()
         registerNib()
         configureTextField()
-        
-        DispatchQueue.main.async {
-            CardAPIClient().loadAllCards(completion: { [weak self] result in
-                switch result {
-                case .success(let cards) :
-                    self?.board.doingList.items = cards
-                    self?.reloadBoard()
-                case .failure(let error) : print(error)
-                }
-            })
-        }
     }
     
     @IBAction func didTouchAddButton(_ sender: UIButton) {
@@ -47,12 +57,16 @@ class CardViewController: UIViewController {
         self.present(viewController, animated: true)
         
         guard let typeIndex = addButtons.firstIndex(of: sender),
-              let cardType = Board.CardType.init(rawValue: typeIndex)
+              let cardType = CardType.init(rawValue: typeIndex)
         else {
             return
         }
         viewController.setHandler(handler: { [weak self] card in
-            self?.board.append(with: card, type: cardType, at: 0)
+            switch cardType {
+            case .todo: self?.todoTableViewDataSource?.cards.append(with: card)
+            case .doing: self?.doingTableViewDataSource?.cards.append(with: card)
+            case .done: self?.doneTableViewDataSource?.cards.append(with: card)
+            }
         })
     }
     func createModalViewController() -> ModalViewController{
@@ -66,11 +80,11 @@ class CardViewController: UIViewController {
 }
 // MARK: - Notification Fucntion
 extension CardViewController {
-    
     func setNotificationCenter(){
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadBoard), name: Board.TodoListChanged, object: board)
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadBoard), name: Board.DoingListChanged, object: board)
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadBoard), name: Board.DoneListChanged, object: board)
+//        NotificationCenter.default.addObserver(self, selector: #selector(CardViewController.reloadBoard), name: Cards.ListChanged, object: self.todoTableViewDataSource?.cards)
+//        NotificationCenter.default.addObserver(self, selector: #selector(CardViewController.reloadBoard), name: Cards.ListChanged, object: self.doingTableViewDataSource?.cards)
+//        NotificationCenter.default.addObserver(self, selector: #selector(CardViewController.reloadBoard), name: Cards.ListChanged, object: self.doneTableViewDataSource?.cards)
+        NotificationCenter.default.addObserver(self, selector: #selector(CardViewController.reloadBoard), name: Cards.ListChanged, object: nil)
     }
     @objc func reloadBoard(){
         DispatchQueue.main.async {
@@ -79,15 +93,11 @@ extension CardViewController {
             self.done.reloadData()
         }
     }
-    @objc func setCardInfo(_ d : Notification){
-        
-    }
 }
 // MARK: - Register Nib and Configuration
 extension CardViewController {
     func registerNib(){
         let nibName = UINib(nibName: "CardCell", bundle: nil)
-        
         /*각각 register 하여서 각 tableView마다 속성값을 관리할 수 있다.*/
         todo.register(nibName, forCellReuseIdentifier: "CardCell")
         doing.register(nibName, forCellReuseIdentifier: "CardCell")

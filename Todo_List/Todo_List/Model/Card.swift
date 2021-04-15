@@ -12,6 +12,12 @@ import MobileCoreServices
  final Class는 더 이상 자식 클래스를 만들 수 없다.
  */
 
+enum CardType : Int {
+    case todo = 0
+    case doing
+    case done
+}
+
 final class Card : NSObject, NSItemProviderWriting, NSItemProviderReading, Codable {
     
 //    static let PickedCard = Notification.Name("PickedCard")
@@ -21,19 +27,15 @@ final class Card : NSObject, NSItemProviderWriting, NSItemProviderReading, Codab
     }
     
     func loadData(withTypeIdentifier typeIdentifier: String, forItemProviderCompletionHandler completionHandler: @escaping (Data?, Error?) -> Void) -> Progress? {
-        
         let progress = Progress(totalUnitCount: 100)
         
         do {
             let data = try JSONEncoder().encode(self)
-            
             progress.completedUnitCount = 100
-            
             completionHandler(data, nil)
         } catch {
             completionHandler(nil,error)
         }
-        
         return progress
     }
     
@@ -44,11 +46,8 @@ final class Card : NSObject, NSItemProviderWriting, NSItemProviderReading, Codab
     static func object(withItemProviderData data: Data, typeIdentifier: String) throws -> Card {
         let decoder = JSONDecoder()
         
-        
         let card = try decoder.decode(Card.self, from: data)
         return card
-        
-        
     }
     
     var id : Int?
