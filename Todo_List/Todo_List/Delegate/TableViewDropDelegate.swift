@@ -32,14 +32,26 @@ class TableViewDropDelegate: NSObject, UITableViewDropDelegate {
         }
         for item in coordinator.items {
             item.dragItem.itemProvider.loadObject(ofClass: Card.self, completionHandler: { (card, error) in
+                
+                let maxSize = self.dataSource?.cards.count ?? 0
                 guard let card = card as? Card,
-                      let id = card.id,
-                      let nextId = self.dataSource?.cards.items[destinationIndexPath.section].id
+                      let id = card.id
                 else {
                     return
                 }
-                self.dataSource?.cards.append(with: card)
+                
+                let index : Int
+                
+                // destinationIndexPath.section가 boundary를 넘어간 경우
+                if destinationIndexPath.section >= maxSize {
+                    index = maxSize - 1
+                } else {
+                    index = destinationIndexPath.section
+                }
+                guard let nextId = self.dataSource?.cards.items[index].id else { return }
+                self.dataSource?.cards.append(with: card, at: destinationIndexPath.section)
                 CardAPIClient().patchCard(from: id, type: "\(self.cardType)", to: nextId)
+                NotificationCenter.default.post(name: Cards.ListChanged, object: self.dataSource)
             })
         }
     }

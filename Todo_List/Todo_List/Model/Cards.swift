@@ -18,6 +18,9 @@ class Cards : Codable {
     }
     
     func append(with card : Card, at position : Int = 0) {
+        if position >= items.count {
+            items.append(card)
+        }
         items.insert(card, at: position)
     }
     

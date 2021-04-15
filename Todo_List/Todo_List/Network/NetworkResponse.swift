@@ -7,15 +7,23 @@
 
 import Foundation
 
-struct CardResponse : Codable {
+struct CardRequest : Codable {
     let title : String
     let content : String
     let writer : String
     let taskType : String
 }
-
+//struct CardResponse : Codable {
+//    let id : Int
+//    let title : String
+//    let content : String
+//    let writer : String
+//    let previousId : Int
+//}
 struct BoardResponse : Decodable {
     let todo : [Card]
     let doing : [Card]
     let done : [Card]
 }
+
+

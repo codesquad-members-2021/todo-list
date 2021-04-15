@@ -20,7 +20,7 @@ class CardAPIClient {
          api 요청시 필요한 인자이므로 임시로 객체를 생성
          백엔드와 논의가 잘 이루어지지 않은 부분
          */
-        let target = CardResponse.init(title: card.title,
+        let target = CardRequest.init(title: card.title,
                                        content: card.content,
                                        writer: card.writer,
                                        taskType: type)
@@ -37,13 +37,16 @@ class CardAPIClient {
         
         let task : URLSessionTask = session
             .dataTask(with: request) { data, urlResponse, error in
+                guard let data = data else {
+                    return
+                }
                 guard let response = urlResponse as? HTTPURLResponse,
                       (200...399).contains(response.statusCode)
                 else {
                     print(error ?? APIError.unknownError)
                     return
                 }
-                let id = Int(String(data: data!, encoding: .utf8)!)!
+                let id = Int(String(data: data, encoding: .utf8)!)!
                 card.id = id
                 completion(card)
             }
@@ -119,7 +122,6 @@ class CardAPIClient {
         
         //HTTP Headers
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("applicatoin/json", forHTTPHeaderField: "Accept")
         request.httpBody = json
         
         let task : URLSessionTask = session

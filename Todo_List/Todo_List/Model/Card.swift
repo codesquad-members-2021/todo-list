@@ -18,7 +18,6 @@ final class Card : NSObject, NSItemProviderWriting, NSItemProviderReading, Codab
     var title : String
     var content : String
     var writer : String
-
     var previousId : Int?
     
     init(id : Int?, title : String, content: String, writer : String){
