@@ -1,7 +1,6 @@
 package com.codesquad.todolist.controller;
 
-import com.codesquad.todolist.repository.HistoryRepository;
-import org.springframework.http.HttpStatus;
+import com.codesquad.todolist.service.HistoryService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,15 +13,15 @@ import java.util.Map;
 @RequestMapping("/history")
 public class HistoryController {
 
-    private final HistoryRepository historyRepository;
+    private final HistoryService historyService;
 
-    public HistoryController(HistoryRepository historyRepository) {
-        this.historyRepository = historyRepository;
+    public HistoryController(HistoryService historyService) {
+        this.historyService = historyService;
     }
 
     @GetMapping
     public ResponseEntity view() {
-        return ResponseEntity.ok(responseBody("history", historyRepository.findAll()));
+        return ResponseEntity.ok(responseBody("history", historyService.findHistory()));
     }
 
     private Map<String, Object> responseBody(String rootName, Object body) {

@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface CardRepository extends CrudRepository<Card, Long> {
 
-    @Query("SELECT * FROM CARD WHERE CARD.COLUMN_ID LIKE CONCAT('%',:columnId,'%') ORDER BY FLAG ASC")
+    @Query("SELECT ID, TITLE, CONTENTS, COLUMN_ID, CREATED_TIME, FLAG FROM CARD WHERE CARD.COLUMN_ID LIKE CONCAT('%',:columnId,'%') ORDER BY FLAG ASC")
     List<Card> findCardsByColumnId(@Param("columnId") Long columnId);
 
     @Query("SELECT FLAG FROM CARD WHERE CARD.COLUMN_ID LIKE CONCAT('%',:columnId,'%') ORDER BY FLAG ASC")

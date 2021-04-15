@@ -26,7 +26,6 @@ public class CardController {
         return ResponseEntity.ok(responseBody("cards", cards));
     }
 
-
     @PostMapping("/{columnId}")
     public ResponseEntity create(@PathVariable Long columnId, @RequestParam(value = "title") String title,
                                  @RequestParam(value = "contents") String contents) {

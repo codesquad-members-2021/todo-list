@@ -1,5 +1,8 @@
 package com.codesquad.todolist.domain;
 
 public enum Action {
-    ADD, UPDATE, REMOVE, MOVE
+    ADD,
+    UPDATE,
+    REMOVE,
+    MOVE
 }

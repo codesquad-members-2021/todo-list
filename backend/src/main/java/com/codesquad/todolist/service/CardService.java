@@ -2,9 +2,7 @@ package com.codesquad.todolist.service;
 
 import com.codesquad.todolist.domain.Action;
 import com.codesquad.todolist.domain.Card;
-import com.codesquad.todolist.domain.History;
 import com.codesquad.todolist.repository.CardRepository;
-import com.codesquad.todolist.repository.HistoryRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -14,11 +12,11 @@ import java.util.List;
 public class CardService {
 
     private final CardRepository cardRepository;
-    private final HistoryRepository historyRepository;
+    private final HistoryService historyService;
 
-    public CardService(CardRepository cardRepository, HistoryRepository historyRepository) {
+    public CardService(CardRepository cardRepository, HistoryService historyService) {
         this.cardRepository = cardRepository;
-        this.historyRepository = historyRepository;
+        this.historyService = historyService;
     }
 
     public List<Card> viewCardByColumnId(Long columnId) {
@@ -33,7 +31,7 @@ public class CardService {
         }
         Card card = new Card(title, contents, columnId, flag);
         cardRepository.save(card);
-        createHistory(Action.ADD, title, columnId, 0L);
+        historyService.createHistory(Action.ADD, title, columnId, 0L);
         return card;
     }
 
@@ -41,14 +39,14 @@ public class CardService {
         Card card = findCard(id);
         card.update(title, contents);
         cardRepository.save(card);
-        createHistory(Action.UPDATE, title, card.getColumnId(), 0L);
+        historyService.createHistory(Action.UPDATE, title, card.getColumnId(), 0L);
         return card;
     }
 
     public void delete(Long id) {
         Card card = findCard(id);
         cardRepository.delete(card);
-        createHistory(Action.REMOVE, card.getTitle(), card.getColumnId(), 0L);
+        historyService.createHistory(Action.REMOVE, card.getTitle(), card.getColumnId(), 0L);
     }
 
     public Card move(Long id, Long toColumnId, int index) {
@@ -59,7 +57,7 @@ public class CardService {
         flag = updateFlag(flags, index);
         card.move(toColumnId, flag);
         cardRepository.save(card);
-        createHistory(Action.MOVE, card.getTitle(), fromColumnId, toColumnId);
+        historyService.createHistory(Action.MOVE, card.getTitle(), fromColumnId, toColumnId);
         return card;
     }
 
@@ -70,11 +68,6 @@ public class CardService {
         if (contents == null || contents.trim().length() == 0) {
             throw new NullPointerException("contents can't be null");
         }
-    }
-
-    private void createHistory(Action action, String title, Long fromColumnId, Long toColumnId) {
-        History history = History.createHistory(action, title, fromColumnId, toColumnId);
-        historyRepository.save(history);
     }
 
     private Card findCard(Long id) {
