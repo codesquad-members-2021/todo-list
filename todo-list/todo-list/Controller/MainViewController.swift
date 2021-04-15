@@ -13,13 +13,15 @@ class MainViewController: UIViewController {
     private let doingCardManager = CardManager()
     private let doneCardManager = CardManager()
     
+    private let taskList = TaskManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
     }
 
     @IBAction func sideMenuButtonTouched(_ sender: Any) {
-        let sideMenuVC = SideMenuViewController(nibName: "SideMenuViewController", bundle: .none)
+        let sideMenuVC = SideMenuViewController(nibName: "SideMenuViewController", bundle: .none, taskList: taskList)
         self.present(sideMenuVC, animated: true, completion: nil)
     }
     
