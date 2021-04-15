@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     private var doingViewController: TodoTableViewController?
     private var doneViewController: TodoTableViewController?
     
-    private var todoCards: TodoCards! // ⚠️
+    private var todoCards = TodoCards() // ⚠️
     private var networkManager = NetworkManager()
     
     
@@ -38,19 +38,19 @@ class ViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        self.todoCards = TodoCards(todo: [], doing: [], done: [])
-        networkManager.perfomRequest(urlString: EndPoint.home.rawValue, httpMethod: .get, dataType: TodoCards.self) { (result) in
-            switch result {
-            case .success(let data):
-                print(data)
-            case .failure(let error):
-                print(error)
-            }
-        }
+//        self.todoCards = TodoCards()//todo: [], doing: [], done: [])
+//        networkManager.perfomRequest(urlString: EndPoint.home.rawValue, httpMethod: .get, dataType: TodoCards.self) { (result) in
+//            switch result {
+//            case .success(let data):
+//                self.todoCards = data as? TodoCards
+//                print(data)
+//            case .failure(let error):
+//                print(error)
+//            }
+//        }
         setting()
         super.viewDidLoad()
     }
-    
     
     // MARK:- Method
     

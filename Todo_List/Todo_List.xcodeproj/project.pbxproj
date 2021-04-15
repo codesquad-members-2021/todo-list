@@ -125,8 +125,8 @@
 				D4BFB839261C470700D68297 /* TodoTableViewController.swift */,
 				D4BFB96126201F6300D68297 /* TodoTableViewDropDelegate.swift */,
 				D4BFB9662620222D00D68297 /* TodoTableViewDragDelegate.swift */,
-				D4BFB848261C4B8500D68297 /* TodoDelegate.swift */,
 				D4BFB84D261C4C8C00D68297 /* TodoDataSource.swift */,
+				D4BFB848261C4B8500D68297 /* TodoDelegate.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
