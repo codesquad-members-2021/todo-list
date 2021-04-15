@@ -40,7 +40,7 @@ class ModalViewController: UIViewController {
     //MARK:- Method
     
     private func setTextView() {
-        setPlaceHolder(   titleTextView, titleDelegate, text: titlePlaceHolder, .lightGray)
+        setPlaceHolder(titleTextView, titleDelegate, text: titlePlaceHolder, .lightGray)
         setPlaceHolder(contentTextView, contentDelegate, text: contentPlaceHolder, .lightGray)
     }
     
@@ -66,7 +66,7 @@ class ModalViewController: UIViewController {
             }
         }
         NetworkHandler.get(urlString: EndPoint.modify.rawValue, dataType: TodoCards.self)
-        print("😡")
+        
         dismiss(animated: true, completion: nil)
     }
 
