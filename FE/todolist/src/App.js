@@ -1,5 +1,5 @@
 import './reset.css';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import HeaderTitle from './header/HeaderTitle';
 import ColumnList from './content/column/ColumnList';
 // import ColumnList from './content/column/ColumnList';
@@ -11,6 +11,7 @@ function App() {
   const sidebar = useRef();
   const [ open, setOpen ] = useState(false);
   const [ noteList, setNoteList ] = useState([])
+  const [ sidebarLog, setSidebarLog ] = useState()
 
   const showSidebar = () => {
     const sidebarPage = sidebar.current;
@@ -20,7 +21,7 @@ function App() {
   return (
     <>
       <HeaderTitle handleClick={showSidebar}/>
-      <ColumnList />
+      <ColumnList setSidebarLog={setSidebarLog}/>
       <Sidebar sidebarRef={sidebar} open={open} noteList={noteList} setNoteList={setNoteList}/>
     </>
   );

@@ -10,7 +10,7 @@ const ContentStyle = styled.div`
     }
 `
 
-const ColumnList = () => {
+const ColumnList = ({setSidebarLog}) => {
     const [columnsData, setColumnsData] = useState([]);
     useEffect(() => {
         initFetchData(setColumnsData, "/projects", "columns")
@@ -19,7 +19,7 @@ const ColumnList = () => {
     return (
         <ContentStyle>
         <ul className="column__list">
-            {columnsData.map(column => <Column key={column.id} initialColumn={column} />)}
+            {columnsData.map(column => <Column key={column.id} initialColumn={column} setSidebarLog={setSidebarLog} />)}
         </ul>
         </ContentStyle>
     )
