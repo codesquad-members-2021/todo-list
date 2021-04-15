@@ -139,7 +139,6 @@ extension TaskViewController {
 extension TaskViewController: UITableViewDragDelegate {
     
     func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
-        dump(session)
         return taskStackManager.dragItems(for: indexPath, stauts: column!)
     }
 }
