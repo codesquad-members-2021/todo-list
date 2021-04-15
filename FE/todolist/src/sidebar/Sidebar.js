@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import Icon from '../utilComponent/Icon';
@@ -26,8 +26,6 @@ const IconBox = styled.div`
 //const noteData = [{note}, {note}, ]
 
 const Sidebar = ({ sidebarRef, open , noteList, setNoteList }) => {
-    // const [ noteList, setNoteList ] = useState([]);
-    console.log("다시불림", noteList);
 
     const fetchNoteListData = async() => {
         console.log("fetch")
@@ -35,7 +33,6 @@ const Sidebar = ({ sidebarRef, open , noteList, setNoteList }) => {
             const request = '/notes';
             const response = await axios.get(request);
             setNoteList(() => response.data);
-            // console.log(noteList);
         } catch (error) {
             console.log(error);
         }
