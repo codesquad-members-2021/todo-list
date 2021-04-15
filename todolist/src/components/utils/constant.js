@@ -37,6 +37,10 @@ export const BUTTON_STYLE = {
     background: #0075de;
     color: white;
   `,
+  navBtn: css`
+    width: 35px;
+    height: 35px;
+  `,
 };
 
 export const BUTTON_TYPE = {

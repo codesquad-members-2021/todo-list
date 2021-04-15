@@ -15,7 +15,7 @@ function NavBar({ logs }) {
       <NavBlock>
         <TitleBlock>TO-DO LIST</TitleBlock>
         <LogBtnBlock>
-          <Button type="menu" onClick={handleLogBtnClick} size="bigSize" />
+          <Button type="menu" onClick={handleLogBtnClick} subType="navBtn" />
         </LogBtnBlock>
       </NavBlock>
 
@@ -52,8 +52,6 @@ const TitleBlock = styled.div`
 `;
 
 const LogBtnBlock = styled.div`
-  width: 34px;
-  height: 22px;
   position: absolute;
   right: 84px;
   top: 40px;
