@@ -1,6 +1,5 @@
 package com.codesquad.todo.web.domain;
 
-import com.codesquad.todo.web.exceptions.InvalidEntityDetectedException;
 import com.codesquad.todo.web.exceptions.TaskNotFoundException;
 import com.codesquad.todo.web.service.dto.TaskDto;
 import com.codesquad.todo.web.service.dto.TaskParameterDto;
@@ -15,6 +14,7 @@ import java.util.stream.Collectors;
 public class TodoColumn {
     @Id
     private Long id;
+    
     private String columnTitle;
     private List<TodoTask> todoTaskList = new ArrayList<>();
 
@@ -23,12 +23,6 @@ public class TodoColumn {
     }
 
     protected TodoColumn() {
-    }
-
-    public void verifyColumnEntityIsNotEmpty() {
-        if (columnTitle == null || columnTitle.isEmpty()) {
-            throw new InvalidEntityDetectedException(InvalidEntityDetectedException.COLUMN_TITLE_IS_NULL);
-        }
     }
 
     public int sizeOfTaskList() {

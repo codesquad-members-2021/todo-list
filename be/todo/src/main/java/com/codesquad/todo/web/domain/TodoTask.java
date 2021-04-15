@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 public class TodoTask {
     @Id
     private Long id;
+
     private String taskTitle;
     private String taskContent;
     private LocalDateTime createdDateTime;

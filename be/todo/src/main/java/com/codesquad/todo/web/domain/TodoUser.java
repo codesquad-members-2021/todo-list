@@ -11,6 +11,7 @@ import java.util.List;
 public class TodoUser {
     @Id
     private Long id;
+
     private String name;
     private String userId;
     private String password;

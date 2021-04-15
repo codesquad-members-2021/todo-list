@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 public class TodoLog {
     @Id
     private Long id;
+
     private String action;
     private String fromColumnTitle;
     private String toColumnTitle;
