@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
@@ -17,8 +18,10 @@ public class Card {
 
     private Long userId;
 
+    @NotBlank
     private String title;
 
+    @NotBlank
     private String contents;
 
     private String status;
@@ -28,7 +31,8 @@ public class Card {
 
     private boolean isDeleted;
 
-    protected Card(){}
+    protected Card() {
+    }
 
     public Card(User user, String title, String contents, String status) {
         this.userId = user.getUserId();
@@ -46,6 +50,10 @@ public class Card {
     public void update(String title, String contents) {
         this.title = title;
         this.contents = contents;
+    }
+
+    public Object[] cardInfo() {
+        return new Object[]{userId, title, contents, postTime};
     }
 
     public void delete() {
@@ -74,6 +82,10 @@ public class Card {
 
     public String getStatus() {
         return status;
+    }
+
+    public boolean isValidUser(User user) {
+        return this.userId.equals(user.getUserId());
     }
 
     @Override

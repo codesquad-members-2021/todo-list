@@ -64,6 +64,11 @@ public class History {
         return currStatus;
     }
 
+
+    public Object[] historyInfo (){
+        return new Object[]{cardId,action,preStatus,currStatus,actionTime};
+    }
+
     @Override
     public String toString() {
         return "History{" +

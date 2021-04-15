@@ -11,20 +11,21 @@ import com.example.todolist.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class HistoryService {
     private final HistoryRepository historyRepository;
-    private final CardRepository cardRepository;
-    private final UserRepository userRepository;
+    private final CardService cardService;
+    private final UserService userService;
 
     @Autowired
-    public HistoryService(HistoryRepository historyRepository, CardRepository cardRepository, UserRepository userRepository) {
+    public HistoryService(HistoryRepository historyRepository, CardService cardService, UserService userService) {
         this.historyRepository = historyRepository;
-        this.cardRepository = cardRepository;
-        this.userRepository = userRepository;
+        this.cardService = cardService;
+        this.userService = userService;
     }
 
     public void save(History history) {
@@ -39,10 +40,12 @@ public class HistoryService {
     private List<HistoryDTO> historyDtoList(List<History> historyList) {
         List<HistoryDTO> result = new ArrayList<>();
         for (History history : historyList) {
-            Card card = cardRepository.findById(history.getCardId()).orElseThrow(RuntimeException::new);
-            User user = userRepository.findById(card.getUserId()).orElseThrow(RuntimeException::new);
-            CardLogDTO cardLogDto = new CardLogDTO(user, card.getTitle());
-            HistoryDTO historyDto = new HistoryDTO(cardLogDto, history.getAction(), history.getPreStatus(), history.getCurrStatus(), history.getActionTime());
+            Object[] historyInfo = history.historyInfo();
+            Card card = cardService.findCardById((Long) historyInfo[0]);
+            Object[] cardInfo = card.cardInfo();
+            User user = userService.findUserById((Long) cardInfo[0]);
+            CardLogDTO cardLogDto = new CardLogDTO(user, (String) cardInfo[1]);
+            HistoryDTO historyDto = new HistoryDTO(cardLogDto, (String) historyInfo[1], (String) historyInfo[2], (String) historyInfo[3], (LocalDateTime) historyInfo[4]);
             result.add(historyDto);
         }
         return result;

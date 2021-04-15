@@ -1,4 +1,4 @@
-package com.example.todolist;
+package com.example.todolist.common;
 
 import org.springframework.core.MethodParameter;
 import org.springframework.stereotype.Component;

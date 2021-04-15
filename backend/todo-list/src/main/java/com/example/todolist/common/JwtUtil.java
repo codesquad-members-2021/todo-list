@@ -1,4 +1,4 @@
-package com.example.todolist;
+package com.example.todolist.common;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
@@ -18,8 +18,8 @@ public class JwtUtil {
     public String createToken(String name) {
         return JWT.create()
                 .withIssuer(ISSUER)
-                .withExpiresAt(expiredTime)
                 .withSubject(name)
+                .withExpiresAt(expiredTime)
                 .sign(Algorithm.HMAC256(SECRET_KEY));
     }
 
