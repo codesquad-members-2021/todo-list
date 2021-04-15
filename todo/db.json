@@ -24,8 +24,14 @@
       "items": [
         {
           "id": "wfk3V23gt",
-          "title": "미션 하기",
+          "title": "미션 하기2",
           "content": "드래그 앤 드롭 만들기 ",
+          "author": "Beemo"
+        },
+        {
+          "id": "W0WXj_sIs",
+          "title": "깃 충돌 해결하기",
+          "content": "완료할것",
           "author": "Beemo"
         }
       ]
@@ -58,43 +64,19 @@
   ],
   "logs": [
     {
-      "id": "IGsV0fSRS",
-      "action": "수정",
-      "prevTitle": "ㅂㅂ",
-      "currentTitle": "비모 관리 ",
-      "currentContent": "비모 연료 충전하기 ",
-      "user": "Beemo"
-    },
-    {
-      "id": "815tbLvtm",
-      "action": "수정",
-      "prevTitle": "ㅈㄷ",
-      "currentTitle": "요리하기",
-      "currentContent": "파스타 만들기",
-      "user": "Beemo"
-    },
-    {
-      "id": "p2TJrqcRD",
-      "action": "수정",
-      "prevTitle": "비동기 공부하기",
-      "currentTitle": "미션 하기",
-      "currentContent": "드래그 앤 드롭 만들기 ",
-      "user": "Beemo"
-    },
-    {
-      "id": "I663qAUIr",
-      "action": "수정",
-      "prevTitle": "ㅇㅇㅇㅈㄷㄱㅂㅈㄷ",
-      "currentTitle": "CRUD 구현",
-      "currentContent": "CRUD 구현하기",
-      "user": "Beemo"
-    },
-    {
       "id": "fyOKd8Wrr",
       "action": "수정",
       "prevTitle": "ㅂㅈㄷ",
       "currentTitle": "협업하기",
       "currentContent": "재밌게 코딩하기",
+      "user": "Beemo"
+    },
+    {
+      "id": "JRgmBAOb4N",
+      "action": "등록",
+      "currentColumn": "하고 있는 일",
+      "currentTitle": "깃 충돌 해결하기",
+      "currentContent": "완료할것",
       "user": "Beemo"
     }
   ]

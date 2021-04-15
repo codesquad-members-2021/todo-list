@@ -3,7 +3,7 @@ import useToggle from "../../../hooks/useToggle";
 import Header from "../../molecules/Header";
 import HistoryList from "../../organisms/HistoryList";
 import TodoListWrap from "../../templates/TodoListWrap";
-import loadItems from '../../../serviceUtils/loadItems';
+import loadItems from "../../../serviceUtils/loadItems";
 import styled from "styled-components";
 
 const Div = styled.div`
@@ -17,14 +17,18 @@ function App() {
   const [histories, setHistories] = useState([]);
 
   useEffect(() => {
-    loadItems(setHistories, '/logs');
-  }, [])
+    loadItems(setHistories, "/logs");
+  }, []);
 
   return (
     <Div>
       <HistoryList {...{ isOpen, isOpenActions, histories }} />
-      <Header {...{ isOpenActions }} />
-      <TodoListWrap {...{ setHistories }} />
+      <Header isOpenActions={isOpenActions} />
+      <TodoListWrap
+        {...{
+          setHistories,
+        }}
+      ></TodoListWrap>
     </Div>
   );
 }

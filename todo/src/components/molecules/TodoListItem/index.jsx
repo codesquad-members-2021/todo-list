@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import useToggle from "../../../hooks/useToggle";
 import SmallButton from "../../atoms/Buttons/SmallButton";
 import Image from "../../atoms/Image";
 import Span from "../../atoms/Span";
@@ -16,26 +17,41 @@ const Div = styled.div`
   border-radius: 5px;
   cursor: pointer;
 `;
-const TodoListItem = ({ columnId, id, title, content, author }) => {
+const TodoListItem = ({
+  setTodos,
+  columnId,
+  id,
+  title,
+  content,
+  author,
+  setPopup,
+  setIdState,
+  setColState,
+}) => {
   const ToItem = useRef();
-  const [todos, setTodos] = useState();
-  const clickClose = (e) => {
-  };
+  // const [isOpenPop, isOpenPopActions] = useToggle(false);
 
-  const deleteClickHandler = async () => {
-    const response = await axios.delete(`/todos?columnId=${columnId}&id=${id}`);
-    setTodos(response.data);
+  // const clickClose = (e) => {
+  //   console.log("closeclick");
+  // };
+
+  const displayPopup = () => {
+    setPopup("block");
+    setIdState(id);
+    setColState(columnId);
   };
 
   return (
     <Div hover ref={ToItem}>
+      {/* <Popup {...{ isOpenPop, isOpenPopActions }}></Popup> */}
       <SmallButton
         _position="absolute"
         _right="3px"
-        // onClick={clickClose}
-        onClick={() => {
-          deleteClickHandler();
-        }}
+        // onClick={isOpenPopActions.toggle}
+        // onClick={() => {
+        //   deleteClickHandler();
+        // }}
+        onClick={displayPopup}
         onMouseOver={() => (
           (ToItem.current.style.backgroundColor = "#ffe7ef"),
           (ToItem.current.style.border = "2px solid #f20553")

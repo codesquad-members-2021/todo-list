@@ -14,6 +14,9 @@ const TodoSwitch = ({
   setTodos,
   setHistories,
   columnName,
+  setPopup,
+  setIdState,
+  setColState,
 }) => {
   const [isInput, toggleActions2] = useToggle(false);
   let isPatch = true; //추가인지 수정인지를 알 수있는 flag를 enrollClickHandler에 전달하기 위함
@@ -56,7 +59,18 @@ const TodoSwitch = ({
     template = (
       <div onClick={toggleActions2.toggle}>
         <TodoListItem
-          {...{ columnId, id, title, content, author, setHistories }}
+          {...{
+            setTodos,
+            columnId,
+            id,
+            title,
+            content,
+            author,
+            setHistories,
+            setPopup,
+            setIdState,
+            setColState,
+          }}
         />
       </div>
     );

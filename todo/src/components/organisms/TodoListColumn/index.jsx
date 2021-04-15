@@ -13,6 +13,9 @@ const TodoListColumn = ({
   columnName,
   items,
   setHistories,
+  setPopup,
+  setIdState,
+  setColState,
 }) => {
   const [isClicked, toggleActions] = useToggle(false);
   let template;
@@ -39,6 +42,9 @@ const TodoListColumn = ({
                 content,
                 author,
                 setHistories,
+                setPopup,
+                setIdState,
+                setColState,
               }}
             ></TodoSwitch>
           );
@@ -59,6 +65,9 @@ const TodoListColumn = ({
             toggleActions,
             setTodos,
             setHistories,
+            setPopup,
+            setIdState,
+            setColState,
           }}
         />
         {items.map(({ id, title, content, author }) => {
@@ -74,6 +83,9 @@ const TodoListColumn = ({
                 content,
                 author,
                 setHistories,
+                setPopup,
+                setIdState,
+                setColState,
               }}
             ></TodoSwitch>
           );

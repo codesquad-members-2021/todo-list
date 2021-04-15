@@ -43,7 +43,7 @@ const TodoListInput = ({
     setState(target.value);
   };
 
-  const enrollClickHandler = async isPatch => {
+  const enrollClickHandler = async (isPatch) => {
     const currentTitle = titleRef.current.value;
     const currentContent = contentRef.current.value;
     let response;
@@ -85,13 +85,13 @@ const TodoListInput = ({
       </SmallButton>
       <TitleInput
         placeholder="제목을 적어주세요"
-        onChange={e => onChange(setTitle, e)}
+        onChange={(e) => onChange(setTitle, e)}
         value={titleValue || ""}
         titleRef={titleRef || ""}
       />
       <ContentInput
         placeholder="내용을 적어주세요"
-        onChange={e => onChange(setContent, e)}
+        onChange={(e) => onChange(setContent, e)}
         value={contentValue || ""}
         contentRef={contentRef || ""}
       />
