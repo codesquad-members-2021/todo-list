@@ -1,13 +1,10 @@
 package com.example.todolist.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Column;
 
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class Card {
@@ -43,8 +40,13 @@ public class Card {
         this.isDeleted = false;
     }
 
-    public void update(String status) {
-        this.status = status;
+    public void updateStatus(Card card) {
+        this.status = card.status;
+    }
+
+    public void update(Card newCardInfo) {
+        this.title = newCardInfo.title;
+        this.contents = newCardInfo.contents;
     }
 
     public void update(String title, String contents) {
@@ -53,7 +55,7 @@ public class Card {
     }
 
     public Object[] cardInfo() {
-        return new Object[]{userId, title, contents, postTime};
+        return new Object[]{id, userId, title, contents, postTime};
     }
 
     public void delete() {
