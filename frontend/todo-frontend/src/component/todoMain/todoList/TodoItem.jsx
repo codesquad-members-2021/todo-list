@@ -16,8 +16,19 @@ export const TodoCard = styled.div`
   justify-content: space-between;
   border-radius: 6px;
   box-shadow: 0px 1px 30px rgba(224, 224, 224, 0.3);
+  &.dragging {
+    opacity: 0.5;
+    border: 1px dotted blue;
+  }
 `;
 
+const DropLocation = styled.div`
+  height: 3px;
+  width: 288px;
+  background-color: blue;
+  opacity: 0.3;
+  margin-bottom: 10px;
+`;
 export const TodoCardBtnWrapper = styled.div`
   display: flex;
   justify-content: space-between;
@@ -40,12 +51,15 @@ const TodoItem = ({
   deleteTodoItem,
   editTodoItem,
   setDragEl,
+  setIsDrgging,
+  setDragStyle,
+  setDropStyle,
 }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [inputTitle, setInputTitle] = useState(title);
   const [inputContent, setInputContent] = useState(content);
   const [isDisabled, setIsDisabled] = useState(false);
-
+  const [dragLeave, setDragLeave] = useState(false);
   const inputTitleRef = useRef();
   const inputContentRef = useRef();
 
@@ -76,8 +90,13 @@ const TodoItem = ({
   };
 
   const handleDragStart = (e) => {
+    setIsDrgging(true);
     setDragEl({ beforeColumnId: columnId, ...todoCard });
     e.dataTransfer.setData('cardData', JSON.stringify({ beforeColumnId: columnId, ...todoCard }));
+  };
+
+  const handleDragLeave = (e) => {
+    e.preventDefault();
   };
 
   if (isEditing) {
@@ -106,20 +125,24 @@ const TodoItem = ({
     );
   } else {
     return (
-      <TodoCard
-        id={todoCard.id}
-        draggable='true'
-        onDoubleClick={toggleEditForm}
-        flexDir='row'
-        onDragOver={handleDragOver}
-        onDragStart={handleDragStart}
-      >
-        <div>
-          <TodoCardTitle>{title}</TodoCardTitle>
-          <TodoCardContent>{content}</TodoCardContent>
-        </div>
-        <DeleteBtn deleteFn={() => deleteTodoItem(id)} />
-      </TodoCard>
+      <div id={todoCard.id}>
+        {setDropStyle(columnId, id) && <DropLocation></DropLocation>}
+        <TodoCard
+          draggable='true'
+          onDoubleClick={toggleEditForm}
+          flexDir='row'
+          onDragOver={handleDragOver}
+          onDragStart={handleDragStart}
+          onDragLeave={handleDragLeave}
+          className={setDragStyle(id) && 'dragging'}
+        >
+          <div>
+            <TodoCardTitle>{title}</TodoCardTitle>
+            <TodoCardContent>{content}</TodoCardContent>
+          </div>
+          <DeleteBtn deleteFn={() => deleteTodoItem(id)} />
+        </TodoCard>
+      </div>
     );
   }
 };

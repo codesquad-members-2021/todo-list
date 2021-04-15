@@ -79,6 +79,8 @@ const TodoList = ({
   setTodoColumns,
   dragEl,
   setDragEl,
+  isDragging,
+  setIsDrgging,
 }) => {
   const [todos, setTodos] = useState(todoCards);
   const [loading, postTodos, deleteTodos, putTodos, moveTodos] = useTodoHook(
@@ -86,8 +88,7 @@ const TodoList = ({
     setTodoColumns
   );
   const [formSelected, setFormSelected] = useState(false);
-  const [isDragging, setIsDrgging] = useState(false);
-
+  const [dropElement, setDropElement] = useState(null);
   const currentColumnDiv = useRef();
 
   useEffect(() => {
@@ -137,21 +138,15 @@ const TodoList = ({
   const handledragOver = (e) => {
     e.preventDefault();
   };
-
-  // const handleDragEnter = useCallback(
-  //   (e) => {
-  //     // if (dragEl === null) return;
-  //     e.preventDefault();
-  //   //   const afterElement = getDragAfterElement(e.clientY);
-  //   //   const afterElemData = afterElement ? todos[afterElement.id] : undefined;
-  //   //   setDragEl((dragEl) => ({ ...dragEl, beforeColumnId: id }));
-  //   //   console.log(dragEl);
-  //   // },
-  //   // [todos, dragEl]
-  // );
+  const handleDragEnter = (e) => {
+    e.preventDefault();
+    const afterElement = getDragAfterElement(e.clientY);
+    setDropElement(afterElement);
+  };
 
   const getDragAfterElement = (locationY) => {
     const draggableCards = [...currentColumnDiv.current.children];
+    console.log(draggableCards);
     const dragAfterElement = draggableCards.reduce(
       (closestCard, child) => {
         const cardBox = child.getBoundingClientRect();
@@ -170,7 +165,6 @@ const TodoList = ({
     const { beforeColumnId, ...cardData } = selectDragObj;
     const afterElement = getDragAfterElement(e.clientY);
     if (afterElement && +afterElement.id === cardData.id) return;
-
     postLogs({
       columnTitle: todoColumns[beforeColumnId].title,
       itemTitle: cardData.title,
@@ -179,7 +173,17 @@ const TodoList = ({
       movedColumnTitle: title,
     });
     moveTodos({ columnId: id, selectDragObj, afterElement });
+    setIsDrgging(false);
+    setDropElement(null);
   };
+
+  const setDragStyle = (id) => (isDragging && id === dragEl.id ? 'dragging' : '');
+  const setDropStyle = (columnId, cardId) =>
+    isDragging &&
+    dropElement &&
+    +dropElement.id === cardId &&
+    dragEl.id !== cardId &&
+    id === columnId;
 
   const todoCardList = Object.values(todos).map((card) => (
     <TodoItem
@@ -189,6 +193,9 @@ const TodoList = ({
       deleteTodoItem={deleteTodoItem}
       editTodoItem={editTodoItem}
       setDragEl={setDragEl}
+      setIsDrgging={setIsDrgging}
+      setDragStyle={setDragStyle}
+      setDropStyle={setDropStyle}
     />
   ));
 
@@ -221,6 +228,7 @@ const TodoList = ({
           className='todoCardList'
           onDrop={handleDrop}
           onDragOver={handledragOver}
+          onDragEnter={handleDragEnter}
           ref={currentColumnDiv}
         >
           {todoCardList}

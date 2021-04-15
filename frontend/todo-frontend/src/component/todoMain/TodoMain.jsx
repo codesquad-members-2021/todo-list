@@ -11,6 +11,7 @@ const StyledTodoMain = styled.div`
 const TodoMain = ({ postLogs }) => {
   const [todoColumns, setTodoColumns] = useState({});
   const [dragEl, setDragEl] = useState(null);
+  const [isDragging, setIsDrgging] = useState(false);
 
   const getInitTodoData = async () => {
     const todoListData = await todoListService.getTodoList();
@@ -38,6 +39,8 @@ const TodoMain = ({ postLogs }) => {
       setTodoColumns={setTodoColumns}
       dragEl={dragEl}
       setDragEl={setDragEl}
+      isDragging={isDragging}
+      setIsDrgging={setIsDrgging}
     />
   ));
 
