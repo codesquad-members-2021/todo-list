@@ -8,18 +8,17 @@
 import UIKit
 
 class ToDoTableViewDelegates: NSObject, ToDoCardProtocol {
+    var popUpViewProtocol: PopUpViewProtocol?
+    
     var list: [ToDoItem] = [] {
         didSet {
+            print("didSet list")
             NotificationCenter.default.post(name: .didChangeToDoCardsList, object: nil)
         }
     }
     
     func insertCard(newCard: ToDoItem, at order: Int) {
         self.list.insert(newCard, at: order)
-    }
-    
-    func deleteCard(at index: Int) {
-        self.list.remove(at: index)
     }
     
     func moveCard(at sourceIndex: Int, to destinationIndex: Int) {
@@ -33,6 +32,7 @@ class ToDoTableViewDelegates: NSObject, ToDoCardProtocol {
     public func fetchCards() {
         let urlString = Constants.url
         DataManager.requestGet(url: urlString) { (bool, output) in
+            print("fetched card")
             self.list = output.todo
         }
     }
@@ -57,19 +57,16 @@ extension ToDoTableViewDelegates: UITableViewDataSource {
 extension ToDoTableViewDelegates: UITableViewDelegate {
     func tableView(_ tableView: UITableView,
             viewForHeaderInSection section: Int) -> UIView? {
-       let view = tableView.dequeueReusableHeaderFooterView(withIdentifier:
+        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier:
                    "sectionHeader") as! CustomHeader
-       view.title.text = "해야 할 일"
+        view.title.text = "해야 할 일"
         view.displayCurrentCardNumOnBadge(number: self.list.count)
-        
-        view.button.addAction(UIAction.init(handler: { (touch) in
-            let testCard = ["title": "testnownow", "contents": "ASDF", "status": "TODO"]
-            
-            DataManager.requestPost(url: Constants.url, parameter: testCard) { (bool, toDoList) in
-                print(toDoList)
-            }
-            }), for: .touchUpInside)
+        view.button.addTarget(self, action: #selector(firePopUp), for: .touchUpInside)
        return view
+    }
+    
+    @objc func firePopUp() {
+        self.popUpViewProtocol?.triggerPopUp()
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -78,7 +75,13 @@ extension ToDoTableViewDelegates: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .normal, title: "삭제", handler: { action, view, completionHaldler in
-            self.deleteCard(at: indexPath.row)
+//            self.deleteCard(at: indexPath.row)
+            let cardToBeDeleted = self.list[indexPath.row]
+            let id = cardToBeDeleted.id
+            DataManager.requestDelete(url: Constants.url, id: id) { (success, responseJSON) in
+                print("Delete completed")
+                self.fetchCards()
+            }
             completionHaldler(true)
         })
         deleteAction.backgroundColor = .systemRed

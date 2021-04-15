@@ -18,7 +18,9 @@ class ToDoViewController: UIViewController {
         
         self.toDoCardTableView.dataSource = toDoTableViewDelegates
         self.toDoCardTableView.delegate = toDoTableViewDelegates
+        self.toDoTableViewDelegates.popUpViewProtocol = self
         self.toDoCardTableView.rowHeight = 150
+        
         
         self.toDoCardTableView.register(UINib(nibName: "ToDoCardCell", bundle: nil), forCellReuseIdentifier: "ToDoCardCell")
         toDoCardTableView.register(CustomHeader.self, forHeaderFooterViewReuseIdentifier: "sectionHeader")
@@ -31,8 +33,25 @@ class ToDoViewController: UIViewController {
             self.toDoCardTableView.reloadData()
         }
     }
+    
+    func presentPopUp() {
+        let popUpVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: Constants.popUpVCIdentifier) as! PopUpViewController
+        popUpVC.modalPresentationStyle = .overFullScreen
+        popUpVC.setPromptMessage(message: "해야 할 일 추가")
+        popUpVC.setStatus(status: "TODO")
+        popUpVC.abilityToFetchData = self
+        self.present(popUpVC, animated: true, completion: nil)
+    }
 }
 
+extension ToDoViewController: PopUpViewProtocol {
+    func triggerPopUp() {
+        presentPopUp()
+    }
+}
 
-
-
+extension ToDoViewController: AbilityToFetchData {
+    func fetchData() {
+        self.toDoTableViewDelegates.fetchCards()
+    }
+}

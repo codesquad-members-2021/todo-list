@@ -86,7 +86,7 @@ class DataManager {
             print("Error: cannot create URL")
             return
         }
-        
+        // api 문서에 {id}라는 말은 파라미터라는 뜻
         url.appendPathComponent(String(id))
         
         var request = URLRequest(url: url)
@@ -102,6 +102,7 @@ class DataManager {
                 print("Error: Did not receive data")
                 return
             }
+            
             
             guard let response = response as? HTTPURLResponse, (200 ..< 300) ~= response.statusCode else {
                 print("Error: HTTP request failed")
