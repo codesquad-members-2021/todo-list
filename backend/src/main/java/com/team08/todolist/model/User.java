@@ -1,7 +1,9 @@
 package com.team08.todolist.model;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
 
+@Table("USER")
 public class User {
     @Id
     private String userId;

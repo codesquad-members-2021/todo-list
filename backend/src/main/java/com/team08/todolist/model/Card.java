@@ -3,9 +3,11 @@ package com.team08.todolist.model;
 import com.team08.todolist.DateTimeUtils;
 import com.team08.todolist.dto.CardDto;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
 
 import java.time.LocalDateTime;
 
+@Table("CARD")
 public class Card {
     @Id
     private Long cid;

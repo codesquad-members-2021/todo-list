@@ -2,9 +2,11 @@ package com.team08.todolist.model;
 
 import com.team08.todolist.DateTimeUtils;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
 
 import java.time.LocalDateTime;
 
+@Table("HISTORY")
 public class History {
     @Id
     private Long hid;
