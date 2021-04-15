@@ -6,6 +6,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ResponseStatus(HttpStatus.NOT_FOUND)
 public class UserAccountException extends RuntimeException {
 
+    public UserAccountException(String errorMessage) {
+        super(errorMessage);
+    }
+
     public UserAccountException(ErrorMessage errorMessage) {
         super(errorMessage.getErrorMessage());
     }
