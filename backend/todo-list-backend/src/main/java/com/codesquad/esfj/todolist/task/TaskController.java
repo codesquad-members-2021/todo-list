@@ -55,6 +55,9 @@ public class TaskController {
     @PatchMapping("/tasks/{id}/{targetTaskType}/{targetId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void move(@PathVariable long id, @PathVariable String targetTaskType, @PathVariable long targetId) {
+        if (id == targetId) {
+            throw new IllegalArgumentException("같은 위치로 이동할 수 없습니다. id : " + id + ", targetId : " + targetId);
+        }
         taskService.move(id, targetTaskType, targetId);
     }
 }
