@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from "axios";
 import Card from "../../../../components/main/column/card/Card";
 import PopupModal from "../../../../components/common/PopupModal";
@@ -11,29 +11,31 @@ const CardContainer = ({ title, body, index, columnId, cardId, previousCardId, i
     const [isDown, setDown] = useState(false);
     const [moveX, setMoveX] = useState(0);
     const [moveY, setMoveY] = useState(0);
-
+    const timer = useRef(null)
+    
     const mouseDownHandler = (e) => {
         if(isZanSang) return;
         setX(()=>e.clientX);
         setY(()=>e.clientY);
-        setDown(()=>true)
+        timer.current = setTimeout(()=>setDown(()=>true),500)
     };
 
     useEffect(() => {
         if(!isDown) return
-        const card = {title, body, columnId, previousCardId, cardId, isZanSang:true}
         let targetColumn = moveX + columnId
         let targetIndex = moveY + index
         targetIndex = targetIndex > 0 ? targetIndex : 0
         targetColumn = targetColumn > 1 ? targetColumn : 1
-        console.log(targetIndex)
+        const card = {title, body, columnId:targetColumn, previousCardId, cardId, isZanSang:true}
         setColumnData((data)=>{
-            const newData = [...data.map(v=>{
-                return {columnId:v.columnId, name:v.name, cards:v.cards.filter(({isZanSang})=>!isZanSang)}
-            })]
-            const left = newData[Math.min(targetColumn, newData.length)-1].cards.slice(0,Math.min(targetIndex,newData[targetColumn-1].cards.length))
-            const right = newData[Math.min(targetColumn, newData.length)-1].cards.slice(Math.min(targetIndex,newData[targetColumn-1].cards.length))
-            newData[Math.min(targetColumn, newData.length)-1].cards = left.concat(card, right)
+            const newData = [...data.map(v=>({columnId:v.columnId, name:v.name, cards:v.cards.filter(({isZanSang})=>!isZanSang)}))]
+            
+            const columnIndex = Math.min(targetColumn, newData.length)-1
+            const rowIndex = Math.min(targetIndex,newData[targetColumn-1].cards.length)
+
+            const left = newData[columnIndex].cards.slice(0,rowIndex)
+            const right = newData[columnIndex].cards.slice(rowIndex)
+            newData[columnIndex].cards = left.concat(card, right)
             return newData
         });
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -47,19 +49,41 @@ const CardContainer = ({ title, body, index, columnId, cardId, previousCardId, i
         setMoveX(() => Math.floor((e.clientX - x) / 348));
         setMoveY(() => Math.floor((e.clientY - y) / 104));
     };
+
     const mouseUpHandler = () => {
+        clearTimeout(timer.current)
         if(!isDown)return
         setDown(()=>false);
         setLeft(0);
         setTop(0);
-        setColumnData((data)=>{
+        setColumnData( (data)=>{
             const newData = [...data]
             newData[columnId-1].cards = newData[columnId-1].cards.filter((_, i) => i !== index)
+
+
+            const zanSangColumn = newData.find(({cards})=>cards.find(({isZanSang})=>isZanSang))
+            const zanSang = zanSangColumn.cards.find(({isZanSang})=>isZanSang)
+            const zanSangCardIndex = zanSangColumn.cards.map(({isZanSang}, i)=>isZanSang ? i : null).filter(e=>e!==null)[0]
+            
+            if (newData[columnId-1].cards[index] !== undefined)
+            newData[columnId-1].cards[index].previousCardId = zanSang.previousCardId
+
+            zanSang.columnId = zanSangColumn.columnId
+            const upsideCard = (zanSangCardIndex===0) ? {cardId:0} : zanSangColumn.cards[zanSangCardIndex-1]
+            zanSang.previousCardId = upsideCard.cardId
+
+            if (zanSangCardIndex<zanSangColumn.cards.length-1) newData[zanSang.columnId-1].cards[zanSangCardIndex+1].previousCardId = zanSang.cardId
+
+
+            axios.put(`api/columns/${columnId}/cards/${cardId}`, {card: zanSang})
+            
             return newData.map((v)=>{
                 return {columnId:v.columnId, name:v.name, cards:v.cards.map((card)=>{
                     const newCard = {...card}
-                    if(newCard.isZanSang) newCard.isZanSang = false
-                    console.log(newCard)
+                    if(newCard.isZanSang) {
+                        zanSang.isZanSang = false
+                        return zanSang
+                    }
                     return newCard
                 })}
             })
