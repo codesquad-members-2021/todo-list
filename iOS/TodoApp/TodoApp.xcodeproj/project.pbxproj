@@ -12,6 +12,7 @@
 		717F6B4C2627EA2A00ADFA6F /* HistoryStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717F6B4B2627EA2A00ADFA6F /* HistoryStack.swift */; };
 		717F6B512627EA8D00ADFA6F /* HistoryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717F6B502627EA8D00ADFA6F /* HistoryCard.swift */; };
 		717F6B5E2628098000ADFA6F /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717F6B5D2628098000ADFA6F /* EditView.swift */; };
+		717F6B6726282FE500ADFA6F /* TaskStackManager+Dragging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717F6B6626282FE500ADFA6F /* TaskStackManager+Dragging.swift */; };
 		719413D126201B36002D28AC /* TaskStackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719413D026201B36002D28AC /* TaskStackManager.swift */; };
 		71A7479A261F0B1E0094936B /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A74799261F0B1E0094936B /* Constant.swift */; };
 		71A747A2261F0C4D0094936B /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A747A1261F0C4D0094936B /* TaskViewController.swift */; };
@@ -57,6 +58,7 @@
 		717F6B4B2627EA2A00ADFA6F /* HistoryStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryStack.swift; sourceTree = "<group>"; };
 		717F6B502627EA8D00ADFA6F /* HistoryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCard.swift; sourceTree = "<group>"; };
 		717F6B5D2628098000ADFA6F /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
+		717F6B6626282FE500ADFA6F /* TaskStackManager+Dragging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskStackManager+Dragging.swift"; sourceTree = "<group>"; };
 		719413D026201B36002D28AC /* TaskStackManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStackManager.swift; sourceTree = "<group>"; };
 		71A74799261F0B1E0094936B /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		71A747A1261F0C4D0094936B /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 				719413D026201B36002D28AC /* TaskStackManager.swift */,
 				717F6B4B2627EA2A00ADFA6F /* HistoryStack.swift */,
 				717F6B502627EA8D00ADFA6F /* HistoryCard.swift */,
+				717F6B6626282FE500ADFA6F /* TaskStackManager+Dragging.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -374,6 +377,7 @@
 				76A32DF1262428AF003804C6 /* NetworkManager.swift in Sources */,
 				767E2138261F715700333257 /* TaskStack.swift in Sources */,
 				767E2143261F762800333257 /* NewTaskViewController.swift in Sources */,
+				717F6B6726282FE500ADFA6F /* TaskStackManager+Dragging.swift in Sources */,
 				767C9C352623C8F400894AE7 /* TaskDataSource.swift in Sources */,
 				767C85E92627FE9100E06C36 /* EditViewController.swift in Sources */,
 				76A0A284261EDA440052BB32 /* MainViewController.swift in Sources */,

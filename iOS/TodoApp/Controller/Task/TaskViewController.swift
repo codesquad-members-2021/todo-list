@@ -2,11 +2,11 @@
 import UIKit
 
 class TaskViewController: UIViewController {
-
+    
     var column: Int?
     let taskStackManager = TaskStackManager()
     var selectedIndexPath: IndexPath!
-
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var taskCountLabel: UILabel!
     @IBOutlet weak var taskTableView: UITableView!
@@ -15,10 +15,8 @@ class TaskViewController: UIViewController {
         super.viewDidLoad()
         setupSubViews()
         addNotificationObserver()
-        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(longTouched(_:)))
-        longPressGesture.minimumPressDuration = 0.3
-        longPressGesture.isEnabled = true
-        taskTableView.addGestureRecognizer(longPressGesture)
+        setupLongGesture()
+        setupDragable()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -59,6 +57,19 @@ extension TaskViewController {
     //Register Xib
     private func registerTaskCell() {
         taskTableView.register(UINib(nibName: CustomCell.task, bundle: nil), forCellReuseIdentifier: CustomCell.task)
+    }
+    
+    private func setupLongGesture() {
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(longTouched(_:)))
+        longPressGesture.minimumPressDuration = 0.3
+        longPressGesture.isEnabled = true
+        taskTableView.addGestureRecognizer(longPressGesture)
+    }
+    
+    private func setupDragable() {
+        taskTableView.dragInteractionEnabled = true
+        taskTableView.dragDelegate = self
+        taskTableView.dropDelegate = self
     }
 }
 
@@ -124,4 +135,42 @@ extension TaskViewController {
         }
     }
 }
-   
+
+extension TaskViewController: UITableViewDragDelegate {
+    
+    func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+        dump(session)
+        return taskStackManager.dragItems(for: indexPath, stauts: column!)
+    }
+}
+
+extension TaskViewController: UITableViewDropDelegate {
+    
+    func tableView(_ tableView: UITableView, canHandle session: UIDropSession) -> Bool {
+        return taskStackManager.canHandle(session)
+    }
+    
+    func tableView(_ tableView: UITableView, performDropWith coordinator: UITableViewDropCoordinator) {
+        
+        let destinationIndexPath: IndexPath
+        
+        if let indexPath = coordinator.destinationIndexPath {
+            destinationIndexPath = indexPath
+        } else {
+            let section = taskTableView.numberOfSections - 1
+            let row = taskTableView.numberOfRows(inSection: section)
+            destinationIndexPath = IndexPath(row: row, section: section)
+        }
+        
+        for item in coordinator.items {
+            item.dragItem.itemProvider.loadObject(ofClass: TaskCard.self, completionHandler: { (card, error) in
+                if let card = card as? TaskCard {
+                    
+                    DispatchQueue.main.async {
+                        self.taskStackManager.insert(self.column!, card, at: destinationIndexPath.row)
+                    }
+                }
+            })
+        }
+    }
+}
