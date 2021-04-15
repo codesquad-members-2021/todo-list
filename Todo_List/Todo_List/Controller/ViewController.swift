@@ -71,6 +71,7 @@ class ViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(moveCard), name: NSNotification.Name(rawValue: "moveCard"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(removeCard), name: NSNotification.Name(rawValue: "removeCard"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(completeCard), name: NSNotification.Name(rawValue: "completeCard"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(modifyCard), name: NSNotification.Name(rawValue: "modifyCard"), object: nil)
     }
     
     @objc func reloadData(_ notification: Notification) {
@@ -112,6 +113,15 @@ class ViewController: UIViewController {
         
         NetworkHandler.post(anydata: moveCard, url: url, httpMethod: .put)
         NetworkHandler.get(urlString: EndPoint.home.rawValue, dataType: TodoCards.self)
+    }
+    
+    @objc func modifyCard(_ notification: Notification) {
+        guard let dict = notification.userInfo as Dictionary? else { return }
+        guard let cardNum = dict["cardNum"] as? Int else { return }
+        
+        let modalView = ModalViewController(nibName: "ModalViewController", bundle: nil, mode: .modify, status: nil, cardId: cardNum)
+        modalView.modalPresentationStyle = .custom
+        self.present(modalView, animated: true, completion: nil)  
     }
 }
 
