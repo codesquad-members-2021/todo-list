@@ -38,19 +38,16 @@ class ViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-//        self.todoCards = TodoCards()//todo: [], doing: [], done: [])
-//        networkManager.perfomRequest(urlString: EndPoint.home.rawValue, httpMethod: .get, dataType: TodoCards.self) { (result) in
-//            switch result {
-//            case .success(let data):
-//                self.todoCards = data as? TodoCards
-//                print(data)
-//            case .failure(let error):
-//                print(error)
-//            }
-//        }
+        NetworkManager().getSource(urlString: EndPoint.home.rawValue, httpMethod: .get, dataType: TodoCards.self) { (cards, error) in
+            let todoCards = cards as! TodoCards
+            let userinfo = ["cards": todoCards]
+            NotificationCenter.default.post(name: NSNotification.Name("finishNetwork"), object: nil, userInfo: userinfo)
+        }
+        setObserver()
         setting()
         super.viewDidLoad()
     }
+    
     
     // MARK:- Method
     
@@ -66,9 +63,19 @@ class ViewController: UIViewController {
         viewController?.setHeader(columnName: name.rawValue)
     }
     
-    // noti
-    // noti.observer
-    // 이 시점에서 데이터를 받아서
-    // self.TodoCard = Network 처리
-    //
+    
+    //MARK:- Notification
+    
+    private func setObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NSNotification.Name(rawValue: "finishNetwork"), object: nil)
+    }
+    
+    @objc func reloadData(_ notification: Notification) {
+        
+        guard let dict = notification.userInfo as Dictionary? else { return }
+        if let cards = dict["cards"] as? TodoCards {
+            self.todoCards = cards
+            setting()
+        }
+    }
 }

@@ -35,6 +35,21 @@ enum EndPoint: String {
 class NetworkManager {
     private let decoder = DecodeManager()
     
+    func getSource<T:Decodable>(urlString: String, httpMethod: HttpMethod, json: Data? = nil, dataType: T.Type, completion: @escaping (Any?,NetworkError?) -> Void) {
+        
+        perfomRequest(urlString: urlString, httpMethod: httpMethod, json: json, dataType: dataType) { result in
+            switch result {
+            case .success(let data):
+                print("🎉", data)
+                completion(data, nil)
+
+            case .failure(let error):
+                print(error)
+                completion(nil, error)
+            }
+        }
+    }
+    
     func perfomRequest<T:Decodable>(urlString: String, httpMethod: HttpMethod, json: Data? = nil, dataType: T.Type, completion: @escaping (Result<Any,NetworkError>) -> Void) {
         
         guard let url = URL(string: urlString) else { completion(.failure(.BadURL)); return }
