@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import styled from 'styled-components'
 import FormInput from './FormInput'
 import FormButton from './FormButton'
+import postForm from './postForm'
 // import Icon from '../../utilComponent/Icon.js'
 
 const FormStyle = styled.div`
@@ -17,7 +18,7 @@ const FormStyle = styled.div`
     }
 `
 
-const Form = ({ setIsAddBtnClicked, columnData, setColumnData }) => {
+const Form = ({ setIsAddBtnClicked, columnData, setColumnData, setSidebarLog }) => {
     const [newTodo, setNewTodo] = useState({title: '', content: ''})
 
     const resetInputState = () => {
@@ -26,13 +27,14 @@ const Form = ({ setIsAddBtnClicked, columnData, setColumnData }) => {
     }
     const onChange = ({target}) => setNewTodo({ ...newTodo, [target.name]: target.value })
  
-    const setInputState = (e) => {
-        e.preventDefault();
+    const setInputState = () => {
+        const newCard = {...newTodo, author: 'web'}
         setIsAddBtnClicked(false)
-        setColumnData({ ...columnData, 
-            cardList : [{...newTodo, author: 'web'}, ...columnData.cardList ]
-        })
+        setColumnData({ ...columnData, cardList : [...columnData.cardList, newCard]})
+        postForm(newCard, `/columns/${columnData.id}/cards`)
+        setSidebarLog({title: newTodo.title, action: "CREATE", columnName:columnData.name})
     }
+
     const FormInputTitle = useRef()
     const FormInputContent = useRef()
 
