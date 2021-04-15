@@ -47,15 +47,6 @@ public class CardService {
         foundCard.setContents(card.getContents());
         foundCard.setCategory(card.getCategory());
 
-        // Category에서 Card의 변경사항을 반영함
-        List<Category> categories = user.getCategories();
-
-        List<Card> cards = categories.get(categoryId.intValue() - 1).getTodos();
-        cards.remove(0);
-
-        List<Card> cards2 = categories.get(categoryId.intValue() - 2).getTodos();
-        cards2.add(0 , foundCard);
-
         userRepository.save(user);
 
         return foundCard;
