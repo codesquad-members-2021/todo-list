@@ -14,83 +14,47 @@ public class TaskController {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    private TaskRepository taskRepository;
+    private TaskService taskService;
 
-    public TaskController(TaskRepository taskRepository) {
-        this.taskRepository = taskRepository;
+    public TaskController(TaskService taskService) {
+        this.taskService = taskService;
     }
 
     @GetMapping("/tasks")
     public Map<String, List<TaskDTO.Response>> readAll(@RequestParam Optional<String> taskType) {
         if (taskType.isPresent()) {
-            List<Task> tasks = taskRepository.findAllByNotDeletedAndTaskType(taskType.get());
-            return TaskDTO.groupingByType(tasks);
+            return taskService.readAllBy(taskType.get());
         }
 
-        return TaskDTO.groupingByType(taskRepository.findAllByNotDeleted());
+        return taskService.readAll();
     }
 
     @GetMapping("/tasks/{id}")
-    public Task readOne(@PathVariable Long id) {
-        return taskRepository.findOne(id);
+    public Task readOne(@PathVariable long id) {
+        return taskService.readOne(id);
     }
 
     @PostMapping("/tasks")
     @ResponseStatus(HttpStatus.CREATED)
-    public Long create(@RequestBody Task task) {
-        Optional<Task> topTask = taskRepository.findOneByPreviousIdAndTaskType(Task.TOP_PREVIOUS_ID, task.getTaskType());
-        long id = taskRepository.save(task).getId();
-
-        if (topTask.isPresent()) {
-            topTask.get().moveAfter(id);
-            taskRepository.save(topTask.get());
-        }
-
-        return id;
+    public long create(@RequestBody Task task) {
+        return taskService.create(task);
     }
 
     @PutMapping("/tasks/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void update(@PathVariable Long id, @RequestBody Task updatedTask) {
-        Task task = taskRepository.findOne(id).update(updatedTask);
-        taskRepository.save(task);
+    public void update(@PathVariable long id, @RequestBody Task updatedTask) {
+        taskService.update(id, updatedTask);
     }
 
     @DeleteMapping("/tasks/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable Long id) {
-        Task task = taskRepository.findOne(id);
-        Optional<Task> nextTask = taskRepository.findOneByPreviousId(id);
-        if (nextTask.isPresent()) {
-            Task presentNextTask = nextTask.get();
-            presentNextTask.moveAfter(task.getPreviousId());
-            taskRepository.save(presentNextTask);
-        }
-
-        taskRepository.save(task.delete());
+    public void delete(@PathVariable long id) {
+        taskService.delete(id);
     }
 
     @PatchMapping("/tasks/{id}/{targetTaskType}/{targetId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void move(@PathVariable Long id, @PathVariable String targetTaskType, @PathVariable Long targetId) {
-        Task taskToMove = taskRepository.findOne(id);
-        Optional<Task> originalNextTask = taskRepository.findOneByPreviousId(id);
-        Optional<Task> newNextTask = taskRepository.findOneByPreviousId(targetId);
-
-        if (originalNextTask.isPresent()) {
-            originalNextTask.get().moveAfterPreviousOf(taskToMove);
-            taskRepository.save(originalNextTask.get());
-        }
-
-        if (newNextTask.isPresent()) {
-            taskToMove.moveAfterPreviousOf(newNextTask.get());
-            taskRepository.save(taskToMove);
-
-            newNextTask.get().moveAfter(taskToMove.getId());
-            taskRepository.save(newNextTask.get());
-        } else {
-            taskToMove.moveAfter(targetId, targetTaskType);
-            taskRepository.save(taskToMove);
-        }
+    public void move(@PathVariable long id, @PathVariable String targetTaskType, @PathVariable long targetId) {
+        taskService.move(id, targetTaskType, targetId);
     }
 }
