@@ -22,17 +22,9 @@ public class ApiNoteController {
 
     private final NoteService noteService;
 
-    @PostMapping
-    public ResponseEntity<?> addNote(@RequestBody Note note, BindingResult bindingResult) {
-        log.info("Note : {}", note);
-        noteService.save(note);
-        return ResponseEntity.ok().build();
-    }
-
     @GetMapping
     public ResponseEntity<?> getNotes() {
-        final List<Note> notes = noteService.getNotes();
-        return ResponseEntity.ok().body(notes);
+        return ResponseEntity.ok().body(noteService.getNotes());
     }
 
 }
