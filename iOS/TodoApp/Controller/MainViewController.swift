@@ -6,6 +6,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         NetworkManager.loginPost()
+        //NotificationCenter.default.addObserver(self, selector: #selector(update), name: .updateTasksStatus, object: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -23,5 +24,9 @@ class MainViewController: UIViewController {
             break
         }
     }
+    
+//    @objc func update() {
+//        NotificationCenter.default.post(name: .take, object: self)
+//    }
 }
 

@@ -6,7 +6,6 @@ extension TaskViewController: UITableViewDelegate {
         if editingStyle == .delete {
 
             taskStackManager.remove(column!, at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
             updateTaskCountLabel()
         }
     }
@@ -17,6 +16,7 @@ extension TaskViewController: UITableViewDelegate {
 }
 
 extension TaskViewController: UIContextMenuInteractionDelegate {
+    
     @objc func longTouched(_ gesture: UIGestureRecognizer) {
         let touchedPoint = gesture.location(in: taskTableView)
         guard let indexPath = self.taskTableView.indexPathForRow(at: touchedPoint) else { return }
@@ -36,9 +36,12 @@ extension TaskViewController: UIContextMenuInteractionDelegate {
             let edit = UIAction(title: "Edit", image: UIImage(systemName: "pencil.tip")) { _ in
                 // edit func
             }
+            
             let moveToDone = UIAction(title: "Move To Done", image: UIImage(systemName: "arrow.right")) { _ in
                 self.taskStackManager.move(self.column!, at: self.selectedIndexPath.row)
+                //NotificationCenter.default.post(name: .updateTasksStatus, object: self)
             }
+            
             let delete = UIAction(title: "Delete", image: UIImage(systemName: "trash"), attributes: .destructive ) { _ in
                 self.taskStackManager.remove(self.column!, at: self.selectedIndexPath.row)
             }

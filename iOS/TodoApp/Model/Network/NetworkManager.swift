@@ -44,29 +44,38 @@ class NetworkManager {
     }
 
     static func fetchData() {
-        DispatchQueue.main.async {
-            do {
-                let url = URL(string: "http://3.36.217.168:8080/works")
-                let data = try Data(contentsOf: url!)
-                let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [Any]
-                json?.forEach({ parse in
-                    let task = parse as! [String: Any]
-                    let id = task["id"] as! Int
-                    let title = task["title"] as! String
-                    let content = task["content"] as! String
-                    let createdAt = task["createdAt"] as! String
-                    let status = task["status"] as! Int - 1
-                    let author = task["author"] as! String
-                    
-                    let taskCard = TaskCard(id: id, title: title, content: content, createdAt: createdAt, status: status, author: author)
-                    NotificationCenter.default.post(name: .requestSetupTask, object: self, userInfo: ["taskCard": taskCard])
-                })
-            } catch let error as NSError {
-                print(error.localizedDescription)
+        let url = URL(string: "http://3.36.217.168:8080/works")
+        var request = URLRequest(url: url!)
+        request.httpMethod = HTTPMethod.get
+                
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                print(error)
+                return
+            }
+            DispatchQueue.main.async() {
+                do {
+                    let object = try JSONSerialization.jsonObject(with: data!, options: []) as? NSArray
+                    guard let jsonObject = object else { return }
+                    jsonObject.forEach { parse in
+                        let task = parse as! [String:Any]
+                        let id = task["id"] as! Int
+                        let title = task["title"] as! String
+                        let content = task["content"] as! String
+                        let createdAt = task["createdAt"] as! String
+                        let status = task["status"] as! Int - 1
+                        let author = task["author"] as! String
+                        let taskCard = TaskCard(id: id, title: title, content: content, createdAt: createdAt, status: status, author: author)
+                        NotificationCenter.default.post(name: .requestSetupTask, object: self, userInfo: ["taskCard": taskCard])
+                    }
+                } catch let error as NSError {
+                    print(error)
+                }
             }
         }
-    }
-    
+        task.resume()
+        }
+
     static func changedDataPost(httpMethod: String, data: TaskCard) {
         let id = data.id
         var syncData = data
@@ -80,7 +89,10 @@ class NetworkManager {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            print(response)
+            if let response = response {
+                print(response)
+            }
+            
             if let error = error {
                 print(error)
                 return

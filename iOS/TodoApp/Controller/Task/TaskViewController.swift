@@ -4,7 +4,7 @@ import UIKit
 class TaskViewController: UIViewController {
 
     var column: Int?
-    let taskStackManager = TaskStackManager.sharedInstance()
+    let taskStackManager = TaskStackManager()
     var selectedCell: TaskCell!
     var selectedIndexPath: IndexPath!
 
@@ -70,6 +70,7 @@ extension TaskViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(drawTaskCard(_:)), name: .requestSetupTask, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(sendRemovedData(_:)), name: .requestRemoveTask, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(sendMovedData(_:)), name: .requestMoveTask, object: nil)
+        //NotificationCenter.default.addObserver(self, selector: #selector(updateStatus), name: .take, object: nil)
     }
     
     @objc func drawTaskCard(_ notification: Notification) {
@@ -80,17 +81,14 @@ extension TaskViewController {
     }
     
     @objc func insertTask(_ notification: Notification) {
-        print("insertTask")
         let (status, title, content) = (notification.userInfo?["column"] as? Int ?? 0,
                                         notification.userInfo?["title"] as? String ?? "",
                                         notification.userInfo?["content"] as? String ?? "")
         let id = taskStackManager.totalCount() + 1
         let card = TaskCard(id: id, title: title, content: content, createdAt: "\(Date())", status: status, author: "user1")
+        taskStackManager.append(status, taskCard: card)
+        updateTaskCountLabel()
         if column == card.status {
-            print("append")
-            taskStackManager.append(status, taskCard: card)
-            dump(taskStackManager.tasks)
-            updateTaskCountLabel()
             NetworkManager.insertedDataPost(httpMethod: HTTPMethod.post, data: card)
         }
     }
@@ -98,15 +96,21 @@ extension TaskViewController {
     @objc func sendRemovedData(_ notification: Notification) {
         let removedData = notification.userInfo?["removedData"] as! TaskCard
         updateTaskCountLabel()
-        if column == removedData.status {
         NetworkManager.changedDataPost(httpMethod: HTTPMethod.delete, data: removedData)
-        }
     }
     
     @objc func sendMovedData(_ notification: Notification) {
-        let movedData = notification.userInfo?["movedData"] as! TaskCard
+        var movedData = notification.userInfo?["movedData"] as! TaskCard
+        if column == StatusValue.done {
+            movedData.status = StatusValue.done
+            taskStackManager.append(StatusValue.done, taskCard: movedData)
+        }
         updateTaskCountLabel()
         NetworkManager.changedDataPost(httpMethod: HTTPMethod.post, data: movedData)
+        
+    }
+    @objc func updateStatus() {
+        updateTaskCountLabel()
     }
 }
    

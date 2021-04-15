@@ -33,6 +33,8 @@ extension Notification.Name {
     static let requestRemoveTask  = Notification.Name("requestRemoveTask")
     static let requestAddTask = Notification.Name("requestAddTask")
     static let requestMoveTask = Notification.Name("requestMoveTask")
+    static let updateTasksStatus = Notification.Name("updateTasksStatus")
+    static let take = Notification.Name("take")
 }
 
 
