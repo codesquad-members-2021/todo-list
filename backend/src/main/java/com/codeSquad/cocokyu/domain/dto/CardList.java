@@ -6,32 +6,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CardList {
-    private List<Card> todo = new ArrayList<>();
-    private List<Card> doing = new ArrayList<>();
-    private List<Card> done = new ArrayList<>();
+    private List<Card> todo;
+    private List<Card> doing;
+    private List<Card> done;
 
-    public CardList(List<Card> cards) {
-        divide(cards);
-    }
-
-    private void divide(List<Card> cards) {
-        for (Card card : cards) {
-            sort(card);
-        }
-    }
-
-    private void sort(Card card) {
-        switch (card.getStatus()) {
-            case TODO:
-                todo.add(card);
-                break;
-            case DOING:
-                doing.add(card);
-                break;
-            case DONE:
-                done.add(card);
-                break;
-        }
+    private CardList(Builder builder) {
+        this.todo = builder.todo;
+        this.doing = builder.doing;
+        this.done = builder.done;
     }
 
     public List<Card> getTodo() {
@@ -44,5 +26,31 @@ public class CardList {
 
     public List<Card> getDone() {
         return done;
+    }
+
+    public static class Builder {
+        private List<Card> todo = new ArrayList<>();
+        private List<Card> doing = new ArrayList<>();
+        private List<Card> done = new ArrayList<>();
+
+        public Builder() {
+        }
+
+        public CardList build() {
+            return new CardList(this);
+        }
+
+        public Builder addCard(Card card) {
+            if (card.isTodo()) {
+                todo.add(card);
+                return this;
+            }
+            if (card.isDoing()) {
+                doing.add(card);
+                return this;
+            }
+            done.add(card);
+            return this;
+        }
     }
 }
