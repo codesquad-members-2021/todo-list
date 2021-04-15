@@ -12,8 +12,6 @@ const MainContainer = () => {
     useEffect(() => axios.get('/api/columns').then((json) => setColumnData(() => json.data.columns)), []);
 
     useEffect(() => {
-        // console.log("useEffect:render")
-        // console.log(columnData)
         setColumns(() =>
             columnData.map(({ columnId, name, cards }, i) => (
                 <li key={i}><ColumnContainer columnId={columnId} title={name} list={cards} setColumnData={setColumnData}/></li>
