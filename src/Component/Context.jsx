@@ -30,7 +30,7 @@ const createInitialTodo = () => {
 
 async function getInitialTodos() {
   const id = localStorage.getItem("id");
-  const data = await api("get", id);
+  const data = id && await api("get", id);
   return data ? data[0] : createInitialTodo();
 }
 
@@ -70,21 +70,8 @@ function todoReducer (state, action) {
       return temp;
     case 'REMOVEITEM':
       const tmp = [...state];
-      console.log(tmp[action.idx].todoItems);
-      console.log(action.todos);
       tmp[action.idx].todoItems = action.todos;
-      console.log('after', tmp[action.idx].todoItems);
       return tmp;
-      // return state.map((todoColumn, index) =>
-      //   index === action.idx
-      //     ? {
-      //         ...todoColumn,
-      //         todoItems: todoColumn.todoItems.filter(
-      //           (v, i) => i !== action.itemIdx
-      //         )
-      //       }
-      //     : todoColumn
-      // )
     case 'RESETITEM':
       return state.map((todoColumn, index) =>
         index === action.idx ? { ...todoColumn, todoItems: [] } : todoColumn

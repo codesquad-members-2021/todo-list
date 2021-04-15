@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Button from "../Button";
 
@@ -46,14 +46,29 @@ const Buttons = styled.div`
   }
 `;
 
-const CreateTodo = ({inputs, onChange, onCancel, onSubmit, toggle}) => {
+const CreateTodo = ({onSubmit, toggle, setToggle}) => {
+  const [inputs, setInputs] = useState({
+    title: '',
+    content: ''
+  })
+  const onCreate = () => {
+    onSubmit(inputs)
+    setInputs({ title: '', content: '' });
+  }
+  const onChange = target => {
+    setInputs({ ...inputs, [target.name]: target.value });
+  }
+  const onCancel = () => {
+    setToggle(!toggle);
+    setInputs({ title: '', content: '' });
+  }
   return (
     <CreateTodoBlock toggle={toggle}>
-      <InputTitle autoComplete="off" name="title" value={inputs.title} onChange={onChange} placeholder="제목을 입력하세요"></InputTitle>
-      <InputContent autoComplete="off" name="content" value={inputs.value} onChange={onChange} placeholder="내용을 입력하세요"></InputContent>
+      <InputTitle autoComplete="off" name="title" value={inputs.title} onChange={({ target }) => onChange(target)} placeholder="제목을 입력하세요"></InputTitle>
+      <InputContent autoComplete="off" name="content" value={inputs.content} onChange={({ target }) => onChange(target)} placeholder="내용을 입력하세요"></InputContent>
       <Buttons inputs={inputs}>
         <Button onClick={onCancel}>취소</Button>
-        <Button onClick={onSubmit}>등록</Button>
+        <Button onClick={onCreate}>등록</Button>
       </Buttons>
     </CreateTodoBlock>
   )

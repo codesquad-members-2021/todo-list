@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from 'styled-components';
-import { FaTimes } from 'react-icons/fa';
+import { FaTimes, FaPencilAlt } from 'react-icons/fa';
+import EditTodo from "./EditTodo";
 import Button from "../Button";
 
 const TodoItemBlock = styled.div`
@@ -10,7 +11,7 @@ const TodoItemBlock = styled.div`
   display: block;
   margin-top: 1rem;
   position: relative;
-  button {
+  & > button {
     padding: 0.4rem;
     line-height: 0rem;
     position: absolute;
@@ -19,14 +20,21 @@ const TodoItemBlock = styled.div`
     &:hover {
       color: #ffcc00;
     }
+    &:first-child {
+      right: 2rem;
+    }
   }
+`;
+
+const TodoItemContent = styled.div`
+  display: ${({toggle}) => !toggle ? 'block' : 'none'};
 `;
 
 const Title = styled.input.attrs({
   type: 'text'
 })`
   width: 100%;
-  font-size: 1rem;
+  font-size: 1.2rem;
   padding-right: 1rem;
   font-weight: 600;
   margin-bottom: 0.3rem;
@@ -35,9 +43,13 @@ const Title = styled.input.attrs({
 const Content = styled.textarea`
   border: 0;
   resize: none;
+  font-size: 1rem;
   width: 100%;
   overflow-y: visible;
   height: 3rem;
+  &:focus {
+    outline: none;
+  }
 `;
 
 const TodoItem = ({ title, content, index, onChange, onRemove }) => {
@@ -45,18 +57,22 @@ const TodoItem = ({ title, content, index, onChange, onRemove }) => {
     title,
     content
   });
-  const onTextChange = e => {
-    setInputs({...inputs, [e.target.name] : e.target.value });
+  const [toggle, setToggle] = useState(false);
+  const onToggle = () => setToggle(!toggle);
+  const onTextChange = inputs => {
+    setInputs(inputs);
+    onChange(inputs, index);
+    onToggle();
   }
-  // useEffect(() => {
-  //   const time = setTimeout(() => onChange(inputs, index), 3000);
-  //   return () => clearTimeout(time);
-  // }, [inputs]);
   return (
     <TodoItemBlock>
-      <Button onClick={() => onRemove(index)}><FaTimes></FaTimes></Button>
-      <Title name="title" onChange={e => onTextChange(e, index)} value={inputs.title}/>
-      <Content name="content" onChange={e => onTextChange(e, index)} value={inputs.content}/>
+      <Button onClick={onToggle}><FaPencilAlt/></Button>
+      <Button onClick={() => onRemove(index)}><FaTimes/></Button>
+      <TodoItemContent toggle={toggle}>
+        <Title name="title" value={inputs.title} readOnly/>
+        <Content name="content" value={inputs.content} readOnly/>
+      </TodoItemContent>
+      <EditTodo toggle={toggle} onToggle={onToggle} title={title} content={content} onTextChange={onTextChange}/>
     </TodoItemBlock>
   );
 }

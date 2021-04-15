@@ -8,6 +8,7 @@ const HistoryItemBlock = styled.li`
   border: 1px solid black;
   padding: 0.5rem 0;
   display: flex;
+  width: 100%;
 `
 const HistoryItemTextBlock = styled.div`
   div {
@@ -41,7 +42,6 @@ export default function HistoryItem ({ author, text, time, profile }) {
   useEffect(() => {
     const interval = setInterval(() => {
       SetTime(Math.ceil((new Date() - new Date(time)) / 600000))
-      console.log('This will run every second!')
     }, 1000)
     return () => clearInterval(interval)
   }, [time])

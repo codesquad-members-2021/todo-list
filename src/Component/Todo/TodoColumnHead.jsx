@@ -29,7 +29,7 @@ const Counter = styled.span`
   background-color: #999;
   border-radius: 50%;
   font-weight: 600;
-  padding: 0.2rem;
+  padding: 0.5rem 0.8rem;
   min-width: 1.8rem;
   text-align: center;
 `
