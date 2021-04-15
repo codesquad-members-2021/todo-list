@@ -1,10 +1,12 @@
 package team10.todolist.service;
 
 import org.springframework.stereotype.Service;
+import sun.rmi.runtime.Log;
 import team10.todolist.Category;
 import team10.todolist.domain.Board;
 import team10.todolist.dto.BoardDto;
 import team10.todolist.repository.BoardRepository;
+import team10.todolist.repository.LogRepository;
 
 import java.util.List;
 
@@ -12,13 +14,16 @@ import java.util.List;
 public class BoardService {
 
     private final BoardRepository boardRepository;
+    private final LogRepository logRepository;
 
-    public BoardService(BoardRepository boardRepository) {
+    public BoardService(BoardRepository boardRepository, LogRepository logRepository) {
         this.boardRepository = boardRepository;
+        this.logRepository = logRepository;
     }
 
     public boolean create(BoardDto boardDto) {
         Board board = boardDto.toEntity();
+        Log log = 
         boardRepository.save(board);
         return true;
     }
