@@ -2,15 +2,38 @@ package com.codesquad.esfj.todolist.task;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class TaskDTO {
-    public static Map<String, List<TaskDTO.Response>> groupingByType(List<Task> tasks) {
-        return tasks.stream()
-                .map(Response::from)
-                .collect(Collectors.groupingBy(Response::getTaskType));
+    public static Map<String, List<TaskDTO.Response>> groupingByType(Map<Long, Task> tasks) {
+        List<Task> headers = tasks.values().stream()
+                .filter(Task::isHead)
+                .collect(Collectors.toList());
+
+        Map<String, List<TaskDTO.Response>> result = new HashMap<>();
+
+        for (Task header : headers) {
+            Deque<Task> sortedTasks = new ArrayDeque<>();
+
+            Task current = header;
+
+            while (!current.getPreviousId().equals(Task.TOP_PREVIOUS_ID)) {
+                sortedTasks.offerFirst(current);
+                current = tasks.get(current.getPreviousId());
+            }
+
+            sortedTasks.offerFirst(current);
+
+            result.put(
+                    current.getTaskType(),
+                    sortedTasks.stream()
+                            .map(Response::from)
+                            .collect(Collectors.toList())
+            );
+        }
+
+        return result;
     }
 
     public static Response response(Task task) {
@@ -23,6 +46,8 @@ public class TaskDTO {
         private String content;
         private String writer;
         private Long previousId;
+
+        @JsonIgnore
         private String taskType;
 
         private Response(Long id, String title, String content, String writer, Long previousId, String taskType) {

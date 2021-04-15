@@ -23,12 +23,16 @@ public class TaskService {
     }
 
     public Map<String, List<TaskDTO.Response>> readAll() {
-        return TaskDTO.groupingByType(taskRepository.findAllByDeletedFalse());
+        Map<Long, Task> result = taskRepository.findAllByDeletedFalse().stream()
+                .collect(Collectors.toMap(Task::getId, task -> task));
+
+        return TaskDTO.groupingByType(result);
     }
 
     public Map<String, List<TaskDTO.Response>> readAllBy(String taskType) {
         List<Task> tasks = taskRepository.findAllByTaskTypeAndDeletedFalse(taskType);
-        return TaskDTO.groupingByType(tasks);
+        return TaskDTO.groupingByType(tasks.stream()
+                .collect(Collectors.toMap(Task::getId, task -> task)));
     }
 
     public TaskDTO.Response readOne(long id) {
