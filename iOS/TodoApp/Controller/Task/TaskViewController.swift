@@ -70,7 +70,7 @@ extension TaskViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(drawTaskCard(_:)), name: .requestSetupTask, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(sendRemovedData(_:)), name: .requestRemoveTask, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(sendMovedData(_:)), name: .requestMoveTask, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(updateStatus), name: .take, object: nil)
+        //NotificationCenter.default.addObserver(self, selector: #selector(updateStatus), name: .take, object: nil)
     }
     
     @objc func drawTaskCard(_ notification: Notification) {
@@ -100,9 +100,14 @@ extension TaskViewController {
     }
     
     @objc func sendMovedData(_ notification: Notification) {
-        let movedData = notification.userInfo?["movedData"] as! TaskCard
+        var movedData = notification.userInfo?["movedData"] as! TaskCard
+        if column == StatusValue.done {
+            movedData.status = StatusValue.done
+            taskStackManager.append(StatusValue.done, taskCard: movedData)
+        }
         updateTaskCountLabel()
         NetworkManager.changedDataPost(httpMethod: HTTPMethod.post, data: movedData)
+        
     }
     @objc func updateStatus() {
         updateTaskCountLabel()
