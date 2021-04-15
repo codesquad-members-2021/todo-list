@@ -66,6 +66,10 @@ public class Card {
         return status == Status.DONE;
     }
 
+    public boolean checkSameStatus(Status status) {
+        return this.status == status;
+    }
+
     public void delete() {
         logs.deleteLog(this);
         this.status = Status.DELETED;

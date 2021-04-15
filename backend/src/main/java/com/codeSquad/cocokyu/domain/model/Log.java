@@ -58,6 +58,6 @@ public class Log {
     }
 
     public enum Action {
-        MOVE, DELETED, CREATE
+        MOVE, DELETED, CREATE, UPDATE
     }
 }
