@@ -48,7 +48,7 @@ const LogBlock = styled.div`
   flex: none;
   order: 0;
   flex-grow: 0;
-  margin-left: 30px;
+  margin-left: 20px;
 `;
 const LogMessageBlock = styled.div`
   margin-left: 45px;
