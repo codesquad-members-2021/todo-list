@@ -171,25 +171,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2hR-25-Sij">
-                                <rect key="frame" x="447" y="317" width="300" height="200"/>
+                                <rect key="frame" x="418" y="313" width="358" height="208.5"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="ContentsTextField" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Go-na-xP4">
-                                        <rect key="frame" x="0.0" y="111" width="300" height="34"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="ContentsTextField" borderStyle="roundedRect" placeholder="내용을 입력하세요" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Go-na-xP4">
+                                        <rect key="frame" x="0.0" y="93" width="358" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FoN-Rv-nvF">
-                                        <rect key="frame" x="174" y="162" width="30" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="취소"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FoN-Rv-nvF">
+                                        <rect key="frame" x="174" y="142" width="40" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="lDt-cO-s3F"/>
+                                        </constraints>
+                                        <state key="normal" title="닫기"/>
                                         <connections>
                                             <action selector="cancelButton:" destination="Lyp-8A-wIa" eventType="touchUpInside" id="qMs-mS-OTa"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xFO-fR-NbI">
-                                        <rect key="frame" x="246" y="162" width="30" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xFO-fR-NbI">
+                                        <rect key="frame" x="244" y="142" width="40" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="eMS-gV-cuv"/>
+                                        </constraints>
                                         <state key="normal" title="확인"/>
                                         <connections>
                                             <action selector="confirmButton:" destination="Lyp-8A-wIa" eventType="touchUpInside" id="T3B-pp-dpl"/>
@@ -198,18 +201,23 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="aAg-CR-TtN"/>
-                                    <constraint firstAttribute="width" constant="300" id="kWr-dj-dqr"/>
+                                    <constraint firstAttribute="trailing" secondItem="0Go-na-xP4" secondAttribute="trailing" id="5Hz-xh-63w"/>
+                                    <constraint firstItem="FoN-Rv-nvF" firstAttribute="leading" secondItem="2hR-25-Sij" secondAttribute="leading" constant="174" id="FGF-tP-Ew0"/>
+                                    <constraint firstItem="0Go-na-xP4" firstAttribute="leading" secondItem="2hR-25-Sij" secondAttribute="leading" id="VcX-li-cAN"/>
+                                    <constraint firstItem="xFO-fR-NbI" firstAttribute="leading" secondItem="FoN-Rv-nvF" secondAttribute="trailing" constant="30" id="bom-t8-2Cf"/>
+                                    <constraint firstItem="0Go-na-xP4" firstAttribute="height" secondItem="2hR-25-Sij" secondAttribute="height" multiplier="0.16307" id="cPh-An-DsJ"/>
+                                    <constraint firstItem="xFO-fR-NbI" firstAttribute="top" secondItem="0Go-na-xP4" secondAttribute="bottom" constant="15" id="exh-wk-H2H"/>
+                                    <constraint firstItem="FoN-Rv-nvF" firstAttribute="top" secondItem="0Go-na-xP4" secondAttribute="bottom" constant="15" id="mrY-0e-Ihz"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prompt" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Frd-Wc-Nt3">
-                                <rect key="frame" x="447" y="345" width="300" height="30"/>
+                                <rect key="frame" x="418" y="333" width="358" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TitleTextField" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2oI-dt-g3E">
-                                <rect key="frame" x="447" y="383" width="300" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TitleTextField" borderStyle="roundedRect" placeholder="제목을 입력하세요" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2oI-dt-g3E">
+                                <rect key="frame" x="418" y="371" width="358" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -217,13 +225,16 @@
                         <viewLayoutGuide key="safeArea" id="rcf-px-KME"/>
                         <color key="backgroundColor" systemColor="linkColor"/>
                         <constraints>
+                            <constraint firstItem="2hR-25-Sij" firstAttribute="width" secondItem="gGb-6P-LUT" secondAttribute="width" multiplier="0.3" id="FIf-N7-pbo"/>
                             <constraint firstItem="Frd-Wc-Nt3" firstAttribute="trailing" secondItem="2hR-25-Sij" secondAttribute="trailing" id="Pcn-PO-mXj"/>
                             <constraint firstItem="2oI-dt-g3E" firstAttribute="top" secondItem="Frd-Wc-Nt3" secondAttribute="bottom" constant="8" symbolic="YES" id="Rix-qN-yCU"/>
+                            <constraint firstItem="0Go-na-xP4" firstAttribute="top" secondItem="2oI-dt-g3E" secondAttribute="bottom" constant="1" id="e3p-0V-pGL"/>
                             <constraint firstItem="2hR-25-Sij" firstAttribute="centerX" secondItem="gGb-6P-LUT" secondAttribute="centerX" id="kGE-Q3-aCb"/>
+                            <constraint firstItem="2oI-dt-g3E" firstAttribute="height" secondItem="2hR-25-Sij" secondAttribute="height" multiplier="0.16307" id="lZH-UY-1l9"/>
                             <constraint firstItem="Frd-Wc-Nt3" firstAttribute="leading" secondItem="2hR-25-Sij" secondAttribute="leading" id="p22-U8-Pfo"/>
                             <constraint firstItem="2oI-dt-g3E" firstAttribute="trailing" secondItem="2hR-25-Sij" secondAttribute="trailing" id="p9A-VX-8va"/>
-                            <constraint firstItem="2oI-dt-g3E" firstAttribute="centerX" secondItem="2hR-25-Sij" secondAttribute="centerX" id="vZe-dR-XOc"/>
-                            <constraint firstItem="Frd-Wc-Nt3" firstAttribute="top" secondItem="2hR-25-Sij" secondAttribute="top" constant="28" id="vaN-gl-GhF"/>
+                            <constraint firstItem="2hR-25-Sij" firstAttribute="height" secondItem="gGb-6P-LUT" secondAttribute="height" multiplier="0.25" id="quG-g8-xLu"/>
+                            <constraint firstItem="Frd-Wc-Nt3" firstAttribute="top" secondItem="2hR-25-Sij" secondAttribute="top" constant="20" id="vaN-gl-GhF"/>
                             <constraint firstItem="2oI-dt-g3E" firstAttribute="leading" secondItem="2hR-25-Sij" secondAttribute="leading" id="xPe-EP-xOh"/>
                             <constraint firstItem="2hR-25-Sij" firstAttribute="centerY" secondItem="gGb-6P-LUT" secondAttribute="centerY" id="xuJ-uF-cbt"/>
                         </constraints>
