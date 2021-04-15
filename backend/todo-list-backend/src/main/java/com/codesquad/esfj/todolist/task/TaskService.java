@@ -9,27 +9,28 @@ import java.util.Optional;
 @Service
 public class TaskService {
 
-    private TaskRepository taskRepository;
+    private JdbcTaskRepository taskRepository;
 
-    public TaskService(TaskRepository taskRepository) {
+    public TaskService(JdbcTaskRepository taskRepository) {
         this.taskRepository = taskRepository;
     }
 
     public Map<String, List<TaskDTO.Response>> readAll() {
-        return TaskDTO.groupingByType(taskRepository.findAllByNotDeleted());
+        return TaskDTO.groupingByType(taskRepository.findAllByDeletedFalse());
     }
 
     public Map<String, List<TaskDTO.Response>> readAllBy(String taskType) {
-        List<Task> tasks = taskRepository.findAllByNotDeletedAndTaskType(taskType);
+        List<Task> tasks = taskRepository.findAllByTaskTypeAndDeletedFalse(taskType);
         return TaskDTO.groupingByType(tasks);
     }
 
     public TaskDTO.Response readOne(long id) {
-        return TaskDTO.response(taskRepository.findOne(id));
+        return TaskDTO.response(taskRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("해당하는 Task가 존재하지 않습니다." + id)));
     }
 
     public long create(Task task) {
-        Optional<Task> topTask = taskRepository.findOneByPreviousIdAndTaskType(Task.TOP_PREVIOUS_ID, task.getTaskType());
+        Optional<Task> topTask = taskRepository.findByPreviousIdAndTaskType(Task.TOP_PREVIOUS_ID, task.getTaskType());
         long id = taskRepository.save(task).getId();
 
         if (topTask.isPresent()) {
@@ -41,13 +42,16 @@ public class TaskService {
     }
 
     public void update(long id, Task updatedTask) {
-        Task task = taskRepository.findOne(id).update(updatedTask);
+        Task task = taskRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("해당하는 Task가 존재하지 않습니다." + id))
+                .update(updatedTask);
         taskRepository.save(task);
     }
 
     public void delete(long id) {
-        Task task = taskRepository.findOne(id);
-        Optional<Task> nextTask = taskRepository.findOneByPreviousId(id);
+        Task task = taskRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("해당하는 Task가 존재하지 않습니다." + id));
+        Optional<Task> nextTask = taskRepository.findByPreviousId(id);
         if (nextTask.isPresent()) {
             Task presentNextTask = nextTask.get();
             presentNextTask.moveAfter(task.getPreviousId());
@@ -58,9 +62,10 @@ public class TaskService {
     }
 
     public void move(long id, String targetTaskType, long targetId) {
-        Task taskToMove = taskRepository.findOne(id);
-        Optional<Task> originalNextTask = taskRepository.findOneByPreviousId(id);
-        Optional<Task> newNextTask = taskRepository.findOneByPreviousId(targetId);
+        Task taskToMove = taskRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("해당하는 Task가 존재하지 않습니다." + id));;
+        Optional<Task> originalNextTask = taskRepository.findByPreviousId(id);
+        Optional<Task> newNextTask = taskRepository.findByPreviousId(targetId);
 
         if (originalNextTask.isPresent()) {
             originalNextTask.get().moveAfterPreviousOf(taskToMove);

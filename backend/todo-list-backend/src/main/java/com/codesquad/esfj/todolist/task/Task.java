@@ -1,10 +1,12 @@
 package com.codesquad.esfj.todolist.task;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.util.StringUtils;
 
 public class Task {
     public static final long TOP_PREVIOUS_ID = -1L;
 
+    @Id
     private Long id;
     private String title;
     private String content;

@@ -1,0 +1,5 @@
+INSERT INTO task(TITLE, CONTENT, WRITER, DELETED, PREVIOUS_ID, TASK_TYPE) VALUES ('title1', 'content1', 'writer1', FALSE, 2, 'todo');
+INSERT INTO task(TITLE, CONTENT, WRITER, DELETED, PREVIOUS_ID, TASK_TYPE) VALUES ('title2', 'content2', 'writer2', FALSE, 3, 'todo');
+INSERT INTO task(TITLE, CONTENT, WRITER, DELETED, PREVIOUS_ID, TASK_TYPE) VALUES ('title3', 'content3', 'writer3', FALSE, -1, 'todo');
+INSERT INTO task(TITLE, CONTENT, WRITER, DELETED, PREVIOUS_ID, TASK_TYPE) VALUES ('title4', 'content4', 'writer4', FALSE, -1, 'doing');
+INSERT INTO task(TITLE, CONTENT, WRITER, DELETED, PREVIOUS_ID, TASK_TYPE) VALUES ('title5', 'content5', 'writer5', FALSE, -1, 'done');
