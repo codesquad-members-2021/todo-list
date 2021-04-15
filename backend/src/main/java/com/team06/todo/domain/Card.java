@@ -7,9 +7,12 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class Card {
+    private static final DateTimeFormatter DATETIME_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
+
     @Id
     private Long id;
 
@@ -46,8 +49,11 @@ public class Card {
         return columnType;
     }
 
-    public LocalDateTime getCreatedDateTime() {
-        return createdDateTime;
+    public String getCreatedDateTime() {
+        if (createdDateTime == null) {
+            return "";
+        }
+        return createdDateTime.format(DATETIME_FORMAT);
     }
 
     public void update(CardUpdateRequestDto cardUpdateRequestDto) {
