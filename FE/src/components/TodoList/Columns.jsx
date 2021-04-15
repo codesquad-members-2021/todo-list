@@ -31,10 +31,17 @@ const Column = ({ data: { columns } }) => {
   const offDisplay = () => {
     setCurrentID(null);
   };
-  
+
   const addColumn = () => {
-    setColumnData([...columnData, {id: ++columnData.length, title: prompt("칼럼 이름을 입력하세요"), cards:[]}]);
-  }
+    setColumnData([
+      ...columnData,
+      {
+        id: ++columnData.length,
+        title: prompt('칼럼 이름을 입력하세요', 'Untitled'),
+        cards: [],
+      },
+    ]);
+  };
 
   const checkInputValue = ({ title, content }, callbackSetInput) => {
     if (title.length > 0 || content.length > 0) callbackSetInput(true);
@@ -77,7 +84,14 @@ const Column = ({ data: { columns } }) => {
     );
   });
 
-  return <ColumnContainer>{columnList}<div onClick={addColumn}><AddBtn/></div></ColumnContainer>;
+  return (
+    <ColumnContainer>
+      {columnList}
+      <div onClick={addColumn}>
+        <AddBtn />
+      </div>
+    </ColumnContainer>
+  );
 };
 
 export default Column;
