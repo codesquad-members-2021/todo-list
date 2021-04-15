@@ -77,6 +77,8 @@ const TodoList = ({
   postLogs,
   todoColumns,
   setTodoColumns,
+  dragEl,
+  setDragEl,
 }) => {
   const [todos, setTodos] = useState(todoCards);
   const [loading, postTodos, deleteTodos, putTodos, moveTodos] = useTodoHook(
@@ -84,6 +86,8 @@ const TodoList = ({
     setTodoColumns
   );
   const [formSelected, setFormSelected] = useState(false);
+  const [isDragging, setIsDrgging] = useState(false);
+
   const currentColumnDiv = useRef();
 
   useEffect(() => {
@@ -134,6 +138,18 @@ const TodoList = ({
     e.preventDefault();
   };
 
+  // const handleDragEnter = useCallback(
+  //   (e) => {
+  //     // if (dragEl === null) return;
+  //     e.preventDefault();
+  //   //   const afterElement = getDragAfterElement(e.clientY);
+  //   //   const afterElemData = afterElement ? todos[afterElement.id] : undefined;
+  //   //   setDragEl((dragEl) => ({ ...dragEl, beforeColumnId: id }));
+  //   //   console.log(dragEl);
+  //   // },
+  //   // [todos, dragEl]
+  // );
+
   const getDragAfterElement = (locationY) => {
     const draggableCards = [...currentColumnDiv.current.children];
     const dragAfterElement = draggableCards.reduce(
@@ -172,6 +188,7 @@ const TodoList = ({
       todoCard={card}
       deleteTodoItem={deleteTodoItem}
       editTodoItem={editTodoItem}
+      setDragEl={setDragEl}
     />
   ));
 

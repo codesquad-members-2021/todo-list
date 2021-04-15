@@ -30,18 +30,18 @@ const todoListService = {
     todoDB.todoData[columnId].todoCards = movedCardList;
 
     if (beforeColumnId === columnId) {
-      localStorage.setItem('todos', JSON.stringify(todoDB));
+      localStorage.setItem('todos', JSON.stringify({ ...todoDB }));
       return;
     }
 
     const deleteColumnCardList = { ...todoDB.todoData[beforeColumnId].todoCards };
     delete deleteColumnCardList[cardData.id];
-    todoDB.todoData[beforeColumnId].todoCards = deleteColumnCardList;
-    localStorage.setItem('todos', JSON.stringify(todoDB));
+    todoDB.todoData[beforeColumnId].todoCards = { ...deleteColumnCardList };
+    localStorage.setItem('todos', JSON.stringify({ ...todoDB }));
   },
 
   async getTodoList() {
-    // await delay(200);
+    // await delay(500);
     const db = localStorage.getItem('todos');
     return db ? JSON.parse(db) : datas;
   },

@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import TodoList from "./todoList/TodoList";
-import styled from "styled-components";
-import todoListService from "../../service/todoListService.js";
+import React, { useState, useEffect } from 'react';
+import TodoList from './todoList/TodoList';
+import styled from 'styled-components';
+import todoListService from '../../service/todoListService.js';
 
 const StyledTodoMain = styled.div`
   display: flex;
@@ -10,6 +10,7 @@ const StyledTodoMain = styled.div`
 
 const TodoMain = ({ postLogs }) => {
   const [todoColumns, setTodoColumns] = useState({});
+  const [dragEl, setDragEl] = useState(null);
 
   const getInitTodoData = async () => {
     const todoListData = await todoListService.getTodoList();
@@ -35,6 +36,8 @@ const TodoMain = ({ postLogs }) => {
       postLogs={postLogs}
       todoColumns={todoColumns}
       setTodoColumns={setTodoColumns}
+      dragEl={dragEl}
+      setDragEl={setDragEl}
     />
   ));
 

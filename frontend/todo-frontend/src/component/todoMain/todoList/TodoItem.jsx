@@ -39,6 +39,7 @@ const TodoItem = ({
   todoCard: { id, title, content },
   deleteTodoItem,
   editTodoItem,
+  setDragEl,
 }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [inputTitle, setInputTitle] = useState(title);
@@ -75,6 +76,7 @@ const TodoItem = ({
   };
 
   const handleDragStart = (e) => {
+    setDragEl({ beforeColumnId: columnId, ...todoCard });
     e.dataTransfer.setData('cardData', JSON.stringify({ beforeColumnId: columnId, ...todoCard }));
   };
 
