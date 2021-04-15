@@ -79,7 +79,7 @@
                             <constraint firstItem="lNh-G5-f3D" firstAttribute="top" secondItem="qIz-il-ybU" secondAttribute="top" constant="123" id="VHQ-Am-1gz"/>
                             <constraint firstItem="Cxf-kS-a3q" firstAttribute="leading" secondItem="qIz-il-ybU" secondAttribute="leading" constant="48" id="bPP-UJ-CSI"/>
                             <constraint firstItem="fDW-EY-zS6" firstAttribute="leading" secondItem="qIz-il-ybU" secondAttribute="leading" constant="48" id="d9y-E8-XNL"/>
-                            <constraint firstItem="qIz-il-ybU" firstAttribute="trailing" secondItem="Cxf-kS-a3q" secondAttribute="trailing" constant="975" id="dBt-X2-bhA"/>
+                            <constraint firstItem="qIz-il-ybU" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Cxf-kS-a3q" secondAttribute="trailing" constant="975" id="dBt-X2-bhA"/>
                             <constraint firstItem="qIz-il-ybU" firstAttribute="bottom" secondItem="lNh-G5-f3D" secondAttribute="bottom" id="gmL-cF-oG3"/>
                             <constraint firstItem="lNh-G5-f3D" firstAttribute="leading" secondItem="fDW-EY-zS6" secondAttribute="trailing" constant="24" id="p0d-nC-ct1"/>
                             <constraint firstItem="Cxf-kS-a3q" firstAttribute="top" secondItem="qIz-il-ybU" secondAttribute="top" constant="13" id="wsJ-QW-dbD"/>
@@ -99,7 +99,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="256" height="691"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yNf-N7-OLh">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yNf-N7-OLh">
                                 <rect key="frame" x="0.0" y="42" width="256" height="649"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
