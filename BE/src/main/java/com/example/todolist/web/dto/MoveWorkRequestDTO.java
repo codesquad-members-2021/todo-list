@@ -21,7 +21,7 @@ public class MoveWorkRequestDTO {
     }
 
     public void verifyDTO() {
-        if (status != 1 && status != 2 && status !=3) {
+        if (status != 1 && status != 2 && status != 3) {
             throw new EntityRelatedException(ErrorMessage.ENTITY_NOT_CREATE);
         }
     }
