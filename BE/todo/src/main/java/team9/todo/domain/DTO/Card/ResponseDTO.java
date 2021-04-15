@@ -6,8 +6,6 @@ import team9.todo.domain.enums.CardColumn;
 public class ResponseDTO {
     private Long id;
 
-    private long user; // TODO. IOS팀에게 쓰는지 여쭤보기
-
     private String title;
 
     private String content;
@@ -20,9 +18,8 @@ public class ResponseDTO {
 
     private boolean rebalanced;
 
-    private ResponseDTO(Long id, long user, String title, String content, double priority, CardColumn columnType, boolean deleted, boolean rebalanced) {
+    private ResponseDTO(Long id, String title, String content, double priority, CardColumn columnType, boolean deleted, boolean rebalanced) {
         this.id = id;
-        this.user = user;
         this.title = title;
         this.content = content;
         this.priority = priority;
@@ -32,17 +29,13 @@ public class ResponseDTO {
     }
 
     public static ResponseDTO of(Card entity, boolean rebalanced) {
-        return new ResponseDTO(entity.getId(), entity.getUser(), entity.getTitle(),
+        return new ResponseDTO(entity.getId(), entity.getTitle(),
                 entity.getContent(), entity.getPriority(),
                 entity.getColumnType(), entity.isDeleted(), rebalanced);
     }
 
     public Long getId() {
         return id;
-    }
-
-    public long getUser() {
-        return user;
     }
 
     public String getTitle() {
