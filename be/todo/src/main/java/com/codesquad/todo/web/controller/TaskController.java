@@ -1,6 +1,5 @@
 package com.codesquad.todo.web.controller;
 
-import com.codesquad.todo.web.domain.TodoTask;
 import com.codesquad.todo.web.domain.TodoUser;
 import com.codesquad.todo.web.service.TodoTaskService;
 import com.codesquad.todo.web.service.TodoUserService;
