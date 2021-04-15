@@ -18,7 +18,7 @@ create table TODO_COLUMN
 (
     ID            bigint(20) auto_increment primary key,
     COLUMN_TITLE  varchar(30),
-    TODO_USER     int references TODO_USER (id),
+    TODO_USER     bigint(20) references TODO_USER (id),
     TODO_USER_KEY int
 );
 
@@ -27,7 +27,7 @@ create table TODO_TASK
     ID                bigint(20) auto_increment primary key,
     TASK_TITLE        varchar(30),
     TASK_CONTENT      varchar(30),
-    TODO_COLUMN       int references TODO_COLUMN (id),
+    TODO_COLUMN       bigint(20) references TODO_COLUMN (id),
     TODO_COLUMN_KEY   int,
     CREATED_DATE_TIME timestamp,
     UPDATED_DATE_TIME timestamp
@@ -40,7 +40,7 @@ create table TODO_LOG
     FROM_COLUMN_TITLE varchar(30),
     TO_COLUMN_TITLE   varchar(30),
     TASK_TITLE        varchar(30),
-    TODO_USER         int references TODO_USER (id),
+    TODO_USER         bigint(20) references TODO_USER (id),
     TODO_USER_KEY     int,
     CREATED_DATE_TIME timestamp
 );
