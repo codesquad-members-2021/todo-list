@@ -25,6 +25,7 @@ class TodoDataSource: NSObject, UITableViewDataSource {
         
         cell.titleLabel.text = todoCards[indexPath.row].title
         cell.contentLabel.text = todoCards[indexPath.row].contents
+        cell.authorLabel.text = "Author by \(todoCards[indexPath.row].user.name)"
         cell.contentLabel.addLineSpacing()
         
         return cell
