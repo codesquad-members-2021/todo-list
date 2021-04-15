@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components'
 import Column from './Column'
-import initFetchData from './initFetchData'
+import { initFetchData } from '../httpUtils'
 
 const ContentStyle = styled.div`
     padding: 0 50px;
@@ -12,9 +12,7 @@ const ContentStyle = styled.div`
 
 const ColumnList = ({setSidebarLog}) => {
     const [columnsData, setColumnsData] = useState([]);
-    useEffect(() => {
-        initFetchData(setColumnsData, "/projects", "columns")
-    }, [])
+    useEffect(() => { initFetchData(setColumnsData, "/projects", "columns") }, [])
 
     return (
         <ContentStyle>
