@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import CardForm from "./card/CardForm";
 import CardList from "./card/CardList";
@@ -39,9 +39,9 @@ const ColumnCount = styled.div`
   margin: 0px 10px;
 `;
 
-function Column({ onLog, column, columns, setItemsOfColumn }) {
+function Column({ onLog, column, setItemsOfColumn }) {
   const [enrollMode, setEnrollMode] = useState(false);
-  const { columnId, columnTitle, items } = column;
+  const { columnTitle, items } = column;
 
   const handleCreate = (card) => {
     setEnrollMode(!enrollMode);
