@@ -4,15 +4,17 @@ import CardContainer from "./card/CardContainer";
 import CardInputContainer from "./card/CardInputContainer";
 
 //prettier-ignore
-const ColumnContainer = ({ columnId, title, list ,setColumnData }) => {
+const ColumnContainer = ({ columnId, title, list, setColumnData }) => {
     const [cardList, setCardList] = useState(list);
     const [renderedList, setRenderedList] = useState();
 
     useEffect(() => setCardList(() => list), [list])
+    
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => setRenderedList(() => cardList.map(render)), [cardList]);
 
     const render = (v, index) => {
-        v = {...v, index, setCardList, setColumnData}
+        v = {...v, index, setColumnData}
         return v.isInput
             ? <li key={index}><CardInputContainer {...v} /></li>
             : <li key={index}><CardContainer {...v} /></li>
