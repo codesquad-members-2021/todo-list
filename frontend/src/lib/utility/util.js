@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const calcPastTime = (value) => {
     const today = new Date();
     const timeValue = new Date(value);
@@ -21,4 +23,14 @@ const calcPastTime = (value) => {
     return `${Math.floor(betweenTimeDay / 365)}년 전`;
 };
 
-export { calcPastTime };
+const fetchData = async ({method, url, data = null, config = null }) => {
+    const res =
+        (method === 'get' || method === 'delete')
+            ? await axios[method](url, config)
+            : await axios[method](url, data, config);
+
+    if (method === 'get')
+        return await res.data;
+};
+
+export { calcPastTime, fetchData };
