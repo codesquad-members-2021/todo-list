@@ -56,6 +56,7 @@ function Column({ onLog, column, setItemsOfColumn }) {
       cardTitle: card.cardTitle,
       columnTitle,
       modeType: "add",
+      publishedTime: Date.now(),
     });
   };
 
@@ -73,6 +74,7 @@ function Column({ onLog, column, setItemsOfColumn }) {
       cardTitle: cardTitle,
       columnTitle,
       modeType: "delete",
+      publishedTime: Date.now(),
     });
   };
 
@@ -85,6 +87,7 @@ function Column({ onLog, column, setItemsOfColumn }) {
       cardTitle,
       columnTitle,
       modeType: "update",
+      publishedTime: Date.now(),
     });
   };
 

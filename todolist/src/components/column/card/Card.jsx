@@ -90,8 +90,12 @@ function Card({ card, onDelete, cardContainer }) {
         </CardSection>
         <CardSection>
           <div
-            onMouseOver={() => (cardContainer.current.style.backgroundColor = "red")}
-            onMouseOut={() => (cardContainer.current.style.backgroundColor = "white")}
+            onMouseOver={() =>
+              (cardContainer.current.style.backgroundColor = "red")
+            }
+            onMouseOut={() =>
+              (cardContainer.current.style.backgroundColor = "white")
+            }
           >
             <Button type="delete" onClick={askToDelete} />
           </div>
