@@ -2,12 +2,7 @@ import Foundation
 
 class TaskStackManager {
     
-    // todo, in progress, done
-    var tasks: [TaskStack] {
-        didSet {
-            //NotificationCenter.default.post(name: .updateTasksStatus, object: self)
-        }
-    }
+    var tasks: [TaskStack]
     
     init(){
         tasks = [TaskStack(), TaskStack(), TaskStack()]

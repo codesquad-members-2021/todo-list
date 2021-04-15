@@ -5,7 +5,6 @@ class TaskViewController: UIViewController {
 
     var column: Int?
     let taskStackManager = TaskStackManager()
-    var selectedCell: TaskCell!
     var selectedIndexPath: IndexPath!
 
     @IBOutlet weak var titleLabel: UILabel!

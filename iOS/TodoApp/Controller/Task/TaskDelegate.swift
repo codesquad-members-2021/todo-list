@@ -22,7 +22,6 @@ extension TaskViewController: UIContextMenuInteractionDelegate {
         guard let indexPath = self.taskTableView.indexPathForRow(at: touchedPoint) else { return }
         let cell = self.taskTableView.cellForRow(at: indexPath) as! TaskCell
         self.selectedIndexPath = indexPath
-        self.selectedCell = cell
         cell.becomeFirstResponder()
         let contextMenu = UIContextMenuInteraction(delegate: self)
         cell.addInteraction(contextMenu)
