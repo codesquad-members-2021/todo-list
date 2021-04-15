@@ -21,16 +21,15 @@ const NoteInfoStyle = styled.div`
 `;
 
 const Note = ({ noteList }) => {
-    console.log("노트안의 노트리스트", noteList);
     return (
         <ul>
-            {noteList.map(({ createDateTime, ...rest }) => (
+            {[...noteList].reverse().map(({ createDateTime, ...rest }) => (
                 <NoteStyle key={rest.id}>
                     <NoteProfilePic />
                     <NoteInfoStyle>
                         <NoteAuthor />
                         <NoteBody noteData={rest}/>
-                        <NoteTimeRecord time={createDateTime}/>
+                        <NoteTimeRecord createdTime={createDateTime}/>
                     </NoteInfoStyle>
                 </NoteStyle>
             ))}
