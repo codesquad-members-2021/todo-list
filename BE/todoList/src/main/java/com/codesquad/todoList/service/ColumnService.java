@@ -1,12 +1,11 @@
 package com.codesquad.todoList.service;
 
-import com.codesquad.todoList.entity.Card;
-import com.codesquad.todoList.entity.Columns;
-import com.codesquad.todoList.entity.Project;
+import com.codesquad.todoList.entity.*;
 import com.codesquad.todoList.error.exception.NotFoundCardException;
 import com.codesquad.todoList.error.exception.NotFoundColumnException;
 import com.codesquad.todoList.error.exception.NotFoundProjectException;
 import com.codesquad.todoList.repository.ColumnRepository;
+import com.codesquad.todoList.repository.NoteRepository;
 import com.codesquad.todoList.repository.ProjectRepository;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -27,6 +26,7 @@ public class ColumnService {
 
     private final ColumnRepository columnRepository;
     private final ProjectRepository projectRepository;
+    private final NoteRepository noteRepository;
 
     @Transactional
     public void addColumn(Columns columns) {
@@ -36,20 +36,25 @@ public class ColumnService {
     }
 
     @Transactional
-    public void addCard(Long columnId, Card card) {
+    public Project addCard(Long columnId, Card card) {
         Project project = projectRepository.findById(1L).orElseThrow(NotFoundProjectException::new);
         Columns columns = columnRepository.findById(columnId).orElseThrow(NotFoundColumnException::new);
         columns.addCard(card);
         updateColumn(columns, project);
-        projectRepository.save(project);
+
+        saveNote(new Note(), columns, Action.CREATE, card);
+        return projectRepository.save(project);
     }
 
     @Transactional
     public void deleteCard(Long columnId, Long cardId) {
         Project project = projectRepository.findById(1L).orElseThrow(NotFoundProjectException::new);
         Columns columns = columnRepository.findById(columnId).orElseThrow(NotFoundColumnException::new);
-        columns.deleteCard(cardId);
+        Card card = columns.deleteCard(cardId);
         updateColumn(columns, project);
+
+        saveNote(new Note(), columns, Action.DELETE, card);
+
         projectRepository.save(project);
     }
 
@@ -57,7 +62,7 @@ public class ColumnService {
     public void updateCard(Long columnId, Long cardId, Card card) {
         Project project = projectRepository.findById(1L).orElseThrow(NotFoundProjectException::new);
         Columns columns = columnRepository.findById(columnId).orElseThrow(NotFoundColumnException::new);
-
+        Note note = new Note();
         Card updatedCard = null;
 
         for(Card beforeCard : columns.getCardList()) {
@@ -69,6 +74,8 @@ public class ColumnService {
         if(updatedCard == null) {
             throw new NotFoundCardException();
         }
+
+        saveNote(note, columns, Action.UPDATE, updatedCard);
 
         updateColumn(columns, project);
         projectRepository.save(project);
@@ -93,6 +100,14 @@ public class ColumnService {
                 column.updateColumn(columns);
             }
         }
+    }
+
+    private void saveNote(Note note, Columns columns, Action action, Card card) {
+        note.setBeforeStatus(columns.getName());
+        note.setAfterStatus(columns.getName());
+        note.setAction(action);
+        note.setTitle(card.getTitle());
+        noteRepository.save(note);
     }
 
 }
