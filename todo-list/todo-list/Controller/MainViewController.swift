@@ -13,14 +13,18 @@ class MainViewController: UIViewController {
     private let doingCardManager = CardManager()
     private let doneCardManager = CardManager()
     
+    private let taskManager = TaskManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+
         loadCard()
         NotificationCenter.default.addObserver(self, selector: #selector(postCard), name: CardManager.NotiKeys.addCard, object: nil)
+    
     }
 
     @IBAction func sideMenuButtonTouched(_ sender: Any) {
-        let sideMenuVC = SideMenuViewController(nibName: "SideMenuViewController", bundle: .none)
+        let sideMenuVC = SideMenuViewController(nibName: "SideMenuViewController", bundle: .none, taskList: taskManager)
         self.present(sideMenuVC, animated: true, completion: nil)
     }
     

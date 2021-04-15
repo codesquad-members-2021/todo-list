@@ -10,7 +10,7 @@ public class User {
     @Id
     private Long id;
     private String name;
-    private List<Vertical> verticals = new ArrayList<>();
+    private List<Category> categories = new ArrayList<>();
 
     public User() {
     }
@@ -23,15 +23,15 @@ public class User {
         return name;
     }
 
-    public List<Vertical> getVerticals() {
-        return verticals;
+    public List<Category> getCategories() {
+        return categories;
     }
 
-    public Vertical getVertical(Long id) {
-        return verticals.get(Math.toIntExact(id) - 1);
+    public Category getCategory(Long id) {
+        return categories.get(Math.toIntExact(id) - 1);
     }
 
-    public boolean addVertical(Vertical vertical){
-        return verticals.add(vertical);
+    public boolean addVertical(Category category){
+        return categories.add(category);
     }
 }

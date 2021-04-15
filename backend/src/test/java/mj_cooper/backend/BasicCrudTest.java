@@ -1,8 +1,8 @@
 package mj_cooper.backend;
 
-import mj_cooper.backend.domain.Todo;
+import mj_cooper.backend.domain.Card;
 import mj_cooper.backend.domain.User;
-import mj_cooper.backend.domain.Vertical;
+import mj_cooper.backend.domain.Category;
 import mj_cooper.backend.repository.UserRepository;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @WebAppConfiguration
 @SpringBootTest
 public class BasicCrudTest {
-    private Todo todo;
+    private Card card;
     private final static String TITLE = "study 1234";
 
     @Autowired
@@ -32,14 +32,14 @@ public class BasicCrudTest {
     @DisplayName("Create Todo")
     void createTodoTest() {
         User user = userRepository.findById(1L).get();
-        Vertical vertical = user.getVertical(1L);
+        Category category = user.getCategory(1L);
 
-        vertical.addTodo(new Todo("Study 111"));
-        vertical.addTodo(new Todo("Study 123"));
+        category.addTodo(new Card("Study 111"));
+        category.addTodo(new Card("Study 123"));
 
         User savedUser = userRepository.save(user);
         assertThat(savedUser.getId()).isNotNull();
-        assertThat(savedUser.getVerticals().get(1)).isNotNull();
+        assertThat(savedUser.getCategories().get(1)).isNotNull();
     }
 
 //    @Test

@@ -17,6 +17,8 @@ class ToDoViewController: UIViewController {
     
     private var toDoDelegate: ToDoTableViewDelegate!
     private var toDoDataSource: ToDoTableViewDataSource!
+    private var toDoDragDelegate: ToDoTableViewDragDelegate!
+    private var toDoDropDelegate: ToDoTableViewDropDelegate!
 
     var tableTitle: String!
     var cardManager: CardManager!
@@ -59,9 +61,14 @@ class ToDoViewController: UIViewController {
         toDoDelegate = ToDoTableViewDelegate()
         cardTableView.delegate = toDoDelegate
         
-        toDoDataSource = ToDoTableViewDataSource(cardManager: cardManager)
+        toDoDataSource = ToDoTableViewDataSource(cardSearcher: cardManager)
         cardTableView.dataSource = toDoDataSource
-
+        
+        toDoDragDelegate = ToDoTableViewDragDelegate(cardSearcher: cardManager)
+        cardTableView.dragDelegate = toDoDragDelegate
+        
+        toDoDropDelegate = ToDoTableViewDropDelegate(cardSearcher: cardManager)
+        cardTableView.dropDelegate = toDoDropDelegate
     }
     
     //MARK: - Xib Setting
