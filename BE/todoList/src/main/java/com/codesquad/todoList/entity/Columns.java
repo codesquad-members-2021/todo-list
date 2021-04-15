@@ -1,5 +1,6 @@
 package com.codesquad.todoList.entity;
 
+import com.codesquad.todoList.error.exception.NotFoundCardException;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -34,8 +35,16 @@ public class Columns {
         cardList.add(card);
     }
 
-    public void deleteCard(Long cardId) {
-        cardList.removeIf(card -> card.getId().equals(cardId));
+    public Card deleteCard(Long cardId) {
+        Card card = null;
+        for(Card originalCard : cardList) {
+            if(originalCard.getId().equals(cardId)) {
+                card = originalCard;
+                cardList.remove(originalCard);
+                return card;
+            }
+        }
+        throw new NotFoundCardException();
     }
 
     public void updateColumn(Columns columns) {
