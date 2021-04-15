@@ -77,9 +77,25 @@ class MainViewController: UIViewController {
         })
     }
     
-    private func deleteCard() {
-        
-    }
+//    private func deleteCard() {
+//        guard let card = notification.userInfo?["addCard"] as? AddCard else { return }
+//        DataTaskManager.delete(category: card.category, cardID: <#T##Int#>, completion: { (result) in
+//            DispatchQueue.global().async {
+//                switch result {
+//                case .success(let data):
+//                    if data.data.category == 1 {
+//                        self.willDoCardManager.delete(cardID: <#T##Int#>)
+//                    }else if data.data.category == 2 {
+//                        self.doingCardManager.delete(cardID: <#T##Int#>)
+//                    }else{
+//                        self.doneCardManager.delete(cardID: <#T##Int#>)
+//                    }
+//                case .failure(let error):
+//                    print(error.localizedDescription)
+//                }
+//            }
+//        })
+//    }
     
     private func putCard() {
         

@@ -28,6 +28,11 @@ struct PostCard: Codable {
     let data: Card
 }
 
+struct DeleteCard: Codable {
+    let cardId: Int
+    let category: Int
+}
+
 struct CardData: Codable {
     let data: [CardList]
 }

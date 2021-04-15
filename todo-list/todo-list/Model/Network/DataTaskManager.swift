@@ -40,16 +40,16 @@ class DataTaskManager {
         session.dataTask(with: RequestManager.putRequest(category: category, cardID: cardID, data: data)).resume()
     }
 
-    static func delete(category: Int, cardID: Int, completion: @escaping (Result<Card, Error>) -> Void) {
+    static func delete(category: Int, cardID: Int, completion: @escaping (Result<DeleteCard, Error>) -> Void) {
         session.dataTask(with: RequestManager.deleteRequest(category: category, cardID: cardID)) { (data, response, error) in
             guard let response = response as? HTTPURLResponse, let data = data else { return }
             if (200 ..< 299) ~= response.statusCode {
-                guard let card = ParsingManager.decodeData(type: Card.self, data: data) else { return }
-                completion(.success(card))
+                guard let deleteCardInfo = ParsingManager.decodeData(type: DeleteCard.self, data: data) else { return }
+                completion(.success(deleteCardInfo))
             }else{
                 print(response.statusCode)
                 completion(.failure(error?.localizedDescription as! Error))
             }
-        }
+        }.resume()
     }
 }

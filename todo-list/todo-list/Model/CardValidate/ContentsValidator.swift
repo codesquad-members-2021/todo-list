@@ -12,7 +12,7 @@ class ContentsValidator: InputValidable {
     private var contents: String?
     
     func isValidated(input: String) -> Bool {
-        if input.count > 1 && input.count < 100 {
+        if input.count >= 1 && input.count < 100 {
             self.contents = input
             return true
         } else {
