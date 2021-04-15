@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { TranslateBtn } from "../../common/StyledModels";
+import { TranslateBtn } from '../../common/CommonStyledComponent';
 
 const StyledColumnDeleteButton = styled(TranslateBtn)`
     svg {
@@ -11,9 +11,13 @@ const StyledColumnDeleteButton = styled(TranslateBtn)`
     }
 `;
 
-const ColumnDeleteButton = ({onClick}) => {
+const ColumnDeleteButton = ({ onClick, onMouseEnter, onMouseLeave }) => {
     return (
-        <StyledColumnDeleteButton onClick={onClick && onClick}>
+        <StyledColumnDeleteButton
+            onClick={onClick}
+            onMouseEnter={onMouseEnter}
+            onMouseLeave={onMouseLeave}
+        >
             <svg
                 width="12"
                 height="12"

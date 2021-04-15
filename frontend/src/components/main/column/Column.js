@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import ColumnDeleteButton from './partial/ColumnDeleteButton';
-import ColumnPlusButton from './partial/ColumnPlusButton';
+import ColumnDeleteButton from './ColumnDeleteButton';
+import ColumnPlusButton from './ColumnPlusButton';
 
 const ColumnWrapper = styled.div`
     margin: 0 15px;
@@ -9,8 +9,8 @@ const ColumnWrapper = styled.div`
 `;
 
 const ColumnHeader = styled.div`
+    width: 334px;
     display: flex;
-    padding: 8px 0;
     justify-content: flex-start;
     align-items: center;
 
@@ -52,7 +52,7 @@ const Column = ({ title, cardList, plusEvent }) => {
         <ColumnWrapper>
             <ColumnHeader>
                 <ColumnHeaderTitle>{title}</ColumnHeaderTitle>
-                <ColumnHeaderCount>{cardList && cardList.length}</ColumnHeaderCount>
+                <ColumnHeaderCount>{cardList?.length}</ColumnHeaderCount>
                 <ColumnHeaderButtons>
                     <ColumnPlusButton onClick={plusEvent} />
                     <ColumnDeleteButton />

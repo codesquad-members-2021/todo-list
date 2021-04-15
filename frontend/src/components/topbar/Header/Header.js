@@ -1,18 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
-import HeaderMenuButton from './partial/HeaderMenuButton';
+import HeaderMenuButton from './HeaderMenuButton';
 
 const StyledHeader = styled.div`
     --title-color: #010101;
 
     display: flex;
     align-items: center;
-    position: relative;
 
     padding: 0px 50px;
+    margin-left: 23px;
     height: 112px;
-
-    border-bottom: 1px solid black; // 임시
+    width: 100%;
 
     .title {
         width: 175px;
