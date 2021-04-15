@@ -97,9 +97,9 @@ extension CardManager: CardAddable {
 extension CardManager: CardDeletable {
     
     func delete(cardAt index: Int) {
-        guard let categoryID = categoryID else { return }
+        guard let categoryID = categoryID, let card = cardList?[index] else { return }
         
-        let userInfo = ["category": categoryID, "cardID": index+1]
+        let userInfo: [String: Any] = ["category": categoryID, "cardID": index+1, "title": card.title]
         NotificationCenter.default.post(name: NotiKeys.deleteCard, object: self, userInfo: userInfo)
     }
 

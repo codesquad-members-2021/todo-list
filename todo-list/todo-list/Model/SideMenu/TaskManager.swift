@@ -33,7 +33,8 @@ class TaskManager {
     }
     
     func addTask(category: String, cardTitle: String, taskStyle: Style) {
-        let content = "%\(category)%의 %\(cardTitle)%을(를) %\(taskStyle.rawValue)%했습니다."
+        let preposition = taskStyle == Style.new ? "에" : "의"
+        let content = "%\(category)%\(preposition) %\(cardTitle)%을(를) %\(taskStyle.rawValue)%했습니다."
         let task = makeTask(of: content)
         list.append(task)
     }
