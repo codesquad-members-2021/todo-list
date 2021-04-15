@@ -86,7 +86,12 @@ export default function Board({ onLog }) {
   return (
     <BoardBlock>
       {columns.map((column) => (
-        <Column onLog={onLog} key={column.columnId} column={column} setItemsOfColumn={setItemsOfColumn} />
+        <Column
+          onLog={onLog}
+          key={column.columnId}
+          column={column}
+          setItemsOfColumn={setItemsOfColumn}
+        />
       ))}
       <Button type="add" subType="bigSize" onClick={addColumn} />
     </BoardBlock>

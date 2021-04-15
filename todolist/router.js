@@ -11,10 +11,14 @@ router.get("/", function (req, res) {
 });
 
 router.post("/setData", function (req, res) {
-  mySchema.updateOne({ _id: process.env.COLLECTION_ID }, { $set: { columnList: req.body } }, (err, result) => {
-    err ? console.log("err", err) : console.log("result:", result);
-    res.send("잘 들어감");
-  });
+  mySchema.updateOne(
+    { _id: process.env.COLLECTION_ID },
+    { $set: { columnList: req.body } },
+    (err, result) => {
+      err ? console.log("err", err) : console.log("result:", result);
+      res.send("잘 들어감");
+    }
+  );
 });
 
 module.exports = router;

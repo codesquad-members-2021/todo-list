@@ -3,6 +3,32 @@ import { useState } from "react";
 import LogStorage from "./LogStorage";
 import Button from "../utils/Button";
 
+function NavBar({ logs }) {
+  const [clicked, setClickState] = useState(false);
+  const [appear, setLogViewState] = useState(false);
+  const handleLogBtnClick = () => {
+    setLogViewState(true);
+    setClickState(true);
+  };
+  return (
+    <>
+      <NavBlock>
+        <TitleBlock>TO-DO LIST</TitleBlock>
+        <LogBtnBlock>
+          <Button type="menu" onClick={handleLogBtnClick} size="bigSize" />
+        </LogBtnBlock>
+      </NavBlock>
+
+      <LogStorage
+        logs={logs}
+        clicked={clicked}
+        appear={appear}
+        setLogViewState={setLogViewState}
+      ></LogStorage>
+    </>
+  );
+}
+
 const NavBlock = styled.div`
   width: 1440px;
   height: 112px;
@@ -32,26 +58,5 @@ const LogBtnBlock = styled.div`
   right: 84px;
   top: 40px;
 `;
-function NavBar(props) {
-  const { logs } = props;
-  const [clicked, setClickState] = useState(false);
-  const [appear, setLogViewState] = useState(false);
-  const handleLogBtnClick = () => {
-    setLogViewState(true);
-    setClickState(true);
-  };
-  return (
-    <>
-      <NavBlock>
-        <TitleBlock>TO-DO LIST</TitleBlock>
-        <LogBtnBlock>
-          <Button type="menu" onClick={handleLogBtnClick} size="bigSize" />
-        </LogBtnBlock>
-      </NavBlock>
-
-      <LogStorage logs={logs} clicked={clicked} appear={appear} setLogViewState={setLogViewState}></LogStorage>
-    </>
-  );
-}
 
 export default NavBar;

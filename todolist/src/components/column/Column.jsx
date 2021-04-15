@@ -53,6 +53,7 @@ function Column({ onLog, column, setItemsOfColumn }) {
       cardTitle: card.cardTitle,
       columnTitle,
       modeType: "add",
+      publishedTime: Date.now(),
     });
   };
 
@@ -62,11 +63,15 @@ function Column({ onLog, column, setItemsOfColumn }) {
   };
 
   const handleDelete = ({ cardId, cardTitle }) => {
-    setItemsOfColumn({ ...column, items: items.filter((e) => e.cardId !== cardId) });
+    setItemsOfColumn({
+      ...column,
+      items: items.filter((e) => e.cardId !== cardId),
+    });
     onLog({
       cardTitle: cardTitle,
       columnTitle,
       modeType: "delete",
+      publishedTime: Date.now(),
     });
   };
 
@@ -79,6 +84,7 @@ function Column({ onLog, column, setItemsOfColumn }) {
       cardTitle,
       columnTitle,
       modeType: "update",
+      publishedTime: Date.now(),
     });
   };
 
@@ -93,7 +99,11 @@ function Column({ onLog, column, setItemsOfColumn }) {
       </ColumnMenu>
       {enrollMode ? (
         <CardContainer>
-          <CardForm onSubmit={handleCreate} onCancel={handleCancel} onLog={onLog} />
+          <CardForm
+            onSubmit={handleCreate}
+            onCancel={handleCancel}
+            onLog={onLog}
+          />
         </CardContainer>
       ) : (
         ""
