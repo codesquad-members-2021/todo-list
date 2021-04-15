@@ -135,4 +135,13 @@ public class CardService {
         return false;
     }
 
+    private void rebalancePriority(CardColumn cardColumn, User user) {
+        List<Card> cards = getList(cardColumn, user);
+        double priority = 0.0;
+        for (Card card : cards) {
+            priority += PRIORITY_STEP;
+            card.setPriority(priority);
+        }
+        cardRepository.saveAll(cards);
+    }
 }
