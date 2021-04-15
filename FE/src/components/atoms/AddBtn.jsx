@@ -11,11 +11,8 @@ const AddBtn = () => {
         fill="#0075DE"
         xmlns="http://www.w3.org/2000/svg"
       >
-        {/* <g filter="url(#filter0_bdd)"> */}
         <circle cx="36" cy="36" r="32" fill="#0075DE" />
-        {/* </g> */}
         <defs>
-          {/* <filter id="filter0_bdd" x="0" y="0" width="72" height="74" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB"> */}
           <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feGaussianBlur in="BackgroundImage" stdDeviation="2" />
           <feComposite
@@ -86,7 +83,7 @@ export default AddBtn;
 
 const BtnWrap = styled.div`
   position: absolute;
-  left: 1400px;
+  left: 90%;
   top: 800px;
   display: flex;
   align-items: center;

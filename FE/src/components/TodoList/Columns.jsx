@@ -33,14 +33,14 @@ const Column = ({ data: { columns } }) => {
   };
 
   const addColumn = () => {
-    setColumnData([
-      ...columnData,
-      {
-        id: ++columnData.length,
-        title: prompt('칼럼 이름을 입력하세요', 'Untitled'),
-        cards: [],
-      },
-    ]);
+    const columnToAdd = {
+      id: columnData.length + 1,
+      title: prompt('칼럼 이름을 입력하세요'),
+      cards: [],
+    };
+    if (columnToAdd.title) {
+      setColumnData([...columnData, columnToAdd]);
+    }
   };
 
   const checkInputValue = ({ title, content }, callbackSetInput) => {
