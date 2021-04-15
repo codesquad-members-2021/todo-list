@@ -42,13 +42,22 @@ public class ApiCardController {
 
     @PutMapping("/{cardId}")
     public CardDto update(@PathVariable Long cardId, CardDto cardToUpdate) {
-        cardService.update(cardId, cardToUpdate);
+        Long columnId = cardService.update(cardId, cardToUpdate);
+        System.out.println(columnId);
+        System.out.println(cardToUpdate.getColumnId());
+        if (columnId == cardToUpdate.getColumnId()) {
+            historyService.generateUpdate(cardToUpdate);
+        } else {
+            historyService.generateMove(columnId, cardToUpdate);
+        }
+
         return cardToUpdate;
     }
 
     @DeleteMapping("/{cardId}")
     public String delete(@PathVariable Long cardId) {
-        cardService.delete(cardId);
+        CardDto cardDto = cardService.delete(cardId);
+        historyService.generateRemove(cardDto);
         return cardId + " card is deleted";
     }
 }

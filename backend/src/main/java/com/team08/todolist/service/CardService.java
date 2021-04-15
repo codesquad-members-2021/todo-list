@@ -26,14 +26,18 @@ public class CardService {
         return cardRepository.findAll();
     }
 
-    public void delete(Long cardId) {
+    public CardDto delete(Long cardId) {
+        Card card = cardRepository.findById(cardId).orElseThrow(IllegalArgumentException::new);
         cardRepository.deleteById(cardId);
+        return CardDto.of(card);
     }
 
-    public void update(Long cardId, CardDto cardToUpdate) {
+    public Long update(Long cardId, CardDto cardToUpdate) {
         Card card = cardRepository.findById(cardId)
                 .orElseThrow(IllegalArgumentException::new);
+        Long columnId = card.getColumnid();
         card.update(cardToUpdate);
         cardRepository.save(card);
+        return columnId;
     }
 }

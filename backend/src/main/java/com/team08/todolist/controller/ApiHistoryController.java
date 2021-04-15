@@ -1,6 +1,5 @@
 package com.team08.todolist.controller;
 
-import com.team08.todolist.dto.CardDto;
 import com.team08.todolist.dto.HistoryDto;
 import com.team08.todolist.service.HistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
