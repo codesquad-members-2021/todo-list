@@ -1,5 +1,6 @@
 package com.codesquad.todolist.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
@@ -8,7 +9,6 @@ import java.time.format.DateTimeFormatter;
 
 @Table("HISTORY")
 public class History {
-    private static final DateTimeFormatter FORMATTER_PATTERN = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
     @Id
     private Long id;
@@ -17,6 +17,8 @@ public class History {
     private String title;
     private Long fromColumnId;
     private Long toColumnId;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm", timezone = "Asia/Seoul")
     private LocalDateTime createdTime;
 
     public History() {}
@@ -51,7 +53,7 @@ public class History {
         return toColumnId;
     }
 
-    public String getCreatedTime() {
-        return createdTime.format(FORMATTER_PATTERN);
+    public LocalDateTime getCreatedTime() {
+        return createdTime;
     }
 }

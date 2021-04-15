@@ -6,7 +6,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/card")
@@ -21,7 +23,7 @@ public class CardController {
     @GetMapping("/{columnId}")
     public ResponseEntity view(@PathVariable Long columnId) {
         List<Card> cards = cardService.viewCardByColumnId(columnId);
-        return new ResponseEntity(cards, HttpStatus.OK);
+        return ResponseEntity.ok(responseBody("cards", cards));
     }
 
 
@@ -30,7 +32,7 @@ public class CardController {
                                  @RequestParam(value = "contents") String contents) {
         cardService.nullCheck(title, contents);
         Card card = cardService.create(columnId, title, contents);
-        return new ResponseEntity(card, HttpStatus.OK);
+        return ResponseEntity.ok(responseBody("card", card));
     }
 
     @PutMapping("/{id}")
@@ -38,18 +40,23 @@ public class CardController {
                                  @RequestParam(value = "contents") String contents) {
         cardService.nullCheck(title, contents);
         Card card = cardService.update(id, title, contents);
-        return new ResponseEntity(card, HttpStatus.OK);
+        return ResponseEntity.ok(responseBody("card", card));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity delete(@PathVariable Long id) {
+    public void delete(@PathVariable Long id) {
         cardService.delete(id);
-        return new ResponseEntity(HttpStatus.OK);
     }
 
     @PutMapping("/{id}/move/{columnId}/{index}")
     public ResponseEntity move(@PathVariable Long id, @PathVariable Long columnId, @PathVariable int index) {
         Card card = cardService.move(id, columnId, index);
-        return new ResponseEntity(card, HttpStatus.OK);
+        return ResponseEntity.ok(responseBody("card", card));
+    }
+
+    private Map<String, Object> responseBody(String rootName, Object body) {
+        Map<String, Object> responseBody = new HashMap<>();
+        responseBody.put(rootName, body);
+        return responseBody;
     }
 }

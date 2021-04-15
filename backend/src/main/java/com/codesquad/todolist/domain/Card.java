@@ -1,5 +1,6 @@
 package com.codesquad.todolist.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
@@ -14,7 +15,10 @@ public class Card {
     private String title;
     private String contents;
     private Long columnId;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm", timezone = "Asia/Seoul")
     private LocalDateTime createdTime;
+
     private Double flag;
 
     public Card(String title, String contents, Long columnId, Double flag) {
