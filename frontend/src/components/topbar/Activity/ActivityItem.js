@@ -37,33 +37,30 @@ const StyledActivityItemContent = styled.div`
     }
 `;
 
-const ActivityItem = ({ toColumn, fromColumn, title, action, actionUserId, convertTime }) => {
+const ActivityItem = ({ action, convertTime, from, title, to, user }) => {
     return (
         <StyledActivityItemWrapper>
             <StyledActivityItem>
                 <img src="/images/smile.png" alt="smile" height="100%" width="32px" />
 
                 <StyledActivityItemContent>
-                    <div className="author">@작성자ID-{actionUserId}</div>
-                        {/* action 등록, 변경, 삭제 */}
-                        {action !== "이동" ? (
-                            <div className="content">
-                                <span className="bold">{toColumn}</span>
-                                {action === '등록'
-                                    ? '에'
-                                    : (action === '변경' || action === '삭제') && '에서'
-                                }{' '}
-                                <span className="bold">{title}</span>을{' '}
-                                <span className="bold">{action}</span>하였습니다.
-                            </div>
-                        ) : (
-                            <div className="content">
-                                <span className="bold">{title}</span>를{" "}
-                                <span className="bold">{fromColumn}</span>에서{" "}
-                                <span className="bold">{toColumn}</span>로{" "}
-                                <span className="bold">{action}</span>하였습니다.
-                            </div>
-                        )}
+                    <div className="author">@{user}</div>
+                        <div className="content">
+                            <span>{action + " "}</span>
+                            <span className="bold">{title}</span>
+                            {(action === "Moved") && (
+                                <>
+                                    <span>{" from "}</span>
+                                    <span className="bold">{from}</span>
+                                </>
+                            )}
+                            {(action === "Moved" || action === "Added") && (
+                                <>
+                                    <span>{" to "}</span>
+                                    <span className="bold">{to}</span>
+                                </>
+                            )}
+                        </div>
                     <div className="time">{convertTime}</div>
                 </StyledActivityItemContent>
             </StyledActivityItem>

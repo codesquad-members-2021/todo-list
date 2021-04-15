@@ -23,6 +23,7 @@ const StyledActivity = styled.div`
 
     padding: 0 20px 20px;
     overflow-y: scroll;
+    z-index: 9999;
 `;
 
 const CloseWrapper = styled.div`
@@ -45,8 +46,8 @@ const Activity = ({ activityHide, activityDatas, onClickForLogVisible }) => {
                 <ActivityCloseButton onClick={onClickForLogVisible} />
             </CloseWrapper>
             <ActivityItemsWrapper>
-                {activityDatas.map((data) => (
-                    <ActivityItem key={data.id} {...data} />
+                {activityDatas && activityDatas.map((data, i) => (
+                    <ActivityItem key={i} {...data} />
                 ))}
             </ActivityItemsWrapper>
         </StyledActivity>
