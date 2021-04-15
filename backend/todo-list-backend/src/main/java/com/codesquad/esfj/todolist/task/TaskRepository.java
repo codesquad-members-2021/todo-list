@@ -11,16 +11,24 @@ import java.util.stream.Collectors;
 @Component
 public class TaskRepository {
     private Map<Long, Task> tasks = new ConcurrentHashMap<Long, Task>() {{
-        Task task = new Task(1L, "title1", "content1", "writer1");
-        Task task2 = new Task(2L, "title2", "content2", "writer2");
+        Task task = new Task(1L, "title1", "content1", "writer1", "todo");
+        Task task2 = new Task(2L, "title2", "content2", "writer2", "todo");
         task.moveAfter(2L);
         put(1L, task);
         put(2L, task2);
+        put(3L, new Task(3L, "title2", "content2", "writer2", "done"));
     }};
 
     public List<Task> findAllByNotDeleted() {
         return tasks.values().stream()
                 .filter(task -> !task.isDeleted())
+                .collect(Collectors.toList());
+    }
+
+    public List<Task> findAllByNotDeletedAndTaskType(String taskType) {
+        return tasks.values().stream()
+                .filter(task -> !task.isDeleted())
+                .filter(task -> task.getTaskType().equals(taskType))
                 .collect(Collectors.toList());
     }
 
@@ -31,6 +39,12 @@ public class TaskRepository {
     public Optional<Task> findOneByPreviousId(long previousId) {
         return tasks.values().stream()
                 .filter(task -> task.getPreviousId().equals(previousId))
+                .findAny();
+    }
+
+    public Optional<Task> findOneByPreviousIdAndTaskType(long previousId, String taskType) {
+        return tasks.values().stream()
+                .filter(task -> task.getPreviousId().equals(previousId) && task.getTaskType().equals(taskType))
                 .findAny();
     }
 

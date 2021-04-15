@@ -5,75 +5,56 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.*;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 @RestController
 public class TaskController {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    private TaskRepository taskRepository;
+    private TaskService taskService;
 
-    public TaskController(TaskRepository taskRepository) {
-        this.taskRepository = taskRepository;
+    public TaskController(TaskService taskService) {
+        this.taskService = taskService;
     }
 
     @GetMapping("/tasks")
-    public List<Task> readAll() {
-        return taskRepository.findAllByNotDeleted();
+    public Map<String, List<TaskDTO.Response>> readAll(@RequestParam Optional<String> taskType) {
+        if (taskType.isPresent()) {
+            return taskService.readAllBy(taskType.get());
+        }
+
+        return taskService.readAll();
     }
 
     @GetMapping("/tasks/{id}")
-    public Task readOne(@PathVariable Long id) {
-        return taskRepository.findOne(id);
+    public TaskDTO.Response readOne(@PathVariable long id) {
+        return taskService.readOne(id);
     }
 
     @PostMapping("/tasks")
     @ResponseStatus(HttpStatus.CREATED)
-    public Long create(@RequestBody Task task) {
-        Task topTask = readByPreviousId(Task.TOP_PREVIOUS_ID);
-        long id = taskRepository.save(task).getId();
-
-        topTask.moveAfter(id);
-        taskRepository.save(topTask);
-
-        return id;
+    public long create(@RequestBody Task task) {
+        return taskService.create(task);
     }
 
     @PutMapping("/tasks/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void update(@PathVariable Long id, @RequestBody Task updatedTask) {
-        Task task = taskRepository.findOne(id).update(updatedTask);
-        taskRepository.save(task);
+    public void update(@PathVariable long id, @RequestBody Task updatedTask) {
+        taskService.update(id, updatedTask);
     }
 
     @DeleteMapping("/tasks/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable Long id) {
-        Task task = taskRepository.findOne(id);
-        Optional<Task> nextTask = taskRepository.findOneByPreviousId(id);
-        if (nextTask.isPresent()) {
-            Task presentNextTask = nextTask.get();
-            presentNextTask.moveAfter(task.getPreviousId());
-            taskRepository.save(presentNextTask);
-        }
-
-        taskRepository.save(task.delete());
+    public void delete(@PathVariable long id) {
+        taskService.delete(id);
     }
 
-    @PatchMapping("/tasks/{id}/{targetId}")
+    @PatchMapping("/tasks/{id}/{targetTaskType}/{targetId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void move(@PathVariable Long id, @PathVariable Long targetId) {
-        Task taskToMove = taskRepository.findOne(id);
-        Task originalNextTask = readByPreviousId(id);
-        Task newNextTask = readByPreviousId(targetId);
-
-        originalNextTask.moveAfter(taskToMove.getPreviousId());
-        taskToMove.moveAfter(newNextTask.getPreviousId());
-        newNextTask.moveAfter(taskToMove.getId());
-    }
-
-    private Task readByPreviousId(Long previousId) {
-        return taskRepository.findOneByPreviousId(previousId).orElseThrow(IllegalArgumentException::new);
+    public void move(@PathVariable long id, @PathVariable String targetTaskType, @PathVariable long targetId) {
+        taskService.move(id, targetTaskType, targetId);
     }
 }
