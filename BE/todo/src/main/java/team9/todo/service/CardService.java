@@ -124,4 +124,15 @@ public class CardService {
         card.validateOwner(user.getId());
         return card;
     }
+
+    private boolean checkRebalance(double renderedPriority, Card prevCard, Card nextCard) {
+        if (prevCard != null && renderedPriority == prevCard.getPriority()) {
+            return true;
+        }
+        if (nextCard != null && renderedPriority == nextCard.getPriority()) {
+            return true;
+        }
+        return false;
+    }
+
 }
