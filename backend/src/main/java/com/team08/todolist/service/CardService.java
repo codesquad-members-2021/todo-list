@@ -18,12 +18,12 @@ public class CardService {
         this.cardRepository = cardRepository;
     }
 
-    public void create(CardDto cardToCreate){
-        cardRepository.save(cardToCreate.toEntity());
+    public void create(Card cardToCreate) {
+        cardRepository.save(cardToCreate);
     }
 
-    public List<Card> findAll(){
-       return cardRepository.findAll();
+    public List<Card> findAll() {
+        return cardRepository.findAll();
     }
 
 }

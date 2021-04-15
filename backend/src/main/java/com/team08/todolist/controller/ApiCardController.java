@@ -32,6 +32,7 @@ public class ApiCardController {
 
     @PostMapping
     public CardDto create(CardDto cardToCreate) {
+        cardService.create(cardToCreate.toEntity());
         return cardToCreate;
     }
 

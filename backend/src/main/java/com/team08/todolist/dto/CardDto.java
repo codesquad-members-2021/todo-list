@@ -55,7 +55,7 @@ public class CardDto {
     }
 
     public Card toEntity() {
-        return new Card(null, "woody", title, content, createdDateTime, isApp, columnId, position);
+        return new Card(null, "august17", title, content, createdDateTime, isApp, columnId, position);
     }
 
     public static CardDto of(Card card) {
