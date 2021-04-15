@@ -10,7 +10,7 @@ public interface TodoLogRepository extends CrudRepository<TodoLog, Long> {
 
     @Query("SELECT ID, ACTION, FROM_COLUMN_TITLE, TO_COLUMN_TITLE, TASK_TITLE, CREATED_DATE_TIME\n" +
             "FROM TODO_LOG WHERE TODO_USER=:todoUser \n" +
-            "ORDER BY CREATED_DATE_TIME DESC LIMIT 5")
+            "ORDER BY CREATED_DATE_TIME DESC")
     List<TodoLog> findFiveTodoLogByUser(@Param("todoUser") Long todoUser);
 
 }
