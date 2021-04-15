@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
-import TodoItem from "./TodoItem";
-import TodoListForm from "./TodoListForm";
-import DeleteBtn from "../../atom/DeleteBtn.jsx";
-import styled from "styled-components";
-import todoListService from "../../../service/todoListService.js";
-import useTodoHook from "../../../hook/todoHook";
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import TodoItem from './TodoItem';
+import TodoListForm from './TodoListForm';
+import DeleteBtn from '../../atom/DeleteBtn.jsx';
+import styled from 'styled-components';
+import todoListService from '../../../service/todoListService.js';
+import useTodoHook from '../../../hook/todoHook';
 
 const StyledTodoList = styled.div`
   width: 308px;
@@ -81,7 +81,8 @@ const TodoList = ({
 }) => {
   const [todos, setTodos] = useState(todoCards);
   const [loading, postTodos, deleteTodos, putTodos, moveTodos] = useTodoHook(
-    setTodos
+    setTodos,
+    setTodoColumns
   );
   const [formSelected, setFormSelected] = useState(false);
   const [dragEl, setDragEl] = useState(null);
@@ -97,14 +98,14 @@ const TodoList = ({
       columnTitle: title,
       itemTitle: itemTitle,
       date: itemDate,
-      action: "add",
+      action: 'add',
     });
     postTodos(id, cardId, todoCard);
   };
 
   const deleteTodoItem = async (cardId) => {
     const newLog = getLogData(cardId);
-    postLogs({ ...newLog, action: "delete" });
+    postLogs({ ...newLog, action: 'delete' });
     deleteTodos(id, cardId);
   };
 
@@ -112,7 +113,7 @@ const TodoList = ({
     const newLog = getLogData(cardId);
     postLogs({
       ...newLog,
-      action: "update",
+      action: 'update',
       changedTitle: newTodo.title,
     });
     putTodos(id, cardId, newTodo);
@@ -154,10 +155,11 @@ const TodoList = ({
   };
 
   const handleDrop = (e) => {
-    const cardData = JSON.parse(e.dataTransfer.getData("cardData"));
+    const cardData = JSON.parse(e.dataTransfer.getData('cardData'));
     const { beforeColumnId, ...cData } = cardData;
     e.preventDefault();
     const afterElement = getDragAfterElement(e.clientY);
+    if (afterElement && +afterElement.id === cData.id) return;
     if (afterElement === undefined) {
       setTodoColumns((todoColumns) => {
         delete todoColumns[beforeColumnId].todoCards[cData.id];
@@ -165,7 +167,7 @@ const TodoList = ({
         return { ...todoColumns };
       });
       //해당 컬럼에 집어넣기
-      const todoDB = JSON.parse(localStorage.getItem("todos"));
+      const todoDB = JSON.parse(localStorage.getItem('todos'));
       const columnCardList = todoDB.todoData[id].todoCards;
       const deleteColumnCardList = todoDB.todoData[beforeColumnId].todoCards;
       todoDB.todoData[id].todoCards = {
@@ -173,31 +175,34 @@ const TodoList = ({
         [cData.id]: cData,
       };
       delete deleteColumnCardList[cardData.id];
-      localStorage.setItem("todos", JSON.stringify({ ...todoDB }));
+      localStorage.setItem('todos', JSON.stringify({ ...todoDB }));
     } else {
       let newTodoCardList;
       setTodoColumns((todoColumns) => {
         delete todoColumns[beforeColumnId].todoCards[cData.id];
         const cardList = todoColumns[id].todoCards;
         newTodoCardList = addItem(cardList, afterElement.id, cData);
+        console.log(newTodoCardList);
         todoColumns[id].todoCards = newTodoCardList;
         return { ...todoColumns };
       });
       //LOCALSTORAGE 부분 해야함
-      const todoDB = JSON.parse(localStorage.getItem("todos"));
+      const todoDB = JSON.parse(localStorage.getItem('todos'));
       todoDB.todoData[id].todoCards = newTodoCardList;
-      const deleteColumnCardList = todoDB.todoData[beforeColumnId].todoCards;
-      delete deleteColumnCardList[cardData.id];
-      localStorage.setItem("todos", JSON.stringify(todoDB));
+      if (id !== beforeColumnId) {
+        const deleteColumnCardList = { ...todoDB.todoData[beforeColumnId].todoCards };
+        delete deleteColumnCardList[cardData.id];
+        todoDB.todoData[beforeColumnId].todoCards = deleteColumnCardList;
+      }
+      localStorage.setItem('todos', JSON.stringify(todoDB));
     }
-    setDragEl("드래그 끝났다!");
   };
 
   const addItem = (cardList, cardId, data) => {
     const newCardList = {};
     for (const key in cardList) {
-      if (key === cardId) newCardList[data.id] = data;
-      newCardList[key] = cardList[key];
+      if (key === cardId) newCardList[data.id] = { ...data };
+      newCardList[key] = { ...cardList[key] };
     }
     return newCardList;
   };
@@ -225,25 +230,21 @@ const TodoList = ({
           <div>
             <AddButton
               onClick={toggleForm}
-              width="14"
-              height="14"
-              viewBox="0 0 14 14"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+              width='14'
+              height='14'
+              viewBox='0 0 14 14'
+              fill='none'
+              xmlns='http://www.w3.org/2000/svg'
             >
-              <path d="M0.105709 7.53033L0.105709 6.46967H6.46967V0.105713H7.53033V6.46967H13.8943V7.53033H7.53033V13.8943H6.46967V7.53033H0.105709Z" />
+              <path d='M0.105709 7.53033L0.105709 6.46967H6.46967V0.105713H7.53033V6.46967H13.8943V7.53033H7.53033V13.8943H6.46967V7.53033H0.105709Z' />
             </AddButton>
             <DeleteBtn deleteFn={() => deleteTodoColumn(id)} />
           </div>
         </TodoTitleDiv>
 
-        {formSelected ? (
-          <TodoListForm addTodoItem={addTodoItem} toggleForm={toggleForm} />
-        ) : (
-          <></>
-        )}
+        {formSelected ? <TodoListForm addTodoItem={addTodoItem} toggleForm={toggleForm} /> : <></>}
         <div
-          className="todoCardList"
+          className='todoCardList'
           onDrop={handleDrop}
           onDragOver={handledragOver}
           ref={currentColumnDiv}

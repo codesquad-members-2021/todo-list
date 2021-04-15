@@ -1,12 +1,12 @@
-import React, { useRef, useState } from "react";
-import DeleteBtn from "../../atom/DeleteBtn.jsx";
-import styled from "styled-components";
-import Input from "../../atom/Input.jsx";
-import { ConfirmBtn, CancelBtn } from "../../atom/Button.jsx";
+import React, { useRef, useState } from 'react';
+import DeleteBtn from '../../atom/DeleteBtn.jsx';
+import styled from 'styled-components';
+import Input from '../../atom/Input.jsx';
+import { ConfirmBtn, CancelBtn } from '../../atom/Button.jsx';
 
 export const TodoCard = styled.div`
   display: flex;
-  flex-direction: ${(props) => (props.flexDir === "column" ? "column" : "row")};
+  flex-direction: ${(props) => (props.flexDir === 'column' ? 'column' : 'row')};
   align-items: flex-start;
   padding: 16px;
   width: 288px;
@@ -68,8 +68,7 @@ const TodoItem = ({
   };
 
   const handleChange = () => {
-    if (inputTitleRef.current.value && inputContentRef.current.value)
-      setIsDisabled(false);
+    if (inputTitleRef.current.value || inputContentRef.current.value) setIsDisabled(false);
     else setIsDisabled(true);
   };
 
@@ -80,37 +79,30 @@ const TodoItem = ({
   const handleDragStart = (e) => {
     setDragEl({ beforeColumnId: columnId, ...todoCard });
     setIsDraged(true);
-    e.dataTransfer.setData(
-      "cardData",
-      JSON.stringify({ beforeColumnId: columnId, ...todoCard })
-    );
+    e.dataTransfer.setData('cardData', JSON.stringify({ beforeColumnId: columnId, ...todoCard }));
   };
 
   if (isEditing) {
     return (
-      <TodoCard flexDir="column">
+      <TodoCard flexDir='column'>
         <Input
           defaultValue={inputTitle}
-          placeholder="제목을 입력하세요"
-          name="title"
+          placeholder='제목을 입력하세요'
+          name='title'
           handleChange={handleChange}
           inputRef={inputTitleRef}
         ></Input>
         <Input
           defaultValue={inputContent}
-          placeholder="내용을 입력하세요"
-          name="content"
+          placeholder='내용을 입력하세요'
+          name='content'
           handleChange={handleChange}
           inputRef={inputContentRef}
         ></Input>
 
         <TodoCardBtnWrapper>
-          <ConfirmBtn
-            value="수정"
-            handleClick={editItem}
-            disabled={isDisabled}
-          />
-          <CancelBtn value="취소" handleClick={toggleEditForm} />
+          <ConfirmBtn value='수정' handleClick={editItem} disabled={isDisabled} />
+          <CancelBtn value='취소' handleClick={toggleEditForm} />
         </TodoCardBtnWrapper>
       </TodoCard>
     );
@@ -118,9 +110,9 @@ const TodoItem = ({
     return (
       <TodoCard
         id={todoCard.id}
-        draggable="true"
+        draggable='true'
         onDoubleClick={toggleEditForm}
-        flexDir="row"
+        flexDir='row'
         onDragOver={handleDragOver}
         onDragStart={handleDragStart}
       >
