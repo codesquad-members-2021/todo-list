@@ -1,10 +1,9 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import Icon from '../utilComponent/Icon';
 import Note from './note/Note';
 
-//transform: scale(0) & scale(1)로 사이드바 토글 효과 넣기
 const SidebarStyle = styled.aside`
         position: absolute;
         box-sizing: border-box;
@@ -23,12 +22,24 @@ const IconBox = styled.div`
     height: 20px;
 `;
 
-//const noteData = [{note}, {note}, ]
+const Sidebar = ({ sidebarRef, sidebarLog, isOpen, setIsOpen }) => {
+    const [ noteList, setNoteList ] = useState([]);
 
-const Sidebar = ({ sidebarRef, open , noteList, setNoteList }) => {
+    useEffect(() => {
+        if(sidebarLog){
+            const { title, action, columnName, createDateTime } = sidebarLog;
+            const newObj = {
+                "beforeStatus": columnName,
+                "afterStatus": columnName,
+                "title": title,
+                "action": action,
+                "createDateTime": createDateTime
+            }
+            setNoteList([ newObj, ...noteList])
+        }
+    }, [sidebarLog])
 
     const fetchNoteListData = async() => {
-        console.log("fetch")
         try {
             const request = '/notes';
             const response = await axios.get(request);
@@ -39,10 +50,11 @@ const Sidebar = ({ sidebarRef, open , noteList, setNoteList }) => {
     }
 
     useEffect(() => {
-        if (open) fetchNoteListData();
-    }, [open]);
+        if (isOpen) fetchNoteListData();
+    }, [isOpen]);
 
     const closeSidebar = () => {
+        setIsOpen(false);
         const sidebarPage = sidebarRef.current;
         sidebarPage.style.transform = 'translateX(432px)';
     };
@@ -52,7 +64,7 @@ const Sidebar = ({ sidebarRef, open , noteList, setNoteList }) => {
             <IconBox>
                 <Icon type={"close"} handleClick={closeSidebar}/>
             </IconBox>
-            <Note noteList={noteList}/>
+            <Note noteList={noteList} isOpen={isOpen} sidebarLog={sidebarLog}/>
         </SidebarStyle>
     );
 };
