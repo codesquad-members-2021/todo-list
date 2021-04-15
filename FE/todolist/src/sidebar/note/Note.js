@@ -20,16 +20,21 @@ const NoteInfoStyle = styled.div`
     margin-right: 1rem;
 `;
 
-const Note = ({ noteList }) => {
+const Note = ({ noteList, isOpen }) => {
     return (
         <ul>
-            {[...noteList].reverse().map(({ createDateTime, ...rest }) => (
+            {[...noteList].map(({ createDateTime, ...rest }) => (
                 <NoteStyle key={rest.id}>
                     <NoteProfilePic />
                     <NoteInfoStyle>
                         <NoteAuthor />
-                        <NoteBody noteData={rest}/>
-                        <NoteTimeRecord createdTime={createDateTime}/>
+                        <NoteBody
+                            noteData={rest}
+                        />
+                        <NoteTimeRecord
+                            createdTime={createDateTime}
+                            isOpen={isOpen}
+                        />
                     </NoteInfoStyle>
                 </NoteStyle>
             ))}
