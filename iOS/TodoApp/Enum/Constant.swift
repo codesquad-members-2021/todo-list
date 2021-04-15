@@ -30,12 +30,13 @@ enum HTTPMethod {
     static let post = "POST"
     static let get = "GET"
     static let delete = "DELETE"
-    //static let add = "ADD"
+    static let put = "PUT"
 }
 
 //MARK: -Notification.Name
 extension Notification.Name {
     static let addTask = Notification.Name("addTask")
+    static let editTask = Notification.Name("editTask")
     static let addHistory = Notification.Name("addHistory")
     static let requestSetupTask = Notification.Name("requestSetupTask")
     static let requestRemoveTask  = Notification.Name("requestRemoveTask")

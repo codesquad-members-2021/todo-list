@@ -67,6 +67,7 @@ extension TaskViewController {
     func addNotificationObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(insertTask(_:)), name: .addTask, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(drawTaskCard(_:)), name: .requestSetupTask, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(editTask(_:)), name: .editTask, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(sendRemovedData(_:)), name: .requestRemoveTask, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(sendMovedData(_:)), name: .requestMoveTask, object: nil)
     }
@@ -91,6 +92,18 @@ extension TaskViewController {
         }
     }
     
+    @objc func editTask(_ notification: Notification) {
+        let (status, index, title, content) = (notification.userInfo?["status"] as? Int ?? 0,
+                                               notification.userInfo?["index"] as? Int ?? 0,
+                                               notification.userInfo?["title"] as? String ?? "",
+                                               notification.userInfo?["content"] as? String ?? "")
+        let task = taskStackManager.edit(status, index, title: title, content: content)
+        updateTaskCountLabel()
+        if column == status {
+            NetworkManager.changedDataPost(httpMethod: HTTPMethod.put, data: task)
+        }
+    }
+    
     @objc func sendRemovedData(_ notification: Notification) {
         let removedData = notification.userInfo?["removedData"] as! TaskCard
         updateTaskCountLabel()
@@ -106,6 +119,7 @@ extension TaskViewController {
         }
         updateTaskCountLabel()
         if column == tmp {
+            movedData.status += 1
             NetworkManager.changedDataPost(httpMethod: HTTPMethod.post, data: movedData)
         }
     }

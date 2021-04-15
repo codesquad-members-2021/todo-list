@@ -24,6 +24,10 @@ class TaskStackManager {
         tasks[status].insert(taskCard, at: index)
     }
     
+    func edit(_ status: Int,_ index: Int, title: String, content: String) -> TaskCard {
+        return tasks[status].edit(index, title: title, content: content)
+    }
+    
     func remove(_ status: Int, at index: Int) {
         let removedData = tasks[status].remove(at: index)
         NotificationCenter.default.post(name: .requestRemoveTask, object: self, userInfo: ["removedData":removedData])
@@ -37,7 +41,7 @@ class TaskStackManager {
         return arrayCount().reduce(0, +)
     }
     
-    func move(_ status: Int, at index: Int){
+    func move(_ status: Int, at index: Int) {
             var movedData = tasks[status].remove(at: index)
         movedData.status = StatusValue.done
             tasks[StatusValue.done].append(taskCard: movedData)

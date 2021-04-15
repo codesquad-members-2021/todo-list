@@ -7,8 +7,8 @@ class EditView: UIView {
     private var editLabel = UILabel()
     var titleTextField = UITextField()
     var contentTextField = UITextField()
-    private var cancellButton = UIButton(type: .system)
-    private var registerButton = UIButton(type: .system)
+    private(set) var cancellButton = UIButton(type: .system)
+    private(set) var registerButton = UIButton(type: .system)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -42,6 +42,7 @@ extension EditView {
     private func configureLabel() {
         addSubview(editLabel)
         editLabel.text = "Edit Task"
+        editLabel.font = UIFont.boldSystemFont(ofSize: 20)
         editLabel.translatesAutoresizingMaskIntoConstraints = false
         editLabel.widthAnchor.constraint(equalToConstant: 368).isActive = true
         editLabel.heightAnchor.constraint(equalToConstant: 23).isActive = true
@@ -72,16 +73,20 @@ extension EditView {
     }
     
     private func configrueButton() {
-        cancellButton.setTitle("Cancell", for: .normal)
+        cancellButton.setTitle("Cancel", for: .normal)
         cancellButton.tintColor = UIColor.systemGray
         cancellButton.backgroundColor = UIColor.systemGray5
         cancellButton.frame = CGRect(x: 160, y: 139, width: 100, height: 40)
+        cancellButton.layer.masksToBounds = true
+        cancellButton.layer.cornerRadius = 5
         addSubview(cancellButton)
 
         registerButton.setTitle("Register", for: .normal)
         registerButton.tintColor = UIColor.white
         registerButton.backgroundColor = UIColor.systemBlue
         registerButton.frame = CGRect(x: 276, y: 139, width: 100, height: 40)
+        registerButton.layer.masksToBounds = true
+        registerButton.layer.cornerRadius = 5
         addSubview(registerButton)
     }
 }

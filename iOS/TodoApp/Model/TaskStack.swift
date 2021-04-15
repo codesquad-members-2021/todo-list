@@ -23,6 +23,13 @@ class TaskStack {
         taskCards.insert(taskCard, at: index)
     }
     
+    func edit(_ index: Int, title: String, content: String) -> TaskCard {
+        taskCards[index].title = title
+        taskCards[index].content = content
+        
+        return taskCards[index]
+    }
+    
     func remove(at index: Int) -> TaskCard {
         return taskCards.remove(at: index)
     }
