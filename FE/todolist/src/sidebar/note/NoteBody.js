@@ -9,37 +9,28 @@ const NoteBodyStyle = styled.div`
 const NoteBody = ({ noteData }) => {
 
     const switchMsgToKor = (msg) => {
-        let newMsg = '';
         switch(msg) {
             case "TODO":
-                newMsg = "해야할 일";
-                break;
+                return "해야할 일";
             case "PROGRESS":
-                newMsg = "하고 있는 일";
-                break;
+                return "하고 있는 일";
             case "DONE":
-                newMsg = "완료한 일";
-                break;
+                return "완료한 일";
             case "CREATE":
-                newMsg = "등록";
-                break;
+                return "등록";
             case "MOVE":
-                newMsg = "이동";
-                break;
+                return "이동";
             case "REMOVE":
-                newMsg = "삭제";
-                break;
+                return "삭제";
             case "UPDATE":
-                newMsg = "변경";
-                break;
+                return "변경";
         }
-        return newMsg;
     }
 
     const createMsg = ({ beforeStatus, afterStatus, title, action }) => {
         const updateAndMove = `${title}를(을) ${switchMsgToKor(beforeStatus)}에서 ${switchMsgToKor(afterStatus)}로 ${switchMsgToKor(action)}하였습니다.`;
-        const createAndRemove = `${title}를(을) ${beforeStatus}에 ${switchMsgToKor(action)}하였습니다.`
-        const message = afterStatus ? updateAndMove : createAndRemove;
+        const createAndRemove = `${title}를(을) ${switchMsgToKor(beforeStatus)}에 ${switchMsgToKor(action)}하였습니다.`
+        const message = beforeStatus === afterStatus ? createAndRemove : updateAndMove;
         return message;
     }
 
