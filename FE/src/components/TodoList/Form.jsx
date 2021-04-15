@@ -12,13 +12,12 @@ const Form = ({ addCard, column, offDisplay }) => {
   });
   const titleInput = useRef();
   const contentInput = useRef();
-  const nextID = useRef(5); // 임시 아이디
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const newCard = {
-      id: nextID.current,
+      id: Date.now(),
       title: titleInput.current.value,
       content: contentInput.current.value,
       author: column.cards.author,
@@ -26,7 +25,6 @@ const Form = ({ addCard, column, offDisplay }) => {
 
     const cardAdded = [newCard, ...column.cards];
     column.cards = cardAdded;
-    nextID.current++;
     addCard(column);
     offDisplay();
   };
