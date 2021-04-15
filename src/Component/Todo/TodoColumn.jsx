@@ -7,7 +7,6 @@ import {
   useTodoState,
   useTodoDispatch,
   useHistoyDispatch,
-  useTodoUserNameContext
 } from '../Context'
 
 const TodoColumnBlock = styled.div``
@@ -26,12 +25,12 @@ const TodoColumn = ({ title, todoItems, index }) => {
   const dispatch = useTodoDispatch()
   const hisDispatch = useHistoyDispatch()
   const state = useTodoState()
-  const name = useTodoUserNameContext()
   const onSubmit = () => {
     setCount(count + 1)
+    dispatch({ type: 'CREATEITEM', idx: index, item: { ...inputs } })
+    setTodos([...todos, { ...inputs }]);
     setInputs({ title: '', content: '' })
     setToggle(!toggle)
-    dispatch({ type: 'UPDATEITEM', idx: index, item: { ...inputs } })
     hisDispatch({
       type: '생성',
       itemTitle: { ...inputs }.title,
@@ -52,27 +51,39 @@ const TodoColumn = ({ title, todoItems, index }) => {
     setCount(0)
   }
   const onRemove = itemIndex => {
-    dispatch({ type: 'REMOVEITEM', idx: index, itemIdx: itemIndex })
     hisDispatch({
-      type: 'REMOVE',
+      type: '삭제',
       title: '설계하기',
       itemTitle: state[index].todoItems[itemIndex].title,
       columnTitle: state[index].title,
       time: new Date().toUTCString()
     })
+    setTodos(todos.filter((v, i) => i !== itemIndex));
+    dispatch({ type: 'REMOVEITEM', idx: index, todos : todos.filter((v, i) => i !== itemIndex) })
     setCount(count - 1)
   }
 
-  const onTodoItemChange = (e, index) => {
+  // let time;
+  const onTodoItemChange = (value, idx) => {
+    // clearTimeout(time);
+    // time = setTimeout(() => {
     setTodos(
       todos.map((v, i) => {
-        if (i === index) v[e.target.name] = e.target.value
-        return v
+        if (i === idx) v = value;
+        return v;
       })
     )
+    dispatch({ type: 'UPDATEITEM', idx: index, todos });
+    hisDispatch({
+      type: '수정',
+      itemTitle: value.title,
+      columnTitle: state[index].title,
+      time: new Date().toUTCString()
+    })
+    // }, 5000);
   }
 
-  const TodoItems = todoItems.map((v, index) => (
+  const TodoItems = todos.map((v, index) => (
     <TodoItem
       {...v}
       index={index}

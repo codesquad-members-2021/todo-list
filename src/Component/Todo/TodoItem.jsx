@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from 'styled-components';
 import { FaTimes } from 'react-icons/fa';
 import Button from "../Button";
@@ -41,11 +41,22 @@ const Content = styled.textarea`
 `;
 
 const TodoItem = ({ title, content, index, onChange, onRemove }) => {
+  const [inputs, setInputs] = useState({
+    title,
+    content
+  });
+  const onTextChange = e => {
+    setInputs({...inputs, [e.target.name] : e.target.value });
+  }
+  // useEffect(() => {
+  //   const time = setTimeout(() => onChange(inputs, index), 3000);
+  //   return () => clearTimeout(time);
+  // }, [inputs]);
   return (
     <TodoItemBlock>
       <Button onClick={() => onRemove(index)}><FaTimes></FaTimes></Button>
-      <Title name="title" onChange={({target}) => onChange(target, index)} value={title}/>
-      <Content name="content" onChange={({target}) => onChange(target, index)} value={content}/>
+      <Title name="title" onChange={e => onTextChange(e, index)} value={inputs.title}/>
+      <Content name="content" onChange={e => onTextChange(e, index)} value={inputs.content}/>
     </TodoItemBlock>
   );
 }

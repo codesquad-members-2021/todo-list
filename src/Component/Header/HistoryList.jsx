@@ -2,20 +2,6 @@ import styled from 'styled-components'
 import { FaUserCircle } from 'react-icons/fa'
 import HistoryItem from './HistoryItem'
 import { useHistoyState } from '../Context'
-let test = [
-  {
-    text: '<b>정리하기</b> 을(를) <b>해야할 일</b>에 <b>생성</b>하였습니다.',
-    time: '1분전'
-  },
-  {
-    text: '<b>정리하기</b> 을(를) <b>해야할 일</b>에 <b>생성</b>하였습니다.',
-    time: '1분전'
-  },
-  {
-    text: '<b>정리하기</b> 을(를) <b>해야할 일</b>에 <b>생성</b>하였습니다.',
-    time: '1분전'
-  }
-]
 
 const profile = <FaUserCircle />
 const HistoryListBlock = styled.ul`
@@ -26,6 +12,18 @@ const HistoryListBlock = styled.ul`
   flex-direction: column;
   align-items: center;
   padding: 0;
+  max-height: 80vh;
+  overflow-y: auto;
+  padding-right: 1rem;
+  &::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #999;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: #eee;
+  }
 `
 
 let HistoryItems = JSON.parse(localStorage.getItem('historyList')).map(
@@ -35,7 +33,6 @@ let HistoryItems = JSON.parse(localStorage.getItem('historyList')).map(
 )
 
 export default function HistoryList ({ children }) {
-  console.log(useHistoyState())
   localStorage.setItem('historyList', JSON.stringify(useHistoyState()))
   HistoryItems = useHistoyState()
     .map(({ text, time }, i) => (
