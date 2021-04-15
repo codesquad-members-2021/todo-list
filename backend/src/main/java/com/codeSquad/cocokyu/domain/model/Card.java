@@ -51,6 +51,21 @@ public class Card {
         this.status = updateCardDto.getStatus();
     }
 
+    @JsonIgnore
+    public boolean isTodo() {
+        return status == Status.TODO;
+    }
+
+    @JsonIgnore
+    public boolean isDoing() {
+        return status == Status.DOING;
+    }
+
+    @JsonIgnore
+    public boolean isDone() {
+        return status == Status.DONE;
+    }
+
     public void delete() {
         logs.deleteLog(this);
         this.status = Status.DELETED;

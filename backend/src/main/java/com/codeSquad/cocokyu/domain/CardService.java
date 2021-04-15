@@ -29,8 +29,11 @@ public class CardService {
 
     public CardList sortedList() {
         List<Card> cards = cardRepository.findByCardToNotDeleted();
-        CardList cardList = new CardList(cards);
-        return cardList;
+        CardList.Builder builder = new CardList.Builder();
+        for (Card card : cards) {
+            builder.addCard(card);
+        }
+        return builder.build();
     }
 
     public LogList logList() {

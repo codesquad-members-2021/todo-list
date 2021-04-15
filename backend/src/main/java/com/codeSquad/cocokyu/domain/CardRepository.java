@@ -7,7 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 public interface CardRepository extends CrudRepository<Card, Long> {
-    @Query("select * from card c where not c.status = 'DELETED'")
+    @Query("select * from card c where not c.status = 'DELETED' order by create_date_time")
     List<Card> findByCardToNotDeleted();
 }
 
