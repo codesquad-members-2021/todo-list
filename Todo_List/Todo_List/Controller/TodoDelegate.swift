@@ -14,6 +14,8 @@ class TodoDelegate: NSObject, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        let dataSource = tableView.dataSource as! TodoDataSource
+        
         return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { (menu) -> UIMenu? in
             let moveAction = UIAction(title: NSLocalizedString("완료한 일로 이동", comment: ""), image: nil) { (action) in
                 
@@ -22,7 +24,9 @@ class TodoDelegate: NSObject, UITableViewDelegate {
                 
             }
             let deleteAction = UIAction(title: NSLocalizedString("삭제하기", comment: ""), image: UIImage(systemName: "trash"), attributes: .destructive) { (action) in
-                
+                NotificationCenter.default.post(name: NSNotification.Name("removeCard"),
+                                                                object: nil,
+                                                                userInfo: ["cardNum": dataSource.todoCards[indexPath.row].id])
             }
             
             return UIMenu(title: "", children: [moveAction, modifyAction, deleteAction])
