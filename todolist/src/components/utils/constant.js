@@ -2,6 +2,10 @@ import { css } from "styled-components";
 import { MdAdd } from "react-icons/md";
 import { HiX, HiMenu } from "react-icons/hi";
 
+export const URL = {
+  DB: "http://localhost:3000/setData",
+};
+
 const TEXT_DEFAULT = `
     width: 134px;
     height: 40px;
@@ -34,6 +38,7 @@ export const BUTTON_STYLE = {
     color: white;
   `,
 };
+
 export const BUTTON_TYPE = {
   add: <MdAdd />,
   delete: <HiX />,
