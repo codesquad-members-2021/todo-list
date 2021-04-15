@@ -11,7 +11,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -27,14 +26,14 @@ public class CardController {
 
     @GetMapping
     public String getAllCards(@PathVariable(value = "categoryId") final Long categoryId) {
-        return parseListToJson(categoryService.findVertical(categoryId));
+        return parseListToJson(categoryService.findCategory(categoryId));
     }
 
     @GetMapping("/{cardId}")
     public String getCardById(@PathVariable(value = "categoryId") final Long categoryId,
                               @PathVariable(value = "cardId") final Long cardId) {
 
-        Category category = categoryService.findVertical(categoryId);
+        Category category = categoryService.findCategory(categoryId);
         Card card = category.getTodo(cardId);
         return parseTodoToJson(card);
     }
@@ -50,8 +49,8 @@ public class CardController {
     @PutMapping("/{cardId}")
     @ResponseStatus(HttpStatus.OK)
     public String updateTodo(@RequestBody final Card card,
-                           @PathVariable(value = "categoryId") final Long categoryId,
-                           @PathVariable(value = "cardId") final Long cardId) {
+                             @PathVariable(value = "categoryId") final Long categoryId,
+                             @PathVariable(value = "cardId") final Long cardId) {
 
         Card updatedCard = cardService.updateTodo(1L, categoryId, cardId, card);
         return parseTodoToJson(updatedCard);
@@ -60,10 +59,20 @@ public class CardController {
     @DeleteMapping("/{cardId}")
     @ResponseStatus(HttpStatus.OK)
     public String deleteTodo(@PathVariable(value = "categoryId") final Long categoryId,
-                           @PathVariable(value = "cardId") final Long cardId) {
+                             @PathVariable(value = "cardId") final Long cardId) {
 
         cardService.deleteTodo(1L, categoryId, cardId);
         return parseTodoToJson(null);
+    }
+
+    @PutMapping("/{cardId}/move/{moveCategory}/{index}")
+    @ResponseStatus(HttpStatus.OK)
+    public void moveTodo(@PathVariable(value = "cardId") final Long cardId,
+                         @PathVariable(value = "categoryId") final Long categoryId,
+                         @PathVariable(value = "moveCategory") final Long moveCategory,
+                         @PathVariable(value = "index") final Long index) {
+
+        cardService.moveTodo(1L, cardId, categoryId, moveCategory, index);
     }
 
     public String parseListToJson(Category category) {

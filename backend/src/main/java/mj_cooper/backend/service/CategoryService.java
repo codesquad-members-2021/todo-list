@@ -15,7 +15,7 @@ public class CategoryService {
         this.userRepository = userRepository;
     }
 
-    public Category findVertical(Long categoryId) {
+    public Category findCategory(Long categoryId) {
         User user = userRepository.findById(1L)
                 .orElseThrow(() -> new NoSuchElementException("해당 회원이 존재하지 않습니다."));
         return user.getCategory(categoryId);
