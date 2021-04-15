@@ -3,22 +3,18 @@ import Card from './Card';
 const CardLists = ({
   column,
   cards,
-  inputs,
-  onChange,
   checkInputValue,
-  hasInput,
-  deleteCard,
+  SetIsDeleteBtnClicked,
+  setNewColumns,
 }) => {
   const cardlists = cards.map((cards) => (
     <Card
       key={cards.id}
       cards={cards}
-      onChange={onChange}
-      inputs={inputs}
       checkInputValue={checkInputValue}
-      hasInput={hasInput}
       column={column}
-      deleteCard={deleteCard}
+      SetIsDeleteBtnClicked={SetIsDeleteBtnClicked}
+      setNewColumns={setNewColumns}
     />
   ));
 

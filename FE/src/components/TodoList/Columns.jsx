@@ -3,10 +3,15 @@ import CardLists from './CardLists';
 import Form from './Form';
 import styled from 'styled-components';
 import Icon from '../atoms/Icons';
+import PopUp from '../atoms/PopUp';
 
 const Column = ({ data: { columns } }) => {
   const [columnData, setColumnData] = useState(columns);
   const [currentID, setCurrentID] = useState(null);
+  const [isDeleteBtnClicked, SetIsDeleteBtnClicked] = useState(false);
+  const [newColumns, setNewColumns] = useState([]);
+  console.log(newColumns);
+  console.log(columnData);
 
   const handleClick = (clickedID) => {
     return () => {
@@ -27,16 +32,20 @@ const Column = ({ data: { columns } }) => {
     setColumnData(Object.assign(columnData, column));
   };
 
-  const deleteCard = (newColumn) => {
-    const currentColumns = columnData;
-    const updatedColumns = currentColumns.map((curColumn) =>
-      curColumn.id === newColumn.id ? newColumn : curColumn
-    );
-    setColumnData(updatedColumns);
-  };
+  const rewind = () => SetIsDeleteBtnClicked(!isDeleteBtnClicked);
 
   const offDisplay = () => {
     setCurrentID(null);
+  };
+
+  const deleteCard = (newColumns) => {
+    // cardID를 알아야 delete요청을 보낼 수 있다.
+    // card에서 같이 보내줘야한다.
+    const updatedColumns = columnData.map((curColumn) =>
+      curColumn.id === newColumns.id ? newColumns : curColumn
+    );
+    rewind();
+    setColumnData([...updatedColumns]);
   };
 
   const checkInputValue = ({ title, content }, callbackSetInput) => {
@@ -76,9 +85,10 @@ const Column = ({ data: { columns } }) => {
             <CardLists
               key={id + title}
               column={column}
-              deleteCard={deleteCard}
               cards={cards}
               checkInputValue={checkInputValue}
+              SetIsDeleteBtnClicked={SetIsDeleteBtnClicked}
+              setNewColumns={setNewColumns}
             />
           </div>
         </ul>
@@ -86,7 +96,17 @@ const Column = ({ data: { columns } }) => {
     );
   });
 
-  return <ColumnContainer>{columnList}</ColumnContainer>;
+  return (
+    <>
+      <ColumnContainer>{columnList}</ColumnContainer>
+      <PopUp
+        isDeleteBtnClicked={isDeleteBtnClicked}
+        rewind={rewind}
+        newColumns={newColumns}
+        deleteCard={deleteCard}
+      />
+    </>
+  );
 };
 
 export default Column;

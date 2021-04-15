@@ -5,7 +5,13 @@ import { InputTitle, InputContent } from '../atoms/StyledInputs';
 import Icon from '../atoms/Icons';
 import resize from './custom.js';
 
-const Card = ({ column, cards, checkInputValue, deleteCard }) => {
+const Card = ({
+  column,
+  cards,
+  checkInputValue,
+  SetIsDeleteBtnClicked,
+  setNewColumns,
+}) => {
   const [isEditMode, setIsEditMode] = useState(false);
   const [hasInput, setHasInput] = useState(false);
   const [inputs, setInputs] = useState({
@@ -33,11 +39,12 @@ const Card = ({ column, cards, checkInputValue, deleteCard }) => {
   };
 
   const handleClickDeleteIcon = (e) => {
+    SetIsDeleteBtnClicked(true);
     const newCards = deleteClickedCard(id, column);
     const newCardList = [...newCards];
-    const newColumn = column;
+    const newColumn = Object.assign({}, column);
     newColumn.cards = newCardList;
-    deleteCard(newColumn);
+    setNewColumns(newColumn);
   };
 
   const deleteClickedCard = (id, column) => {
