@@ -9,7 +9,7 @@ import Foundation
 
 struct User: Codable {
     var name: String
-    var profileURL: String
+    var profileUrl: String
 }
 
 struct TodoCard: Codable {

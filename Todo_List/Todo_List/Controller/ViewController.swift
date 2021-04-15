@@ -20,7 +20,8 @@ class ViewController: UIViewController {
     private var doingViewController: TodoTableViewController?
     private var doneViewController: TodoTableViewController?
     
-    private var TodoCards: TodoCards! // ⚠️
+    private var todoCards: TodoCards! // ⚠️
+    private var networkManager = NetworkManager()
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -37,6 +38,15 @@ class ViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        self.todoCards = TodoCards(todo: [], doing: [], done: [])
+        networkManager.perfomRequest(urlString: EndPoint.home.rawValue, httpMethod: .get, dataType: TodoCards.self) { (result) in
+            switch result {
+            case .success(let data):
+                print(data)
+            case .failure(let error):
+                print(error)
+            }
+        }
         setting()
         super.viewDidLoad()
     }
@@ -45,9 +55,9 @@ class ViewController: UIViewController {
     // MARK:- Method
     
     private func setting() {
-        setVC(self.todoViewController, data: self.TodoCards.todo, name: .todo)
-        setVC(self.doingViewController, data: self.TodoCards.doing, name: .doing)
-        setVC(self.doneViewController, data: self.TodoCards.done, name: .done)
+        setVC(self.todoViewController, data: self.todoCards.todo, name: .todo)
+        setVC(self.doingViewController, data: self.todoCards.doing, name: .doing)
+        setVC(self.doneViewController, data: self.todoCards.done, name: .done)
     }
     
     private func setVC(_ viewController: TodoTableViewController?, data: [TodoCard], name: Column) {

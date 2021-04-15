@@ -35,10 +35,10 @@ enum EndPoint: String {
 class NetworkManager {
     private let decoder = DecodeManager()
     
-    func perfomRequest<T:Decodable>(urlString: String, httpMethod: HttpMethod, jwtToken: String, json: Data? = nil, dataType: T.Type, completion: @escaping (Result<Any,NetworkError>) -> Void) {
+    func perfomRequest<T:Decodable>(urlString: String, httpMethod: HttpMethod, json: Data? = nil, dataType: T.Type, completion: @escaping (Result<Any,NetworkError>) -> Void) {
         
         guard let url = URL(string: urlString) else { completion(.failure(.BadURL)); return }
-        let request = createRequest(url: url, httpMethod: httpMethod, jwtToken: jwtToken)
+        let request = createRequest(url: url, httpMethod: httpMethod)
         
         URLSession.shared.dataTask(with: request) {data, response, error in
             DispatchQueue.main.async {
@@ -60,17 +60,15 @@ class NetworkManager {
         }.resume()
     }
     
-    func createRequest(url: URL, httpMethod: HttpMethod, jwtToken: String, json: Data? = nil) -> URLRequest {
+    private func createRequest(url: URL, httpMethod: HttpMethod, json: Data? = nil) -> URLRequest {
         var request = URLRequest(url: url)
         
         request.httpMethod = httpMethod.rawValue
         request.httpBody = json
-        request.setValue("jwtToken", forHTTPHeaderField: jwtToken)
+//        request.setValue("jwtToken", forHTTPHeaderField: jwtToken)
         
         return request
     }
-    
-    
 }
 
 class DecodeManager {
