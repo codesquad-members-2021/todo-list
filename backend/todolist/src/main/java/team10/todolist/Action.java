@@ -1,7 +1,7 @@
 package team10.todolist;
 
 public enum Action {
-    CREATE,
+    ADD,
     DELETE,
     UPDATE,
     MOVE

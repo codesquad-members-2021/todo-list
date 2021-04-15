@@ -25,7 +25,7 @@ public class BoardService {
     public boolean create(BoardDto boardDto) {
         Board board = boardDto.toEntity();
         boardRepository.save(board);
-        createLog(board,Action.CREATE);
+        createLog(board,Action.ADD);
         return true;
     }
 
