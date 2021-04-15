@@ -1,10 +1,9 @@
 package com.codesquad.esfj.todolist.task;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Map;
@@ -40,6 +39,7 @@ public class TaskService {
                 .orElseThrow(() -> new IllegalArgumentException("해당하는 Task가 존재하지 않습니다." + id)));
     }
 
+    @Transactional
     public long create(Task task) {
         Optional<Task> topTask = taskRepository.findByPreviousIdAndTaskType(Task.TOP_PREVIOUS_ID, task.getTaskType());
         long id = taskRepository.save(task).getId();
@@ -48,12 +48,14 @@ public class TaskService {
             topTask.get().moveAfter(id);
             taskRepository.save(topTask.get());
         } else {
-            setIsHeadIfPresent(task.getId(), true);
+            setIsHeadTo(task.getId(), true)
+                    .ifPresent(taskRepository::save);
         }
 
         return id;
     }
 
+    @Transactional
     public void update(long id, Task updatedTask) {
         Task task = taskRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("해당하는 Task가 존재하지 않습니다." + id))
@@ -61,6 +63,7 @@ public class TaskService {
         taskRepository.save(task);
     }
 
+    @Transactional
     public void delete(long id) {
         Task task = taskRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("해당하는 Task가 존재하지 않습니다." + id));
@@ -70,12 +73,14 @@ public class TaskService {
             presentNextTask.moveAfter(task.getPreviousId());
             taskRepository.save(presentNextTask);
         } else {
-            setIsHeadIfPresent(task.getPreviousId(), true);
+            setIsHeadTo(task.getPreviousId(), true)
+                    .ifPresent(taskRepository::save);
         }
 
         taskRepository.save(task.delete());
     }
 
+    @Transactional
     public void move(long id, String targetTaskType, long targetId) {
         Task taskToMove = taskRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("해당하는 Task가 존재하지 않습니다." + id));
@@ -87,14 +92,17 @@ public class TaskService {
             originalNextTask.get().moveAfterPreviousOf(taskToMove);
             taskRepository.save(originalNextTask.get());
         } else {
-            setIsHeadIfPresent(taskToMove.getPreviousId(), true);
+            setIsHeadTo(taskToMove.getPreviousId(), true)
+                    .ifPresent(taskRepository::save);
         }
 
         if (newNextTask.isPresent()) {
             taskToMove.moveAfterPreviousOf(newNextTask.get());
+            taskToMove.setIsHead(false);
             taskRepository.save(taskToMove);
 
-            setIsHeadIfPresent(taskToMove.getPreviousId(), false);
+            setIsHeadTo(taskToMove.getPreviousId(), false)
+                    .ifPresent(taskRepository::save);
 
             newNextTask.get().moveAfter(taskToMove.getId());
 
@@ -102,18 +110,19 @@ public class TaskService {
         } else {
             taskToMove.moveAfter(targetId, targetTaskType);
             taskToMove.setIsHead(true);
-            setIsHeadIfPresent(taskToMove.getPreviousId(), false);
+
+            setIsHeadTo(taskToMove.getPreviousId(), false)
+                    .ifPresent(taskRepository::save);
+
             taskRepository.save(taskToMove);
         }
     }
 
-    private void setIsHeadIfPresent(long targetId, boolean isHead) {
+    private Optional<Task> setIsHeadTo(long targetId, boolean isHead) {
         Optional<Task> task = taskRepository.findById(targetId);
 
-        if (task.isPresent()) {
-            Task presentTask = task.get();
-            presentTask.setIsHead(isHead);
-            taskRepository.save(presentTask);
-        }
+        task.ifPresent(presentTask -> presentTask.setIsHead(isHead));
+
+        return task;
     }
 }
