@@ -27,7 +27,7 @@ public class ApiCardController {
 
 
     @DeleteMapping("/{cardId}")
-    public ResponseEntity<?> deleteCard(@PathVariable Long id, @PathVariable Long cardId) {
+    public ResponseEntity<?> deleteCard(@PathVariable Long id, @PathVariable String cardId) {
         columnService.deleteCard(id, cardId);
         return ResponseEntity.ok().build();
     }

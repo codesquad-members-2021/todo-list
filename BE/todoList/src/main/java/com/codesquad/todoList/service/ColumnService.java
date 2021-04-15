@@ -46,7 +46,7 @@ public class ColumnService {
     }
 
     @Transactional
-    public void deleteCard(Long columnId, Long cardId) {
+    public void deleteCard(Long columnId, String cardId) {
         Project project = projectRepository.findById(1L).orElseThrow(NotFoundProjectException::new);
         Columns columns = columnRepository.findById(columnId).orElseThrow(NotFoundColumnException::new);
         Card card = columns.deleteCard(cardId);
