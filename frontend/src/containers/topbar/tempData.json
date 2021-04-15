@@ -1,0 +1,37 @@
+{
+    "activities" : [
+        {
+            "id":4,
+            "actionUserId":1,
+            "action":"삭제",
+            "title":"GitHub 공부",
+            "fromColumn":null,
+            "toColumn":"하고있는 일",
+            "actionTime":"2021-04-07T14:10:25.038"
+        },{
+            "id":3,
+            "actionUserId":1,
+            "action":"변경",
+            "title":"GitHub 공부",
+            "fromColumn":null,
+            "toColumn": "해야할 일",
+            "actionTime":"2021-04-07T14:10:25.038"
+        },{
+            "id":2,
+            "actionUserId":1,
+            "action":"이동",
+            "title":"git 공부",
+            "fromColumn":"해야할 일",
+            "toColumn":"하고있는 일",
+            "actionTime":"2021-04-07T14:10:25.038"
+        },{
+            "id":1,
+            "actionUserId":1,
+            "action":"등록",
+            "title":"git 공부",
+            "fromColumn":null,
+            "toColumn":"해야할 일",
+            "actionTime":"2021-04-14T14:10:25.038"
+        }
+    ]
+}

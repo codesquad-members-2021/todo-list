@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { TranslateBtn } from '../../common/StyledModels';
+import { TranslateBtn } from './CommonStyledComponent';
 
-const StyledColumnNormalButton = styled(TranslateBtn)`
+const StyledNormalButton = styled(TranslateBtn)`
     --gray-color: #828282;
     --white-color: #fff;
 
@@ -22,12 +22,12 @@ const StyledColumnNormalButton = styled(TranslateBtn)`
     }
 `;
 
-const ColumnNormalButton = ({ children, clickHandler }) => {
+const NormalButton = ({ children, clickHandler }) => {
     return (
-        <StyledColumnNormalButton onClick={clickHandler && clickHandler}>
+        <StyledNormalButton onClick={clickHandler}>
             {children}
-        </StyledColumnNormalButton>
+        </StyledNormalButton>
     );
 };
 
-export default ColumnNormalButton;
+export default NormalButton;
