@@ -1,11 +1,10 @@
 import CardWrap from "./CardWrap";
 
-function CardList(props) {
-  const { cards, onDelete, onUpdate } = props;
+function CardList({ cards, onDelete, onUpdate, columns }) {
   return (
     <ul>
       {cards.map((card) => (
-        <CardWrap key={card.id} card={card} onDelete={onDelete} onUpdate={onUpdate} />
+        <CardWrap key={card.cardId} card={card} onDelete={onDelete} onUpdate={onUpdate} />
       ))}
     </ul>
   );

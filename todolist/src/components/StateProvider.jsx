@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import NavBar from "./navBar/NavBar";
 import Board from "./Board";
 
-function StateProvider(props) {
+function StateProvider() {
   const [log, setLog] = useState([
     {
       cardTitle: "HTML/CSS 공부하기",
