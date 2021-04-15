@@ -1,9 +1,6 @@
 package com.codesquad.todoList.controller;
 
-import com.codesquad.todoList.dto.CardInfoDto;
 import com.codesquad.todoList.entity.Card;
-import com.codesquad.todoList.entity.Project;
-import com.codesquad.todoList.repository.CardRepository;
 import com.codesquad.todoList.service.ColumnService;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;

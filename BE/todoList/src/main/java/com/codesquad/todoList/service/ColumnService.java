@@ -4,15 +4,12 @@ import com.codesquad.todoList.entity.*;
 import com.codesquad.todoList.error.exception.NotFoundCardException;
 import com.codesquad.todoList.error.exception.NotFoundColumnException;
 import com.codesquad.todoList.error.exception.NotFoundProjectException;
-import com.codesquad.todoList.repository.CardRepository;
 import com.codesquad.todoList.repository.ColumnRepository;
 import com.codesquad.todoList.repository.NoteRepository;
 import com.codesquad.todoList.repository.ProjectRepository;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,7 +24,6 @@ public class ColumnService {
 
     private final ColumnRepository columnRepository;
     private final ProjectRepository projectRepository;
-    private final CardRepository cardRepository;
     private final NoteRepository noteRepository;
 
     @Transactional
@@ -41,10 +37,12 @@ public class ColumnService {
     public Card addCard(Long columnId, Card card) {
         Project project = projectRepository.findById(1L).orElseThrow(NotFoundProjectException::new);
         Columns columns = columnRepository.findById(columnId).orElseThrow(NotFoundColumnException::new);
-        card.setColumns(columnId);
-        Card saveCard = cardRepository.save(card);
+
+        columns.addCard(card);
+
         saveNote(new Note(), columns, Action.CREATE, card);
-        return saveCard;
+        columnRepository.save(columns);
+        return card;
     }
 
     @Transactional
