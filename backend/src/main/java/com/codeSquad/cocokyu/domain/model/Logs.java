@@ -16,6 +16,10 @@ public class Logs {
     }
 
     public void updateLog(Card card, CardDto updateCardDto) {
+        if (card.checkSameStatus(updateCardDto.getStatus())) {
+            logs.add(new Log(card, updateCardDto.getStatus(), Log.Action.UPDATE));
+            return;
+        }
         logs.add(new Log(card, updateCardDto.getStatus(), Log.Action.MOVE));
     }
 
