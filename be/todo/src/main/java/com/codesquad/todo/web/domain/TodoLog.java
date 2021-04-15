@@ -16,7 +16,7 @@ public class TodoLog {
     private String taskTitle;
     private LocalDateTime createdDateTime;
 
-    public TodoLog(String action, String fromColumnTitle, String toColumnTitle, String taskTitle) {
+    private TodoLog(String action, String fromColumnTitle, String toColumnTitle, String taskTitle) {
         this.action = action;
         this.fromColumnTitle = fromColumnTitle;
         this.toColumnTitle = toColumnTitle;

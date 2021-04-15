@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 public class TodoColumn {
     @Id
     private Long id;
-    
+
     private String columnTitle;
     private List<TodoTask> todoTaskList = new ArrayList<>();
 
