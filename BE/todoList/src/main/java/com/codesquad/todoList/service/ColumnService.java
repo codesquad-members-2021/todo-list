@@ -58,7 +58,7 @@ public class ColumnService {
     }
 
     @Transactional
-    public void updateCard(Long columnId, Long cardId, Card card) {
+    public void updateCard(Long columnId, String cardId, Card card) {
         Project project = projectRepository.findById(1L).orElseThrow(NotFoundProjectException::new);
         Columns columns = columnRepository.findById(columnId).orElseThrow(NotFoundColumnException::new);
         Note note = new Note();

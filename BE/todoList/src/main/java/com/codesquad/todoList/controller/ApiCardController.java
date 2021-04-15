@@ -33,7 +33,7 @@ public class ApiCardController {
     }
 
     @PutMapping("/{cardId}")
-    public ResponseEntity<?> updateCard(@PathVariable Long id, @PathVariable Long cardId, @Validated @RequestBody Card card, BindingResult bindingResult) {
+    public ResponseEntity<?> updateCard(@PathVariable Long id, @PathVariable String cardId, @Validated @RequestBody Card card, BindingResult bindingResult) {
         columnService.updateCard(id, cardId, card);
         return ResponseEntity.ok().build();
     }
