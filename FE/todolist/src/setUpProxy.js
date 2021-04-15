@@ -18,4 +18,8 @@ module.exports = function (app) {
         '/cards',
         createProxyMiddleware(aws)
     )
+    app.use(
+        '/columns/**',
+        createProxyMiddleware(aws)
+    )
 };
