@@ -8,11 +8,12 @@ const TodoContainerBlock = styled.div`
   grid-auto-flow: column;
   grid-auto-columns: 16rem;
   grid-gap: 1rem;
+  margin: 0 3rem;
   box-sizing: border-box;
 `
 
 const TodoContainer = () => {
-  const data = useTodoState()
+  const data = useTodoState();
   const TodoColumns = data.map((v, index) => (
     <TodoColumn {...v} index={index} key={index} />
   ))

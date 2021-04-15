@@ -3,7 +3,7 @@
 import styled from 'styled-components'
 import { useTodoUserNameContext } from '../Context'
 const HistoryItemBlock = styled.li`
-  margin-top: 1rem;
+  margin-bottom: 1rem;
   border: 1px solid black;
   padding: 0.5rem 0;
   display: flex;
@@ -40,7 +40,7 @@ export default function HistoryItem ({ author, text, time, profile }) {
     <HistoryItemBlock>
       <HistoryItemProfileBlock>{profile}</HistoryItemProfileBlock>
       <HistoryItemTextBlock>
-        <Id>@{useTodoUserNameContext().current}</Id>
+        <Id>@{useTodoUserNameContext()[0]}</Id>
         <Contents dangerouslySetInnerHTML={{ __html: text }}></Contents>
         <Time>{time}</Time>
       </HistoryItemTextBlock>

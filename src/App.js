@@ -1,19 +1,13 @@
 import { createGlobalStyle } from "styled-components";
-import { TodoProvider } from './Component/Context';
+import { TodoProvider } from "./Component/Context";
 import Header from "./Component/Header/Header";
 import TodoContainer from "./Component/Todo/TodoContainer";
-import api from "./tmp";
-
-async function tmp () {
-  const data = await api("get","luke");
-  console.log(data);
-}
-
-// tmp();
 
 const GlobalStyle = createGlobalStyle`
   body {
     background-color: #f2f2f2;
+    overflow-x: hidden;
+    color: #333;
   }
   button {
     background-color: transparent;
@@ -42,7 +36,7 @@ function App() {
       <Header />
       <TodoContainer />
     </TodoProvider>
-    )
+  );
 }
 
 export default App;

@@ -10,7 +10,7 @@ const PopupBlock = styled.div`
   text-align: center;
   width: 300px;
   left: calc(50% - 150px);
-  margin: 20vh 0;
+  margin: 5vh 0;
   background-color: #000;
   p {
     color: #fff;
@@ -68,7 +68,7 @@ export default function Popup ({toggle, author, onUpdate, onCancel}) {
       <Input value={nickname} onChange={onChange}/>
       <Buttons nickname={nickname}>
         <Button onClick={onCancel}>취소</Button>
-        <Button onClick={onUpdate}>변경</Button>
+        <Button onClick={() => onUpdate(nickname)}>변경</Button>
       </Buttons>
     </PopupBlock>
   );

@@ -7,13 +7,12 @@ import styled from 'styled-components'
 const HeadTitleBlock = styled.div`
   width: 100%;
   height: 7rem;
-  background: #f5f5f7;
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-family: Noto Sans KR;
   font-size: 2rem;
-  padding: 0 5rem;
+  padding: 0 3rem;
   box-sizing: border-box;
   span {
     display: flex;
