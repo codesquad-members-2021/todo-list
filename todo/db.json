@@ -5,33 +5,15 @@
       "columnName": "해야할 일",
       "items": [
         {
-          "id": "M23aghLtL",
-          "title": "qwe",
-          "content": "qwe",
+          "id": "lbeMlZjIO",
+          "title": "비모 연료 충전하기",
+          "content": "초코우유 주입",
           "author": "Beemo"
         },
         {
-          "id": "FL2D-63sX",
-          "title": "werwe",
-          "content": "rwerwer",
-          "author": "Beemo"
-        },
-        {
-          "id": "FeHbtEAda",
-          "title": "twetwet",
-          "content": "wetwet",
-          "author": "Beemo"
-        },
-        {
-          "id": "fRboC0G5o",
-          "title": "qweqw",
-          "content": "etrqwr",
-          "author": "Beemo"
-        },
-        {
-          "id": "MPUjZndiV",
-          "title": "eryery",
-          "content": "eryery",
+          "id": "tGFa99FE8",
+          "title": "저녁 메뉴 정하기",
+          "content": "맛있는 메뉴",
           "author": "Beemo"
         }
       ]
@@ -39,16 +21,29 @@
     {
       "columnId": 2,
       "columnName": "하고 있는 일",
-      "items": []
+      "items": [
+        {
+          "id": "DIxvHBH3_",
+          "title": "Drag ",
+          "content": "스무스한 드래그 ",
+          "author": "Beemo"
+        }
+      ]
     },
     {
       "columnId": 3,
       "columnName": "완료한 일",
       "items": [
         {
-          "id": "sRXCb3B1p",
-          "title": "wetwet",
-          "content": "wetwet",
+          "id": "6bbotMDS1",
+          "title": "맛있는 스파게티 완성",
+          "content": "스파게티 코드 완성",
+          "author": "Beemo"
+        },
+        {
+          "id": "_rWDWfoYD",
+          "title": "비타지 데뷔",
+          "content": "데뷔 기념 gather 라이브 공연 ",
           "author": "Beemo"
         }
       ]
@@ -61,217 +56,5 @@
       "role": "Gatekeeper"
     }
   ],
-  "logs": [
-    {
-      "id": "N9QuHSynr",
-      "action": "수정",
-      "prevColumn": "하고 있는 일",
-      "currentColumn": "이동한컬럼",
-      "prevTitle": "하고잇는일",
-      "currentTitle": "하고잇는일ㅂㅈㄷㄱ",
-      "user": "Beemo",
-      "date": "2021-04-15 12:26:08"
-    },
-    {
-      "id": "BuEBFJsRq",
-      "action": "수정",
-      "prevColumn": "해야할 일",
-      "currentColumn": "이동한컬럼",
-      "prevTitle": "ㅂㅂㅂ",
-      "currentTitle": "ㅂㅂㅂ",
-      "user": "Beemo",
-      "date": "2021-04-15 16:57:43"
-    },
-    {
-      "id": "4FyCk9KVfi",
-      "action": "등록",
-      "prevColumn": "하고 있는 일",
-      "currentColumn": "이동한컬럼",
-      "currentTitle": "erer",
-      "user": "Beemo",
-      "date": "2021-04-15 02:42:06"
-    },
-    {
-      "id": "SMtsDX2gqQ",
-      "action": "등록",
-      "prevColumn": "완료한 일",
-      "currentColumn": "이동한컬럼",
-      "currentTitle": "werwer",
-      "user": "Beemo",
-      "date": "2021-04-15 02:42:13"
-    },
-    {
-      "id": "YJdh531tP",
-      "action": "수정",
-      "prevColumn": "완료한 일",
-      "currentColumn": "이동한컬럼",
-      "prevTitle": "rqq",
-      "currentTitle": "rqqwer",
-      "user": "Beemo",
-      "date": "2021-04-15 02:42:16"
-    },
-    {
-      "id": "_IdIiXGPBs",
-      "action": "등록",
-      "prevColumn": "완료한 일",
-      "currentColumn": "이동한컬럼",
-      "currentTitle": "werwer",
-      "user": "Beemo",
-      "date": "2021-04-15 02:42:20"
-    },
-    {
-      "id": "lNa1K9mjo",
-      "action": "수정",
-      "prevColumn": "완료한 일",
-      "currentColumn": "이동한컬럼",
-      "prevTitle": "werwer",
-      "currentTitle": "werwer",
-      "user": "Beemo",
-      "date": "2021-04-15 03:16:59"
-    },
-    {
-      "id": "oFdhIAmW1",
-      "action": "수정",
-      "prevColumn": "하고 있는 일",
-      "currentColumn": "이동한컬럼",
-      "prevTitle": "깃 충돌 해결하기",
-      "currentTitle": "깃 충돌 해결하기",
-      "user": "Beemo",
-      "date": "2021-04-16 10:38:45"
-    },
-    {
-      "id": "gCudNOfgai",
-      "action": "등록",
-      "prevColumn": "해야할 일",
-      "currentColumn": "이동한컬럼",
-      "currentTitle": "ㅂㅈㄷㅂㅈㄷ",
-      "user": "Beemo",
-      "date": "2021-04-16 15:34:22"
-    },
-    {
-      "id": "Tf1lgTHksE",
-      "action": "등록",
-      "prevColumn": "해야할 일",
-      "currentColumn": "이동한컬럼",
-      "currentTitle": "ㄳㄳㄱ",
-      "user": "Beemo",
-      "date": "2021-04-16 15:34:27"
-    },
-    {
-      "id": "q7HEOri1jt",
-      "action": "등록",
-      "prevColumn": "하고 있는 일",
-      "currentColumn": "이동한컬럼",
-      "currentTitle": "ㅈㄷㄱㅈㄷㄱ",
-      "user": "Beemo",
-      "date": "2021-04-16 15:34:29"
-    },
-    {
-      "id": "BWeXHiG-IJ",
-      "action": "등록",
-      "prevColumn": "하고 있는 일",
-      "currentColumn": "이동한컬럼",
-      "currentTitle": "ee",
-      "user": "Beemo",
-      "date": "2021-04-16 15:57:47"
-    },
-    {
-      "id": "zEai0YAkO_",
-      "action": "등록",
-      "prevColumn": "해야할 일",
-      "currentColumn": "이동한컬럼",
-      "currentTitle": "weqwe",
-      "user": "Beemo",
-      "date": "2021-04-16 15:58:33"
-    },
-    {
-      "id": "yjEeCu2q_v",
-      "action": "등록",
-      "prevColumn": "하고 있는 일",
-      "currentColumn": "이동한컬럼",
-      "currentTitle": "wqe",
-      "user": "Beemo",
-      "date": "2021-04-16 15:58:35"
-    },
-    {
-      "id": "3TDGnKMGzU",
-      "action": "등록",
-      "prevColumn": "완료한 일",
-      "currentColumn": "이동한컬럼",
-      "currentTitle": "rrtrtrt",
-      "user": "Beemo",
-      "date": "2021-04-16 16:02:59"
-    },
-    {
-      "id": "gBvMX9VJaD",
-      "action": "등록",
-      "prevColumn": "완료한 일",
-      "currentColumn": "이동한컬럼",
-      "currentTitle": "qweqw",
-      "user": "Beemo",
-      "date": "2021-04-16 16:03:19"
-    },
-    {
-      "id": "y4dcZbbHwq",
-      "action": "등록",
-      "prevColumn": "완료한 일",
-      "currentColumn": "이동한컬럼",
-      "currentTitle": "wetwet",
-      "user": "Beemo",
-      "date": "2021-04-16 16:03:46"
-    },
-    {
-      "id": "G_lUizMuru",
-      "action": "등록",
-      "prevColumn": "하고 있는 일",
-      "currentColumn": "이동한컬럼",
-      "currentTitle": "werwe",
-      "user": "Beemo",
-      "date": "2021-04-16 16:03:54"
-    },
-    {
-      "id": "gCNr3XYDbZ",
-      "action": "등록",
-      "prevColumn": "해야할 일",
-      "currentColumn": "이동한컬럼",
-      "currentTitle": "twetwet",
-      "user": "Beemo",
-      "date": "2021-04-16 16:03:58"
-    },
-    {
-      "id": "kJS2AZgH1G",
-      "action": "등록",
-      "prevColumn": "해야할 일",
-      "currentColumn": "이동한컬럼",
-      "currentTitle": "eryery",
-      "user": "Beemo",
-      "date": "2021-04-16 16:04:01"
-    },
-    {
-      "id": "qNe65qZwc",
-      "user": "Beemo",
-      "date": "2021-04-16 16:31:05",
-      "action": "이동",
-      "prevColumn": "하고 있는 일",
-      "currentColumn": "해야할 일"
-    },
-    {
-      "id": "kAbUcy5AF",
-      "user": "Beemo",
-      "date": "2021-04-16 16:34:27",
-      "action": "이동",
-      "prevTitle": "qweqw",
-      "prevColumn": "해야할 일",
-      "currentColumn": "해야할 일"
-    },
-    {
-      "id": "BqrFyQubg",
-      "user": "Beemo",
-      "date": "2021-04-16 16:56:02",
-      "action": "이동",
-      "prevTitle": "twetwet",
-      "prevColumn": "해야할 일",
-      "currentColumn": "해야할 일"
-    }
-  ]
+  "logs": []
 }
