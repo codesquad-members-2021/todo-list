@@ -8,7 +8,6 @@
 import Foundation
 
 class DragCoordinator {
-
     let sourceIndexPath: IndexPath
     var dragCompleted = false
     var isReordering = false
@@ -16,5 +15,4 @@ class DragCoordinator {
     init(sourceIndexPath: IndexPath) {
         self.sourceIndexPath = sourceIndexPath
     }
-    
 }

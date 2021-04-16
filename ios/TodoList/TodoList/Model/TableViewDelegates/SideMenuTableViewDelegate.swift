@@ -8,7 +8,6 @@
 import UIKit
 
 class SideMenuTableViewDelegate: NSObject {
-    
     private var list: [String] = []
     
 }
@@ -20,7 +19,6 @@ extension SideMenuTableViewDelegate: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuCell", for: indexPath) as! SideMenuTableViewCell
-        let cards = self.list
         cell.emojiLabel.text = "A"
         cell.userLabel.text = "B"
         cell.contentLabel.text = "C"

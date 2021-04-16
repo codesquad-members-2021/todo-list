@@ -47,7 +47,7 @@ class PopUpViewController: UIViewController {
     
     @IBAction func confirmButton(_ sender: UIButton) {
         let dataToSend = ["title": titleTextField.text!, "contents": contentsTextField.text!, "status": self.status]
-        DataManager.requestPost(url: Constants.url, parameter: dataToSend) { (true, responseJSON) in
+        APIRequestManager.requestPost(url: Constants.url, parameter: dataToSend) { (true, responseJSON) in
             print("will send delegate")
             self.abilityToFetchData?.fetchData()
         }

@@ -12,14 +12,9 @@ struct ToDoList: Codable {
     let todo: [ToDoItem]
     let doing: [ToDoItem]
     let done: [ToDoItem]
-    
-    func getTodoListString() -> String {
-        return "\(todo), \(doing), \(done)"
-    }
 }
 
 final class ToDoItem: NSObject, Codable, NSItemProviderReading, NSItemProviderWriting {
-
     let id: Int
     let title: String
     let contents: String
@@ -37,7 +32,7 @@ final class ToDoItem: NSObject, Codable, NSItemProviderReading, NSItemProviderWr
     static var readableTypeIdentifiersForItemProvider: [String] {
         return [(kUTTypeData) as String]
     }
-    
+
     static func object(withItemProviderData data: Data, typeIdentifier: String) throws -> ToDoItem {
         let decoder = JSONDecoder()
         do {
@@ -47,7 +42,7 @@ final class ToDoItem: NSObject, Codable, NSItemProviderReading, NSItemProviderWr
             fatalError()
         }
     }
-    
+
     static var writableTypeIdentifiersForItemProvider: [String] {
         return [(kUTTypeData) as String]
     }
