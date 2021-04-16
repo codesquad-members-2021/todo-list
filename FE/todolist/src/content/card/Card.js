@@ -1,5 +1,7 @@
+import { useState } from 'react'
 import styled from 'styled-components'
 import Icon from '../../utilComponent/Icon.js'
+import EditForm from './EditForm'
 import { deleteCard } from '../httpUtils'
 import { createNote } from '../util'
 
@@ -60,6 +62,8 @@ const IconStyle = styled.div`
 `
 
 const Card = ({cardData, columnData, setColumnData, setSidebarLog}) => {
+    const [isDbClicked, setIsDbClicked] = useState()
+
     const removeCard = () => {
         const newCardList = columnData.cardList.filter(v => v.id !== cardData.id)
         setColumnData({ ...columnData, cardList : newCardList})
@@ -68,17 +72,30 @@ const Card = ({cardData, columnData, setColumnData, setSidebarLog}) => {
         setSidebarLog(note)
     }
 
+    const updateCard = () => {setIsDbClicked(true)}
+
     return(
-        <CardContainer>
-            <IconStyle onClick={removeCard}>
-                <Icon type= { "close" } />
-            </IconStyle>
-            <CardStyle>
-                <input className="card__title" disabled value={cardData.title} />
-                <input className="card__content" disabled value={cardData.content} />
-                <div className="card__author"><span>author by {cardData.author}</span></div>
-            </CardStyle>
-        </CardContainer>
+        <>
+        { isDbClicked 
+            ? <EditForm 
+                cardId={cardData.id}
+                setIsDbClicked={setIsDbClicked}
+                columnData={columnData}
+                setColumnData={setColumnData}
+                setSidebarLog={setSidebarLog}
+            />
+            : <CardContainer onDoubleClick={updateCard}>
+                <IconStyle onClick={removeCard}>
+                    <Icon type= { "close" } />
+                </IconStyle>
+                <CardStyle>
+                    <input className="card__title" disabled value={cardData.title} />
+                    <input className="card__content" disabled value={cardData.content} />
+                    <div className="card__author"><span>author by {cardData.author}</span></div>
+                </CardStyle>
+            </CardContainer>
+        }
+        </>
     )
 }
 
