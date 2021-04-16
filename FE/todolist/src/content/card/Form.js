@@ -41,7 +41,7 @@ const Form = ({ setIsAddBtnClicked, columnData, setColumnData, setSidebarLog }) 
     return (
         <FormStyle>
             <FormInput onChange={onChange} FormInputTitle={FormInputTitle} FormInputContent={FormInputContent}/>
-            <FormButton resetInputState={resetInputState} setInputState={setInputState} />
+            <FormButton handleClickCancel={resetInputState} handleClickSave={setInputState} isEditBtn={false}/>
         </FormStyle>
     )
 }

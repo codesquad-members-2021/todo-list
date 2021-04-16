@@ -28,4 +28,9 @@ const deleteCard = async (path) => {
     catch (error) { console.error(error); }
 }
 
-export { initFetchData, postForm, deleteCard }
+const putCard = async({id, title, content, author}, path) => {
+    try { await axios.put(path, { id, title, content, author })} 
+    catch (error) { console.error(error); }
+}
+
+export { initFetchData, postForm, deleteCard, putCard }
