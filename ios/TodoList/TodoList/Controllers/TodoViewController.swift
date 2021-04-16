@@ -18,6 +18,7 @@ class ToDoViewController: UIViewController {
         
         self.toDoCardTableView.dataSource = toDoTableViewDelegates
         self.toDoCardTableView.delegate = toDoTableViewDelegates
+        self.toDoCardTableView.dragDelegate = toDoTableViewDelegates
         self.toDoTableViewDelegates.popUpViewProtocol = self
         self.toDoCardTableView.rowHeight = 150
         
