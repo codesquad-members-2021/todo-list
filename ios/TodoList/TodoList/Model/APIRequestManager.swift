@@ -33,7 +33,6 @@ class APIRequestManager {
                     print("Error: HTTP request failed")
                     return
                 }
-            print(String(data: data, encoding: .utf8))
                 
                 guard let output = try? JSONDecoder().decode(LogModel.self, from: data) else {
                     print("Error: JSON Data Parsing failed")

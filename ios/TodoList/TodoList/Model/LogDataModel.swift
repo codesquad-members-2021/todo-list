@@ -17,5 +17,5 @@ struct Log: Codable {
     let fromStatus: String
     let toStatus: String?
     let action: String
-    let createDataTime: String
+    let createDateTime: String
 }

@@ -21,11 +21,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    @IBAction func sideMenuButtonPressed(_ sender: UIButton) {
-        APIRequestManager.requestGet_log(url: Constants.url_log) { (logModel) in
-            print(logModel)
-        }
-    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        if segue.identifier == Segue.todo {
