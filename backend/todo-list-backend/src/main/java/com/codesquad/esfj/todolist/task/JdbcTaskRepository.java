@@ -9,5 +9,4 @@ public interface JdbcTaskRepository extends CrudRepository<Task, Long> {
     List<Task> findAllByDeletedFalse();
     List<Task> findAllByTaskTypeAndDeletedFalse(String taskType);
     Optional<Task> findByPreviousIdAndTaskType(Long id, String taskType);
-    Optional<Task> findByPreviousId(Long previousId);
 }

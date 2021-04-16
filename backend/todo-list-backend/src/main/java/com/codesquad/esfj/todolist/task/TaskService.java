@@ -67,7 +67,7 @@ public class TaskService {
     public void delete(long id) {
         Task task = taskRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("해당하는 Task가 존재하지 않습니다." + id));
-        Optional<Task> nextTask = taskRepository.findByPreviousId(id);
+        Optional<Task> nextTask = taskRepository.findByPreviousIdAndTaskType(id, task.getTaskType());
         if (nextTask.isPresent()) {
             Task presentNextTask = nextTask.get();
             presentNextTask.moveAfter(task.getPreviousId());
@@ -85,7 +85,7 @@ public class TaskService {
         Task taskToMove = taskRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("해당하는 Task가 존재하지 않습니다." + id));
 
-        Optional<Task> originalNextTask = taskRepository.findByPreviousId(id);
+        Optional<Task> originalNextTask = taskRepository.findByPreviousIdAndTaskType(id, taskToMove.getTaskType());
         Optional<Task> newNextTask = taskRepository.findByPreviousIdAndTaskType(targetId, targetTaskType);
 
         if (originalNextTask.isPresent()) {
@@ -108,7 +108,7 @@ public class TaskService {
             taskToMove.setIsHead(true);
         }
 
-        if(taskToMove.getId().equals(taskToMove.getPreviousId())) {
+        if (taskToMove.getId().equals(taskToMove.getPreviousId())) {
             throw new PreviousTaskNotAllowedException(taskToMove.toString());
         }
 
