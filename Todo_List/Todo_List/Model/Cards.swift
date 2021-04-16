@@ -16,14 +16,12 @@ class Cards : Codable {
     var count : Int {
         get { return items.count }
     }
-    
     func append(with card : Card, at position : Int = 0) {
         if position >= items.count {
             items.append(card)
         }
         items.insert(card, at: position)
     }
-    
     @discardableResult
     func remove(at index : Int) -> Card {
         return items.remove(at: index)
