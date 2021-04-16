@@ -23,9 +23,10 @@ const TodoListColumn = ({
   const [isClicked, toggleActions] = useToggle(false);
   let template;
 
+
   if (!isClicked) {
     template = (
-      <Div>
+      <Div className="_column" >
         <TodoTitle
           titleRef={titleRef}
           addTodo={toggleActions.toggle}
@@ -59,13 +60,12 @@ const TodoListColumn = ({
     );
   } else {
     template = (
-      <Div>
+      <Div className="_column" >
         <TodoTitle addTodo={toggleActions.toggle} itemCount={items.length}>
           {columnName}
         </TodoTitle>
         <TodoSwitch
           {...{
-
             columnId,
             isClicked,
             columnName,

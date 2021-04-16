@@ -12,7 +12,7 @@
         {
           "id": "W0WXj_sIs",
           "title": "깃 충돌 해결하기",
-          "content": "완료할것",
+          "content": "완료할것q",
           "author": "Beemo"
         },
         {
@@ -43,12 +43,6 @@
           "id": "ymR2s6Yo7",
           "title": "rqqwer",
           "content": "qqwerwe",
-          "author": "Beemo"
-        },
-        {
-          "id": "vBR8Kc2ZA",
-          "title": "werwer",
-          "content": "ff",
           "author": "Beemo"
         },
         {
@@ -140,6 +134,16 @@
       "currentTitle": "werwer",
       "user": "Beemo",
       "date": "2021-04-15 03:16:59"
+    },
+    {
+      "id": "oFdhIAmW1",
+      "action": "수정",
+      "prevColumn": "하고 있는 일",
+      "currentColumn": "이동한컬럼",
+      "prevTitle": "깃 충돌 해결하기",
+      "currentTitle": "깃 충돌 해결하기",
+      "user": "Beemo",
+      "date": "2021-04-16 10:38:45"
     }
   ]
 }

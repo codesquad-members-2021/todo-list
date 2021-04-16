@@ -47,17 +47,23 @@ const TodoListItem = ({
     dragged.current = e.target;
     e.dataTransfer.setData('text/html', dragged.current);
     dragged.current.style.opacity = "0.5";
-    console.log(1)
   }
 
-  const onDragEnd = () => {
-
-    console.log(2)
+  const onDrop = (e) => {
+    console.log(123)
+    const column = e.target.closest('._column');
+    const items = column.children;
+    for (let i = 0; i < items.length; i++) {
+      if (items[i].className === 'placeholder') {
+        console.log(i)
+      };
+    }
   }
+
   ////////
   return (
     <Div hover ref={ToItem} draggable={true} data-id={id}
-      onDragStart={onDragStart} onDragEnd={onDragEnd}>
+      onDragStart={onDragStart} onDrop={onDrop} onDragOver={(e) => e.preventDefault()}>
       {/* <Popup {...{ isOpenPop, isOpenPopActions }}></Popup> */}
       <SmallButton
         _position="absolute"

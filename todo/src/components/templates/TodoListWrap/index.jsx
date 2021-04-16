@@ -35,7 +35,10 @@ const TodoListWrap = ({ setHistories }) => {
 
   const titleRef = useRef(null);
 
-  const onDragOver = ({ target }) => {
+  const onDragOver = (e) => {
+    const { target } = e;
+
+
     if (dragged.current.contains(target)) return;
     if (target.closest('.placeholder')) return;
     if (target.closest('.item_wrap')) {
@@ -62,7 +65,7 @@ const TodoListWrap = ({ setHistories }) => {
   }, []);
 
   return (
-    <Wrap onDragOver={onDragOver}>
+    <Wrap onDragOver={onDragOver}  >
       <Popup
         {...{
           isPop,
