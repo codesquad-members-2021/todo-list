@@ -27,6 +27,7 @@ const TodoListItem = ({
   setPopup,
   setIdState,
   setColState,
+  dragged
 }) => {
   const ToItem = useRef();
   // const [isOpenPop, isOpenPopActions] = useToggle(false);
@@ -41,8 +42,22 @@ const TodoListItem = ({
     setColState(columnId);
   };
 
+  ////////
+  const onDragStart = (e) => {
+    dragged.current = e.target;
+    e.dataTransfer.setData('text/html', dragged.current);
+    dragged.current.style.opacity = "0.5";
+    console.log(1)
+  }
+
+  const onDragEnd = () => {
+
+    console.log(2)
+  }
+  ////////
   return (
-    <Div hover ref={ToItem}>
+    <Div hover ref={ToItem} draggable={true} data-id={id}
+      onDragStart={onDragStart} onDragEnd={onDragEnd}>
       {/* <Popup {...{ isOpenPop, isOpenPopActions }}></Popup> */}
       <SmallButton
         _position="absolute"

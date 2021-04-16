@@ -31,7 +31,7 @@ const HistoryList = ({ histories, isOpenActions, isOpen }) => {
           <Image _width="20px" src={closeButton} />
         </SmallButton>
       </ButtonDiv>
-      s
+
       <div>
         {histories.map(({ id, ...itemObject }) => (
           <HistoryItem key={id} itemObject={itemObject} />

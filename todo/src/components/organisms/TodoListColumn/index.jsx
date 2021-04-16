@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import TodoTitle from "../../molecules/TodoTitle";
+import { useRef } from 'react';
 import TodoListInput from "../../molecules/TodoListInput";
 import TodoSwitch from "../../molecules/TodoSwitch";
 import useToggle from "../../../hooks/useToggle";
@@ -16,13 +17,17 @@ const TodoListColumn = ({
   setPopup,
   setIdState,
   setColState,
+  dragged,
+  titleRef
 }) => {
   const [isClicked, toggleActions] = useToggle(false);
   let template;
+
   if (!isClicked) {
     template = (
       <Div>
         <TodoTitle
+          titleRef={titleRef}
           addTodo={toggleActions.toggle}
           itemCount={items.length}
           columnId={columnId}
@@ -45,6 +50,7 @@ const TodoListColumn = ({
                 setPopup,
                 setIdState,
                 setColState,
+                dragged
               }}
             ></TodoSwitch>
           );
@@ -59,6 +65,7 @@ const TodoListColumn = ({
         </TodoTitle>
         <TodoSwitch
           {...{
+
             columnId,
             isClicked,
             columnName,
@@ -68,6 +75,7 @@ const TodoListColumn = ({
             setPopup,
             setIdState,
             setColState,
+            dragged
           }}
         />
         {items.map(({ id, title, content, author }) => {
@@ -86,6 +94,7 @@ const TodoListColumn = ({
                 setPopup,
                 setIdState,
                 setColState,
+                dragged
               }}
             ></TodoSwitch>
           );

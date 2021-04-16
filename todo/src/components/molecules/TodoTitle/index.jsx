@@ -17,8 +17,8 @@ const LeftDiv = styled.div`
   place-items: center;
 `;
 
-const TodoTitle = ({ children, itemCount, ...props }) => (
-  <WrapDiv>
+const TodoTitle = ({ children, itemCount, titleRef, ...props }) => (
+  <WrapDiv ref={titleRef}>
     <LeftDiv>
       <Span _fontSize="20px" _fontWeight="700">
         {children}
