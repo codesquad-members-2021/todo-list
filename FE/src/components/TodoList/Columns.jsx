@@ -5,9 +5,7 @@ import styled from 'styled-components';
 import Icon from '../atoms/Icons';
 import AddBtn from '../atoms/AddBtn';
 import PopUp from '../atoms/PopUp';
-import { postColumn, deleteCard } from './useFetch.js';
-
-
+import { deleteColumn, postColumn, deleteCard } from './useFetch.js';
 
 const Column = ({ todoData }) => {
   const [columnData, setColumnData] = useState(todoData);
@@ -25,6 +23,8 @@ const Column = ({ todoData }) => {
 
   const handleClickDeleteBtn = (deletedID) => {
     return () => {
+      const path = `boards/${deletedID}`;
+      deleteColumn(path);
       const newColumn = columnData.filter(({ id }) => id !== deletedID);
       setColumnData([...newColumn]);
     };
@@ -40,13 +40,12 @@ const Column = ({ todoData }) => {
     setCurrentID(null);
   };
 
-
   const addColumn = async () => {
     const formData = new FormData();
     const title = prompt('칼럼 이름 입력');
     formData.append('title', title);
     await postColumn('boards', formData, columnData, setColumnData);
-  }
+  };
 
   const handleClickDelete = async (newColumns) => {
     const { column, cardID } = newColumns;
@@ -107,9 +106,9 @@ const Column = ({ todoData }) => {
     <>
       <ColumnContainer>
         {columnList}
-      <div onClick={addColumn}>
-        <AddBtn />
-      </div>
+        <div onClick={addColumn}>
+          <AddBtn />
+        </div>
       </ColumnContainer>
       <PopUp
         isDeleteBtnClicked={isDeleteBtnClicked}
