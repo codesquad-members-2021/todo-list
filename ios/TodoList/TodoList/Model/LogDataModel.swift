@@ -8,19 +8,14 @@
 import Foundation
 
 struct LogModel {
-    
     let log: [Log]
-    
 }
 
 struct Log {
-    
-    let emoji = "\u{1f973}"
-    let id: String
+    let id: Int
     let title: String
     let fromStatus: String
-    let toStatus: String
+    let toStatus: String?
     let action: String
     let createDataTime: String
-    
 }

@@ -8,8 +8,8 @@
 import Foundation
 
 extension Notification.Name {
-    static let didChangeToDoCardsList = Notification.Name("didChangeToDoCardsList")
-    static let didChangeDoingCardsList = Notification.Name("didChangeDoingCardsList")
-    static let didChangeCompletedCardsLists = Notification.Name("didChangeCompletedCardsLists")
+    static let didChangeToDoItemList = Notification.Name("didChangeToDoItemList")
+    static let didChangeDoingItemList = Notification.Name("didChangeDoingItemList")
+    static let didChangeDoneItemList = Notification.Name("didChangeDoneItemList")
     static let didChangeSideMenuToggle = Notification.Name("didChangeSideMenuToggle")
 }

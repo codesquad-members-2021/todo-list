@@ -1,13 +1,7 @@
-//
-//  ToDoCard.swift
-//  TodoList
-//
-//  Created by 조중윤 on 2021/04/08.
-//
 
 import UIKit
 
-class ToDoCardCell: UITableViewCell {
+class ToDoItemCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!

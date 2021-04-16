@@ -46,7 +46,7 @@ class CustomHeader: UITableViewHeaderFooterView {
         configureContents()
     }
 
-    func displayCurrentCardNumOnBadge(number: Int) {
+    func displayCurrentItemNumberOnBadge(number: Int) {
         self.badge.text = "\(number)"
     }
     

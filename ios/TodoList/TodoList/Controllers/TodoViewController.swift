@@ -10,27 +10,27 @@ import UIKit
 class ToDoViewController: UIViewController {
     let toDoTableViewDelegates = ToDoTableViewDelegates()
     
-    @IBOutlet weak var toDoCardTableView: UITableView!
+    @IBOutlet weak var toDoItemTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(toDoCardsListHasBeenChanged), name: .didChangeToDoCardsList, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(toDoItemListHasBeenChanged), name: .didChangeToDoItemList, object: nil)
         
-        self.toDoCardTableView.dataSource = toDoTableViewDelegates
-        self.toDoCardTableView.delegate = toDoTableViewDelegates
-        self.toDoCardTableView.dragDelegate = toDoTableViewDelegates
+        self.toDoItemTableView.dataSource = toDoTableViewDelegates
+        self.toDoItemTableView.delegate = toDoTableViewDelegates
+        self.toDoItemTableView.dragDelegate = toDoTableViewDelegates
         self.toDoTableViewDelegates.popUpViewProtocol = self
-        self.toDoCardTableView.rowHeight = 150
+        self.toDoItemTableView.rowHeight = 150
         
-        self.toDoCardTableView.register(UINib(nibName: "ToDoCardCell", bundle: nil), forCellReuseIdentifier: "ToDoCardCell")
-        toDoCardTableView.register(CustomHeader.self, forHeaderFooterViewReuseIdentifier: "sectionHeader")
+        self.toDoItemTableView.register(UINib(nibName: "ToDoItemCell", bundle: nil), forCellReuseIdentifier: "ToDoItemCell")
+        toDoItemTableView.register(CustomHeader.self, forHeaderFooterViewReuseIdentifier: "sectionHeader")
         
-        toDoTableViewDelegates.fetchCards()
+        toDoTableViewDelegates.fetchItems()
     }
     
-    @objc func toDoCardsListHasBeenChanged() {
+    @objc func toDoItemListHasBeenChanged() {
         DispatchQueue.main.async {
-            self.toDoCardTableView.reloadData()
+            self.toDoItemTableView.reloadData()
         }
     }
     
@@ -52,6 +52,6 @@ extension ToDoViewController: PopUpViewProtocol {
 
 extension ToDoViewController: AbilityToFetchData {
     func fetchData() {
-        self.toDoTableViewDelegates.fetchCards()
+        self.toDoTableViewDelegates.fetchItems()
     }
 }
