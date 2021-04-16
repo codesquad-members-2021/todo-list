@@ -23,18 +23,11 @@ public class Action {
     public Action() {
     }
 
-    // move
     public Action(String cardTitle, int columnFrom, int columnTo, ActionType actionType) {
         this.cardTitle = cardTitle;
         this.actionType = actionType;
         this.columnFrom = columnFrom;
         this.columnTo = columnTo;
-    }
-
-    // add, update, delete
-    public Action(String cardTitle, ActionType actionType) {
-        this.cardTitle = cardTitle;
-        this.actionType = actionType;
     }
 
     public Long getId() {

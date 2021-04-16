@@ -21,7 +21,7 @@ public class ActionsService {
     }
 
     public void save(Card card) {
-        actionsRepository.save(new Action(card.getTitle(), ActionType.ADD));
+        actionsRepository.save(new Action(card.getTitle(), card.getColumnType(), card.getColumnType(), ActionType.ADD));
     }
 
     public void move(Card card, int columnFrom, int columnTo) {
@@ -29,7 +29,7 @@ public class ActionsService {
     }
 
     public void update(Card card) {
-        actionsRepository.save(new Action(card.getTitle(), ActionType.UPDATE));
+        actionsRepository.save(new Action(card.getTitle(), card.getColumnType(), card.getColumnType(), ActionType.UPDATE));
     }
 
     public ActionsResponse show() {
@@ -40,6 +40,6 @@ public class ActionsService {
     }
 
     public void delete(Card card) {
-        actionsRepository.save(new Action(card.getTitle(), ActionType.DELETE));
+        actionsRepository.save(new Action(card.getTitle(), card.getColumnType(), card.getColumnType(), ActionType.DELETE));
     }
 }
