@@ -19,16 +19,15 @@ public class Category {
         return categoryId;
     }
 
-
-    public List<Card> getTodos() {
+    public List<Card> getCards() {
         return cards;
     }
 
-    public Card getTodo(Long id) {
+    public Card getCard(Long id) {
         return cards.get(Math.toIntExact(id) - 1);
     }
 
-    public void deleteTodo(Long id) {
+    public void deleteCard(Long id) {
         cards.remove(Math.toIntExact(id) - 1);
     }
 
@@ -37,7 +36,7 @@ public class Category {
     }
 
 
-    public boolean addTodo(Card card) {
+    public boolean addCard(Card card) {
         return this.cards.add(card);
     }
 

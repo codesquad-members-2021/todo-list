@@ -1,11 +1,9 @@
 package mj_cooper.backend.service;
 
 import mj_cooper.backend.domain.Card;
-import mj_cooper.backend.domain.User;
 import mj_cooper.backend.domain.Category;
+import mj_cooper.backend.domain.User;
 import mj_cooper.backend.repository.UserRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,7 +11,6 @@ import java.util.NoSuchElementException;
 
 @Service
 public class CardService {
-    private static final Logger logger = LoggerFactory.getLogger(CardService.class);
     private final UserRepository userRepository;
 
     public CardService(UserRepository userRepository) {
@@ -26,50 +23,51 @@ public class CardService {
 
         Category category = user.getCategory(categoryId);
 
-        card.setCategory(categoryId);
-        category.addTodo(card);
+        card.updateCategory(categoryId);
+        category.addCard(card);
+
         userRepository.save(user);
 
         return card;
     }
 
-    public Card updateTodo(Long userId, Long categoryId,
+    public Card updateCard(Long userId, Long categoryId,
                            Long todoId, Card card) {
 
-        User user = userRepository.findById(userId).get();
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new NoSuchElementException("해당 회원이 존재하지 않습니다."));
         Category category = user.getCategory(categoryId);
-        Card foundCard = category.getTodo(todoId);
+        Card foundCard = category.getCard(todoId);
 
-        foundCard.setTitle(card.getTitle());
-        foundCard.setContents(card.getContents());
-        foundCard.setCategory(categoryId);
+        foundCard.update(card);
 
         userRepository.save(user);
 
         return foundCard;
     }
 
-    public void deleteTodo(Long userId, Long categoryId, Long todoId) {
-        User user = userRepository.findById(userId).get();
+    public void deleteCard(Long userId, Long categoryId, Long todoId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new NoSuchElementException("해당 회원이 존재하지 않습니다."));
         Category category = user.getCategory(categoryId);
 
-        category.deleteTodo(todoId);
+        category.deleteCard(todoId);
 
         userRepository.save(user);
     }
 
-    public Card moveTodo(Long userId, Long cardId,
+    public Card moveCard(Long userId, Long cardId,
                          Long fromCategoryId, Long toCategoryId, Long dropNumber) {
-        Long index = dropNumber - 1;
+        long index = dropNumber - 1;
         User user = userRepository.findById(userId).
                 orElseThrow(() -> new NoSuchElementException("해당 회원이 존재하지 않습니다."));
-        Card movedCard = user.getCategory(fromCategoryId).getTodo(cardId);
+        Card movedCard = user.getCategory(fromCategoryId).getCard(cardId);
 
-        List<Card> fromCards = user.getCategory(fromCategoryId).getTodos();
-        List<Card> toCards = user.getCategory(toCategoryId).getTodos();
+        List<Card> fromCards = user.getCategory(fromCategoryId).getCards();
+        List<Card> toCards = user.getCategory(toCategoryId).getCards();
 
         fromCards.remove(movedCard);
-        movedCard.setCategory(toCategoryId);
+        movedCard.updateCategory(toCategoryId);
         toCards.add(Math.toIntExact(index), movedCard);
 
         userRepository.save(user);

@@ -10,11 +10,8 @@ import mj_cooper.backend.service.CategoryService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.Map;
-
 @RestController
-@RequestMapping("/categories/{categoryId}/cards")
+@RequestMapping("/categories/{categoryPosition}/cards")
 public class CardController {
     private final CategoryService categoryService;
     private final CardService cardService;
@@ -25,54 +22,55 @@ public class CardController {
     }
 
     @GetMapping
-    public String getAllCards(@PathVariable(value = "categoryId") final Long categoryId) {
-        return parseListToJson(categoryService.findCategory(categoryId));
+    public String getAllCards(@PathVariable(value = "categoryPosition") final Long categoryPosition) {
+        return parseListToJson(categoryService.findCategory(categoryPosition));
     }
 
-    @GetMapping("/{cardId}")
-    public String getCardById(@PathVariable(value = "categoryId") final Long categoryId,
-                              @PathVariable(value = "cardId") final Long cardId) {
+    @GetMapping("/{cardPosition}")
+    public String getCardById(@PathVariable(value = "categoryPosition") final Long categoryPosition,
+                              @PathVariable(value = "cardPosition") final Long cardPosition) {
 
-        Category category = categoryService.findCategory(categoryId);
-        Card card = category.getTodo(cardId);
+        Category category = categoryService.findCategory(categoryPosition);
+        Card card = category.getCard(cardPosition);
         return parseTodoToJson(card);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public String createCard(@RequestBody Card card,
-                             @PathVariable(value = "categoryId") final Long categoryId) {
-        Card foundCard = cardService.addCard(1L, categoryId, card);
+                             @PathVariable(value = "categoryPosition") final Long categoryPosition) {
+
+        Card foundCard = cardService.addCard(1L, categoryPosition, card);
         return parseTodoToJson(foundCard);
     }
 
-    @PutMapping("/{cardId}")
+    @PutMapping("/{cardPosition}")
     @ResponseStatus(HttpStatus.OK)
-    public String updateTodo(@RequestBody final Card card,
-                             @PathVariable(value = "categoryId") final Long categoryId,
-                             @PathVariable(value = "cardId") final Long cardId) {
+    public String updateCard(@RequestBody final Card card,
+                             @PathVariable(value = "categoryPosition") final Long categoryPosition,
+                             @PathVariable(value = "cardPosition") final Long cardPosition) {
 
-        Card updatedCard = cardService.updateTodo(1L, categoryId, cardId, card);
+        Card updatedCard = cardService.updateCard(1L, categoryPosition, cardPosition, card);
         return parseTodoToJson(updatedCard);
     }
 
-    @DeleteMapping("/{cardId}")
+    @DeleteMapping("/{cardPosition}")
     @ResponseStatus(HttpStatus.OK)
-    public String deleteTodo(@PathVariable(value = "categoryId") final Long categoryId,
-                             @PathVariable(value = "cardId") final Long cardId) {
+    public String deleteCard(@PathVariable(value = "categoryPosition") final Long categoryPosition,
+                             @PathVariable(value = "cardPosition") final Long cardPosition) {
 
-        cardService.deleteTodo(1L, categoryId, cardId);
+        cardService.deleteCard(1L, categoryPosition, cardPosition);
         return parseEmptyToJson();
     }
 
-    @PutMapping("/{cardId}/move/{moveCategory}/{index}")
+    @PutMapping("/{cardPosition}/move/{moveCategoryPosition}/{moveCardPosition}")
     @ResponseStatus(HttpStatus.OK)
-    public String moveTodo(@PathVariable(value = "cardId") final Long cardId,
-                         @PathVariable(value = "categoryId") final Long categoryId,
-                         @PathVariable(value = "moveCategory") final Long moveCategory,
-                         @PathVariable(value = "index") final Long index) {
+    public String moveTodo(@PathVariable(value = "cardPosition") final Long cardId,
+                         @PathVariable(value = "categoryPosition") final Long categoryId,
+                         @PathVariable(value = "moveCategoryPosition") final Long moveCategory,
+                         @PathVariable(value = "moveCardPosition") final Long index) {
 
-        return parseTodoToJson(cardService.moveTodo(1L, cardId, categoryId, moveCategory, index));
+        return parseTodoToJson(cardService.moveCard(1L, cardId, categoryId, moveCategory, index));
     }
 
     public String parseListToJson(Category category) {
@@ -81,7 +79,7 @@ public class CardController {
 
         JsonObject object = new JsonObject();
         object.addProperty("status", "success");
-        object.add("data", parser.parse(gson.toJson(category.getTodos())));
+        object.add("data", parser.parse(gson.toJson(category.getCards())));
 
         return gson.toJson(object);
     }
@@ -95,7 +93,7 @@ public class CardController {
         object.add("data", parser.parse(gson.toJson(card)));
 
         return gson.toJson(object);
-    } //TODO Json 공통부분 generic 배워서 리팩토링 해보기
+    }
 
     public String parseEmptyToJson() {
         Gson gson = new Gson();
@@ -106,5 +104,5 @@ public class CardController {
         object.add("data", parser.parse("{}"));
 
         return gson.toJson(object);
-    } //TODO Json 공통부분 generic 배워서 리팩토링 해보기
+    }
 }

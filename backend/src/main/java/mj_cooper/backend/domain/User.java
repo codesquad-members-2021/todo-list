@@ -31,7 +31,7 @@ public class User {
         return categories.get(Math.toIntExact(id) - 1);
     }
 
-    public boolean addVertical(Category category){
+    public boolean addCategory(Category category){
         return categories.add(category);
     }
 }

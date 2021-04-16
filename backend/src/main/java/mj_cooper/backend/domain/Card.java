@@ -17,26 +17,6 @@ public class Card {
         this.title = title;
     }
 
-    public Long getCardId() {
-        return cardId;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getContents() {
-        return contents;
-    }
-
-    public Long getCategory() {
-        return category;
-    }
-
-    public void setCardId(Long cardId) {
-        this.cardId = cardId;
-    }
-
     public void setTitle(String title) {
         this.title = title;
     }
@@ -46,8 +26,14 @@ public class Card {
     }
 
 
-    public void setCategory(Long category) {
+    public void updateCategory(Long category) {
         this.category = category;
+    }
+
+    public void update(Card card) {
+        this.title = card.title;
+        this.contents = card.contents;
+        this.category = card.category;
     }
 
     @Override
