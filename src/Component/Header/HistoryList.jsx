@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { FaUserCircle } from 'react-icons/fa'
 import HistoryItem from './HistoryItem'
 import { useHistoyState } from '../Context'
+import { reverse } from 'dns'
 
 const profile = <FaUserCircle />
 const HistoryListBlock = styled.ul`
@@ -34,10 +35,9 @@ let HistoryItems = JSON.parse(localStorage.getItem('historyList')).map(
 
 export default function HistoryList ({ children }) {
   localStorage.setItem('historyList', JSON.stringify(useHistoyState()))
-  HistoryItems = useHistoyState()
-    .map(({ text, time }, i) => (
+  HistoryItems = useHistoyState().
+    map(({ text, time }, i) => (
       <HistoryItem text={text} time={time} key={i} profile={profile} />
     ))
-    .reverse()
   return <HistoryListBlock>{HistoryItems}</HistoryListBlock>
 }
