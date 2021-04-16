@@ -15,4 +15,5 @@ enum ClientError: String, LocalizedError {
 
 enum ServiceError : Error {
     case network(statusCode : Int)
+    case unknownError
 }

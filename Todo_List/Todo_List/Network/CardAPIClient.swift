@@ -30,20 +30,21 @@ class CardAPIClient {
         var request = URLRequest(url: CardAPI.all.url)
         request.httpMethod = HTTPMethod.post.rawValue
         
-        //HTTP Headers
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = json
         
         let task : URLSessionTask = session
             .dataTask(with: request) { data, urlResponse, error in
+                guard let response = urlResponse as? HTTPURLResponse
+                else {
+                    print(error ?? ServiceError.unknownError)
+                    return
+                }
                 guard let data = data else {
                     return
                 }
-                guard let response = urlResponse as? HTTPURLResponse,
-                      (200...399).contains(response.statusCode)
-                else {
-                    print(error ?? APIError.unknownError)
-                    return
+                if (400...599).contains(response.statusCode) {
+                    print(error ?? ServiceError.network(statusCode: response.statusCode))
                 }
                 let id = Int(String(data: data, encoding: .utf8)!)!
                 card.id = id
@@ -57,18 +58,20 @@ class CardAPIClient {
         
         let task : URLSessionTask = session
             .dataTask(with: request) { data, urlResponse, error in
-                guard let response = urlResponse as? HTTPURLResponse,
-                      (200...399).contains(response.statusCode)
+                guard let response = urlResponse as? HTTPURLResponse
                 else {
-                    completion(.failure(error ?? APIError.unknownError))
+                    completion(.failure(error ?? ClientError.unknownError))
                     return
+                }
+                if (400...599).contains(response.statusCode) {
+                    print(error ?? ServiceError.network(statusCode: response.statusCode))
                 }
                 if let data = data,
                    let cardResponse = try? JSONDecoder().decode(BoardResponse.self, from: data) {
                     completion(.success(cardResponse))
                     return
                 }
-                completion(.failure(APIError.unknownError))
+                completion(.failure(ClientError.unknownError))
             }
         task.resume()
     }
@@ -86,7 +89,7 @@ class CardAPIClient {
                 guard let response = urlResponse as? HTTPURLResponse,
                       (200...399).contains(response.statusCode)
                 else {
-                    print(error ?? APIError.unknownError)
+                    print(error ?? ClientError.unknownError)
                     return
                 }
             }
@@ -94,7 +97,7 @@ class CardAPIClient {
     }
     func deleteCard(with id : Int?){
         guard let id = id else {
-            print(APIError.notIncludeID)
+            print(ClientError.notIncludeID)
             return
         }
         var request = URLRequest(url: CardAPI.all.url.appendingPathComponent(String(id)))
@@ -105,7 +108,7 @@ class CardAPIClient {
                 guard let response = urlResponse as? HTTPURLResponse,
                       (200...399).contains(response.statusCode)
                 else {
-                    print(error ?? APIError.unknownError)
+                    print(error ?? ClientError.unknownError)
                     return
                 }
             }
@@ -129,7 +132,7 @@ class CardAPIClient {
                 guard let response = urlResponse as? HTTPURLResponse,
                       (200...399).contains(response.statusCode)
                 else {
-                    print(error ?? APIError.unknownError)
+                    print(error ?? ClientError.unknownError)
                     return
                 }
             }

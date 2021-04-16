@@ -41,6 +41,7 @@ class TableViewDropDelegate: NSObject, UITableViewDropDelegate {
                 else {
                     return
                 }
+                self.dataSource?.cards.append(with: card, at: destinationIndexPath.section)
                 
                 let index = destinationIndexPath.section - 1
                 
@@ -48,12 +49,13 @@ class TableViewDropDelegate: NSObject, UITableViewDropDelegate {
                 let previousId : Int
                 if index == -1 {
                     previousId = index
-                } else { // 중간에 추가 되는 경우
+                } else  { // 중간에 추가 되는 경우
                     guard let _previousId = self.dataSource?.cards.items[index].id else { return }
                     previousId = _previousId
+                    
+                    // 원래 자리에 추가되는 경우
+                    if previousId == id { return }
                 }
-                
-                self.dataSource?.cards.append(with: card, at: destinationIndexPath.section)
                 CardAPIClient().patchCard(from: id, type: "\(self.cardType)", to: previousId)
                 NotificationCenter.default.post(name: Cards.ListChanged, object: nil)
             })
