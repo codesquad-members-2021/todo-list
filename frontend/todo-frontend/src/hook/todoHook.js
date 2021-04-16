@@ -31,29 +31,30 @@ const useTodoHook = (setTodos, setTodoColumns) => {
 
   const moveTodos = async ({ columnId, selectDragObj, afterElement }) => {
     setLoading(true);
-    let movedCardList;
-    if (afterElement === undefined) {
-      movedCardList = moveTodoCardList({ columnId, selectDragObj, afterElement });
-    } else {
-      movedCardList = moveTodoCardList({ columnId, selectDragObj, afterElement });
-    }
+    let movedCardList = await getTodoCardList({ columnId, selectDragObj, afterElement });
+    setTodoCardList({ columnId, selectDragObj, afterElement });
     await todoListService.moveTodoList({ columnId, selectDragObj, movedCardList });
     setLoading(false);
   };
   //이동시킨 cardList에 맞게 todoColumns set
-  const moveTodoCardList = ({ columnId, selectDragObj, afterElement }) => {
+  const setTodoCardList = ({ columnId, selectDragObj, afterElement }) => {
     const { beforeColumnId, ...cardData } = selectDragObj;
-    let newCardList;
-
     setTodoColumns((todoColumns) => {
       const originCardList = todoColumns[columnId].todoCards;
       delete todoColumns[beforeColumnId].todoCards[cardData.id];
-      newCardList = afterElement
+      const newCardList = afterElement
         ? getMovedCardList(originCardList, afterElement.id, cardData)
         : { ...originCardList, [cardData.id]: cardData };
-      todoColumns[columnId].todoCards = newCardList;
+      todoColumns[columnId].todoCards = { ...newCardList };
       return { ...todoColumns };
     });
+  };
+  const getTodoCardList = async ({ columnId, selectDragObj, afterElement }) => {
+    const { beforeColumnId, ...cardData } = selectDragObj;
+    const originCardList = JSON.parse(localStorage.getItem('todos')).todoData[columnId].todoCards;
+    const newCardList = afterElement
+      ? getMovedCardList(originCardList, afterElement.id, cardData)
+      : { ...originCardList, [cardData.id]: cardData };
     return newCardList;
   };
   //이동한 cardList객체 구하는 함수
@@ -63,7 +64,7 @@ const useTodoHook = (setTodos, setTodoColumns) => {
       if (key === cardId) newCardList[data.id] = { ...data };
       newCardList[key] = { ...cardList[key] };
     }
-    return newCardList;
+    return { ...newCardList };
   };
 
   return [loading, postTodos, deleteTodos, putTodos, moveTodos];

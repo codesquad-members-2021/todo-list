@@ -10,7 +10,7 @@ const StyledTodoList = styled.div`
   margin-right: 20px;
   .todoCardList {
     width: 308px;
-    min-height: 700px;
+    min-height: 500px;
     background: #d8e3e7;
     display: flex;
     flex-direction: column;
@@ -71,12 +71,25 @@ const LoadingPage = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
 `;
 
+const DropLocation = styled.div`
+  height: 3px;
+  width: 288px;
+  background-color: #126e82;
+  opacity: 0.3;
+`;
+
 const TodoList = ({
   data: { id, title, todoCards },
   deleteTodoColumn,
   postLogs,
   todoColumns,
   setTodoColumns,
+  dragEl,
+  setDragEl,
+  isDragging,
+  setIsDrgging,
+  dropElement,
+  setDropElement,
 }) => {
   const [todos, setTodos] = useState(todoCards);
   const [loading, postTodos, deleteTodos, putTodos, moveTodos] = useTodoHook(
@@ -133,9 +146,15 @@ const TodoList = ({
   const handledragOver = (e) => {
     e.preventDefault();
   };
+  const handleDragEnter = (e) => {
+    e.preventDefault();
+    const afterElement = getDragAfterElement(e.clientY);
+    setDropElement({ afterElement, columnId: id });
+  };
 
   const getDragAfterElement = (locationY) => {
     const draggableCards = [...currentColumnDiv.current.children];
+    draggableCards.pop();
     const dragAfterElement = draggableCards.reduce(
       (closestCard, child) => {
         const cardBox = child.getBoundingClientRect();
@@ -154,7 +173,6 @@ const TodoList = ({
     const { beforeColumnId, ...cardData } = selectDragObj;
     const afterElement = getDragAfterElement(e.clientY);
     if (afterElement && +afterElement.id === cardData.id) return;
-
     postLogs({
       columnTitle: todoColumns[beforeColumnId].title,
       itemTitle: cardData.title,
@@ -163,6 +181,26 @@ const TodoList = ({
       movedColumnTitle: title,
     });
     moveTodos({ columnId: id, selectDragObj, afterElement });
+    setIsDrgging(false);
+    setDropElement(null);
+  };
+
+  const setDragStyle = (id) => (isDragging && id === dragEl.id ? 'dragging' : '');
+  const setDropStyle = (columnId, cardId) =>
+    isDragging &&
+    dropElement &&
+    dropElement.afterElement &&
+    +dropElement.afterElement.id === cardId &&
+    dragEl.id !== cardId &&
+    id === columnId;
+
+  const setEmptyDropStyle = (id) => {
+    return (
+      isDragging &&
+      dropElement &&
+      dropElement.afterElement === undefined &&
+      dropElement.columnId === id
+    );
   };
 
   const todoCardList = Object.values(todos).map((card) => (
@@ -172,6 +210,10 @@ const TodoList = ({
       todoCard={card}
       deleteTodoItem={deleteTodoItem}
       editTodoItem={editTodoItem}
+      setDragEl={setDragEl}
+      setIsDrgging={setIsDrgging}
+      setDragStyle={setDragStyle}
+      setDropStyle={setDropStyle}
     />
   ));
 
@@ -204,9 +246,11 @@ const TodoList = ({
           className='todoCardList'
           onDrop={handleDrop}
           onDragOver={handledragOver}
+          onDragEnter={handleDragEnter}
           ref={currentColumnDiv}
         >
           {todoCardList}
+          {setEmptyDropStyle(id) && <DropLocation draggable='false'></DropLocation>}
         </div>
       </StyledTodoList>
     </>
