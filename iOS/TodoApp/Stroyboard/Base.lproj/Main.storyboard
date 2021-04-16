@@ -178,15 +178,12 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iFt-LB-svE">
                                 <rect key="frame" x="587" y="260" width="472" height="459"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="레이곰" translatesAutoresizingMaskIntoConstraints="NO" id="zdc-Yd-oZ2">
-                                        <rect key="frame" x="91" y="37" width="290" height="163"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="163" id="7eD-NN-3DW"/>
-                                            <constraint firstAttribute="width" constant="290" id="bXq-xi-j1U"/>
-                                        </constraints>
-                                    </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TL4-Eu-HSd">
                                         <rect key="frame" x="124" y="221" width="26" height="33"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="26" id="Yie-6U-p45"/>
+                                            <constraint firstAttribute="height" constant="33" id="sxf-XI-w4D"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -237,19 +234,17 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.0040650406504064707" green="0.46666666666666667" blue="0.86274509803921573" alpha="0.9270215571" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
+                                    <constraint firstItem="sX9-SE-9Ls" firstAttribute="top" secondItem="TL4-Eu-HSd" secondAttribute="bottom" constant="8" symbolic="YES" id="8GO-H5-9ml"/>
                                     <constraint firstItem="rLa-Ej-HKB" firstAttribute="leading" secondItem="iFt-LB-svE" secondAttribute="leading" constant="127" id="BNt-Mb-6pq"/>
                                     <constraint firstAttribute="height" constant="459" id="Bdy-5O-Ft3"/>
                                     <constraint firstItem="sX9-SE-9Ls" firstAttribute="leading" secondItem="iFt-LB-svE" secondAttribute="leading" constant="126" id="LJz-BW-KLf"/>
-                                    <constraint firstItem="zdc-Yd-oZ2" firstAttribute="top" secondItem="iFt-LB-svE" secondAttribute="top" constant="37" id="N3i-jb-9dB"/>
-                                    <constraint firstItem="rLa-Ej-HKB" firstAttribute="top" secondItem="sX9-SE-9Ls" secondAttribute="bottom" constant="15" id="NEc-9t-i0g"/>
                                     <constraint firstAttribute="width" constant="472" id="Psf-dS-g6l"/>
                                     <constraint firstItem="ptY-nW-xuA" firstAttribute="leading" secondItem="iFt-LB-svE" secondAttribute="leading" constant="127" id="RYA-XY-Ozx"/>
-                                    <constraint firstItem="TL4-Eu-HSd" firstAttribute="top" secondItem="zdc-Yd-oZ2" secondAttribute="bottom" constant="21" id="V0w-uf-ktY"/>
+                                    <constraint firstItem="ptY-nW-xuA" firstAttribute="top" secondItem="rLa-Ej-HKB" secondAttribute="bottom" constant="4" id="Uqo-vn-CWF"/>
                                     <constraint firstItem="TL4-Eu-HSd" firstAttribute="leading" secondItem="iFt-LB-svE" secondAttribute="leading" constant="124" id="YIc-Pv-t1X"/>
-                                    <constraint firstItem="8iw-u9-cdt" firstAttribute="top" secondItem="ptY-nW-xuA" secondAttribute="bottom" constant="28" id="YMn-wE-lv9"/>
-                                    <constraint firstItem="zdc-Yd-oZ2" firstAttribute="leading" secondItem="iFt-LB-svE" secondAttribute="leading" constant="91" id="a2x-2Z-Alw"/>
-                                    <constraint firstItem="sX9-SE-9Ls" firstAttribute="top" secondItem="TL4-Eu-HSd" secondAttribute="bottom" constant="8" symbolic="YES" id="feG-lJ-F6p"/>
-                                    <constraint firstItem="ptY-nW-xuA" firstAttribute="top" secondItem="rLa-Ej-HKB" secondAttribute="bottom" constant="4" id="g0C-NF-h8e"/>
+                                    <constraint firstItem="rLa-Ej-HKB" firstAttribute="top" secondItem="sX9-SE-9Ls" secondAttribute="bottom" constant="15" id="eeJ-Ek-jW6"/>
+                                    <constraint firstItem="8iw-u9-cdt" firstAttribute="top" secondItem="ptY-nW-xuA" secondAttribute="bottom" constant="28" id="hPw-FD-chL"/>
+                                    <constraint firstAttribute="bottom" secondItem="8iw-u9-cdt" secondAttribute="bottom" constant="22" id="j5Q-4V-6Ct"/>
                                     <constraint firstItem="8iw-u9-cdt" firstAttribute="leading" secondItem="iFt-LB-svE" secondAttribute="leading" constant="183" id="rHS-hd-N7l"/>
                                 </constraints>
                             </view>
@@ -273,13 +268,31 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="레이곰" translatesAutoresizingMaskIntoConstraints="NO" id="zdc-Yd-oZ2">
+                                <rect key="frame" x="88" y="437" width="104" height="104"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="104" id="cnq-u9-bKa"/>
+                                    <constraint firstAttribute="width" constant="104" id="rC9-kk-kGy"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="브이강아지" translatesAutoresizingMaskIntoConstraints="NO" id="RHk-FU-wsP">
+                                <rect key="frame" x="233" y="437" width="104" height="104"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="104" id="85l-tp-8aB"/>
+                                    <constraint firstAttribute="height" constant="104" id="jho-1b-8re"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="qfw-bQ-Es7"/>
                         <color key="backgroundColor" red="0.0" green="0.4692926731" blue="1" alpha="0.9270215571" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="qOk-3V-Gi6" firstAttribute="leading" secondItem="qfw-bQ-Es7" secondAttribute="leading" constant="88" id="5AN-h5-LIX"/>
+                            <constraint firstItem="RHk-FU-wsP" firstAttribute="leading" secondItem="zdc-Yd-oZ2" secondAttribute="trailing" constant="41" id="9uZ-Pr-IiN"/>
+                            <constraint firstItem="RHk-FU-wsP" firstAttribute="top" secondItem="qfw-bQ-Es7" secondAttribute="top" constant="437" id="AaB-pk-sgt"/>
                             <constraint firstItem="qOk-3V-Gi6" firstAttribute="top" secondItem="htF-ri-Yau" secondAttribute="bottom" constant="14" id="Ixd-Qo-Jre"/>
+                            <constraint firstItem="zdc-Yd-oZ2" firstAttribute="leading" secondItem="qfw-bQ-Es7" secondAttribute="leading" constant="88" id="JTO-KP-tdK"/>
                             <constraint firstItem="Biz-e5-hYg" firstAttribute="top" secondItem="qfw-bQ-Es7" secondAttribute="top" id="Jbn-VF-uvz"/>
+                            <constraint firstItem="zdc-Yd-oZ2" firstAttribute="top" secondItem="qfw-bQ-Es7" secondAttribute="top" constant="437" id="Kya-BU-jJQ"/>
                             <constraint firstItem="qfw-bQ-Es7" firstAttribute="bottom" secondItem="qOk-3V-Gi6" secondAttribute="bottom" constant="88" id="edl-1P-Re7"/>
                             <constraint firstItem="htF-ri-Yau" firstAttribute="leading" secondItem="qfw-bQ-Es7" secondAttribute="leading" constant="88" id="fFn-hy-2a4"/>
                             <constraint firstItem="qfw-bQ-Es7" firstAttribute="bottom" secondItem="iFt-LB-svE" secondAttribute="bottom" constant="81" id="hDa-I7-EvP"/>
@@ -290,6 +303,8 @@
                     </view>
                     <connections>
                         <outlet property="idTextField" destination="sX9-SE-9Ls" id="ngp-nU-Iyi"/>
+                        <outlet property="logInImageView" destination="zdc-Yd-oZ2" id="p60-0y-ghM"/>
+                        <outlet property="logInImageView2" destination="RHk-FU-wsP" id="sVc-5h-Jy4"/>
                         <outlet property="passwordTextField" destination="ptY-nW-xuA" id="WmZ-cY-cbY"/>
                     </connections>
                 </viewController>
@@ -548,6 +563,7 @@
         <image name="shuffle" catalog="system" width="128" height="93"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <image name="레이곰" width="619" height="649"/>
+        <image name="브이강아지" width="614.5" height="558"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
