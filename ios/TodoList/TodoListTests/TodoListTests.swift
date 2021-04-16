@@ -15,22 +15,23 @@ class TodoListTests: XCTestCase {
     override func tearDown() {
     }
     
-    func test_JSONParser() {
-        let urlString = "https://fc14a707-47df-4e09-9fb0-84045a2d8469.mock.pstmn.io/todos"
-        if let url = URL(string: urlString) {
-            URLSession.shared.dataTask(with: url) { (data, response, error) in
-                if let data = data {
-                    XCTAssertNotNil(JSONParser.parseData(data: data))
-                }
-            }.resume()
-        }
-    }
     
-    func test_DataManager() {
-        let urlString = "https://fc14a707-47df-4e09-9fb0-84045a2d8469.mock.pstmn.io/todos"
-        XCTAssertNotNil(DataManager.getData(urlString: urlString, completion: { (data) in
-            
+    func test_APIRequestManager() {
+        let toDoUrlString = Constants.url
+        let logUrlString = Constants.url_log
+        XCTAssertNotNil(APIRequestManager.requestGet(url: toDoUrlString, completionHandler: { (toDoList) in
+     
+        }))
+        XCTAssertNotNil(APIRequestManager.requestGet_log(url: logUrlString, completionHandler: { (logModel) in
+     
         }))
     }
-
+    
+    func text_post_request_does_not_fail() {
+        let toDoUrlString = Constants.url
+        let dataToSend = ["title": "test", "contents": "test", "status": "TODO"]
+        APIRequestManager.requestPost(url: toDoUrlString, parameter: dataToSend, completionHandler: { (success, response) in
+            XCTAssertTrue(success)
+        })
+    }
 }

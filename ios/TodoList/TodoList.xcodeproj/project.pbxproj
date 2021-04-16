@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		880D7EB42626C22E00E37766 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880D7EB32626C22E00E37766 /* PopUpViewController.swift */; };
 		8871A3402626E3D200528516 /* PopUpViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8871A33F2626E3D200528516 /* PopUpViewProtocol.swift */; };
+		8871A38726295B4000528516 /* LogDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0990B4D2628187D00DA5B3C /* LogDataModel.swift */; };
+		8871A38A26295B5F00528516 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88EC8F2326200095008A4EE5 /* Constants.swift */; };
 		88D276FB2621B1B60060B75A /* CustomHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D276FA2621B1B60060B75A /* CustomHeader.swift */; };
 		88D277082625374E0060B75A /* ToDoTableViewDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D277072625374E0060B75A /* ToDoTableViewDelegates.swift */; };
 		88D2770E26253E6D0060B75A /* DoingTableViewDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D2770D26253E6D0060B75A /* DoingTableViewDelegates.swift */; };
@@ -323,8 +325,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8871A38A26295B5F00528516 /* Constants.swift in Sources */,
 				A08CBA1A261C5043003A93DD /* TodoListTests.swift in Sources */,
 				A08CBA26261C50E7003A93DD /* APIRequestManager.swift in Sources */,
+				8871A38726295B4000528516 /* LogDataModel.swift in Sources */,
 				A08CBA23261C50E5003A93DD /* ToDoDataModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
