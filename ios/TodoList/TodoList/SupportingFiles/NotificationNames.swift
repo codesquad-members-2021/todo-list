@@ -11,5 +11,4 @@ extension Notification.Name {
     static let didChangeToDoItemList = Notification.Name("didChangeToDoItemList")
     static let didChangeDoingItemList = Notification.Name("didChangeDoingItemList")
     static let didChangeDoneItemList = Notification.Name("didChangeDoneItemList")
-    static let didChangeSideMenuToggle = Notification.Name("didChangeSideMenuToggle")
 }

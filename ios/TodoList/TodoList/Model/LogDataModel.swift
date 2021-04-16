@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct LogModel {
-    let log: [Log]
+struct LogModel: Codable {
+    let logs: [Log]
 }
 
-struct Log {
+struct Log: Codable {
     let id: Int
     let title: String
     let fromStatus: String
