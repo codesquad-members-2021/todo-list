@@ -3,6 +3,7 @@ import StyledForm from '../atoms/StyledForm';
 import { InputTitle, InputContent } from '../atoms/StyledInputs';
 import FormButtonsWrap from '../molecules/FormButtonsWrap';
 import resize from './custom.js';
+import { postForm } from './useFetch.js';
 
 const Form = ({ addCard, column, offDisplay }) => {
   const [hasInput, setHasInput] = useState(false);
@@ -13,19 +14,13 @@ const Form = ({ addCard, column, offDisplay }) => {
   const titleInput = useRef();
   const contentInput = useRef();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const newCard = {
-      id: Date.now(),
-      title: titleInput.current.value,
-      content: contentInput.current.value,
-      author: column.cards.author,
-    };
-
-    const cardAdded = [newCard, ...column.cards];
-    column.cards = cardAdded;
-    addCard(column);
+    const formData = new FormData();
+    formData.append('title', titleInput.current.value);
+    formData.append('content', contentInput.current.value);
+    await postForm(`/${column.id}/cards`, formData, column, addCard);
     offDisplay();
   };
 

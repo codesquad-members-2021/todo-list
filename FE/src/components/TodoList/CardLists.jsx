@@ -7,17 +7,18 @@ const CardLists = ({
   SetIsDeleteBtnClicked,
   setNewColumns,
 }) => {
-  const cardlists = cards.map((cards) => (
-    <Card
-      key={cards.id}
-      cards={cards}
-      checkInputValue={checkInputValue}
-      column={column}
-      SetIsDeleteBtnClicked={SetIsDeleteBtnClicked}
-      setNewColumns={setNewColumns}
-    />
-  ));
-
+  const cardlists = [...cards]
+    .reverse()
+    .map((cards) => (
+      <Card
+        key={cards.id}
+        cards={cards}
+        checkInputValue={checkInputValue}
+        column={column}
+        SetIsDeleteBtnClicked={SetIsDeleteBtnClicked}
+        setNewColumns={setNewColumns}
+      />
+    ));
   return <>{cardlists}</>;
 };
 export default CardLists;
