@@ -114,6 +114,7 @@ extension CardViewController {
             self.countOfTodo.text = String(self.todo.numberOfSections)
             self.countOfDoing.text = String(self.doing.numberOfSections)
             self.countOfDone.text = String(self.done.numberOfSections)
+            
         }
     }
 }
