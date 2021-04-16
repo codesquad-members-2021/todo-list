@@ -4,7 +4,7 @@ import TodoListForm from './TodoListForm';
 import DeleteBtn from '../../atom/DeleteBtn.jsx';
 import styled from 'styled-components';
 import useTodoHook from '../../../hook/todoHook';
-
+import { LoadingPage } from '../TodoMain.jsx';
 const StyledTodoList = styled.div`
   width: 308px;
   margin-right: 20px;
@@ -56,19 +56,6 @@ const CircleNumber = styled.span`
   text-align: center;
   margin: 0 10px;
   float: right;
-`;
-
-const LoadingPage = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  background-color: rgba(0, 0, 0, 0.5);
 `;
 
 const DropLocation = styled.div`
