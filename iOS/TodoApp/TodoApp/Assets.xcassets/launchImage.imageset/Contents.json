@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "launchImage.png",
+      "filename" : "스크린샷 2021-04-16 오전 8.52.55.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "launchImage-1.png",
+      "filename" : "스크린샷 2021-04-16 오전 8.52.55-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "launchImage-2.png",
+      "filename" : "스크린샷 2021-04-16 오전 8.52.55-2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
