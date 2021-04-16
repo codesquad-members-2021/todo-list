@@ -144,7 +144,10 @@ extension TaskViewController {
 extension TaskViewController: UITableViewDragDelegate {
     
     func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
-        return taskStackManager.dragItems(for: indexPath, stauts: column!)
+        let card = taskStackManager.index(self.column!, at: indexPath.row)
+        let itemProvider = NSItemProvider(object: card)
+        let dragItem = UIDragItem(itemProvider: itemProvider)
+        return [dragItem]
     }
 }
 
@@ -153,6 +156,13 @@ extension TaskViewController: UITableViewDropDelegate {
     func tableView(_ tableView: UITableView, canHandle session: UIDropSession) -> Bool {
         return taskStackManager.canHandle(session)
     }
+        
+    func tableView(_ tableView: UITableView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UITableViewDropProposal {
+        
+        return UITableViewDropProposal(operation: .move, intent: .insertAtDestinationIndexPath)
+    }
+    
+    
     
     func tableView(_ tableView: UITableView, performDropWith coordinator: UITableViewDropCoordinator) {
         
@@ -161,20 +171,24 @@ extension TaskViewController: UITableViewDropDelegate {
         if let indexPath = coordinator.destinationIndexPath {
             destinationIndexPath = indexPath
         } else {
-            let section = taskTableView.numberOfSections - 1
-            let row = taskTableView.numberOfRows(inSection: section)
+            let section = tableView.numberOfSections-1
+            let row = tableView.numberOfRows(inSection: section)
             destinationIndexPath = IndexPath(row: row, section: section)
         }
-        
+       
         for item in coordinator.items {
-            item.dragItem.itemProvider.loadObject(ofClass: TaskCard.self, completionHandler: { (card, error) in
+            item.dragItem.itemProvider.loadObject(ofClass: TaskCard.self) { (card, error) in
                 if let card = card as? TaskCard {
-                    
                     DispatchQueue.main.async {
-                        self.taskStackManager.insert(self.column!, card, at: destinationIndexPath.row)
+                        tableView.beginUpdates()
+                        self.taskStackManager.remove(card.status, at: destinationIndexPath.row)
+                        self.taskStackManager.append(self.column!, taskCard: card)
+                        tableView.endUpdates()
+                        self.updateTaskCountLabel()
+                        NetworkManager.insertedDataPost(httpMethod: HTTPMethod.post, data: card)
                     }
                 }
-            })
+            }
         }
     }
 }
