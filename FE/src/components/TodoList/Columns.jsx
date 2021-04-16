@@ -4,10 +4,17 @@ import Form from './Form';
 import styled from 'styled-components';
 import Icon from '../atoms/Icons';
 import AddBtn from '../atoms/AddBtn';
+import PopUp from '../atoms/PopUp';
+import { deleteCard, deleteColumn } from './useFetch.js';
 
-const Column = ({ data: { columns } }) => {
-  const [columnData, setColumnData] = useState(columns);
+const Column = ({ todoData }) => {
+  const [columnData, setColumnData] = useState(todoData);
   const [currentID, setCurrentID] = useState(null);
+  const [isDeleteBtnClicked, SetIsDeleteBtnClicked] = useState(false);
+  const [newColumns, setNewColumns] = useState({
+    column: [],
+    cardID: null,
+  });
 
   const handleClick = (clickedID) => {
     return () => {
@@ -19,6 +26,8 @@ const Column = ({ data: { columns } }) => {
 
   const handleClickDeleteBtn = (deletedID) => {
     return () => {
+      const path = `boards/${deletedID}`;
+      deleteColumn(path);
       const newColumn = columnData.filter(({ id }) => id !== deletedID);
       setColumnData([...newColumn]);
     };
@@ -28,9 +37,12 @@ const Column = ({ data: { columns } }) => {
     setColumnData(Object.assign(columnData, column));
   };
 
+  const rewind = () => SetIsDeleteBtnClicked(!isDeleteBtnClicked);
+
   const offDisplay = () => {
     setCurrentID(null);
   };
+
 
   const addColumn = () => {
     const columnToAdd = {
@@ -41,6 +53,13 @@ const Column = ({ data: { columns } }) => {
     if (columnToAdd.title) {
       setColumnData([...columnData, columnToAdd]);
     }
+  }
+
+  const handleClickDelete = async (newColumns) => {
+    const { column, cardID } = newColumns;
+    const path = `${column.id}/cards/${cardID}`;
+    deleteCard(path, columnData, column, setColumnData);
+    rewind();
   };
 
   const checkInputValue = ({ title, content }, callbackSetInput) => {
@@ -77,7 +96,14 @@ const Column = ({ data: { columns } }) => {
                 checkInputValue={checkInputValue}
               />
             )}
-            <CardLists cards={cards} checkInputValue={checkInputValue} />
+            <CardLists
+              key={id + title}
+              column={column}
+              cards={cards}
+              checkInputValue={checkInputValue}
+              SetIsDeleteBtnClicked={SetIsDeleteBtnClicked}
+              setNewColumns={setNewColumns}
+            />
           </div>
         </ul>
       </section>
@@ -85,12 +111,20 @@ const Column = ({ data: { columns } }) => {
   });
 
   return (
-    <ColumnContainer>
-      {columnList}
+    <>
+      <ColumnContainer>
+        {columnList}
       <div onClick={addColumn}>
         <AddBtn />
       </div>
-    </ColumnContainer>
+      </ColumnContainer>
+      <PopUp
+        isDeleteBtnClicked={isDeleteBtnClicked}
+        rewind={rewind}
+        newColumns={newColumns}
+        handleClickDelete={handleClickDelete}
+      />
+    </>
   );
 };
 

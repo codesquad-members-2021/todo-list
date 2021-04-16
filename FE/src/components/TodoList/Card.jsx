@@ -4,15 +4,22 @@ import CardButtonWrap from '../molecules/CardButtonWrap';
 import { InputTitle, InputContent } from '../atoms/StyledInputs';
 import Icon from '../atoms/Icons';
 import resize from './custom.js';
+import { putForm } from './useFetch.js';
 
-const Card = ({ cards, checkInputValue }) => {
+const Card = ({
+  column,
+  cards,
+  checkInputValue,
+  SetIsDeleteBtnClicked,
+  setNewColumns,
+}) => {
   const [isEditMode, setIsEditMode] = useState(false);
   const [hasInput, setHasInput] = useState(false);
   const [inputs, setInputs] = useState({
     title: '',
     content: '',
   });
-  const { title, content, author } = cards;
+  const { id, title, content, author } = cards;
   const cardTitle = useRef();
   const cardContent = useRef();
 
@@ -27,9 +34,27 @@ const Card = ({ cards, checkInputValue }) => {
     setIsEditMode(true);
   };
 
-  const handleClickEdit = (e) => {
-    // fetch: patch
+  const handleClickEdit = async () => {
+    const path = `${column.id}/cards/${id}`;
+    const formData = new FormData();
+    formData.append('title', cardTitle.current.value);
+    formData.append('content', cardContent.current.value);
+    await putForm(path, formData, setInputs);
     setIsEditMode(false);
+  };
+
+  const handleClickDeleteIcon = (e) => {
+    SetIsDeleteBtnClicked(true);
+    const newCards = deleteClickedCard(id, column);
+    const newCardList = [...newCards];
+    const newColumn = Object.assign({}, column);
+    newColumn.cards = newCardList;
+    setNewColumns({ column: newColumn, cardID: id });
+  };
+
+  const deleteClickedCard = (id, column) => {
+    const clickedCardID = id;
+    return column.cards.filter((card) => card.id !== clickedCardID);
   };
 
   const handleCancelBtn = () => {
@@ -45,7 +70,9 @@ const Card = ({ cards, checkInputValue }) => {
   return (
     <CardContainer className="clicked">
       <div className="card__icon">
-        <Icon type={'cancel'} />
+        <button className="icon-btn" onClick={handleClickDeleteIcon}>
+          <Icon type={'cancel'} />
+        </button>
       </div>
       {isEditMode ? (
         <li onDoubleClick={handleClickCard}>
@@ -100,6 +127,12 @@ const CardContainer = styled.div`
   border-radius: 6px;
   border: 0;
   position: relative;
+
+  .icon-btn {
+    border: 0;
+    outline: 0;
+    background: #ffffff;
+  }
 
   .card__icon {
     position: absolute;
