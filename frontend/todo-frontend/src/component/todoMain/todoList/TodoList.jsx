@@ -74,7 +74,7 @@ const LoadingPage = styled.div`
 const DropLocation = styled.div`
   height: 3px;
   width: 288px;
-  background-color: blue;
+  background-color: #126e82;
   opacity: 0.3;
 `;
 
