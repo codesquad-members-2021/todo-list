@@ -4,7 +4,7 @@ function LogMessage({ log }) {
       return (
         <div>
           <strong>{log.columnTitle}</strong>에 <strong>{log.cardTitle}</strong>
-          목록을 <strong>등록</strong>하였습니다.
+          아이템을 <strong>등록</strong>하였습니다.
         </div>
       );
     case "transfer":
@@ -14,7 +14,6 @@ function LogMessage({ log }) {
           <strong>{log.columnTitle}</strong>로 <strong>이동</strong>하였습니다.
         </div>
       );
-
     case "update":
       return (
         <div>
@@ -35,8 +34,3 @@ function LogMessage({ log }) {
 }
 
 export default LogMessage;
-
-// LogMessage.defaultProps = {
-//   columnTitle: "칼럼",
-//   cardTitle: "카드",
-// };

@@ -2,6 +2,14 @@ import styled from "styled-components";
 
 import { BUTTON_TYPE, BUTTON_STYLE } from "./constant.js";
 
+export default function Button({ type, subType, onClick }) {
+  return (
+    <StyledButton t={type} s={subType} onClick={onClick}>
+      {BUTTON_TYPE[type]}
+    </StyledButton>
+  );
+}
+
 const StyledButton = styled.button`
   outline: none;
   border: none;
@@ -17,11 +25,3 @@ const StyledButton = styled.button`
     return props.s && BUTTON_STYLE[props.s];
   }};
 `;
-
-export default function Button({ type, subType, onClick }) {
-  return (
-    <StyledButton t={type} s={subType} onClick={onClick}>
-      {BUTTON_TYPE[type]}
-    </StyledButton>
-  );
-}

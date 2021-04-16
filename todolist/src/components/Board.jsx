@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Button from "./utils/Button";
 import { URL } from "./utils/constant";
 import { DragDropContext } from "react-beautiful-dnd";
+
 const BoardBlock = styled.div`
   display: flex;
 `;
@@ -35,17 +36,15 @@ export default function Board({ onLog }) {
       const data = await fetch(URL.getDB);
       const json = await data.json();
       setColumns((json[0].columnList.length && json[0].columnList) || mockData);
-    })();
-  }, []);
 
-  useEffect(() => {
-    fetch(URL.setDB, {
-      method: "post",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(columns),
-    });
+      await fetch(URL.setDB, {
+        method: "post",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(columns),
+      });
+    })();
   }, [columns]);
 
   const addColumn = () => {
@@ -58,7 +57,9 @@ export default function Board({ onLog }) {
   };
 
   const deleteColumn = (columnId) => {
-    setColumns((columns) => columns.filter((column) => column.columnId !== columnId));
+    setColumns((columns) =>
+      columns.filter((column) => column.columnId !== columnId)
+    );
   };
 
   const setItemsOfColumn = (column) => {
@@ -67,10 +68,20 @@ export default function Board({ onLog }) {
     setColumns((columns) => [...columns]);
   };
 
+  const setColumnTitle = (newColumn) => {
+    const target = columns.map((column) =>
+      column.columnId !== newColumn.columnId ? column : newColumn
+    );
+    setColumns(target);
+  };
+
   const onDragEnd = (result) => {
     if (!result.destination) return;
     const { droppableId: beforeColumnId, index: beforeIndex } = result.source;
-    const { droppableId: afterColumnId, index: afterIndex } = result.destination;
+    const {
+      droppableId: afterColumnId,
+      index: afterIndex,
+    } = result.destination;
 
     let targetItem = {};
     for (const column of columns) {
@@ -102,6 +113,7 @@ export default function Board({ onLog }) {
             column={column}
             setItemsOfColumn={setItemsOfColumn}
             deleteColumn={deleteColumn}
+            setColumnTitle={setColumnTitle}
           />
         ))}
         <Button type="add" subType="bigSize" onClick={addColumn} />
