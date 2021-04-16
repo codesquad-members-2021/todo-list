@@ -50,7 +50,6 @@ class ToDoViewController: UIViewController {
     }
     
     private func setBadgeViewRadius() {
-        //badgeView.swift 만들어서 init 시 자동으로 설정하게 바꾸는 게 좋을듯
         let radius = badgeView.bounds.height * 0.5
         badgeView.layer.cornerRadius = radius
     }
