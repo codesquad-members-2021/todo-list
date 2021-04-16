@@ -3,8 +3,15 @@ import { MdAdd } from "react-icons/md";
 import { HiX, HiMenu } from "react-icons/hi";
 
 export const URL = {
-  setDB: "http://localhost:3000/setData",
-  getDB: "http://localhost:3000/getData",
+  setDB: "http://localhost:3000/todolist-database",
+  getDB: "http://localhost:3000/todolist",
+};
+
+export const palette = {
+  lightGray: "#e0e0e0",
+  blue: "#0075de",
+  lightRed: "#ffeeec",
+  lightRedBorder: "#ffa19f",
 };
 
 const TEXT_DEFAULT = `
@@ -16,17 +23,22 @@ const TEXT_DEFAULT = `
 export const BUTTON_STYLE = {
   cancel: css`
     ${TEXT_DEFAULT}
-    background: #e0e0e0;
+    background: ${palette.lightGray};
     color: black;
   `,
   enroll: css`
     ${TEXT_DEFAULT}
-    background: #0075de;
+    background: ${palette.blue};
     color: white;
   `,
   edit: css`
     ${TEXT_DEFAULT}
-    background: #0075de;
+    background: ${palette.blue};
+    color: white;
+  `,
+  remove: css`
+    ${TEXT_DEFAULT}
+    background: ${palette.blue};
     color: white;
   `,
   bigSize: css`
@@ -35,7 +47,7 @@ export const BUTTON_STYLE = {
     border-radius: 30px;
     font-size: 60px;
     border: 30px;
-    background: #0075de;
+    background: ${palette.blue};
     color: white;
   `,
   navBtn: css`
@@ -51,4 +63,5 @@ export const BUTTON_TYPE = {
   cancel: "취소",
   enroll: "등록",
   edit: "수정",
+  remove: "삭제",
 };

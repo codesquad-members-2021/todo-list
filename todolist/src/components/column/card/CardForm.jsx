@@ -1,24 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import Button from "../../utils/Button";
-import { CardButtonSection } from "./CardButton.style";
-const CardFormSection = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const CardFormTitle = styled.input`
-  border: none;
-  width: 100%;
-  height: 23px;
-  background-color: #ddd;
-`;
-
-const CardFormContent = styled.textarea`
-  margin-top: 10px;
-  min-height: 100px;
-  width: auto;
-`;
+import { CardButtonSection } from "./CardButtonSection.style";
 
 function CardForm({ card, editMode, onSubmit, onCancel }) {
   const [cardTitle, setTitle] = useState(card ? card.cardTitle : "");
@@ -44,13 +27,29 @@ function CardForm({ card, editMode, onSubmit, onCancel }) {
         ></CardFormContent>
       </CardFormSection>
       <CardButtonSection>
-        <Button type="cancel" onClick={onCancel}>
-          취소
-        </Button>
-        <Button type={editMode ? "edit" : "enroll"} onClick={handelOnSubmit}></Button>
+        <Button type="cancel" subType="cancel" onClick={onCancel} />
+        <Button type={editMode ? "edit" : "enroll"} subType={editMode ? "edit" : "enroll"} onClick={handelOnSubmit} />
       </CardButtonSection>
     </form>
   );
 }
+
+const CardFormSection = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const CardFormTitle = styled.input`
+  border: none;
+  width: 100%;
+  height: 23px;
+  background-color: #ddd;
+`;
+
+const CardFormContent = styled.textarea`
+  margin-top: 10px;
+  min-height: 100px;
+  width: auto;
+`;
 
 export default CardForm;
