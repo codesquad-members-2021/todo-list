@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     private var doingViewController: TodoTableViewController?
     private var doneViewController: TodoTableViewController?
     
-    private var todoCards = TodoCards() // ⚠️
+    private var todoCards = TodoCards()
     private var networkManager = NetworkManager()
     
     
@@ -38,9 +38,13 @@ class ViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        NetworkHandler.get(urlString: EndPoint.home.rawValue, dataType: TodoCards.self)
         setObserver()
-        setting()
+        NetworkManager().getSource(urlString: EndPoint.home.rawValue,
+                                   httpMethod: .get,
+                                   dataType: TodoCards.self) { (cards, error) in
+            self.todoCards = cards as! TodoCards
+            self.setting()
+        }
         super.viewDidLoad()
     }
     
@@ -54,35 +58,68 @@ class ViewController: UIViewController {
     }
     
     private func setVC(_ viewController: TodoTableViewController?, data: [TodoCard], name: Column, column: String) {
-        viewController?.getData(with: data, column: column)
+        viewController?.setData(with: data, column: column)
         viewController?.setting()
         viewController?.setHeader(columnName: name.rawValue)
+        viewController?.reload()
     }
     
     
     //MARK:- Notification
     
     private func setObserver() {
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NSNotification.Name(rawValue: "finishNetwork"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: .finishNetwork, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(moveCard), name: .moveCard, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(removeCard), name: .removeCard, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(completeCard), name: .completeCard, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(modifyCard), name: .modifyCard, object: nil)
     }
     
     @objc func reloadData(_ notification: Notification) {
-        
-        guard let dict = notification.userInfo as Dictionary? else { return }
-        if let cards = dict["cards"] as? TodoCards {
-            self.todoCards = cards
-            setting()
+        NetworkManager().getSource(urlString: EndPoint.home.rawValue,
+                                   httpMethod: .get,
+                                   dataType: TodoCards.self) { (cards, error) in
+            self.todoCards = cards as! TodoCards
+            self.setting()
         }
     }
-}
+    
+    @objc func moveCard(_ notification: Notification) {
+        guard let dict = notification.userInfo as Dictionary? else { return }
+        guard let card = dict["card"] as? TodoCard else { return }
+        guard let status = dict["column"] as? String else { return }
 
+        let moveCard = MoveCard(status: status)
+        let url = "\(EndPoint.modify.rawValue)/\(card.id)/status"
+        
+        NetworkHandler.post(anydata: moveCard, url: url, httpMethod: .put)
+    }
+    
+    @objc func removeCard(_ notification: Notification) {
+        guard let dict = notification.userInfo as Dictionary? else { return }
+        guard let cardNum = dict["cardNum"] as? Int else { return }
 
-class NetworkHandler {
-    static func get<T:Codable>(urlString: String, dataType: T.Type) {
-        NetworkManager().getSource(urlString: EndPoint.home.rawValue, httpMethod: .get, dataType: TodoCards.self) { (cards, error) in
-            let todoCards = cards as! TodoCards
-            let userinfo = ["cards": todoCards]
-            NotificationCenter.default.post(name: NSNotification.Name("finishNetwork"), object: nil, userInfo: userinfo)
-        }
+        let url = "\(EndPoint.modify.rawValue)/\(cardNum)"
+        
+        NetworkHandler.post(anydata: cardNum, url: url, httpMethod: .delete)
+    }
+    
+    @objc func completeCard(_ notification: Notification) {
+        guard let dict = notification.userInfo as Dictionary? else { return }
+        guard let cardNum = dict["cardNum"] as? Int else { return }
+        
+        let moveCard = MoveCard(status: "done")
+        let url = "\(EndPoint.modify.rawValue)/\(cardNum)/status"
+        
+        NetworkHandler.post(anydata: moveCard, url: url, httpMethod: .put)
+    }
+    
+    @objc func modifyCard(_ notification: Notification) {
+        guard let dict = notification.userInfo as Dictionary? else { return }
+        guard let cardNum = dict["cardNum"] as? Int else { return }
+        
+        let modalView = ModalViewController(nibName: "ModalViewController", bundle: nil, mode: .modify, status: nil, cardId: cardNum)
+        modalView.modalPresentationStyle = .custom
+        self.present(modalView, animated: true, completion: nil)  
     }
 }

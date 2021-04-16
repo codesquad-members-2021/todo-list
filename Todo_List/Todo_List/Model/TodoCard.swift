@@ -13,6 +13,7 @@ struct User: Codable {
 }
 
 struct TodoCard: Codable {
+    var id: Int
     var title: String
     var contents: String
     var postTime: String
@@ -23,6 +24,15 @@ struct CreateCard: Codable {
     var title: String
     var contents: String
     var status: String
+}
+
+struct MoveCard: Codable {
+    var status: String
+}
+
+struct ModifyCard: Codable {
+    var title: String
+    var contents: String
 }
 
 //GET

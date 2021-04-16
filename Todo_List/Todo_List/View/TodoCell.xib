@@ -85,6 +85,7 @@
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
             <connections>
+                <outlet property="authorLabel" destination="KR3-UI-pjl" id="nTx-MG-TBi"/>
                 <outlet property="contentLabel" destination="e2e-j5-RBC" id="dYF-rW-dgD"/>
                 <outlet property="titleLabel" destination="aTY-iU-2ve" id="CIV-f3-Tn9"/>
             </connections>

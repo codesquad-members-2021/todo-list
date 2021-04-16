@@ -12,7 +12,7 @@ extension TodoTableViewController: UITableViewDragDelegate {
     func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
         let itemProvider = NSItemProvider()
         let dragItem = UIDragItem(itemProvider: itemProvider)
-        dragItem.localObject = DragItem(dataSource: todoDataSource, indexPath: indexPath, tableView: tableView)
+        dragItem.localObject = todoDataSource.todoCards[indexPath.row]
         
         return [dragItem]
     }    

@@ -14,7 +14,7 @@ class TodoTableViewController: UIViewController {
     @IBOutlet weak var cardNumLabel: UILabel!
     @IBOutlet weak var addCardButton: UIButton!
     
-    private var column : String!
+    private (set)var column : String!
     private lazy var tableViewDelegate = TodoDelegate()
     var todoDataSource = TodoDataSource(todoCards: [])
         
@@ -27,11 +27,10 @@ class TodoTableViewController: UIViewController {
         tableView.dragDelegate = self
         tableView.dragInteractionEnabled = true
         tableView.register(UINib(nibName: TodoCell.identifier, bundle: nil), forCellReuseIdentifier: TodoCell.identifier)
-        setObserver()
         
     }
     
-    func getData(with todoCards: [TodoCard], column: String) {
+    func setData(with todoCards: [TodoCard], column: String) {
         self.todoDataSource = TodoDataSource(todoCards: todoCards)
         tableView.dataSource = self.todoDataSource
         self.column = column
@@ -39,27 +38,17 @@ class TodoTableViewController: UIViewController {
     
     func setHeader(columnName: String) {
         columnNameLabel.text = columnName
-        cardNumLabel.text = "\(tableView.numberOfRows(inSection: 0))"
     }
     
+    func reload() {
+        self.tableView.reloadData()
+        cardNumLabel.text = "\(todoDataSource.todoCards.count)"
+    }
     
     @IBAction func addCardButtonTouched(_ sender: UIButton) {
-        let modalView = ModalViewController(nibName: "ModalViewController", bundle: nil, self.todoDataSource.todoCards, status: self.column)
+        let modalView = ModalViewController(nibName: "ModalViewController", bundle: nil, mode: .register, status: self.column, cardId: nil)
         modalView.modalPresentationStyle = .custom
-        self.present(modalView, animated: true, completion: nil)
-        NotificationCenter.default.post(name: NSNotification.Name("createCard"), object: nil, userInfo: ["status": column ?? ""])
-        
+        self.present(modalView, animated: true, completion: nil)        
     }
     
-    
-    // MARK:- Notification
-    
-    private func setObserver() {
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NSNotification.Name(rawValue: "finishNetwork"), object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NSNotification.Name(rawValue: "createCard"), object: nil)
-    }
-    
-    @objc func reloadData(_ notification: Notification) {
-        self.tableView.reloadData()
-    }
 }
