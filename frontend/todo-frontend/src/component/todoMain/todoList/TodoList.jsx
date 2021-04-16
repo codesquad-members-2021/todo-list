@@ -71,6 +71,13 @@ const LoadingPage = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
 `;
 
+const DropLocation = styled.div`
+  height: 3px;
+  width: 288px;
+  background-color: blue;
+  opacity: 0.3;
+`;
+
 const TodoList = ({
   data: { id, title, todoCards },
   deleteTodoColumn,
@@ -142,7 +149,7 @@ const TodoList = ({
   const handleDragEnter = (e) => {
     e.preventDefault();
     const afterElement = getDragAfterElement(e.clientY);
-    setDropElement(afterElement);
+    setDropElement({ afterElement, columnId: id });
   };
 
   const getDragAfterElement = (locationY) => {
@@ -182,9 +189,19 @@ const TodoList = ({
   const setDropStyle = (columnId, cardId) =>
     isDragging &&
     dropElement &&
-    +dropElement.id === cardId &&
+    dropElement.afterElement &&
+    +dropElement.afterElement.id === cardId &&
     dragEl.id !== cardId &&
     id === columnId;
+
+  const setEmptyDropStyle = (id) => {
+    return (
+      isDragging &&
+      dropElement &&
+      dropElement.afterElement === undefined &&
+      dropElement.columnId === id
+    );
+  };
 
   const todoCardList = Object.values(todos).map((card) => (
     <TodoItem
@@ -233,6 +250,7 @@ const TodoList = ({
           ref={currentColumnDiv}
         >
           {todoCardList}
+          {setEmptyDropStyle(id) && <DropLocation></DropLocation>}
         </div>
       </StyledTodoList>
     </>
