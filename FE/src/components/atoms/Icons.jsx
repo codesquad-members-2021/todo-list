@@ -47,32 +47,76 @@ const Icon = ({ type }) => {
     ),
     add: (
       <>
-      <svg width="72" height="74" viewBox="0 0 72 74" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g filter="url(#filter0_bdd)">
-<circle cx="36" cy="36" r="32" fill="#0075DE"/>
-</g>
-<defs>
-<filter id="filter0_bdd" x="0" y="0" width="72" height="74" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
-<feFlood floodOpacity="0" result="BackgroundImageFix"/>
-<feGaussianBlur in="BackgroundImage" stdDeviation="2"/>
-<feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
-<feOffset dy="2"/>
-<feGaussianBlur stdDeviation="2"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-<feBlend mode="normal" in2="effect1_backgroundBlur" result="effect2_dropShadow"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
-<feOffset/>
-<feGaussianBlur stdDeviation="2"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0.8 0 0 0 0 0.8 0 0 0 0 0.8 0 0 0 0.5 0"/>
-<feBlend mode="normal" in2="effect2_dropShadow" result="effect3_dropShadow"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect3_dropShadow" result="shape"/>
-</filter>
-</defs>
-</svg>
-
+        <svg
+          width="72"
+          height="74"
+          viewBox="0 0 72 74"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g filter="url(#filter0_bdd)">
+            <circle cx="36" cy="36" r="32" fill="#0075DE" />
+          </g>
+          <defs>
+            <filter
+              id="filter0_bdd"
+              x="0"
+              y="0"
+              width="72"
+              height="74"
+              filterUnits="userSpaceOnUse"
+              colorInterpolationFilters="sRGB"
+            >
+              <feFlood floodOpacity="0" result="BackgroundImageFix" />
+              <feGaussianBlur in="BackgroundImage" stdDeviation="2" />
+              <feComposite
+                in2="SourceAlpha"
+                operator="in"
+                result="effect1_backgroundBlur"
+              />
+              <feColorMatrix
+                in="SourceAlpha"
+                type="matrix"
+                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+              />
+              <feOffset dy="2" />
+              <feGaussianBlur stdDeviation="2" />
+              <feColorMatrix
+                type="matrix"
+                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+              />
+              <feBlend
+                mode="normal"
+                in2="effect1_backgroundBlur"
+                result="effect2_dropShadow"
+              />
+              <feColorMatrix
+                in="SourceAlpha"
+                type="matrix"
+                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+              />
+              <feOffset />
+              <feGaussianBlur stdDeviation="2" />
+              <feColorMatrix
+                type="matrix"
+                values="0 0 0 0 0.8 0 0 0 0 0.8 0 0 0 0 0.8 0 0 0 0.5 0"
+              />
+              <feBlend
+                mode="normal"
+                in2="effect2_dropShadow"
+                result="effect3_dropShadow"
+              />
+              <feBlend
+                mode="normal"
+                in="SourceGraphic"
+                in2="effect3_dropShadow"
+                result="shape"
+              />
+            </filter>
+          </defs>
+        </svg>
       </>
-    )
+    ),
   }[type];
 };
 
