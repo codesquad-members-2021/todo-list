@@ -16,10 +16,11 @@ const Form = ({ addCard, column, offDisplay }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     const formData = new FormData();
     formData.append('title', titleInput.current.value);
     formData.append('content', contentInput.current.value);
+    console.log(formData);
     await postForm(`${column.id}/cards`, formData, column, addCard);
     offDisplay();
   };

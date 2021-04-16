@@ -5,7 +5,9 @@ import styled from 'styled-components';
 import Icon from '../atoms/Icons';
 import AddBtn from '../atoms/AddBtn';
 import PopUp from '../atoms/PopUp';
-import { deleteCard } from './useFetch.js';
+import { postColumn, deleteCard } from './useFetch.js';
+
+
 
 const Column = ({ todoData }) => {
   const [columnData, setColumnData] = useState(todoData);
@@ -39,15 +41,11 @@ const Column = ({ todoData }) => {
   };
 
 
-  const addColumn = () => {
-    const columnToAdd = {
-      id: columnData.length + 1,
-      title: prompt('칼럼 이름을 입력하세요'),
-      cards: [],
-    };
-    if (columnToAdd.title) {
-      setColumnData([...columnData, columnToAdd]);
-    }
+  const addColumn = async () => {
+    const formData = new FormData();
+    const title = prompt('칼럼 이름 입력');
+    formData.append('title', title);
+    await postColumn('boards', formData, columnData, setColumnData);
   }
 
   const handleClickDelete = async (newColumns) => {

@@ -45,4 +45,10 @@ const putForm = async (path, formData, setInputs) => {
   });
 };
 
-export { postForm, deleteCard, putForm, deleteColumn };
+const postColumn = async (path, formData,columnData, callback) => {
+  const response = await axios.post(path, formData);
+  const columnToAdd = response.data;
+  callback([...columnData, columnToAdd]);
+}
+
+export { postColumn, postForm, deleteCard, putForm, deleteColumn };
