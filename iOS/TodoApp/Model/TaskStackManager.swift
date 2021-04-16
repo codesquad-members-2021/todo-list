@@ -42,10 +42,17 @@ class TaskStackManager {
     }
     
     func move(_ status: Int, at index: Int) {
-            var movedData = tasks[status].remove(at: index)
+            let movedData = tasks[status].remove(at: index)
         movedData.status = StatusValue.done
             tasks[StatusValue.done].append(taskCard: movedData)
         NotificationCenter.default.post(name: .requestMoveTask, object: self, userInfo: ["movedData": movedData])
+    }
+    
+    func dragDrop(_ dragStatus: Int, dropStatus: Int, at index: Int) {
+        let draggedData = tasks[dragStatus].remove(at: index)
+        draggedData.status = dropStatus
+        tasks[dropStatus].append(taskCard: draggedData)
+        NotificationCenter.default.post(name: .dragDropTask, object: self, userInfo: ["dragData": draggedData])
     }
     
     func shuffle(_ status: Int) {
