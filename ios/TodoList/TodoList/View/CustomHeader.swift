@@ -11,16 +11,20 @@ class CustomHeader: UITableViewHeaderFooterView {
     let title: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .white
         return label
     }()
     
     let badge: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = .darkGray
+        label.backgroundColor = .clear
         label.layer.cornerRadius = 10
         label.layer.masksToBounds = true
         label.textAlignment = .center
+        label.layer.borderColor = UIColor.white.cgColor
+        label.layer.borderWidth = 1
+        label.textColor = UIColor.white
         return label
     }()
     
@@ -28,7 +32,7 @@ class CustomHeader: UITableViewHeaderFooterView {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setBackgroundImage(UIImage(systemName: "plus"), for: .normal)
-        button.tintColor = UIColor.black
+        button.tintColor = UIColor.white
         return button
     }()
 
@@ -50,7 +54,11 @@ class CustomHeader: UITableViewHeaderFooterView {
         contentView.addSubview(button)
         contentView.addSubview(badge)
         contentView.addSubview(title)
-        contentView.backgroundColor = .white
+        contentView.backgroundColor = .clear
+        self.backgroundView = UIView()
+        self.backgroundView!.backgroundColor = .clear
+        contentView.layer.cornerRadius = 30
+        contentView.layer.masksToBounds = true
         
         NSLayoutConstraint.activate([
             title.heightAnchor.constraint(equalToConstant: 30),
@@ -58,14 +66,14 @@ class CustomHeader: UITableViewHeaderFooterView {
                    constant: 8),
             title.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             
-            badge.heightAnchor.constraint(equalToConstant: 30),
+            badge.heightAnchor.constraint(equalToConstant: 25),
             badge.widthAnchor.constraint(equalTo: badge.heightAnchor),
             badge.leadingAnchor.constraint(equalTo: title.trailingAnchor, constant: 10),
             badge.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             
             button.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            button.widthAnchor.constraint(equalToConstant: 50),
-            button.heightAnchor.constraint(equalToConstant: 50),
+            button.widthAnchor.constraint(equalToConstant: 30),
+            button.heightAnchor.constraint(equalToConstant: 30),
             button.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
         ])
     }

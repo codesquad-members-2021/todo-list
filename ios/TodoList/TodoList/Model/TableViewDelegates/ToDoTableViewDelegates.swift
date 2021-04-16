@@ -61,7 +61,6 @@ extension ToDoTableViewDelegates: UITableViewDataSource {
         cell.titleLabel.text = cards[indexPath.row].title
         cell.contentLabel.text = cards[indexPath.row].contents
         cell.authorLabel.text = "author by \(cards[indexPath.row].id)"
-        
         return cell
     }
 }
@@ -95,7 +94,7 @@ extension ToDoTableViewDelegates: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .normal, title: "삭제", handler: { action, view, completionHaldler in
-//            self.deleteCard(at: indexPath.row)
+
             let cardToBeDeleted = self.list[indexPath.row]
             let id = cardToBeDeleted.id
             DataManager.requestDelete(url: Constants.url, id: id) { (success, responseJSON) in
@@ -104,7 +103,7 @@ extension ToDoTableViewDelegates: UITableViewDelegate {
             }
             completionHaldler(true)
         })
-        deleteAction.backgroundColor = .systemRed
+        deleteAction.backgroundColor = .clear
         return UISwipeActionsConfiguration(actions: [deleteAction])
       }
 }

@@ -22,7 +22,6 @@ class ToDoViewController: UIViewController {
         self.toDoTableViewDelegates.popUpViewProtocol = self
         self.toDoCardTableView.rowHeight = 150
         
-        
         self.toDoCardTableView.register(UINib(nibName: "ToDoCardCell", bundle: nil), forCellReuseIdentifier: "ToDoCardCell")
         toDoCardTableView.register(CustomHeader.self, forHeaderFooterViewReuseIdentifier: "sectionHeader")
         
@@ -38,7 +37,7 @@ class ToDoViewController: UIViewController {
     func presentPopUp() {
         let popUpVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: Constants.popUpVCIdentifier) as! PopUpViewController
         popUpVC.modalPresentationStyle = .overFullScreen
-        popUpVC.setPromptMessage(message: "해야 할 일 추가")
+        popUpVC.setPromptMessage(message: "뭘 해야 하지?")
         popUpVC.setStatus(status: "TODO")
         popUpVC.abilityToFetchData = self
         self.present(popUpVC, animated: true, completion: nil)

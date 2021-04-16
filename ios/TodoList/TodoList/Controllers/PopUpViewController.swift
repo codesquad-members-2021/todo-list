@@ -24,10 +24,13 @@ class PopUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        promptView.backgroundColor = .red
+        self.view.backgroundColor = .clear
+        promptView.backgroundColor = .white
         promptLabel.text = promptMessage
         titleTextField.text = ""
         contentsTextField.text = ""
+        self.promptView.layer.cornerRadius = 40
+        self.promptView.layer.masksToBounds = true
     }
     
     func setPromptMessage(message: String) {

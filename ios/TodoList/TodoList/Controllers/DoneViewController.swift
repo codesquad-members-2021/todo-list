@@ -36,7 +36,7 @@ class DoneViewController: UIViewController {
     func presentPopUp() {
         let popUpVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: Constants.popUpVCIdentifier) as! PopUpViewController
         popUpVC.modalPresentationStyle = .overFullScreen
-        popUpVC.setPromptMessage(message: "완료한 일 추가")
+        popUpVC.setPromptMessage(message: "끝낸 일")
         popUpVC.setStatus(status: "DONE")
         popUpVC.abilityToFetchData = self
         self.present(popUpVC, animated: true, completion: nil)

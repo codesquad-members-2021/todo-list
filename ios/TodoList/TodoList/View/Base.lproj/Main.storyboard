@@ -19,10 +19,17 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="br4-h2-am5">
                                 <rect key="frame" x="0.0" y="0.0" width="1194" height="72"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TO-DO LIST" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="RG1-ZM-TQC">
-                                        <rect key="frame" x="48" y="13" width="171" height="38.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="32"/>
-                                        <nil key="textColor"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="RG1-ZM-TQC">
+                                        <rect key="frame" x="100" y="13" width="171.5" height="47"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="ToDoList">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <font key="NSFont" size="40" name="ArialRoundedMTBold"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Og5-18-ZFN">
@@ -31,20 +38,20 @@
                                             <constraint firstAttribute="height" constant="11" id="Mmy-LZ-V8e"/>
                                             <constraint firstAttribute="width" constant="17" id="grg-aM-bdn"/>
                                         </constraints>
-                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" red="0.66666666666666663" green="0.80392156862745101" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" image="line.horizontal.3" catalog="system"/>
                                         <connections>
                                             <action selector="sideMenuButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7dE-tU-Nm6"/>
                                         </connections>
                                     </button>
                                 </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="RG1-ZM-TQC" firstAttribute="top" secondItem="br4-h2-am5" secondAttribute="top" constant="13" id="2vT-wp-raY"/>
                                     <constraint firstAttribute="trailing" secondItem="Og5-18-ZFN" secondAttribute="trailing" constant="52" id="Bzy-Xr-aku"/>
-                                    <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="RG1-ZM-TQC" secondAttribute="trailing" constant="975" id="PvN-wR-vSi"/>
-                                    <constraint firstItem="RG1-ZM-TQC" firstAttribute="leading" secondItem="br4-h2-am5" secondAttribute="leading" constant="48" id="Sks-6q-p2T"/>
                                     <constraint firstAttribute="height" constant="72" id="jsa-EB-4L5"/>
                                     <constraint firstItem="Og5-18-ZFN" firstAttribute="top" secondItem="br4-h2-am5" secondAttribute="top" constant="31" id="rSs-4F-jUg"/>
+                                    <constraint firstItem="RG1-ZM-TQC" firstAttribute="leading" secondItem="br4-h2-am5" secondAttribute="leading" constant="100" id="seI-SW-7gt"/>
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6sf-Kf-mpX">
@@ -86,7 +93,7 @@
                             </containerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemGray4Color"/>
+                        <color key="backgroundColor" red="0.22352941176470587" green="0.24313725490196078" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="bRD-Z0-4OP" firstAttribute="leading" secondItem="cXr-0e-A7B" secondAttribute="trailing" constant="50" id="44x-L0-Gdi"/>
                             <constraint firstItem="6sf-Kf-mpX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="6DG-wd-vtY"/>
@@ -106,7 +113,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="firstContainver" destination="6sf-Kf-mpX" id="OIN-OH-tRY"/>
+                        <outlet property="firstContainer" destination="6sf-Kf-mpX" id="OIN-OH-tRY"/>
                         <outlet property="secondContainer" destination="cXr-0e-A7B" id="1f0-66-mRW"/>
                         <outlet property="sideMenuTrailingConstraint" destination="n9j-8A-msX" id="X1d-Xp-kx8"/>
                         <outlet property="thirdContainer" destination="bRD-Z0-4OP" id="XHM-fc-o0E"/>
@@ -182,34 +189,38 @@
         <scene sceneID="Fe2-zH-Jve">
             <objects>
                 <viewController storyboardIdentifier="PopUpViewController" id="Lyp-8A-wIa" customClass="PopUpViewController" customModule="TodoList" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="gGb-6P-LUT">
+                    <view key="view" alpha="0.90000000000000002" contentMode="scaleToFill" id="gGb-6P-LUT">
                         <rect key="frame" x="0.0" y="0.0" width="1194" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2hR-25-Sij">
                                 <rect key="frame" x="418" y="313" width="358" height="208.5"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="ContentsTextField" borderStyle="roundedRect" placeholder="내용을 입력하세요" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Go-na-xP4">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="ContentsTextField" placeholder="내용을 입력" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Go-na-xP4">
                                         <rect key="frame" x="0.0" y="93" width="358" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FoN-Rv-nvF">
-                                        <rect key="frame" x="174" y="142" width="40" height="30"/>
+                                        <rect key="frame" x="228" y="167" width="40" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="lDt-cO-s3F"/>
                                         </constraints>
-                                        <state key="normal" title="닫기"/>
+                                        <state key="normal" title="닫기">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <connections>
                                             <action selector="cancelButton:" destination="Lyp-8A-wIa" eventType="touchUpInside" id="qMs-mS-OTa"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xFO-fR-NbI">
-                                        <rect key="frame" x="244" y="142" width="40" height="30"/>
+                                        <rect key="frame" x="288" y="167" width="40" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="eMS-gV-cuv"/>
                                         </constraints>
-                                        <state key="normal" title="확인"/>
+                                        <state key="normal" title="확인">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <connections>
                                             <action selector="confirmButton:" destination="Lyp-8A-wIa" eventType="touchUpInside" id="T3B-pp-dpl"/>
                                         </connections>
@@ -218,12 +229,12 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="0Go-na-xP4" secondAttribute="trailing" id="5Hz-xh-63w"/>
-                                    <constraint firstItem="FoN-Rv-nvF" firstAttribute="leading" secondItem="2hR-25-Sij" secondAttribute="leading" constant="174" id="FGF-tP-Ew0"/>
                                     <constraint firstItem="0Go-na-xP4" firstAttribute="leading" secondItem="2hR-25-Sij" secondAttribute="leading" id="VcX-li-cAN"/>
-                                    <constraint firstItem="xFO-fR-NbI" firstAttribute="leading" secondItem="FoN-Rv-nvF" secondAttribute="trailing" constant="30" id="bom-t8-2Cf"/>
                                     <constraint firstItem="0Go-na-xP4" firstAttribute="height" secondItem="2hR-25-Sij" secondAttribute="height" multiplier="0.16307" id="cPh-An-DsJ"/>
-                                    <constraint firstItem="xFO-fR-NbI" firstAttribute="top" secondItem="0Go-na-xP4" secondAttribute="bottom" constant="15" id="exh-wk-H2H"/>
-                                    <constraint firstItem="FoN-Rv-nvF" firstAttribute="top" secondItem="0Go-na-xP4" secondAttribute="bottom" constant="15" id="mrY-0e-Ihz"/>
+                                    <constraint firstAttribute="trailing" secondItem="xFO-fR-NbI" secondAttribute="trailing" constant="30" id="czd-kC-0qf"/>
+                                    <constraint firstItem="xFO-fR-NbI" firstAttribute="top" secondItem="0Go-na-xP4" secondAttribute="bottom" constant="40" id="exh-wk-H2H"/>
+                                    <constraint firstItem="FoN-Rv-nvF" firstAttribute="top" secondItem="0Go-na-xP4" secondAttribute="bottom" constant="40" id="mrY-0e-Ihz"/>
+                                    <constraint firstItem="xFO-fR-NbI" firstAttribute="leading" secondItem="FoN-Rv-nvF" secondAttribute="trailing" constant="20" id="rJJ-H7-9aL"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prompt" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Frd-Wc-Nt3">
@@ -232,14 +243,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TitleTextField" borderStyle="roundedRect" placeholder="제목을 입력하세요" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2oI-dt-g3E">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TitleTextField" placeholder="제목을 입력" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2oI-dt-g3E">
                                 <rect key="frame" x="418" y="371" width="358" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="rcf-px-KME"/>
-                        <color key="backgroundColor" systemColor="linkColor"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.48499036815068491" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="2hR-25-Sij" firstAttribute="width" secondItem="gGb-6P-LUT" secondAttribute="width" multiplier="0.3" id="FIf-N7-pbo"/>
                             <constraint firstItem="Frd-Wc-Nt3" firstAttribute="trailing" secondItem="2hR-25-Sij" secondAttribute="trailing" id="Pcn-PO-mXj"/>
@@ -334,18 +345,10 @@
     </scenes>
     <resources>
         <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
+
         <image name="xmark" catalog="system" width="128" height="113"/>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="linkColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGray4Color">
-            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
