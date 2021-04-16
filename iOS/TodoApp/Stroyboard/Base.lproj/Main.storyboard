@@ -160,10 +160,10 @@
             </objects>
             <point key="canvasLocation" x="-35.084745762711869" y="88.536585365853654"/>
         </scene>
-        <!--View Controller-->
+        <!--Log In View Controller-->
         <scene sceneID="Hv2-3y-4UO">
             <objects>
-                <viewController id="qtQ-79-Gga" sceneMemberID="viewController">
+                <viewController id="qtQ-79-Gga" customClass="LogInViewController" customModule="TodoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HoS-Ry-vkV">
                         <rect key="frame" x="0.0" y="0.0" width="1180" height="820"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -221,6 +221,7 @@
                                             <imageReference key="image" image="arrow.right.arrow.left.circle.fill" catalog="system" symbolScale="large" renderingMode="original"/>
                                         </state>
                                         <connections>
+                                            <action selector="logInButtonTouched:" destination="qtQ-79-Gga" eventType="touchUpInside" id="nge-HU-amG"/>
                                             <segue destination="BYZ-38-t0r" kind="show" id="cWX-HU-Uhs"/>
                                         </connections>
                                     </button>
@@ -262,6 +263,10 @@
                             <constraint firstItem="qfw-bQ-Es7" firstAttribute="trailing" secondItem="iFt-LB-svE" secondAttribute="trailing" constant="121" id="paL-44-qsu"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="idTextField" destination="sX9-SE-9Ls" id="ngp-nU-Iyi"/>
+                        <outlet property="passwordTextField" destination="ptY-nW-xuA" id="WmZ-cY-cbY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mak-DD-rJm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
