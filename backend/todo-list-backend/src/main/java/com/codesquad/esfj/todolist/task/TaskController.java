@@ -3,6 +3,7 @@ package com.codesquad.esfj.todolist.task;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -56,7 +57,7 @@ public class TaskController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void move(@PathVariable long id, @PathVariable String targetTaskType, @PathVariable long targetId) {
         if (id == targetId) {
-            throw new IllegalArgumentException("같은 위치로 이동할 수 없습니다. id : " + id + ", targetId : " + targetId);
+            throw new PreviousTaskNotAllowedException("같은 위치로 이동할 수 없습니다. id : " + id + ", targetId : " + targetId);
         }
         taskService.move(id, targetTaskType, targetId);
     }

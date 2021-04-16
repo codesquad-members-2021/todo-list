@@ -112,6 +112,7 @@ public class Task {
                 ", deleted=" + deleted +
                 ", previousId=" + previousId +
                 ", taskType='" + taskType + '\'' +
+                ", isHead=" + isHead +
                 '}';
     }
 

@@ -99,10 +99,6 @@ public class TaskService {
         if (newNextTask.isPresent()) {
             taskToMove.moveAfterPreviousOf(newNextTask.get());
             taskToMove.setIsHead(false);
-            taskRepository.save(taskToMove);
-
-            setIsHeadTo(taskToMove.getPreviousId(), false)
-                    .ifPresent(taskRepository::save);
 
             newNextTask.get().moveAfter(taskToMove.getId());
 
@@ -110,12 +106,17 @@ public class TaskService {
         } else {
             taskToMove.moveAfter(targetId, targetTaskType);
             taskToMove.setIsHead(true);
-
-            setIsHeadTo(taskToMove.getPreviousId(), false)
-                    .ifPresent(taskRepository::save);
-
-            taskRepository.save(taskToMove);
         }
+
+        if(taskToMove.getId().equals(taskToMove.getPreviousId())) {
+            throw new PreviousTaskNotAllowedException(taskToMove.toString());
+        }
+
+        taskRepository.save(taskToMove);
+
+        setIsHeadTo(taskToMove.getPreviousId(), false)
+                .ifPresent(taskRepository::save);
+
     }
 
     private Optional<Task> setIsHeadTo(long targetId, boolean isHead) {
