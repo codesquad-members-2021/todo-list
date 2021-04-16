@@ -24,7 +24,7 @@
 
 ## API
 
-- [API 문서](https://github.com/Dae-Hwa/todo-list/wiki/API-%EB%AC%B8%EC%84%9C)
+- [API 문서](https://documenter.getpostman.com/view/15277135/TzJpjgFr)
 
 ## 요구사항 분석
 
