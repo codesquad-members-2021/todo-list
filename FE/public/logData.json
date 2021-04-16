@@ -1,7 +1,4 @@
 [
-  {
-    "userID": "Q",
-    "logs": [
       {
         "id": 1,
         "action": "MOVE",
@@ -51,5 +48,3 @@
         "currentBoard": "done"
       }
     ]
-  }
-]

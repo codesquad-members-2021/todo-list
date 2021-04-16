@@ -1,9 +1,9 @@
 import React from 'react';
 import { LogContainer, LogCardContainer } from './sidebarStyle';
 
-const LogCard = ({ data: { logs }, userID }) => {
-  const log = logs.map((log) => {
-    const { id, card_title, action, time, previousBoard, currentBoard } = log;
+const LogCard = ({ logData }) => {
+  const log = logData.map((log) => {
+    const { id, cardTitle, action, time, previousBoard, currentBoard } = log;
 
     const ActionPrint = ({ previousBoard, currentBoard }) => {
       if (previousBoard && currentBoard)
@@ -47,9 +47,9 @@ const LogCard = ({ data: { logs }, userID }) => {
       <LogContainer key={id}>
         <div className="emoji">🥳</div>
         <LogCardContainer key={id}>
-          <div className="user">@{userID}</div>
+          <div className="user"></div>
           <span>
-            <span className="title">{card_title}</span>를
+            <span className="title">{cardTitle}</span>를
           </span>
           <ActionPrint
             previousBoard={previousBoard}

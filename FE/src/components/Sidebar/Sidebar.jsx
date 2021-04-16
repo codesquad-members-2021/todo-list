@@ -12,13 +12,15 @@ const Sidebar = ({ toggleSidebar, transitionFrom, transitionTo, visible }) => {
   const [logData, setLogData] = useState([]);
 
   useEffect(() => {
-    const url = 'http://localhost:3000/logData.json';
+    const url = '/logs';
     fetchData(url, setLogData);
+    
   }, []);
 
   const fetchData = async (url, callback) => {
     const response = await fetch(url);
     const data = await response.json();
+    console.log(data);
     callback(data);
   };
 
@@ -36,9 +38,9 @@ const Sidebar = ({ toggleSidebar, transitionFrom, transitionTo, visible }) => {
     },
   });
 
-  const logList = logData.map((data, i) => {
-    return <LogCard key={data.logs[i].id} data={data} userID={data.userID} />;
-  });
+  // const logList = logData.map((data, i) => {
+  //   return <LogCard key={data.logs[i].id} data={data} userID={data.userID} />;
+  // });
 
   return (
     <animated.div style={{ ...spring }}>
@@ -47,7 +49,7 @@ const Sidebar = ({ toggleSidebar, transitionFrom, transitionTo, visible }) => {
           <Close toggleSidebar={toggleSidebar} />
         </CloseContainer>
         <LogListContainer>
-          <div>{logList}</div>
+          <LogCard logData={logData}/>
         </LogListContainer>
       </SidebarContainer>
     </animated.div>
