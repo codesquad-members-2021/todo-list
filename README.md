@@ -5,6 +5,8 @@
 
 `E`lly `S`ally `F`reddie `J`ackson 로 이루어진 **친선도모형** 사교적인 외교관입니다.
 
+<img width="1792" alt="Screen Shot 2021-04-16 at 7 06 12 PM" src="https://user-images.githubusercontent.com/52390975/115009995-dac66080-9ee7-11eb-9568-4c21daf603e0.png">
+
 
 
 ### 팀원
