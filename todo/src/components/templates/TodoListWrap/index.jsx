@@ -3,7 +3,6 @@ import TodoListColumn from "../../organisms/TodoListColumn";
 import styled from "styled-components";
 import loadItems from "../../../serviceUtils/loadItems";
 import Popup from "../../molecules/Popup";
-import TodoListItem from '../../molecules/TodoListItem';
 
 function insertAfter(referenceNode, newNode) {
   if (!!referenceNode.nextSibling) {
@@ -22,7 +21,6 @@ const Wrap = styled.div`
   border-radius: 10px;
 `;
 
-
 const TodoListWrap = ({ setHistories }) => {
   const [todos, setTodos] = useState([]);
   const [isPop, setPopup] = useState("none");
@@ -31,16 +29,10 @@ const TodoListWrap = ({ setHistories }) => {
 
   const placeholder = document.createElement("div");
   placeholder.className = "placeholder";
-  const dragged = { current: null, columnId: null };
-
+  const dragged = { current: null, columnId: null, title: null };
   const titleRef = useRef(null);
 
-  const onDragOver = (e) => {
-    const { target } = e;
-
-
-    if (dragged.current.contains(target)) return;
-    if (target.closest('.placeholder')) return;
+  const onDragOver = ({ target }) => {
     if (target.closest('.item_wrap')) {
       if (target.parentNode.className === 'item_wrap') {
         insertAfter(target.parentNode, placeholder);
@@ -75,6 +67,7 @@ const TodoListWrap = ({ setHistories }) => {
           setIdState,
           colState,
           setColState,
+          setHistories
         }}
       ></Popup>
       {todos.map(({ columnId, columnName, items }) => {

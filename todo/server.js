@@ -33,12 +33,12 @@ server.post("/todos/move", (req, res) => {
     .find((e) => e.columnId === Number(prevColumnId))
     .get("items")
   const currentItemObject = currentItem.find(e => e.id === id).value();
+  currentItem.remove((e) => e.id === id).write(); //원래꺼 delete
   db.get("todos")
     .find((e) => e.columnId === Number(currentColumnId))
     .get("items")
     .splice(index - 1, 0, currentItemObject)
     .write(); // 해당 자리에 만들어주기
-  currentItem.remove((e) => e.id === id).write(); //원래꺼 delete
   res.send(db.get("todos").value())
 })
 
@@ -55,10 +55,35 @@ server.put("/todos", (req, res) => {
 });
 
 server.post("/logs", (req, res) => {
-  db.get("logs")
-    .push({ id: shortid.generate(), ...req.body })
-    .write();
+  if (req.body.prevColumnId) {
+    const { prevTitle, action, prevColumnId, currentColumnId, user, date } = req.body;
+    const prevColumn = db.get("todos")
+      .find((e) => e.columnId === Number(prevColumnId))
+      .value();
+
+    const currentColumn = db.get("todos")
+      .find((e) => e.columnId === Number(currentColumnId))
+      .value();
+
+    db.get("logs")
+      .push({
+        id: shortid.generate(),
+        user,
+        date,
+        action,
+        prevTitle,
+        prevColumn: prevColumn.columnName,
+        currentColumn: currentColumn.columnName
+      })
+      .write();
+  } else {
+    db.get("logs")
+      .push({ id: shortid.generate(), ...req.body })
+      .write();
+  }
+
   res.send(db.get("logs").value());
+
 })
 
 server.delete("/todos", (req, res) => {

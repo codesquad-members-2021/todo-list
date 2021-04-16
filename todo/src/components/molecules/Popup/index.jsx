@@ -25,6 +25,7 @@ const Popup = ({
   setIdState,
   colState,
   setColState,
+  setHistories
 }) => {
   return (
     <WrapDiv display={isPop}>
@@ -33,7 +34,7 @@ const Popup = ({
       </Span>
       <ButtonList
         isIcon={"popup"}
-        {...{ setPopup, setTodos, idState, setIdState, colState, setColState }}
+        {...{ setPopup, setTodos, idState, setIdState, colState, setColState, setHistories }}
       ></ButtonList>
     </WrapDiv>
   );

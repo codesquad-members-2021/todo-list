@@ -5,6 +5,7 @@ import SmallButton from "../SmallButton";
 import MediumButton from "../MediumButton";
 import PlusButtonImg from "../../../../images/plusButton.svg";
 import CloseButtonImg from "../../../../images/closeButton.svg";
+// import { getFormatDate } from '../../../../serviceUtils/dateUtil';
 import axios from "axios";
 const Div = styled.div`
   padding: 10px 45px 0px 45px;
@@ -22,6 +23,7 @@ const ButtonList = ({
   setIdState,
   colState,
   setColState,
+  setHistories,
   ...props
 }) => {
   const plusButton = (
@@ -64,16 +66,26 @@ const ButtonList = ({
     const response = await axios.delete(
       `/todos?columnId=${colState}&id=${idState}`
     );
-    console.log("delete 는", response);
     setPopup("none");
     setTodos(() => response.data);
+
+    // const newHistory = {
+    //   action: '삭제',
+    //   prevColumnId: colState,
+    //   prevId: idState,
+    //   user: "Beemo",
+    //   date: getFormatDate()
+    // };
+    // const responseHistory = await axios.post("/logs", newHistory);
+    // setHistories(() => responseHistory.data);
+
   };
   const popCancelButton = (
     <MediumButton
       _background="#fff"
       _color="#3c4243"
       onClick={() => setPopup("none")}
-      // onClick={() => isOpenPopActions.toggle()}
+    // onClick={() => isOpenPopActions.toggle()}
     >
       아니오
     </MediumButton>
@@ -83,7 +95,7 @@ const ButtonList = ({
       _background="#62afb7"
       _color="white"
       onClick={deleteClickHandler}
-      // onClick={() => patchClickHandler()}
+    // onClick={() => patchClickHandler()}
     >
       네
     </MediumButton>

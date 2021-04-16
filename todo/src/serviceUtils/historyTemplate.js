@@ -24,7 +24,7 @@ const historyTemplate = {
   '이동'({ prevColumn, currentColumn, prevTitle }) {
     return (<><HighLightSpan>{prevTitle}</HighLightSpan>를
       {' '}<HighLightSpan>{prevColumn}</HighLightSpan>에서
-      {' '}<HighLightSpan>{currentColumn}</HighLightSpan>에
+      {' '}<HighLightSpan>{currentColumn}</HighLightSpan>로
       {' '}<HighLightSpan>이동</HighLightSpan>하였습니다</>);
   }
 };

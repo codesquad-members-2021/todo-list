@@ -6,6 +6,7 @@ import Span from "../../atoms/Span";
 import closeButton from "../../../images/closeButton.svg";
 import styled from "styled-components";
 import axios from "axios";
+import { getFormatDate } from '../../../serviceUtils/dateUtil';
 
 const Div = styled.div`
   position: relative;
@@ -27,25 +28,20 @@ const TodoListItem = ({
   setPopup,
   setIdState,
   setColState,
+  setHistories,
   dragged
 }) => {
   const ToItem = useRef();
-  // const [isOpenPop, isOpenPopActions] = useToggle(false);
-
-  // const clickClose = (e) => {
-  //   console.log("closeclick");
-  // };
-
   const displayPopup = () => {
     setPopup("block");
     setIdState(id);
     setColState(columnId);
   };
 
-  ////////
   const onDragStart = (e) => {
     dragged.current = e.target;
     dragged.columnId = columnId;
+    dragged.title = title;
     dragged.current.style.opacity = "0.5";
   }
 
@@ -53,13 +49,16 @@ const TodoListItem = ({
     const column = e.target.closest('._column');
     const items = column.children;
     let index;
-    let prevItem;
+    let placeholder;
     for (let i = 0; i < items.length; i++) {
       if (items[i].className === 'placeholder') {
-        prevItem = items[i];
+        placeholder = items[i];
         index = i;
       };
     }
+
+    dragged.current.style.opacity = "1";
+    if (!placeholder) return;
 
     const response = await axios.post('/todos/move', {
       prevColumnId: dragged.columnId,
@@ -68,11 +67,22 @@ const TodoListItem = ({
       index,
     })
 
-    prevItem.remove();
+    const newHistory = {
+      action: '이동',
+      prevColumnId: dragged.columnId,
+      currentColumnId: columnId,
+      prevTitle: dragged.title,
+      user: "Beemo",
+      date: getFormatDate()
+    };
+
+    const responseHistory = await axios.post("/logs", newHistory);
+    setHistories(() => responseHistory.data);
+
+    placeholder.remove();
     setTodos(() => response.data);
   }
 
-  ////////
   return (
     <Div hover ref={ToItem} draggable={true} data-id={id}
       onDragStart={onDragStart} onDrop={onDrop} onDragOver={(e) => e.preventDefault()}>

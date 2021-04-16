@@ -59,7 +59,7 @@ const TodoSwitch = ({
     );
   } else {
     template = (
-      <div onClick={toggleActions2.toggle} className='item_wrap'>
+      <div onDoubleClick={toggleActions2.toggle} className='item_wrap'>
         <TodoListItem
           {...{
             dragged,
