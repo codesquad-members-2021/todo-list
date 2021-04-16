@@ -123,7 +123,13 @@ extension TaskViewController {
     @objc func sendRemovedData(_ notification: Notification) {
         let removedData = notification.userInfo?["removedData"] as! TaskCard
         updateTaskCountLabel()
-        NetworkManager.changedDataPost(httpMethod: HTTPMethod.delete, data: removedData)
+        print(column!)
+        print(removedData.status)
+        
+        if column == removedData.status {
+            NetworkManager.changedDataPost(httpMethod: HTTPMethod.delete, data: removedData)
+        }
+        // drag column taskManager.remove(removed)
     }
     
     @objc func sendMovedData(_ notification: Notification) {
@@ -181,8 +187,13 @@ extension TaskViewController: UITableViewDropDelegate {
                 if let card = card as? TaskCard {
                     DispatchQueue.main.async {
                         tableView.beginUpdates()
-                        self.taskStackManager.remove(card.status, at: destinationIndexPath.row)
-                        self.taskStackManager.append(self.column!, taskCard: card)
+                        let removeIndex = self.taskStackManager.count(card.status) - 1
+                        self.taskStackManager.remove(card.status, at: removeIndex)
+                        var changedData = card
+                        changedData.status = self.column!
+                        self.taskStackManager.append(self.column!, taskCard: changedData)
+                        dump(changedData)
+                        
                         tableView.endUpdates()
                         self.updateTaskCountLabel()
                         NetworkManager.insertedDataPost(httpMethod: HTTPMethod.post, data: card)
