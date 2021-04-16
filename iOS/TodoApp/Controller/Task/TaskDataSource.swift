@@ -10,7 +10,7 @@ extension TaskViewController: UITableViewDataSource {
         let taskCard = taskStackManager.index(column ?? 0, at: indexPath.row)
         cell?.titleTextLabel.text = taskCard.title
         cell?.contentTextLabel.text = taskCard.content
-        cell?.iOSLabel.text = taskCard.author
+        cell?.iOSLabel.text = "Author by \(taskCard.author)"
         return cell!
     }
 }

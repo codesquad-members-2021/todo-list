@@ -2,9 +2,7 @@
 import UIKit
 
 class TaskViewController: UIViewController {
-    var dragIndex = 0
     var column: Int?
-    private var dragColumn: Int!
     let taskStackManager = TaskStackManager()
     var selectedIndexPath: IndexPath!
     
@@ -26,10 +24,9 @@ class TaskViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let newTaskViewController = segue.destination as? NewTaskViewController else {return}
         if segue.identifier == StatusInfo.addTask {
-            if let newTaskViewController = segue.destination as? NewTaskViewController {
-                newTaskViewController.column = self.column
-            }
+            newTaskViewController.column = self.column
         }
     }
     func updateTaskCountLabel() {
@@ -88,6 +85,7 @@ extension TaskViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(sendRemovedData(_:)), name: .requestRemoveTask, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(sendMovedData(_:)), name: .requestMoveTask, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(dragDropData(_:)), name: .dragDropTask, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(<#T##@objc method#>), name: .dragIndex, object: nil)
     }
     
     @objc func drawTaskCard(_ notification: Notification) {
@@ -128,7 +126,6 @@ extension TaskViewController {
         if column == removedData.status {
             NetworkManager.changedDataPost(httpMethod: HTTPMethod.delete, data: removedData)
         }
-        // drag column taskManager.remove(removed)
     }
     
     @objc func sendMovedData(_ notification: Notification) {
@@ -148,9 +145,9 @@ extension TaskViewController {
     @objc func dragDropData(_ notification: Notification) {
         let dragData = notification.userInfo?["dragData"] as! TaskCard
         dump(dragData)
-        if column == dragColumn {
-            taskStackManager.remove(column!, at: dragIndex)
-        }
+//        if column == dragColumn {
+//            taskStackManager.remove(column!, at: dragIndex)
+//        }
         updateTaskCountLabel()
         NetworkManager.changedDataPost(httpMethod: HTTPMethod.post, data: dragData)
     }
@@ -159,8 +156,8 @@ extension TaskViewController {
 extension TaskViewController: UITableViewDragDelegate {
     
     func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
-        dragColumn = self.column!
-        dragIndex = indexPath.row
+        
+        NotificationCenter.default.post(name: .dragIndex, object: self, userInfo: ["dragIndex": indexPath.row])
         let card = taskStackManager.index(self.column!, at: indexPath.row)
         let itemProvider = NSItemProvider(object: card)
         let dragItem = UIDragItem(itemProvider: itemProvider)
@@ -185,11 +182,13 @@ extension TaskViewController: UITableViewDropDelegate {
                
         for item in coordinator.items {
             item.dragItem.itemProvider.loadObject(ofClass: TaskCard.self) { (card, error) in
-                if let card = card as? TaskCard {
-                    DispatchQueue.main.async {
-                        self.taskStackManager.dragDrop(card.status, dropStatus: self.column!, at: self.dragIndex)
-                    }
-                }
+//                if let card = card as? TaskCard {
+//                    // dragIndex
+//                    print(self.dragIndex)
+//                    self.taskStackManager.dragDrop(card.status, dropStatus: self.column!, at: self.dragIndex)
+//                    print("in drop function")
+//                    dump(self.taskStackManager.tasks)
+//                }
             }
         }
     }

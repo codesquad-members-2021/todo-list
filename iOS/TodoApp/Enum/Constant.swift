@@ -43,6 +43,7 @@ extension Notification.Name {
     static let requestAddTask = Notification.Name("requestAddTask")
     static let requestMoveTask = Notification.Name("requestMoveTask")
     static let dragDropTask = Notification.Name("dragDrop")
+    static let dragIndex = Notification.Name("dragIndex")
 }
 
 

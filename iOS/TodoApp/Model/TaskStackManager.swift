@@ -49,6 +49,7 @@ class TaskStackManager {
     }
     
     func dragDrop(_ dragStatus: Int, dropStatus: Int, at index: Int) {
+        
         let draggedData = tasks[dragStatus].remove(at: index)
         draggedData.status = dropStatus // 옮길 status로 값 변경
         tasks[dropStatus].append(taskCard: draggedData)

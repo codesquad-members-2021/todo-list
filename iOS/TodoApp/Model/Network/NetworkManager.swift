@@ -23,7 +23,7 @@ class NetworkManager {
                 return
             }
             
-            DispatchQueue.main.async {
+            DispatchQueue.global().async {
                 do {
                     let object = try JSONSerialization.jsonObject(with: data!, options: []) as? NSDictionary
                     guard let jsonObject = object else { return }
@@ -82,10 +82,6 @@ class NetworkManager {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let response = response {
-                print(response)
-            }
-            
             if let error = error {
                 print(error)
                 return
@@ -106,7 +102,6 @@ class NetworkManager {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            print(response)
             if let error = error {
                 print(error)
                 return
@@ -121,7 +116,6 @@ class NetworkManager {
         request.httpMethod = HTTPMethod.get
                 
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            print(response)
             if let error = error {
                 print(error)
                 return
