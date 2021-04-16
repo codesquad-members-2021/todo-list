@@ -26,9 +26,10 @@ const Title = styled.h2`
 `;
 
 const Counter = styled.span`
-  background-color: #999;
+  background-color: #fff;
+  color: #333;
   border-radius: 50%;
-  font-weight: 600;
+  font-weight: 400;
   padding: 0.5rem 0.8rem;
   min-width: 1.8rem;
   text-align: center;

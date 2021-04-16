@@ -4,6 +4,7 @@ import { FaChevronRight } from 'react-icons/fa'
 import styled from 'styled-components'
 
 const NavigatorBlock = styled.div`
+  z-index: 1;
   top: 0;
   right: 0;
   transform: ${({ toggle }) =>

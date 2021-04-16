@@ -17,7 +17,6 @@ export default function Header () {
     setToggle(!toggle);
   };
   const onCreate = title => {
-    console.log(columnDispatch);
     columnDispatch({ type: "CREATECOLUMN", title });
     setToggleB(!toggleB);
   }
