@@ -58,7 +58,7 @@ public class CardService {
         userRepository.save(user);
     }
 
-    public void moveTodo(Long userId, Long cardId,
+    public Card moveTodo(Long userId, Long cardId,
                          Long fromCategoryId, Long toCategoryId, Long dropNumber) {
         Long index = dropNumber - 1;
         User user = userRepository.findById(userId).
@@ -73,5 +73,7 @@ public class CardService {
         toCards.add(Math.toIntExact(index), movedCard);
 
         userRepository.save(user);
+
+        return movedCard;
     }
 }

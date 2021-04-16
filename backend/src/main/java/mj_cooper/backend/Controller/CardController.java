@@ -67,12 +67,12 @@ public class CardController {
 
     @PutMapping("/{cardId}/move/{moveCategory}/{index}")
     @ResponseStatus(HttpStatus.OK)
-    public void moveTodo(@PathVariable(value = "cardId") final Long cardId,
+    public String moveTodo(@PathVariable(value = "cardId") final Long cardId,
                          @PathVariable(value = "categoryId") final Long categoryId,
                          @PathVariable(value = "moveCategory") final Long moveCategory,
                          @PathVariable(value = "index") final Long index) {
 
-        cardService.moveTodo(1L, cardId, categoryId, moveCategory, index);
+        return parseTodoToJson(cardService.moveTodo(1L, cardId, categoryId, moveCategory, index));
     }
 
     public String parseListToJson(Category category) {

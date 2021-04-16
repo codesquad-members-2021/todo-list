@@ -38,8 +38,6 @@ public class Category {
 
 
     public boolean addTodo(Card card) {
-
-        System.out.println("test in catergory Card: " + card.toString());
         return this.cards.add(card);
     }
 
