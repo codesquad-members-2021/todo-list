@@ -1,8 +1,33 @@
 import styled from "styled-components";
-import { HiMenu } from "react-icons/hi";
 import { useState } from "react";
 import LogStorage from "./LogStorage";
 import Button from "../utils/Button";
+
+function NavBar({ logs }) {
+  const [clicked, setClickState] = useState(false);
+  const [appear, setLogViewState] = useState(false);
+  const handleLogBtnClick = () => {
+    setLogViewState(true);
+    setClickState(true);
+  };
+  return (
+    <>
+      <NavBlock>
+        <TitleBlock>TO-DO LIST</TitleBlock>
+        <LogBtnBlock>
+          <Button type="menu" onClick={handleLogBtnClick} subType="navBtn" />
+        </LogBtnBlock>
+      </NavBlock>
+
+      <LogStorage
+        logs={logs}
+        clicked={clicked}
+        appear={appear}
+        setLogViewState={setLogViewState}
+      ></LogStorage>
+    </>
+  );
+}
 
 const NavBlock = styled.div`
   width: 1440px;
@@ -25,39 +50,11 @@ const TitleBlock = styled.div`
   line-height: 46px;
   color: #010101;
 `;
+
 const LogBtnBlock = styled.div`
-  width: 34px;
-  height: 22px;
   position: absolute;
   right: 84px;
   top: 40px;
 `;
-
-function NavBar(props) {
-  const { logs } = props;
-  const [clicked, setClickState] = useState(false);
-  const [appear, setLogViewState] = useState(false);
-  const handleLogBtnClick = () => {
-    setLogViewState(true);
-    setClickState(true);
-  };
-  return (
-    <>
-      <NavBlock>
-        <TitleBlock>TO-DO LIST</TitleBlock>
-        <LogBtnBlock>
-          <Button type="menu" onClick={handleLogBtnClick} size="150" />
-        </LogBtnBlock>
-      </NavBlock>
-
-      <LogStorage
-        logs={logs}
-        clicked={clicked}
-        appear={appear}
-        setLogViewState={setLogViewState}
-      ></LogStorage>
-    </>
-  );
-}
 
 export default NavBar;

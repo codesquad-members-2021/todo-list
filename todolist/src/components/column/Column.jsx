@@ -1,10 +1,10 @@
 import { useState } from "react";
 import styled from "styled-components";
 import CardForm from "./card/CardForm";
-import CardList from "./card/CardList";
+import CardWrap from "./card/CardWrap";
 import CardContainer from "./card/CardContainer.style";
 import Button from "../utils/Button";
-
+import { Droppable } from "react-beautiful-dnd";
 const ColumnContainer = styled.section`
   width: 308px;
   margin-right: 2em;
@@ -38,20 +38,25 @@ const ColumnCount = styled.div`
   background: #bdbdbd;
   margin: 0px 10px;
 `;
+const CardList = {
+  minHeight: 300,
+};
 
-function Column({ onLog, column }) {
-  const { title, items } = column;
-  const [cards, setCards] = useState(items);
-
+function Column({ onLog, column, setItemsOfColumn }) {
   const [enrollMode, setEnrollMode] = useState(false);
+  const { columnId, columnTitle, items } = column;
 
   const handleCreate = (card) => {
     setEnrollMode(!enrollMode);
-    setCards(cards.concat(card));
+    setItemsOfColumn({
+      ...column,
+      items: items.concat(card),
+    });
     onLog({
-      cardTitle: card.title,
-      columnTitle: "하고 있는 일",
+      cardTitle: card.cardTitle,
+      columnTitle,
       modeType: "add",
+      publishedTime: Date.now(),
     });
   };
 
@@ -60,24 +65,29 @@ function Column({ onLog, column }) {
     setEnrollMode(!enrollMode);
   };
 
-  const handleDelete = (target) => {
-    setCards(cards.filter((e) => e.id !== target.id));
+  const handleDelete = ({ cardId, cardTitle }) => {
+    setItemsOfColumn({
+      ...column,
+      items: items.filter((e) => e.cardId !== cardId),
+    });
     onLog({
-      cardTitle: target.title,
-      columnTitle: "하고 있는 일",
+      cardTitle: cardTitle,
+      columnTitle,
       modeType: "delete",
+      publishedTime: Date.now(),
     });
   };
 
-  const handleUpdate = ({ id, title, content }) => {
-    const card = cards.find((e) => e.id === id);
-    card.title = title;
-    card.content = content;
-    setCards(cards);
+  const handleUpdate = ({ cardId, cardTitle, content }) => {
+    const newCards = items.map((card) => {
+      return card.cardId !== cardId ? card : { ...card, cardTitle, content };
+    });
+    setItemsOfColumn({ ...column, items: newCards });
     onLog({
-      cardTitle: title,
-      columnTitle: "하고 있는 일",
+      cardTitle,
+      columnTitle,
       modeType: "update",
+      publishedTime: Date.now(),
     });
   };
 
@@ -85,12 +95,12 @@ function Column({ onLog, column }) {
     <ColumnContainer>
       <ColumnMenu>
         <ColumnTitle>
-          <div>{title}</div>
-          <ColumnCount>{cards.length}</ColumnCount>
+          <div>{columnTitle}</div>
+          <ColumnCount>{items.length}</ColumnCount>
         </ColumnTitle>
         <Button onClick={() => setEnrollMode(!enrollMode)} type="add" />
       </ColumnMenu>
-      {enrollMode ? (
+      {enrollMode && (
         <CardContainer>
           <CardForm
             onSubmit={handleCreate}
@@ -98,10 +108,27 @@ function Column({ onLog, column }) {
             onLog={onLog}
           />
         </CardContainer>
-      ) : (
-        ""
       )}
-      <CardList cards={cards} onDelete={handleDelete} onUpdate={handleUpdate} />
+      <Droppable droppableId={String(columnId)}>
+        {(provided) => (
+          <div
+            {...provided.droppableProps}
+            ref={provided.innerRef}
+            style={CardList}
+          >
+            {items.map((card, index) => (
+              <CardWrap
+                key={card.cardId}
+                id={card.cardId}
+                card={card}
+                index={index}
+                onDelete={handleDelete}
+                onUpdate={handleUpdate}
+              />
+            ))}
+          </div>
+        )}
+      </Droppable>
     </ColumnContainer>
   );
 }

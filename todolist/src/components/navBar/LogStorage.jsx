@@ -1,27 +1,27 @@
 import styled, { css, keyframes } from "styled-components";
-// import IconButton from "../utils/IconButton";
+import Button from "../utils/Button";
 import LogCommit from "./LogCommit";
-import { HiX } from "react-icons/hi";
 
 const slideOut = keyframes`
 from{
-  transform: translateX(1150px)
+  transform: translateX(0px);
 }to{
-  transform: translateX(2000px)
+  transform: translateX(100%);
 `;
 
 const slideIn = keyframes`
 from{
-  transform: translateX(2000px)
+  transform: translateX(100%);
 }to{
-  transform: translateX(1150px)
+  transform: translateX(0px);
 }`;
-// 초기 : width 0
+
 const LogStorageBlock = styled.div`
   position: absolute;
-  width: 452px;
-  height: 1024px;
+  width: 20%;
+  height: 100%;
   top: 0px;
+  right: 10px;
   background: #ffffff;
   box-shadow: 0px 0px 4px rgba(204, 204, 204, 0.5),
     0px 2px 4px rgba(0, 0, 0, 0.25);
@@ -31,23 +31,30 @@ const LogStorageBlock = styled.div`
   animation-duration: 0.8s;
   animation-timing-function: ease-out;
   animation-fill-mode: forwards;
-
   ${(props) =>
     props.appear &&
     css`
       animation-name: ${slideIn};
     `};
-`;
 
-const IconX = styled.div`
-  display: block;
-  position: absolute;
-  right: 120px;
-  top: 50px;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    width: 10px;
+    background-color: black;
+    padding-right: 10px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #0075de;
+    border-radius: 5px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: #e9ecef;
+    box-shadow: inset 0px 0px 5px white;
+  }
 `;
-
-const LogList = styled.div`
-  margin-top: 80px;
+const ButtonWrapper = styled.div`
+  margin-top: 45px;
+  margin-left: 72%;
 `;
 
 function LogStorage({ clicked, logs, appear, setLogViewState }) {
@@ -58,13 +65,10 @@ function LogStorage({ clicked, logs, appear, setLogViewState }) {
     <>
       {clicked && (
         <LogStorageBlock appear={appear}>
-          {/* <IconButton type="delete"></IconButton> */}
-          <IconX onClick={handleXbtnClick}>
-            <HiX></HiX>
-          </IconX>
-          <LogList>
-            <LogCommit logs={logs}></LogCommit>
-          </LogList>
+          <ButtonWrapper>
+            <Button type="delete" onClick={handleXbtnClick} />
+          </ButtonWrapper>
+          <LogCommit appear={appear} logs={logs}></LogCommit>
         </LogStorageBlock>
       )}
     </>

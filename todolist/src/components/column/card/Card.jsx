@@ -61,13 +61,10 @@ const ModalQuestion = styled.div`
   font-weight: bold;
 `;
 
-function Card(props) {
-  const { card, onDelete, cardContainer } = props;
+function Card({ card, onDelete, cardContainer }) {
+  const { cardTitle, content } = card;
   const [modalMode, setModalMode] = useState(false);
-  // const [deleteHoverMode, setDeleteHoverMode] = useState(false);
   const askToDelete = () => setModalMode(!modalMode);
-  // const hover = () => setDeleteHoverMode(!deleteHoverMode);
-  // const cardItem = useRef();
 
   return (
     <>
@@ -88,19 +85,20 @@ function Card(props) {
       )}
       <CardItem>
         <CardSection>
-          <CardTitle className="card-title">{card.title}</CardTitle>
-          <CardContent className="card-content">{card.content}</CardContent>
+          <CardTitle className="card-title">{cardTitle}</CardTitle>
+          <CardContent className="card-content">{content}</CardContent>
         </CardSection>
         <CardSection>
-          {/* <CardWrap onMouseOver={() => console.log("over")}> */}
           <div
-            onMouseOver={() => (cardContainer.current.style.backgroundColor = "red")}
-            onMouseOut={() => (cardContainer.current.style.backgroundColor = "white")}
+            onMouseOver={() =>
+              (cardContainer.current.style.backgroundColor = "red")
+            }
+            onMouseOut={() =>
+              (cardContainer.current.style.backgroundColor = "white")
+            }
           >
-            <Button type="delete" cb={askToDelete} />
-            {/* 왜 여기선 이벤트 등록이 안돼죠???? 왜?  */}
+            <Button type="delete" onClick={askToDelete} />
           </div>
-          {/* </CardWrap> */}
         </CardSection>
       </CardItem>
     </>
