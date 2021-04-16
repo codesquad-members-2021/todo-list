@@ -93,6 +93,16 @@ const TodoItem = ({
     setIsDrgging(true);
     setDragEl({ beforeColumnId: columnId, ...todoCard });
     e.dataTransfer.setData('cardData', JSON.stringify({ beforeColumnId: columnId, ...todoCard }));
+    setStyleGhost(e);
+  };
+
+  const setStyleGhost = (e) => {
+    const crt = e.target.cloneNode(true);
+    crt.style.backgroundColor = '#5A8E99';
+    crt.style.top = '-1000px';
+    crt.style.position = 'absolute';
+    document.body.appendChild(crt);
+    e.dataTransfer.setDragImage(crt, 0, 0);
   };
 
   const handleDragLeave = (e) => {

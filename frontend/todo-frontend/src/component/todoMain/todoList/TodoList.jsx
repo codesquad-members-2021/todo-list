@@ -10,7 +10,7 @@ const StyledTodoList = styled.div`
   margin-right: 20px;
   .todoCardList {
     width: 308px;
-    min-height: 700px;
+    min-height: 500px;
     background: #d8e3e7;
     display: flex;
     flex-direction: column;
@@ -154,7 +154,7 @@ const TodoList = ({
 
   const getDragAfterElement = (locationY) => {
     const draggableCards = [...currentColumnDiv.current.children];
-    console.log(draggableCards);
+    draggableCards.pop();
     const dragAfterElement = draggableCards.reduce(
       (closestCard, child) => {
         const cardBox = child.getBoundingClientRect();
@@ -250,7 +250,7 @@ const TodoList = ({
           ref={currentColumnDiv}
         >
           {todoCardList}
-          {setEmptyDropStyle(id) && <DropLocation></DropLocation>}
+          {setEmptyDropStyle(id) && <DropLocation draggable='false'></DropLocation>}
         </div>
       </StyledTodoList>
     </>
