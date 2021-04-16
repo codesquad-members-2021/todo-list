@@ -11,7 +11,7 @@ const requestPost = async (path, cardData) => {
 const postForm = async (path, formData, column, callback) => {
   const res = await requestPost(path, formData);
   const newCard = res.data;
-  const cardAdded = [newCard, ...column.cards];
+  const cardAdded = [...column.cards, newCard];
   column.cards = cardAdded;
   callback(column);
 };
