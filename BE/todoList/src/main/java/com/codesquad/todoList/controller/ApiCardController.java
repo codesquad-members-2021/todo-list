@@ -1,5 +1,6 @@
 package com.codesquad.todoList.controller;
 
+import com.codesquad.todoList.dto.CardInfoData;
 import com.codesquad.todoList.entity.Card;
 import com.codesquad.todoList.service.ColumnService;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +23,7 @@ public class ApiCardController {
     @PostMapping()
     public ResponseEntity<?> addCard(@Validated @RequestBody Card card, @PathVariable Long id, BindingResult bindingResult) {
         final Card saveCard = columnService.addCard(id, card);
-        return ResponseEntity.ok().body(saveCard);
+        return ResponseEntity.ok().body(new CardInfoData(id, saveCard.getId()));
     }
 
 
