@@ -17,15 +17,18 @@ const BtnContainer = styled.div`
     }
     button:last-child {
         background: #86C6FF;
-        color:  rgba(255, 255, 255, 0.4);
+        color:  #fff;
     }
 `
 
-const FormButton = ({resetInputState, setInputState}) => {
+const FormButton = ({handleClickCancel, handleClickSave, isEditBtn}) => {
     return(
             <BtnContainer>
-                <button onClick={resetInputState}>취소</button>
-                <button onClick={setInputState}>저장</button>
+                <button onClick={handleClickCancel}>취소</button>
+                {isEditBtn 
+                    ? <button onClick={handleClickSave}>수정</button>
+                    : <button onClick={handleClickSave}>저장</button>
+                }
             </BtnContainer>
         )      
 }

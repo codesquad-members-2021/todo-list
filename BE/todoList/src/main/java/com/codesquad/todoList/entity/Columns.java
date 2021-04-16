@@ -35,7 +35,7 @@ public class Columns {
         cardList.add(card);
     }
 
-    public Card deleteCard(Long cardId) {
+    public Card deleteCard(String cardId) {
         Card card = null;
         for(Card originalCard : cardList) {
             if(originalCard.getId().equals(cardId)) {

@@ -12,8 +12,9 @@ const ColumnStyle = styled.div`
 const Column = ({ initialColumn, setSidebarLog }) => {
     const [isAddBtnClicked, setIsAddBtnClicked] = useState(false)
     const [columnData, setColumnData] = useState(initialColumn)
-
-    const handleClickAddBtn = () => setIsAddBtnClicked(!isAddBtnClicked)
+    const handleClickAddBtn = ({target}) => {
+        if(target.closest('div[type="plus"]')) setIsAddBtnClicked(!isAddBtnClicked)
+    }
     
     return (
         <div>
@@ -26,8 +27,13 @@ const Column = ({ initialColumn, setSidebarLog }) => {
                         setColumnData={setColumnData} 
                         setSidebarLog={setSidebarLog} 
                     />}
-                {[...columnData.cardList].reverse().map((card, i) => 
-                    <Card key={Date.now() + i} data={card} />)}
+                {[...columnData.cardList].reverse().map(card => 
+                    <Card key={card.id}
+                        cardData={card} 
+                        columnData={columnData} 
+                        setColumnData={setColumnData} 
+                        setSidebarLog={setSidebarLog}
+                    />)}
             </ColumnStyle>
         </div>
     )
