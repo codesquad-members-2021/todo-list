@@ -32,11 +32,23 @@ class DoingTableViewDelegates: NSObject, ToDoCardProtocol {
         list.insert(place, at: destinationIndex)
     }
     
+    func removeAt(index: Int) {
+        list.remove(at: index)
+    }
+    
     public func fetchCards() {
         let urlString = Constants.url
         DataManager.requestGet(url: urlString) { (bool, output) in
             self.list = output.doing
         }
+    }
+    
+    func dragItems(for indexPath: IndexPath) -> [UIDragItem] {
+        let movingCard = list[indexPath.item]
+        let itemProvider = NSItemProvider(object: movingCard)
+        let dragItem = UIDragItem(itemProvider: itemProvider)
+        dragItem.localObject = movingCard
+        return [dragItem]
     }
 }
 
@@ -57,6 +69,14 @@ extension DoingTableViewDelegates: UITableViewDataSource {
 }
 
 extension DoingTableViewDelegates: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        moveCard(at: sourceIndexPath.row, to: destinationIndexPath.row)
+    }
+    
     func tableView(_ tableView: UITableView,
             viewForHeaderInSection section: Int) -> UIView? {
        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier:
@@ -89,4 +109,31 @@ extension DoingTableViewDelegates: UITableViewDelegate {
         deleteAction.backgroundColor = .systemRed
         return UISwipeActionsConfiguration(actions: [deleteAction])
       }
+}
+
+extension DoingTableViewDelegates: UITableViewDragDelegate {
+    func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+        let dragCoordinator = DragCoordinator(sourceIndexPath: indexPath)
+        session.localContext = dragCoordinator
+        return dragItems(for: indexPath)
+    }
+    
+    func tableView(_ tableView: UITableView, itemsForAddingTo session: UIDragSession, at indexPath: IndexPath, point: CGPoint) -> [UIDragItem] {
+        let item = list[indexPath.row]
+        let dragItem = UIDragItem(itemProvider: NSItemProvider(object: item))
+        dragItem.localObject = true
+        return [dragItem]
+    }
+    
+    func tableView(_ tableView: UITableView, dragSessionDidEnd session: UIDragSession) {
+        guard let dragCoordinator = session.localContext as? DragCoordinator, dragCoordinator.dragCompleted == true, dragCoordinator.isReordering == false
+        else {
+            return
+        }
+        let sourceIndexPath = dragCoordinator.sourceIndexPath
+        tableView.performBatchUpdates( {
+            removeAt(index: sourceIndexPath.item)
+            tableView.deleteRows(at: [sourceIndexPath], with: .automatic)
+        } )
+    }
 }
