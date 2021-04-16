@@ -28,16 +28,18 @@ const mockData = [
 ];
 
 export default function Board({ onLog }) {
-  const [columns, setColumns] = useState([]);
+  const [columns, setColumns] = useState(mockData);
 
-  useEffect(async () => {
-    const data = await fetch(URL.getDB);
-    const json = await data.json();
-    setColumns((json[0].columnList.length && json[0].columnList) || mockData);
+  useEffect(() => {
+    (async () => {
+      const data = await fetch(URL.getDB);
+      const json = await data.json();
+      setColumns((json[0].columnList.length && json[0].columnList) || mockData);
+    })();
   }, []);
 
-  useEffect(async () => {
-    await fetch(URL.setDB, {
+  useEffect(() => {
+    fetch(URL.setDB, {
       method: "post",
       headers: {
         "Content-type": "application/json",
@@ -52,21 +54,23 @@ export default function Board({ onLog }) {
       columnTitle: "new column",
       items: [],
     };
-    setColumns([...columns, column]);
+    setColumns((columns) => [...columns, column]);
+  };
+
+  const deleteColumn = (columnId) => {
+    setColumns((columns) => columns.filter((column) => column.columnId !== columnId));
   };
 
   const setItemsOfColumn = (column) => {
     const target = columns.find((e) => e.columnId === column.columnId);
     target.items = [...column.items];
-    setColumns([...columns]);
+    setColumns((columns) => [...columns]);
   };
+
   const onDragEnd = (result) => {
     if (!result.destination) return;
     const { droppableId: beforeColumnId, index: beforeIndex } = result.source;
-    const {
-      droppableId: afterColumnId,
-      index: afterIndex,
-    } = result.destination;
+    const { droppableId: afterColumnId, index: afterIndex } = result.destination;
 
     let targetItem = {};
     for (const column of columns) {
@@ -85,7 +89,6 @@ export default function Board({ onLog }) {
       }
       return newColumn;
     });
-    console.log(newColumns);
     setColumns(newColumns);
   };
 
@@ -98,6 +101,7 @@ export default function Board({ onLog }) {
             key={column.columnId}
             column={column}
             setItemsOfColumn={setItemsOfColumn}
+            deleteColumn={deleteColumn}
           />
         ))}
         <Button type="add" subType="bigSize" onClick={addColumn} />
