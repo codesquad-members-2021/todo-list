@@ -11,10 +11,11 @@ export const TodoCard = styled.div`
   padding: 16px;
   width: 288px;
   min-height: 108px;
-  background-color: #ffffff;
+  background-color: ${({ isDeleteHover }) => (isDeleteHover ? '#FFEEEC' : '#ffffff')};
   margin-bottom: 20px;
   justify-content: space-between;
   border-radius: 6px;
+  border: ${({ isDeleteHover }) => isDeleteHover && '1px solid #ff4343'};
   box-shadow: 0px 1px 30px rgba(224, 224, 224, 0.3);
   &.dragging {
     opacity: 0.5;
@@ -59,9 +60,9 @@ const TodoItem = ({
   const [inputTitle, setInputTitle] = useState(title);
   const [inputContent, setInputContent] = useState(content);
   const [isDisabled, setIsDisabled] = useState(false);
-  const [dragLeave, setDragLeave] = useState(false);
   const inputTitleRef = useRef();
   const inputContentRef = useRef();
+  const [isDeleteHover, setIsDeleteHover] = useState(false);
 
   const toggleEditForm = () => {
     setInputTitle(title);
@@ -94,6 +95,13 @@ const TodoItem = ({
     setDragEl({ beforeColumnId: columnId, ...todoCard });
     e.dataTransfer.setData('cardData', JSON.stringify({ beforeColumnId: columnId, ...todoCard }));
     setStyleGhost(e);
+  };
+
+  const handleDeleteOver = () => {
+    setIsDeleteHover(true);
+  };
+  const handleDeleteLeave = () => {
+    setIsDeleteHover(false);
   };
 
   const setStyleGhost = (e) => {
@@ -141,6 +149,7 @@ const TodoItem = ({
           draggable='true'
           onDoubleClick={toggleEditForm}
           flexDir='row'
+          isDeleteHover={isDeleteHover}
           onDragOver={handleDragOver}
           onDragStart={handleDragStart}
           onDragLeave={handleDragLeave}
@@ -150,7 +159,11 @@ const TodoItem = ({
             <TodoCardTitle>{title}</TodoCardTitle>
             <TodoCardContent>{content}</TodoCardContent>
           </div>
-          <DeleteBtn deleteFn={() => deleteTodoItem(id)} />
+          <DeleteBtn
+            deleteFn={() => deleteTodoItem(id)}
+            handleDeleteOver={handleDeleteOver}
+            handleDeleteLeave={handleDeleteLeave}
+          />
         </TodoCard>
       </div>
     );

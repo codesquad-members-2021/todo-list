@@ -10,7 +10,7 @@ const DeleteButton = styled.svg`
   margin: 0 5px;
 `;
 
-const DeleteBtn = ({ deleteFn }) => {
+const DeleteBtn = ({ deleteFn, handleDeleteOver, handleDeleteLeave }) => {
   const [deleteBtnClicked, setDeleteBtnClicked] = useState(false);
   const toggleDeleteBtnClicked = () => {
     setDeleteBtnClicked((deleteBtnClicked) => !deleteBtnClicked);
@@ -43,6 +43,8 @@ const DeleteBtn = ({ deleteFn }) => {
     return (
       <DeleteButton
         onClick={toggleDeleteBtnClicked}
+        onMouseEnter={handleDeleteOver}
+        onMouseLeave={handleDeleteLeave}
         width='12'
         height='12'
         viewBox='0 0 12 12'
