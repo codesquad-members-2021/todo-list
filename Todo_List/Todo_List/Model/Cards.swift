@@ -8,16 +8,22 @@
 import Foundation
 
 class Cards : Codable {
+    
+    static let ListChanged = Notification.Name("ListChanged")
+    
     var items = [Card]()
     
     var count : Int {
         get { return items.count }
     }
-    
     func append(with card : Card, at position : Int = 0) {
-        items.insert(card, at: position)
+        if position >= items.count {
+            items.append(card)
+        } else {
+            items.insert(card, at: position)
+        }
     }
-    
+    @discardableResult
     func remove(at index : Int) -> Card {
         return items.remove(at: index)
     }

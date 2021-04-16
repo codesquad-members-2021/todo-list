@@ -59,7 +59,10 @@ extension ModalViewController : UITextFieldDelegate {
         else {
             return true
         }
-        if title.isEmpty || content.isEmpty {
+        if title.isEmpty {
+            return true
+        }
+        if content.isEmpty {
             return true
         }
         return false
