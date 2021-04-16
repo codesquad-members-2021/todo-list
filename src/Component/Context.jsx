@@ -2,7 +2,7 @@ import React, { useReducer, createContext, useContext, useEffect } from 'react'
 import api from "../api";
 import { DragDropContext } from 'react-beautiful-dnd'
 
-let history = []
+let history = [];
 if (localStorage.getItem('historyList')) {
   history = JSON.parse(localStorage.getItem('historyList'));
 } else {
@@ -113,6 +113,7 @@ function todoReducer (state, action) {
         return stateTmp;
       }
       return stateTmp.map((v, i) => {
+        let check = false;
         if(i !== bcIndex && i !== acIndex) return v;
         const { todoItems } = v;
         let tmp = [];
@@ -121,10 +122,13 @@ function todoReducer (state, action) {
         }
         if(i === acIndex) {
           todoItems.forEach((v, i) => {
-            if(i === after.index) tmp.push(beforeItem);
+            if(i === after.index) {
+              check = true;
+              tmp.push(beforeItem);
+            }
             tmp.push(v);
           });
-          if(todoItems.length === 0) {
+          if(!check) {
             tmp.push(beforeItem);
           }
         }
