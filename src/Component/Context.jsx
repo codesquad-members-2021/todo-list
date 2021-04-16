@@ -72,10 +72,13 @@ function todoReducer (state, action) {
       const tmp = [...state];
       tmp[action.idx].todoItems = action.todos;
       return tmp;
-    case 'RESETITEM':
-      return state.map((todoColumn, index) =>
-        index === action.idx ? { ...todoColumn, todoItems: [] } : todoColumn
-      )
+    case 'REMOVECOLUMN':
+      return state.filter((todoColumn, index) => index !== action.idx);
+    case "CREATECOLUMN":
+      return state.concat({
+        title: action.title,
+        "todoItems": []
+      });
     default:
       throw new Error(`Unhandled action type: ${action.type}`)
   }

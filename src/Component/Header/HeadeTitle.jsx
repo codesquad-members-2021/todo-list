@@ -32,14 +32,16 @@ const HeadTitleBlock = styled.div`
   }
 `
 
-export default function HeadTitle ({ children, onPopupToggleButtonClick }) {
+export default function HeadTitle ({ children, onPopupToggleButtonClick, onPopupToggleButtonClickB }) {
   const [toggle, setToggle] = useState(false);
   const onClick = () => setToggle(!toggle);
-
   return (
     <HeadTitleBlock>
       <span>
         Json-Luke-mon To-do List
+        <Button onClick={onPopupToggleButtonClickB}>
+          컬럼 추가
+        </Button>
         <Button onClick={onPopupToggleButtonClick}>
           닉네임 변경
         </Button>
@@ -48,7 +50,6 @@ export default function HeadTitle ({ children, onPopupToggleButtonClick }) {
         <FaChevronLeft />
       </Button>
       <Navigator toggle={toggle} onClick={onClick} />
-
     </HeadTitleBlock>
-  )
+  );
 }

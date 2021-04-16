@@ -47,7 +47,7 @@ const HeadButtons = styled.div`
   }
 `;
 
-const TodoColumnHead = ({ title, count, toggle, onClick, onAllRemove }) => {
+const TodoColumnHead = ({ title, count, toggle, onClick, onRemoveColumn }) => {
   return (
     <TodoColumnHeadBlock>
       <HeadText>
@@ -56,7 +56,7 @@ const TodoColumnHead = ({ title, count, toggle, onClick, onAllRemove }) => {
       </HeadText>
       <HeadButtons toggle={toggle}>
         <Button onClick={onClick}><FaPlus/></Button>
-        <Button onClick={onAllRemove}><FaTimes/></Button>
+        <Button onClick={onRemoveColumn}><FaTimes/></Button>
       </HeadButtons>
     </TodoColumnHeadBlock>
   )

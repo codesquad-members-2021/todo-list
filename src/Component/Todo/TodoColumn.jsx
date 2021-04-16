@@ -32,8 +32,8 @@ const TodoColumn = ({ title, index }) => {
     setCount(count + 1);
   }
 
-  const onAllRemove = () => {
-    dispatch({ type: 'RESETITEM', idx: index })
+  const onRemoveColumn = () => {
+    dispatch({ type: 'REMOVECOLUMN', idx: index })
     setCount(0)
   }
   const onRemove = itemIndex => {
@@ -77,7 +77,7 @@ const TodoColumn = ({ title, index }) => {
       <TodoColumnHead
         toggle={toggle}
         onClick={onClick}
-        onAllRemove={onAllRemove}
+        onRemoveColumn={onRemoveColumn}
         count={count}
         title={title}
       ></TodoColumnHead>
