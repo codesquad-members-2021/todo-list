@@ -15,7 +15,7 @@ const NoteBody = ({ noteData }) => {
             "DONE": "완료한 일",
             "CREATE": "등록",
             "MOVE": "이동",
-            "REMOVE": "삭제",
+            "DELETE": "삭제",
             "UPDATE": "변경"
         }
         return actionObj[msg];

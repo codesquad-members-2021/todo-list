@@ -15,6 +15,11 @@ const CardStyle = styled.div`
     position: relative;
     box-shadow: 0px 1px 30px 0px #E0E0E04D;
 
+    &:hover{
+        box-shadow: 0 0 10px rgba(33,33,33,.2);
+        transition: 0.3s;
+    }
+
     input {
         display: block;
         width: 252px;
@@ -74,6 +79,7 @@ const Card = ({cardData, columnData, setColumnData, setSidebarLog}) => {
 
     const updateCard = () => {setIsDbClicked(true)}
 
+const Card = ({data}) => {
     return(
         <>
         { isDbClicked 
