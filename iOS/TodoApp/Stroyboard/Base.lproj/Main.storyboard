@@ -235,7 +235,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.4692926731" blue="1" alpha="0.9270215571" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.0040650406504064707" green="0.46666666666666667" blue="0.86274509803921573" alpha="0.9270215571" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstItem="rLa-Ej-HKB" firstAttribute="leading" secondItem="iFt-LB-svE" secondAttribute="leading" constant="127" id="BNt-Mb-6pq"/>
                                     <constraint firstAttribute="height" constant="459" id="Bdy-5O-Ft3"/>
@@ -253,14 +253,38 @@
                                     <constraint firstItem="8iw-u9-cdt" firstAttribute="leading" secondItem="iFt-LB-svE" secondAttribute="leading" constant="183" id="rHS-hd-N7l"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data Manager: 이노 &amp; 트리" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qOk-3V-Gi6">
+                                <rect key="frame" x="38" y="776" width="226" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="DZE-ny-OFB"/>
+                                    <constraint firstAttribute="width" constant="226" id="JLK-6X-c4W"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App Manager: 브이 &amp; 레이" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="htF-ri-Yau">
+                                <rect key="frame" x="43" y="744" width="221" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="4md-9r-Yju"/>
+                                    <constraint firstAttribute="width" constant="221" id="xeh-Xq-tui"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="qfw-bQ-Es7"/>
                         <color key="backgroundColor" red="0.0" green="0.4692926731" blue="1" alpha="0.9270215571" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="qOk-3V-Gi6" firstAttribute="leading" secondItem="qfw-bQ-Es7" secondAttribute="leading" constant="38" id="1ue-fP-8bZ"/>
                             <constraint firstItem="Biz-e5-hYg" firstAttribute="top" secondItem="qfw-bQ-Es7" secondAttribute="top" id="Jbn-VF-uvz"/>
+                            <constraint firstItem="qOk-3V-Gi6" firstAttribute="bottom" secondItem="qfw-bQ-Es7" secondAttribute="bottom" id="P7u-dx-hUq"/>
+                            <constraint firstItem="qOk-3V-Gi6" firstAttribute="top" secondItem="htF-ri-Yau" secondAttribute="bottom" constant="8" symbolic="YES" id="TcU-Gg-CYK"/>
                             <constraint firstItem="qfw-bQ-Es7" firstAttribute="bottom" secondItem="iFt-LB-svE" secondAttribute="bottom" constant="81" id="hDa-I7-EvP"/>
                             <constraint firstItem="Biz-e5-hYg" firstAttribute="leading" secondItem="qfw-bQ-Es7" secondAttribute="leading" id="i4I-xG-kSd"/>
                             <constraint firstItem="qfw-bQ-Es7" firstAttribute="trailing" secondItem="iFt-LB-svE" secondAttribute="trailing" constant="121" id="paL-44-qsu"/>
+                            <constraint firstItem="htF-ri-Yau" firstAttribute="leading" secondItem="qfw-bQ-Es7" secondAttribute="leading" constant="43" id="qxp-SY-oTb"/>
                         </constraints>
                     </view>
                     <connections>
@@ -270,7 +294,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mak-DD-rJm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-730" y="89"/>
+            <point key="canvasLocation" x="-730.16949152542372" y="88.536585365853654"/>
         </scene>
         <!--Task View Controller-->
         <scene sceneID="sQR-uo-MvG">

@@ -187,8 +187,6 @@ extension TaskViewController: UITableViewDropDelegate {
             item.dragItem.itemProvider.loadObject(ofClass: TaskCard.self) { (card, error) in
                 if let card = card as? TaskCard {
                     DispatchQueue.main.async {
-                        print(self.dragIndex)
-                        print(self.dragColumn)
                         self.taskStackManager.dragDrop(card.status, dropStatus: self.column!, at: self.dragIndex)
                     }
                 }
