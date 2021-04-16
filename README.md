@@ -17,7 +17,6 @@
 | [프레디](https://github.com/Dae-Hwa) 🧑🏻‍💻 | [잭슨](https://github.com/JacksonPK) 🧑🏻‍💻 |
 
 
-
 2주동안 파이아🔥🔥🔥
 
 ### 팀 규칙
@@ -33,3 +32,4 @@
 
 - [BE 요구사항](https://github.com/Dae-Hwa/todo-list/wiki/%F0%9F%93%8DBE-%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD-%EB%B6%84%EC%84%9D%F0%9F%94%A5)
 - [iOS 요구사항](https://github.com/Dae-Hwa/todo-list/wiki/%F0%9F%93%8DiOS-%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD-%EB%B6%84%EC%84%9D-%F0%9F%94%A5)
+
