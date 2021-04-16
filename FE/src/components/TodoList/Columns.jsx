@@ -4,16 +4,13 @@ import Form from './Form';
 import styled from 'styled-components';
 import Icon from '../atoms/Icons';
 import PopUp from '../atoms/PopUp';
-import { deleteCard, deleteColumn } from './useFetch.js';
+import { deleteCard } from './useFetch.js';
 
 const Column = ({ todoData }) => {
   const [columnData, setColumnData] = useState(todoData);
   const [currentID, setCurrentID] = useState(null);
   const [isDeleteBtnClicked, SetIsDeleteBtnClicked] = useState(false);
-  const [newColumns, setNewColumns] = useState({
-    column: [],
-    cardID: null,
-  });
+  const [newColumns, setNewColumns] = useState([]);
 
   const handleClick = (clickedID) => {
     return () => {
@@ -25,8 +22,6 @@ const Column = ({ todoData }) => {
 
   const handleClickDeleteBtn = (deletedID) => {
     return () => {
-      const path = `boards/${deletedID}`;
-      deleteColumn(path);
       const newColumn = columnData.filter(({ id }) => id !== deletedID);
       setColumnData([...newColumn]);
     };
@@ -44,7 +39,7 @@ const Column = ({ todoData }) => {
 
   const handleClickDelete = async (newColumns) => {
     const { column, cardID } = newColumns;
-    const path = `${column.id}/cards/${cardID}`;
+    const path = `/${column.id}/cards/${cardID}`;
     deleteCard(path, columnData, column, setColumnData);
     rewind();
   };
