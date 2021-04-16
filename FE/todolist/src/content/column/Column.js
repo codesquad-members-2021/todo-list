@@ -12,7 +12,9 @@ const ColumnStyle = styled.div`
 const Column = ({ initialColumn, setSidebarLog }) => {
     const [isAddBtnClicked, setIsAddBtnClicked] = useState(false)
     const [columnData, setColumnData] = useState(initialColumn)
-    const handleClickAddBtn = () => setIsAddBtnClicked(!isAddBtnClicked)
+    const handleClickAddBtn = ({target}) => {
+        if(target.closest('div[type="plus"]')) setIsAddBtnClicked(!isAddBtnClicked)
+    }
     
     return (
         <div>
