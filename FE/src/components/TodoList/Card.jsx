@@ -4,6 +4,7 @@ import CardButtonWrap from '../molecules/CardButtonWrap';
 import { InputTitle, InputContent } from '../atoms/StyledInputs';
 import Icon from '../atoms/Icons';
 import resize from './custom.js';
+import { putForm } from './useFetch.js';
 
 const Card = ({
   column,
@@ -33,8 +34,12 @@ const Card = ({
     setIsEditMode(true);
   };
 
-  const handleClickEdit = (e) => {
-    // fetch: patch
+  const handleClickEdit = async () => {
+    const path = `${column.id}/cards/${id}`;
+    const formData = new FormData();
+    formData.append('title', cardTitle.current.value);
+    formData.append('content', cardContent.current.value);
+    await putForm(path, formData, setInputs);
     setIsEditMode(false);
   };
 
@@ -44,7 +49,7 @@ const Card = ({
     const newCardList = [...newCards];
     const newColumn = Object.assign({}, column);
     newColumn.cards = newCardList;
-    setNewColumns(newColumn);
+    setNewColumns({ column: newColumn, cardID: id });
   };
 
   const deleteClickedCard = (id, column) => {
