@@ -3,6 +3,7 @@ import CardLists from './CardLists';
 import Form from './Form';
 import styled from 'styled-components';
 import Icon from '../atoms/Icons';
+import AddBtn from '../atoms/AddBtn';
 import PopUp from '../atoms/PopUp';
 import { deleteCard } from './useFetch.js';
 
@@ -36,6 +37,18 @@ const Column = ({ todoData }) => {
   const offDisplay = () => {
     setCurrentID(null);
   };
+
+
+  const addColumn = () => {
+    const columnToAdd = {
+      id: columnData.length + 1,
+      title: prompt('칼럼 이름을 입력하세요'),
+      cards: [],
+    };
+    if (columnToAdd.title) {
+      setColumnData([...columnData, columnToAdd]);
+    }
+  }
 
   const handleClickDelete = async (newColumns) => {
     const { column, cardID } = newColumns;
@@ -94,7 +107,12 @@ const Column = ({ todoData }) => {
 
   return (
     <>
-      <ColumnContainer>{columnList}</ColumnContainer>
+      <ColumnContainer>
+        {columnList}
+      <div onClick={addColumn}>
+        <AddBtn />
+      </div>
+      </ColumnContainer>
       <PopUp
         isDeleteBtnClicked={isDeleteBtnClicked}
         rewind={rewind}
