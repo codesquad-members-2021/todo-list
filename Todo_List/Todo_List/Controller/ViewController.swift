@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     private var doingViewController: TodoTableViewController?
     private var doneViewController: TodoTableViewController?
     
-    private var todoCards = TodoCards() // ⚠️
+    private var todoCards = TodoCards()
     private var networkManager = NetworkManager()
     
     
@@ -38,15 +38,12 @@ class ViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        
         setObserver()
-        let _ = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { (timer) in
-            NetworkManager().getSource(urlString: EndPoint.home.rawValue,
-                                       httpMethod: .get,
-                                       dataType: TodoCards.self) { (cards, error) in
-                self.todoCards = cards as! TodoCards
-                self.setting()
-            }
+        NetworkManager().getSource(urlString: EndPoint.home.rawValue,
+                                   httpMethod: .get,
+                                   dataType: TodoCards.self) { (cards, error) in
+            self.todoCards = cards as! TodoCards
+            self.setting()
         }
         super.viewDidLoad()
     }
