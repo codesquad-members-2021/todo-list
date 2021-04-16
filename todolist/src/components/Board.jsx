@@ -9,24 +9,24 @@ const BoardBlock = styled.div`
   display: flex;
 `;
 
-const mockData = [
-  {
-    columnId: 12314,
-    columnTitle: "해야할 일",
-    items: [
-      {
-        cardId: 424124,
-        cardTitle: "temp title1",
-        content: "졸리다 졸려",
-      },
-      {
-        cardId: 251124,
-        cardTitle: "temp title2",
-        content: "임시 내용22",
-      },
-    ],
-  },
-];
+// const mockData = [
+//   {
+//     columnId: 12314,
+//     columnTitle: "해야할 일",
+//     items: [
+//       {
+//         cardId: 424124,
+//         cardTitle: "temp title1",
+//         content: "졸리다 졸려",
+//       },
+//       {
+//         cardId: 251124,
+//         cardTitle: "temp title2",
+//         content: "임시 내용22",
+//       },
+//     ],
+//   },
+// ];
 
 export default function Board({ onLog }) {
   const [columns, setColumns] = useState([]);
@@ -62,6 +62,13 @@ export default function Board({ onLog }) {
     const target = columns.find((e) => e.columnId === column.columnId);
     target.items = [...column.items];
     setColumns([...columns]);
+  };
+
+  const setColumnTitle = (newColumn) => {
+    const target = columns.map((column) =>
+      column.columnId !== newColumn.columnId ? column : newColumn
+    );
+    setColumns(target);
   };
 
   const onDragEnd = (result) => {
@@ -102,6 +109,7 @@ export default function Board({ onLog }) {
             key={column.columnId}
             column={column}
             setItemsOfColumn={setItemsOfColumn}
+            setColumnTitle={setColumnTitle}
           />
         ))}
         <Button type="add" subType="bigSize" onClick={addColumn} />
