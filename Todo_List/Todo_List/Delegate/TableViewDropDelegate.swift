@@ -43,7 +43,7 @@ class TableViewDropDelegate: NSObject, UITableViewDropDelegate {
                 }
                 
                 let index = destinationIndexPath.section - 1
-
+                
                 // 맨 앞에 추가 되는 경우
                 let previousId : Int
                 if index == -1 {
@@ -54,7 +54,7 @@ class TableViewDropDelegate: NSObject, UITableViewDropDelegate {
                 }
                 
                 self.dataSource?.cards.append(with: card, at: destinationIndexPath.section)
- CardAPIClient().patchCard(from: id, type: "\(self.cardType)", to: previousId)
+                CardAPIClient().patchCard(from: id, type: "\(self.cardType)", to: previousId)
                 NotificationCenter.default.post(name: Cards.ListChanged, object: nil)
             })
         }
