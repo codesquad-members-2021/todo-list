@@ -21,14 +21,7 @@
     {
       "columnId": 2,
       "columnName": "하고 있는 일",
-      "items": [
-        {
-          "id": "DIxvHBH3_",
-          "title": "Drag ",
-          "content": "스무스한 드래그 ",
-          "author": "Beemo"
-        }
-      ]
+      "items": []
     },
     {
       "columnId": 3,
@@ -45,6 +38,12 @@
           "title": "비타지 데뷔",
           "content": "데뷔 기념 gather 라이브 공연 ",
           "author": "Beemo"
+        },
+        {
+          "id": "DIxvHBH3_",
+          "title": "Drag ",
+          "content": "스무스한 드래그 ",
+          "author": "Beemo"
         }
       ]
     }
@@ -56,5 +55,15 @@
       "role": "Gatekeeper"
     }
   ],
-  "logs": []
+  "logs": [
+    {
+      "id": "i6DB3VcQq",
+      "user": "Beemo",
+      "date": "2021-04-16 18:39:16",
+      "action": "이동",
+      "prevTitle": "Drag ",
+      "prevColumn": "하고 있는 일",
+      "currentColumn": "완료한 일"
+    }
+  ]
 }
