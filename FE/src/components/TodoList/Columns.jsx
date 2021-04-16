@@ -4,12 +4,17 @@ import Form from './Form';
 import styled from 'styled-components';
 import Icon from '../atoms/Icons';
 import PopUp from '../atoms/PopUp';
+import { deleteCard } from './useFetch.js';
 
 const Column = ({ todoData }) => {
   const [columnData, setColumnData] = useState(todoData);
   const [currentID, setCurrentID] = useState(null);
   const [isDeleteBtnClicked, SetIsDeleteBtnClicked] = useState(false);
-  const [newColumns, setNewColumns] = useState([]);
+  const [newColumns, setNewColumns] = useState({
+    column: [],
+    cardID: null,
+  });
+
   const handleClick = (clickedID) => {
     return () => {
       if (currentID !== clickedID) setCurrentID(clickedID);
@@ -35,14 +40,11 @@ const Column = ({ todoData }) => {
     setCurrentID(null);
   };
 
-  const deleteCard = (newColumns) => {
-    // cardID를 알아야 delete요청을 보낼 수 있다.
-    // card에서 같이 보내줘야한다.
-    const updatedColumns = columnData.map((curColumn) =>
-      curColumn.id === newColumns.id ? newColumns : curColumn
-    );
+  const handleClickDelete = async (newColumns) => {
+    const { column, cardID } = newColumns;
+    const path = `/${column.id}/cards/${cardID}`;
+    deleteCard(path, columnData, column, setColumnData);
     rewind();
-    setColumnData([...updatedColumns]);
   };
 
   const checkInputValue = ({ title, content }, callbackSetInput) => {
@@ -100,7 +102,7 @@ const Column = ({ todoData }) => {
         isDeleteBtnClicked={isDeleteBtnClicked}
         rewind={rewind}
         newColumns={newColumns}
-        deleteCard={deleteCard}
+        handleClickDelete={handleClickDelete}
       />
     </>
   );

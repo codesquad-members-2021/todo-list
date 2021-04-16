@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 
-const PopUp = ({ isDeleteBtnClicked, rewind, newColumns, deleteCard }) => {
+const PopUp = ({
+  isDeleteBtnClicked,
+  rewind,
+  newColumns,
+  handleClickDelete,
+}) => {
   if (isDeleteBtnClicked) {
     return (
       <PopUpBg>
@@ -10,7 +15,10 @@ const PopUp = ({ isDeleteBtnClicked, rewind, newColumns, deleteCard }) => {
             <button className="cancel" onClick={rewind}>
               취소
             </button>
-            <button className="delete" onClick={() => deleteCard(newColumns)}>
+            <button
+              className="delete"
+              onClick={() => handleClickDelete(newColumns)}
+            >
               삭제
             </button>
           </div>

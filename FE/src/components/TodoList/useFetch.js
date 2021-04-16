@@ -16,4 +16,25 @@ const postForm = async (path, formData, column, callback) => {
   callback(column);
 };
 
-export { postForm };
+const deleteCard = async (path, currentColumns, newColumn, setColumnData) => {
+  try {
+    await axios.delete(path);
+    const updatedColumns = currentColumns.map((curColumn) =>
+      curColumn.id === newColumn.id ? newColumn : curColumn
+    );
+    setColumnData([...updatedColumns]);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const putForm = async (path, formData, setInputs) => {
+  const res = await axios.put(path, formData);
+  const newCard = res.data;
+  setInputs({
+    title: newCard.title,
+    content: newCard.content,
+  });
+};
+
+export { postForm, deleteCard, putForm };

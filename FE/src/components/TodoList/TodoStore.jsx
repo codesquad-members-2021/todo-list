@@ -43,5 +43,6 @@ export default TodoStore;
 const ToDoListWrap = styled.div`
   .TodoList {
     margin-top: 30px;
+    z-index: -1;
   }
 `;
