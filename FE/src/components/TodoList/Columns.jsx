@@ -42,7 +42,7 @@ const Column = ({ todoData }) => {
 
   const handleClickDelete = async (newColumns) => {
     const { column, cardID } = newColumns;
-    const path = `/${column.id}/cards/${cardID}`;
+    const path = `${column.id}/cards/${cardID}`;
     deleteCard(path, columnData, column, setColumnData);
     rewind();
   };
