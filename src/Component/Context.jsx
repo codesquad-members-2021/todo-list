@@ -1,5 +1,6 @@
 import React, { useReducer, createContext, useContext, useEffect } from 'react'
 import api from "../api";
+import { DragDropContext } from 'react-beautiful-dnd'
 
 let history = []
 if (localStorage.getItem('historyList')) {
@@ -79,6 +80,49 @@ function todoReducer (state, action) {
         title: action.title,
         "todoItems": []
       });
+    case "MOVEITEM":
+      // 수정했을 때, 진행
+      const { before, after } = action;
+      const stateTmp = [...state];
+      const bcIndex = +before.droppableId[0];
+      const acIndex = +after.droppableId[0];
+      const beforeItem = stateTmp[bcIndex].todoItems[before.index];
+      if(bcIndex === acIndex) {
+        if(before.index === after.index) return state;
+        const afterItem = stateTmp[acIndex].todoItems[after.index];
+        let tmp = [...stateTmp[bcIndex].todoItems];
+        const afterColumn = [];
+        for(let i = 0; i < tmp.length; i++) {
+          if(i === before.index) {
+            continue;
+          }
+          if(i === after.index) {
+            afterColumn.push(beforeItem);
+          }
+          afterColumn.push(tmp[i]);
+        }
+        stateTmp[bcIndex].todoItems = afterColumn;
+        return stateTmp;
+      }
+      return stateTmp.map((v, i) => {
+        if(i !== bcIndex && i !== acIndex) return v;
+        const { todoItems } = v;
+        let tmp = [];
+        if(i === bcIndex) {
+          tmp = todoItems.filter((v, i) => i !== before.index);
+        }
+        if(i === acIndex) {
+          todoItems.forEach((v, i) => {
+            if(i === after.index) tmp.push(beforeItem);
+            tmp.push(v);
+          });
+          if(todoItems.length === 0) {
+            tmp.push(beforeItem);
+          }
+        }
+        v.todoItems = tmp;
+        return v;
+      });
     default:
       throw new Error(`Unhandled action type: ${action.type}`)
   }
@@ -112,20 +156,27 @@ export function TodoProvider ({ children }) {
     if(!id) localStorage.setItem("id", result.id);
   }, [state, author]);
 
+  const onDragEnd = result => {
+    if(!result.destination) return;
+    dispatch({ type: "MOVEITEM", before: result.source, after: result.destination});
+  }
+
   if (!state || !author) return null;
 
   return (
-    <TodoStateContext.Provider value={state}>
-      <TodoDispatchContext.Provider value={dispatch}>
-        <TodoUserNameContext.Provider value={[author, nameDispatch]}>
-          <HistoyStateContext.Provider value={histoyState}>
-            <HisDispatchContext.Provider value={hisdispatch}>
-              {children}
-            </HisDispatchContext.Provider>
-          </HistoyStateContext.Provider>
-        </TodoUserNameContext.Provider>
-      </TodoDispatchContext.Provider>
-    </TodoStateContext.Provider>
+    <DragDropContext onDragEnd={onDragEnd}>
+      <TodoStateContext.Provider value={state}>
+        <TodoDispatchContext.Provider value={dispatch}>
+          <TodoUserNameContext.Provider value={[author, nameDispatch]}>
+            <HistoyStateContext.Provider value={histoyState}>
+              <HisDispatchContext.Provider value={hisdispatch}>
+                {children}
+              </HisDispatchContext.Provider>
+            </HistoyStateContext.Provider>
+          </TodoUserNameContext.Provider>
+        </TodoDispatchContext.Provider>
+      </TodoStateContext.Provider>
+    </DragDropContext>
   )
 }
 

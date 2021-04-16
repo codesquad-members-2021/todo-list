@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import CreateTodo from './CreateTodo'
 import TodoColumnHead from './TodoColumnHead'
 import TodoItem from './TodoItem'
+import { Droppable } from 'react-beautiful-dnd'
 import {
   useTodoState,
   useTodoDispatch,
@@ -19,7 +20,7 @@ const TodoColumn = ({ title, index }) => {
   const state = useTodoState()
   const todoItems = state[index].todoItems;
   const [toggle, setToggle] = useState(false)
-  const [count, setCount] = useState(todoItems.length)
+  const count = todoItems.length;
   const onSubmit = inputs => {
     dispatch({ type: 'CREATEITEM', idx: index, item: { ...inputs } })
     hisDispatch({
@@ -29,12 +30,12 @@ const TodoColumn = ({ title, index }) => {
       time: new Date().toUTCString()
     });
     setToggle(!toggle);
-    setCount(count + 1);
+    // setCount(count + 1);
   }
 
   const onRemoveColumn = () => {
     dispatch({ type: 'REMOVECOLUMN', idx: index })
-    setCount(0)
+    // setCount(0)
   }
   const onRemove = itemIndex => {
     hisDispatch({
@@ -46,7 +47,7 @@ const TodoColumn = ({ title, index }) => {
     })
     const tmp = todoItems.filter((v, i) => i !== itemIndex);
     dispatch({ type: 'REMOVEITEM', idx: index, todos : tmp });
-    setCount(count - 1);
+    // setCount(count - 1);
   }
 
   const onTodoItemChange = (value, idx) => {
@@ -63,15 +64,8 @@ const TodoColumn = ({ title, index }) => {
     })
   }
 
-  const TodoItems = todoItems.map((v, index) => (
-    <TodoItem
-      {...v}
-      index={index}
-      onChange={onTodoItemChange}
-      onRemove={onRemove}
-      key={index}
-    />
-    ))
+
+  const id = index;
   return (
     <TodoColumnBlock>
       <TodoColumnHead
@@ -86,7 +80,22 @@ const TodoColumn = ({ title, index }) => {
         toggle={toggle}
         setToggle={setToggle}
       ></CreateTodo>
-      <TodoItemsBlock>{TodoItems}</TodoItemsBlock>
+      <Droppable droppableId={index + "tmp"}>
+        {provided => (
+          <TodoItemsBlock {...provided.droppableProps} ref={provided.innerRef}>
+            {todoItems.map((v, index) => (
+              <TodoItem
+                {...v}
+                index={index}
+                onChange={onTodoItemChange}
+                onRemove={onRemove}
+                key={"" + id + index + "abc"}
+                id={"" + id + index + "abc"}
+                />
+            ))}
+          </TodoItemsBlock>
+        )}
+      </Droppable>
     </TodoColumnBlock>
   )
 }
