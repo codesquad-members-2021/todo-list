@@ -81,6 +81,8 @@ const TodoList = ({
   setDragEl,
   isDragging,
   setIsDrgging,
+  dropElement,
+  setDropElement,
 }) => {
   const [todos, setTodos] = useState(todoCards);
   const [loading, postTodos, deleteTodos, putTodos, moveTodos] = useTodoHook(
@@ -88,7 +90,6 @@ const TodoList = ({
     setTodoColumns
   );
   const [formSelected, setFormSelected] = useState(false);
-  const [dropElement, setDropElement] = useState(null);
   const currentColumnDiv = useRef();
 
   useEffect(() => {
