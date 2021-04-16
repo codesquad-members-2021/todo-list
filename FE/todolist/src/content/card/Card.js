@@ -79,7 +79,6 @@ const Card = ({cardData, columnData, setColumnData, setSidebarLog}) => {
 
     const updateCard = () => {setIsDbClicked(true)}
 
-const Card = ({data}) => {
     return(
         <>
         { isDbClicked 
