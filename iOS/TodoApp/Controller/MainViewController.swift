@@ -10,7 +10,7 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NetworkManager.loginPost()
+//        NetworkManager.loginPost() -> loginvc
         registerHistoryCell()
         addObserver()
     }

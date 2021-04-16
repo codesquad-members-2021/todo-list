@@ -147,6 +147,7 @@ extension TaskViewController {
     
     @objc func dragDropData(_ notification: Notification) {
         let dragData = notification.userInfo?["dragData"] as! TaskCard
+        dump(dragData)
         if column == dragColumn {
             taskStackManager.remove(column!, at: dragIndex)
         }
@@ -159,7 +160,9 @@ extension TaskViewController: UITableViewDragDelegate {
     
     func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
         dragColumn = self.column!
+        
         dragIndex = indexPath.row
+        
         let card = taskStackManager.index(self.column!, at: indexPath.row)
         let itemProvider = NSItemProvider(object: card)
         let dragItem = UIDragItem(itemProvider: itemProvider)
@@ -196,6 +199,8 @@ extension TaskViewController: UITableViewDropDelegate {
             item.dragItem.itemProvider.loadObject(ofClass: TaskCard.self) { (card, error) in
                 if let card = card as? TaskCard {
                     DispatchQueue.main.async {
+                        print(self.dragIndex)
+                        
                         self.taskStackManager.dragDrop(card.status, dropStatus: self.column!, at: self.dragIndex)
                     }
                 }

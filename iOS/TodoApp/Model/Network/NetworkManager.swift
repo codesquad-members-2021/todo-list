@@ -3,8 +3,8 @@ import Foundation
 
 class NetworkManager {
     
-    static func loginPost() {
-        let data = ["userId" : "user1", "password" : "1234"]
+    static func loginPost(id: String, password: String) {
+        let data = ["userId" : id, "password" : password]
         let body = try? JSONEncoder().encode(data)
         
         let url = URL(string: "http://3.36.217.168:8080/login")
