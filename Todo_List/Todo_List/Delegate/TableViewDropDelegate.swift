@@ -22,35 +22,40 @@ class TableViewDropDelegate: NSObject, UITableViewDropDelegate {
     }
     
     func tableView(_ tableView: UITableView, performDropWith coordinator: UITableViewDropCoordinator) {
-        let destinationIndexPath: IndexPath
+        var destinationIndexPath: IndexPath
         
         if let indexPath = coordinator.destinationIndexPath {
             destinationIndexPath = IndexPath(row: 0, section: indexPath.section)
-            
+            if indexPath.row == 1 {
+                destinationIndexPath = IndexPath(row: 0, section: indexPath.section + 1)
+            }
         } else {
             destinationIndexPath = IndexPath(row: 0, section: tableView.numberOfSections)
         }
+        
         for item in coordinator.items {
             item.dragItem.itemProvider.loadObject(ofClass: Card.self, completionHandler: { (card, error) in
                 
-                let maxSize = self.dataSource?.cards.count ?? 0
                 guard let card = card as? Card,
                       let id = card.id
                 else {
                     return
                 }
-                let index : Int
-    
-                // destinationIndexPath.section가 boundary를 넘어간 경우
-                if destinationIndexPath.section >= maxSize {
-                    index = maxSize - 1
-                } else {
-                    index = destinationIndexPath.section
+                
+                let index = destinationIndexPath.section - 1
+
+                // 맨 앞에 추가 되는 경우
+                let previousId : Int
+                if index == -1 {
+                    previousId = index
+                } else { // 중간에 추가 되는 경우
+                    guard let _previousId = self.dataSource?.cards.items[index].id else { return }
+                    previousId = _previousId
                 }
-                guard let nextId = self.dataSource?.cards.items[index].id else { return }
+                
                 self.dataSource?.cards.append(with: card, at: destinationIndexPath.section)
-                CardAPIClient().patchCard(from: id, type: "\(self.cardType)", to: nextId)
-                NotificationCenter.default.post(name: Cards.ListChanged, object: self.dataSource)
+ CardAPIClient().patchCard(from: id, type: "\(self.cardType)", to: previousId)
+                NotificationCenter.default.post(name: Cards.ListChanged, object: nil)
             })
         }
     }
