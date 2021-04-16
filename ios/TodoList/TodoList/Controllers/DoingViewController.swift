@@ -10,26 +10,27 @@ import UIKit
 class DoingViewController: UIViewController {
     let doingTableViewDelegates = DoingTableViewDelegates()
     
-    @IBOutlet weak var doingCardTableView: UITableView!
+    @IBOutlet weak var doingItemTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(doingCardsListHasBeenChanged), name: .didChangeDoingCardsList, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(doingItemListHasBeenChanged), name: .didChangeDoingItemList, object: nil)
         
-        self.doingCardTableView.dataSource = doingTableViewDelegates
-        self.doingCardTableView.delegate = doingTableViewDelegates
+        self.doingItemTableView.dataSource = doingTableViewDelegates
+        self.doingItemTableView.delegate = doingTableViewDelegates
+        self.doingItemTableView.dragDelegate = doingTableViewDelegates
         self.doingTableViewDelegates.popUpViewProtocol = self
-        self.doingCardTableView.rowHeight = 150
+        self.doingItemTableView.rowHeight = 150
         
-        self.doingCardTableView.register(UINib(nibName: "ToDoCardCell", bundle: nil), forCellReuseIdentifier: "ToDoCardCell")
-        doingCardTableView.register(CustomHeader.self, forHeaderFooterViewReuseIdentifier: "sectionHeader")
+        self.doingItemTableView.register(UINib(nibName: "ToDoItemCell", bundle: nil), forCellReuseIdentifier: "ToDoItemCell")
+        doingItemTableView.register(CustomHeader.self, forHeaderFooterViewReuseIdentifier: "sectionHeader")
         
-        doingTableViewDelegates.fetchCards()
+        doingTableViewDelegates.fetchItems()
     }
     
-    @objc func doingCardsListHasBeenChanged() {
+    @objc func doingItemListHasBeenChanged() {
         DispatchQueue.main.async {
-            self.doingCardTableView.reloadData()
+            self.doingItemTableView.reloadData()
         }
     }
     
@@ -51,6 +52,6 @@ extension DoingViewController: PopUpViewProtocol {
 
 extension DoingViewController: AbilityToFetchData {
     func fetchData() {
-        self.doingTableViewDelegates.fetchCards()
+        self.doingTableViewDelegates.fetchItems()
     }
 }

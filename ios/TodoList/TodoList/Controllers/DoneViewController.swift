@@ -10,26 +10,27 @@ import UIKit
 class DoneViewController: UIViewController {
     let doneTableViewDelegates = DoneTableViewDelegates()
     
-    @IBOutlet weak var doneCardTableView: UITableView!
+    @IBOutlet weak var doneItemTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(doneCardsListHasBeenChanged), name: .didChangeCompletedCardsLists, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(doneItemListHasBeenChanged), name: .didChangeDoneItemList, object: nil)
         
-        self.doneCardTableView.dataSource = doneTableViewDelegates
-        self.doneCardTableView.delegate = doneTableViewDelegates
+        self.doneItemTableView.dataSource = doneTableViewDelegates
+        self.doneItemTableView.delegate = doneTableViewDelegates
+        self.doneItemTableView.dragDelegate = doneTableViewDelegates
         self.doneTableViewDelegates.popUpViewProtocol = self
-        self.doneCardTableView.rowHeight = 150
+        self.doneItemTableView.rowHeight = 150
         
-        self.doneCardTableView.register(UINib(nibName: "ToDoCardCell", bundle: nil), forCellReuseIdentifier: "ToDoCardCell")
-        doneCardTableView.register(CustomHeader.self, forHeaderFooterViewReuseIdentifier: "sectionHeader")
+        self.doneItemTableView.register(UINib(nibName: "ToDoItemCell", bundle: nil), forCellReuseIdentifier: "ToDoItemCell")
+        doneItemTableView.register(CustomHeader.self, forHeaderFooterViewReuseIdentifier: "sectionHeader")
         
-        doneTableViewDelegates.fetchCards()
+        doneTableViewDelegates.fetchItems()
     }
     
-    @objc func doneCardsListHasBeenChanged() {
+    @objc func doneItemListHasBeenChanged() {
         DispatchQueue.main.async {
-            self.doneCardTableView.reloadData()
+            self.doneItemTableView.reloadData()
         }
     }
     
@@ -51,6 +52,6 @@ extension DoneViewController: PopUpViewProtocol {
 
 extension DoneViewController: AbilityToFetchData {
     func fetchData() {
-        self.doneTableViewDelegates.fetchCards()
+        self.doneTableViewDelegates.fetchItems()
     }
 }

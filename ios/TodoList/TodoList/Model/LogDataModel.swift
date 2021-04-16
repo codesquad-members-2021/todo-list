@@ -7,20 +7,15 @@
 
 import Foundation
 
-struct LogModel {
-    
-    let log: [Log]
-    
+struct LogModel: Codable {
+    let logs: [Log]
 }
 
-struct Log {
-    
-    let emoji = "\u{1f973}"
-    let id: String
+struct Log: Codable {
+    let id: Int
     let title: String
     let fromStatus: String
-    let toStatus: String
+    let toStatus: String?
     let action: String
-    let createDataTime: String
-    
+    let createDateTime: String
 }

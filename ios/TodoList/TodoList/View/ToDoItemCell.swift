@@ -1,13 +1,7 @@
-//
-//  ToDoCard.swift
-//  TodoList
-//
-//  Created by 조중윤 on 2021/04/08.
-//
 
 import UIKit
 
-class ToDoCardCell: UITableViewCell {
+class ToDoItemCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
@@ -31,8 +25,6 @@ class ToDoCardCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-
         contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0))
     }
-    
 }

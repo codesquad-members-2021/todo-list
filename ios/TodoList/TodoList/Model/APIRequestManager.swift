@@ -7,12 +7,12 @@
 
 import Foundation
 
-class DataManager {
-    static func requestGet(url: String, completionHandler: @escaping (Bool, ToDoList) -> Void) {
+class APIRequestManager {
+    static func requestGet_log(url: String, completionHandler: @escaping (LogModel) -> Void) {
         guard let url = URL(string: url) else {
                 print("Error: cannot create URL")
                 return
-            }
+        }
         
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
@@ -23,10 +23,46 @@ class DataManager {
                     print(error!)
                     return
                 }
+            
                 guard let data = data else {
                     print("Error: Did not receive data")
                     return
                 }
+            
+                guard let response = response as? HTTPURLResponse, (200 ..< 300) ~= response.statusCode else {
+                    print("Error: HTTP request failed")
+                    return
+                }
+                
+                guard let output = try? JSONDecoder().decode(LogModel.self, from: data) else {
+                    print("Error: JSON Data Parsing failed")
+                    return
+                }
+                completionHandler(output)
+            }.resume()
+    }
+    
+    static func requestGet(url: String, completionHandler: @escaping (ToDoList) -> Void) {
+        guard let url = URL(string: url) else {
+                print("Error: cannot create URL")
+                return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+                guard error == nil else {
+                    print("Error: error calling GET")
+                    print(error!)
+                    return
+                }
+            
+                guard let data = data else {
+                    print("Error: Did not receive data")
+                    return
+                }
+            
                 guard let response = response as? HTTPURLResponse, (200 ..< 300) ~= response.statusCode else {
                     print("Error: HTTP request failed")
                     return
@@ -36,15 +72,14 @@ class DataManager {
                     print("Error: JSON Data Parsing failed")
                     return
                 }
-                
-                completionHandler(true, output)
+                completionHandler(output)
             }.resume()
     }
 
     static func requestPost(url: String, parameter: [String: Any], completionHandler: @escaping (Bool, Any) -> Void) {
         guard let url = URL(string: url) else {
-            print("Error: cannot create URL")
-            return
+                print("Error: cannot create URL")
+                return
         }
         
         var request = URLRequest(url: url)
@@ -72,21 +107,24 @@ class DataManager {
                 return
             }
             
-            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
-            if let responseJSON = responseJSON as? [String: Any] {
-                print(responseJSON)
+            guard let response = response as? HTTPURLResponse, (200 ..< 300) ~= response.statusCode else {
+                print("Error: HTTP request failed")
+                return
             }
             
-            completionHandler(true, responseJSON)
+            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+            if let responseJSON = responseJSON as? [String: Any] {
+                completionHandler(true, responseJSON)
+            }
         }.resume()
     }
 
-    static func requestDelete(url: String, id: Int, completionHandler: @escaping (Bool, Any) -> Void) {
+    static func requestDelete(url: String, id: Int, completionHandler: @escaping (Any) -> Void) {
         guard var url = URL(string: url) else {
             print("Error: cannot create URL")
             return
         }
-        // api 문서에 {id}라는 말은 파라미터라는 뜻
+    
         url.appendPathComponent(String(id))
         
         var request = URLRequest(url: url)
@@ -103,7 +141,6 @@ class DataManager {
                 return
             }
             
-            
             guard let response = response as? HTTPURLResponse, (200 ..< 300) ~= response.statusCode else {
                 print("Error: HTTP request failed")
                 return
@@ -111,9 +148,8 @@ class DataManager {
             
             let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
             if let responseJSON = responseJSON as? [String: Any] {
-                print(responseJSON)
+                completionHandler(responseJSON)
             }
-            completionHandler(true, responseJSON)
         }.resume()
         
     }
