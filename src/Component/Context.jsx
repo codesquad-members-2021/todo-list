@@ -80,8 +80,11 @@ function todoReducer (state, action) {
         title: action.title,
         "todoItems": []
       });
+    case 'UPDATECOLUMNTITLE':
+      const tempB = [...state];
+      tempB[action.index].title = action.title;
+      return tempB;
     case "MOVEITEM":
-      // 수정했을 때, 진행
       const { before, after } = action;
       const stateTmp = [...state];
       const bcIndex = +before.droppableId[0];
@@ -97,6 +100,11 @@ function todoReducer (state, action) {
             continue;
           }
           if(i === after.index) {
+            if(before.index < after.index) {
+              afterColumn.push(tmp[i]);
+              afterColumn.push(beforeItem);
+              continue;
+            }
             afterColumn.push(beforeItem);
           }
           afterColumn.push(tmp[i]);

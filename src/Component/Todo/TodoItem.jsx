@@ -56,16 +56,9 @@ const Content = styled.textarea`
 `;
 
 const TodoItem = ({ title, content, index, onChange, onRemove, id }) => {
-
-  console.log(id);
-  // const [inputs, setInputs] = useState({
-  //   title,
-  //   content
-  // });
   const [toggle, setToggle] = useState(false);
   const onToggle = () => setToggle(!toggle);
   const onTextChange = inputs => {
-    // setInputs(inputs);
     onChange(inputs, index);
     onToggle();
   }

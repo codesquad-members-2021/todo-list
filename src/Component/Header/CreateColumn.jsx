@@ -14,6 +14,7 @@ const CreateColumnBlock = styled.div`
   background-color: #000;
   p {
     color: #fff;
+    margin-top: 0;
   }
   &:before {
     position: fixed;
@@ -46,7 +47,6 @@ const Buttons = styled.div`
     border-radius: 0.2rem;
     background-color: #bbb;
     padding: 0.4rem 1rem;
-    opacity: 0.6;
     &:last-child {
       color: #fff;
       background-color: #ffcc00;

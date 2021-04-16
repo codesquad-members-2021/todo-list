@@ -74,6 +74,7 @@ const TodoColumn = ({ title, index }) => {
         onRemoveColumn={onRemoveColumn}
         count={count}
         title={title}
+        index={index}
       ></TodoColumnHead>
       <CreateTodo
         onSubmit={onSubmit}

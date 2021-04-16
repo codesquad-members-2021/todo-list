@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { FaPlus, FaTimes } from 'react-icons/fa';
 import Button from "../Button";
+import { useTodoDispatch } from '../Context'
 
 const TodoColumnHeadBlock = styled.div`
   display: flex;
@@ -11,13 +12,17 @@ const TodoColumnHeadBlock = styled.div`
     display: flex;
     align-items: center;
     padding: 0 0.5rem;
+    width: 75%;
   }
 `;
 
 const HeadText = styled.div``;
 
-const Title = styled.h2`
+const Title = styled.input.attrs({
+    type: "text"
+  })`
   font-size: 1rem;
+  background-color: transparent;
   font-weight: 600;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -39,20 +44,28 @@ const HeadButtons = styled.div`
   button {
     padding: 0.4rem;
     line-height: 0rem;
-    &:hover {
-      color: #ffcc00;
-    }
     &:first-child {
       color: ${({toggle}) => toggle ? '#ffcc00': '#000'};
+    }
+    &:hover {
+      color: #ffcc00;
     }
   }
 `;
 
-const TodoColumnHead = ({ title, count, toggle, onClick, onRemoveColumn }) => {
+const TodoColumnHead = ({ title, count, toggle, onClick, onRemoveColumn, index }) => {
+  const [titleText, setTitleText] = useState(title);
+  const dispatch = useTodoDispatch();
+  const onChange = ({target}) => {
+    setTitleText(target.value);
+  }
+  const onBlur = () => {
+    dispatch({ type: "UPDATECOLUMNTITLE", title: titleText, index});
+  }
   return (
     <TodoColumnHeadBlock>
       <HeadText>
-        <Title>{title}</Title>
+        <Title onChange={onChange} onBlur={onBlur} value={titleText}/>
         <Counter>{count}</Counter>
       </HeadText>
       <HeadButtons toggle={toggle}>
