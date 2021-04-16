@@ -42,7 +42,7 @@ const CardList = {
   minHeight: 300,
 };
 
-function Column({ onLog, column, setItemsOfColumn }) {
+function Column({ onLog, column, setItemsOfColumn, deleteColumn }) {
   const [enrollMode, setEnrollMode] = useState(false);
   const { columnId, columnTitle, items } = column;
 
@@ -99,6 +99,7 @@ function Column({ onLog, column, setItemsOfColumn }) {
           <ColumnCount>{items.length}</ColumnCount>
         </ColumnTitle>
         <Button onClick={() => setEnrollMode(!enrollMode)} type="add" />
+        <Button onClick={() => deleteColumn(columnId)} type="delete" />
       </ColumnMenu>
       {enrollMode && (
         <CardContainer>
