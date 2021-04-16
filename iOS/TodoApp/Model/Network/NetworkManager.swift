@@ -95,7 +95,7 @@ class NetworkManager {
     }
     
     static func insertedDataPost(httpMethod: String, data: TaskCard) {
-        var syncData = data
+        let syncData = data
         syncData.status += 1
         let url = URL(string: "http://3.36.217.168:8080/works")
         let body = try? JSONEncoder().encode(syncData)

@@ -79,6 +79,4 @@ extension MainViewController: UITableViewDataSource {
         cell.timeLabel.text = historyCard.time
         return cell
     }
-    
-    
 }

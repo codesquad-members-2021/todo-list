@@ -160,9 +160,7 @@ extension TaskViewController: UITableViewDragDelegate {
     
     func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
         dragColumn = self.column!
-        
         dragIndex = indexPath.row
-        
         let card = taskStackManager.index(self.column!, at: indexPath.row)
         let itemProvider = NSItemProvider(object: card)
         let dragItem = UIDragItem(itemProvider: itemProvider)
@@ -184,23 +182,13 @@ extension TaskViewController: UITableViewDropDelegate {
     
     
     func tableView(_ tableView: UITableView, performDropWith coordinator: UITableViewDropCoordinator) {
-        
-        let destinationIndexPath: IndexPath
-        
-        if let indexPath = coordinator.destinationIndexPath {
-            destinationIndexPath = indexPath
-        } else {
-            let section = tableView.numberOfSections-1
-            let row = tableView.numberOfRows(inSection: section)
-            destinationIndexPath = IndexPath(row: row, section: section)
-        }
-       
+               
         for item in coordinator.items {
             item.dragItem.itemProvider.loadObject(ofClass: TaskCard.self) { (card, error) in
                 if let card = card as? TaskCard {
                     DispatchQueue.main.async {
                         print(self.dragIndex)
-                        
+                        print(self.dragColumn)
                         self.taskStackManager.dragDrop(card.status, dropStatus: self.column!, at: self.dragIndex)
                     }
                 }
