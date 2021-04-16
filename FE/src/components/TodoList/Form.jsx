@@ -20,7 +20,7 @@ const Form = ({ addCard, column, offDisplay }) => {
     const formData = new FormData();
     formData.append('title', titleInput.current.value);
     formData.append('content', contentInput.current.value);
-    await postForm(`/${column.id}/cards`, formData, column, addCard);
+    await postForm(`${column.id}/cards`, formData, column, addCard);
     offDisplay();
   };
 
