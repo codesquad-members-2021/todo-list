@@ -23,7 +23,6 @@ const TodoListColumn = ({
   const [isClicked, toggleActions] = useToggle(false);
   let template;
 
-
   if (!isClicked) {
     template = (
       <Div className="_column" >

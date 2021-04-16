@@ -31,7 +31,7 @@ const TodoListWrap = ({ setHistories }) => {
 
   const placeholder = document.createElement("div");
   placeholder.className = "placeholder";
-  const dragged = { current: null };
+  const dragged = { current: null, columnId: null };
 
   const titleRef = useRef(null);
 

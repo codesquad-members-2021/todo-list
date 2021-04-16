@@ -3,46 +3,11 @@
     {
       "columnId": 1,
       "columnName": "해야할 일",
-      "items": []
-    },
-    {
-      "columnId": 2,
-      "columnName": "하고 있는 일",
       "items": [
         {
-          "id": "W0WXj_sIs",
-          "title": "깃 충돌 해결하기",
-          "content": "완료할것q",
-          "author": "Beemo"
-        },
-        {
-          "id": "QMNx_i9TP",
-          "title": "ㅈㄷㄱㅈㄷㄱ",
-          "content": "ㅈㄷㄱㅈㄷㄱ",
-          "author": "Beemo"
-        },
-        {
-          "id": "wvf8ZY8Af",
-          "title": "erer",
-          "content": "erer",
-          "author": "Beemo"
-        },
-        {
-          "id": "v9A2zD-n5",
-          "title": "erer",
-          "content": "erer",
-          "author": "Beemo"
-        }
-      ]
-    },
-    {
-      "columnId": 3,
-      "columnName": "완료한 일",
-      "items": [
-        {
-          "id": "ymR2s6Yo7",
-          "title": "rqqwer",
-          "content": "qqwerwe",
+          "id": "hemZSXZTb",
+          "title": "werwer",
+          "content": "werwer",
           "author": "Beemo"
         },
         {
@@ -52,9 +17,69 @@
           "author": "Beemo"
         },
         {
-          "id": "hemZSXZTb",
-          "title": "werwer",
-          "content": "werwer",
+          "id": "diZ28dvi9",
+          "title": "ㅂㅈㄷㅂㅈㄷ",
+          "content": "ㅂㅈㄷㅂㅈㄷ",
+          "author": "Beemo"
+        },
+        {
+          "id": "tWrlXI8xh",
+          "title": "ㄳㄳㄱ",
+          "content": "ㅅㄳㄳ",
+          "author": "Beemo"
+        }
+      ]
+    },
+    {
+      "columnId": 2,
+      "columnName": "하고 있는 일",
+      "items": [
+        {
+          "id": "GWyNIXnwC",
+          "title": "ㅂㅈㄷㅂ",
+          "content": "ㅂㅈㄷㅂㅈㄷ",
+          "author": "Beemo"
+        },
+        {
+          "id": "v9A2zD-n5",
+          "title": "erer",
+          "content": "erer",
+          "author": "Beemo"
+        },
+        {
+          "id": "J-wW2Ybz5",
+          "title": "ㅈㄷㄱㅈㄷㄱ",
+          "content": "ㅂㅈㄷㅂㅈㄷ",
+          "author": "Beemo"
+        }
+      ]
+    },
+    {
+      "columnId": 3,
+      "columnName": "완료한 일",
+      "items": [
+        {
+          "id": "QMNx_i9TP",
+          "title": "ㅈㄷㄱㅈㄷㄱ",
+          "content": "ㅈㄷㄱㅈㄷㄱ",
+          "author": "Beemo"
+        },
+        {
+          "id": "ymR2s6Yo7",
+          "title": "rqqwer",
+          "content": "qqwerwe",
+          "author": "Beemo"
+        },
+        {
+          "id": "wvf8ZY8Af",
+          "title": "erer",
+          "content": "erer",
+          "author": "Beemo"
+        },
+        {
+          "id": "W0WXj_sIs",
+          "title": "깃 충돌 해결하기",
+          "content": "완료할것q",
           "author": "Beemo"
         }
       ]
@@ -144,6 +169,33 @@
       "currentTitle": "깃 충돌 해결하기",
       "user": "Beemo",
       "date": "2021-04-16 10:38:45"
+    },
+    {
+      "id": "gCudNOfgai",
+      "action": "등록",
+      "prevColumn": "해야할 일",
+      "currentColumn": "이동한컬럼",
+      "currentTitle": "ㅂㅈㄷㅂㅈㄷ",
+      "user": "Beemo",
+      "date": "2021-04-16 15:34:22"
+    },
+    {
+      "id": "Tf1lgTHksE",
+      "action": "등록",
+      "prevColumn": "해야할 일",
+      "currentColumn": "이동한컬럼",
+      "currentTitle": "ㄳㄳㄱ",
+      "user": "Beemo",
+      "date": "2021-04-16 15:34:27"
+    },
+    {
+      "id": "q7HEOri1jt",
+      "action": "등록",
+      "prevColumn": "하고 있는 일",
+      "currentColumn": "이동한컬럼",
+      "currentTitle": "ㅈㄷㄱㅈㄷㄱ",
+      "user": "Beemo",
+      "date": "2021-04-16 15:34:29"
     }
   ]
 }

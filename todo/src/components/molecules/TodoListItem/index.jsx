@@ -45,19 +45,31 @@ const TodoListItem = ({
   ////////
   const onDragStart = (e) => {
     dragged.current = e.target;
-    e.dataTransfer.setData('text/html', dragged.current);
+    dragged.columnId = columnId;
     dragged.current.style.opacity = "0.5";
   }
 
-  const onDrop = (e) => {
-    console.log(123)
+  const onDrop = async (e) => {
     const column = e.target.closest('._column');
     const items = column.children;
+    let index;
+    let prevItem;
     for (let i = 0; i < items.length; i++) {
       if (items[i].className === 'placeholder') {
-        console.log(i)
+        prevItem = items[i];
+        index = i;
       };
     }
+
+    const response = await axios.post('/todos/move', {
+      prevColumnId: dragged.columnId,
+      currentColumnId: columnId,
+      id: dragged.current.dataset.id,
+      index,
+    })
+
+    prevItem.remove();
+    setTodos(() => response.data);
   }
 
   ////////
