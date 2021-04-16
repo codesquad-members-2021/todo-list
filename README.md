@@ -24,6 +24,7 @@
 
 ## API
 
+- [배포](http://3.36.140.12:8080/)
 - [API 문서](https://documenter.getpostman.com/view/15277135/TzJpjgFr)
 
 ## 요구사항 분석
