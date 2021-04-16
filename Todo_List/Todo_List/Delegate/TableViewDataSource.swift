@@ -37,5 +37,5 @@ class TableViewDataSource: NSObject, UITableViewDataSource {
         tableView.deleteSections([indexPath.section], with: .fade)
         
         CardAPIClient().deleteCard(with: id)
-    }    
+    }
 }

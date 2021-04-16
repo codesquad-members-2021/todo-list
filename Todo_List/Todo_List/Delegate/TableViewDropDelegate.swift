@@ -41,10 +41,10 @@ class TableViewDropDelegate: NSObject, UITableViewDropDelegate {
                 else {
                     return
                 }
-                self.dataSource?.cards.append(with: card, at: destinationIndexPath.section)
                 
-                let index = destinationIndexPath.section - 1
                 
+                let index = destinationIndexPath.section - 2
+                self.dataSource?.cards.append(with: card, at: destinationIndexPath.section - 1)
                 // 맨 앞에 추가 되는 경우
                 let previousId : Int
                 if index == -1 {
