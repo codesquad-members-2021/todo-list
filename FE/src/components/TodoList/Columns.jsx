@@ -4,7 +4,7 @@ import Form from './Form';
 import styled from 'styled-components';
 import Icon from '../atoms/Icons';
 import PopUp from '../atoms/PopUp';
-import { deleteCard } from './useFetch.js';
+import { deleteCard, deleteColumn } from './useFetch.js';
 
 const Column = ({ todoData }) => {
   const [columnData, setColumnData] = useState(todoData);
@@ -25,6 +25,8 @@ const Column = ({ todoData }) => {
 
   const handleClickDeleteBtn = (deletedID) => {
     return () => {
+      const path = `boards/${deletedID}`;
+      deleteColumn(path);
       const newColumn = columnData.filter(({ id }) => id !== deletedID);
       setColumnData([...newColumn]);
     };

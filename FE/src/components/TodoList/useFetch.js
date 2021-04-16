@@ -28,6 +28,14 @@ const deleteCard = async (path, currentColumns, newColumn, setColumnData) => {
   }
 };
 
+const deleteColumn = async (path) => {
+  try {
+    await axios.delete(path);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 const putForm = async (path, formData, setInputs) => {
   const res = await axios.put(path, formData);
   const newCard = res.data;
@@ -37,4 +45,4 @@ const putForm = async (path, formData, setInputs) => {
   });
 };
 
-export { postForm, deleteCard, putForm };
+export { postForm, deleteCard, putForm, deleteColumn };
