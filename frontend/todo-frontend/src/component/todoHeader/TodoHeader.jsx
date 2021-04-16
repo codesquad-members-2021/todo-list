@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import TodoNavBar from "./TodoNavBar";
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import TodoNavBar from './TodoNavBar';
 
 const StyledTodoHeader = styled.div`
   display: flex;
@@ -12,7 +12,7 @@ const StyledTodoHeader = styled.div`
 `;
 const HeaderTitle = styled.span`
   height: 46px;
-  width: 171px;
+  width: 100%;
   font-size: 2rem;
 `;
 
@@ -36,13 +36,13 @@ const TodoHeader = ({ logs }) => {
       ) : (
         <HeaderMenuButton
           onClick={toggleNav}
-          width="17"
-          height="11"
-          viewBox="0 0 17 11"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
+          width='17'
+          height='11'
+          viewBox='0 0 17 11'
+          fill='none'
+          xmlns='http://www.w3.org/2000/svg'
         >
-          <path d="M0 1V0H17V1H0ZM17 5V6H0V5H17ZM0 10H17V11H0V10Z" />
+          <path d='M0 1V0H17V1H0ZM17 5V6H0V5H17ZM0 10H17V11H0V10Z' />
         </HeaderMenuButton>
       )}
     </StyledTodoHeader>
