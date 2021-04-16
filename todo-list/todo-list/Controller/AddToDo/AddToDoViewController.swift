@@ -64,8 +64,6 @@ class AddToDoViewController: UIViewController {
               let title = titleTextField.text,
               let contents = contentTextField.text else { return }
         cardAdder.newCard(withTitle: title, contents: contents)
-    
-        //newCard를 main으로 노티 보내서 네트워크에 올리는 동작 필요
         dismiss(animated: true, completion: nil)
     }
     

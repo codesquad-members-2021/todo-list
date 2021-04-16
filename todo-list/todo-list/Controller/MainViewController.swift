@@ -35,13 +35,13 @@ class MainViewController: UIViewController {
         
         if segue.identifier == SegueIdentifier.WillDo.rawValue  {
             toDoViewController.cardManager = willDoCardManager
-            toDoViewController.tableTitle = "해야할 일"
+            toDoViewController.tableTitle = Category.WillDo.rawValue
         } else if segue.identifier == SegueIdentifier.Doing.rawValue {
             toDoViewController.cardManager = doingCardManager
-            toDoViewController.tableTitle = "하고 있는 일"
+            toDoViewController.tableTitle = Category.Doing.rawValue
         } else if segue.identifier == SegueIdentifier.Done.rawValue {
             toDoViewController.cardManager = doneCardManager
-            toDoViewController.tableTitle = "완료한 일"
+            toDoViewController.tableTitle = Category.Done.rawValue
         }
     }
     
@@ -98,7 +98,7 @@ class MainViewController: UIViewController {
         DataTaskManager.delete(category: category, cardID: cardID, completion: { (result) in
             DispatchQueue.global().async {
                 switch result {
-                case .success(let data):
+                case .success(_):
                     if category == 1 {
                         self.willDoCardManager.delete(cardAtPosition: cardID)
                         self.taskManager.addTask(category: Category.WillDo.rawValue, cardTitle: title, taskStyle: .delete)
@@ -132,7 +132,7 @@ class MainViewController: UIViewController {
         DataTaskManager.dragAndDropPut(startCartegoryID: card.category, startCardIndex: startCardIndex + 1, endCartegoryID: toCategory, endCardIndex: toIndex + 1, completion: { (result) in
             DispatchQueue.global().async {
                 switch result {
-                case .success(let data):
+                case .success(_):
                     self.loadCard()
                     
                     let allCategories = Category.allCases

@@ -57,9 +57,8 @@ class ToDoTableViewDelegate: NSObject, UITableViewDelegate {
                     self.cardDeletor.moveToDone(card: card, toIndex: count - 1)
                 }
                 
-                let rename = UIAction(title: "수정하기") { [weak self] action in
-                    guard let cell = tableView.cellForRow(at: indexPath) as? ToDoTableViewCell else { return }
-                    guard let title = cell.titleLabel.text, let contents = cell.contentLabel.text else { return }
+                let rename = UIAction(title: "수정하기") { (action) in
+
                 }
                 
                 let delete = UIAction(title: "삭제하기", attributes: .destructive) { (action) in
