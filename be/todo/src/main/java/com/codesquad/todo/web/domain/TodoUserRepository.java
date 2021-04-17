@@ -2,6 +2,6 @@ package com.codesquad.todo.web.domain;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface TaskRepository extends CrudRepository<TodoTask, Long> {
+public interface TodoUserRepository extends CrudRepository<TodoUser, Long> {
 
 }

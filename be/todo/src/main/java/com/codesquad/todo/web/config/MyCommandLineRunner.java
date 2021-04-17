@@ -9,10 +9,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class MyCommandLineRunner implements CommandLineRunner {
     private static final Logger logger = LoggerFactory.getLogger(MyCommandLineRunner.class);
-    private final UserRepository userRepository;
+    private final TodoUserRepository todoUserRepository;
 
-    public MyCommandLineRunner(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public MyCommandLineRunner(TodoUserRepository todoUserRepository) {
+        this.todoUserRepository = todoUserRepository;
     }
 
     @Override
@@ -23,7 +23,7 @@ public class MyCommandLineRunner implements CommandLineRunner {
 
     private void createUser() {
         TodoUser todoUser = createTestData();
-        userRepository.save(todoUser);
+        todoUserRepository.save(todoUser);
     }
 
     private TodoUser createTestData() {

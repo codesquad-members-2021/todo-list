@@ -1,6 +1,6 @@
 package com.codesquad.todo.web.domain;
 
-import com.codesquad.todo.web.exceptions.ColumnNotFoundException;
+import com.codesquad.todo.web.exceptions.TodoColumnNotFoundException;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
@@ -42,7 +42,7 @@ public class TodoUser {
     public TodoColumn findColumnById(Long id) {
         return todoColumnList.stream()
                 .filter(column -> column.isSameId(id)).findFirst()
-                .orElseThrow(ColumnNotFoundException::new);
+                .orElseThrow(TodoColumnNotFoundException::new);
     }
 
     public void moveTask(Long prevColumnId, Long nextColumnId, Long taskId, int newTaskPosition) {

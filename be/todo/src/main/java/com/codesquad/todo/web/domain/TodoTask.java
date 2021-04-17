@@ -1,6 +1,6 @@
 package com.codesquad.todo.web.domain;
 
-import com.codesquad.todo.web.service.dto.TaskParameterDto;
+import com.codesquad.todo.web.service.dto.TodoTaskParameterDto;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
@@ -44,9 +44,9 @@ public class TodoTask {
         updatedDateTime = LocalDateTime.now();
     }
 
-    public void update(TaskParameterDto taskParameterDto) {
-        taskTitle = taskParameterDto.getTaskTitle();
-        taskContent = taskParameterDto.getTaskContent();
+    public void update(TodoTaskParameterDto todoTaskParameterDto) {
+        taskTitle = todoTaskParameterDto.getTaskTitle();
+        taskContent = todoTaskParameterDto.getTaskContent();
         updatedDateTime = LocalDateTime.now();
     }
 

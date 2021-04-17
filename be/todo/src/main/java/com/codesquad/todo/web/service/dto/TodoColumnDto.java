@@ -5,18 +5,18 @@ import com.codesquad.todo.web.domain.TodoColumn;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ColumnDto {
+public class TodoColumnDto {
     private Long id;
     private String columnTitle;
-    private List<TaskDto> taskList = new ArrayList<>();
+    private List<TodoTaskDto> taskList = new ArrayList<>();
 
-    public ColumnDto(TodoColumn todoColumn) {
+    public TodoColumnDto(TodoColumn todoColumn) {
         this.id = todoColumn.getId();
         this.columnTitle = todoColumn.getColumnTitle();
     }
 
-    public void addTaskDto(TaskDto taskDto) {
-        taskList.add(taskDto);
+    public void addTaskDto(TodoTaskDto todoTaskDto) {
+        taskList.add(todoTaskDto);
     }
 
     public Long getId() {
@@ -35,11 +35,11 @@ public class ColumnDto {
         this.columnTitle = columnTitle;
     }
 
-    public List<TaskDto> getTaskList() {
+    public List<TodoTaskDto> getTaskList() {
         return taskList;
     }
 
-    public void setTaskList(List<TaskDto> taskList) {
+    public void setTaskList(List<TodoTaskDto> taskList) {
         this.taskList = taskList;
     }
 }

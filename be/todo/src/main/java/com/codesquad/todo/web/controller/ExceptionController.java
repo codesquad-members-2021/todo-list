@@ -1,9 +1,9 @@
 package com.codesquad.todo.web.controller;
 
-import com.codesquad.todo.web.exceptions.ColumnNotFoundException;
+import com.codesquad.todo.web.exceptions.TodoColumnNotFoundException;
 import com.codesquad.todo.web.exceptions.IllegalActionCommandException;
-import com.codesquad.todo.web.exceptions.TaskNotFoundException;
-import com.codesquad.todo.web.exceptions.UserNotFoundException;
+import com.codesquad.todo.web.exceptions.TodoTaskNotFoundException;
+import com.codesquad.todo.web.exceptions.TodoUserNotFoundException;
 import com.codesquad.todo.web.service.dto.ErrorDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class ExceptionController {
     private static final Logger logger = LoggerFactory.getLogger(ExceptionController.class);
 
-    @ExceptionHandler({UserNotFoundException.class, TaskNotFoundException.class, ColumnNotFoundException.class})
+    @ExceptionHandler({TodoUserNotFoundException.class, TodoTaskNotFoundException.class, TodoColumnNotFoundException.class})
     public ResponseEntity<ErrorDto> handlerNotFoundException(RuntimeException exception) {
         logger.error(exception.getMessage());
         return createErrorResponse(exception);

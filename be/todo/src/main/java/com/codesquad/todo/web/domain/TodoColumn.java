@@ -1,7 +1,7 @@
 package com.codesquad.todo.web.domain;
 
-import com.codesquad.todo.web.exceptions.TaskNotFoundException;
-import com.codesquad.todo.web.service.dto.TaskParameterDto;
+import com.codesquad.todo.web.exceptions.TodoTaskNotFoundException;
+import com.codesquad.todo.web.service.dto.TodoTaskParameterDto;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
@@ -32,12 +32,12 @@ public class TodoColumn {
         return todoTaskList.stream()
                 .filter(task -> task.isSameId(taskId))
                 .findFirst()
-                .orElseThrow(TaskNotFoundException::new);
+                .orElseThrow(TodoTaskNotFoundException::new);
     }
 
     public TodoTask firstTask() {
         if (todoTaskList.size() == 0) {
-            throw new TaskNotFoundException();
+            throw new TodoTaskNotFoundException();
         }
         return todoTaskList.get(0);
     }
@@ -55,15 +55,15 @@ public class TodoColumn {
         addTask(todoTask);
     }
 
-    public void addTask(TaskParameterDto taskParameterDto) {
-        addTask(taskParameterDto.getTaskTitle(), taskParameterDto.getTaskContent());
+    public void addTask(TodoTaskParameterDto todoTaskParameterDto) {
+        addTask(todoTaskParameterDto.getTaskTitle(), todoTaskParameterDto.getTaskContent());
     }
 
     public TodoTask popTask(Long id) {
         int deleteIndex = IntStream.range(0, todoTaskList.size())
                 .filter(index -> todoTaskList.get(index).isSameId(id))
                 .findFirst()
-                .orElseThrow(TaskNotFoundException::new);
+                .orElseThrow(TodoTaskNotFoundException::new);
         TodoTask todoTask = todoTaskList.get(deleteIndex);
         todoTaskList.remove(deleteIndex);
         return todoTask;

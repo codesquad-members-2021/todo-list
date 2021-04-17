@@ -4,7 +4,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface ColumnRepository extends CrudRepository<TodoColumn, Long> {
+public interface TodoColumnRepository extends CrudRepository<TodoColumn, Long> {
     @Override
     List<TodoColumn> findAll();
 }

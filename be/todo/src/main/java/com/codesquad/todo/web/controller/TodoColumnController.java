@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/columns")
-public class ColumnController {
+public class TodoColumnController {
 
     private final TodoUserService todoUserService;
     private final TodoColumnService todoColumnService;
 
-    public ColumnController(TodoUserService todoUserService, TodoColumnService todoColumnService) {
+    public TodoColumnController(TodoUserService todoUserService, TodoColumnService todoColumnService) {
         this.todoUserService = todoUserService;
         this.todoColumnService = todoColumnService;
     }

@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ShowColumnListDto {
-    private final List<ColumnDto> columns = new ArrayList<>();
+    private final List<TodoColumnDto> columns = new ArrayList<>();
 
-    public List<ColumnDto> getColumns() {
+    public List<TodoColumnDto> getColumns() {
         return columns;
     }
 
-    public void addColumnDto(ColumnDto columnDto) {
-        columns.add(columnDto);
+    public void addColumnDto(TodoColumnDto todoColumnDto) {
+        columns.add(todoColumnDto);
     }
 }

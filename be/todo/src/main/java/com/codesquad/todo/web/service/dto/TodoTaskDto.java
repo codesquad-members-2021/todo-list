@@ -4,14 +4,14 @@ import com.codesquad.todo.web.domain.TodoTask;
 
 import java.time.LocalDateTime;
 
-public class TaskDto {
+public class TodoTaskDto {
     private long id;
     private String taskTitle;
     private String taskContent;
     private String authorName;
     private LocalDateTime createdDateTime;
 
-    public TaskDto(TodoTask todoTask, String authorName) {
+    public TodoTaskDto(TodoTask todoTask, String authorName) {
         this.id = todoTask.getId();
         this.taskTitle = todoTask.getTaskTitle();
         this.taskContent = todoTask.getTaskContent();
