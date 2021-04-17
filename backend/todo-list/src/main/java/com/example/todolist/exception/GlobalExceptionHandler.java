@@ -28,7 +28,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler({IllegalUserAccessException.class, ElementNotFoundException.class})
     protected ResponseEntity handleException(Exception e) {
         logger.error(e.getMessage());
-        MultiValueMap headers= encodingUTF8();
+        MultiValueMap headers = encodingUTF8();
         return new ResponseEntity(e.getMessage(), headers, HttpStatus.BAD_REQUEST);
     }
 
