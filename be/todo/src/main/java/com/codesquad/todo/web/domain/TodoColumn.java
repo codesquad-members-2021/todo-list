@@ -7,6 +7,7 @@ import org.springframework.data.relational.core.mapping.Table;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 @Table("TODO_COLUMN")
 public class TodoColumn {
@@ -59,14 +60,13 @@ public class TodoColumn {
     }
 
     public TodoTask popTask(Long id) {
-        for (int i = 0; i < todoTaskList.size(); i++) {
-            TodoTask todoTask = todoTaskList.get(i);
-            if (todoTask.isSameId(id)) {
-                todoTaskList.remove(i);
-                return todoTask;
-            }
-        }
-        throw new TaskNotFoundException();
+        int deleteIndex = IntStream.range(0, todoTaskList.size())
+                .filter(index -> todoTaskList.get(index).isSameId(id))
+                .findFirst()
+                .orElseThrow(TaskNotFoundException::new);
+        TodoTask todoTask = todoTaskList.get(deleteIndex);
+        todoTaskList.remove(deleteIndex);
+        return todoTask;
     }
 
     public void removeTaskById(Long id) {
