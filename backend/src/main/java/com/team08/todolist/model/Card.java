@@ -19,7 +19,7 @@ public class Card {
     private Long columnId;
     private Integer pos;
 
-    public Card(Long cid, String author, String title, String content, LocalDateTime date, boolean isApp, Long columnId, Integer pos) {
+    private Card(Long cid, String author, String title, String content, LocalDateTime date, boolean isApp, Long columnId, Integer pos) {
         this.cid = cid;
         this.author = author;
         this.title = title;

@@ -16,7 +16,7 @@ public class CardDto {
     private Integer position;
     private Long columnId;
 
-    public CardDto(Long cardId, String title, String content, boolean isApp, String createdTime, Integer position, Long columnId) {
+    private CardDto(Long cardId, String title, String content, boolean isApp, String createdTime, Integer position, Long columnId) {
         this.cardId = cardId;
         this.title = title;
         this.content = content;
