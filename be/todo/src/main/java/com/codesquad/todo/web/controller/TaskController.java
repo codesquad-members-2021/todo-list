@@ -3,14 +3,12 @@ package com.codesquad.todo.web.controller;
 import com.codesquad.todo.web.domain.TodoUser;
 import com.codesquad.todo.web.service.TodoTaskService;
 import com.codesquad.todo.web.service.TodoUserService;
-import com.codesquad.todo.web.service.dto.TaskDto;
+import com.codesquad.todo.web.service.dto.CreateTaskDto;
 import com.codesquad.todo.web.service.dto.TaskParameterDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.HashMap;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/api/columns/{columnId}/tasks")
@@ -26,12 +24,10 @@ public class TaskController {
 
     @CrossOrigin
     @PostMapping
-    public ResponseEntity<Map<String, Object>> createTask(@PathVariable Long columnId, @Valid TaskParameterDto taskParameterDto) {
-        Map<String, Object> responseMap = new HashMap<>();
+    public ResponseEntity<CreateTaskDto> createTask(@PathVariable Long columnId, @Valid TaskParameterDto taskParameterDto) {
         TodoUser todoUser = todoUserService.findUser(1L);
-        TaskDto taskDto = todoTaskService.createTask(todoUser, columnId, taskParameterDto);
-        responseMap.put("task", taskDto);
-        return ResponseEntity.ok(responseMap);
+        CreateTaskDto createTaskDto = todoTaskService.createTask(todoUser, columnId, taskParameterDto);
+        return ResponseEntity.ok(createTaskDto);
     }
 
     @CrossOrigin

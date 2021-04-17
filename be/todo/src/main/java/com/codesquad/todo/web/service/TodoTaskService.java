@@ -1,6 +1,7 @@
 package com.codesquad.todo.web.service;
 
 import com.codesquad.todo.web.domain.*;
+import com.codesquad.todo.web.service.dto.CreateTaskDto;
 import com.codesquad.todo.web.service.dto.TaskDto;
 import com.codesquad.todo.web.service.dto.TaskParameterDto;
 import org.springframework.stereotype.Service;
@@ -13,7 +14,7 @@ public class TodoTaskService {
         this.userRepository = userRepository;
     }
 
-    public TaskDto createTask(TodoUser todoUser, Long columnId, TaskParameterDto taskParameterDto) {
+    public CreateTaskDto createTask(TodoUser todoUser, Long columnId, TaskParameterDto taskParameterDto) {
         TodoColumn todoColumn = todoUser.findColumnById(columnId);
         todoColumn.addTask(taskParameterDto);
 
@@ -23,7 +24,7 @@ public class TodoTaskService {
         todoUser = userRepository.save(todoUser);
         todoColumn = todoUser.findColumnById(columnId);
         TodoTask todoTask = todoColumn.firstTask();
-        return new TaskDto(todoTask, todoUser.getName());
+        return new CreateTaskDto(new TaskDto(todoTask, todoUser.getName()));
     }
 
     public void removeTask(TodoUser todoUser, Long columnId, Long taskId) {

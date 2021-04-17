@@ -3,10 +3,10 @@ package com.codesquad.todo.web.service;
 import com.codesquad.todo.web.domain.TodoLog;
 import com.codesquad.todo.web.domain.TodoLogRepository;
 import com.codesquad.todo.web.domain.TodoUser;
+import com.codesquad.todo.web.service.dto.ShowTodoLogListDto;
 import com.codesquad.todo.web.service.dto.TodoLogDto;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -17,12 +17,12 @@ public class TodoLogService {
         this.todoLogRepository = todoLogRepository;
     }
 
-    public List<TodoLogDto> showTodoLogList(TodoUser todoUser) {
+    public ShowTodoLogListDto showTodoLogList(TodoUser todoUser) {
         List<TodoLog> todoLogList = todoLogRepository.findFiveTodoLogByUser(todoUser.getId());
-        List<TodoLogDto> todoLogDtoList = new ArrayList<>();
+        ShowTodoLogListDto showTodoLogListDto = new ShowTodoLogListDto();
         for (TodoLog todoLog : todoLogList) {
-            todoLogDtoList.add(new TodoLogDto(todoLog, todoUser.getName()));
+            showTodoLogListDto.addTodoLogDto(new TodoLogDto(todoLog, todoUser.getName()));
         }
-        return todoLogDtoList;
+        return showTodoLogListDto;
     }
 }

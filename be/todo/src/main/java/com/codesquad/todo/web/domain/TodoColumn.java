@@ -1,14 +1,12 @@
 package com.codesquad.todo.web.domain;
 
 import com.codesquad.todo.web.exceptions.TaskNotFoundException;
-import com.codesquad.todo.web.service.dto.TaskDto;
 import com.codesquad.todo.web.service.dto.TaskParameterDto;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Table("TODO_COLUMN")
 public class TodoColumn {
