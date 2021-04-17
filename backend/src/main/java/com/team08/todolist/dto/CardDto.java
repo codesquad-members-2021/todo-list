@@ -55,11 +55,22 @@ public class CardDto {
     }
 
     public Card toEntity() {
-        return new Card(null, "august17", title, content, createdDateTime, isApp, columnId, position);
+        return Card.build(null, position, columnId)
+                .author("august17")
+                .title(title)
+                .content(content)
+                .date(createdDateTime)
+                .isApp(isApp)
+                .build();
     }
 
     public static CardDto of(Card card) {
-        return new CardDto(card.getCid(), card.getTitle(), card.getContent(), card.isApp(), DateTimeUtils.formatByPattern(card.getDate()), card.getPos(), card.getColumnId());
+        return CardDto.build(card.getCid(), card.getPos(), card.getColumnId())
+                .title(card.getTitle())
+                .content(card.getTitle())
+                .isApp(card.isApp())
+                .createdDateTime(card.getDate())
+                .build();
     }
 
     @Override
@@ -72,5 +83,49 @@ public class CardDto {
                 ", createdDateTime=" + createdDateTime +
                 ", position=" + position +
                 '}';
+    }
+
+    public static Builder build(Long cardId, Integer position, Long columnId) {
+        return new Builder(cardId, position, columnId);
+    }
+
+    static public class Builder {
+        private Long cardId;
+        private String title = "no title";
+        private String content = "no contents";
+        private boolean isApp = true;
+        private LocalDateTime createdDateTime = LocalDateTime.now();
+        private Integer position;
+        private Long columnId;
+
+        private Builder(Long cardId, Integer position, Long columnId) {
+            this.cardId = cardId;
+            this.position = position;
+            this.columnId = columnId;
+        }
+
+        public Builder title(String title) {
+            this.title = title;
+            return this;
+        }
+
+        public Builder content(String content) {
+            this.content = content;
+            return this;
+        }
+
+        public Builder isApp(boolean isApp) {
+            this.isApp = isApp;
+            return this;
+        }
+
+        public Builder createdDateTime(LocalDateTime createdDateTime) {
+            this.createdDateTime = createdDateTime;
+            return this;
+        }
+
+        public CardDto build() {
+            return new CardDto(cardId, title, content, isApp, DateTimeUtils.formatByPattern(createdDateTime), position, columnId);
+        }
     }
 }

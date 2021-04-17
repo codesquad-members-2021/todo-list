@@ -85,4 +85,55 @@ public class Card {
                 ", pos=" + pos +
                 '}';
     }
+
+    public static Builder build(Long cardId, Integer position, Long columnId) {
+        return new Builder(cardId, position, columnId);
+    }
+
+    static public class Builder {
+
+        private Long cid;
+        private String author = "august17";
+        private String title = "no title";
+        private String content = "no contents";
+        private LocalDateTime date = LocalDateTime.now();
+        private boolean isApp = true;
+        private Long columnId;
+        private Integer pos;
+
+        private Builder(Long cid, Integer pos, Long columnId) {
+            this.cid = cid;
+            this.pos = pos;
+            this.columnId = columnId;
+        }
+
+        public Builder author(String author){
+            this.author = author;
+            return this;
+        }
+
+        public Builder title(String title) {
+            this.title = title;
+            return this;
+        }
+
+        public Builder content(String content) {
+            this.content = content;
+            return this;
+        }
+
+        public Builder isApp(boolean isApp) {
+            this.isApp = isApp;
+            return this;
+        }
+
+        public Builder date(LocalDateTime date) {
+            this.date = date;
+            return this;
+        }
+
+        public Card build() {
+            return new Card(cid, author, title, content, date, isApp, columnId, pos);
+        }
+    }
 }
