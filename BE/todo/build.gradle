@@ -1,0 +1,30 @@
+plugins {
+    id 'org.springframework.boot' version '2.4.4'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group = 'team9'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    //spring-boot-starter-web 은 logpack-core 와 logpack-classic 을 포함하고 있습니다.
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc:2.2.5.RELEASE'
+    //spring-boot-start-test 는 아래 dependency 를 포함합니다.
+    //JUnit 5 (including the vintage engine for backward compatibility with JUnit 4)
+    //Spring Test & Spring Boot Test - This is the spring-boot-test dependency)
+    //AssertJ, Hamcrest, Mockito, JSONassert, and JsonPath.
+    runtimeOnly 'mysql:mysql-connector-java'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+test {
+    useJUnitPlatform()
+}
