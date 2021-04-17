@@ -35,30 +35,33 @@ public class ApiCardController {
     }
 
     @PostMapping
-    public CardDto create(CardDto cardToCreate) {
+    public ResponseEntity create(@RequestBody CardDto cardToCreate) {
         cardService.create(cardToCreate.toEntity());
         historyService.generateAdd(cardToCreate);
-        return cardToCreate;
+        return ResponseEntity.ok()
+                .body(ApiResponse.OK(cardToCreate));
     }
 
     @PutMapping("/{cardId}")
-    public CardDto update(@PathVariable Long cardId, CardDto cardToUpdate) {
+    public ResponseEntity<ApiResponse> update(@PathVariable Long cardId, @RequestBody CardDto cardToUpdate) {
         Long columnId = cardService.update(cardId, cardToUpdate);
-        System.out.println(columnId);
-        System.out.println(cardToUpdate.getColumnId());
+        logger.debug("Card to update has column id {}.", columnId);
+        logger.debug("Updated card info has column id {}.", columnId);
         if (columnId == cardToUpdate.getColumnId()) {
             historyService.generateUpdate(cardToUpdate);
         } else {
             historyService.generateMove(columnId, cardToUpdate);
         }
 
-        return cardToUpdate;
+        return ResponseEntity.ok()
+                .body(ApiResponse.OK(cardToUpdate));
     }
 
     @DeleteMapping("/{cardId}")
-    public String delete(@PathVariable Long cardId) {
+    public ResponseEntity<ApiResponse> delete(@PathVariable Long cardId) {
         CardDto cardDto = cardService.delete(cardId);
         historyService.generateRemove(cardDto);
-        return cardId + " card is deleted";
+        return ResponseEntity.ok()
+                .body(ApiResponse.OK(cardId + " card is deleted"));
     }
 }
