@@ -20,9 +20,9 @@ public class TodoLogService {
     public ShowTodoLogListDto showTodoLogList(TodoUser todoUser) {
         List<TodoLog> todoLogList = todoLogRepository.findFiveTodoLogByUser(todoUser.getId());
         ShowTodoLogListDto showTodoLogListDto = new ShowTodoLogListDto();
-        for (TodoLog todoLog : todoLogList) {
-            showTodoLogListDto.addTodoLogDto(new TodoLogDto(todoLog, todoUser.getName()));
-        }
+        todoLogList.stream()
+                .map(todoLog -> new TodoLogDto(todoLog, todoUser.getName()))
+                .forEach(showTodoLogListDto::addTodoLogDto);
         return showTodoLogListDto;
     }
 }
