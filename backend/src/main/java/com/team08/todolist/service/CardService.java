@@ -35,7 +35,7 @@ public class CardService {
     public Long update(Long cardId, CardDto cardToUpdate) {
         Card card = cardRepository.findById(cardId)
                 .orElseThrow(IllegalArgumentException::new);
-        Long columnId = card.getColumnid();
+        Long columnId = card.getColumnId();
         card.update(cardToUpdate);
         cardRepository.save(card);
         return columnId;

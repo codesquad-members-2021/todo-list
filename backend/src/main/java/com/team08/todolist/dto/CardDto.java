@@ -59,7 +59,7 @@ public class CardDto {
     }
 
     public static CardDto of(Card card) {
-        return new CardDto(card.getCid(), card.getTitle(), card.getContent(), card.getIsapp(), card.getDate(), card.getPos(), card.getColumnid());
+        return new CardDto(card.getCid(), card.getTitle(), card.getContent(), card.isApp(), DateTimeUtils.formatByPattern(card.getDate()), card.getPos(), card.getColumnId());
     }
 
     @Override

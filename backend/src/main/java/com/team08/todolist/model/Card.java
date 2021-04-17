@@ -15,18 +15,18 @@ public class Card {
     private String title;
     private String content;
     private LocalDateTime date;
-    private boolean isapp;
-    private Long columnid;
+    private boolean isApp;
+    private Long columnId;
     private Integer pos;
 
-    public Card(Long cid, String author, String title, String content, LocalDateTime date, boolean isapp, Long columnid, Integer pos) {
+    public Card(Long cid, String author, String title, String content, LocalDateTime date, boolean isApp, Long columnId, Integer pos) {
         this.cid = cid;
         this.author = author;
         this.title = title;
         this.content = content;
         this.date = date;
-        this.isapp = isapp;
-        this.columnid = columnid;
+        this.isApp = isApp;
+        this.columnId = columnId;
         this.pos = pos;
     }
 
@@ -46,16 +46,16 @@ public class Card {
         return content;
     }
 
-    public String getDate() {
-        return DateTimeUtils.formatByPattern(date);
+    public LocalDateTime getDate() {
+        return date;
     }
 
-    public boolean getIsapp() {
-        return isapp;
+    public boolean isApp() {
+        return isApp;
     }
 
-    public Long getColumnid() {
-        return columnid;
+    public Long getColumnId() {
+        return columnId;
     }
 
     public Integer getPos() {
@@ -67,8 +67,8 @@ public class Card {
         this.title = cardToUpdate.getTitle();
         this.content = cardToUpdate.getContent();
         this.date = DateTimeUtils.reformatByPattern(cardToUpdate.getCreatedTime());
-        this.isapp = cardToUpdate.getIsApp();
-        this.columnid = cardToUpdate.getColumnId();
+        this.isApp = cardToUpdate.getIsApp();
+        this.columnId = cardToUpdate.getColumnId();
         this.pos = cardToUpdate.getPosition();
     }
 
@@ -80,8 +80,8 @@ public class Card {
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
                 ", date=" + date +
-                ", isapp=" + isapp +
-                ", columnid=" + columnid +
+                ", isApp=" + isApp +
+                ", columnId=" + columnId +
                 ", pos=" + pos +
                 '}';
     }

@@ -10,11 +10,11 @@ import java.util.Optional;
 public interface CardRepository extends CrudRepository<Card, Long> {
 
     @Override
-    @Query("SELECT CID, TITLE, CONTENT, `DATE`, POS, COLUMNID, AUTHOR, IF(`CARD`.ISAPP, 'true', 'false') as ISAPP from `CARD`")
+    @Query("SELECT CID, TITLE, CONTENT, `DATE`, POS, COLUMN_ID, AUTHOR, IF(`CARD`.IS_APP, 'true', 'false') as IS_APP from `CARD`")
     List<Card> findAll();
 
     @Override
-    @Query("SELECT CID, TITLE, CONTENT, `DATE`, POS, COLUMNID, AUTHOR, IF(`CARD`.ISAPP, 'true', 'false') as ISAPP from `CARD` WHERE CID=:cardId")
+    @Query("SELECT CID, TITLE, CONTENT, `DATE`, POS, COLUMN_ID, AUTHOR, IF(`CARD`.IS_APP, 'true', 'false') as IS_APP from `CARD` WHERE CID=:cardId")
     Optional<Card> findById(Long cardId);
 
 }
