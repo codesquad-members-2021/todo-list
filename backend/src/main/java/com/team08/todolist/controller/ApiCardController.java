@@ -1,7 +1,6 @@
 package com.team08.todolist.controller;
 
 import com.team08.todolist.dto.CardDto;
-import com.team08.todolist.model.Card;
 import com.team08.todolist.service.CardService;
 import com.team08.todolist.service.HistoryService;
 import org.slf4j.Logger;
@@ -47,7 +46,7 @@ public class ApiCardController {
     public ApiResponse update(@PathVariable Long cardId, @RequestBody CardDto cardToUpdate) {
         Long columnId = cardService.update(cardId, cardToUpdate);
         logger.debug("Card to update has column id {}.", columnId);
-        logger.debug("Updated card info has column id {}.", columnId);
+        logger.debug("Updated card info has column id {}.", cardToUpdate.getColumnId());
         generateUpdatedCardHistory(columnId, cardToUpdate);
         return ApiResponse.OK(cardToUpdate);
     }
