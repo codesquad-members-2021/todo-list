@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 const TodoLog = ({
   author,
@@ -34,16 +34,19 @@ const TodoLog = ({
 
   let logMessage;
   switch (action) {
-    case "add":
+    case 'add':
       logMessage = `${columnTitle}에 ${itemTitle}을 등록하였습니다.`;
       break;
-    case "delete":
+    case 'delete':
       logMessage = `${columnTitle}에 ${itemTitle}을 삭제하였습니다.`;
       break;
-    case "update":
+    case 'update':
       logMessage = `${columnTitle}에 ${itemTitle}를 ${changedTitle}로 변경하였습니다.`;
       break;
-    case "move":
+    case 'move':
+      if (movedColumnTitle === columnTitle)
+        logMessage = `${movedColumnTitle}에서 ${itemTitle}를 이동하였습니다.`;
+      else logMessage = `${itemTitle}을 ${columnTitle}에서 ${movedColumnTitle}로 이동하였습니다.`;
       break;
     default:
       return;

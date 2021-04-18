@@ -1,10 +1,7 @@
-import React from "react";
-import { ConfirmBtn, CancelBtn } from "./Button.jsx";
-import styled from "styled-components";
-import {
-  TodoCardBtnWrapper,
-  TodoCardTitle,
-} from "../todoMain/todoList/TodoItem";
+import React from 'react';
+import { ConfirmBtn, CancelBtn } from './Button.jsx';
+import styled from 'styled-components';
+import { TodoCardBtnWrapper, TodoCardTitle } from '../todoMain/todoList/TodoItem';
 
 const PopUpBackground = styled.div`
   position: absolute;
@@ -28,8 +25,7 @@ const StyledPopUp = styled.div`
   width: 328px;
   height: 118px;
   background: #ffffff;
-  box-shadow: 0px 0px 4px rgba(204, 204, 204, 0.5),
-    0px 2px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 0px 4px rgba(204, 204, 204, 0.5), 0px 2px 4px rgba(0, 0, 0, 0.25);
   border-radius: 6px;
 `;
 
@@ -46,8 +42,8 @@ const PopUp = ({ title, togglePopUp, confirmCallback }) => {
       <StyledPopUp>
         <TodoCardTitle>{title}</TodoCardTitle>
         <TodoCardBtnWrapper>
-          <ConfirmBtn value="확인" handleClick={handleConfirmClick} />
-          <CancelBtn value="취소" handleClick={handelCancelClick} />
+          <ConfirmBtn value='확인' handleClick={handleConfirmClick} />
+          <CancelBtn value='취소' handleClick={handelCancelClick} />
         </TodoCardBtnWrapper>
       </StyledPopUp>
     </PopUpBackground>

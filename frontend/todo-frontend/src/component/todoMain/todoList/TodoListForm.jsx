@@ -1,10 +1,12 @@
-import React, { useRef } from "react";
-import Input from "../../atom/Input.jsx";
-import { TodoCardBtnWrapper, TodoCard } from "./TodoItem";
-import { ConfirmBtn, CancelBtn } from "../../atom/Button.jsx";
+import React, { useRef, useState } from 'react';
+import Input from '../../atom/Input.jsx';
+import { TodoCardBtnWrapper, TodoCard } from './TodoItem';
+import { ConfirmBtn, CancelBtn } from '../../atom/Button.jsx';
 
 const TodoListForm = ({ addTodoItem, toggleForm }) => {
-  //수정완료
+  const [isDisabled, setIsDisabled] = useState(true);
+  const inputTitleRef = useRef();
+  const inputContentRef = useRef();
 
   const onSubmitForm = (e) => {
     e.preventDefault();
@@ -16,10 +18,6 @@ const TodoListForm = ({ addTodoItem, toggleForm }) => {
       date: Date.now(),
     };
     addTodoItem(newTodo.id, newTodo);
-
-    inputTitleRef.current.value = "";
-    inputContentRef.current.value = "";
-
     toggleForm();
   };
 
@@ -28,31 +26,33 @@ const TodoListForm = ({ addTodoItem, toggleForm }) => {
     toggleForm();
   };
 
-  const inputTitleRef = useRef(); //inputTitleRef.current.value
-  const inputContentRef = useRef(); //inputContentRef.current.value
+  const handleChange = () => {
+    if (inputTitleRef.current.value || inputContentRef.current.value) setIsDisabled(false);
+    else setIsDisabled(true);
+  };
 
   return (
-    <form
-      onSubmit={onSubmitForm}
-      addTodoItem={addTodoItem}
-      toggleForm={toggleForm}
-    >
-      <TodoCard flexDir="column">
+    <form onSubmit={onSubmitForm} addTodoItem={addTodoItem} toggleForm={toggleForm}>
+      <TodoCard flexDir='column'>
         <Input
-          name="title"
-          type="text"
-          placeholder="제목을 입력하세요"
+          name='title'
+          type='text'
+          defaultValue=''
+          placeholder='제목을 입력하세요'
+          handleChange={handleChange}
           inputRef={inputTitleRef}
         />
         <Input
-          name="content"
-          type="text"
-          placeholder="내용을 입력하세요"
+          name='content'
+          type='text'
+          defaultValue=''
+          placeholder='내용을 입력하세요'
+          handleChange={handleChange}
           inputRef={inputContentRef}
         />
         <TodoCardBtnWrapper>
-          <ConfirmBtn value="등록" type="submit" />
-          <CancelBtn value="취소" handleClick={foldForm} />
+          <ConfirmBtn value='등록' type='submit' disabled={isDisabled} />
+          <CancelBtn value='취소' handleClick={foldForm} />
         </TodoCardBtnWrapper>
       </TodoCard>
     </form>
