@@ -5,6 +5,7 @@ import com.team08.todolist.model.Card;
 import com.team08.todolist.repository.CardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -26,12 +27,14 @@ public class CardService {
         return cardRepository.findAll();
     }
 
+    @Transactional
     public CardDto delete(Long cardId) {
         Card card = cardRepository.findById(cardId).orElseThrow(IllegalArgumentException::new);
         cardRepository.deleteById(cardId);
         return CardDto.of(card);
     }
 
+    @Transactional
     public Long update(Long cardId, CardDto cardToUpdate) {
         Card card = cardRepository.findById(cardId)
                 .orElseThrow(IllegalArgumentException::new);
