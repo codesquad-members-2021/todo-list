@@ -1,7 +1,16 @@
-import React, { useState, useEffect, memo } from "react";
+import React, { useState, useEffect, memo, useRef } from "react";
 import TodoListColumn from "../../organisms/TodoListColumn";
 import styled from "styled-components";
-import loadItems from '../../../serviceUtils/loadItems';
+import loadItems from "../../../serviceUtils/loadItems";
+import Popup from "../../molecules/Popup";
+
+function insertAfter(referenceNode, newNode) {
+  if (!!referenceNode.nextSibling) {
+    referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+  } else {
+    referenceNode.parentNode.appendChild(newNode);
+  }
+}
 
 const Wrap = styled.div`
   display: flex;
@@ -14,16 +23,70 @@ const Wrap = styled.div`
 
 const TodoListWrap = ({ setHistories }) => {
   const [todos, setTodos] = useState([]);
+  const [isPop, setPopup] = useState("none");
+  const [idState, setIdState] = useState();
+  const [colState, setColState] = useState();
+
+  const placeholder = document.createElement("div");
+  placeholder.className = "placeholder";
+  const dragged = { current: null, columnId: null, title: null };
+  const titleRef = useRef(null);
+
+  const onDragOver = ({ target }) => {
+    if (target.closest('.item_wrap')) {
+      if (target.parentNode.className === 'item_wrap') {
+        insertAfter(target.parentNode, placeholder);
+        return;
+      } else if (target.parentNode.parentNode.className === 'item_wrap') {
+        insertAfter(target.parentNode.parentNode, placeholder);
+        return;
+      } else if (target.parentNode.parentNode.parentNode.className === 'item_wrap') {
+        insertAfter(target.parentNode.parentNode.parentNode, placeholder);
+        return;
+      }
+      insertAfter(target, placeholder);
+    }
+    if (target.className === titleRef.current.className) {
+      if (target.tagName !== 'DIV') return;
+      insertAfter(target, placeholder);
+    }
+  }
 
   useEffect(() => {
     loadItems(setTodos, "/todos");
-  }, [])
+  }, []);
 
   return (
-    <Wrap>
+    <Wrap onDragOver={onDragOver}  >
+      <Popup
+        {...{
+          isPop,
+          setPopup,
+          setTodos,
+          idState,
+          setIdState,
+          colState,
+          setColState,
+          setHistories
+        }}
+      ></Popup>
       {todos.map(({ columnId, columnName, items }) => {
         return (
-          <TodoListColumn key={columnId} {...{ setTodos, columnId, columnName, items, setHistories }} />
+          <TodoListColumn
+            key={columnId}
+            {...{
+              setTodos,
+              columnId,
+              columnName,
+              items,
+              setHistories,
+              setPopup,
+              setIdState,
+              setColState,
+              dragged,
+              titleRef
+            }}
+          />
         );
       })}
     </Wrap>

@@ -15,7 +15,9 @@ const Div = styled.div`
 const Header = ({ isOpenActions }) => {
   return (
     <Div>
-      <Span _fontSize="45px" _fontWeight="700">To do List</Span>
+      <Span _fontSize="45px" _fontWeight="700">
+        To do List
+      </Span>
       <SmallButton onClick={isOpenActions.toggle}>
         <Image src={hamburgerBtn} _width="30px" />
       </SmallButton>

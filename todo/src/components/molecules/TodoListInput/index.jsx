@@ -5,6 +5,7 @@ import SmallButton from "../../atoms/Buttons/SmallButton";
 import Image from "../../atoms/Image";
 import closeButton from "../../../images/closeButton.svg";
 import ButtonList from "../../atoms/Buttons/ButtonList";
+import { getFormatDate } from '../../../serviceUtils/dateUtil';
 import styled from "styled-components";
 import axios from "axios";
 
@@ -43,7 +44,7 @@ const TodoListInput = ({
     setState(target.value);
   };
 
-  const enrollClickHandler = async isPatch => {
+  const enrollClickHandler = async (isPatch) => {
     const currentTitle = titleRef.current.value;
     const currentContent = contentRef.current.value;
     let response;
@@ -65,11 +66,12 @@ const TodoListInput = ({
 
     const newHistory = {
       action,
-      currentColumn: columnName,
+      prevColumn: columnName,
+      currentColumn: '이동한컬럼',
       prevTitle: title,
       currentTitle,
-      currentContent,
       user: "Beemo",
+      date: getFormatDate()
     };
 
     const responseHistory = await axios.post("/logs", newHistory);
@@ -85,13 +87,13 @@ const TodoListInput = ({
       </SmallButton>
       <TitleInput
         placeholder="제목을 적어주세요"
-        onChange={e => onChange(setTitle, e)}
+        onChange={(e) => onChange(setTitle, e)}
         value={titleValue || ""}
         titleRef={titleRef || ""}
       />
       <ContentInput
         placeholder="내용을 적어주세요"
-        onChange={e => onChange(setContent, e)}
+        onChange={(e) => onChange(setContent, e)}
         value={contentValue || ""}
         contentRef={contentRef || ""}
       />

@@ -5,7 +5,8 @@ import SmallButton from "../SmallButton";
 import MediumButton from "../MediumButton";
 import PlusButtonImg from "../../../../images/plusButton.svg";
 import CloseButtonImg from "../../../../images/closeButton.svg";
-
+// import { getFormatDate } from '../../../../serviceUtils/dateUtil';
+import axios from "axios";
 const Div = styled.div`
   padding: 10px 45px 0px 45px;
 `;
@@ -16,6 +17,13 @@ const ButtonList = ({
   enrollClickHandler,
   isPatch,
   isAbleToEnroll,
+  setPopup,
+  setTodos,
+  idState,
+  setIdState,
+  colState,
+  setColState,
+  setHistories,
   ...props
 }) => {
   const plusButton = (
@@ -54,22 +62,42 @@ const ButtonList = ({
       등록
     </MediumButton>
   );
+  const deleteClickHandler = async () => {
+    const response = await axios.delete(
+      `/todos?columnId=${colState}&id=${idState}`
+    );
+    setPopup("none");
+    setTodos(() => response.data);
+
+    // const newHistory = {
+    //   action: '삭제',
+    //   prevColumnId: colState,
+    //   prevId: idState,
+    //   user: "Beemo",
+    //   date: getFormatDate()
+    // };
+    // const responseHistory = await axios.post("/logs", newHistory);
+    // setHistories(() => responseHistory.data);
+
+  };
   const popCancelButton = (
     <MediumButton
       _background="#fff"
       _color="#3c4243"
-      // onClick={() => patchClickHandler()}
+      onClick={() => setPopup("none")}
+    // onClick={() => isOpenPopActions.toggle()}
     >
-      취소
+      아니오
     </MediumButton>
   );
   const popEnrollButton = (
     <MediumButton
       _background="#62afb7"
       _color="white"
-      // onClick={() => patchClickHandler()}
+      onClick={deleteClickHandler}
+    // onClick={() => patchClickHandler()}
     >
-      확인
+      네
     </MediumButton>
   );
   let currentButton;
@@ -83,8 +111,8 @@ const ButtonList = ({
   } else if (isIcon === "popup") {
     currentButton = (
       <>
-        {popCancelButton}
         {popEnrollButton}
+        {popCancelButton}
       </>
     );
   } else {

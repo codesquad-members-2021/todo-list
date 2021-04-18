@@ -3,6 +3,8 @@ import styled from "styled-components";
 import Image from '../../atoms/Image';
 import Span from '../../atoms/Span';
 import userIcon from '../../../images/userIcon.png';
+import historyTemplate from '../../../serviceUtils/historyTemplate';
+import { getTimeTaken } from '../../../serviceUtils/dateUtil';
 
 const WrapDiv = styled.div`
   display: flex;
@@ -14,27 +16,33 @@ const ImgDiv = styled.div`
   margin: 0 10px 0 0;
 `;
 
+
 const TextDiv = styled.div`
   > div {
     margin-bottom:5px;
   }
 `;
 
-const HistoryItem = (props) => {
+const HistoryItem = ({ itemObject }) => {
 
   const { user, userImage, prevTitle, currentTitle,
-    action, prevColumn, currentColumn, Date } = props.itemObject;
+    action, prevColumn, currentColumn, date } = itemObject;
 
-  return (<WrapDiv>
-    <ImgDiv>
-      <Image _width="40px" src={userIcon} />
-    </ImgDiv>
-    <TextDiv>
-      <div><Span>@Jake</Span></div>
-      <div><Span>{prevTitle}를 {action}하였습니다</Span></div>
-      <div><Span _fontColor="#777777">1분 전</Span></div>
-    </TextDiv>
-  </WrapDiv>);
+  const currentTime = Date.now();
+
+  return (
+    <WrapDiv>
+      <ImgDiv>
+        <Image _width="40px" src={userIcon} />
+      </ImgDiv>
+      <TextDiv>
+        <div><Span>@{user}</Span></div>
+        <div>
+          {historyTemplate[action](itemObject)}
+        </div>
+        <div><Span _fontColor="#777777">{getTimeTaken(currentTime, date)} 전</Span></div>
+      </TextDiv>
+    </WrapDiv>);
 };
 
 

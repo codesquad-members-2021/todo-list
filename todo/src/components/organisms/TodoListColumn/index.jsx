@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import TodoTitle from "../../molecules/TodoTitle";
+import { useRef } from 'react';
 import TodoListInput from "../../molecules/TodoListInput";
 import TodoSwitch from "../../molecules/TodoSwitch";
 import useToggle from "../../../hooks/useToggle";
@@ -13,13 +14,20 @@ const TodoListColumn = ({
   columnName,
   items,
   setHistories,
+  setPopup,
+  setIdState,
+  setColState,
+  dragged,
+  titleRef
 }) => {
   const [isClicked, toggleActions] = useToggle(false);
   let template;
+
   if (!isClicked) {
     template = (
-      <Div>
+      <Div className="_column" >
         <TodoTitle
+          titleRef={titleRef}
           addTodo={toggleActions.toggle}
           itemCount={items.length}
           columnId={columnId}
@@ -39,6 +47,10 @@ const TodoListColumn = ({
                 content,
                 author,
                 setHistories,
+                setPopup,
+                setIdState,
+                setColState,
+                dragged
               }}
             ></TodoSwitch>
           );
@@ -47,7 +59,7 @@ const TodoListColumn = ({
     );
   } else {
     template = (
-      <Div>
+      <Div className="_column" >
         <TodoTitle addTodo={toggleActions.toggle} itemCount={items.length}>
           {columnName}
         </TodoTitle>
@@ -59,6 +71,10 @@ const TodoListColumn = ({
             toggleActions,
             setTodos,
             setHistories,
+            setPopup,
+            setIdState,
+            setColState,
+            dragged
           }}
         />
         {items.map(({ id, title, content, author }) => {
@@ -74,6 +90,10 @@ const TodoListColumn = ({
                 content,
                 author,
                 setHistories,
+                setPopup,
+                setIdState,
+                setColState,
+                dragged
               }}
             ></TodoSwitch>
           );

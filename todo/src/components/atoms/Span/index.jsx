@@ -10,7 +10,7 @@ const StyledSpan = styled.span`
 `;
 
 const Span = ({ children, ...props }) => (
-  <StyledSpan {...props}>{children}</StyledSpan>
+  <StyledSpan {...props} >{children}</StyledSpan>
 );
 
 export default Span;

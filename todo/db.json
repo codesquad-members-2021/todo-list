@@ -5,15 +5,15 @@
       "columnName": "해야할 일",
       "items": [
         {
-          "id": "vvZIl_8sd",
-          "title": "비모 관리 ",
-          "content": "비모 연료 충전하기 ",
+          "id": "lbeMlZjIO",
+          "title": "비모 연료 충전하기",
+          "content": "초코우유 주입",
           "author": "Beemo"
         },
         {
-          "id": "yYeAr_Ecj",
-          "title": "요리하기",
-          "content": "파스타 만들기",
+          "id": "tGFa99FE8",
+          "title": "저녁 메뉴 정하기",
+          "content": "맛있는 메뉴",
           "author": "Beemo"
         }
       ]
@@ -21,29 +21,28 @@
     {
       "columnId": 2,
       "columnName": "하고 있는 일",
-      "items": [
-        {
-          "id": "wfk3V23gt",
-          "title": "미션 하기",
-          "content": "드래그 앤 드롭 만들기 ",
-          "author": "Beemo"
-        }
-      ]
+      "items": []
     },
     {
       "columnId": 3,
       "columnName": "완료한 일",
       "items": [
         {
-          "id": "64O5WK41o",
-          "title": "CRUD 구현",
-          "content": "CRUD 구현하기",
-          "author": "데이지"
+          "id": "6bbotMDS1",
+          "title": "맛있는 스파게티 완성",
+          "content": "스파게티 코드 완성",
+          "author": "Beemo"
         },
         {
-          "id": "N2Fo29Sd-",
-          "title": "협업하기",
-          "content": "재밌게 코딩하기",
+          "id": "_rWDWfoYD",
+          "title": "비타지 데뷔",
+          "content": "데뷔 기념 gather 라이브 공연 ",
+          "author": "Beemo"
+        },
+        {
+          "id": "DIxvHBH3_",
+          "title": "Drag ",
+          "content": "스무스한 드래그 ",
           "author": "Beemo"
         }
       ]
@@ -58,44 +57,13 @@
   ],
   "logs": [
     {
-      "id": "IGsV0fSRS",
-      "action": "수정",
-      "prevTitle": "ㅂㅂ",
-      "currentTitle": "비모 관리 ",
-      "currentContent": "비모 연료 충전하기 ",
-      "user": "Beemo"
-    },
-    {
-      "id": "815tbLvtm",
-      "action": "수정",
-      "prevTitle": "ㅈㄷ",
-      "currentTitle": "요리하기",
-      "currentContent": "파스타 만들기",
-      "user": "Beemo"
-    },
-    {
-      "id": "p2TJrqcRD",
-      "action": "수정",
-      "prevTitle": "비동기 공부하기",
-      "currentTitle": "미션 하기",
-      "currentContent": "드래그 앤 드롭 만들기 ",
-      "user": "Beemo"
-    },
-    {
-      "id": "I663qAUIr",
-      "action": "수정",
-      "prevTitle": "ㅇㅇㅇㅈㄷㄱㅂㅈㄷ",
-      "currentTitle": "CRUD 구현",
-      "currentContent": "CRUD 구현하기",
-      "user": "Beemo"
-    },
-    {
-      "id": "fyOKd8Wrr",
-      "action": "수정",
-      "prevTitle": "ㅂㅈㄷ",
-      "currentTitle": "협업하기",
-      "currentContent": "재밌게 코딩하기",
-      "user": "Beemo"
+      "id": "i6DB3VcQq",
+      "user": "Beemo",
+      "date": "2021-04-16 18:39:16",
+      "action": "이동",
+      "prevTitle": "Drag ",
+      "prevColumn": "하고 있는 일",
+      "currentColumn": "완료한 일"
     }
   ]
 }

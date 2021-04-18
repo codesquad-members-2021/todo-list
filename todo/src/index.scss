@@ -2,3 +2,15 @@ body {
   margin: 3px;
   overflow-x: hidden;
 }
+
+.placeholder {
+  width: 308px;
+  height: 61px;
+  padding: 16px;
+  margin: 16px;
+  border: 2px solid rgb(177, 177, 255);
+  background: #fff;
+  border-radius: 5px;
+  border-style: dashed;
+  opacity: 0.5;
+}
