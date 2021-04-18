@@ -178,33 +178,42 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iFt-LB-svE">
                                 <rect key="frame" x="587" y="260" width="472" height="459"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TL4-Eu-HSd">
-                                        <rect key="frame" x="124" y="221" width="26" height="33"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ID" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TL4-Eu-HSd">
+                                        <rect key="frame" x="124" y="221" width="40" height="33"/>
+                                        <color key="backgroundColor" systemColor="systemPinkColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="26" id="Yie-6U-p45"/>
+                                            <constraint firstAttribute="width" constant="40" id="Yie-6U-p45"/>
                                             <constraint firstAttribute="height" constant="33" id="sxf-XI-w4D"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ptY-nW-xuA">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="비밀번호 입력하세욧" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ptY-nW-xuA">
                                         <rect key="frame" x="127" y="347" width="221" height="34"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="34" id="aHn-Af-sHu"/>
                                             <constraint firstAttribute="width" constant="221" id="hGA-nD-amo"/>
                                         </constraints>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PW" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rLa-Ej-HKB">
                                         <rect key="frame" x="127" y="311" width="40" height="32"/>
+                                        <color key="backgroundColor" systemColor="systemPinkColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="89K-dM-TWJ"/>
                                             <constraint firstAttribute="height" constant="32" id="Wlx-BJ-cJm"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8iw-u9-cdt">
@@ -215,6 +224,7 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
                                         <state key="normal" title=" Log In">
+                                            <color key="titleColor" systemColor="systemPinkColor"/>
                                             <imageReference key="image" image="arrow.right.circle.fill" catalog="system" symbolScale="large" renderingMode="original"/>
                                         </state>
                                         <connections>
@@ -222,15 +232,24 @@
                                             <segue destination="BYZ-38-t0r" kind="show" id="cWX-HU-Uhs"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sX9-SE-9Ls">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="아이디를 입력하세욧" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sX9-SE-9Ls">
                                         <rect key="frame" x="126" y="262" width="221" height="34"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="221" id="bzV-0o-TfJ"/>
                                             <constraint firstAttribute="height" constant="34" id="eoX-cV-T3Z"/>
                                         </constraints>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="codesquad" translatesAutoresizingMaskIntoConstraints="NO" id="rMs-gO-KeA">
+                                        <rect key="frame" x="127" y="48" width="240" height="128"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="240" id="p8X-lC-teY"/>
+                                            <constraint firstAttribute="height" constant="128" id="sbd-Zi-pec"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0040650406504064707" green="0.46666666666666667" blue="0.86274509803921573" alpha="0.9270215571" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
@@ -241,6 +260,8 @@
                                     <constraint firstAttribute="width" constant="472" id="Psf-dS-g6l"/>
                                     <constraint firstItem="ptY-nW-xuA" firstAttribute="leading" secondItem="iFt-LB-svE" secondAttribute="leading" constant="127" id="RYA-XY-Ozx"/>
                                     <constraint firstItem="ptY-nW-xuA" firstAttribute="top" secondItem="rLa-Ej-HKB" secondAttribute="bottom" constant="4" id="Uqo-vn-CWF"/>
+                                    <constraint firstAttribute="trailing" secondItem="rMs-gO-KeA" secondAttribute="trailing" constant="105" id="VbC-Jd-wAM"/>
+                                    <constraint firstItem="rMs-gO-KeA" firstAttribute="top" secondItem="iFt-LB-svE" secondAttribute="top" constant="48" id="VcY-yl-p3C"/>
                                     <constraint firstItem="TL4-Eu-HSd" firstAttribute="leading" secondItem="iFt-LB-svE" secondAttribute="leading" constant="124" id="YIc-Pv-t1X"/>
                                     <constraint firstItem="rLa-Ej-HKB" firstAttribute="top" secondItem="sX9-SE-9Ls" secondAttribute="bottom" constant="15" id="eeJ-Ek-jW6"/>
                                     <constraint firstItem="8iw-u9-cdt" firstAttribute="top" secondItem="ptY-nW-xuA" secondAttribute="bottom" constant="28" id="hPw-FD-chL"/>
@@ -275,7 +296,7 @@
                                     <constraint firstAttribute="width" constant="104" id="rC9-kk-kGy"/>
                                 </constraints>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="브이강아지" translatesAutoresizingMaskIntoConstraints="NO" id="RHk-FU-wsP">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="브이강아지" translatesAutoresizingMaskIntoConstraints="NO" id="RHk-FU-wsP">
                                 <rect key="frame" x="233" y="437" width="104" height="104"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="104" id="85l-tp-8aB"/>
@@ -302,10 +323,13 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="idLabel" destination="TL4-Eu-HSd" id="R2B-qZ-rLh"/>
                         <outlet property="idTextField" destination="sX9-SE-9Ls" id="ngp-nU-Iyi"/>
                         <outlet property="logInImageView" destination="zdc-Yd-oZ2" id="p60-0y-ghM"/>
                         <outlet property="logInImageView2" destination="RHk-FU-wsP" id="sVc-5h-Jy4"/>
+                        <outlet property="logInMainView" destination="iFt-LB-svE" id="9RO-Ii-1ur"/>
                         <outlet property="passwordTextField" destination="ptY-nW-xuA" id="WmZ-cY-cbY"/>
+                        <outlet property="pwLabel" destination="rLa-Ej-HKB" id="125-QY-vNW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mak-DD-rJm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -563,7 +587,7 @@
         <image name="shuffle" catalog="system" width="128" height="93"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <image name="레이곰" width="619" height="649"/>
-        <image name="브이강아지" width="614.5" height="558"/>
+        <image name="브이강아지" width="614.5" height="558"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
@@ -578,6 +602,9 @@
         </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
