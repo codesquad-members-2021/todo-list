@@ -2,37 +2,44 @@ package com.team08.todolist.controller;
 
 public class ApiResponse<T> {
 
-    private final boolean success;
-
     private final T response;
 
+    private final String message;
 
-    private ApiResponse(boolean success, T response) {
-        this.success = success;
+    private ApiResponse(T response, String message) {
         this.response = response;
+        this.message = message;
     }
 
-    public static <T> ApiResponse<T> OK(T response){
-        return new ApiResponse<>(true, response);
+    public static <T> ApiResponse<T> OK(T response, String message) {
+        return new ApiResponse<>(response, message);
     }
 
-    public static <T> ApiResponse<T> ERROR(T response){
-        return new ApiResponse<>(false, response);
+    public static <T> ApiResponse<T> OK(T response) {
+        return OK(response, "success");
     }
 
-    public boolean isSuccess() {
-        return success;
+    public static <T> ApiResponse<T> ERROR(T response, String message) {
+        return new ApiResponse<>(response, message);
+    }
+
+    public static <T> ApiResponse<T> ERROR(T response) {
+        return new ApiResponse<>(response, "error");
     }
 
     public T getResponse() {
         return response;
     }
 
+    public String getMessage() {
+        return message;
+    }
+
     @Override
     public String toString() {
         return "ApiResponse{" +
-                "success=" + success +
-                ", response=" + response +
+                "response=" + response +
+                ", message='" + message + '\'' +
                 '}';
     }
 }

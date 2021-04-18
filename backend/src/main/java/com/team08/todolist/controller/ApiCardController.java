@@ -1,12 +1,12 @@
 package com.team08.todolist.controller;
 
 import com.team08.todolist.dto.CardDto;
+import com.team08.todolist.model.Card;
 import com.team08.todolist.service.CardService;
 import com.team08.todolist.service.HistoryService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,40 +28,42 @@ public class ApiCardController {
     }
 
     @GetMapping
-    public List<CardDto> list() {
-        return cardService.findAll()
-                .stream().map(card -> CardDto.of(card))
+    public ApiResponse list() {
+        List<CardDto> cards = cardService.findAll()
+                .stream()
+                .map(card -> CardDto.of(card))
                 .collect(Collectors.toList());
+        return ApiResponse.OK(cards);
     }
 
     @PostMapping
-    public ResponseEntity create(@RequestBody CardDto cardToCreate) {
+    public ApiResponse create(@RequestBody CardDto cardToCreate) {
         cardService.create(cardToCreate.toEntity());
         historyService.generateAdd(cardToCreate);
-        return ResponseEntity.ok()
-                .body(ApiResponse.OK(cardToCreate));
+        return ApiResponse.OK(cardToCreate);
     }
 
     @PutMapping("/{cardId}")
-    public ResponseEntity<ApiResponse> update(@PathVariable Long cardId, @RequestBody CardDto cardToUpdate) {
+    public ApiResponse update(@PathVariable Long cardId, @RequestBody CardDto cardToUpdate) {
         Long columnId = cardService.update(cardId, cardToUpdate);
         logger.debug("Card to update has column id {}.", columnId);
         logger.debug("Updated card info has column id {}.", columnId);
+        generateUpdatedCardHistory(columnId, cardToUpdate);
+        return ApiResponse.OK(cardToUpdate);
+    }
+
+    private void generateUpdatedCardHistory(Long columnId, CardDto cardToUpdate) {
         if (columnId == cardToUpdate.getColumnId()) {
             historyService.generateUpdate(cardToUpdate);
-        } else {
-            historyService.generateMove(columnId, cardToUpdate);
+            return;
         }
-
-        return ResponseEntity.ok()
-                .body(ApiResponse.OK(cardToUpdate));
+        historyService.generateMove(columnId, cardToUpdate);
     }
 
     @DeleteMapping("/{cardId}")
-    public ResponseEntity<ApiResponse> delete(@PathVariable Long cardId) {
+    public ApiResponse delete(@PathVariable Long cardId) {
         CardDto cardDto = cardService.delete(cardId);
         historyService.generateRemove(cardDto);
-        return ResponseEntity.ok()
-                .body(ApiResponse.OK(cardId + " card is deleted"));
+        return ApiResponse.OK(cardId, cardId + " card is deleted");
     }
 }

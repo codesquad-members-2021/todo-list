@@ -22,9 +22,10 @@ public class ApiHistoryController {
     }
 
     @GetMapping
-    public List<HistoryDto> list() {
-        return historyService.findAll()
+    public ApiResponse list() {
+        List<HistoryDto> histories = historyService.findAll()
                 .stream().map(history -> HistoryDto.of(history))
                 .collect(Collectors.toList());
+        return ApiResponse.OK(histories);
     }
 }
