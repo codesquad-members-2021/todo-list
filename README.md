@@ -95,6 +95,7 @@
   - [3.mysql(in docker) - localhost 연결](https://github.com/MJbae/todo-list/tree/Backend/feature-DB-connect)
 
 - [iOS 현황](https://github.com/MJbae/todo-list/projects/2)
+  - [최종 구현 시나리오 & 다이어그램](https://github.com/MJbae/todo-list/wiki/%5BiOS%5D-Scenario-&-Diagrams)
   - [1.UI구현](https://github.com/MJbae/todo-list/wiki/%5BiOS%5D-UI-구현)
   - [2.Network구현](https://github.com/MJbae/todo-list/wiki/%5BiOS%5D-Network-구현)
 
