@@ -5,7 +5,6 @@ import Span from '../../atoms/Span';
 import userIcon from '../../../images/userIcon.png';
 
 const WrapDiv = styled.div`
-  width: 330px;
   display: flex;
   padding: 15px;
   background:#fff;
@@ -21,27 +20,22 @@ const TextDiv = styled.div`
   }
 `;
 
-const HistoryItem = () => (
-  <WrapDiv>
+const HistoryItem = (props) => {
 
+  const { user, userImage, prevTitle, currentTitle,
+    action, prevColumn, currentColumn, Date } = props.itemObject;
+
+  return (<WrapDiv>
     <ImgDiv>
       <Image _width="40px" src={userIcon} />
     </ImgDiv>
-
     <TextDiv>
-      <div>
-        <Span>@Jake</Span>
-      </div>
-      <div>
-        <Span>해야할 일에 HTML/CSS 공부하기를 등록하였습니다</Span>
-      </div>
-      <div>
-        <Span _fontColor="#777777">1분 전</Span>
-      </div>
+      <div><Span>@Jake</Span></div>
+      <div><Span>{prevTitle}를 {action}하였습니다</Span></div>
+      <div><Span _fontColor="#777777">1분 전</Span></div>
     </TextDiv>
-
-  </WrapDiv>
-);
+  </WrapDiv>);
+};
 
 
 export default HistoryItem;

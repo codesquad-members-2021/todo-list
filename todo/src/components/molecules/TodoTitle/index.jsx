@@ -1,34 +1,36 @@
-import React from 'react'
+import React from "react";
 import styled from "styled-components";
-import Span from '../../atoms/Span';
-import Label from '../../atoms/Label';
-import SmallButton from '../../atoms/SmallButton';
-import Image from '../../atoms/Image';
-import hamburgerBtn from "../../../images/hamburgerButtonIcon.png";
-// import ButtonList from '../ButtonList';
+import Span from "../../atoms/Span";
+import Label from "../../atoms/Label";
+import ButtonList from "../../atoms/Buttons/ButtonList";
 
 const WrapDiv = styled.div`
   display: flex;
-  padding: 15px;
-  justify-content: space-between;
+  padding: 10px;
+  margin: 10px 0px 10px 10px;
   place-items: center;
+  justify-content: space-between;
 `;
 
 const LeftDiv = styled.div`
-  display:flex;
+  display: flex;
   place-items: center;
 `;
 
-const TodoTitle = ({ children, ...props }) => (
+const TodoTitle = ({ children, itemCount, ...props }) => (
   <WrapDiv>
     <LeftDiv>
-      <Span _fontSize="20px" _fontWeight="700">{children}</Span>
-      <Label></Label>
+      <Span _fontSize="20px" _fontWeight="700">
+        {children}
+      </Span>
+      <Label>{itemCount}</Label>
     </LeftDiv>
     <div>
-      <SmallButton>
-        <Image src={hamburgerBtn} _width="30px" />
-      </SmallButton>
+      <ButtonList
+        isIcon={"small"}
+        addTodo={props.addTodo}
+        columnId={props.columnId}
+      ></ButtonList>
     </div>
   </WrapDiv>
 );
