@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Button from "./utils/Button";
 import { URL } from "./utils/constant";
 import { DragDropContext } from "react-beautiful-dnd";
+
 const BoardBlock = styled.div`
   display: flex;
 `;
@@ -28,22 +29,22 @@ const mockData = [
 ];
 
 export default function Board({ onLog }) {
-  const [columns, setColumns] = useState([]);
+  const [columns, setColumns] = useState(mockData);
 
-  useEffect(async () => {
-    const data = await fetch(URL.getDB);
-    const json = await data.json();
-    setColumns((json[0].columnList.length && json[0].columnList) || mockData);
-  }, []);
+  useEffect(() => {
+    (async () => {
+      const data = await fetch(URL.getDB);
+      const json = await data.json();
+      setColumns((json[0].columnList.length && json[0].columnList) || mockData);
 
-  useEffect(async () => {
-    await fetch(URL.setDB, {
-      method: "post",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(columns),
-    });
+      await fetch(URL.setDB, {
+        method: "post",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(columns),
+      });
+    })();
   }, [columns]);
 
   const addColumn = () => {
@@ -52,14 +53,28 @@ export default function Board({ onLog }) {
       columnTitle: "new column",
       items: [],
     };
-    setColumns([...columns, column]);
+    setColumns((columns) => [...columns, column]);
+  };
+
+  const deleteColumn = (columnId) => {
+    setColumns((columns) =>
+      columns.filter((column) => column.columnId !== columnId)
+    );
   };
 
   const setItemsOfColumn = (column) => {
     const target = columns.find((e) => e.columnId === column.columnId);
     target.items = [...column.items];
-    setColumns([...columns]);
+    setColumns((columns) => [...columns]);
   };
+
+  const setColumnTitle = (newColumn) => {
+    const target = columns.map((column) =>
+      column.columnId !== newColumn.columnId ? column : newColumn
+    );
+    setColumns(target);
+  };
+
   const onDragEnd = (result) => {
     if (!result.destination) return;
     const { droppableId: beforeColumnId, index: beforeIndex } = result.source;
@@ -85,7 +100,6 @@ export default function Board({ onLog }) {
       }
       return newColumn;
     });
-    console.log(newColumns);
     setColumns(newColumns);
   };
 
@@ -98,6 +112,8 @@ export default function Board({ onLog }) {
             key={column.columnId}
             column={column}
             setItemsOfColumn={setItemsOfColumn}
+            deleteColumn={deleteColumn}
+            setColumnTitle={setColumnTitle}
           />
         ))}
         <Button type="add" subType="bigSize" onClick={addColumn} />

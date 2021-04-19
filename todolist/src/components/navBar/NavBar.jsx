@@ -6,10 +6,12 @@ import Button from "../utils/Button";
 function NavBar({ logs }) {
   const [clicked, setClickState] = useState(false);
   const [appear, setLogViewState] = useState(false);
+
   const handleLogBtnClick = () => {
     setLogViewState(true);
     setClickState(true);
   };
+
   return (
     <>
       <NavBlock>
@@ -19,17 +21,21 @@ function NavBar({ logs }) {
         </LogBtnBlock>
       </NavBlock>
 
-      <LogStorage
-        logs={logs}
-        clicked={clicked}
-        appear={appear}
-        setLogViewState={setLogViewState}
-      ></LogStorage>
+      {clicked && (
+        <LogStorage
+          logs={logs}
+          clicked={clicked}
+          appear={appear}
+          setClickState={setClickState}
+          setLogViewState={setLogViewState}
+        />
+      )}
     </>
   );
 }
 
 const NavBlock = styled.div`
+  z-index: 0;
   width: 1440px;
   height: 112px;
   left: 0px;
@@ -37,6 +43,7 @@ const NavBlock = styled.div`
   display: flex;
   justify-content: space-around;
 `;
+
 const TitleBlock = styled.div`
   position: absolute;
   width: 200px;

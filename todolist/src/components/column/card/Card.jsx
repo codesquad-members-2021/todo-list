@@ -1,7 +1,50 @@
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Button from "../../utils/Button";
-import { CardButtonSection, CardButton } from "./CardButton.style";
+import { CardButtonSection } from "./CardButtonSection.style";
+import { palette } from "../../utils/constant";
+
+function Card({ card, onDelete, cardContainer }) {
+  const { cardTitle, content } = card;
+  const [modalMode, setModalMode] = useState(false);
+
+  const askToDelete = () => setModalMode(!modalMode);
+  const hoverOnCard = () => {
+    cardContainer.current.style.backgroundColor = palette.lightRed;
+    cardContainer.current.style.borderColor = palette.lightRedBorder;
+  };
+  const hoverOutCard = () => {
+    cardContainer.current.style.backgroundColor = "white";
+    cardContainer.current.style.borderColor = palette.blue;
+  };
+
+  return (
+    <>
+      {modalMode && (
+        <Modal>
+          <ModalContent>
+            <ModalQuestion>선택한 카드를 삭제할까요?</ModalQuestion>
+            <CardButtonSection>
+              <Button type="cancel" onClick={askToDelete} />
+              <Button type="remove" onClick={() => onDelete(card)} />
+            </CardButtonSection>
+          </ModalContent>
+        </Modal>
+      )}
+      <CardItem>
+        <CardSection>
+          <CardTitle className="card-title">{cardTitle}</CardTitle>
+          <CardContent className="card-content">{content}</CardContent>
+        </CardSection>
+        <CardSection>
+          <div onMouseOver={hoverOnCard} onMouseOut={hoverOutCard}>
+            <Button type="delete" onClick={askToDelete} />
+          </div>
+        </CardSection>
+      </CardItem>
+    </>
+  );
+}
 
 const CardTitle = styled.div`
   font-weight: bold;
@@ -60,49 +103,5 @@ const ModalQuestion = styled.div`
   text-align: center;
   font-weight: bold;
 `;
-
-function Card({ card, onDelete, cardContainer }) {
-  const { cardTitle, content } = card;
-  const [modalMode, setModalMode] = useState(false);
-  const askToDelete = () => setModalMode(!modalMode);
-
-  return (
-    <>
-      {modalMode && (
-        <Modal>
-          <ModalContent>
-            <ModalQuestion>선택한 카드를 삭제할까요?</ModalQuestion>
-            <CardButtonSection>
-              <CardButton onClick={askToDelete} backgroundColor="#e0e0e0">
-                취소
-              </CardButton>
-              <CardButton onClick={() => onDelete(card)} fontColor="#fff">
-                삭제
-              </CardButton>
-            </CardButtonSection>
-          </ModalContent>
-        </Modal>
-      )}
-      <CardItem>
-        <CardSection>
-          <CardTitle className="card-title">{cardTitle}</CardTitle>
-          <CardContent className="card-content">{content}</CardContent>
-        </CardSection>
-        <CardSection>
-          <div
-            onMouseOver={() =>
-              (cardContainer.current.style.backgroundColor = "red")
-            }
-            onMouseOut={() =>
-              (cardContainer.current.style.backgroundColor = "white")
-            }
-          >
-            <Button type="delete" onClick={askToDelete} />
-          </div>
-        </CardSection>
-      </CardItem>
-    </>
-  );
-}
 
 export default Card;

@@ -5,14 +5,16 @@ require("./DB");
 
 dotenv.config();
 
-router.get("/getData", function (req, res) {
+router.get("/todolist", function (req, res) {
   console.log("mySchema 요청!");
   mySchema.find({ _id: process.env.COLLECTION_ID }, function (err, result) {
+    console.log(process.env.COLLECTION_ID, result);
     res.send(result);
   });
 });
 
 router.post("/setData", function (req, res) {
+  console.log(req.body);
   mySchema.updateOne(
     { _id: process.env.COLLECTION_ID },
     { $set: { columnList: req.body } },
