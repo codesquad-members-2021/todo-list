@@ -5,15 +5,21 @@ import com.codesquad.todo.web.domain.TodoLog;
 import java.time.LocalDateTime;
 
 public class TodoLogDto {
-    private long id;
-    private String action;
-    private String authorName;
-    private LocalDateTime createdDateTime;
+    private final long id;
+    private final String action;
+    private final String fromColumnTitle;
+    private final String toColumnTitle;
+    private final String taskTitle;
+    private final String authorName;
+    private final LocalDateTime createdDateTime;
 
-    public TodoLogDto(TodoLog todoLog) {
+    public TodoLogDto(TodoLog todoLog, String authorName) {
         this.id = todoLog.getId();
         this.action = todoLog.getAction();
-        this.authorName = todoLog.getAuthor().getName();
+        this.fromColumnTitle = todoLog.getFromColumnTitle();
+        this.toColumnTitle = todoLog.getToColumnTitle();
+        this.taskTitle = todoLog.getTaskTitle();
+        this.authorName = authorName;
         this.createdDateTime = todoLog.getCreatedDateTime();
     }
 
@@ -31,5 +37,17 @@ public class TodoLogDto {
 
     public LocalDateTime getCreatedDateTime() {
         return createdDateTime;
+    }
+
+    public String getFromColumnTitle() {
+        return fromColumnTitle;
+    }
+
+    public String getToColumnTitle() {
+        return toColumnTitle;
+    }
+
+    public String getTaskTitle() {
+        return taskTitle;
     }
 }

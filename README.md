@@ -4,6 +4,17 @@
 
 
 
+### 팀원 구성
+
+* FE
+  * Autumn
+  * Raccoon
+* BE
+  * NAS
+  * Jung
+
+
+
 ### 용어 정리
 
 * [용어 정리 링크](https://github.com/Malloc72P/todo-list/wiki/%EC%9A%A9%EC%96%B4-%EC%A0%95%EB%A6%AC)
