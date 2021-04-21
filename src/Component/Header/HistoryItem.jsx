@@ -1,12 +1,14 @@
 // import Button from '../Button'
 // import { FaTimes } from 'react-icons/fa'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-
+import { useTodoUserNameContext } from '../Context'
 const HistoryItemBlock = styled.li`
-  margin-top: 1rem;
+  margin-bottom: 1rem;
   border: 1px solid black;
   padding: 0.5rem 0;
   display: flex;
+  width: 100%;
 `
 const HistoryItemTextBlock = styled.div`
   div {
@@ -36,13 +38,21 @@ const Time = styled.div`
 `
 
 export default function HistoryItem ({ author, text, time, profile }) {
+  const [stateTime, SetTime] = useState(new Date() - new Date(time))
+  useEffect(() => {
+    const interval = setInterval(() => {
+      SetTime(Math.ceil((new Date() - new Date(time)) / 600000))
+    }, 1000)
+    return () => clearInterval(interval)
+  }, [time])
+
   return (
     <HistoryItemBlock>
       <HistoryItemProfileBlock>{profile}</HistoryItemProfileBlock>
       <HistoryItemTextBlock>
-        <Id>@{author}</Id>
+        <Id>@{useTodoUserNameContext()[0]}</Id>
         <Contents dangerouslySetInnerHTML={{ __html: text }}></Contents>
-        <Time>{time}</Time>
+        <Time>{stateTime + '분 전'}</Time>
       </HistoryItemTextBlock>
     </HistoryItemBlock>
   )
